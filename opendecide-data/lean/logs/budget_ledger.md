@@ -74,3 +74,17 @@ planned; the next steps are in FREEZE.md for the $30 account.
 | – | v0.11 gate: dev_nc 71.9 vs v0.10 72.1 (needed 74.1) -> FAIL as-is. Gains: negation words +8.2, task bank +2.9, hard +1.5, 32/56-way +10/+8. Losses: binary judgments biased (over-flagging, too lenient on consistency). | | | |
 | A4 | weight blend v0.10 x v0.11 (w = 0.3/0.5/0.7 on v0.10), dev splits only | H100 | ~0.8 | zero-training fix attempt |
 | A5 | TRAIN q35_4b_v11b = fix-up from blend q35_4b_v11s30 (0.3 v10 + 0.7 v11): 948 Claude binary judgments x2 + all judge rows + v11 replay, 0.4 epoch, lr 4e-5 | H100 | ~1.9 | binary-bias fix |
+| A6 | OHS-1 (once) for q35_4b_v11b, plain | H100 | ~0.5 | pre-registered test |
+| A7 | JevBench half A for q35_4b_v11b, CUDA graphs | H100 | ~0.4 | dev benchmark |
+| – | RESULT v0.11b on OHS-1 (all): 77.9 plain / 78.5 with batch calibration vs Jev 81.7 (-3.7 / -3.1, significant); v0.10 was 76.1. Sealed half: 77.4 / 78.4 vs 81.5. JevBench half A 100/118 (v0.10 104, Jev 103). Consistency now better than Jev on complement (0.080 vs 0.097) and double negation (0.101 vs 0.162). NOTE: OHS-1 task-level results have guided data choices since v0.10, so the final public claim needs a fresh OHS-2. | | | |
+| A8 | TRAIN q35_4b_v11c = from v11b: 882 Claude standard-doctrine items x2 + procedural/judge replay + binj + v11 replay (   17022 rows), 0.352 epoch (~375 steps), lr 4e-5 | H100 | ~1.8 | |
+| – | OpenRouter: Jev x2 on OHS-2 (guard) | API | ~0.1 | fresh held-out test |
+| A9 | OHS-2 (pre-registered, amendment f2b103f): q35_4b_v11c + q35_4b_v10 reference; v11c also on OHS-1 | H100 | ~0.8 | fair final test |
+| A10 | JevBench half A: q35_4b_v11c with CUDA graphs | H100 | ~0.4 | |
+| – | RESULT OHS-2 (fresh, pre-registered): v11c 79.9 plain / 80.5 BC vs Jev 81.5 (-1.6 [-3.3,+0.1], p_holm 0.14: not significant); v10 78.3 (-3.3, significant). Jev better on yes/no Brier (0.038 vs 0.083). JevBench half A: v11c 107/118 (Jev 103). | | | |
+| A11 | teacher labels: q35_4b_v11c on the 2B mix (train_v11 + binj + std x2) | H100 | ~1.5 | for the 2B student |
+| A12 | TRAIN q35_2b_v11: Qwen3.5-2B from base, LoRA r32, distilled from q35_4b_v11c (kd 0.5) on the 2B mix (59.7k rows), 0.4 epoch (~1,493 steps), lr 1e-4, full v0.11 loss | H100 | ~3.6 | |
+| – | RESULT q35_2b_v11 dev gate FAILED: dev_nc 68.5 plain / 69.5 BC (gate >= 71.3; 4B v11c 74.3). Biggest gaps: hard_policy, hard_evidence, pg reasoning, biasframes intent, manifesto. Better than the old 2B pilot on devzs/devp_card/dev (+4/+5/+10). Billed so far $17.90. Not run on OHS-2. | | | |
+| A13 | TRAIN q35_2b_v11r = continue q35_2b_v11 on the 34,995 rows it had not seen (train_2b_rest, trainer shuffle replayed), 1 epoch (~2,188 steps), lr 5e-5, same loss + kd 0.5 | H100 | ~4.0 | 2B dev gate retry |
+| – | PRISM-2B master plan written (../../PRISM_2B_MASTER_PLAN.md): the current account is for evaluation only (E0 > P0 > K0); new data goes into a 4B teacher round on the top-up first. v12 2B training round deferred. | | 0 | |
+| – | Compliance audit: no 9B/27B/35B probe output in any training file. Legacy Qwen3-235B involvement in about 9k of the 59.7k 2B-mix rows (lah 1,518, meta 1,500, about 5,960 compile_cards cards): drop from future mixes and disclose the lineage. | | 0 | |

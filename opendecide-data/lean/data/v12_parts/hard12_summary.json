@@ -1,0 +1,461 @@
+{
+ "seed": 20261001,
+ "dev_frac": 0.1,
+ "near_dup_threshold": 0.8,
+ "family_link_threshold": 0.5,
+ "ngram": 12,
+ "refs": [
+  "/Users/aryamahadik/Documents/jev/opendecide-data/lean/data/train_v07.jsonl",
+  "/Users/aryamahadik/Documents/jev/opendecide-data/lean/data/eval_card.jsonl",
+  "/Users/aryamahadik/Documents/jev/opendecide-data/lean/data/eval_jagged.jsonl",
+  "/Users/aryamahadik/Documents/jev/opendecide-data/lean/data/train_2b_kd.jsonl",
+  "/Users/aryamahadik/Documents/jev/opendecide-data/lean/data/dev.jsonl",
+  "/Users/aryamahadik/Documents/jev/opendecide-data/lean/data/devzs.jsonl",
+  "/Users/aryamahadik/Documents/jev/opendecide-data/lean/data/devp_card.jsonl",
+  "/Users/aryamahadik/Documents/jev/opendecide-data/lean/data/pg_dev.jsonl",
+  "/Users/aryamahadik/Documents/jev/opendecide-data/lean/data/dev_nc.jsonl",
+  "/Users/aryamahadik/Documents/jev/opendecide-data/lean/data/taskbank_dev.jsonl",
+  "/Users/aryamahadik/Documents/jev/opendecide-data/lean/data/hard_dev.jsonl",
+  "/Users/aryamahadik/Documents/jev/opendecide-data/lean/data/dev_negwords.jsonl",
+  "/Users/aryamahadik/Documents/jev/opendecide-data/lean/data/dev_claims.jsonl",
+  "/Users/aryamahadik/Documents/jev/opendecide-data/lean/data/v11_parts/hard_train.jsonl",
+  "/Users/aryamahadik/Documents/jev/opendecide-data/lean/data/v11_parts/hard_dev.jsonl",
+  "/Users/aryamahadik/Documents/jev/opendecide-data/lean/data/v11_parts/std_train.jsonl",
+  "/Users/aryamahadik/Documents/jev/opendecide-data/lean/data/v11_parts/binj_train.jsonl"
+ ],
+ "totals": {
+  "input": 1023,
+  "kept": 978,
+  "train": 881,
+  "dev": 97,
+  "dropped": 45,
+  "relations_train": {},
+  "relations_dev": {},
+  "relation_errors": [],
+  "near_duplicates_over_threshold": [],
+  "ngram12_hits": {
+   "r_hard_reason_c_109": [
+    "pg_dev.jsonl:pg_temporal:state",
+    "train_2b_kd.jsonl:pg_temporal:state",
+    "train_v07.jsonl:pg_temporal:state"
+   ],
+   "r_hard_reason_c_108": [
+    "pg_dev.jsonl:pg_temporal:state",
+    "train_2b_kd.jsonl:pg_temporal:state",
+    "train_v07.jsonl:pg_temporal:state"
+   ]
+  },
+  "max_train_dev_overlap": 0.355
+ },
+ "leak_review": [],
+ "domains": {
+  "affect_c": {
+   "n_items": 150,
+   "agreement_before_review": "150/150 (1.000)",
+   "n_agreed_after_review": 148,
+   "kept": 146,
+   "kept_train": 131,
+   "kept_dev": 15,
+   "dropped": {
+    "r_hard_affect_c_130": [
+     "not_agreed"
+    ],
+    "r_hard_affect_c_131": [
+     "twin_partner_dropped:r_hard_affect_c_130"
+    ],
+    "r_hard_affect_c_84": [
+     "twin_partner_dropped:r_hard_affect_c_85"
+    ],
+    "r_hard_affect_c_85": [
+     "not_agreed"
+    ]
+   },
+   "balance": {
+    "n": 146,
+    "choice": 87,
+    "noul": 59,
+    "yes_rate": 0.508,
+    "neg_items": 12,
+    "neg_yes": 6,
+    "none_gold_rate": 0.011,
+    "gold_position": {
+     "first": 11,
+     "middle": 75,
+     "last": 1
+    },
+    "options_min_max": [
+     8,
+     28
+    ],
+    "gold_is_unique_longest": "10 vs 8.8 expected",
+    "option_set_majority_guess": "no repeated option sets",
+    "difficulty": {
+     "2": 106,
+     "3": 40
+    },
+    "twins": 65
+   },
+   "split_families": {
+    "groups": 81,
+    "families": 81,
+    "largest_family": 1,
+    "dev_groups": 8,
+    "dev_target": 8
+   },
+   "claims_in_state": {
+    "claim_names_distractor": 1
+   },
+   "max_cross_group_overlap": 0.359,
+   "heldout_family_overlap": "OHS-1 emo_intent: emotion labels (own label sets, not GoEmotions); not an OHS-2 family"
+  },
+  "codebook_c": {
+   "n_items": 179,
+   "agreement_before_review": "179/179 (1.000)",
+   "n_agreed_after_review": 176,
+   "kept": 174,
+   "kept_train": 158,
+   "kept_dev": 16,
+   "dropped": {
+    "r_hard_codebook_c_136": [
+     "not_agreed"
+    ],
+    "r_hard_codebook_c_137": [
+     "twin_partner_dropped:r_hard_codebook_c_136"
+    ],
+    "r_hard_codebook_c_20": [
+     "not_agreed"
+    ],
+    "r_hard_codebook_c_57": [
+     "twin_partner_dropped:r_hard_codebook_c_58"
+    ],
+    "r_hard_codebook_c_58": [
+     "not_agreed"
+    ]
+   },
+   "balance": {
+    "n": 174,
+    "choice": 138,
+    "noul": 36,
+    "yes_rate": 0.5,
+    "neg_items": 9,
+    "neg_yes": 4,
+    "none_gold_rate": 0.036,
+    "gold_position": {
+     "middle": 110,
+     "first": 23,
+     "last": 5
+    },
+    "options_min_max": [
+     6,
+     24
+    ],
+    "gold_is_unique_longest": "15 vs 15.6 expected",
+    "option_set_majority_guess": "0/19 vs chance 1.9",
+    "difficulty": {
+     "2": 137,
+     "3": 37
+    },
+    "twins": 67
+   },
+   "split_families": {
+    "groups": 107,
+    "families": 101,
+    "largest_family": 6,
+    "dev_groups": 11,
+    "dev_target": 11
+   },
+   "claims_in_state": {
+    "claim_names_distractor": 1
+   },
+   "max_cross_group_overlap": 0.506
+  },
+  "intent_c": {
+   "n_items": 164,
+   "agreement_before_review": "164/164 (1.000)",
+   "n_agreed_after_review": 159,
+   "kept": 154,
+   "kept_train": 138,
+   "kept_dev": 16,
+   "dropped": {
+    "r_hard_intent_c_11": [
+     "twin_partner_dropped:r_hard_intent_c_12"
+    ],
+    "r_hard_intent_c_12": [
+     "not_agreed"
+    ],
+    "r_hard_intent_c_26": [
+     "twin_partner_dropped:r_hard_intent_c_27"
+    ],
+    "r_hard_intent_c_27": [
+     "not_agreed"
+    ],
+    "r_hard_intent_c_40": [
+     "twin_partner_dropped:r_hard_intent_c_41"
+    ],
+    "r_hard_intent_c_41": [
+     "not_agreed"
+    ],
+    "r_hard_intent_c_53": [
+     "twin_partner_dropped:r_hard_intent_c_54"
+    ],
+    "r_hard_intent_c_54": [
+     "not_agreed"
+    ],
+    "r_hard_intent_c_7": [
+     "twin_partner_dropped:r_hard_intent_c_8"
+    ],
+    "r_hard_intent_c_8": [
+     "not_agreed"
+    ]
+   },
+   "balance": {
+    "n": 154,
+    "choice": 80,
+    "noul": 74,
+    "yes_rate": 0.5,
+    "neg_items": 18,
+    "neg_yes": 9,
+    "none_gold_rate": 0.013,
+    "gold_position": {
+     "middle": 63,
+     "first": 10,
+     "last": 7
+    },
+    "options_min_max": [
+     6,
+     16
+    ],
+    "gold_is_unique_longest": "10 vs 7.8 expected",
+    "option_set_majority_guess": "8/29 vs chance 3.9",
+    "difficulty": {
+     "2": 121,
+     "3": 33
+    },
+    "twins": 74
+   },
+   "split_families": {
+    "groups": 80,
+    "families": 80,
+    "largest_family": 1,
+    "dev_groups": 8,
+    "dev_target": 8
+   },
+   "claims_in_state": {},
+   "max_cross_group_overlap": 0.201,
+   "heldout_family_overlap": "OHS-1 negation: HateCheck-like contrasts (quoting, reclaimed terms); not an OHS-2 family"
+  },
+  "nli_c": {
+   "n_items": 182,
+   "agreement_before_review": "181/182 (0.995)",
+   "n_agreed_after_review": 173,
+   "kept": 164,
+   "kept_train": 148,
+   "kept_dev": 16,
+   "dropped": {
+    "r_hard_nli_c_103": [
+     "twin_partner_dropped:r_hard_nli_c_104"
+    ],
+    "r_hard_nli_c_104": [
+     "not_agreed"
+    ],
+    "r_hard_nli_c_121": [
+     "not_agreed"
+    ],
+    "r_hard_nli_c_122": [
+     "twin_partner_dropped:r_hard_nli_c_121"
+    ],
+    "r_hard_nli_c_131": [
+     "not_agreed"
+    ],
+    "r_hard_nli_c_132": [
+     "twin_partner_dropped:r_hard_nli_c_131"
+    ],
+    "r_hard_nli_c_181": [
+     "twin_partner_dropped:r_hard_nli_c_182"
+    ],
+    "r_hard_nli_c_182": [
+     "not_agreed"
+    ],
+    "r_hard_nli_c_3": [
+     "not_agreed"
+    ],
+    "r_hard_nli_c_4": [
+     "twin_partner_dropped:r_hard_nli_c_3"
+    ],
+    "r_hard_nli_c_55": [
+     "not_agreed"
+    ],
+    "r_hard_nli_c_56": [
+     "twin_partner_dropped:r_hard_nli_c_55"
+    ],
+    "r_hard_nli_c_67": [
+     "twin_partner_dropped:r_hard_nli_c_68"
+    ],
+    "r_hard_nli_c_68": [
+     "not_agreed"
+    ],
+    "r_hard_nli_c_79": [
+     "twin_partner_dropped:r_hard_nli_c_80"
+    ],
+    "r_hard_nli_c_80": [
+     "not_agreed"
+    ],
+    "r_hard_nli_c_83": [
+     "twin_partner_dropped:r_hard_nli_c_84"
+    ],
+    "r_hard_nli_c_84": [
+     "not_agreed"
+    ]
+   },
+   "balance": {
+    "n": 164,
+    "choice": 96,
+    "noul": 68,
+    "yes_rate": 0.5,
+    "neg_items": 32,
+    "neg_yes": 16,
+    "none_gold_rate": 0.01,
+    "gold_position": {
+     "last": 15,
+     "first": 21,
+     "middle": 60
+    },
+    "options_min_max": [
+     3,
+     10
+    ],
+    "gold_is_unique_longest": "23 vs 20.8 expected",
+    "option_set_majority_guess": "23/58 vs chance 15.6",
+    "difficulty": {
+     "2": 118,
+     "3": 46
+    },
+    "twins": 82
+   },
+   "split_families": {
+    "groups": 82,
+    "families": 82,
+    "largest_family": 1,
+    "dev_groups": 8,
+    "dev_target": 8
+   },
+   "claims_in_state": {},
+   "max_cross_group_overlap": 0.054,
+   "heldout_family_overlap": "OHS-1 negation: negation-heavy NLI (ScoNe / This-is-not-a-dataset style); not an OHS-2 family"
+  },
+  "policy_c": {
+   "n_items": 171,
+   "agreement_before_review": "170/171 (0.994)",
+   "n_agreed_after_review": 169,
+   "kept": 167,
+   "kept_train": 151,
+   "kept_dev": 16,
+   "dropped": {
+    "r_hard_policy_c_166": [
+     "not_agreed"
+    ],
+    "r_hard_policy_c_167": [
+     "twin_partner_dropped:r_hard_policy_c_166"
+    ],
+    "r_hard_policy_c_48": [
+     "twin_partner_dropped:r_hard_policy_c_49"
+    ],
+    "r_hard_policy_c_49": [
+     "not_agreed"
+    ]
+   },
+   "balance": {
+    "n": 167,
+    "choice": 95,
+    "noul": 72,
+    "yes_rate": 0.5,
+    "neg_items": 8,
+    "neg_yes": 4,
+    "none_gold_rate": 0.095,
+    "gold_position": {
+     "last": 25,
+     "middle": 51,
+     "first": 19
+    },
+    "options_min_max": [
+     4,
+     13
+    ],
+    "gold_is_unique_longest": "20 vs 13.9 expected",
+    "option_set_majority_guess": "0/9 vs chance 1.3",
+    "difficulty": {
+     "1": 14,
+     "2": 125,
+     "3": 28
+    },
+    "twins": 83
+   },
+   "split_families": {
+    "groups": 84,
+    "families": 84,
+    "largest_family": 1,
+    "dev_groups": 8,
+    "dev_target": 8
+   },
+   "claims_in_state": {},
+   "max_cross_group_overlap": 0.352,
+   "heldout_family_overlap": "OHS-1 negation: hateful-conduct exceptions mirror HateCheck functionalities; not an OHS-2 family"
+  },
+  "reason_c": {
+   "n_items": 177,
+   "agreement_before_review": "177/177 (1.000)",
+   "n_agreed_after_review": 176,
+   "kept": 173,
+   "kept_train": 155,
+   "kept_dev": 18,
+   "dropped": {
+    "r_hard_reason_c_108": [
+     "ngram12:pg_dev.jsonl:pg_temporal:state,train_2b_kd.jsonl:pg_temporal:state,train_v07.jsonl:pg_temporal:state"
+    ],
+    "r_hard_reason_c_109": [
+     "ngram12:pg_dev.jsonl:pg_temporal:state,train_2b_kd.jsonl:pg_temporal:state,train_v07.jsonl:pg_temporal:state"
+    ],
+    "r_hard_reason_c_140": [
+     "not_agreed"
+    ],
+    "r_hard_reason_c_141": [
+     "twin_partner_dropped:r_hard_reason_c_140"
+    ]
+   },
+   "balance": {
+    "n": 173,
+    "choice": 109,
+    "noul": 64,
+    "yes_rate": 0.5,
+    "neg_items": 2,
+    "neg_yes": 1,
+    "none_gold_rate": 0.009,
+    "gold_position": {
+     "first": 15,
+     "middle": 76,
+     "last": 18
+    },
+    "options_min_max": [
+     5,
+     12
+    ],
+    "gold_is_unique_longest": "14 vs 12.0 expected",
+    "option_set_majority_guess": "0/5 vs chance 0.8",
+    "difficulty": {
+     "2": 109,
+     "3": 64
+    },
+    "twins": 86
+   },
+   "split_families": {
+    "groups": 87,
+    "families": 87,
+    "largest_family": 1,
+    "dev_groups": 9,
+    "dev_target": 9
+   },
+   "claims_in_state": {},
+   "max_cross_group_overlap": 0.239
+  }
+ }
+}

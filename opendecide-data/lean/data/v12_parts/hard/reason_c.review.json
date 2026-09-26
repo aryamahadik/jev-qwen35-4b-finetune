@@ -1,0 +1,11 @@
+{
+ "agreement": "177/177",
+ "disagreements": [],
+ "audit_drops": [
+  {
+   "id": "r_hard_reason_c_140",
+   "reason": "cl18 base (gold \"none of these\"): exclusion D1 covers belongings \"out of your sight and reach\" with no carve-out for a locked safe; items left in a hotel-room safe while the insured is away are literally out of sight and reach, so \"D1 unattended property\" is also defensible. Two readings -> DROP. Twin r_hard_reason_c_141 (bag on a cafe chair, gold D1) is unambiguous and kept."
+  }
+ ],
+ "audit_notes": "All 18 families x 5 modules (177 rows) re-derived from the # why rationale and state; all arithmetic and day-of-week checks hold. Gold-in-state hits are routing/policy tables that list every option (not leaks). Speaker claims (customer, rep, broker, Lumen, renewal notice, treasury, traveller) either oppose the gold or are repeated in the twin with the opposite gold. Judgement calls kept: hr05 (notice given during probation), hr13 (months counted to the leaving date, the only date given), rf13 (explicit part-month rule), cl17 twin (explicit full-24h rule), bl18 (explicit holiday list). Solver notes cite some ids off by one (its 138/139 are rows 139/140; its 24 is row 25)."
+}

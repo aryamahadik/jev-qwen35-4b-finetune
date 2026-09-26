@@ -1,0 +1,18 @@
+{
+ "agreement": "170/171",
+ "disagreements": [
+  {
+   "id": "r_hard_policy_c_49",
+   "gold": "50% refund",
+   "solver": "full refund — extenuating circumstances",
+   "decision": "DROP",
+   "reason": "The Extenuating Circumstances Policy is triggered by the declaration: 'guests with stays during the declared period may cancel for a full refund regardless of the host's policy'. The council's emergency (9-16 Sep) covers Pellow and the whole stay, and the card for the EC option only requires 'a qualifying government declaration covers the location and stay dates'. The 'not covered: personal illness or injury' clause can be read as excluding this guest because of her reason, or as listing non-qualifying triggers only. Both readings are defensible, and the solver's reading fits the card literally."
+  }
+ ],
+ "audit_drops": [
+  {
+   "id": "r_hard_policy_c_166",
+   "reason": "The meaning of 'within 2 full working days of you reporting' is ambiguous. The gold (0) reads it as 48 working hours from Mon 09:00, a deadline of Wed 09:00. The common real-world reading (e.g. Ofcom automatic compensation) counts whole days after the report day, Tue and Wed, a deadline of end of Wed. On that reading the Wed 17:00 fix is in time, so he is not owed and the answer is 1. The solver flagged it at 0.6 confidence. Twin r_hard_policy_c_167 (fixed Tue 16:00) is unambiguous under both readings and is kept."
+  }
+ ]
+}
