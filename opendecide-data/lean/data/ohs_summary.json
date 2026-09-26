@@ -1,0 +1,37 @@
+{
+ "rows": 4292,
+ "base_rows": 1847,
+ "variant_rows": 2445,
+ "relations": 2255,
+ "calls": 1847,
+ "dropped_for_overlap": 0,
+ "by_source": {
+  "arxiv2026_qbio": 116,
+  "arxiv2026_condmat": 100,
+  "arxiv2026_econqfin": 112,
+  "arxiv2026_physics": 96,
+  "go_emotions": 266,
+  "sgd": 308,
+  "pubmedqa": 254,
+  "vitaminc": 344,
+  "legalbench_hearsay": 328,
+  "legalbench_abercrombie": 108,
+  "legalbench_unfair_tos": 116,
+  "legalbench_overruling": 160,
+  "legalbench_cuad": 320,
+  "lexglue_ledgar": 112,
+  "scone": 252,
+  "this_is_not_a_dataset": 720,
+  "hatecheck": 580
+ },
+ "by_track": {
+  "F": 424,
+  "U": 2316,
+  "C": 1552
+ },
+ "halves": {
+  "S": 2114,
+  "A": 2178
+ },
+ "max_options": 100
+}
