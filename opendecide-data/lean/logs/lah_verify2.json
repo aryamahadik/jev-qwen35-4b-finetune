@@ -1,0 +1,19 @@
+{
+ "verifier": "openai/gpt-oss-120b",
+ "rows": 1667,
+ "kept": 1518,
+ "no_answer": 1,
+ "est_usd": 0.369,
+ "agree_by_family": {
+  "long_policy": "159/190",
+  "rubric": "179/207",
+  "multi_hop": "214/220",
+  "temporal_numeric": "121/132",
+  "trap": "145/151",
+  "evidence": "150/153",
+  "adversarial": "149/162",
+  "routing": "190/203",
+  "tradeoff": "162/175",
+  "ambiguous": "49/74"
+ }
+}

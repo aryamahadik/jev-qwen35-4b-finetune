@@ -260,7 +260,8 @@ def hc_remote35(name: str, base: str, split: str, embedder: str, k: int, chunk: 
     return _hc_impl(name, base, split, embedder, k, chunk, keep)
 
 
-def _jevbench_impl(name, base, adapter, temps, tiers, think_below=None, fmt="od", style="od", calc=False, robust=None):
+def _jevbench_impl(name, base, adapter, temps, tiers, think_below=None, fmt="od", style="od", calc=False, robust=None,
+                   graphs=False):
     import sys
     import decoder_io
     decoder_io.STYLE = style
@@ -287,6 +288,9 @@ def _jevbench_impl(name, base, adapter, temps, tiers, think_below=None, fmt="od"
     import time as _t
     t0 = _t.time()  # server start-up: compile/autotune every length bucket with filler text (no task data)
     decoder_io.warmup(model, ad.ro, max_tokens=8192, batch_sizes=(1, 2) if not robust else (1, 2, 3, 4, 6, 8, 12, 16))
+    if graphs:  # CUDA graphs per (batch, 64-token bucket), captured at start-up like any production server
+        decoder_io.GRAPHS = decoder_io.GraphRunner(model, tok, batches=(1,) if not robust else (1, 2, 4, 8, 16))
+        decoder_io.GRAPHS.capture_all(max_tokens=4096)
     print(f"warm-up {_t.time() - t0:.0f}s")
     for t in tasks[:3]:  # warm-up (CUDA init is not decision latency, like a server that is already up)
         ad.run(t)
@@ -304,8 +308,8 @@ def jevbench_remote(name: str, base: str, adapter: str, temps: dict, tiers: list
 
 @app.function(image=image35, gpu="L40S", volumes={"/vol": vol}, secrets=SECRETS, timeout=3600)
 def jevbench_remote35(name: str, base: str, adapter: str, temps: dict, tiers: list[str], think_below: float | None = None, fmt: str = "od",
-                     style: str = "od", calc: bool = False, robust: dict | None = None) -> dict:
-    return _jevbench_impl(name, base, adapter, temps, tiers, think_below, fmt, style, calc, robust)
+                     style: str = "od", calc: bool = False, robust: dict | None = None, graphs: bool = False) -> dict:
+    return _jevbench_impl(name, base, adapter, temps, tiers, think_below, fmt, style, calc, robust, graphs)
 
 
 def _save(name, preds_by_split, extra=None):
@@ -342,10 +346,10 @@ def bakeoff(models: str, splits: str = "dev,devzs", tta: bool = False, suffix: s
 def train(name: str, base: str, recipe: str = "A3", splits: str = "dev,devzs", epochs: float = 1.0, lr: float = 1e-4,
           batch: int = 16, lam: float = 0.5, r: int = 16, train_file: str = "train.jsonl",
           rel_file: str = "train_relations.jsonl", tta: bool = False, gpu: str = "L40S", grad_ckpt: bool = True,
-          beta: float = 0.0, targets: str = "", style: str = "od", log_every: int = 25):
+          beta: float = 0.0, targets: str = "", style: str = "od", log_every: int = 25, init: str = ""):
     cfg = {"base": base, "recipe": recipe, "epochs": epochs, "lr": lr, "batch": batch, "lam": lam, "r": r, "alpha": 2 * r,
            "train_file": train_file, "rel_file": rel_file, "grad_ckpt": grad_ckpt, "beta": beta, "style": style,
-           "log_every": log_every}
+           "log_every": log_every, **({"init_adapter": f"/vol/models/{init}"} if init else {})}
     if is35(base):
         cfg["targets"] = GEMMA4_TARGETS if "gemma-4" in base else QWEN35_TARGETS
     if targets:
@@ -426,19 +430,20 @@ def hc_shortlist(embedder: str, split: str = "eval_hc", k: int = 255):
 @app.local_entrypoint()
 def jevbench(name: str, base: str, adapter: str = "", temps: str = "1.0,1.0", tiers: str = "easy,original,hard",
              gpu: str = "L40S", think_below: float = -1.0, fmt: str = "od", style: str = "od", calc: bool = False,
-             robust: str = ""):
+             robust: str = "", graphs: bool = False):
     tn, tc = (float(x) for x in temps.split(","))
     fn = jevbench_remote35 if is35(base) else jevbench_remote
     res = fn.with_options(gpu=gpu).remote(name, base, adapter, {"noul": tn, "choice": tc}, tiers.split(","),
                                           think_below if think_below > 0 else None, fmt, style, calc,
-                                          json.loads(robust) if robust else None)
+                                          json.loads(robust) if robust else None, **({"graphs": True} if graphs else {}))
     out = JB.parent / "runs" / name
     out.mkdir(parents=True, exist_ok=True)
     with open(out / "results.jsonl", "w") as f:
         for r in res["records"]:
             f.write(json.dumps(r) + "\n")
     (out / "manifest.json").write_text(json.dumps({"name": name, "base": base, "adapter": adapter, "temps": [tn, tc],
-                                                   "gpu": res["gpu"], "tiers": tiers, "think_below": think_below, "fmt": fmt, "calc": calc}, indent=2))
+                                                   "gpu": res["gpu"], "tiers": tiers, "think_below": think_below, "fmt": fmt, "calc": calc,
+                                                   "robust": robust, "graphs": graphs}, indent=2))
     ok = sum(r["correct"] for r in res["records"])
     print(f"{name}: {ok}/{len(res['records'])} correct on {tiers} ({res['gpu']})")
 
@@ -604,7 +609,7 @@ def writeblock_probe(base: str = "Qwen/Qwen3.5-0.8B", splits: str = "devp_card",
         _save(f"{tag}_wb_off", {s: d["off"]}, {"base": base})
 
 
-def _eval_system_impl(name, base, splits, style, sym, lbd, tau, meta_min, temps):
+def _eval_system_impl(name, base, splits, style, sym, lbd, tau, meta_min, temps, two_stage=False):
     """Plain predictions AND full-system predictions (symmetric views + leverage-bounded decoding) for each split.
     temps = per-type temperatures applied to the returned probabilities (fitted on dev only)."""
     import math
@@ -632,7 +637,9 @@ def _eval_system_impl(name, base, splits, style, sym, lbd, tau, meta_min, temps)
         plain = decoder_io.predict(model, tok, rows, dev="cuda")
         t_plain = time.time() - t
         t = time.time()
-        rob, infos = decoder_io.predict_robust(model, tok, rows, "cuda", sym=sym, lbd=lbd, tau=tau, meta_min=meta_min)
+        # two_stage: variants only for segments with P(meta) >= meta_min, so any stricter meta_min can be applied offline
+        rob, infos = decoder_io.predict_robust(model, tok, rows, "cuda", sym=sym, lbd=lbd, tau=tau, meta_min=meta_min,
+                                               two_stage=two_stage)
         t_rob = time.time() - t
         out[sp] = {"plain": [temper(r, p) for r, p in zip(rows, plain)], "system": [temper(r, p) for r, p in zip(rows, rob)],
                    "infos": infos, "sec_plain": round(t_plain, 1), "sec_system": round(t_rob, 1)}
@@ -641,16 +648,17 @@ def _eval_system_impl(name, base, splits, style, sym, lbd, tau, meta_min, temps)
 
 @app.function(image=image35, gpu="H100", volumes={"/vol": vol}, secrets=SECRETS, timeout=4 * 3600)
 def eval_system_remote(name: str, base: str, splits: list[str], style: str = "cygnet", sym: bool = True, lbd: bool = True,
-                       tau: float = 0.35, meta_min: float = 0.5, temps: dict | None = None) -> dict:
-    return _eval_system_impl(name, base, splits, style, sym, lbd, tau, meta_min, temps or {})
+                       tau: float = 0.35, meta_min: float = 0.5, temps: dict | None = None, two_stage: bool = False) -> dict:
+    return _eval_system_impl(name, base, splits, style, sym, lbd, tau, meta_min, temps or {}, two_stage)
 
 
 @app.local_entrypoint()
 def eval_system(name: str, base: str = "Qwen/Qwen3.5-4B", splits: str = "dev", style: str = "cygnet", sym: bool = True,
-                lbd: bool = True, tau: float = 0.35, meta_min: float = 0.5, temps: str = "1.0,1.0", gpu: str = "H100", tag: str = ""):
+                lbd: bool = True, tau: float = 0.35, meta_min: float = 0.5, temps: str = "1.0,1.0", gpu: str = "H100", tag: str = "",
+                two_stage: bool = False):
     tn, tc = (float(x) for x in temps.split(","))
     res = eval_system_remote.with_options(gpu=gpu).remote(name, base, splits.split(","), style, sym, lbd, tau, meta_min,
-                                                          {"noul": tn, "choice": tc})
+                                                          {"noul": tn, "choice": tc}, two_stage)
     label = (name or base.split("/")[-1]) + tag
     for sp, d in res.items():
         _save(f"{label}_plain", {sp: d["plain"]}, {"base": base, "style": style, "sec": d["sec_plain"]})

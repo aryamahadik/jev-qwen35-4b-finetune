@@ -161,6 +161,9 @@ class OpenDecideAdapter:
         else:
             res.probs = {"yes": pr[0], "no": pr[1]} if row["qtype"] == "noul" else dict(zip(keys, pr))
         n_in = len(self.tok(row.get("_prompt") or self.ro.prompt(row), add_special_tokens=False)["input_ids"])
+        if rob_info:  # the cost axis counts every forward pass: views x variants, plus the short meta questions
+            views = 2 if self.robust.get("sym", True) else 1
+            n_in = n_in * views * rob_info["n_variants"] + 150 * len(rob_info["meta"])
         res.usage = {"input_tokens": n_in, "output_tokens": (thought["new_tokens"] if thought else 0)
                      + ((tool or {}).get("gen_tokens") or 0)}
         res.raw = {"answer": {"probabilities": res.probs, "input_tokens": n_in},

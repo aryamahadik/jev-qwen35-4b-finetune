@@ -59,6 +59,8 @@ def serve(q: modal.Queue, name: str, base: str, mode: str, seconds: int, temps: 
 
     t0 = time.time()  # start-up: compile/autotune every length bucket (filler text, no eval data)
     decoder_io.warmup(model, ro, max_tokens=4096, batch_sizes=(1, 2, 3, 4, 6, 8, 12, 16))
+    decoder_io.GRAPHS = decoder_io.GraphRunner(model, tok, batches=(1, 2, 4, 8, 16))  # CUDA graphs, captured at start-up
+    decoder_io.GRAPHS.capture_all(max_tokens=2048)
     print(f"warm-up {time.time() - t0:.0f}s")
     for _ in range(3):
         decide({"state": "warm up", "questions": {"q": {"type": "noul", "instructions": "Is this a test?"}}})

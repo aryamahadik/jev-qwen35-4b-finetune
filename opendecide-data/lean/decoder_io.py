@@ -136,8 +136,79 @@ def _softcap(model):
     return getattr(cfg, "final_logit_softcapping", None)
 
 
+GRAPHS = None  # set to a GraphRunner for serving; training and batch evaluation never use it
+
+
+class GraphRunner:
+    """Serving path: the body forward is captured once per (batch, length-bucket) as a CUDA graph and replayed, which
+    removes the per-call Python / kernel-launch overhead (the ~50 ms that dominated a 4B decision on H100). Inputs are
+    right-padded to the bucket WITHOUT an attention mask: attention, the Gated-DeltaNet recurrence and the short conv are
+    all causal, so pad tokens after the last real token never change it (checked: identical probabilities)."""
+
+    def __init__(self, model, tok, bucket=64, max_len=8192, batches=(1, 2, 4, 8, 16)):
+        self.model, self.tok, self.bucket, self.max_len, self.batches = model, tok, bucket, max_len, batches
+        self.body, self.head = _parts(model)
+        self.cap = _softcap(model.get_base_model() if hasattr(model, "get_base_model") else model)
+        self.graphs, self.pool = {}, None
+
+    def _graph(self, B, L):
+        if (B, L) not in self.graphs:
+            ids = torch.full((B, L), self.tok.pad_token_id, dtype=torch.long, device="cuda")
+            st = torch.cuda.Stream()
+            st.wait_stream(torch.cuda.current_stream())
+            with torch.cuda.stream(st), torch.no_grad():
+                for _ in range(2):
+                    self.body(input_ids=ids, use_cache=False)
+            torch.cuda.current_stream().wait_stream(st)
+            g = torch.cuda.CUDAGraph()
+            with torch.cuda.graph(g, pool=self.pool), torch.no_grad():
+                out = self.body(input_ids=ids, use_cache=False).last_hidden_state
+            self.pool = g.pool()
+            self.graphs[(B, L)] = (g, ids, out)
+        return self.graphs[(B, L)]
+
+    def capture_all(self, max_tokens=4096, batches=None):
+        for B in batches or self.batches:
+            for L in range(self.bucket, max_tokens + 1, self.bucket):
+                self._graph(B, L)
+
+    @torch.no_grad()
+    def cand_logits(self, ro, rows, perms=None):
+        perms = perms or [None] * len(rows)
+        texts = [r.get("_prompt") or ro.prompt(r, p) for r, p in zip(rows, perms)]
+        ids = [torch.tensor(x, dtype=torch.long) for x in self.tok(texts, add_special_tokens=False)["input_ids"]]
+        n = [len(x) for x in ids]
+        B = next((b for b in self.batches if b >= len(rows)), None)
+        L = -(-max(n) // self.bucket) * self.bucket
+        if B is None or L > self.max_len:
+            return None  # caller falls back to the eager path
+        g, sid, out = self._graph(B, L)
+        sid.fill_(self.tok.pad_token_id)
+        for i, x in enumerate(ids):
+            sid[i, :n[i]].copy_(x, non_blocking=True)
+        g.replay()
+        h = out[torch.arange(len(rows), device="cuda"), torch.tensor([k - 1 for k in n], device="cuda")]
+        res = []
+        for i, r in enumerate(rows):
+            groups = ro.cand(r)
+            flat = [t for gg in groups for t in gg]
+            lg = h[i].float() @ self.head.weight[flat].float().T
+            if self.cap:
+                lg = self.cap * torch.tanh(lg / self.cap)
+            parts, k = [], 0
+            for gg in groups:
+                parts.append(torch.logsumexp(lg[k:k + len(gg)], 0))
+                k += len(gg)
+            res.append(torch.stack(parts).clone())
+        return res
+
+
 def cand_logits(model, ro, rows, dev, perms=None):
     """Returns a list of 1-D float tensors: logits over each row's candidate tokens."""
+    if GRAPHS is not None and GRAPHS.model is model:
+        out = GRAPHS.cand_logits(ro, rows, perms)
+        if out is not None:
+            return out
     perms = perms or [None] * len(rows)
     texts = [r.get("_prompt") or ro.prompt(r, p) for r, p in zip(rows, perms)]  # _prompt: caller-built chat text
     enc = ro.tok(texts, add_special_tokens=False, truncation=True, max_length=MAX_LEN, padding="longest",
@@ -408,12 +479,36 @@ def warmup(model, ro, max_tokens=8192, batch_sizes=(1, 2, 3, 4, 6, 8), dev="cuda
 
 
 @torch.no_grad()
-def predict_robust(model, tok, rows, dev="cuda", sym=True, lbd=True, tau=0.35, meta_min=0.5, two_stage=False):
+def predict_robust(model, tok, rows, dev="cuda", sym=True, lbd=True, tau=0.35, meta_min=0.5, two_stage=False,
+                   token_budget=12000):
+    """Batch version. Rows with nothing to test for removal (single-segment states) only need the symmetric views, so
+    those views are batched across rows (same numbers as robust_probs); other rows go through robust_probs one by one."""
     model.eval()
     ro = Readout(tok)
-    out, infos = [], []
-    for r in rows:
-        p, info = robust_probs(model, ro, r, dev, sym=sym, lbd=lbd, tau=tau, meta_min=meta_min, two_stage=two_stage)
-        out.append(p)
-        infos.append(info)
+    out, infos = [None] * len(rows), [None] * len(rows)
+    simple = [i for i, r in enumerate(rows) if not lbd or not lbd_candidates(r["state"])[2]]
+    items = sorted([(i, p) for i in simple for p in _views(rows[i], sym)],
+                   key=lambda x: len(rows[x[0]]["state"]) + len(rows[x[0]].get("card") or ""))
+    est = lambda i: (len(rows[i]["state"]) + len(rows[i].get("card") or "") + 400) / 3.2
+    agg = {i: {} for i in simple}
+    k = 0
+    while k < len(items):
+        j = k + 1
+        while j < len(items) and j - k < 32 and (j - k + 1) * est(items[j][0]) <= token_budget:
+            j += 1
+        chunk = items[k:j]
+        lg = cand_logits(model, ro, [rows[i] for i, _ in chunk], dev, perms=[p for _, p in chunk])
+        for (i, p), l in zip(chunk, lg):
+            for key, v in to_probs(rows[i], l, p).items():
+                agg[i].setdefault(key, []).append(v)
+        k = j
+    for i in simple:
+        full = {key: sum(v) / len(v) for key, v in agg[i].items()}
+        out[i] = full
+        infos[i] = {"n_variants": 1, "dropped": None, "meta": [], "full": {key: round(v, 5) for key, v in full.items()},
+                    "var": [], "var_idx": [], "cand": [], "kind": "none"}
+    for i, r in enumerate(rows):
+        if out[i] is None:
+            out[i], infos[i] = robust_probs(model, ro, r, dev, sym=sym, lbd=lbd, tau=tau, meta_min=meta_min,
+                                            two_stage=two_stage)
     return out, infos

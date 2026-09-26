@@ -67,8 +67,12 @@ def train(cfg: dict, data_dir: Path, out_dir: Path, dev="cuda") -> dict:
         model.gradient_checkpointing_enable(gradient_checkpointing_kwargs={"use_reentrant": False})
         model.enable_input_require_grads()
     targets = c.get("targets") or ["q_proj", "k_proj", "v_proj", "o_proj", "gate_proj", "up_proj", "down_proj"]
-    model = get_peft_model(model, LoraConfig(r=c["r"], lora_alpha=c["alpha"], lora_dropout=c["dropout"], task_type="CAUSAL_LM",
-                                             target_modules=targets))
+    if c.get("init_adapter"):  # continue training an existing adapter (stage 2); the KL anchor still uses the frozen base
+        from peft import PeftModel
+        model = PeftModel.from_pretrained(model, c["init_adapter"], is_trainable=True)
+    else:
+        model = get_peft_model(model, LoraConfig(r=c["r"], lora_alpha=c["alpha"], lora_dropout=c["dropout"],
+                                                 task_type="CAUSAL_LM", target_modules=targets))
     model.print_trainable_parameters()
     model.train()
     ro = Readout(tok)
