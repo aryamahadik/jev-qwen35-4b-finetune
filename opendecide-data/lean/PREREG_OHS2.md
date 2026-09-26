@@ -104,3 +104,10 @@ Holm-corrected as one family of 3, with alpha 0.05.
 
 **Honest-reporting commitments.** All endpoints are reported, whatever their direction. Any bug found after the run is
 fixed and disclosed with both the old and the new numbers.
+
+## Amendment 1 (26 Sep 2026, before the first OpenDecide run on OHS-2)
+- **Primary candidate:** `q35_4b_v11c` (Qwen/Qwen3.5-4B + LoRA). It was chosen on dev sets only (dev_nc 74.3 plain / 75.7 with batch calibration, vs v0.10 72.1 / 72.9), before any OHS-2 run. adapter_model.safetensors sha256 `37a785a5f522f8377b20c0530b004ddde4d3b4318b6172829e638a20c6a7f565`.
+- **Reference:** `q35_4b_v10`, adapter sha256 `c03f2a556ff4957c5fff7ae3f6eceac5a08c9926b41745757dfc902189156432`.
+- **Temperatures,** fitted on dev (dev, devzs, devp_card) with calibrate.py before the run.
+- **A 2B model** (to be trained) will be added in a later amendment, committed before its own OHS-2 run.
+- **Disclosure:** OHS-2 never guided development. OHS-1 task-level results did guide the choice of data domains for v0.11–v0.11c; OHS-2's tasks are different sources.
