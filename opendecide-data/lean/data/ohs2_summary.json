@@ -1,0 +1,539 @@
+{
+ "benchmark": "OHS-2",
+ "split": "ohs2",
+ "rows_in": 1320,
+ "rows": 1320,
+ "calls": 1320,
+ "groups": 1320,
+ "tasks": 13,
+ "dropped_for_overlap": [],
+ "by_part": {
+  "arxiv_fresh": 240,
+  "misc": 600,
+  "science": 480
+ },
+ "by_source": {
+  "arxiv_fresh_stat_eess": 60,
+  "arxiv_fresh_astro": 60,
+  "arxiv_fresh_cs": 60,
+  "arxiv_fresh_math": 60,
+  "ibm_argq30k_stance": 120,
+  "big_patent_cpc": 120,
+  "medical_abstracts": 120,
+  "moral_stories": 120,
+  "tabfact": 120,
+  "pubmed_rct20k": 120,
+  "scifact": 120,
+  "evidence_inference": 120,
+  "ddi2013": 120
+ },
+ "by_track": {
+  "F": 240,
+  "U": 1080
+ },
+ "by_qtype": {
+  "choice": 960,
+  "noul": 360
+ },
+ "halves": {
+  "rows": {
+   "A": 657,
+   "S": 663
+  },
+  "groups": {
+   "A": 657,
+   "S": 663
+  }
+ },
+ "max_options": 15,
+ "state_chars": {
+  "min": 69,
+  "max": 4817
+ },
+ "yes_no_rows": 360,
+ "decontamination": {
+  "files_scanned": 166,
+  "unique_texts_scanned": 417780,
+  "rule": "normalised exact state or shared 12-word run (whole state if under 12 words) with any string in data/**/*.jsonl minus held-out files, and ../data/**/*.jsonl",
+  "cross_group_12gram_pairs_inside_ohs2": [
+   [
+    "g:ddi2013:sent:DDI-DrugBank.d578.s5",
+    "g:ddi2013:sent:DDI-DrugBank.d653.s2",
+    1
+   ],
+   [
+    "g:ohs2:argq_stance:02992",
+    "g:ohs2:argq_stance:03020",
+    1
+   ],
+   [
+    "g:ohs2:argq_stance:02992",
+    "g:ohs2:argq_stance:03021",
+    1
+   ],
+   [
+    "g:ohs2:argq_stance:03020",
+    "g:ohs2:argq_stance:03021",
+    1
+   ],
+   [
+    "g:ohs2:argq_stance:03196",
+    "g:ohs2:argq_stance:03249",
+    1
+   ],
+   [
+    "g:ohs2:argq_stance:03531",
+    "g:ohs2:argq_stance:03532",
+    2
+   ],
+   [
+    "g:ohs2:argq_stance:04246",
+    "g:ohs2:argq_stance:04277",
+    1
+   ],
+   [
+    "g:ohs2:argq_stance:04983",
+    "g:ohs2:argq_stance:05048",
+    1
+   ],
+   [
+    "g:ohs2:argq_stance:05024",
+    "g:ohs2:argq_stance:05065",
+    1
+   ],
+   [
+    "g:ohs2:argq_stance:05415",
+    "g:ohs2:argq_stance:05438",
+    1
+   ],
+   [
+    "g:ohs2:argq_stance:05458",
+    "g:ohs2:argq_stance:05459",
+    3
+   ],
+   [
+    "g:ohs2:tabfact:1-24910733-1.html.csv#6",
+    "g:ohs2:tabfact:1-29920800-1.html.csv#7",
+    3
+   ],
+   [
+    "g:ohs2:tabfact:1-27721131-6.html.csv#5",
+    "g:ohs2:tabfact:2-17325580-10.html.csv#1",
+    4
+   ],
+   [
+    "g:ohs2:tabfact:1-27905664-1.html.csv#4",
+    "g:ohs2:tabfact:1-29920800-1.html.csv#7",
+    2
+   ],
+   [
+    "g:ohs2:tabfact:2-10773753-1.html.csv#7",
+    "g:ohs2:tabfact:2-10775890-3.html.csv#1",
+    5
+   ],
+   [
+    "g:ohs2:tabfact:2-10773753-1.html.csv#7",
+    "g:ohs2:tabfact:2-10776330-14.html.csv#9",
+    6
+   ],
+   [
+    "g:ohs2:tabfact:2-10773753-1.html.csv#7",
+    "g:ohs2:tabfact:2-10790804-13.html.csv#1",
+    6
+   ],
+   [
+    "g:ohs2:tabfact:2-10773753-1.html.csv#7",
+    "g:ohs2:tabfact:2-10808346-12.html.csv#1",
+    5
+   ],
+   [
+    "g:ohs2:tabfact:2-10775890-3.html.csv#1",
+    "g:ohs2:tabfact:2-10776330-14.html.csv#9",
+    5
+   ],
+   [
+    "g:ohs2:tabfact:2-10775890-3.html.csv#1",
+    "g:ohs2:tabfact:2-10790804-13.html.csv#1",
+    5
+   ],
+   [
+    "g:ohs2:tabfact:2-10775890-3.html.csv#1",
+    "g:ohs2:tabfact:2-10808346-12.html.csv#1",
+    5
+   ],
+   [
+    "g:ohs2:tabfact:2-10776330-14.html.csv#9",
+    "g:ohs2:tabfact:2-10790804-13.html.csv#1",
+    6
+   ],
+   [
+    "g:ohs2:tabfact:2-10776330-14.html.csv#9",
+    "g:ohs2:tabfact:2-10808346-12.html.csv#1",
+    5
+   ],
+   [
+    "g:ohs2:tabfact:2-10790804-13.html.csv#1",
+    "g:ohs2:tabfact:2-10808346-12.html.csv#1",
+    5
+   ]
+  ],
+  "cross_group_note": "same-task boilerplate only (tabfact table headers; argq topic line plus argument opening); distinct items, so groups are kept separate"
+ },
+ "per_task": {
+  "argq_stance": {
+   "part": "misc",
+   "source": "ibm_argq30k_stance",
+   "track": "U",
+   "qtype": "noul",
+   "n": 120,
+   "groups": 120,
+   "n_options": [
+    2
+   ],
+   "balance": {
+    "0": 60,
+    "1": 60
+   },
+   "max_class_share": 0.5,
+   "licence": "CC-BY-SA 3.0 (card licensing text: (c) IBM 2014, CC-BY-SA 3.0; HF metadata tag cc-by-3.0)",
+   "orig_split": "test",
+   "rows_with_card": 120,
+   "halves_rows": {
+    "A": 50,
+    "S": 70
+   }
+  },
+  "arxiv_fresh_astro": {
+   "part": "arxiv_fresh",
+   "source": "arxiv_fresh_astro",
+   "track": "F",
+   "qtype": "choice",
+   "n": 60,
+   "groups": 60,
+   "n_options": [
+    6
+   ],
+   "balance": {
+    "Astrophysics of Galaxies": 11,
+    "Cosmology and Nongalactic Astrophysics": 9,
+    "Earth and Planetary Astrophysics": 10,
+    "High Energy Astrophysical Phenomena": 10,
+    "Instrumentation and Methods for Astrophysics": 10,
+    "Solar and Stellar Astrophysics": 10
+   },
+   "max_class_share": 0.183,
+   "licence": "CC0-1.0 (arXiv metadata)",
+   "orig_split": "none (live API snapshot, see ohs2/arxiv_fresh_cache/fetch_info.json)",
+   "rows_with_card": 60,
+   "halves_rows": {
+    "A": 32,
+    "S": 28
+   }
+  },
+  "arxiv_fresh_cs": {
+   "part": "arxiv_fresh",
+   "source": "arxiv_fresh_cs",
+   "track": "F",
+   "qtype": "choice",
+   "n": 60,
+   "groups": 60,
+   "n_options": [
+    15
+   ],
+   "balance": {
+    "Artificial Intelligence": 4,
+    "Computation and Language": 4,
+    "Computer Vision and Pattern Recognition": 4,
+    "Cryptography and Security": 4,
+    "Data Structures and Algorithms": 4,
+    "Distributed, Parallel, and Cluster Computing": 4,
+    "Hardware Architecture": 4,
+    "Human-Computer Interaction": 4,
+    "Information Retrieval": 4,
+    "Information Theory": 4,
+    "Machine Learning": 4,
+    "Networking and Internet Architecture": 4,
+    "Robotics": 4,
+    "Software Engineering": 4,
+    "Sound": 4
+   },
+   "max_class_share": 0.067,
+   "licence": "CC0-1.0 (arXiv metadata)",
+   "orig_split": "none (live API snapshot, see ohs2/arxiv_fresh_cache/fetch_info.json)",
+   "rows_with_card": 60,
+   "halves_rows": {
+    "A": 35,
+    "S": 25
+   }
+  },
+  "arxiv_fresh_math": {
+   "part": "arxiv_fresh",
+   "source": "arxiv_fresh_math",
+   "track": "F",
+   "qtype": "choice",
+   "n": 60,
+   "groups": 60,
+   "n_options": [
+    12
+   ],
+   "balance": {
+    "Algebraic Geometry": 5,
+    "Analysis of PDEs": 5,
+    "Combinatorics": 5,
+    "Differential Geometry": 5,
+    "Dynamical Systems": 5,
+    "Functional Analysis": 5,
+    "Geometric Topology": 5,
+    "Group Theory": 5,
+    "Number Theory": 5,
+    "Numerical Analysis": 5,
+    "Optimization and Control": 5,
+    "Probability": 5
+   },
+   "max_class_share": 0.083,
+   "licence": "CC0-1.0 (arXiv metadata)",
+   "orig_split": "none (live API snapshot, see ohs2/arxiv_fresh_cache/fetch_info.json)",
+   "rows_with_card": 60,
+   "halves_rows": {
+    "A": 29,
+    "S": 31
+   }
+  },
+  "arxiv_fresh_stat_eess": {
+   "part": "arxiv_fresh",
+   "source": "arxiv_fresh_stat_eess",
+   "track": "F",
+   "qtype": "choice",
+   "n": 60,
+   "groups": 60,
+   "n_options": [
+    6
+   ],
+   "balance": {
+    "Applications (Statistics)": 10,
+    "Audio and Speech Processing": 10,
+    "Image and Video Processing": 7,
+    "Methodology (Statistics)": 11,
+    "Signal Processing": 11,
+    "Systems and Control": 11
+   },
+   "max_class_share": 0.183,
+   "licence": "CC0-1.0 (arXiv metadata)",
+   "orig_split": "none (live API snapshot, see ohs2/arxiv_fresh_cache/fetch_info.json)",
+   "rows_with_card": 60,
+   "halves_rows": {
+    "A": 27,
+    "S": 33
+   }
+  },
+  "big_patent_cpc": {
+   "part": "misc",
+   "source": "big_patent_cpc",
+   "track": "U",
+   "qtype": "choice",
+   "n": 120,
+   "groups": 120,
+   "n_options": [
+    8
+   ],
+   "balance": {
+    "chemistry; metallurgy": 15,
+    "electricity": 15,
+    "fixed constructions": 15,
+    "human necessities": 15,
+    "mechanical engineering; lighting; heating; weapons; blasting": 15,
+    "performing operations; transporting": 15,
+    "physics": 15,
+    "textiles; paper": 15
+   },
+   "max_class_share": 0.125,
+   "licence": "CC-BY-4.0 (HF card); CPC titles from USPTO CPC scheme pages (US government work)",
+   "orig_split": "test",
+   "rows_with_card": 120,
+   "halves_rows": {
+    "A": 73,
+    "S": 47
+   }
+  },
+  "ddi2013": {
+   "part": "science",
+   "source": "ddi2013",
+   "track": "U",
+   "qtype": "choice",
+   "n": 120,
+   "groups": 120,
+   "n_options": [
+    4
+   ],
+   "balance": {
+    "advice": 34,
+    "effect": 35,
+    "int": 16,
+    "mechanism": 35
+   },
+   "max_class_share": 0.292,
+   "licence": "CC BY-NC 4.0 (isegura/DDICorpus README)",
+   "orig_split": "test",
+   "rows_with_card": 120,
+   "halves_rows": {
+    "A": 63,
+    "S": 57
+   }
+  },
+  "evidence_inference": {
+   "part": "science",
+   "source": "evidence_inference",
+   "track": "U",
+   "qtype": "choice",
+   "n": 120,
+   "groups": 120,
+   "n_options": [
+    3
+   ],
+   "balance": {
+    "no significant difference": 40,
+    "significantly decreased": 40,
+    "significantly increased": 40
+   },
+   "max_class_share": 0.333,
+   "licence": "MIT (jayded/evidence-inference); article texts from the PubMed Central open-access subset",
+   "orig_split": "test",
+   "rows_with_card": 0,
+   "halves_rows": {
+    "A": 52,
+    "S": 68
+   }
+  },
+  "medical_abstracts": {
+   "part": "misc",
+   "source": "medical_abstracts",
+   "track": "U",
+   "qtype": "choice",
+   "n": 120,
+   "groups": 120,
+   "n_options": [
+    5
+   ],
+   "balance": {
+    "cardiovascular diseases": 24,
+    "digestive system diseases": 24,
+    "general pathological conditions": 24,
+    "neoplasms": 24,
+    "nervous system diseases": 24
+   },
+   "max_class_share": 0.2,
+   "licence": "CC-BY-SA 3.0 (HF card and LICENSE file in GitHub sebischair/Medical-Abstracts-TC-Corpus)",
+   "orig_split": "test",
+   "rows_with_card": 0,
+   "halves_rows": {
+    "A": 55,
+    "S": 65
+   }
+  },
+  "moral_stories": {
+   "part": "misc",
+   "source": "moral_stories",
+   "track": "U",
+   "qtype": "noul",
+   "n": 120,
+   "groups": 120,
+   "n_options": [
+    2
+   ],
+   "balance": {
+    "0": 60,
+    "1": 60
+   },
+   "max_class_share": 0.5,
+   "licence": "MIT (HF card and GitHub demelin/moral_stories)",
+   "orig_split": "test",
+   "rows_with_card": 120,
+   "halves_rows": {
+    "A": 56,
+    "S": 64
+   }
+  },
+  "pubmed_rct20k": {
+   "part": "science",
+   "source": "pubmed_rct20k",
+   "track": "U",
+   "qtype": "choice",
+   "n": 120,
+   "groups": 120,
+   "n_options": [
+    5
+   ],
+   "balance": {
+    "background": 24,
+    "conclusions": 24,
+    "methods": 24,
+    "objective": 24,
+    "results": 24
+   },
+   "max_class_share": 0.2,
+   "licence": "no licence file; built on the MEDLINE/PubMed 2016 baseline (NLM terms and conditions)",
+   "orig_split": "test",
+   "rows_with_card": 0,
+   "halves_rows": {
+    "A": 57,
+    "S": 63
+   }
+  },
+  "scifact": {
+   "part": "science",
+   "source": "scifact",
+   "track": "U",
+   "qtype": "choice",
+   "n": 120,
+   "groups": 120,
+   "n_options": [
+    3
+   ],
+   "balance": {
+    "contradict": 40,
+    "not enough info": 40,
+    "support": 40
+   },
+   "max_class_share": 0.333,
+   "licence": "claims and evidence annotations CC BY 4.0; abstracts (S2ORC) ODC-By 1.0 (allenai/scifact LICENSE.md)",
+   "orig_split": "dev",
+   "rows_with_card": 120,
+   "halves_rows": {
+    "A": 60,
+    "S": 60
+   }
+  },
+  "tabfact": {
+   "part": "misc",
+   "source": "tabfact",
+   "track": "U",
+   "qtype": "noul",
+   "n": 120,
+   "groups": 120,
+   "n_options": [
+    2
+   ],
+   "balance": {
+    "0": 60,
+    "1": 60
+   },
+   "max_class_share": 0.5,
+   "licence": "CC-BY-4.0 (HF card); MIT (GitHub repo); tables from Wikipedia (CC-BY-SA)",
+   "orig_split": "test",
+   "rows_with_card": 0,
+   "halves_rows": {
+    "A": 68,
+    "S": 52
+   }
+  }
+ },
+ "part_files_sha256": {
+  "arxiv_fresh.jsonl": "75274cf08ae9f1e833e042748c9ddc5dfc4e86beb93678a7ba2a04879809a6e8",
+  "misc.jsonl": "ea372a71b182bdbb9cd2f6fb3c43b306471491470b25435b1cf9b09659d0a9d4",
+  "science.jsonl": "fb2263c5de5adfdbb9135baddbe8708e1fd9f561629194f21599cf782c11f1c9"
+ },
+ "sha256": {
+  "ohs2.jsonl": "8e7a28d9463754a8f8902f7ea244ab5e79e49571a3ca2280ec22c594032310dc",
+  "ohs2_calls.jsonl": "6832a0ab894517df7d361da1882da2f1bb03d51abcec983b7be350bcc24596df"
+ }
+}

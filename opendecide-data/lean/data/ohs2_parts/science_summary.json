@@ -1,0 +1,291 @@
+{
+  "part": "science",
+  "split": "ohs2",
+  "track": "U",
+  "seed": 20261010,
+  "rows": 480,
+  "tasks": {
+    "pubmed_rct20k": {
+      "source_id": "Franck-Dernoncourt/pubmed-rct PubMed_20k_RCT (GitHub, commit 17ed2cb)",
+      "licence": "no licence file; built on the MEDLINE/PubMed 2016 baseline (NLM terms and conditions)",
+      "split": "test",
+      "n": 120,
+      "options": [
+        "background",
+        "objective",
+        "methods",
+        "results",
+        "conclusions"
+      ],
+      "balance": {
+        "background": 24,
+        "objective": 24,
+        "methods": 24,
+        "results": 24,
+        "conclusions": 24
+      },
+      "max_class_share": 0.2,
+      "quotas": {
+        "background": 24,
+        "objective": 24,
+        "methods": 24,
+        "results": 24,
+        "conclusions": 24
+      },
+      "shortfall": {
+        "topped_up": {},
+        "short_of_n": 0
+      },
+      "candidates": 29990,
+      "candidates_by_class": {
+        "background": 3548,
+        "results": 9699,
+        "conclusions": 4566,
+        "methods": 9849,
+        "objective": 2328
+      },
+      "dropped_contaminated": {
+        "background": 404,
+        "results": 1261,
+        "conclusions": 547,
+        "methods": 1143,
+        "objective": 334
+      },
+      "loader": {
+        "abstracts": 2500,
+        "dropped": {
+          "length": 137,
+          "sentence repeated in its abstract": 8
+        }
+      },
+      "sampling_skips": {
+        "group already used": 6
+      },
+      "card": "none: Dernoncourt & Lee (2017) and the NLM structured-abstract documentation list the five NLM categories without per-category definitions",
+      "state_chars": {
+        "min": 1422,
+        "max": 3490
+      }
+    },
+    "scifact": {
+      "source_id": "allenai/scifact release data.tar.gz (claims_dev.jsonl + corpus.jsonl)",
+      "licence": "claims and evidence annotations CC BY 4.0; abstracts (S2ORC) ODC-By 1.0 (allenai/scifact LICENSE.md)",
+      "split": "dev",
+      "n": 120,
+      "options": [
+        "support",
+        "contradict",
+        "not enough info"
+      ],
+      "balance": {
+        "support": 40,
+        "contradict": 40,
+        "not enough info": 40
+      },
+      "max_class_share": 0.333,
+      "quotas": {
+        "support": 40,
+        "contradict": 40,
+        "not enough info": 40
+      },
+      "shortfall": {
+        "topped_up": {},
+        "short_of_n": 0
+      },
+      "candidates": 338,
+      "candidates_by_class": {
+        "not enough info": 131,
+        "support": 137,
+        "contradict": 70
+      },
+      "dropped_contaminated": {
+        "not enough info": 3,
+        "support": 3,
+        "contradict": 4
+      },
+      "loader": {
+        "claims": 300,
+        "pairs": 340,
+        "dropped": {
+          "length": 2
+        }
+      },
+      "sampling_skips": {
+        "group already used": 21
+      },
+      "card": "https://scifact.s3-us-west-2.amazonaws.com/doc/evidence-annotation-instructions.pdf (sections 3.2 and 1, verbatim)",
+      "state_chars": {
+        "min": 720,
+        "max": 4817
+      }
+    },
+    "evidence_inference": {
+      "source_id": "jayded/evidence-inference annotations (GitHub, commit a661e8c): annotations_merged.csv, prompts_merged.csv, abstracts/, splits/test_article_ids.txt",
+      "licence": "MIT (jayded/evidence-inference); article texts from the PubMed Central open-access subset",
+      "split": "test",
+      "n": 120,
+      "options": [
+        "significantly increased",
+        "significantly decreased",
+        "no significant difference"
+      ],
+      "balance": {
+        "significantly increased": 40,
+        "significantly decreased": 40,
+        "no significant difference": 40
+      },
+      "max_class_share": 0.333,
+      "quotas": {
+        "significantly increased": 40,
+        "significantly decreased": 40,
+        "no significant difference": 40
+      },
+      "shortfall": {
+        "topped_up": {},
+        "short_of_n": 0
+      },
+      "candidates": 345,
+      "candidates_by_class": {
+        "significantly increased": 117,
+        "significantly decreased": 98,
+        "no significant difference": 130
+      },
+      "dropped_contaminated": {
+        "significantly increased": 9,
+        "significantly decreased": 11,
+        "no significant difference": 8
+      },
+      "loader": {
+        "test_articles": 449,
+        "abstract_files_missing": 121,
+        "flagged_prompt_ids": 106,
+        "dropped": {
+          "no validated evidence quote found verbatim in the abstract": 9,
+          "an annotator needed more than the abstract": 844,
+          "no abstract file in the release": 17,
+          "prompt flagged by the dataset authors": 6,
+          "no valid label, validated labels disagree, or invalid prompt": 7
+        }
+      },
+      "sampling_skips": {
+        "group already used": 76,
+        "shares a 12-word run with an already selected item": 1
+      },
+      "card": "none: the annotation guide explains the three answers only through worked examples",
+      "state_chars": {
+        "min": 954,
+        "max": 3279
+      }
+    },
+    "ddi2013": {
+      "source_id": "isegura/DDICorpus DDICorpus-2013.zip, Test/Test for DDI Extraction task (GitHub, commit 819b0fa)",
+      "licence": "CC BY-NC 4.0 (isegura/DDICorpus README)",
+      "split": "test",
+      "n": 120,
+      "options": [
+        "mechanism",
+        "effect",
+        "advice",
+        "int"
+      ],
+      "balance": {
+        "mechanism": 35,
+        "effect": 35,
+        "advice": 34,
+        "int": 16
+      },
+      "max_class_share": 0.292,
+      "quotas": {
+        "mechanism": 34,
+        "effect": 34,
+        "advice": 34,
+        "int": 18
+      },
+      "shortfall": {
+        "topped_up": {
+          "mechanism": 1,
+          "effect": 1
+        },
+        "short_of_n": 0
+      },
+      "candidates": 976,
+      "candidates_by_class": {
+        "mechanism": 299,
+        "effect": 360,
+        "advice": 221,
+        "int": 96
+      },
+      "dropped_contaminated": {
+        "mechanism": 1,
+        "effect": 13,
+        "int": 1
+      },
+      "loader": {
+        "files": 191,
+        "dropped": {
+          "discontinuous entity": 3
+        }
+      },
+      "sampling_skips": {
+        "group already used": 97,
+        "shares a 12-word run with a GLiClass training text": 1,
+        "document quota": 2,
+        "class exhausted (int), quota moved": 2
+      },
+      "card": "DDI corpus page, isegura/DDICorpus ddicorpus.webarchive (verbatim)",
+      "state_chars": {
+        "min": 69,
+        "max": 675
+      }
+    }
+  },
+  "card_check": {
+    "scifact": "all definitions found verbatim in the official source",
+    "ddi2013": "all definitions found verbatim in the official source",
+    "evidence_inference": "prompt template found verbatim in README.annotation_process.md"
+  },
+  "decontamination": {
+    "lean_files_scanned": 164,
+    "lean_unique_states": 151191,
+    "pubmedqa_files": [
+      "pqa_labeled/train-00000-of-00001.parquet",
+      "pqa_unlabeled/train-00000-of-00001.parquet",
+      "pqa_artificial/train-00000-of-00001.parquet"
+    ],
+    "pubmedqa_pmids": 273518,
+    "hits_lean_data": 14,
+    "hits_pubmedqa": 3728,
+    "ext_revisions": {
+      "knowledgator/gliclass-v2.0": "93d3cdc82257a9e821f4b21d08e3dc81979bb653",
+      "knowledgator/GLIClass-v1.0": "b0047758976bc0a911882e1722ff8d888a6acdd0",
+      "knowledgator/gliclass-v3-logic-dataset": "ee8e07d42c1f95a4421ae78498eec23aec74f1d7",
+      "tasksource/zero-shot-label-nli": "ee693dba923b5d5484aa9232b7357c5e45dd39b8"
+    },
+    "gliclass_unique_texts": 919294,
+    "label_nli_unique_premises": 1032137,
+    "hits_gliclass (skipped lazily)": 226,
+    "hits_label_nli (skipped lazily)": 25
+  },
+  "source_sha256": {
+    "rct": "8511b832c1ee66b3df52df23c16ad81a69711ddd5b3a485421da3f8e9d5b44f4",
+    "scifact": "11c621288d41ac144d29b13b0f8503b3820b7d6e8b1f6ff24dff335c196d76be",
+    "scifact_guide": "915197d9e60ca540d403d0ffd46302ec75cc521648b802e8894297d44514f04d",
+    "ddi": "87fc63e32ebce20d9841c372e0c594ec72d60882ab5621550ca73c3eaf80ab60",
+    "ddi_page": "961bc17477acb496604aca85ed194666ecc7b08acdca97abbc8b702dc0a3394c",
+    "ei_annotations": "a5dd1a3583e5105a0f77d3e1c695008879859425c9a93dfbc07054ef462e0255",
+    "ei_prompts": "0d70d9e1e78d113fdbbd4919310eab7768d6a328368f7d8f9d5a3b48f99c25d3",
+    "ei_test_ids": "4fe6c633ba8f077a68a8feea48d4408c1749175e1c46f2b77d96727d291ef9d8",
+    "ei_readme": "b9d7599a666cada77cec4e52b459ec70425fab6f61604ecbe77d1bbf7a8297b1",
+    "ei_guide": "cd9746e4d987403fa1080a071280c55fa86b0d617e3b011935a964ad6ddcf0ba"
+  },
+  "output_sha256": "fb2263c5de5adfdbb9135baddbe8708e1fd9f561629194f21599cf782c11f1c9",
+  "not_used": {
+    "SciCite / ACL-ARC citation intent / SciERC / PUBHEALTH / scientific exaggeration": "in the v0.11 task bank via tasksource zero-shot-label-nli (trained on); forbidden",
+    "PubMedQA": "OHS-1 source; used only as a decontamination reference",
+    "SciNLI": "texts from ACL Anthology papers, many also on arXiv (arXiv papers before 2026-09-21 are forbidden); skipped to be safe",
+    "SciFact test": "labels not released; dev used",
+    "medical_abstracts": "built only with --with-medical (in this run: False); OHS-2 part 'misc' already has a medical_abstracts task",
+    "DDI non-interacting pairs": "no official definition for the negative class; typed DDIs only"
+  },
+  "llm_calls": 0
+}
