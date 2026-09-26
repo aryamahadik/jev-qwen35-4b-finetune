@@ -1,0 +1,71 @@
+✓ Initialized. View run at 
+https://modal.com/apps/mahadikarya3/main/ap-I9lriG5ucYlOoU9qdFJt7U
+✓ Created objects.
+├── 🔨 Created mount 
+│   /Users/aryamahadik/Documents/jev/opendecide-data/lean/modal_od.py
+├── 🔨 Created mount 
+│   /Users/aryamahadik/Documents/jev/opendecide-data/lean/train.py
+├── 🔨 Created mount /Users/aryamahadik/Documents/jev/bench/splits
+├── 🔨 Created mount 
+│   /Users/aryamahadik/Documents/jev/bench/jevbench/datasets/public
+├── 🔨 Created mount /Users/aryamahadik/Documents/jev/opendecide-data/lean/data
+├── 🔨 Created mount PythonPackage:decoder_io, PythonPackage:train_decoder, 
+│   PythonPackage:hc, PythonPackage:jevbench_od, PythonPackage:calc_tool
+├── 🔨 Created mount PythonPackage:decoder_io, PythonPackage:gliclass_io, 
+│   PythonPackage:train_decoder, PythonPackage:hc, PythonPackage:jevbench_od, 
+│   PythonPackage:calc_tool
+├── 🔨 Created mount /Users/aryamahadik/Documents/jev/bench/jevbench/jevbench
+├── 🔨 Created function zeroshot.
+├── 🔨 Created function train_remote.
+├── 🔨 Created function train_gliclass_remote.
+├── 🔨 Created function eval_remote.
+├── 🔨 Created function latency_l4.
+├── 🔨 Created function hc_recall_remote.
+├── 🔨 Created function hc_shortlist_remote.
+├── 🔨 Created function hc_remote.
+├── 🔨 Created function jevbench_remote.
+├── 🔨 Created function hc_scale_remote.
+├── 🔨 Created function zeroshot35.
+├── 🔨 Created function train_remote35.
+├── 🔨 Created function eval_remote35.
+├── 🔨 Created function latency35.
+├── 🔨 Created function hc_remote35.
+├── 🔨 Created function jevbench_remote35.
+└── 🔨 Created function gen_diag_remote.
+W0926 07:04:17.850000 2 site-packages/torch/_inductor/utils.py:1436] [1/0_1] Not enough SMs to use max_autotune_gemm mode
+{
+ "n_titles_total": 18951886,
+ "filler_dropped_as_close": 320853,
+ "embed_seconds": 313.9,
+ "1000": {
+  "recall@64": 1.0,
+  "search_ms_p50": 0.08,
+  "search_ms_p95": 0.1,
+  "n_queries": 180,
+  "index_gb_fp16": 0.0
+ },
+ "10000": {
+  "recall@64": 0.9833333333333333,
+  "search_ms_p50": 0.1,
+  "search_ms_p95": 0.12,
+  "n_queries": 180,
+  "index_gb_fp16": 0.02
+ },
+ "100000": {
+  "recall@64": 0.9333333333333333,
+  "search_ms_p50": 0.64,
+  "search_ms_p95": 0.66,
+  "n_queries": 180,
+  "index_gb_fp16": 0.15
+ },
+ "1000000": {
+  "recall@64": 0.8777777777777778,
+  "search_ms_p50": 5.9,
+  "search_ms_p95": 5.93,
+  "n_queries": 180,
+  "index_gb_fp16": 1.44
+ }
+}
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/mahadikarya3/main/ap-I9lriG5ucYlOoU9qdFJt7U

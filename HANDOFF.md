@@ -84,8 +84,41 @@ To push a backed-up model back to Modal: `modal volume put opendecide backups/mo
 
 ## Budget (September 2026)
 
-- **Modal:** about $22.4 of the $30 monthly credit used.
-- **OpenRouter:** about $0.5 of the $5 limit used.
+- **Modal (first account):** $24.21 of $30 used after the $7 test round, about $5.8 left.
+- **OpenRouter:** $0.67 of the $5 limit used.
+
+## $7 test round (26 Sep 2026), results
+
+Everything here is measured. "Half A" = JevBench selection split (118 items); Jev scores 103/118 on it.
+
+| Test | Result | Verdict |
+|---|---|---|
+| Gemma v0.6 zero-shot **without** task cards vs guard-matched Jev | ZS choice 90.5 vs 92.6 (n.s.), ZS yes/no 91.6 vs 87.4, ZS negation 91.6 vs 85.3 | zero-shot gap closed even without cards |
+| Frozen fast/strong candidates on half A (cygnet layout) | 2B 78, 4B 94, 9B 95, Gemma-12B 104; latency p50 39 / 54 / 51 / 88 ms | small models need fine-tuning |
+| Cascade simulation (frozen): 9B first, escalate if confidence < 0.9 | **104/118 at p50 52 ms** (35% escalated); 4B→Gemma at 0.8 = 103/118 at p50 55 ms | Jev-level accuracy at ~4–5× lower median GPU latency; p95 ~450–520 ms |
+| Open-Prompt-Injection strategies (SST-2 / IMDB / TweetEval-offensive, 1,080 rows; `build_opi.py`, `score_opi.py`) | ASR: Jev+guard 1.3%, Jev 2.3%, ours 2.0% (tie); clean accuracy **ours 90.0 vs Jev 87.2** | Jev resists blunt commands; tie |
+| **jagged** (third-party, pre-registered AfD audit, 486 items; `build_jagged.py`, `score_jagged.py`) | Jev reproduced: clean 95.9, with injected line 26.5. **Ours: clean 75.3, injected 26.7** | both fooled by a planted "authority fact"; we also lose 20 pts clean (we under-call "deleted") |
+| Calculator path (`calc_tool.py`) on 13 number/probability items | 9/13 vs 8/13 without; only 1/13 programs ran (others cut off at 320 tokens), and that one fixed a wrong answer | concept works; needs "compute only what's needed", more tokens, faster decoding |
+| 1K–1M choices (`hc_scale`, gte-modernbert-base, Wikipedia-title filler) | Recall@64: 1K 100%, 10K 98.3%, 100K 93.3%, 1M 87.8%; search 0.08 → 5.9 ms | latency flat; recall needs a fine-tuned embedder / multi-probe |
+| Write-blocked recurrent memory (`writeblock.py`, Qwen3.5-0.8B, untrained) | Policy-head output difference when only untrusted text changes: 0.0001 (block on) vs 0.001 (off). But untrained, clean accuracy on attacked items fell 45 → 10 | mechanism verified; must be trained with the block on |
+| Modal network overhead (`latency_probe.py`, CPU echo) | web endpoint p50 356 ms vs **direct tunnel (modal.forward) p50 72 ms** | use a tunnel: end to end ≈ 72 + ~50 ms ≈ 120 ms vs Jev 203 ms |
+
+**Priorities for the $30 account:**
+1. **Injection (jagged).** Train on planted-evidence / fake-authority / "answer no" lines in untrusted fields, with write-block on. This is the clearest public beat-Jev target (Jev 26.5%).
+2. **Fine-tune the fast tier** (Qwen3.5-4B or 9B) with the v0.6 recipe + KL anchor, then the cascade.
+3. **Fix the calculator prompt** and serve with vLLM.
+4. **Fine-tune the label embedder** with hard negatives for 100K–1M.
+5. **Serve through a `modal.forward` tunnel.**
+
+## Switching to the other Modal account (nothing is lost)
+
+1. Log in: `../.venv/bin/modal token new` (creates a new profile), then `modal profile activate <new-profile>`.
+2. Recreate the secret, after rotating the OpenRouter key and updating `opendecide-data/.env`:
+   `modal secret create opendecide-keys HF_TOKEN=... OPENROUTER_API_KEY=...`
+3. Upload the trained models:
+   `modal volume create opendecide`, then for each folder `modal volume put opendecide backups/modal_models/NAME /models/NAME`. Start with `g12_v06_A3` and `q4b_v05_A3`.
+4. The model cache (`/hf`) re-downloads by itself on first use. Code and data are mounted from this Mac, so nothing else needs copying.
+5. Keep `HANDOFF.md` and the git history up to date after every round.
 
 ## Next plan: "PRISM-lite cascade"
 

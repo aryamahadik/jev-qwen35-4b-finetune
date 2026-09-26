@@ -1,0 +1,13 @@
+{
+  "name": "q35_4b_cyg_A",
+  "base": "Qwen/Qwen3.5-4B",
+  "adapter": "",
+  "temps": [
+    1.0,
+    1.0
+  ],
+  "gpu": "NVIDIA L40S",
+  "tiers": "A",
+  "think_below": -1.0,
+  "fmt": "cygnet"
+}

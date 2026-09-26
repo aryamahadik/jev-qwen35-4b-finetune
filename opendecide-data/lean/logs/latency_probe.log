@@ -1,0 +1,225 @@
+✓ Initialized. View run at 
+https://modal.com/apps/mahadikarya3/main/ap-JwMisXEDRpQKh4yvYfQkEQ
+Building image im-uMiESbv94KYC59bdbh906l
+
+=> Step 0: FROM base
+
+=> Step 1: RUN python -m pip install 'fastapi[standard]' httpx
+Looking in indexes: http://pypi-mirror.modal.local:5555/simple
+Collecting httpx
+  Downloading http://pypi-mirror.modal.local:5555/simple/httpx/httpx-0.28.1-py3-none-any.whl.metadata (7.1 kB)
+Collecting fastapi[standard]
+  Downloading http://pypi-mirror.modal.local:5555/simple/fastapi/fastapi-0.141.1-py3-none-any.whl.metadata (27 kB)
+Collecting starlette>=0.46.0 (from fastapi[standard])
+  Downloading http://pypi-mirror.modal.local:5555/simple/starlette/starlette-1.7.0-py3-none-any.whl.metadata (6.6 kB)
+Collecting pydantic>=2.9.0 (from fastapi[standard])
+  Downloading http://pypi-mirror.modal.local:5555/simple/pydantic/pydantic-2.13.5-py3-none-any.whl.metadata (110 kB)
+Collecting typing-extensions>=4.8.0 (from fastapi[standard])
+  Downloading http://pypi-mirror.modal.local:5555/simple/typing-extensions/typing_extensions-4.16.0-py3-none-any.whl.metadata (3.3 kB)
+Collecting typing-inspection>=0.4.2 (from fastapi[standard])
+  Downloading http://pypi-mirror.modal.local:5555/simple/typing-inspection/typing_inspection-0.4.4-py3-none-any.whl.metadata (2.6 kB)
+Collecting annotated-doc>=0.0.2 (from fastapi[standard])
+  Downloading http://pypi-mirror.modal.local:5555/simple/annotated-doc/annotated_doc-0.0.5-py3-none-any.whl.metadata (6.5 kB)
+Collecting fastapi-cli>=0.0.32 (from fastapi-cli[standard]>=0.0.32; extra == "standard"->fastapi[standard])
+  Downloading http://pypi-mirror.modal.local:5555/simple/fastapi-cli/fastapi_cli-0.0.32-py3-none-any.whl.metadata (6.7 kB)
+Collecting fastar>=0.9.0 (from fastapi[standard])
+  Downloading http://pypi-mirror.modal.local:5555/simple/fastar/fastar-0.12.0-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (4.1 kB)
+Collecting jinja2>=3.1.5 (from fastapi[standard])
+  Downloading http://pypi-mirror.modal.local:5555/simple/jinja2/jinja2-3.1.6-py3-none-any.whl.metadata (2.9 kB)
+Collecting python-multipart>=0.0.18 (from fastapi[standard])
+  Downloading http://pypi-mirror.modal.local:5555/simple/python-multipart/python_multipart-0.0.32-py3-none-any.whl.metadata (2.1 kB)
+Collecting email-validator>=2.0.0 (from fastapi[standard])
+  Downloading http://pypi-mirror.modal.local:5555/simple/email-validator/email_validator-2.3.0-py3-none-any.whl.metadata (26 kB)
+Collecting uvicorn>=0.12.0 (from uvicorn[standard]>=0.12.0; extra == "standard"->fastapi[standard])
+  Downloading http://pypi-mirror.modal.local:5555/simple/uvicorn/uvicorn-0.54.0-py3-none-any.whl.metadata (6.6 kB)
+Collecting pydantic-settings>=2.0.0 (from fastapi[standard])
+  Downloading http://pypi-mirror.modal.local:5555/simple/pydantic-settings/pydantic_settings-2.15.0-py3-none-any.whl.metadata (3.9 kB)
+Collecting pydantic-extra-types>=2.0.0 (from fastapi[standard])
+  Downloading http://pypi-mirror.modal.local:5555/simple/pydantic-extra-types/pydantic_extra_types-2.11.1-py3-none-any.whl.metadata (4.2 kB)
+Collecting anyio (from httpx)
+  Downloading http://pypi-mirror.modal.local:5555/simple/anyio/anyio-4.15.1-py3-none-any.whl.metadata (4.7 kB)
+Collecting certifi (from httpx)
+  Downloading http://pypi-mirror.modal.local:5555/simple/certifi/certifi-2026.7.22-py3-none-any.whl.metadata (2.5 kB)
+Collecting httpcore==1.* (from httpx)
+  Downloading http://pypi-mirror.modal.local:5555/simple/httpcore/httpcore-1.0.9-py3-none-any.whl.metadata (21 kB)
+Collecting idna (from httpx)
+  Downloading http://pypi-mirror.modal.local:5555/simple/idna/idna-3.20-py3-none-any.whl.metadata (7.2 kB)
+Collecting h11>=0.16 (from httpcore==1.*->httpx)
+  Downloading http://pypi-mirror.modal.local:5555/simple/h11/h11-0.16.0-py3-none-any.whl.metadata (8.3 kB)
+Collecting dnspython>=2.0.0 (from email-validator>=2.0.0->fastapi[standard])
+  Downloading http://pypi-mirror.modal.local:5555/simple/dnspython/dnspython-2.8.0-py3-none-any.whl.metadata (5.7 kB)
+Collecting typer>=0.16.0 (from fastapi-cli>=0.0.32->fastapi-cli[standard]>=0.0.32; extra == "standard"->fastapi[standard])
+  Downloading http://pypi-mirror.modal.local:5555/simple/typer/typer-0.27.2-py3-none-any.whl.metadata (16 kB)
+Collecting rich-toolkit>=0.14.8 (from fastapi-cli>=0.0.32->fastapi-cli[standard]>=0.0.32; extra == "standard"->fastapi[standard])
+  Downloading http://pypi-mirror.modal.local:5555/simple/rich-toolkit/rich_toolkit-0.20.5-py3-none-any.whl.metadata (3.0 kB)
+Collecting fastapi-cloud-cli>=0.1.1 (from fastapi-cli[standard]>=0.0.32; extra == "standard"->fastapi[standard])
+  Downloading http://pypi-mirror.modal.local:5555/simple/fastapi-cloud-cli/fastapi_cloud_cli-0.26.0-py3-none-any.whl.metadata (3.1 kB)
+Collecting rignore>=0.5.1 (from fastapi-cloud-cli>=0.1.1->fastapi-cli[standard]>=0.0.32; extra == "standard"->fastapi[standard])
+  Downloading http://pypi-mirror.modal.local:5555/simple/rignore/rignore-0.8.1-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (4.2 kB)
+Collecting sentry-sdk>=2.20.0 (from fastapi-cloud-cli>=0.1.1->fastapi-cli[standard]>=0.0.32; extra == "standard"->fastapi[standard])
+  Downloading http://pypi-mirror.modal.local:5555/simple/sentry-sdk/sentry_sdk-2.70.0-py3-none-any.whl.metadata (11 kB)
+Collecting detect-installer>=0.1.0 (from fastapi-cloud-cli>=0.1.1->fastapi-cli[standard]>=0.0.32; extra == "standard"->fastapi[standard])
+  Downloading http://pypi-mirror.modal.local:5555/simple/detect-installer/detect_installer-0.2.1-py3-none-any.whl.metadata (1.2 kB)
+Collecting agent-detector>=1.1.0 (from fastapi-cloud-cli>=0.1.1->fastapi-cli[standard]>=0.0.32; extra == "standard"->fastapi[standard])
+  Downloading http://pypi-mirror.modal.local:5555/simple/agent-detector/agent_detector-2.0.0-py3-none-any.whl.metadata (6.6 kB)
+Collecting MarkupSafe>=2.0 (from jinja2>=3.1.5->fastapi[standard])
+  Downloading http://pypi-mirror.modal.local:5555/simple/markupsafe/markupsafe-3.0.3-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (2.7 kB)
+Collecting annotated-types>=0.6.0 (from pydantic>=2.9.0->fastapi[standard])
+  Downloading http://pypi-mirror.modal.local:5555/simple/annotated-types/annotated_types-0.8.0-py3-none-any.whl.metadata (15 kB)
+Collecting pydantic-core==2.46.5 (from pydantic>=2.9.0->fastapi[standard])
+  Downloading http://pypi-mirror.modal.local:5555/simple/pydantic-core/pydantic_core-2.46.5-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (6.6 kB)
+Collecting python-dotenv>=0.21.0 (from pydantic-settings>=2.0.0->fastapi[standard])
+  Downloading http://pypi-mirror.modal.local:5555/simple/python-dotenv/python_dotenv-1.2.3-py3-none-any.whl.metadata (29 kB)
+Collecting click>=8.1.7 (from rich-toolkit>=0.14.8->fastapi-cli>=0.0.32->fastapi-cli[standard]>=0.0.32; extra == "standard"->fastapi[standard])
+  Downloading http://pypi-mirror.modal.local:5555/simple/click/click-8.5.0-py3-none-any.whl.metadata (2.6 kB)
+Collecting rich>=13.7.1 (from rich-toolkit>=0.14.8->fastapi-cli>=0.0.32->fastapi-cli[standard]>=0.0.32; extra == "standard"->fastapi[standard])
+  Downloading http://pypi-mirror.modal.local:5555/simple/rich/rich-15.0.0-py3-none-any.whl.metadata (18 kB)
+Collecting markdown-it-py>=2.2.0 (from rich>=13.7.1->rich-toolkit>=0.14.8->fastapi-cli>=0.0.32->fastapi-cli[standard]>=0.0.32; extra == "standard"->fastapi[standard])
+  Downloading http://pypi-mirror.modal.local:5555/simple/markdown-it-py/markdown_it_py-4.2.0-py3-none-any.whl.metadata (7.4 kB)
+Collecting pygments<3.0.0,>=2.13.0 (from rich>=13.7.1->rich-toolkit>=0.14.8->fastapi-cli>=0.0.32->fastapi-cli[standard]>=0.0.32; extra == "standard"->fastapi[standard])
+  Downloading http://pypi-mirror.modal.local:5555/simple/pygments/pygments-2.21.0-py3-none-any.whl.metadata (2.5 kB)
+Collecting mdurl~=0.1 (from markdown-it-py>=2.2.0->rich>=13.7.1->rich-toolkit>=0.14.8->fastapi-cli>=0.0.32->fastapi-cli[standard]>=0.0.32; extra == "standard"->fastapi[standard])
+  Downloading http://pypi-mirror.modal.local:5555/simple/mdurl/mdurl-0.1.2-py3-none-any.whl.metadata (1.6 kB)
+Collecting urllib3>=1.26.11 (from sentry-sdk>=2.20.0->fastapi-cloud-cli>=0.1.1->fastapi-cli[standard]>=0.0.32; extra == "standard"->fastapi[standard])
+  Downloading http://pypi-mirror.modal.local:5555/simple/urllib3/urllib3-2.8.0-py3-none-any.whl.metadata (7.4 kB)
+Collecting shellingham>=1.3.0 (from typer>=0.16.0->fastapi-cli>=0.0.32->fastapi-cli[standard]>=0.0.32; extra == "standard"->fastapi[standard])
+  Downloading http://pypi-mirror.modal.local:5555/simple/shellingham/shellingham-1.5.4-py2.py3-none-any.whl.metadata (3.5 kB)
+Collecting httptools>=0.8.0 (from uvicorn[standard]>=0.12.0; extra == "standard"->fastapi[standard])
+  Downloading http://pypi-mirror.modal.local:5555/simple/httptools/httptools-0.8.0-cp312-cp312-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl.metadata (3.5 kB)
+Collecting pyyaml>=5.1 (from uvicorn[standard]>=0.12.0; extra == "standard"->fastapi[standard])
+  Downloading http://pypi-mirror.modal.local:5555/simple/pyyaml/pyyaml-6.0.3-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (2.4 kB)
+Collecting uvloop>=0.15.1 (from uvicorn[standard]>=0.12.0; extra == "standard"->fastapi[standard])
+  Downloading http://pypi-mirror.modal.local:5555/simple/uvloop/uvloop-0.22.1-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (4.9 kB)
+Collecting watchfiles>=0.20 (from uvicorn[standard]>=0.12.0; extra == "standard"->fastapi[standard])
+  Downloading http://pypi-mirror.modal.local:5555/simple/watchfiles/watchfiles-1.3.0-cp310-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (4.9 kB)
+Collecting websockets>=13.0 (from uvicorn[standard]>=0.12.0; extra == "standard"->fastapi[standard])
+  Downloading http://pypi-mirror.modal.local:5555/simple/websockets/websockets-17.1-cp312-cp312-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl.metadata (6.3 kB)
+Downloading http://pypi-mirror.modal.local:5555/simple/fastapi/fastapi-0.141.1-py3-none-any.whl (131 kB)
+Downloading http://pypi-mirror.modal.local:5555/simple/httpx/httpx-0.28.1-py3-none-any.whl (73 kB)
+Downloading http://pypi-mirror.modal.local:5555/simple/httpcore/httpcore-1.0.9-py3-none-any.whl (78 kB)
+Downloading http://pypi-mirror.modal.local:5555/simple/annotated-doc/annotated_doc-0.0.5-py3-none-any.whl (5.3 kB)
+Downloading http://pypi-mirror.modal.local:5555/simple/email-validator/email_validator-2.3.0-py3-none-any.whl (35 kB)
+Downloading http://pypi-mirror.modal.local:5555/simple/dnspython/dnspython-2.8.0-py3-none-any.whl (331 kB)
+Downloading http://pypi-mirror.modal.local:5555/simple/fastapi-cli/fastapi_cli-0.0.32-py3-none-any.whl (14 kB)
+Downloading http://pypi-mirror.modal.local:5555/simple/fastapi-cloud-cli/fastapi_cloud_cli-0.26.0-py3-none-any.whl (108 kB)
+Downloading http://pypi-mirror.modal.local:5555/simple/agent-detector/agent_detector-2.0.0-py3-none-any.whl (9.4 kB)
+Downloading http://pypi-mirror.modal.local:5555/simple/detect-installer/detect_installer-0.2.1-py3-none-any.whl (5.4 kB)
+Downloading http://pypi-mirror.modal.local:5555/simple/fastar/fastar-0.12.0-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (808 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 808.1/808.1 kB 664.5 MB/s eta 0:00:00
+Downloading http://pypi-mirror.modal.local:5555/simple/h11/h11-0.16.0-py3-none-any.whl (37 kB)
+Downloading http://pypi-mirror.modal.local:5555/simple/idna/idna-3.20-py3-none-any.whl (69 kB)
+Downloading http://pypi-mirror.modal.local:5555/simple/jinja2/jinja2-3.1.6-py3-none-any.whl (134 kB)
+Downloading http://pypi-mirror.modal.local:5555/simple/markupsafe/markupsafe-3.0.3-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (22 kB)
+Downloading http://pypi-mirror.modal.local:5555/simple/pydantic/pydantic-2.13.5-py3-none-any.whl (472 kB)
+Downloading http://pypi-mirror.modal.local:5555/simple/pydantic-core/pydantic_core-2.46.5-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (2.1 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2.1/2.1 MB 304.8 MB/s eta 0:00:00
+Downloading http://pypi-mirror.modal.local:5555/simple/annotated-types/annotated_types-0.8.0-py3-none-any.whl (13 kB)
+Downloading http://pypi-mirror.modal.local:5555/simple/pydantic-extra-types/pydantic_extra_types-2.11.1-py3-none-any.whl (79 kB)
+Downloading http://pypi-mirror.modal.local:5555/simple/pydantic-settings/pydantic_settings-2.15.0-py3-none-any.whl (69 kB)
+Downloading http://pypi-mirror.modal.local:5555/simple/python-dotenv/python_dotenv-1.2.3-py3-none-any.whl (22 kB)
+Downloading http://pypi-mirror.modal.local:5555/simple/python-multipart/python_multipart-0.0.32-py3-none-any.whl (30 kB)
+Downloading http://pypi-mirror.modal.local:5555/simple/rich-toolkit/rich_toolkit-0.20.5-py3-none-any.whl (39 kB)
+Downloading http://pypi-mirror.modal.local:5555/simple/click/click-8.5.0-py3-none-any.whl (125 kB)
+Downloading http://pypi-mirror.modal.local:5555/simple/rich/rich-15.0.0-py3-none-any.whl (310 kB)
+Downloading http://pypi-mirror.modal.local:5555/simple/pygments/pygments-2.21.0-py3-none-any.whl (1.3 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.3/1.3 MB 288.8 MB/s eta 0:00:00
+Downloading http://pypi-mirror.modal.local:5555/simple/markdown-it-py/markdown_it_py-4.2.0-py3-none-any.whl (91 kB)
+Downloading http://pypi-mirror.modal.local:5555/simple/mdurl/mdurl-0.1.2-py3-none-any.whl (10.0 kB)
+Downloading http://pypi-mirror.modal.local:5555/simple/rignore/rignore-0.8.1-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (927 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 927.8/927.8 kB 369.9 MB/s eta 0:00:00
+Downloading http://pypi-mirror.modal.local:5555/simple/sentry-sdk/sentry_sdk-2.70.0-py3-none-any.whl (531 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 531.8/531.8 kB 730.6 MB/s eta 0:00:00
+Downloading http://pypi-mirror.modal.local:5555/simple/starlette/starlette-1.7.0-py3-none-any.whl (78 kB)
+Downloading http://pypi-mirror.modal.local:5555/simple/anyio/anyio-4.15.1-py3-none-any.whl (132 kB)
+Downloading http://pypi-mirror.modal.local:5555/simple/typer/typer-0.27.2-py3-none-any.whl (123 kB)
+Downloading http://pypi-mirror.modal.local:5555/simple/shellingham/shellingham-1.5.4-py2.py3-none-any.whl (9.8 kB)
+Downloading http://pypi-mirror.modal.local:5555/simple/typing-extensions/typing_extensions-4.16.0-py3-none-any.whl (45 kB)
+Downloading http://pypi-mirror.modal.local:5555/simple/typing-inspection/typing_inspection-0.4.4-py3-none-any.whl (14 kB)
+Downloading http://pypi-mirror.modal.local:5555/simple/urllib3/urllib3-2.8.0-py3-none-any.whl (135 kB)
+Downloading http://pypi-mirror.modal.local:5555/simple/uvicorn/uvicorn-0.54.0-py3-none-any.whl (87 kB)
+Downloading http://pypi-mirror.modal.local:5555/simple/httptools/httptools-0.8.0-cp312-cp312-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl (523 kB)
+Downloading http://pypi-mirror.modal.local:5555/simple/pyyaml/pyyaml-6.0.3-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (807 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 807.9/807.9 kB 347.1 MB/s eta 0:00:00
+Downloading http://pypi-mirror.modal.local:5555/simple/uvloop/uvloop-0.22.1-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (4.4 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 4.4/4.4 MB 298.6 MB/s eta 0:00:00
+Downloading http://pypi-mirror.modal.local:5555/simple/watchfiles/watchfiles-1.3.0-cp310-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (458 kB)
+Downloading http://pypi-mirror.modal.local:5555/simple/websockets/websockets-17.1-cp312-cp312-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl (224 kB)
+Downloading http://pypi-mirror.modal.local:5555/simple/certifi/certifi-2026.7.22-py3-none-any.whl (136 kB)
+Installing collected packages: websockets, uvloop, urllib3, typing-extensions, shellingham, rignore, pyyaml, python-multipart, python-dotenv, pygments, mdurl, MarkupSafe, idna, httptools, h11, fastar, dnspython, detect-installer, click, certifi, annotated-types, annotated-doc, agent-detector, uvicorn, typing-inspection, sentry-sdk, pydantic-core, markdown-it-py, jinja2, httpcore, email-validator, anyio, watchfiles, starlette, rich, pydantic, httpx, typer, rich-toolkit, pydantic-settings, pydantic-extra-types, fastapi, fastapi-cloud-cli, fastapi-cli
+
+Successfully installed MarkupSafe-3.0.3 agent-detector-2.0.0 annotated-doc-0.0.5 annotated-types-0.8.0 anyio-4.15.1 certifi-2026.7.22 click-8.5.0 detect-installer-0.2.1 dnspython-2.8.0 email-validator-2.3.0 fastapi-0.141.1 fastapi-cli-0.0.32 fastapi-cloud-cli-0.26.0 fastar-0.12.0 h11-0.16.0 httpcore-1.0.9 httptools-0.8.0 httpx-0.28.1 idna-3.20 jinja2-3.1.6 markdown-it-py-4.2.0 mdurl-0.1.2 pydantic-2.13.5 pydantic-core-2.46.5 pydantic-extra-types-2.11.1 pydantic-settings-2.15.0 pygments-2.21.0 python-dotenv-1.2.3 python-multipart-0.0.32 pyyaml-6.0.3 rich-15.0.0 rich-toolkit-0.20.5 rignore-0.8.1 sentry-sdk-2.70.0 shellingham-1.5.4 starlette-1.7.0 typer-0.27.2 typing-extensions-4.16.0 typing-inspection-0.4.4 urllib3-2.8.0 uvicorn-0.54.0 uvloop-0.22.1 watchfiles-1.3.0 websockets-17.1
+
+[notice] A new release of pip is available: 25.1.1 -> 26.2.1
+[notice] To update, run: pip install --upgrade pip
+Saving image...
+Image saved, took 708.45ms
+
+Built image im-uMiESbv94KYC59bdbh906l in 12.58s
+
+
+✓ Created objects.
+├── 🔨 Created mount 
+│   /Users/aryamahadik/Documents/jev/opendecide-data/lean/latency_probe.py
+├── 🔨 Created web function echo => 
+│   https://mahadikarya3--opendecide-latency-probe-echo-dev.modal.run
+└── 🔨 Created function tunnel_server.
+   POST / -> 200 OK  (duration: 4.03 s, execution: 275.2 ms)
+   POST / -> 200 OK  (duration: 438.8 ms, execution: 239.9 ms)
+   POST / -> 200 OK  (duration: 447.6 ms, execution: 239.5 ms)
+   POST / -> 200 OK  (duration: 442.1 ms, execution: 237.7 ms)
+   POST / -> 200 OK  (duration: 453.2 ms, execution: 240.6 ms)
+   POST / -> 200 OK  (duration: 397.4 ms, execution: 237.6 ms)
+   POST / -> 200 OK  (duration: 380.4 ms, execution: 235.9 ms)
+   POST / -> 200 OK  (duration: 443.5 ms, execution: 238.3 ms)
+   POST / -> 200 OK  (duration: 442.7 ms, execution: 237.1 ms)
+   POST / -> 200 OK  (duration: 442.8 ms, execution: 234.2 ms)
+   POST / -> 200 OK  (duration: 439.9 ms, execution: 234.6 ms)
+   POST / -> 200 OK  (duration: 443.5 ms, execution: 239.4 ms)
+   POST / -> 200 OK  (duration: 387.4 ms, execution: 235.8 ms)
+   POST / -> 200 OK  (duration: 444.4 ms, execution: 236.7 ms)
+   POST / -> 200 OK  (duration: 444.7 ms, execution: 238.4 ms)
+   POST / -> 200 OK  (duration: 442.7 ms, execution: 236.6 ms)
+   POST / -> 200 OK  (duration: 441.1 ms, execution: 238.3 ms)
+   POST / -> 200 OK  (duration: 452.0 ms, execution: 239.1 ms)
+   POST / -> 200 OK  (duration: 384.3 ms, execution: 238.4 ms)
+   POST / -> 200 OK  (duration: 440.5 ms, execution: 234.1 ms)
+   POST / -> 200 OK  (duration: 417.9 ms, execution: 237.5 ms)
+   POST / -> 200 OK  (duration: 430.4 ms, execution: 236.7 ms)
+   POST / -> 200 OK  (duration: 442.3 ms, execution: 237.7 ms)
+   POST / -> 200 OK  (duration: 422.3 ms, execution: 239.0 ms)
+   POST / -> 200 OK  (duration: 383.8 ms, execution: 240.0 ms)
+   POST / -> 200 OK  (duration: 448.8 ms, execution: 239.4 ms)
+   POST / -> 200 OK  (duration: 439.2 ms, execution: 234.7 ms)
+   POST / -> 200 OK  (duration: 442.5 ms, execution: 236.6 ms)
+   POST / -> 200 OK  (duration: 438.0 ms, execution: 237.7 ms)
+   POST / -> 200 OK  (duration: 424.3 ms, execution: 238.7 ms)
+   POST / -> 200 OK  (duration: 432.6 ms, execution: 234.4 ms)
+   POST / -> 200 OK  (duration: 486.9 ms, execution: 282.3 ms)
+   POST / -> 200 OK  (duration: 419.8 ms, execution: 236.8 ms)
+   POST / -> 200 OK  (duration: 444.2 ms, execution: 237.1 ms)
+   POST / -> 200 OK  (duration: 116.6 ms, execution: 70.3 ms)
+   POST / -> 200 OK  (duration: 92.6 ms, execution: 42.0 ms)
+   POST / -> 200 OK  (duration: 377.6 ms, execution: 233.4 ms)
+   POST / -> 200 OK  (duration: 379.6 ms, execution: 239.2 ms)
+   POST / -> 200 OK  (duration: 426.6 ms, execution: 244.2 ms)
+   POST / -> 200 OK  (duration: 438.4 ms, execution: 238.6 ms)
+   POST / -> 200 OK  (duration: 444.9 ms, execution: 237.6 ms)
+   POST / -> 200 OK  (duration: 435.0 ms, execution: 233.6 ms)
+   POST / -> 200 OK  (duration: 417.5 ms, execution: 235.3 ms)
+{
+ "web_endpoint": {
+  "median_ms": 356.4,
+  "p95_ms": 422.2,
+  "min_ms": 117.0
+ },
+ "direct_tunnel": {
+  "median_ms": 71.9,
+  "p95_ms": 77.1,
+  "min_ms": 50.1
+ }
+}
+Stopping app - local entrypoint completed.
+[modal-client] 2026-09-26T07:11:14+0000 Received a cancellation signal while processing input ('in-01M3E8VAZY67DVF8K8CE1MMJQ0:1790406667288-0',)
+[modal-client] 2026-09-26T07:11:14+0000 Successfully canceled input ('in-01M3E8VAZY67DVF8K8CE1MMJQ0:1790406667288-0',)
+✓ App completed. View run at 
+https://modal.com/apps/mahadikarya3/main/ap-JwMisXEDRpQKh4yvYfQkEQ

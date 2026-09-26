@@ -17,3 +17,6 @@ bench/jevbench/
 
 # raw provider responses kept by the benchmark runner
 bench/runs/*/raw/
+
+# third-party audit repo (zkousama/jagged), cloned for its published trial data; not our code
+bench/jagged/

@@ -1,0 +1,61 @@
+✓ Initialized. View run at 
+https://modal.com/apps/mahadikarya3/main/ap-tV8Ii6SDT8j6P9QRIHj4dZ
+✓ Created objects.
+├── 🔨 Created mount 
+│   /Users/aryamahadik/Documents/jev/opendecide-data/lean/modal_od.py
+├── 🔨 Created mount 
+│   /Users/aryamahadik/Documents/jev/opendecide-data/lean/train.py
+├── 🔨 Created mount /Users/aryamahadik/Documents/jev/bench/splits
+├── 🔨 Created mount 
+│   /Users/aryamahadik/Documents/jev/bench/jevbench/datasets/public
+├── 🔨 Created mount /Users/aryamahadik/Documents/jev/opendecide-data/lean/data
+├── 🔨 Created mount PythonPackage:decoder_io, PythonPackage:train_decoder, 
+│   PythonPackage:hc, PythonPackage:jevbench_od
+├── 🔨 Created mount PythonPackage:decoder_io, PythonPackage:gliclass_io, 
+│   PythonPackage:train_decoder, PythonPackage:hc, PythonPackage:jevbench_od
+├── 🔨 Created mount /Users/aryamahadik/Documents/jev/bench/jevbench/jevbench
+├── 🔨 Created function zeroshot35.
+├── 🔨 Created function train_remote35.
+├── 🔨 Created function eval_remote35.
+├── 🔨 Created function latency35.
+├── 🔨 Created function hc_remote35.
+├── 🔨 Created function jevbench_remote35.
+├── 🔨 Created function gen_diag_remote.
+├── 🔨 Created function zeroshot.
+├── 🔨 Created function train_remote.
+├── 🔨 Created function train_gliclass_remote.
+├── 🔨 Created function eval_remote.
+├── 🔨 Created function latency_l4.
+├── 🔨 Created function hc_recall_remote.
+├── 🔨 Created function hc_shortlist_remote.
+├── 🔨 Created function hc_remote.
+└── 🔨 Created function jevbench_remote.
+/usr/local/lib/python3.12/site-packages/huggingface_hub/constants.py:302: FutureWarning: The `HF_HUB_ENABLE_HF_TRANSFER` environment variable is deprecated as 'hf_transfer' is not used anymore. Please use `HF_XET_HIGH_PERFORMANCE` instead to enable high performance transfer with Xet. Visit https://huggingface.co/docs/huggingface_hub/package_reference/environment_variables#hfxethighperformance for more details.
+  warnings.warn(
+
+[1ALoading weights:   0%|          | 0/320 [00:00<?, ?it/s]
+[1ALoading weights:   7%|▋         | 21/320 [00:00<00:04, 60.45it/s]
+[1ALoading weights:  11%|█         | 34/320 [00:00<00:04, 67.52it/s]
+[1ALoading weights:  16%|█▋        | 52/320 [00:00<00:02, 95.16it/s]
+[1ALoading weights:  20%|██        | 64/320 [00:00<00:02, 97.99it/s]
+[1ALoading weights:  28%|██▊       | 91/320 [00:00<00:01, 142.87it/s]
+[1ALoading weights:  38%|███▊      | 120/320 [00:00<00:01, 183.19it/s]
+[1ALoading weights:  47%|████▋     | 150/320 [00:01<00:00, 215.72it/s]
+[1ALoading weights:  55%|█████▍    | 175/320 [00:01<00:00, 225.40it/s]
+[1ALoading weights:  62%|██████▎   | 200/320 [00:01<00:00, 215.85it/s]
+[1ALoading weights: 100%|██████████| 320/320 [00:01<00:00, 248.88it/s]
+[transformers] `causal_conv1d_fn` is falling back to its reference PyTorch implementation because `causal_conv1d` is not installed. This is correct but much slower; install `causal_conv1d` for the optimized kernel.
+an error occurred during closing of asynchronous generator <async_generator object async_merge at 0x118c1e2c0>
+asyncgen: <async_generator object async_merge at 0x118c1e2c0>
+Traceback (most recent call last):
+  File "/Users/aryamahadik/Documents/jev/opendecide-data/.venv/lib/python3.12/site-packages/modal/_utils/async_utils.py", line 856, in __iter__
+    yield from run_async_gen(runner, self._async_iterable)
+GeneratorExit
+
+During handling of the above exception, another exception occurred:
+
+RuntimeError: aclose(): asynchronous generator is already running
+wrote preds_devp_card/qwen3.5-2b_zs.jsonl (1728 rows)
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/mahadikarya3/main/ap-tV8Ii6SDT8j6P9QRIHj4dZ

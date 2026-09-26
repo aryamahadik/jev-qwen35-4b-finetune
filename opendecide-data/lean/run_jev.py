@@ -61,6 +61,8 @@ def card_defs(card):
 
 def question(r):
     card = r.get("card")
+    if r["qtype"] == "noul" and r.get("noul_criteria"):  # native yes/no definitions (as the audit sent them)
+        return Noul(instructions=GUARD + r["instructions"], criteria=r["noul_criteria"])
     if r["qtype"] == "noul":
         extra = f"\n\nLabel definitions for this task:\n{card}" if card else ""
         return Noul(instructions=GUARD + r["instructions"] + extra)

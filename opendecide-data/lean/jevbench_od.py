@@ -83,10 +83,10 @@ class OpenDecideAdapter:
     name = "opendecide_local"
     cost_basis = "self_hosted_gpu"
 
-    def __init__(self, model, tok, temps=None, label="opendecide", think_below=None, fmt="od"):
+    def __init__(self, model, tok, temps=None, label="opendecide", think_below=None, fmt="od", calc=False):
         """think_below: if the System-1 top probability is below this, take the System-2 path (None = never).
         fmt: 'od' (our trained prompt), 'inline' (descriptions inline), 'cygnet' (Cygnet's published layout)."""
-        self.think_below, self.fmt = think_below, fmt
+        self.think_below, self.fmt, self.calc = think_below, fmt, calc
         self.model, self.tok, self.ro = model, tok, Readout(tok)
         self.temps = temps or {"noul": 1.0, "choice": 1.0}
         self.model_label = label
@@ -111,6 +111,26 @@ class OpenDecideAdapter:
             res.error = "more than 26 options"
             return res
         t0 = time.perf_counter()
+        tool = None
+        if self.calc:
+            import copy
+
+            import calc_tool
+            st = state_text(task.state)
+            opts = list((task.question.get("criteria") or {}).values()) if isinstance(task.question.get("criteria"), dict) \
+                else [str(x) for x in (task.question.get("criteria") or [])]
+            if calc_tool.route_numeric(st, task.question["instructions"]):
+                code, n_gen = calc_tool.program(self.model, self.tok, st, task.question["instructions"], opts)
+                result = calc_tool.run_program(code)
+                tool = {"routed": True, "gen_tokens": n_gen, "ok": result is not None, "code": code[:600],
+                        "result": (result or "")[:300], "error": calc_tool.LAST_ERROR["msg"]}
+                if result is not None:  # exact tool output enters as evidence, then the normal readout decides
+                    t2 = copy.copy(task)
+                    t2.state = st.rstrip() + "\n\n[Calculator output, computed exactly from the text above]\n" + result
+                    if self.fmt == "od":
+                        row, keys = to_row(t2)
+                    else:
+                        row, keys, yes_index = letter_row(t2, self.tok, self.fmt)
         lg = cand_logits(self.model, self.ro, [row], "cuda")[0]
         torch.cuda.synchronize()
         res.latency_s = time.perf_counter() - t0
@@ -128,9 +148,10 @@ class OpenDecideAdapter:
         else:
             res.probs = {"yes": pr[0], "no": pr[1]} if row["qtype"] == "noul" else dict(zip(keys, pr))
         n_in = len(self.tok(row.get("_prompt") or self.ro.prompt(row), add_special_tokens=False)["input_ids"])
-        res.usage = {"input_tokens": n_in, "output_tokens": thought["new_tokens"] if thought else 0}
+        res.usage = {"input_tokens": n_in, "output_tokens": (thought["new_tokens"] if thought else 0)
+                     + ((tool or {}).get("gen_tokens") or 0)}
         res.raw = {"answer": {"probabilities": res.probs, "input_tokens": n_in},
                    "runtime": {"model": self.model_label, "readout": "candidate-token logits", "temperatures": self.temps,
-                               "system2": thought, "s1_top": s1_top}}
+                               "system2": thought, "s1_top": s1_top, "tool": tool}}
         res.ok = True
         return res

@@ -1,0 +1,14 @@
+{
+  "name": "gemma4_frozen_A_cyg_calc",
+  "base": "google/gemma-4-12B-it",
+  "adapter": "",
+  "temps": [
+    1.0,
+    1.0
+  ],
+  "gpu": "NVIDIA H100 80GB HBM3",
+  "tiers": "A",
+  "think_below": -1.0,
+  "fmt": "cygnet",
+  "calc": true
+}

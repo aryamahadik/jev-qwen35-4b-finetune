@@ -1,0 +1,71 @@
+✓ Initialized. View run at 
+https://modal.com/apps/mahadikarya3/main/ap-ZZSTRNw6RSU9NqXHrIdFhY
+✓ Created objects.
+├── 🔨 Created mount 
+│   /Users/aryamahadik/Documents/jev/opendecide-data/lean/modal_od.py
+├── 🔨 Created mount 
+│   /Users/aryamahadik/Documents/jev/opendecide-data/lean/train.py
+├── 🔨 Created mount /Users/aryamahadik/Documents/jev/bench/splits
+├── 🔨 Created mount 
+│   /Users/aryamahadik/Documents/jev/bench/jevbench/datasets/public
+├── 🔨 Created mount /Users/aryamahadik/Documents/jev/opendecide-data/lean/data
+├── 🔨 Created mount PythonPackage:decoder_io, PythonPackage:train_decoder, 
+│   PythonPackage:hc, PythonPackage:jevbench_od
+├── 🔨 Created mount PythonPackage:decoder_io, PythonPackage:gliclass_io, 
+│   PythonPackage:train_decoder, PythonPackage:hc, PythonPackage:jevbench_od
+├── 🔨 Created mount /Users/aryamahadik/Documents/jev/bench/jevbench/jevbench
+├── 🔨 Created function zeroshot.
+├── 🔨 Created function train_remote.
+├── 🔨 Created function train_gliclass_remote.
+├── 🔨 Created function eval_remote.
+├── 🔨 Created function latency_l4.
+├── 🔨 Created function hc_recall_remote.
+├── 🔨 Created function hc_shortlist_remote.
+├── 🔨 Created function hc_remote.
+├── 🔨 Created function jevbench_remote.
+├── 🔨 Created function zeroshot35.
+├── 🔨 Created function train_remote35.
+├── 🔨 Created function eval_remote35.
+├── 🔨 Created function latency35.
+├── 🔨 Created function hc_remote35.
+├── 🔨 Created function jevbench_remote35.
+└── 🔨 Created function gen_diag_remote.
+/usr/local/lib/python3.12/site-packages/huggingface_hub/constants.py:302: FutureWarning: The `HF_HUB_ENABLE_HF_TRANSFER` environment variable is deprecated as 'hf_transfer' is not used anymore. Please use `HF_XET_HIGH_PERFORMANCE` instead to enable high performance transfer with Xet. Visit https://huggingface.co/docs/huggingface_hub/package_reference/environment_variables#hfxethighperformance for more details.
+  warnings.warn(
+
+[1AFetching 2 files:   0%|          | 0/2 [00:00<?, ?it/s]
+[1AFetching 2 files: 100%|██████████| 2/2 [00:00<00:00, 658.24it/s]
+
+[1ALoading weights:   0%|          | 0/426 [00:00<?, ?it/s]
+[1ALoading weights:   3%|▎         | 12/426 [00:00<00:05, 70.15it/s]
+[1ALoading weights:   5%|▍         | 20/426 [00:01<00:34, 11.84it/s]
+[1ALoading weights:   8%|▊         | 33/426 [00:01<00:17, 22.85it/s]
+[1ALoading weights:  12%|█▏        | 51/426 [00:01<00:09, 41.01it/s]
+[1ALoading weights:  15%|█▌        | 66/426 [00:01<00:06, 56.51it/s]
+[1ALoading weights:  20%|█▉        | 84/426 [00:01<00:04, 77.01it/s]
+[1ALoading weights:  26%|██▌       | 109/426 [00:01<00:02, 109.27it/s]
+[1ALoading weights:  30%|██▉       | 127/426 [00:02<00:02, 124.11it/s]
+[1ALoading weights:  35%|███▍      | 149/426 [00:02<00:01, 146.31it/s]
+[1ALoading weights:  39%|███▉      | 168/426 [00:02<00:01, 157.25it/s]
+[1ALoading weights:  44%|████▍     | 187/426 [00:02<00:01, 164.95it/s]
+[1ALoading weights:  48%|████▊     | 206/426 [00:02<00:01, 168.78it/s]
+[1ALoading weights:  54%|█████▍    | 231/426 [00:02<00:01, 190.89it/s]
+[1ALoading weights:  59%|█████▉    | 252/426 [00:02<00:00, 177.26it/s]
+[1ALoading weights:  65%|██████▍   | 276/426 [00:02<00:00, 192.61it/s]
+[1ALoading weights: 100%|██████████| 426/426 [00:02<00:00, 147.68it/s]
+[transformers] `causal_conv1d_fn` is falling back to its reference PyTorch implementation because `causal_conv1d` is not installed. This is correct but much slower; install `causal_conv1d` for the optimized kernel.
+10/118 completed
+20/118 completed
+30/118 completed
+40/118 completed
+50/118 completed
+60/118 completed
+70/118 completed
+80/118 completed
+90/118 completed
+100/118 completed
+110/118 completed
+q35_4b_cyg_A: 94/118 correct on A (NVIDIA L40S)
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/mahadikarya3/main/ap-ZZSTRNw6RSU9NqXHrIdFhY

@@ -1,0 +1,68 @@
+✓ Initialized. View run at 
+https://modal.com/apps/mahadikarya3/main/ap-PTmt8H4xSVvLLAMd1KQdh7
+✓ Created objects.
+├── 🔨 Created mount 
+│   /Users/aryamahadik/Documents/jev/opendecide-data/lean/modal_od.py
+├── 🔨 Created mount 
+│   /Users/aryamahadik/Documents/jev/opendecide-data/lean/train.py
+├── 🔨 Created mount /Users/aryamahadik/Documents/jev/bench/splits
+├── 🔨 Created mount 
+│   /Users/aryamahadik/Documents/jev/bench/jevbench/datasets/public
+├── 🔨 Created mount /Users/aryamahadik/Documents/jev/opendecide-data/lean/data
+├── 🔨 Created mount PythonPackage:decoder_io, PythonPackage:train_decoder, 
+│   PythonPackage:hc, PythonPackage:jevbench_od, PythonPackage:calc_tool
+├── 🔨 Created mount /Users/aryamahadik/Documents/jev/bench/jevbench/jevbench
+├── 🔨 Created mount PythonPackage:decoder_io, PythonPackage:gliclass_io, 
+│   PythonPackage:train_decoder, PythonPackage:hc, PythonPackage:jevbench_od, 
+│   PythonPackage:calc_tool
+├── 🔨 Created function zeroshot35.
+├── 🔨 Created function train_remote35.
+├── 🔨 Created function eval_remote35.
+├── 🔨 Created function latency35.
+├── 🔨 Created function hc_remote35.
+├── 🔨 Created function jevbench_remote35.
+├── 🔨 Created function gen_diag_remote.
+├── 🔨 Created function zeroshot.
+├── 🔨 Created function train_remote.
+├── 🔨 Created function train_gliclass_remote.
+├── 🔨 Created function eval_remote.
+├── 🔨 Created function latency_l4.
+├── 🔨 Created function hc_recall_remote.
+├── 🔨 Created function hc_shortlist_remote.
+├── 🔨 Created function hc_remote.
+└── 🔨 Created function jevbench_remote.
+/usr/local/lib/python3.12/site-packages/huggingface_hub/constants.py:302: FutureWarning: The `HF_HUB_ENABLE_HF_TRANSFER` environment variable is deprecated as 'hf_transfer' is not used anymore. Please use `HF_XET_HIGH_PERFORMANCE` instead to enable high performance transfer with Xet. Visit https://huggingface.co/docs/huggingface_hub/package_reference/environment_variables#hfxethighperformance for more details.
+  warnings.warn(
+
+[1ALoading weights:   0%|          | 0/677 [00:00<?, ?it/s]
+[1ALoading weights:   2%|▏         | 14/677 [00:00<00:05, 124.42it/s]
+[1ALoading weights:   5%|▍         | 33/677 [00:00<00:04, 156.50it/s]
+[1ALoading weights:   7%|▋         | 49/677 [00:00<00:04, 140.75it/s]
+[1ALoading weights:   9%|▉         | 64/677 [00:00<00:04, 130.25it/s]
+[1ALoading weights:  12%|█▏        | 81/677 [00:00<00:04, 132.33it/s]
+[1ALoading weights:  15%|█▍        | 100/677 [00:00<00:03, 149.19it/s]
+[1ALoading weights:  17%|█▋        | 116/677 [00:00<00:03, 147.03it/s]
+[1ALoading weights:  20%|██        | 137/677 [00:00<00:03, 160.33it/s]
+[1ALoading weights:  23%|██▎       | 154/677 [00:01<00:03, 146.28it/s]
+[1ALoading weights:  25%|██▍       | 169/677 [00:01<00:03, 146.16it/s]
+[1ALoading weights:  27%|██▋       | 184/677 [00:01<00:03, 140.66it/s]
+[1ALoading weights:  30%|██▉       | 200/677 [00:01<00:03, 145.64it/s]
+[1ALoading weights:  32%|███▏      | 217/677 [00:01<00:03, 152.26it/s]
+[1ALoading weights:  35%|███▍      | 234/677 [00:01<00:02, 156.71it/s]
+[1ALoading weights:  38%|███▊      | 254/677 [00:01<00:02, 164.27it/s]
+[1ALoading weights:  40%|████      | 271/677 [00:01<00:02, 157.13it/s]
+[1ALoading weights:  42%|████▏     | 287/677 [00:01<00:02, 138.29it/s]
+[1ALoading weights:  45%|████▍     | 304/677 [00:02<00:02, 146.46it/s]
+[1ALoading weights:  48%|████▊     | 322/677 [00:02<00:02, 149.37it/s]
+[1ALoading weights:  50%|████▉     | 338/677 [00:02<00:02, 141.31it/s]
+[1ALoading weights:  52%|█████▏    | 353/677 [00:02<00:02, 138.82it/s]
+[1ALoading weights:  55%|█████▌    | 373/677 [00:02<00:01, 152.90it/s]
+[1ALoading weights:  57%|█████▋    | 389/677 [00:02<00:01, 149.09it/s]
+[1ALoading weights:  60%|█████▉    | 406/677 [00:02<00:01, 154.78it/s]
+[1ALoading weights:  62%|██████▏   | 422/677 [00:02<00:01, 155.76it/s]
+[1ALoading weights:  65%|██████▍   | 438/677 [00:02<00:01, 141.27it/s]
+[1ALoading weights: 100%|██████████| 677/677 [00:03<00:00, 225.04it/s]
+wrote preds_eval_jagged/g12_v06_A3.jsonl (972 rows)
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/mahadikarya3/main/ap-PTmt8H4xSVvLLAMd1KQdh7

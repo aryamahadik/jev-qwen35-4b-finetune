@@ -1,0 +1,14 @@
+{
+  "name": "gemma_calc_debug",
+  "base": "google/gemma-4-12B-it",
+  "adapter": "",
+  "temps": [
+    1.0,
+    1.0
+  ],
+  "gpu": "NVIDIA H100 80GB HBM3",
+  "tiers": "Anum",
+  "think_below": -1.0,
+  "fmt": "cygnet",
+  "calc": true
+}

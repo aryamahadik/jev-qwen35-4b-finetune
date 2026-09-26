@@ -1,0 +1,59 @@
+✓ Initialized. View run at 
+https://modal.com/apps/mahadikarya3/main/ap-KpBqqmuAULCTKyyVS4zxbT
+✓ Created objects.
+├── 🔨 Created mount 
+│   /Users/aryamahadik/Documents/jev/opendecide-data/lean/modal_od.py
+├── 🔨 Created mount 
+│   /Users/aryamahadik/Documents/jev/opendecide-data/lean/train.py
+├── 🔨 Created mount /Users/aryamahadik/Documents/jev/bench/splits
+├── 🔨 Created mount 
+│   /Users/aryamahadik/Documents/jev/bench/jevbench/datasets/public
+├── 🔨 Created mount /Users/aryamahadik/Documents/jev/opendecide-data/lean/data
+├── 🔨 Created mount PythonPackage:decoder_io, PythonPackage:gliclass_io, 
+│   PythonPackage:train_decoder, PythonPackage:hc, PythonPackage:jevbench_od, 
+│   PythonPackage:calc_tool
+├── 🔨 Created mount PythonPackage:decoder_io, PythonPackage:train_decoder, 
+│   PythonPackage:hc, PythonPackage:jevbench_od, PythonPackage:calc_tool, 
+│   PythonPackage:writeblock
+├── 🔨 Created mount /Users/aryamahadik/Documents/jev/bench/jevbench/jevbench
+├── 🔨 Created function train_remote.
+├── 🔨 Created function zeroshot.
+├── 🔨 Created function train_gliclass_remote.
+├── 🔨 Created function latency_l4.
+├── 🔨 Created function hc_shortlist_remote.
+├── 🔨 Created function hc_recall_remote.
+├── 🔨 Created function hc_remote.
+├── 🔨 Created function hc_scale_remote.
+├── 🔨 Created function eval_remote.
+├── 🔨 Created function jevbench_remote.
+├── 🔨 Created function zeroshot35.
+├── 🔨 Created function train_remote35.
+├── 🔨 Created function eval_remote35.
+├── 🔨 Created function latency35.
+├── 🔨 Created function hc_remote35.
+├── 🔨 Created function jevbench_remote35.
+├── 🔨 Created function gen_diag_remote.
+└── 🔨 Created function writeblock_probe_remote.
+/usr/local/lib/python3.12/site-packages/huggingface_hub/constants.py:302: FutureWarning: The `HF_HUB_ENABLE_HF_TRANSFER` environment variable is deprecated as 'hf_transfer' is not used anymore. Please use `HF_XET_HIGH_PERFORMANCE` instead to enable high performance transfer with Xet. Visit https://huggingface.co/docs/huggingface_hub/package_reference/environment_variables#hfxethighperformance for more details.
+  warnings.warn(
+
+[1ALoading weights:   0%|          | 0/320 [00:00<?, ?it/s]
+[1ALoading weights:  59%|█████▉    | 189/320 [00:00<00:00, 1888.24it/s]
+[1ALoading weights: 100%|██████████| 320/320 [00:00<00:00, 2686.27it/s]
+[transformers] `causal_conv1d_fn` is falling back to its reference PyTorch implementation because `causal_conv1d` is not installed. This is correct but much slower; install `causal_conv1d` for the optimized kernel.
+{
+ "on": {
+  "policy_heads_max_diff": 0.0001220703125,
+  "data_heads_max_diff": 0.0010986328125
+ },
+ "off": {
+  "policy_heads_max_diff": 0.0009765625,
+  "data_heads_max_diff": 0.0010986328125
+ }
+}
+wrote preds_devp_card/q35_08b_wb_on.jsonl (1728 rows)
+wrote preds_devp_card/q35_08b_wb_off.jsonl (1728 rows)
+Stopping app - local entrypoint completed.
+Runner terminated.
+✓ App completed. View run at 
+https://modal.com/apps/mahadikarya3/main/ap-KpBqqmuAULCTKyyVS4zxbT

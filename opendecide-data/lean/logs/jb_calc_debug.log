@@ -1,0 +1,69 @@
+✓ Initialized. View run at 
+https://modal.com/apps/mahadikarya3/main/ap-QKRPyws0ROzd7Xgd6lVTCJ
+✓ Created objects.
+├── 🔨 Created mount 
+│   /Users/aryamahadik/Documents/jev/opendecide-data/lean/modal_od.py
+├── 🔨 Created mount 
+│   /Users/aryamahadik/Documents/jev/opendecide-data/lean/train.py
+├── 🔨 Created mount /Users/aryamahadik/Documents/jev/bench/splits
+├── 🔨 Created mount 
+│   /Users/aryamahadik/Documents/jev/bench/jevbench/datasets/public
+├── 🔨 Created mount /Users/aryamahadik/Documents/jev/opendecide-data/lean/data
+├── 🔨 Created mount PythonPackage:decoder_io, PythonPackage:train_decoder, 
+│   PythonPackage:hc, PythonPackage:jevbench_od, PythonPackage:calc_tool
+├── 🔨 Created mount PythonPackage:decoder_io, PythonPackage:gliclass_io, 
+│   PythonPackage:train_decoder, PythonPackage:hc, PythonPackage:jevbench_od, 
+│   PythonPackage:calc_tool
+├── 🔨 Created mount /Users/aryamahadik/Documents/jev/bench/jevbench/jevbench
+├── 🔨 Created function zeroshot.
+├── 🔨 Created function train_remote.
+├── 🔨 Created function train_gliclass_remote.
+├── 🔨 Created function eval_remote.
+├── 🔨 Created function latency_l4.
+├── 🔨 Created function hc_recall_remote.
+├── 🔨 Created function hc_shortlist_remote.
+├── 🔨 Created function hc_remote.
+├── 🔨 Created function jevbench_remote.
+├── 🔨 Created function zeroshot35.
+├── 🔨 Created function train_remote35.
+├── 🔨 Created function eval_remote35.
+├── 🔨 Created function latency35.
+├── 🔨 Created function hc_remote35.
+├── 🔨 Created function jevbench_remote35.
+└── 🔨 Created function gen_diag_remote.
+/usr/local/lib/python3.12/site-packages/huggingface_hub/constants.py:302: FutureWarning: The `HF_HUB_ENABLE_HF_TRANSFER` environment variable is deprecated as 'hf_transfer' is not used anymore. Please use `HF_XET_HIGH_PERFORMANCE` instead to enable high performance transfer with Xet. Visit https://huggingface.co/docs/huggingface_hub/package_reference/environment_variables#hfxethighperformance for more details.
+  warnings.warn(
+
+[1ALoading weights:   0%|          | 0/677 [00:00<?, ?it/s]
+[1ALoading weights:   2%|▏         | 14/677 [00:00<00:05, 130.11it/s]
+[1ALoading weights:   4%|▍         | 30/677 [00:00<00:04, 140.40it/s]
+[1ALoading weights:   7%|▋         | 45/677 [00:00<00:05, 115.31it/s]
+[1ALoading weights:   9%|▉         | 63/677 [00:00<00:04, 134.52it/s]
+[1ALoading weights:  11%|█▏        | 77/677 [00:00<00:04, 135.65it/s]
+[1ALoading weights:  14%|█▎        | 92/677 [00:00<00:04, 134.91it/s]
+[1ALoading weights:  17%|█▋        | 115/677 [00:00<00:03, 154.56it/s]
+[1ALoading weights:  19%|█▉        | 131/677 [00:00<00:03, 149.12it/s]
+[1ALoading weights:  22%|██▏       | 146/677 [00:01<00:03, 139.21it/s]
+[1ALoading weights:  24%|██▍       | 164/677 [00:01<00:03, 145.97it/s]
+[1ALoading weights:  26%|██▋       | 179/677 [00:01<00:03, 146.37it/s]
+[1ALoading weights:  29%|██▊       | 194/677 [00:01<00:03, 126.96it/s]
+[1ALoading weights:  31%|███       | 211/677 [00:01<00:03, 130.37it/s]
+[1ALoading weights:  33%|███▎      | 225/677 [00:01<00:03, 132.37it/s]
+[1ALoading weights:  35%|███▌      | 239/677 [00:01<00:03, 133.89it/s]
+[1ALoading weights:  38%|███▊      | 258/677 [00:01<00:03, 137.39it/s]
+[1ALoading weights:  41%|████      | 277/677 [00:02<00:02, 142.43it/s]
+[1ALoading weights:  43%|████▎     | 294/677 [00:02<00:02, 147.40it/s]
+[1ALoading weights:  46%|████▋     | 314/677 [00:02<00:02, 152.52it/s]
+[1ALoading weights:  49%|████▊     | 330/677 [00:02<00:02, 144.08it/s]
+[1ALoading weights:  51%|█████▏    | 347/677 [00:02<00:02, 145.53it/s]
+[1ALoading weights:  54%|█████▍    | 367/677 [00:02<00:01, 159.60it/s]
+[1ALoading weights:  57%|█████▋    | 384/677 [00:02<00:01, 158.18it/s]
+[1ALoading weights:  59%|█████▉    | 401/677 [00:02<00:01, 153.05it/s]
+[1ALoading weights:  62%|██████▏   | 417/677 [00:02<00:01, 153.92it/s]
+[1ALoading weights:  64%|██████▍   | 436/677 [00:03<00:01, 163.71it/s]
+[1ALoading weights: 100%|██████████| 677/677 [00:03<00:00, 220.76it/s]
+10/13 completed
+gemma_calc_debug: 9/13 correct on Anum (NVIDIA H100 80GB HBM3)
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/mahadikarya3/main/ap-QKRPyws0ROzd7Xgd6lVTCJ
