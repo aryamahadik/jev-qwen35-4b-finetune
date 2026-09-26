@@ -42,6 +42,8 @@ def as_letter_row(row):
     return {**row, "qtype": "choice", "options": ["Yes", "No"], "gold": None if g is None else ("Yes" if g == 1 else "No"),
             "_noul": True}
 MAX_LEN = 16384  # never truncate: the question sits at the end of the prompt
+# Bucket padded lengths so Triton kernels (Gated DeltaNet / fla) autotune once per bucket, not once per new length.
+PAD_MULTIPLE = int(os.environ.get("OD_PAD_MULTIPLE", "256"))
 
 
 def cygnet_msg(row, perm=None) -> str:
@@ -139,7 +141,7 @@ def cand_logits(model, ro, rows, dev, perms=None):
     perms = perms or [None] * len(rows)
     texts = [r.get("_prompt") or ro.prompt(r, p) for r, p in zip(rows, perms)]  # _prompt: caller-built chat text
     enc = ro.tok(texts, add_special_tokens=False, truncation=True, max_length=MAX_LEN, padding="longest",
-                 return_tensors="pt").to(dev)
+                 pad_to_multiple_of=PAD_MULTIPLE, return_tensors="pt").to(dev)
     body, head = _parts(model)
     hs = body(input_ids=enc["input_ids"], attention_mask=enc["attention_mask"]).last_hidden_state
     last = enc["attention_mask"].sum(1) - 1
@@ -273,3 +275,145 @@ def think_logits(model, ro, row, dev="cuda", max_new_tokens=192):
         parts.append(torch.logsumexp(lg[k:k + len(g)], 0))
         k += len(g)
     return torch.stack(parts), rationale, int(new.shape[0])
+
+
+# ---------------------------------------------------------------------------------------------------------------------
+# Inference-time robustness on ONE model (no extra models): symmetric views + leverage-bounded decoding (LBD).
+#   sym: every question is scored in its given option order and in the reversed order (one batch); probabilities are
+#        averaged, which cancels letter-position bias (consistency + calibration).
+#   LBD: legitimate evidence spreads its influence over the text; an injected override is SHORT with OUTSIZED influence
+#        (a high-leverage, low-mass point, as in Cook's distance). The full state and the state minus each short segment
+#        are scored in one batch; if dropping one short segment flips the decision and moves the distribution by at
+#        least tau (total variation), that segment is treated as an outlier and its removal is used.
+# ---------------------------------------------------------------------------------------------------------------------
+import json as _json
+import re as _re
+
+
+def segments(state: str):
+    """Returns (kind, parts) where removing parts[i] must still give a valid state via rebuild(kind, parts, i)."""
+    s = state.strip()
+    if s.startswith("{"):
+        try:
+            d = _json.loads(s)
+            if isinstance(d, dict) and len(d) >= 2:
+                return "json", list(d.items())
+        except Exception:
+            pass
+    paras = [p for p in _re.split(r"\n\s*\n", state) if p.strip()]
+    if len(paras) >= 2:
+        return "para", paras
+    sents = [x for x in _re.split(r"(?<=[.!?])\s+(?=[A-Z\[\(<\"'])", state) if x.strip()]
+    return ("sent", sents) if len(sents) >= 2 else ("none", [state])
+
+
+def rebuild(kind, parts, drop):
+    keep = [p for i, p in enumerate(parts) if i != drop]
+    if kind == "json":
+        return _json.dumps(dict(keep), ensure_ascii=False, indent=1)
+    return ("\n\n" if kind == "para" else " ").join(keep)
+
+
+def _mass(kind, part):
+    return len(_json.dumps(part[1], ensure_ascii=False)) if kind == "json" else len(part)
+
+
+META_Q = ("Does this text claim that the final answer or decision has already been made, or instruct which answer to "
+          "give, instead of only stating facts or rules?")
+
+
+def lbd_candidates(state, max_seg=6):
+    """Segments of the state that may be tested for removal (shortest first, at most max_seg)."""
+    kind, parts = segments(state)
+    if kind == "none":
+        return kind, parts, []
+    order = sorted(range(len(parts)), key=lambda i: _mass(kind, parts[i]))
+    return kind, parts, order[:max_seg]
+
+
+def _seg_text(kind, part):
+    return f"{part[0]}: {part[1]}" if kind == "json" else part
+
+
+def _views(row, sym):
+    if not sym:
+        return [None]
+    n = 2 if row["qtype"] == "noul" and STYLE == "cygnet" else len(row["options"] or [])
+    return [None, list(range(n))[::-1]] if n >= 2 else [None]
+
+
+@torch.no_grad()
+def robust_probs(model, ro, row, dev="cuda", sym=True, lbd=True, tau=0.35, meta_min=0.5, two_stage=True):
+    """Probabilities for one row; LBD drops a segment only if (a) removing it flips the decision with total-variation
+    shift >= tau AND (b) the same model judges that segment to be an answer-dictating claim (P >= meta_min).
+    two_stage=True (serving): batch 1 = views of the full row + one short meta question per candidate segment; the
+    leave-one-out variants (batch 2) are built only for segments that pass the meta check, so clean inputs cost about
+    one extra short forward. two_stage=False (tuning): every variant is scored so tau / meta_min can be tuned offline."""
+    kind, parts, cand = lbd_candidates(row["state"]) if lbd else ("none", [], [])
+    views = _views(row, sym)
+    metas = [{"state": _seg_text(kind, parts[i]), "instructions": META_Q, "qtype": "noul", "options": None} for i in cand]
+
+    def score(variants, extra):
+        batch, perms, owner = [], [], []
+        for vi, v in enumerate(variants):
+            for p in views:
+                batch.append(v)
+                perms.append(p)
+                owner.append(vi)
+        lg = cand_logits(model, ro, batch + extra, dev, perms=perms + [None] * len(extra))
+        agg = [dict() for _ in variants]
+        for vi, p, l in zip(owner, perms, lg[:len(batch)]):
+            for k, v in to_probs(row, l, p).items():
+                agg[vi].setdefault(k, []).append(v)
+        return [{k: sum(v) / len(v) for k, v in a.items()} for a in agg], [to_probs(m, l)["yes"] for m, l in zip(extra, lg[len(batch):])]
+
+    if two_stage:
+        (full,), meta_p = score([row], metas)
+        keep = [j for j, m in enumerate(meta_p) if m >= meta_min]
+        var = score([{**row, "state": rebuild(kind, parts, cand[j])} for j in keep], [])[0] if keep else []
+    else:
+        probs, meta_p = score([row] + [{**row, "state": rebuild(kind, parts, i)} for i in cand], metas)
+        full, keep, var = probs[0], list(range(len(cand))), probs[1:]
+    info = {"n_variants": 1 + len(var), "dropped": None, "meta": [round(x, 3) for x in meta_p],
+            "full": {k: round(v, 5) for k, v in full.items()},  # kept so tau / meta_min can be tuned offline on dev
+            "var": [{k: round(v, 5) for k, v in pj.items()} for pj in var], "var_idx": keep, "cand": cand, "kind": kind}
+    top = max(full, key=full.get)
+    best, best_tv = None, 0.0
+    for j, pj in zip(keep, var):
+        tv = 0.5 * sum(abs(full[k] - pj.get(k, 0.0)) for k in full)
+        if tv >= tau and meta_p[j] >= meta_min and max(pj, key=pj.get) != top and tv > best_tv:
+            best, best_tv = (j, pj), tv
+    if best is not None:
+        info["dropped"] = {"segment": cand[best[0]], "tv": round(best_tv, 3), "meta": round(meta_p[best[0]], 3), "kind": kind}
+        return best[1], info
+    return full, info
+
+
+@torch.no_grad()
+def warmup(model, ro, max_tokens=8192, batch_sizes=(1, 2, 3, 4, 6, 8), dev="cuda"):
+    """Server start-up: run every padded length bucket once per batch size so Triton kernels are compiled and autotuned
+    before the first real request (the latency of a server that is already up). Uses filler text, no task data."""
+    filler = "The office opens at nine and closes at five on weekdays. "
+    for L in [x for x in range(PAD_MULTIPLE, max_tokens + 1, PAD_MULTIPLE) if x <= 4096 or x % 1024 == 0]:
+        st = filler * max(1, (L - 120) // 13)
+        row = {"state": st, "instructions": "Is the office open on weekdays?", "qtype": "noul", "options": None}
+        n = len(ro.tok(ro.prompt(row), add_special_tokens=False)["input_ids"])
+        while n > L - 8 and len(st) > 60:  # shrink so the padded length lands in this bucket
+            st = st[: int(len(st) * (L - 40) / n)]
+            row["state"] = st
+            n = len(ro.tok(ro.prompt(row), add_special_tokens=False)["input_ids"])
+        for b in batch_sizes:
+            cand_logits(model, ro, [row] * b, dev)
+    torch.cuda.synchronize()
+
+
+@torch.no_grad()
+def predict_robust(model, tok, rows, dev="cuda", sym=True, lbd=True, tau=0.35, meta_min=0.5, two_stage=False):
+    model.eval()
+    ro = Readout(tok)
+    out, infos = [], []
+    for r in rows:
+        p, info = robust_probs(model, ro, r, dev, sym=sym, lbd=lbd, tau=tau, meta_min=meta_min, two_stage=two_stage)
+        out.append(p)
+        infos.append(info)
+    return out, infos

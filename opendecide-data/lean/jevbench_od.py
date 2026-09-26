@@ -13,7 +13,7 @@ import time
 
 import torch
 
-from decoder_io import Readout, cand_logits, think_logits
+from decoder_io import Readout, cand_logits, robust_probs, think_logits
 
 
 def state_text(state) -> str:
@@ -83,10 +83,11 @@ class OpenDecideAdapter:
     name = "opendecide_local"
     cost_basis = "self_hosted_gpu"
 
-    def __init__(self, model, tok, temps=None, label="opendecide", think_below=None, fmt="od", calc=False):
+    def __init__(self, model, tok, temps=None, label="opendecide", think_below=None, fmt="od", calc=False, robust=None):
         """think_below: if the System-1 top probability is below this, take the System-2 path (None = never).
         fmt: 'od' (our trained prompt), 'inline' (descriptions inline), 'cygnet' (Cygnet's published layout)."""
         self.think_below, self.fmt, self.calc = think_below, fmt, calc
+        self.robust = robust  # None, or {"sym": bool, "lbd": bool, "tau": float, "meta_min": float}
         self.model, self.tok, self.ro = model, tok, Readout(tok)
         self.temps = temps or {"noul": 1.0, "choice": 1.0}
         self.model_label = label
@@ -131,11 +132,23 @@ class OpenDecideAdapter:
                         row, keys = to_row(t2)
                     else:
                         row, keys, yes_index = letter_row(t2, self.tok, self.fmt)
-        lg = cand_logits(self.model, self.ro, [row], "cuda")[0]
-        torch.cuda.synchronize()
-        res.latency_s = time.perf_counter() - t0
         T = self.temps["noul" if (row["qtype"] == "noul" or yes_index is not None) else "choice"]
-        pr = torch.softmax(lg / T, -1).tolist()
+        rob_info = None
+        if self.robust and self.fmt in ("od", "cygnet"):  # full system: symmetric views + leverage-bounded decoding
+            import math
+            # cygnet: decoder_io rebuilds the identical letter prompt per view/variant (so drop the prebuilt one)
+            probs, rob_info = robust_probs(self.model, self.ro, {k: v for k, v in row.items() if k != "_prompt"}, "cuda",
+                                           **self.robust)
+            torch.cuda.synchronize()
+            res.latency_s = time.perf_counter() - t0
+            order = ["yes", "no"] if row["qtype"] == "noul" else row["options"]
+            z = [math.exp(math.log(max(probs[o], 1e-12)) / T) for o in order]
+            pr = [v / sum(z) for v in z]
+        else:
+            lg = cand_logits(self.model, self.ro, [row], "cuda")[0]
+            torch.cuda.synchronize()
+            res.latency_s = time.perf_counter() - t0
+            pr = torch.softmax(lg / T, -1).tolist()
         s1_top, thought = max(pr), None
         if self.think_below is not None and s1_top < self.think_below:
             lg2, rationale, n_new = think_logits(self.model, self.ro, row, "cuda")
@@ -152,6 +165,6 @@ class OpenDecideAdapter:
                      + ((tool or {}).get("gen_tokens") or 0)}
         res.raw = {"answer": {"probabilities": res.probs, "input_tokens": n_in},
                    "runtime": {"model": self.model_label, "readout": "candidate-token logits", "temperatures": self.temps,
-                               "system2": thought, "s1_top": s1_top, "tool": tool}}
+                               "system2": thought, "s1_top": s1_top, "tool": tool, "robust": rob_info}}
         res.ok = True
         return res

@@ -103,8 +103,14 @@ def train(cfg: dict, data_dir: Path, out_dir: Path, dev="cuda") -> dict:
                 task.append(-(y * logp[iy] + (1 - y) * logp[in_]))
                 pidx[r["id"]] = logp[iy].exp()
             else:
-                gi = perm.index(r["options"].index(r["gold"]))
-                task.append(F.cross_entropy(l.unsqueeze(0), torch.tensor([gi], device=dev), label_smoothing=0.05))
+                gp = (r.get("meta") or {}).get("gold_probs")
+                if gp:  # exact probabilistic target (e.g. Bayes posterior): soft cross-entropy on the displayed order
+                    q = torch.tensor([float(gp.get(r["options"][i], 0.0)) for i in perm], device=dev)
+                    q = 0.97 * q / q.sum() + 0.03 / len(perm)
+                    task.append(-(q * F.log_softmax(l, -1)).sum())
+                else:
+                    gi = perm.index(r["options"].index(r["gold"]))
+                    task.append(F.cross_entropy(l.unsqueeze(0), torch.tensor([gi], device=dev), label_smoothing=0.05))
         loss_task = torch.stack(task).mean()
         loss = loss_task
         if c["recipe"] != "A0":
@@ -123,7 +129,7 @@ def train(cfg: dict, data_dir: Path, out_dir: Path, dev="cuda") -> dict:
         torch.nn.utils.clip_grad_norm_(params, 1.0)
         opt.step()
         sched.step()
-        if step % 25 == 0 or step == n_steps - 1:
+        if step % c.get("log_every", 25) == 0 or step == n_steps - 1:
             rec = {"step": step, "of": n_steps, "loss": round(loss.item(), 4), "task": round(loss_task.item(), 4),
                    "cons": round(torch.stack(cons).mean().item(), 4) if cons else None,
                    "kl": round(kl.item(), 4) if kl is not None else None,
