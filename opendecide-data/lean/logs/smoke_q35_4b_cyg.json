@@ -1,0 +1,46 @@
+{
+  "cfg": {
+    "recipe": "A3",
+    "epochs": 0.01,
+    "lr": 5e-05,
+    "batch": 16,
+    "lam": 0.5,
+    "r": 16,
+    "alpha": 32,
+    "dropout": 0.05,
+    "beta": 1.0,
+    "seed": 20260925,
+    "train_file": "train_v06s.jsonl",
+    "rel_file": "train_v06s_relations.jsonl",
+    "grad_ckpt": true,
+    "base": "Qwen/Qwen3.5-4B",
+    "style": "cygnet",
+    "targets": ".*layers\\.\\d+\\..*\\.(q_proj|k_proj|v_proj|o_proj|gate_proj|up_proj|down_proj|out_proj|in_proj[a-z_]*)"
+  },
+  "rows": 28550,
+  "relations": 7371,
+  "steps": 18,
+  "minutes": 4.93,
+  "log": [
+    {
+      "step": 0,
+      "of": 18,
+      "loss": 1.0719,
+      "task": 1.0719,
+      "cons": 0.3912,
+      "kl": 0.0,
+      "lr": 4.962019382530521e-05,
+      "min": 2.12
+    },
+    {
+      "step": 17,
+      "of": 18,
+      "loss": 0.7471,
+      "task": 0.6569,
+      "cons": 0.0692,
+      "kl": 0.0556,
+      "lr": 0.0,
+      "min": 4.91
+    }
+  ]
+}

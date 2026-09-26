@@ -45,3 +45,21 @@
 **Final check (26 Sep 2026, ~12:50 EDT):** `modal billing report` shows $19.70 billed; runs from the last hour were
 still being billed, so the real total is about $22-23 of the $30 credit (under the $28 stop). No apps left running.
 OpenRouter: $2.18 used on the key in total ($1.50 in this loop). Old account (mahadikarya3) untouched in this loop.
+
+## $10 round (account mahadikarya44, billed $19.78 at start; stop when billed + running estimate reaches $29.5)
+
+| # | Run | Hardware | Est. $ | Notes |
+|---|---|---|---|---|
+| 23 | Decision Index 0.2 suite rebuild + stratified sample (CPU) | 8 CPU | ~0.3 | independent 40-benchmark suite |
+| 23b | (DI rebuild stopped: HLE is a gated dataset; ~0.1 CPU spent) | CPU | ~0.1 | needs HLE access or the user's OK |
+| 24 | teacher labels: v0.10 soft answers on the 12k pilot mix | H100 | ~0.25 | for 0.8B / 2B students |
+| 25 | TRAIN pilot q35_2b_kd: Qwen3.5-2B LoRA r32, A3 + KL anchor + distillation (kd 0.5), 1 epoch of 12k pilot mix | H100 | ~1.6 | + dev preds |
+| 26 | TRAIN pilot q35_08b_kd: Qwen3.5-0.8B, same recipe | H100 | ~1.1 | + dev preds |
+| 27 | v0.10 sweep: LoRA scale 0.7/0.85/1.0/1.15/1.3 + option-order averaging, dev splits + JevBench half A | H100 | ~1.0 | zero-training ideas |
+| 28 | JevBench half A: q35_2b_kd and q35_08b_kd (plain + CUDA graphs) | H100 x2 | ~0.6 | can a 2B/0.8B beat Jev? |
+| 29 | OHS-1 core (pre-registered, commit 273e76b): v0.10, frozen 4B, 2B student, 0.8B student, plain readout | H100 | ~1.0 | held-out test |
+| – | OpenRouter: Jev x2 on OHS-1 (guard) | API | ~0.2 | run-to-run noise |
+
+**$10 round closed (26 Sep 2026):** Modal billed $24.65 on mahadikarya44 at close (runs from the last hour may add
+about $1; no apps left running). OpenRouter key usage $2.305 in total (Jev x2 on OHS-1 cost $0.12). GPU work stopped as
+planned; the next steps are in FREEZE.md for the $30 account.

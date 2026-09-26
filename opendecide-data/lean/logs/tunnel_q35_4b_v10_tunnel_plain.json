@@ -1,0 +1,10 @@
+{
+ "calls": 515,
+ "client_median_ms": 114.6,
+ "client_p95_ms": 124.1,
+ "server_median_ms": 44.8,
+ "server_p95_ms": 50.9,
+ "gpu": "H100",
+ "mode": "plain",
+ "note": "same laptop/network and same 515 bundled requests as the Jev run (Jev median 203 ms)"
+}

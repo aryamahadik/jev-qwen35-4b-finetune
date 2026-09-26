@@ -1,0 +1,35 @@
+{
+  "name": "q35_2b_kd",
+  "rows": 600,
+  "base": "Qwen/Qwen3.5-2B",
+  "train": {
+    "cfg": {
+      "recipe": "A3",
+      "epochs": 1.0,
+      "lr": 0.0001,
+      "batch": 16,
+      "lam": 0.5,
+      "r": 32,
+      "alpha": 64,
+      "dropout": 0.05,
+      "beta": 1.0,
+      "seed": 20260925,
+      "train_file": "train_pilot_kd.jsonl",
+      "rel_file": "train_pilot_relations.jsonl",
+      "grad_ckpt": true,
+      "base": "Qwen/Qwen3.5-2B",
+      "style": "cygnet",
+      "log_every": 50,
+      "kd": 0.5,
+      "targets": ".*layers\\.\\d+\\..*\\.(q_proj|k_proj|v_proj|o_proj|gate_proj|up_proj|down_proj|out_proj|in_proj[a-z_]*)"
+    },
+    "rows": 12001,
+    "relations": 1415,
+    "steps": 751,
+    "minutes": 22.33
+  },
+  "temperature": {
+    "noul": 1.05,
+    "choice": 1.0
+  }
+}

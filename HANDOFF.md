@@ -15,6 +15,12 @@ Where everything is, what the best models are, what we measured, and how to reru
 | Reports | `reports/OpenDecide_v05_vs_Jev.md` (v0.5; does not yet include the Gemma/JevBench work below) |
 | Python env | `opendecide-data/.venv` (torch 2.14, transformers 4.57.6, modal 1.5.5). Not in git. |
 
+## Start here next time: FREEZE.md
+
+The $10 round (26 Sep 2026) ended with a frozen architecture and a costed plan for the $30 account in `FREEZE.md`.
+The key result: on OHS-1, a new pre-registered held-out test of 17 public corpora we never touched, Jev leads, 81.7 vs 76.1.
+The JevBench win is narrow and on a development set. Fix the data breadth first (FREEZE.md, Step 1).
+
 ## Current best: OpenDecide v0.10 (26 Sep 2026, account mahadikarya44)
 
 `q35_4b_v10` = Qwen/Qwen3.5-4B + LoRA r16 (Modal volume `opendecide`, `/models/q35_4b_v10`), trained in 4 stages:
@@ -27,10 +33,10 @@ v0.7 (train_v07, 52.5k rows, 0.5 epoch) -> v0.8 (+1,518 double-verified LLM-auth
 |---|---|---|
 | JevBench all 231 public items: correct / score (v14) | 200 / 73.28 (run 2: 199 / 72.91) | **203 / 74.88** |
 | JevBench axes intel / calib / speed / cost | 82.0 / 80.9 / 91.2 / 52.5 | **83.7 / 83.3 / 92.3 / 53.7** |
-| JevBench half B (held out, run once) | 96/113, 71.53 | **99/113, 73.82** |
+| JevBench half B (NOT held out: seen 4 times over the project) | 96/113, 71.53 | **99/113, 73.82** |
 | Decision suite (eval_card) vs jev_guard | see report | wins 8 metrics with CI excluding 0; behind on paraphrase drift, echo yes/no |
-| Planted-authority audit: attacked acc / attack success | 27.0 / 99.4% | **90.7 / 11.2%** (clean 93.8 vs 95.1) |
-| Long / multi-question / same 515 API requests | 54.0 / 70.6 / 73.9 | **91.8 / 92.2 / 91.5** |
+| Planted-authority audit (third-party zkousama/jagged, one attack direction): attacked acc / attack success | 27.0 / 99.4% | **90.7 / 11.2%** (clean balanced 88.6 vs 94.2: we lean 'deleted') |
+| Long / multi-question / same 515 API requests (corrected 26 Sep: an earlier helper-script bug undercounted Jev) | 87.8 / 89.7 / 86.2 | **91.8 / 92.2 / 91.5** (+4.0, +2.5, +5.3) |
 | End-to-end latency, same laptop (median / p95) | 194 / 305 ms | **115 / 124 ms** |
 
 Rerun the key steps (from `opendecide-data/lean`):

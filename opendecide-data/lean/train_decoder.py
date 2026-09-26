@@ -99,9 +99,12 @@ def train(cfg: dict, data_dir: Path, out_dir: Path, dev="cuda") -> dict:
                               for i, b in zip(anc, blg)]).mean()
         task, cons, pidx = [], [], {}
         for r, perm, l in zip(batch, perms, lg):
+            teach = (r.get("meta") or {}).get("teacher") if c.get("kd", 0) > 0 else None  # distillation target
             if r["qtype"] == "noul":
                 eps = EPS.get(r["source"], 0.05)
                 y = r["gold"] * (1 - 2 * eps) + eps
+                if teach:
+                    y = (1 - c["kd"]) * y + c["kd"] * float(teach["yes"])
                 logp = F.log_softmax(l, -1)
                 iy, in_ = (perm.index(0), perm.index(1)) if cyg else (0, 1)  # displayed letter of Yes / No
                 task.append(-(y * logp[iy] + (1 - y) * logp[in_]))
@@ -111,6 +114,13 @@ def train(cfg: dict, data_dir: Path, out_dir: Path, dev="cuda") -> dict:
                 if gp:  # exact probabilistic target (e.g. Bayes posterior): soft cross-entropy on the displayed order
                     q = torch.tensor([float(gp.get(r["options"][i], 0.0)) for i in perm], device=dev)
                     q = 0.97 * q / q.sum() + 0.03 / len(perm)
+                    task.append(-(q * F.log_softmax(l, -1)).sum())
+                elif teach:  # soft target = (1 - kd) * smoothed gold + kd * teacher, in the displayed order
+                    gi = perm.index(r["options"].index(r["gold"]))
+                    q = torch.full((len(perm),), 0.05 / len(perm), device=dev)
+                    q[gi] += 0.95
+                    tq = torch.tensor([float(teach.get(r["options"][i], 0.0)) for i in perm], device=dev)
+                    q = (1 - c["kd"]) * q + c["kd"] * tq / tq.sum().clamp_min(1e-9)
                     task.append(-(q * F.log_softmax(l, -1)).sum())
                 else:
                     gi = perm.index(r["options"].index(r["gold"]))

@@ -21,7 +21,10 @@ for sp in splits:
             p = json.loads(l)
             r = rows[p["id"]]
             g = ("yes" if r["gold"] == 1 else "no") if r["qtype"] == "noul" else r["gold"]
-            ok = max(p["probs"], key=p["probs"].get) == g
+            keys = ["yes", "no"] if r["qtype"] == "noul" else r["options"]  # only real options (Jev adds '_raw_sum')
+            pr = {k: p["probs"].get(k, 0.0) for k in keys}
+            best = max(pr.values())
+            ok = [k for k, v in pr.items() if v == best] == [g]  # ties count as wrong, as in score.py
             c += ok
             t += 1
             cs[r["source"]][0] += ok

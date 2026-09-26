@@ -1,0 +1,321 @@
+{
+ "n_base": 912,
+ "n_groups": 734,
+ "tasks": 17,
+ "jev_runs": [
+  "jev_guard",
+  "jev_r2_guard"
+ ],
+ "half": "A",
+ "models": {
+  "q35_4b_v10_cal": {
+   "micro": 75.88,
+   "macro": 75.93,
+   "brier_yesno": 0.1527,
+   "tracks": {
+    "C": 76.72,
+    "F": 71.93,
+    "U": 76.33
+   },
+   "over_26_options": 65.38,
+   "per_task": {
+    "arxiv2026_condmat": 78.1,
+    "arxiv2026_econqfin": 61.3,
+    "arxiv2026_physics": 96.3,
+    "arxiv2026_qbio": 50.0,
+    "go_emotions": 56.2,
+    "hatecheck": 82.2,
+    "legalbench_abercrombie": 45.5,
+    "legalbench_cuad": 91.9,
+    "legalbench_hearsay": 63.4,
+    "legalbench_overruling": 95.5,
+    "legalbench_unfair_tos": 90.5,
+    "lexglue_ledgar": 95.8,
+    "pubmedqa": 63.4,
+    "scone": 71.2,
+    "sgd": 100.0,
+    "this_is_not_a_dataset": 76.3,
+    "vitaminc": 73.3
+   },
+   "consistency": {
+    "complement_violation": 0.1254,
+    "double_negation_drift": 0.1636,
+    "paraphrase_drift": 0.061,
+    "paraphrase_flip_rate": 0.0731
+   },
+   "vs_jev": {
+    "micro": {
+     "diff": -5.866,
+     "ci95": [
+      -8.242,
+      -3.509
+     ],
+     "p": 0.0,
+     "p_holm": 0.0
+    },
+    "macro": {
+     "diff": -4.724,
+     "ci95": [
+      -7.38,
+      -2.12
+     ],
+     "p": 0.0004,
+     "p_holm": 0.0004
+    },
+    "brier_yesno": {
+     "diff": 0.056,
+     "ci95": [
+      0.026,
+      0.085
+     ],
+     "p": 0.0,
+     "p_holm": 0.0
+    }
+   }
+  },
+  "qwen3.5-4b_frozen_cal": {
+   "micro": 75.77,
+   "macro": 75.95,
+   "brier_yesno": 0.1547,
+   "tracks": {
+    "C": 77.16,
+    "F": 67.54,
+    "U": 76.86
+   },
+   "over_26_options": 69.23,
+   "per_task": {
+    "arxiv2026_condmat": 71.9,
+    "arxiv2026_econqfin": 58.1,
+    "arxiv2026_physics": 92.6,
+    "arxiv2026_qbio": 45.8,
+    "go_emotions": 61.3,
+    "hatecheck": 82.2,
+    "legalbench_abercrombie": 60.6,
+    "legalbench_cuad": 89.2,
+    "legalbench_hearsay": 70.7,
+    "legalbench_overruling": 95.5,
+    "legalbench_unfair_tos": 90.5,
+    "lexglue_ledgar": 95.8,
+    "pubmedqa": 62.0,
+    "scone": 71.2,
+    "sgd": 94.0,
+    "this_is_not_a_dataset": 77.4,
+    "vitaminc": 72.4
+   },
+   "consistency": {
+    "complement_violation": 0.3108,
+    "double_negation_drift": 0.3002,
+    "paraphrase_drift": 0.0877,
+    "paraphrase_flip_rate": 0.1253
+   },
+   "vs_jev": {
+    "micro": {
+     "diff": -5.976,
+     "ci95": [
+      -8.37,
+      -3.587
+     ],
+     "p": 0.0,
+     "p_holm": 0.0
+    },
+    "macro": {
+     "diff": -4.711,
+     "ci95": [
+      -7.313,
+      -2.112
+     ],
+     "p": 0.0004,
+     "p_holm": 0.0008
+    },
+    "brier_yesno": {
+     "diff": 0.058,
+     "ci95": [
+      0.025,
+      0.092
+     ],
+     "p": 0.0004,
+     "p_holm": 0.0008
+    }
+   }
+  },
+  "q35_2b_kd_cal": {
+   "micro": 65.68,
+   "macro": 62.86,
+   "brier_yesno": 0.1744,
+   "tracks": {
+    "C": 71.12,
+    "F": 60.53,
+    "U": 64.49
+   },
+   "over_26_options": 44.23,
+   "per_task": {
+    "arxiv2026_condmat": 56.2,
+    "arxiv2026_econqfin": 48.4,
+    "arxiv2026_physics": 81.5,
+    "arxiv2026_qbio": 58.3,
+    "go_emotions": 52.5,
+    "hatecheck": 75.3,
+    "legalbench_abercrombie": 18.2,
+    "legalbench_cuad": 83.8,
+    "legalbench_hearsay": 63.4,
+    "legalbench_overruling": 86.4,
+    "legalbench_unfair_tos": 78.6,
+    "lexglue_ledgar": 16.7,
+    "pubmedqa": 60.6,
+    "scone": 69.7,
+    "sgd": 83.0,
+    "this_is_not_a_dataset": 68.8,
+    "vitaminc": 67.2
+   },
+   "consistency": {
+    "complement_violation": 0.1228,
+    "double_negation_drift": 0.2188,
+    "paraphrase_drift": 0.0586,
+    "paraphrase_flip_rate": 0.107
+   },
+   "vs_jev": {
+    "micro": {
+     "diff": -16.064,
+     "ci95": [
+      -18.943,
+      -13.106
+     ],
+     "p": 0.0,
+     "p_holm": 0.0
+    },
+    "macro": {
+     "diff": -17.8,
+     "ci95": [
+      -21.138,
+      -14.424
+     ],
+     "p": 0.0,
+     "p_holm": 0.0
+    },
+    "brier_yesno": {
+     "diff": 0.078,
+     "ci95": [
+      0.051,
+      0.103
+     ],
+     "p": 0.0,
+     "p_holm": 0.0
+    }
+   }
+  },
+  "q35_08b_kd_cal": {
+   "micro": 56.91,
+   "macro": 53.72,
+   "brier_yesno": 0.2034,
+   "tracks": {
+    "C": 59.05,
+    "F": 42.98,
+    "U": 58.83
+   },
+   "over_26_options": 31.73,
+   "per_task": {
+    "arxiv2026_condmat": 53.1,
+    "arxiv2026_econqfin": 22.6,
+    "arxiv2026_physics": 48.1,
+    "arxiv2026_qbio": 50.0,
+    "go_emotions": 37.5,
+    "hatecheck": 75.3,
+    "legalbench_abercrombie": 18.2,
+    "legalbench_cuad": 86.5,
+    "legalbench_hearsay": 65.9,
+    "legalbench_overruling": 68.2,
+    "legalbench_unfair_tos": 81.0,
+    "lexglue_ledgar": 12.5,
+    "pubmedqa": 59.2,
+    "scone": 42.4,
+    "sgd": 77.0,
+    "this_is_not_a_dataset": 58.1,
+    "vitaminc": 57.8
+   },
+   "consistency": {
+    "complement_violation": 0.1652,
+    "double_negation_drift": 0.1709,
+    "paraphrase_drift": 0.0919,
+    "paraphrase_flip_rate": 0.201
+   },
+   "vs_jev": {
+    "micro": {
+     "diff": -24.836,
+     "ci95": [
+      -27.802,
+      -21.875
+     ],
+     "p": 0.0,
+     "p_holm": 0.0
+    },
+    "macro": {
+     "diff": -26.938,
+     "ci95": [
+      -30.392,
+      -23.569
+     ],
+     "p": 0.0,
+     "p_holm": 0.0
+    },
+    "brier_yesno": {
+     "diff": 0.106,
+     "ci95": [
+      0.082,
+      0.13
+     ],
+     "p": 0.0,
+     "p_holm": 0.0
+    }
+   }
+  },
+  "JEV": {
+   "micro": 81.74,
+   "macro": 80.66,
+   "brier_yesno": 0.0969,
+   "tracks": {
+    "C": 88.15,
+    "F": 68.42,
+    "U": 81.8
+   },
+   "over_26_options": 76.92,
+   "per_task": {
+    "arxiv2026_condmat": 65.6,
+    "arxiv2026_econqfin": 58.1,
+    "arxiv2026_physics": 96.3,
+    "arxiv2026_qbio": 54.2,
+    "go_emotions": 70.0,
+    "hatecheck": 98.6,
+    "legalbench_abercrombie": 77.3,
+    "legalbench_cuad": 85.1,
+    "legalbench_hearsay": 78.0,
+    "legalbench_overruling": 90.9,
+    "legalbench_unfair_tos": 85.7,
+    "lexglue_ledgar": 100.0,
+    "pubmedqa": 65.5,
+    "scone": 84.8,
+    "sgd": 99.0,
+    "this_is_not_a_dataset": 82.3,
+    "vitaminc": 79.7
+   },
+   "consistency": {
+    "jev_guard": {
+     "complement_violation": 0.099,
+     "double_negation_drift": 0.1602,
+     "paraphrase_drift": 0.034,
+     "paraphrase_flip_rate": 0.0287
+    },
+    "jev_r2_guard": {
+     "complement_violation": 0.0978,
+     "double_negation_drift": 0.1605,
+     "paraphrase_drift": 0.0336,
+     "paraphrase_flip_rate": 0.0313
+    }
+   }
+  }
+ },
+ "jev_run_agreement": 0.9901,
+ "jev_runs_micro": [
+  81.91,
+  81.58
+ ]
+}

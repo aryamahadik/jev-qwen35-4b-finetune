@@ -356,10 +356,10 @@ def bakeoff(models: str, splits: str = "dev,devzs", tta: bool = False, suffix: s
 def train(name: str, base: str, recipe: str = "A3", splits: str = "dev,devzs", epochs: float = 1.0, lr: float = 1e-4,
           batch: int = 16, lam: float = 0.5, r: int = 16, train_file: str = "train.jsonl",
           rel_file: str = "train_relations.jsonl", tta: bool = False, gpu: str = "L40S", grad_ckpt: bool = True,
-          beta: float = 0.0, targets: str = "", style: str = "od", log_every: int = 25, init: str = ""):
+          beta: float = 0.0, targets: str = "", style: str = "od", log_every: int = 25, init: str = "", kd: float = 0.0):
     cfg = {"base": base, "recipe": recipe, "epochs": epochs, "lr": lr, "batch": batch, "lam": lam, "r": r, "alpha": 2 * r,
            "train_file": train_file, "rel_file": rel_file, "grad_ckpt": grad_ckpt, "beta": beta, "style": style,
-           "log_every": log_every, **({"init_adapter": f"/vol/models/{init}"} if init else {})}
+           "log_every": log_every, "kd": kd, **({"init_adapter": f"/vol/models/{init}"} if init else {})}
     if is35(base):
         cfg["targets"] = GEMMA4_TARGETS if "gemma-4" in base else QWEN35_TARGETS
     if targets:
@@ -678,3 +678,121 @@ def eval_system(name: str, base: str = "Qwen/Qwen3.5-4B", splits: str = "dev", s
         (pd / f"{label}_sys.infos.jsonl").write_text("".join(json.dumps(x) + "\n" for x in d["infos"]))
         dropped = sum(1 for x in d["infos"] if x.get("dropped"))
         print(f"{sp}: plain {d['sec_plain']}s, system {d['sec_system']}s, LBD dropped a segment on {dropped}/{len(d['infos'])} rows")
+
+
+@app.function(image=image35, gpu="H100", volumes={"/vol": vol}, secrets=SECRETS, timeout=3600)
+def teacher_label_remote(name: str, base: str, in_file: str, style: str = "cygnet") -> list:
+    """Teacher probabilities (plain readout, T=1) for every row of a training file, for distilling into small students."""
+    import decoder_io
+    decoder_io.STYLE = style
+    model, tok = _load("decoder", base, adapter=f"/vol/models/{name}")
+    model = model.merge_and_unload()
+    model.eval()
+    rows = [json.loads(l) for l in open(f"/root/data/{in_file}")]
+    return decoder_io.predict(model, tok, rows, dev="cuda")
+
+
+@app.local_entrypoint()
+def teacher_label(name: str = "q35_4b_v10", base: str = "Qwen/Qwen3.5-4B", in_file: str = "train_pilot.jsonl",
+                  out_file: str = "train_pilot_kd.jsonl"):
+    preds = teacher_label_remote.remote(name, base, in_file)
+    rows = [json.loads(l) for l in open(HERE / f"data/{in_file}")]
+    assert len(rows) == len(preds)
+    agree = 0
+    with open(HERE / f"data/{out_file}", "w") as f:
+        for r, p in zip(rows, preds):
+            meta = {**(r.get("meta") or {}), "teacher": {k: round(float(v), 5) for k, v in p.items()}}
+            g = ("yes" if r["gold"] == 1 else "no") if r["qtype"] == "noul" else r["gold"]
+            agree += max(p, key=p.get) == g
+            f.write(json.dumps({**r, "meta": meta}) + "\n")
+    print(f"wrote data/{out_file}: {len(rows)} rows, teacher agrees with gold on {agree / len(rows):.1%}")
+
+
+@app.function(image=image35, gpu="H100", volumes={"/vol": vol}, secrets=SECRETS, timeout=2 * 3600)
+def sweep_remote(name: str, base: str, splits: list[str], alphas: list[float], jb_tiers: list[str], sym: bool = True) -> dict:
+    """One model load; for each LoRA scale alpha (1 = the trained model, <1 toward the base, >1 extrapolated) predict the
+    dev splits and JevBench tiers; at alpha 1 also the option-order-averaged view. Selection sets only (dev, half A)."""
+    import sys
+    import torch
+    import decoder_io
+    decoder_io.STYLE = "cygnet"
+    sys.path.insert(0, "/root/jevbench_pkg")
+    from jevbench.budget import Ledger
+    from jevbench.runner import Runner
+    from jevbench.tasks import load_jsonl
+    import jevbench_od
+    model, tok = _load("decoder", base, adapter=f"/vol/models/{name}")
+    model.eval()
+    lora = [m for m in model.modules() if hasattr(m, "scaling") and isinstance(m.scaling, dict) and "default" in m.scaling]
+    orig = [m.scaling["default"] for m in lora]
+    tasks = [t for tier in jb_tiers for t in load_jsonl(f"/root/jb_split/jevbench_{tier}.jsonl")]
+    out = {}
+    for a in alphas:
+        for m, s0 in zip(lora, orig):
+            m.scaling["default"] = s0 * a
+        res = {"preds": {s: decoder_io.predict(model, tok, _rows(s), dev="cuda") for s in splits}}
+        ad = jevbench_od.OpenDecideAdapter(model, tok, {"noul": 1.0, "choice": 1.0}, label=f"{name}_a{a}", fmt="cygnet")
+        Path("/tmp/jb").mkdir(exist_ok=True)
+        res["jb"] = Runner(ad, Ledger(f"/tmp/jb/l{a}.jsonl", cap_usd=100), raw_dir=f"/tmp/jb/raw{a}").run_all(tasks, results_path=f"/tmp/jb/r{a}.jsonl")
+        if sym and a == 1.0:
+            res["sym_preds"] = {s: decoder_io.predict_robust(model, tok, _rows(s), "cuda", sym=True, lbd=False)[0] for s in splits}
+            ad2 = jevbench_od.OpenDecideAdapter(model, tok, {"noul": 1.0, "choice": 1.0}, label=f"{name}_sym", fmt="cygnet",
+                                                robust={"sym": True, "lbd": False})
+            res["jb_sym"] = Runner(ad2, Ledger("/tmp/jb/lsym.jsonl", cap_usd=100), raw_dir="/tmp/jb/rawsym").run_all(tasks, results_path="/tmp/jb/rsym.jsonl")
+        out[str(a)] = res
+    return out
+
+
+@app.local_entrypoint()
+def sweep(name: str = "q35_4b_v10", base: str = "Qwen/Qwen3.5-4B", splits: str = "dev,devzs,devzs2,devp_card,pg_dev,debate_dev",
+          alphas: str = "0.7,0.85,1.0,1.15,1.3", tiers: str = "A", gpu: str = "H100"):
+    res = sweep_remote.with_options(gpu=gpu).remote(name, base, splits.split(","), [float(x) for x in alphas.split(",")], tiers.split(","))
+    for a, r in res.items():
+        tag = f"{name}_a{a}"
+        _save(tag, r["preds"], {"base": base, "alpha": float(a)})
+        runs = JB.parent / "runs"
+        for key, lab in (("jb", tag), ("jb_sym", f"{name}_sym")):
+            if key in r:
+                d = runs / f"{lab}_{tiers.replace(',', '')}"
+                d.mkdir(parents=True, exist_ok=True)
+                (d / "results.jsonl").write_text("".join(json.dumps(x) + "\n" for x in r[key]))
+                print(lab, sum(x["correct"] for x in r[key]), "/", len(r[key]))
+        if "sym_preds" in r:
+            _save(f"{name}_sym", r["sym_preds"], {"base": base, "view": "option-order averaged"})
+
+
+@app.function(image=image35, gpu="H100", volumes={"/vol": vol}, secrets=SECRETS, timeout=3 * 3600)
+def multi_eval_remote(specs: list[dict], splits: list[str], style: str = "cygnet") -> dict:
+    """Plain predictions of several models (each {label, base, adapter}) on the same splits, one container."""
+    import gc
+    import time
+    import torch
+    import decoder_io
+    decoder_io.STYLE = style
+    out = {}
+    for sp_ in specs:
+        t = time.time()
+        model, tok = _load("decoder", sp_["base"], adapter=sp_.get("adapter") or None)
+        if sp_.get("adapter"):
+            model = model.merge_and_unload()
+        model.eval()
+        out[sp_["label"]] = {s: decoder_io.predict(model, tok, _rows(s), dev="cuda") for s in splits}
+        out[sp_["label"]]["_sec"] = round(time.time() - t)
+        del model
+        gc.collect()
+        torch.cuda.empty_cache()
+    return out
+
+
+@app.local_entrypoint()
+def multi_eval(specs: str, splits: str = "ohs", gpu: str = "H100"):
+    """specs: 'label=base[:adapter],...' e.g. 'q35_4b_v10=Qwen/Qwen3.5-4B:/vol/models/q35_4b_v10,qwen3.5-4b_cyg=Qwen/Qwen3.5-4B'"""
+    sp = []
+    for s in specs.split(","):
+        label, rest = s.split("=", 1)
+        base, _, adapter = rest.partition(":")
+        sp.append({"label": label, "base": base, "adapter": adapter})
+    res = multi_eval_remote.with_options(gpu=gpu).remote(sp, splits.split(","))
+    for label, d in res.items():
+        sec = d.pop("_sec")
+        _save(label, d, {"base": [x["base"] for x in sp if x["label"] == label][0], "sec": sec})
