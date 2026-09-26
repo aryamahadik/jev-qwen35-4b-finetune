@@ -63,3 +63,14 @@ OpenRouter: $2.18 used on the key in total ($1.50 in this loop). Old account (ma
 **$10 round closed (26 Sep 2026):** Modal billed $24.65 on mahadikarya44 at close (runs from the last hour may add
 about $1; no apps left running). OpenRouter key usage $2.305 in total (Jev x2 on OHS-1 cost $0.12). GPU work stopped as
 planned; the next steps are in FREEZE.md for the $30 account.
+
+## Account atmosphor (workspace admin-22544, $30 credit; started 26 Sep 2026 at $0 billed; hard stop $28)
+
+| # | Run | Hardware | Est. $ | Notes |
+|---|---|---|---|---|
+| A1 | teacher probes: frozen Qwen3.5-27B, Qwen3.5-35B-A3B, Qwen3.5-9B on dev splits + JevBench half A | H100 x3 | ~2.5 | choose the distillation teacher on dev only |
+| A2 | TRAIN q35_4b_v11: Qwen3.5-4B from base, v0.11 mix (57k rows: task bank with Claude definitions, Claude hard items x2, fixed intents/claims/negation, replay), 0.5 epoch, lam 1, lam_inv 1, sym_cons, perm_twin 0.3 | H100 | ~8.3 | + dev preds for the gate |
+| A3 | baselines on the new dev sets: v0.10 and frozen 4B | H100 | ~0.5 | gate reference |
+| – | v0.11 gate: dev_nc 71.9 vs v0.10 72.1 (needed 74.1) -> FAIL as-is. Gains: negation words +8.2, task bank +2.9, hard +1.5, 32/56-way +10/+8. Losses: binary judgments biased (over-flagging, too lenient on consistency). | | | |
+| A4 | weight blend v0.10 x v0.11 (w = 0.3/0.5/0.7 on v0.10), dev splits only | H100 | ~0.8 | zero-training fix attempt |
+| A5 | TRAIN q35_4b_v11b = fix-up from blend q35_4b_v11s30 (0.3 v10 + 0.7 v11): 948 Claude binary judgments x2 + all judge rows + v11 replay, 0.4 epoch, lr 4e-5 | H100 | ~1.9 | binary-bias fix |

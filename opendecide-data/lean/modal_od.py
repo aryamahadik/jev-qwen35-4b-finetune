@@ -356,10 +356,12 @@ def bakeoff(models: str, splits: str = "dev,devzs", tta: bool = False, suffix: s
 def train(name: str, base: str, recipe: str = "A3", splits: str = "dev,devzs", epochs: float = 1.0, lr: float = 1e-4,
           batch: int = 16, lam: float = 0.5, r: int = 16, train_file: str = "train.jsonl",
           rel_file: str = "train_relations.jsonl", tta: bool = False, gpu: str = "L40S", grad_ckpt: bool = True,
-          beta: float = 0.0, targets: str = "", style: str = "od", log_every: int = 25, init: str = "", kd: float = 0.0):
+          beta: float = 0.0, targets: str = "", style: str = "od", log_every: int = 25, init: str = "", kd: float = 0.0,
+          extra: str = ""):
     cfg = {"base": base, "recipe": recipe, "epochs": epochs, "lr": lr, "batch": batch, "lam": lam, "r": r, "alpha": 2 * r,
            "train_file": train_file, "rel_file": rel_file, "grad_ckpt": grad_ckpt, "beta": beta, "style": style,
-           "log_every": log_every, "kd": kd, **({"init_adapter": f"/vol/models/{init}"} if init else {})}
+           "log_every": log_every, "kd": kd, **({"init_adapter": f"/vol/models/{init}"} if init else {}),
+           **(json.loads(extra) if extra else {})}  # e.g. '{"lam_inv": 1.0, "sym_cons": true, "perm_twin": 0.3}'
     if is35(base):
         cfg["targets"] = GEMMA4_TARGETS if "gemma-4" in base else QWEN35_TARGETS
     if targets:
@@ -796,3 +798,74 @@ def multi_eval(specs: str, splits: str = "ohs", gpu: str = "H100"):
     for label, d in res.items():
         sec = d.pop("_sec")
         _save(label, d, {"base": [x["base"] for x in sp if x["label"] == label][0], "sec": sec})
+
+
+@app.function(image=image35, gpu="H100", volumes={"/vol": vol}, secrets=SECRETS, timeout=3 * 3600)
+def teacher_probe_remote(base: str, splits: list[str], jb_tiers: list[str], adapter: str = "") -> dict:
+    """Frozen (or adapted) model, one load: plain cygnet predictions on dev splits + JevBench tiers (selection data only)."""
+    import sys
+    import time
+    import decoder_io
+    decoder_io.STYLE = "cygnet"
+    sys.path.insert(0, "/root/jevbench_pkg")
+    from jevbench.budget import Ledger
+    from jevbench.runner import Runner
+    from jevbench.tasks import load_jsonl
+    import jevbench_od
+    t = time.time()
+    model, tok = _load("decoder", base, adapter=adapter or None)
+    if adapter:
+        model = model.merge_and_unload()
+    model.eval()
+    load_s = time.time() - t
+    preds = {s: decoder_io.predict(model, tok, _rows(s), dev="cuda", token_budget=16000) for s in splits}
+    tasks = [x for tier in jb_tiers for x in load_jsonl(f"/root/jb_split/jevbench_{tier}.jsonl")]
+    ad = jevbench_od.OpenDecideAdapter(model, tok, {"noul": 1.0, "choice": 1.0}, label=base, fmt="cygnet")
+    Path("/tmp/jb").mkdir(exist_ok=True)
+    recs = Runner(ad, Ledger("/tmp/jb/l.jsonl", cap_usd=100), raw_dir="/tmp/jb/raw").run_all(tasks, results_path="/tmp/jb/r.jsonl")
+    return {"preds": preds, "jb": recs, "load_s": round(load_s), "total_s": round(time.time() - t)}
+
+
+@app.local_entrypoint()
+def teacher_probe(base: str, label: str, splits: str = "devzs,devzs2,devp_card,pg_dev,debate_dev", tiers: str = "A",
+                  adapter: str = "", gpu: str = "H100"):
+    res = teacher_probe_remote.with_options(gpu=gpu).remote(base, splits.split(","), tiers.split(","), adapter)
+    _save(label, res["preds"], {"base": base, "adapter": adapter})
+    d = JB.parent / "runs" / f"{label}_{tiers.replace(',', '')}"
+    d.mkdir(parents=True, exist_ok=True)
+    (d / "results.jsonl").write_text("".join(json.dumps(x) + "\n" for x in res["jb"]))
+    print(label, "JevBench", sum(x["correct"] for x in res["jb"]), "/", len(res["jb"]), "| load", res["load_s"], "s total", res["total_s"], "s")
+
+
+@app.function(image=image35, gpu="H100", volumes={"/vol": vol}, secrets=SECRETS, timeout=3 * 3600)
+def soup_eval_remote(base: str, a: str, b: str, weights: list[float], splits: list[str]) -> dict:
+    """Exact weight-space blend of two LoRA adapters on the same base: W = W0 + w*dW_a + (1-w)*dW_b (PEFT 'cat'
+    combination keeps each B@A product exact). Plain predictions on dev splits for each w (selection data only)."""
+    import torch
+    import decoder_io
+    from peft import PeftModel
+    decoder_io.STYLE = "cygnet"
+    model, tok = decoder_io.load(base, "cuda")
+    model = PeftModel.from_pretrained(model, f"/vol/models/{a}", adapter_name="a")
+    model.load_adapter(f"/vol/models/{b}", adapter_name="b")
+    out = {}
+    for w in weights:
+        name = f"soup{int(round(w * 100))}"
+        model.add_weighted_adapter(["a", "b"], [w, 1 - w], name, combination_type="cat")
+        model.set_adapter(name)
+        model.eval()
+        with torch.no_grad():
+            out[name] = {s: decoder_io.predict(model, tok, _rows(s), dev="cuda") for s in splits}
+        if w == weights[0]:  # keep the first blend's adapter so it can be merged and saved later if chosen
+            model.save_pretrained(f"/vol/models/_soup_tmp", selected_adapters=[name])
+        model.delete_adapter(name)
+    vol.commit()
+    return out
+
+
+@app.local_entrypoint()
+def soup_eval(a: str = "q35_4b_v10", b: str = "q35_4b_v11", weights: str = "0.3,0.5,0.7", base: str = "Qwen/Qwen3.5-4B",
+              splits: str = "dev_nc,taskbank_dev,hard_dev,dev_negwords,dev_claims,pg_dev,devzs", gpu: str = "H100"):
+    res = soup_eval_remote.with_options(gpu=gpu).remote(base, a, b, [float(x) for x in weights.split(",")], splits.split(","))
+    for name, preds in res.items():
+        _save(f"{a}_{b}_{name}", preds, {"base": base, "blend": name, "a": a, "b": b})

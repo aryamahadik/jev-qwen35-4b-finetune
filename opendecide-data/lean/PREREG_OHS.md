@@ -37,3 +37,9 @@ tuned or selected on. Five parts, each built by `ohs/build_<part>.py` and checke
 
 **Honest-reporting commitments.** All endpoints are reported whatever their direction. Any bug found after the run is
 fixed and disclosed with both the old and the new numbers.
+
+## Amendment 1 (26 Sep 2026, before q35_4b_v11b is run on OHS-1)
+- Candidate: q35_4b_v11b (v0.11 recipe + fix-up stage), chosen on dev sets only (dev_nc gate: 73.5 plain / 75.8 with batch calibration, vs v0.10 72.1 / 72.9).
+- Primary endpoints are unchanged: plain readout with temperatures fitted on dev (dev, devzs, devp_card).
+- Secondary, declared now: the same predictions with batch calibration (`batchcal.py`, a per-label-set prior estimated from unlabeled inputs, only for label sets with 20 or more questions). It was selected on dev_nc before any OHS run and uses no labels.
+- Jev's two existing runs are reused unchanged. The comparison statistics are exactly as in the original pre-registration.
