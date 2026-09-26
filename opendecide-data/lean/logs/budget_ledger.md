@@ -32,3 +32,16 @@
 | 11 | latency probe: CUDA graphs vs eager (v07, JevBench A prompts) | H100 | ~0.4 | | |
 | 12 | JevBench half A, q35_4b_v08 plain + CUDA graphs | H100 | ~0.4 | | selection v07 vs v08 |
 | 13 | TRAIN q35_4b_v09 = stage 3 from v08: 0.6 epoch of train_v09s3 (5,578 judge rows + 5,005 replay), lr 4e-5 | H100 | ~1.9 | | |
+| 14 | JevBench half A, q35_4b_v09 plain + CUDA graphs | H100 | ~0.4 | | |
+| 15 | TRAIN q35_4b_v10 = stage 4 from v09: 0.8 epoch of train_v10s4 (2,335 debate + 4,300 replay), lr 4e-5 | H100 | ~1.6 | | |
+| 16 | debate_dev predictions (selection v09 vs v10), 2 small runs | L40S | ~0.3 | | |
+| 17 | JevBench half A, q35_4b_v10 plain + CUDA graphs | H100 | ~0.4 | | |
+| 18 | FINAL EVAL q35_4b_v10 plain + full system (two-stage, meta floor 0.3), 10 splits | H100 | ~2.0 | | |
+| 19 | JevBench half A, q35_4b_v10 robust (sym + LBD two-stage tau .35 meta .9) + CUDA graphs | H100 | ~0.5 | | |
+| 20 | graph debugging (0.8B, 4 small runs) + 2 failed robust launches (OOM / assert) | L4/H100 | ~0.6 | | |
+| 21 | JevBench half B (confirmation, once), q35_4b_v10 plain + CUDA graphs (B=1) | H100 | ~0.4 | | |
+| 22 | end-to-end latency via direct tunnel, q35_4b_v10 plain + CUDA graphs, 515 eval calls | H100 | ~0.4 | | |
+
+**Final check (26 Sep 2026, ~12:50 EDT):** `modal billing report` shows $19.70 billed; runs from the last hour were
+still being billed, so the real total is about $22-23 of the $30 credit (under the $28 stop). No apps left running.
+OpenRouter: $2.18 used on the key in total ($1.50 in this loop). Old account (mahadikarya3) untouched in this loop.

@@ -15,7 +15,39 @@ Where everything is, what the best models are, what we measured, and how to reru
 | Reports | `reports/OpenDecide_v05_vs_Jev.md` (v0.5; does not yet include the Gemma/JevBench work below) |
 | Python env | `opendecide-data/.venv` (torch 2.14, transformers 4.57.6, modal 1.5.5). Not in git. |
 
-## Best models
+## Current best: OpenDecide v0.10 (26 Sep 2026, account mahadikarya44)
+
+`q35_4b_v10` = Qwen/Qwen3.5-4B + LoRA r16 (Modal volume `opendecide`, `/models/q35_4b_v10`), trained in 4 stages:
+v0.7 (train_v07, 52.5k rows, 0.5 epoch) -> v0.8 (+1,518 double-verified LLM-authored items) -> v0.9 (+5,578 judge rows)
+-> v0.10 (+2,335 Wikipedia deletion debates). Use style `cygnet`, temperatures noul 1.15 / choice 1.0, CUDA graphs
+(`decoder_io.GraphRunner`, batch 1) for serving. Full report: `reports/opendecide_v10_report.html`
+(published: https://claude.ai/artifact/32Jd6eZEaSqdUgLxqduFwc).
+
+| Result | Jev | v0.10 |
+|---|---|---|
+| JevBench all 231 public items: correct / score (v14) | 200 / 73.28 (run 2: 199 / 72.91) | **203 / 74.88** |
+| JevBench axes intel / calib / speed / cost | 82.0 / 80.9 / 91.2 / 52.5 | **83.7 / 83.3 / 92.3 / 53.7** |
+| JevBench half B (held out, run once) | 96/113, 71.53 | **99/113, 73.82** |
+| Decision suite (eval_card) vs jev_guard | see report | wins 8 metrics with CI excluding 0; behind on paraphrase drift, echo yes/no |
+| Planted-authority audit: attacked acc / attack success | 27.0 / 99.4% | **90.7 / 11.2%** (clean 93.8 vs 95.1) |
+| Long / multi-question / same 515 API requests | 54.0 / 70.6 / 73.9 | **91.8 / 92.2 / 91.5** |
+| End-to-end latency, same laptop (median / p95) | 194 / 305 ms | **115 / 124 ms** |
+
+Rerun the key steps (from `opendecide-data/lean`):
+```bash
+M=../.venv/bin/modal
+../.venv/bin/python build_train_v07.py   # also: build_train_v08.py, build_train_v09.py, build_train_v10.py (stage files)
+$M run modal_od.py::train --name q35_4b_v07 --base Qwen/Qwen3.5-4B --recipe A3 --gpu H100 --epochs 0.5 --lr 7e-5 --beta 1.0 --style cygnet --train-file train_v07.jsonl --rel-file train_v07_relations.jsonl --splits dev,devzs,devp_card,pg_dev
+$M run modal_od.py::train --name q35_4b_v08 --init q35_4b_v07 ... --epochs 0.8 --lr 4e-5 --train-file train_v08s2.jsonl   # then v09 (0.6 epoch), v10 (0.8 epoch)
+$M run modal_od.py::jevbench --name RUN --base Qwen/Qwen3.5-4B --adapter /vol/models/q35_4b_v10 --tiers A --fmt cygnet --style cygnet --gpu H100 --graphs
+$M run modal_od.py::eval_system --name q35_4b_v10 --splits dev,devzs,devp_card,pg_dev,eval_card,eval_jagged,eval_opi,eval_long,eval_multi --two-stage --meta-min 0.3
+python3 apply_lbd.py q35_4b_v10 0.35 0.95 SPLITS && CAL_FIT=dev,devzs,devp_card python3 calibrate.py q35_4b_v10_plain q35_4b_v10_lbd
+$M run serve_tunnel.py --name q35_4b_v10 --mode plain --gpu H100 --temps 1.15,1.0
+```
+Budget used on mahadikarya44: about $22-23 of $30 (bill lags; see `opendecide-data/lean/logs/budget_ledger.md`).
+OpenRouter key: $2.18 of $5 used in total. **Rotate the OpenRouter key** (it was pasted in chat).
+
+## Earlier models
 
 | Name | What it is | Use it with |
 |---|---|---|

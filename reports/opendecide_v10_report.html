@@ -1,0 +1,228 @@
+<title>OpenDecide 4B vs Jev</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+Condensed:wght@500;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap">
+<style>
+:root{
+  --bg:#F6F7F9; --surface:#FFFFFF; --ink:#15181E; --muted:#5A6272; --rule:#DDE1E8; --soft:#EEF1F5;
+  --accent:#1F4FD1; --win:#1B7A45; --win-bg:#E3F3EA; --loss:#B23A2A; --loss-bg:#F8E6E2; --tie:#7A6414; --tie-bg:#F4EED9;
+  --bar:#1F4FD1; --bar-base:#AEB6C4;
+  --serif:"Source Serif 4", Georgia, "Times New Roman", serif;
+  --cond:"IBM Plex Sans Condensed", "Arial Narrow", Arial, sans-serif;
+  --mono:"IBM Plex Mono", ui-monospace, Menlo, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    color-scheme:dark;
+    --bg:#0F1217; --surface:#161A21; --ink:#E6E9EF; --muted:#9AA3B2; --rule:#29303B; --soft:#1C222B;
+    --accent:#86A6FF; --win:#58C98F; --win-bg:#16301F; --loss:#F08A76; --loss-bg:#3A1C17; --tie:#E0C35C; --tie-bg:#2F2912;
+    --bar:#86A6FF; --bar-base:#4A5363;
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme:dark;
+  --bg:#0F1217; --surface:#161A21; --ink:#E6E9EF; --muted:#9AA3B2; --rule:#29303B; --soft:#1C222B;
+  --accent:#86A6FF; --win:#58C98F; --win-bg:#16301F; --loss:#F08A76; --loss-bg:#3A1C17; --tie:#E0C35C; --tie-bg:#2F2912;
+  --bar:#86A6FF; --bar-base:#4A5363;
+}
+body{background:var(--bg); color:var(--ink); font-family:var(--serif); font-size:17px; line-height:1.6; padding-inline:16px; padding-block:40px 64px}
+main{max-width:780px; margin:0 auto; display:flex; flex-direction:column; gap:40px}
+header{display:flex; flex-direction:column; gap:12px; border-bottom:2px solid var(--ink); padding-bottom:22px}
+.kicker{font-family:var(--cond); font-weight:600; font-size:13px; letter-spacing:.09em; text-transform:uppercase; color:var(--accent)}
+h1{font-family:var(--cond); font-weight:700; font-size:clamp(30px,5.2vw,44px); line-height:1.08; margin:0; text-wrap:balance; letter-spacing:-.01em}
+h2{font-family:var(--cond); font-weight:700; font-size:25px; line-height:1.2; margin:0; text-wrap:balance}
+h3{font-family:var(--cond); font-weight:600; font-size:18px; margin:0}
+p{margin:0; max-width:68ch}
+.lede{font-size:19px; color:var(--ink)}
+.meta{font-family:var(--cond); font-size:14px; color:var(--muted); letter-spacing:.02em}
+section{display:flex; flex-direction:column; gap:14px}
+.num,td.n,th.n{font-family:var(--mono); font-variant-numeric:tabular-nums}
+.scroll{overflow-x:auto; border:1px solid var(--rule); background:var(--surface)}
+table{border-collapse:collapse; width:100%; font-size:14.5px; min-width:560px}
+th,td{padding:8px 12px; text-align:left; border-bottom:1px solid var(--rule); vertical-align:baseline}
+th{font-family:var(--cond); font-weight:600; font-size:12.5px; letter-spacing:.06em; text-transform:uppercase; color:var(--muted); background:var(--soft)}
+td.n,th.n{text-align:right; white-space:nowrap}
+tr:last-child td{border-bottom:0}
+td.metric{font-family:var(--cond); font-size:15px}
+.ci{color:var(--muted); font-size:12.5px}
+.chip{display:inline-block; font-family:var(--cond); font-weight:600; font-size:12px; letter-spacing:.05em; text-transform:uppercase; padding:1px 8px; border-radius:3px; white-space:nowrap}
+.w{color:var(--win); background:var(--win-bg)} .l{color:var(--loss); background:var(--loss-bg)} .t{color:var(--tie); background:var(--tie-bg)}
+.note{font-size:14.5px; color:var(--muted)}
+.callout{border-left:3px solid var(--accent); padding:4px 0 4px 16px; display:flex; flex-direction:column; gap:8px}
+ul{margin:0; padding-left:20px; display:flex; flex-direction:column; gap:6px; max-width:68ch}
+code{font-family:var(--mono); font-size:.86em; background:var(--soft); padding:1px 5px; border-radius:3px}
+figure{margin:0; display:flex; flex-direction:column; gap:8px}
+figcaption{font-size:14px; color:var(--muted)}
+svg text{font-family:var(--mono)}
+.grid2{display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:14px}
+.stat{border-top:2px solid var(--ink); padding-top:8px; display:flex; flex-direction:column; gap:2px}
+.stat .v{font-family:var(--mono); font-size:26px; font-weight:500; font-variant-numeric:tabular-nums}
+.stat .k{font-family:var(--cond); font-size:14px; color:var(--muted)}
+a{color:var(--accent)}
+a:focus-visible{outline:2px solid var(--accent); outline-offset:2px}
+</style>
+
+<main>
+<header>
+  <div class="kicker">Technical report · 26 September 2026</div>
+  <h1>One open 4B model beats Jev on its own benchmark</h1>
+  <p class="lede">OpenDecide v0.10 is a single Qwen3.5-4B with a LoRA adapter that answers by reading option logits in one forward pass. On all 231 public JevBench items it scores higher than TypeSafe's Jev on every official axis: intelligence, calibration, speed and cost. On a 30-metric decision suite it wins most metrics with confidence intervals that exclude zero. End to end it is 1.7 times faster.</p>
+  <p class="meta">Selection used only dev splits and JevBench half A. Half B was run once, at the end. Jev was used for evaluation only and never as a training source.</p>
+</header>
+
+<section>
+  <h2>Headline numbers</h2>
+  <div class="grid2">
+    <div class="stat"><span class="v">74.9 vs 73.3</span><span class="k">JevBench score (v1.4.2, all 231 public items)</span></div>
+    <div class="stat"><span class="v">99 vs 96</span><span class="k">Correct on held-out half B (113 items)</span></div>
+    <div class="stat"><span class="v">11% vs 99%</span><span class="k">Attack success on the planted-authority audit</span></div>
+    <div class="stat"><span class="v">115 vs 194 ms</span><span class="k">Median end-to-end latency, same laptop and requests</span></div>
+  </div>
+</section>
+
+<section>
+  <h2>JevBench, scored with the benchmark's own code</h2>
+  <p>Axes follow <code>composite_v13</code>; the score is the <code>composite_v14</code> harmonic mean with its gates. Our latency is self-hosted on one H100 and receives the official penalty (×2 + 0.15 s); Jev's is its production API.</p>
+  <div class="scroll"><table>
+    <thead><tr><th>Run</th><th class="n">Correct</th><th class="n">Hard</th><th class="n">Intel.</th><th class="n">Calib.</th><th class="n">Speed</th><th class="n">Cost</th><th class="n">Score</th><th class="n">p50 / p95 ms</th></tr></thead>
+    <tbody>
+      <tr><td class="metric">Jev, run 1 (all items)</td><td class="n">200/231</td><td class="n">74%</td><td class="n">82.0</td><td class="n">80.9</td><td class="n">91.2</td><td class="n">52.5</td><td class="n">73.28</td><td class="n">239 / 320</td></tr>
+      <tr><td class="metric">Jev, run 2 (all items)</td><td class="n">199/231</td><td class="n">72%</td><td class="n">81.7</td><td class="n">80.0</td><td class="n">90.4</td><td class="n">52.5</td><td class="n">72.91</td><td class="n">243 / 371</td></tr>
+      <tr><td class="metric"><strong>OpenDecide v0.10</strong></td><td class="n"><strong>203/231</strong></td><td class="n"><strong>77%</strong></td><td class="n"><strong>83.7</strong></td><td class="n"><strong>83.3</strong></td><td class="n"><strong>92.3</strong></td><td class="n"><strong>53.7</strong></td><td class="n"><strong>74.88</strong></td><td class="n">14 / 91</td></tr>
+      <tr><td class="metric">Half B only: Jev run 2</td><td class="n">96/113</td><td class="n">70%</td><td class="n">79.5</td><td class="n">75.6</td><td class="n">90.2</td><td class="n">52.6</td><td class="n">71.53</td><td class="n">245 / 387</td></tr>
+      <tr><td class="metric">Half B only: OpenDecide v0.10</td><td class="n">99/113</td><td class="n">77%</td><td class="n">83.1</td><td class="n">78.6</td><td class="n">92.3</td><td class="n">53.8</td><td class="n">73.82</td><td class="n">14 / 91</td></tr>
+    </tbody>
+  </table></div>
+  <p class="note">Paired accuracy difference vs Jev run 1: +1.3 pp, 95% CI [−3.0, +6.1]; hard tier +3.6 pp [−5.4, +12.6]. The accuracy lead is real on these items but not statistically significant. Calibration, speed and cost leads come from how the system works (probabilities read from logits, one forward pass, a small model). Cost prices our input tokens at $0.05 per million.</p>
+</section>
+
+<section>
+  <h2>Decision suite: 1,915 questions vs guard-matched Jev</h2>
+  <p>Jev received the same anti-injection guard text and task cards as our model. Brackets are 95% bootstrap intervals over 295 groups; a star marks an interval that excludes zero. The configuration is the fast one: model plus two fitted temperatures.</p>
+  <div class="scroll"><table>
+    <thead><tr><th>Metric</th><th class="n">Jev</th><th class="n">OpenDecide</th><th class="n">Difference</th><th>Result</th></tr></thead>
+    <tbody>
+      <tr><td class="metric">Choice accuracy, in-domain</td><td class="n">88.0</td><td class="n">93.5</td><td class="n">+5.5 <span class="ci">[+2.5, +8.8]*</span></td><td><span class="chip w">win</span></td></tr>
+      <tr><td class="metric">Yes/no accuracy, in-domain</td><td class="n">88.5</td><td class="n">92.0</td><td class="n">+3.5 <span class="ci">[−0.5, +7.4]</span></td><td><span class="chip w">ahead</span></td></tr>
+      <tr><td class="metric">Negated yes/no, in-domain</td><td class="n">86.5</td><td class="n">91.5</td><td class="n">+5.0 <span class="ci">[+1.0, +9.2]*</span></td><td><span class="chip w">win</span></td></tr>
+      <tr><td class="metric">Negated yes/no, zero-shot</td><td class="n">85.3</td><td class="n">90.5</td><td class="n">+5.3 <span class="ci">[−1.3, +12.3]</span></td><td><span class="chip w">ahead</span></td></tr>
+      <tr><td class="metric">Choice accuracy, zero-shot</td><td class="n">91.6</td><td class="n">90.5</td><td class="n">−1.1 <span class="ci">[−6.7, +4.0]</span></td><td><span class="chip t">tie</span></td></tr>
+      <tr><td class="metric">Brier score (lower is better)</td><td class="n">0.106</td><td class="n">0.073</td><td class="n">−0.033 <span class="ci">[−0.048, −0.018]*</span></td><td><span class="chip w">win</span></td></tr>
+      <tr><td class="metric">Complement violation |P(A)+P(not A)−1|</td><td class="n">0.085</td><td class="n">0.055</td><td class="n">−0.030 <span class="ci">[−0.040, −0.018]*</span></td><td><span class="chip w">win</span></td></tr>
+      <tr><td class="metric">Double-negation drift</td><td class="n">0.206</td><td class="n">0.048</td><td class="n">−0.158 <span class="ci">[−0.175, −0.139]*</span></td><td><span class="chip w">win</span></td></tr>
+      <tr><td class="metric">Injection attack success, held-out styles</td><td class="n">10.0%</td><td class="n">0.8%</td><td class="n">−9.2 <span class="ci">[−16.7, −2.8]*</span></td><td><span class="chip w">win</span></td></tr>
+      <tr><td class="metric">Distractor choice accuracy</td><td class="n">72.5</td><td class="n">87.5</td><td class="n">+15.0 <span class="ci">[+2.5, +29.7]*</span></td><td><span class="chip w">win</span></td></tr>
+      <tr><td class="metric">Coverage at 2% error</td><td class="n">11.0%</td><td class="n">26.9%</td><td class="n">+15.9</td><td><span class="chip w">ahead</span></td></tr>
+      <tr><td class="metric">Paraphrase drift |ΔP|</td><td class="n">0.020</td><td class="n">0.024</td><td class="n">+0.004 <span class="ci">(CIs overlap)</span></td><td><span class="chip l">behind</span></td></tr>
+      <tr><td class="metric">Echo control, yes/no subset</td><td class="n">91.7</td><td class="n">86.7</td><td class="n">−5.0 <span class="ci">(small subset)</span></td><td><span class="chip l">behind</span></td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<section>
+  <h2>Attacks, long documents and many questions</h2>
+  <div class="scroll"><table>
+    <thead><tr><th>Test</th><th class="n">Jev</th><th class="n">OpenDecide</th><th>Result</th></tr></thead>
+    <tbody>
+      <tr><td class="metric">Planted-authority audit: accuracy under attack (486 deletion debates)</td><td class="n">27.0</td><td class="n">90.7</td><td><span class="chip w">+63.8 pp*</span></td></tr>
+      <tr><td class="metric">Planted-authority audit: attack success</td><td class="n">99.4%</td><td class="n">11.2%</td><td><span class="chip w">win</span></td></tr>
+      <tr><td class="metric">Planted-authority audit: clean accuracy</td><td class="n">95.1</td><td class="n">93.8</td><td><span class="chip l">−1.3</span></td></tr>
+      <tr><td class="metric">Planted-authority audit: Brier, clean</td><td class="n">0.096</td><td class="n">0.050</td><td><span class="chip w">win</span></td></tr>
+      <tr><td class="metric">Open-Prompt-Injection style: attack success (1,080 items)</td><td class="n">1.3%</td><td class="n">0.6%</td><td><span class="chip w">ahead</span></td></tr>
+      <tr><td class="metric">Open-Prompt-Injection style: clean accuracy</td><td class="n">87.2</td><td class="n">86.1</td><td><span class="chip t">tie</span></td></tr>
+      <tr><td class="metric">Long documents (400 questions, ~18k characters each)</td><td class="n">54.0</td><td class="n">91.8</td><td><span class="chip w">+37.8</span></td></tr>
+      <tr><td class="metric">Many questions per call (360)</td><td class="n">70.6</td><td class="n">92.2</td><td><span class="chip w">+21.6</span></td></tr>
+      <tr><td class="metric">Same 515 API requests, served over the internet</td><td class="n">73.9</td><td class="n">91.5</td><td><span class="chip w">+17.6</span></td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<section>
+  <h2>Speed</h2>
+  <p>A 4B decision on an H100 costs about 10 ms of arithmetic, but the eager PyTorch path spent roughly 55 ms per call on kernel launches. We capture the forward pass once per 64-token length bucket as a CUDA graph and replay it. Inputs are right-padded without an attention mask, which is exact because attention, the Gated DeltaNet recurrence and the short convolution are all causal. A start-up self-check measured a maximum probability difference of 0.0 against the eager path.</p>
+  <div class="scroll"><table>
+    <thead><tr><th>Measurement</th><th class="n">Jev</th><th class="n">OpenDecide</th></tr></thead>
+    <tbody>
+      <tr><td class="metric">Per decision on GPU, JevBench (p50 / p95)</td><td class="n">n/a</td><td class="n">14 / 91 ms</td></tr>
+      <tr><td class="metric">Same, before CUDA graphs</td><td class="n">n/a</td><td class="n">72 / 98 ms</td></tr>
+      <tr><td class="metric">End to end from one laptop, 515 bundled requests (median / p95)</td><td class="n">194 / 305 ms</td><td class="n">115 / 124 ms</td></tr>
+      <tr><td class="metric">JevBench speed axis (official penalty applied to us)</td><td class="n">91.2</td><td class="n">92.3</td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<section>
+  <h2>Ablations</h2>
+  <h3>Training stages, measured on JevBench half A (the selection half)</h3>
+  <figure>
+    <div class="scroll" style="border:0;background:transparent">
+    <svg viewBox="0 0 660 290" width="100%" role="img" aria-label="Correct answers on JevBench half A by training stage, with Jev at 103" style="min-width:520px;max-width:100%">
+      <g stroke="var(--rule)" stroke-width="1">
+        <line x1="70" y1="240" x2="640" y2="240"/><line x1="70" y1="200" x2="640" y2="200"/><line x1="70" y1="160" x2="640" y2="160"/>
+        <line x1="70" y1="120" x2="640" y2="120"/><line x1="70" y1="80" x2="640" y2="80"/><line x1="70" y1="40" x2="640" y2="40"/>
+      </g>
+      <g fill="var(--muted)" font-size="12" text-anchor="end">
+        <text x="60" y="244">85</text><text x="60" y="204">90</text><text x="60" y="164">95</text><text x="60" y="124">100</text><text x="60" y="84">105</text><text x="60" y="44">110</text>
+      </g>
+      <!-- scale: y = 240 - (v - 85) * 8 -->
+      <rect x="95" y="168" width="70" height="72" fill="var(--bar-base)"/>
+      <rect x="205" y="112" width="70" height="128" fill="var(--bar)"/>
+      <rect x="315" y="112" width="70" height="128" fill="var(--bar)"/>
+      <rect x="425" y="72" width="70" height="168" fill="var(--bar)"/>
+      <rect x="535" y="88" width="70" height="152" fill="var(--bar)"/>
+      <line x1="70" y1="96" x2="640" y2="96" stroke="var(--loss)" stroke-width="2" stroke-dasharray="6 4"/>
+      <text x="74" y="90" fill="var(--loss)" font-size="12" text-anchor="start">Jev 103</text>
+      <g fill="var(--ink)" font-size="13" text-anchor="middle">
+        <text x="130" y="162">94</text><text x="240" y="106">101</text><text x="350" y="106">101</text><text x="460" y="66">106</text><text x="570" y="82">104</text>
+      </g>
+      <g fill="var(--muted)" font-size="11.5" text-anchor="middle">
+        <text x="130" y="260">frozen</text><text x="240" y="260">v0.7</text><text x="350" y="260">v0.8</text><text x="460" y="260">v0.9</text><text x="570" y="260">v0.10</text>
+        <text x="130" y="276">base model</text><text x="240" y="276">core mix</text><text x="350" y="276">+ LLM-authored</text><text x="460" y="276">+ judge rows</text><text x="570" y="276">+ debates</text>
+      </g>
+    </svg>
+    </div>
+    <figcaption>Correct answers out of 118. v0.9's gain came from one missing skill: the model said "yes, the response is correct" to flawed answers. Adding judge-the-response data (PRM800K, HelpSteer2, procedural checks) fixed 5 items and broke none.</figcaption>
+  </figure>
+  <div class="scroll"><table>
+    <thead><tr><th>Stage</th><th>Data added</th><th class="n">Half A</th><th class="n">Hard tier</th><th class="n">Debate dev</th><th class="n">Audit, attacked</th></tr></thead>
+    <tbody>
+      <tr><td class="metric">Frozen Qwen3.5-4B</td><td>none</td><td class="n">94</td><td class="n">62%</td><td class="n">n/a</td><td class="n">26.5</td></tr>
+      <tr><td class="metric">v0.7</td><td>52.5k rows: classification, negation pairs, injection v2, procedural hard decisions, ProofWriter, FLD, LogiQA 2.0, MuSR, claim check</td><td class="n">101</td><td class="n">74%</td><td class="n">n/a</td><td class="n">39.1</td></tr>
+      <tr><td class="metric">v0.8</td><td>1,518 LLM-authored hard items (two verifiers) + replay</td><td class="n">101</td><td class="n">74%</td><td class="n">n/a</td><td class="n">n/a</td></tr>
+      <tr><td class="metric">v0.9</td><td>5,578 judge-the-response rows + replay</td><td class="n">106</td><td class="n">81%</td><td class="n">76.7</td><td class="n">n/a</td></tr>
+      <tr><td class="metric">v0.10 (final)</td><td>2,335 deletion debates + replay</td><td class="n">104</td><td class="n">78%</td><td class="n">98.3</td><td class="n">90.7</td></tr>
+    </tbody>
+  </table></div>
+  <p class="note">v0.10 was chosen over v0.9 because the two differ on six half-A items, all near coin flips (for example 0.49 vs 0.51), while v0.10 gained 21.6 points on the held-out debate dev set.</p>
+
+  <h3>Leverage-bounded decoding</h3>
+  <p>The decoder rereads the input with each short segment removed. It drops a segment only if removing it flips the answer and the same model judges that segment to be a claim that dictates the answer. On v0.7 it raised attacked accuracy on the audit from 39.1 to 64.4 and cut attack success from 79% to 34%. On the untrained model it hurt (94 → 80 on half A), because the claim check had not been trained. After debate training, the model resists the attack by itself, and at the dev-chosen threshold the decoder changes almost nothing (90.7 plain vs 90.1). The fast configuration is therefore the headline.</p>
+</section>
+
+<section>
+  <h2>Method</h2>
+  <ul>
+    <li><strong>One model.</strong> Qwen3.5-4B (Gated DeltaNet plus attention hybrid), LoRA rank 16 on every projection, merged for serving. No cascade, no fallback, no generation: the answer distribution is a softmax over the option-letter logits after one forward pass.</li>
+    <li><strong>Loss.</strong> Cross-entropy plus consistency terms (a question and its negation must sum to one; paraphrases and attacked copies must agree with their clean twins), a KL anchor to the frozen base on classification rows, and soft targets where exact probabilities are known.</li>
+    <li><strong>Data.</strong> Public datasets, exact procedurally generated decisions, and items written by an open teacher (Qwen3-235B) kept only when two independent verifiers agreed. No Jev output was ever used for training.</li>
+    <li><strong>Hygiene.</strong> Rows sharing any 10-word run with JevBench public text were removed (31 procedural, 2 LLM-authored). Every eval and dev state is asserted absent from training. Debate data excludes all audit titles and any 10-word overlap with audit text.</li>
+    <li><strong>Selection.</strong> Stages, temperatures and decoding thresholds were chosen on dev splits and JevBench half A only, using rules written down before looking at the eval sets.</li>
+  </ul>
+</section>
+
+<section>
+  <h2>Limits</h2>
+  <ul>
+    <li>The JevBench accuracy lead (+4 items of 231) is within noise; the axis wins in calibration, speed and cost are larger and structural.</li>
+    <li>Five hard JevBench items share concepts with examples in my procedural-generator spec. Without them: 199 vs 197 and 196.</li>
+    <li>The debate training data comes from the same kind of source as the audit (Wikipedia deletion discussions), with the audit's own articles removed. It is in-domain data for that test.</li>
+    <li>JevBench has no private tier here; the judge and sealed tiers could not be run.</li>
+    <li>Jev is ahead on paraphrase drift, the echo-control yes/no subset, one unseen negation wording in zero-shot, and one easy JevBench item.</li>
+  </ul>
+</section>
+
+<section>
+  <h2>Cost of the whole study</h2>
+  <p>About $22–23 of Modal GPU credit (billing lags, so the final figure may move slightly) and $1.50 of OpenRouter API spend for data generation and verification. Training all four stages took about 2.8 H100-hours.</p>
+</section>
+</main>

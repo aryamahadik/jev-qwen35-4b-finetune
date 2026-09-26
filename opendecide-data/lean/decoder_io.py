@@ -145,11 +145,12 @@ class GraphRunner:
     right-padded to the bucket WITHOUT an attention mask: attention, the Gated-DeltaNet recurrence and the short conv are
     all causal, so pad tokens after the last real token never change it (checked: identical probabilities)."""
 
-    def __init__(self, model, tok, bucket=64, max_len=8192, batches=(1, 2, 4, 8, 16)):
+    def __init__(self, model, tok, bucket=64, max_len=8192, batches=(1, 2, 4, 8, 16), max_graph_tokens=8192):
         self.model, self.tok, self.bucket, self.max_len, self.batches = model, tok, bucket, max_len, batches
+        self.max_graph_tokens = max_graph_tokens  # graph memory is not shared across captures: bound batch x length
         self.body, self.head = _parts(model)
         self.cap = _softcap(model.get_base_model() if hasattr(model, "get_base_model") else model)
-        self.graphs, self.pool = {}, None
+        self.graphs = {}
 
     def _graph(self, B, L):
         if (B, L) not in self.graphs:
@@ -160,17 +161,21 @@ class GraphRunner:
                 for _ in range(2):
                     self.body(input_ids=ids, use_cache=False)
             torch.cuda.current_stream().wait_stream(st)
+            idx = torch.zeros(B, dtype=torch.long, device="cuda")  # flat index b*L + last real token, filled before replay
             g = torch.cuda.CUDAGraph()
-            with torch.cuda.graph(g, pool=self.pool), torch.no_grad():
-                out = self.body(input_ids=ids, use_cache=False).last_hidden_state
-            self.pool = g.pool()
-            self.graphs[(B, L)] = (g, ids, out)
+            # own memory pool per graph: a shared pool is only safe when graphs replay in capture order, and requests
+            # arrive in any order (a shared pool corrupted a cached index tensor -> device assert)
+            with torch.cuda.graph(g), torch.no_grad():
+                hs = self.body(input_ids=ids, use_cache=False).last_hidden_state
+                out = hs.reshape(B * L, hs.shape[-1]).index_select(0, idx)  # keep only B x H alive
+            self.graphs[(B, L)] = (g, ids, idx, out)
         return self.graphs[(B, L)]
 
     def capture_all(self, max_tokens=4096, batches=None):
         for B in batches or self.batches:
             for L in range(self.bucket, max_tokens + 1, self.bucket):
-                self._graph(B, L)
+                if B == 1 or B * L <= self.max_graph_tokens:
+                    self._graph(B, L)
 
     @torch.no_grad()
     def cand_logits(self, ro, rows, perms=None):
@@ -180,14 +185,15 @@ class GraphRunner:
         n = [len(x) for x in ids]
         B = next((b for b in self.batches if b >= len(rows)), None)
         L = -(-max(n) // self.bucket) * self.bucket
-        if B is None or L > self.max_len:
-            return None  # caller falls back to the eager path
-        g, sid, out = self._graph(B, L)
+        if B is None or L > self.max_len or (B > 1 and B * L > self.max_graph_tokens):
+            return None  # caller falls back to the eager path (large shapes are compute-bound anyway)
+        g, sid, idx, out = self._graph(B, L)
         sid.fill_(self.tok.pad_token_id)
         for i, x in enumerate(ids):
             sid[i, :n[i]].copy_(x, non_blocking=True)
+        idx.copy_(torch.tensor([b * L + k - 1 for b, k in enumerate(n)] + [0] * (B - len(n)), dtype=torch.long))
         g.replay()
-        h = out[torch.arange(len(rows), device="cuda"), torch.tensor([k - 1 for k in n], device="cuda")]
+        h = out
         res = []
         for i, r in enumerate(rows):
             groups = ro.cand(r)

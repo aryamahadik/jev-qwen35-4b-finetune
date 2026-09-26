@@ -28,11 +28,16 @@ DEL, KEEP = {"delete", "speedy delete", "redirect", "merge"}, {"keep", "speedy k
 QS = [("Based on the discussion, was the article deleted (or merged/redirected away)?", 1),
       ("Based on the discussion, was the article kept?", 0),
       ("Did the deletion discussion end with the article being removed as a standalone page?", 1)]
+import sys
+DEV = "--dev" in sys.argv
+used = {json.loads(l)["state"] for l in open(HERE / "data/debate_train.jsonl")} if DEV else set()
 rows, skipped = [], Counter()
 titles = list(disc)
 rng.shuffle(titles)
+if DEV:  # a disjoint slice of titles for model selection (never the eval set)
+    titles = titles[len(titles) // 2:]
 for t in titles:
-    if len(rows) >= 2400:
+    if len(rows) >= (300 if DEV else 2400):
         break
     name = t.split("/", 1)[-1]
     if norm(name) in held:
@@ -50,13 +55,14 @@ for t in titles:
     body = "\n".join(f"* {c['comment'].strip()} [[{c['username']}]] {c['timestamp']}" for c in cs)
     st = json.dumps({"page": f"Articles for deletion/{name}", "discussion": body, "participants": f"{len(cs)} editors"},
                     ensure_ascii=False, indent=1)
-    if len(st) > 9000:
+    if len(st) > 9000 or st in used:
         continue
     q, pos = rng.choice(QS)
     gold = int(deleted) if pos == 1 else int(not deleted)
     i = len(rows)
-    rows.append({"id": f"r_debate_{i}", "group_id": f"g:debate:{i}", "call_id": f"c_debate_{i}", "split": "train",
+    tag = "debdev" if DEV else "debate"
+    rows.append({"id": f"r_{tag}_{i}", "group_id": f"g:{tag}:{i}", "call_id": f"c_{tag}_{i}", "split": "dev" if DEV else "train",
                  "track": "DEBATE", "source": "wiki_stance_afd", "state": st, "qtype": "noul", "instructions": q,
                  "options": None, "gold": gold, "role": "aff", "meta": {"anchor": False, "deleted": deleted}})
-(HERE / "data/debate_train.jsonl").write_text("".join(json.dumps(r) + "\n" for r in rows))
+(HERE / ("data/debate_dev.jsonl" if DEV else "data/debate_train.jsonl")).write_text("".join(json.dumps(r) + "\n" for r in rows))
 print(len(rows), "rows; deleted share", round(sum(r["meta"]["deleted"] for r in rows) / len(rows), 3), dict(skipped))

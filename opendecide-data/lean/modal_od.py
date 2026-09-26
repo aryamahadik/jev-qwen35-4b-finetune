@@ -291,6 +291,16 @@ def _jevbench_impl(name, base, adapter, temps, tiers, think_below=None, fmt="od"
     if graphs:  # CUDA graphs per (batch, 64-token bucket), captured at start-up like any production server
         decoder_io.GRAPHS = decoder_io.GraphRunner(model, tok, batches=(1,) if not robust else (1, 2, 4, 8, 16))
         decoder_io.GRAPHS.capture_all(max_tokens=4096)
+        import jevbench_od as _jo  # self-check: graph path == eager path on a few real prompts (batch 1 and 3)
+        chk = [{k: v for k, v in _jo.letter_row(t, tok, fmt)[0].items() if k != "_prompt"} for t in tasks[:6]] \
+            if fmt != "od" else [_jo.to_row(t)[0] for t in tasks[:6]]
+        g_ = decoder_io.GRAPHS
+        decoder_io.GRAPHS = None
+        eag = [decoder_io.cand_logits(model, ad.ro, [r], "cuda")[0] for r in chk] + decoder_io.cand_logits(model, ad.ro, chk[:3], "cuda")
+        decoder_io.GRAPHS = g_
+        grp = [decoder_io.cand_logits(model, ad.ro, [r], "cuda")[0] for r in chk] + decoder_io.cand_logits(model, ad.ro, chk[:3], "cuda")
+        diff = max(float((torch.softmax(a, -1) - torch.softmax(b, -1)).abs().max()) for a, b in zip(eag, grp))
+        print(f"graph self-check: max prob diff vs eager {diff:.2e}")
     print(f"warm-up {_t.time() - t0:.0f}s")
     for t in tasks[:3]:  # warm-up (CUDA init is not decision latency, like a server that is already up)
         ad.run(t)
