@@ -1,0 +1,16 @@
+{
+  "name": "q35_4b_v09_A_g",
+  "base": "Qwen/Qwen3.5-4B",
+  "adapter": "/vol/models/q35_4b_v09",
+  "temps": [
+    1.0,
+    1.0
+  ],
+  "gpu": "NVIDIA H100 80GB HBM3",
+  "tiers": "A",
+  "think_below": -1.0,
+  "fmt": "cygnet",
+  "calc": false,
+  "robust": "",
+  "graphs": true
+}
