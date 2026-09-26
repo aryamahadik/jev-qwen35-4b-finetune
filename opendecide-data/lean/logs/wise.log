@@ -1,0 +1,61 @@
+✓ Initialized. View run at 
+https://modal.com/apps/mahadikarya3/main/ap-T2K5oOZGobSZ7eKcGKYuBE
+✓ Created objects.
+├── 🔨 Created mount 
+│   /Users/aryamahadik/Documents/jev/opendecide-data/lean/modal_od.py
+├── 🔨 Created mount 
+│   /Users/aryamahadik/Documents/jev/opendecide-data/lean/train.py
+├── 🔨 Created mount PythonPackage:decoder_io, PythonPackage:train_decoder, 
+│   PythonPackage:hc
+├── 🔨 Created mount PythonPackage:decoder_io, PythonPackage:gliclass_io, 
+│   PythonPackage:train_decoder, PythonPackage:hc
+├── 🔨 Created mount /Users/aryamahadik/Documents/jev/opendecide-data/lean/data
+├── 🔨 Created function zeroshot35.
+├── 🔨 Created function zeroshot.
+├── 🔨 Created function train_remote.
+├── 🔨 Created function eval_remote.
+├── 🔨 Created function latency35.
+├── 🔨 Created function train_gliclass_remote.
+├── 🔨 Created function train_remote35.
+├── 🔨 Created function latency_l4.
+├── 🔨 Created function hc_remote.
+├── 🔨 Created function hc_shortlist_remote.
+├── 🔨 Created function hc_recall_remote.
+├── 🔨 Created function eval_remote35.
+└── 🔨 Created function hc_remote35.
+
+[1ALoading checkpoint shards:   0%|          | 0/3 [00:00<?, ?it/s]
+[1ALoading checkpoint shards:  33%|███▎      | 1/3 [00:00<00:01,  1.74it/s]
+[1ALoading checkpoint shards:  67%|██████▋   | 2/3 [00:01<00:00,  1.50it/s]
+[1ALoading checkpoint shards: 100%|██████████| 3/3 [00:01<00:00,  2.26it/s]
+
+[1ALoading checkpoint shards:   0%|          | 0/3 [00:00<?, ?it/s]
+[1ALoading checkpoint shards:   0%|          | 0/3 [00:00<?, ?it/s]
+[1ALoading checkpoint shards:  33%|███▎      | 1/3 [00:00<00:01,  1.10it/s]
+[1ALoading checkpoint shards:  33%|███▎      | 1/3 [00:00<00:01,  1.09it/s]
+[1ALoading checkpoint shards:  67%|██████▋   | 2/3 [00:02<00:01,  1.08s/it]
+[1ALoading checkpoint shards:  67%|██████▋   | 2/3 [00:02<00:01,  1.06s/it]
+[1ALoading checkpoint shards: 100%|██████████| 3/3 [00:02<00:00,  1.42it/s]
+
+[1ALoading checkpoint shards: 100%|██████████| 3/3 [00:02<00:00,  1.41it/s]
+
+[1ALoading checkpoint shards:   0%|          | 0/3 [00:00<?, ?it/s]
+[1ALoading checkpoint shards:  33%|███▎      | 1/3 [00:00<00:01,  1.58it/s]
+[1ALoading checkpoint shards:  67%|██████▋   | 2/3 [00:01<00:00,  1.40it/s]
+[1ALoading checkpoint shards: 100%|██████████| 3/3 [00:01<00:00,  2.10it/s]
+wrote preds_devzs2/q4b_v03_A3.jsonl (760 rows)
+wrote preds_devzs/q4b_v03_A3.jsonl (800 rows)
+wrote preds_dev/q4b_v03_A3.jsonl (600 rows)
+wrote preds_devzs2/q4b_v03_A3_a0.8.jsonl (760 rows)
+wrote preds_devzs/q4b_v03_A3_a0.8.jsonl (800 rows)
+wrote preds_dev/q4b_v03_A3_a0.8.jsonl (600 rows)
+wrote preds_devzs2/q4b_v03_A3_a0.6.jsonl (760 rows)
+wrote preds_devzs/q4b_v03_A3_a0.6.jsonl (800 rows)
+wrote preds_dev/q4b_v03_A3_a0.6.jsonl (600 rows)
+wrote preds_devzs2/q4b_v03_A3_a0.4.jsonl (760 rows)
+wrote preds_devzs/q4b_v03_A3_a0.4.jsonl (800 rows)
+wrote preds_dev/q4b_v03_A3_a0.4.jsonl (600 rows)
+Stopping app - local entrypoint completed.
+Runner terminated.
+✓ App completed. View run at 
+https://modal.com/apps/mahadikarya3/main/ap-T2K5oOZGobSZ7eKcGKYuBE

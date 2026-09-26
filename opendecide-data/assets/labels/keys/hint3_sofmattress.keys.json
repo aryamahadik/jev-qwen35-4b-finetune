@@ -1,0 +1,188 @@
+{
+ "authored_by": "llm:claude:label-key-author",
+ "bot_domain": "mattress store",
+ "counts_by_kind": {
+  "intent": 20,
+  "oos": 1
+ },
+ "created": "2026-09-25",
+ "dataset": "hint3_sofmattress",
+ "eval_split": "test",
+ "excluded_labels": [
+  {
+   "label_id": "WARRANTY",
+   "n_train": 10,
+   "reason": "train-only label: absent from the v2 test split, so a test request of this kind can only carry another label or NO_NODES_DETECTED; offering it as an option would make 'none of these' gold unsafe"
+  }
+ ],
+ "key_policy": "Choice key = natural 1-5 word English name of the label, fixed for every split, variant and model (DESIGN field rule 2, D8). Descriptions (D_*) and propositions (P_*) are authored separately per pool and never live in this file.",
+ "label_field": "label",
+ "label_id_type": "csv label string",
+ "labels": [
+  {
+   "key": "100-night trial",
+   "kind": "intent",
+   "label_id": "100_NIGHT_TRIAL_OFFER",
+   "n_test": 5,
+   "parent": null
+  },
+  {
+   "key": "about the company",
+   "kind": "intent",
+   "label_id": "ABOUT_SOF_MATTRESS",
+   "n_test": 3,
+   "parent": null
+  },
+  {
+   "key": "cancel order",
+   "kind": "intent",
+   "label_id": "CANCEL_ORDER",
+   "n_test": 6,
+   "parent": null
+  },
+  {
+   "key": "delivery area check",
+   "kind": "intent",
+   "label_id": "CHECK_PINCODE",
+   "n_test": 25,
+   "parent": null
+  },
+  {
+   "key": "cash on delivery",
+   "kind": "intent",
+   "label_id": "COD",
+   "n_test": 12,
+   "parent": null
+  },
+  {
+   "key": "compare mattresses",
+   "kind": "intent",
+   "label_id": "COMPARISON",
+   "n_test": 18,
+   "parent": null
+  },
+  {
+   "key": "delayed delivery",
+   "kind": "intent",
+   "label_id": "DELAY_IN_DELIVERY",
+   "n_test": 15,
+   "parent": null
+  },
+  {
+   "key": "stores and dealers",
+   "kind": "intent",
+   "label_id": "DISTRIBUTORS",
+   "n_test": 13,
+   "parent": null
+  },
+  {
+   "key": "monthly instalment plan",
+   "kind": "intent",
+   "label_id": "EMI",
+   "n_test": 13,
+   "parent": null
+  },
+  {
+   "key": "Ergo mattress features",
+   "kind": "intent",
+   "label_id": "ERGO_FEATURES",
+   "n_test": 3,
+   "parent": null
+  },
+  {
+   "key": "talk to sales agent",
+   "kind": "intent",
+   "label_id": "LEAD_GEN",
+   "n_test": 17,
+   "parent": null
+  },
+  {
+   "key": "mattress price",
+   "kind": "intent",
+   "label_id": "MATTRESS_COST",
+   "n_test": 23,
+   "parent": null
+  },
+  {
+   "key": "offers and discounts",
+   "kind": "intent",
+   "label_id": "OFFERS",
+   "n_test": 11,
+   "parent": null
+  },
+  {
+   "key": "order status",
+   "kind": "intent",
+   "label_id": "ORDER_STATUS",
+   "n_test": 8,
+   "parent": null
+  },
+  {
+   "key": "Ortho mattress features",
+   "kind": "intent",
+   "label_id": "ORTHO_FEATURES",
+   "n_test": 11,
+   "parent": null
+  },
+  {
+   "key": "pillows",
+   "kind": "intent",
+   "label_id": "PILLOWS",
+   "n_test": 13,
+   "parent": null
+  },
+  {
+   "key": "product range",
+   "kind": "intent",
+   "label_id": "PRODUCT_VARIANTS",
+   "n_test": 8,
+   "parent": null
+  },
+  {
+   "key": "return or exchange",
+   "kind": "intent",
+   "label_id": "RETURN_EXCHANGE",
+   "n_test": 12,
+   "parent": null
+  },
+  {
+   "key": "custom mattress size",
+   "kind": "intent",
+   "label_id": "SIZE_CUSTOMIZATION",
+   "n_test": 15,
+   "parent": null
+  },
+  {
+   "key": "choosing the right size",
+   "kind": "intent",
+   "label_id": "WHAT_SIZE_TO_ORDER",
+   "n_test": 22,
+   "parent": null
+  },
+  {
+   "key": null,
+   "key_note": "no key: out-of-scope items take the 'none of these' option from the none_option bank",
+   "kind": "oos",
+   "label_id": "NO_NODES_DETECTED",
+   "n_test": 144,
+   "parent": null
+  }
+ ],
+ "n_labels": 21,
+ "schema_version": "od-keys-1.0",
+ "source": "github:hellohaptik/HINT3 @ 99965c892ea9a6801a87083d3861b0b04c91a4e7 (dataset v2)",
+ "source_files": [
+  {
+   "commit": "99965c892ea9a6801a87083d3861b0b04c91a4e7",
+   "path": "dataset/v2/test/sofmattress_test.csv",
+   "repo": "github:hellohaptik/HINT3",
+   "sha256": "9c4746f7cf445b5db276260e1c05b9e7b102fa2bca0ce1ace20f51df0ba53aae"
+  },
+  {
+   "commit": "99965c892ea9a6801a87083d3861b0b04c91a4e7",
+   "path": "dataset/v2/train/sofmattress_train.csv",
+   "repo": "github:hellohaptik/HINT3",
+   "sha256": "0addf4dc4b9df1e71509da5318d5a9f6e9a5d6eb98b9584d55cab3da7badf4b1"
+  }
+ ]
+}

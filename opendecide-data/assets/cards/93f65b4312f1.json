@@ -1,0 +1,34 @@
+{
+ "key": "93f65b4312f1",
+ "kind": "Company disclosure",
+ "instruction": "Choose the label that fits this text.",
+ "labels": [
+  "opportunity",
+  "neutral",
+  "risk"
+ ],
+ "model": "qwen/qwen3-235b-a22b-2507",
+ "cards": {
+  "opportunity": {
+   "definition": "An opportunity refers to a favorable circumstance or development that could enhance the company's growth, profitability, or strategic position, clearly indicating potential upside rather than mere stability or absence of threats.",
+   "examples": [
+    "The company plans to expand into emerging markets with high consumer demand, leveraging its innovative product line.",
+    "New regulatory changes have created an opening for the firm to enter the renewable energy sector with minimal barriers."
+   ]
+  },
+  "neutral": {
+   "definition": "A neutral statement presents factual, routine, or administrative information without implying significant positive or negative impact on the company\u2019s future performance or outlook, including disclosures that are standard or non-material.",
+   "examples": [
+    "The annual shareholder meeting will be held on June 15 via webcast.",
+    "The company filed its quarterly financial report with the SEC in accordance with standard procedures."
+   ]
+  },
+  "risk": {
+   "definition": "A risk describes a potential threat or adverse condition that could negatively affect the company\u2019s operations, financial results, or strategic goals, going beyond normal business fluctuations to highlight material vulnerabilities.",
+   "examples": [
+    "The company faces increasing competition from low-cost providers, which may erode market share and margins.",
+    "Reliance on a single supplier for critical components exposes operations to disruption in the event of supply chain failures."
+   ]
+  }
+ }
+}

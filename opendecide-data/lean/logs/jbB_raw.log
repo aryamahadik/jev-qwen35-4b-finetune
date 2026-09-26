@@ -1,0 +1,84 @@
+✓ Initialized. View run at 
+https://modal.com/apps/mahadikarya3/main/ap-9aj7s9oNlmIzAgMSnKkZNS
+✓ Created objects.
+├── 🔨 Created mount 
+│   /Users/aryamahadik/Documents/jev/opendecide-data/lean/modal_od.py
+├── 🔨 Created mount 
+│   /Users/aryamahadik/Documents/jev/opendecide-data/lean/train.py
+├── 🔨 Created mount /Users/aryamahadik/Documents/jev/bench/splits
+├── 🔨 Created mount 
+│   /Users/aryamahadik/Documents/jev/bench/jevbench/datasets/public
+├── 🔨 Created mount /Users/aryamahadik/Documents/jev/opendecide-data/lean/data
+├── 🔨 Created mount PythonPackage:decoder_io, PythonPackage:train_decoder, 
+│   PythonPackage:hc, PythonPackage:jevbench_od
+├── 🔨 Created mount PythonPackage:decoder_io, PythonPackage:gliclass_io, 
+│   PythonPackage:train_decoder, PythonPackage:hc, PythonPackage:jevbench_od
+├── 🔨 Created mount /Users/aryamahadik/Documents/jev/bench/jevbench/jevbench
+├── 🔨 Created function zeroshot35.
+├── 🔨 Created function train_remote35.
+├── 🔨 Created function eval_remote35.
+├── 🔨 Created function latency35.
+├── 🔨 Created function hc_remote35.
+├── 🔨 Created function jevbench_remote35.
+├── 🔨 Created function gen_diag_remote.
+├── 🔨 Created function zeroshot.
+├── 🔨 Created function train_remote.
+├── 🔨 Created function train_gliclass_remote.
+├── 🔨 Created function eval_remote.
+├── 🔨 Created function latency_l4.
+├── 🔨 Created function hc_recall_remote.
+├── 🔨 Created function hc_shortlist_remote.
+├── 🔨 Created function hc_remote.
+└── 🔨 Created function jevbench_remote.
+/usr/local/lib/python3.12/site-packages/huggingface_hub/constants.py:302: FutureWarning: The `HF_HUB_ENABLE_HF_TRANSFER` environment variable is deprecated as 'hf_transfer' is not used anymore. Please use `HF_XET_HIGH_PERFORMANCE` instead to enable high performance transfer with Xet. Visit https://huggingface.co/docs/huggingface_hub/package_reference/environment_variables#hfxethighperformance for more details.
+  warnings.warn(
+
+[1ALoading weights:   0%|          | 0/677 [00:00<?, ?it/s]
+[1ALoading weights:   2%|▏         | 11/677 [00:00<00:06, 102.25it/s]
+[1ALoading weights:   3%|▎         | 22/677 [00:00<00:06, 103.89it/s]
+[1ALoading weights:   5%|▍         | 33/677 [00:00<00:06, 98.71it/s] 
+[1ALoading weights:   7%|▋         | 47/677 [00:00<00:05, 110.19it/s]
+[1ALoading weights:   9%|▉         | 64/677 [00:00<00:04, 125.06it/s]
+[1ALoading weights:  12%|█▏        | 79/677 [00:00<00:04, 126.18it/s]
+[1ALoading weights:  14%|█▍        | 94/677 [00:00<00:04, 129.97it/s]
+[1ALoading weights:  16%|█▌        | 108/677 [00:00<00:04, 123.73it/s]
+[1ALoading weights:  18%|█▊        | 121/677 [00:01<00:05, 107.03it/s]
+[1ALoading weights:  20%|█▉        | 133/677 [00:01<00:05, 99.64it/s] 
+[1ALoading weights:  22%|██▏       | 147/677 [00:01<00:04, 106.72it/s]
+[1ALoading weights:  24%|██▍       | 161/677 [00:01<00:04, 111.15it/s]
+[1ALoading weights:  26%|██▌       | 174/677 [00:01<00:04, 112.92it/s]
+[1ALoading weights:  27%|██▋       | 186/677 [00:01<00:04, 104.44it/s]
+[1ALoading weights:  29%|██▉       | 197/677 [00:01<00:04, 99.85it/s] 
+[1ALoading weights:  31%|███       | 208/677 [00:01<00:05, 90.96it/s]
+[1ALoading weights:  32%|███▏      | 218/677 [00:02<00:04, 92.82it/s]
+[1ALoading weights:  34%|███▎      | 228/677 [00:02<00:04, 94.47it/s]
+[1ALoading weights:  35%|███▌      | 238/677 [00:02<00:05, 86.64it/s]
+[1ALoading weights:  37%|███▋      | 251/677 [00:02<00:04, 96.94it/s]
+[1ALoading weights:  39%|███▊      | 262/677 [00:02<00:04, 92.70it/s]
+[1ALoading weights:  41%|████      | 278/677 [00:02<00:03, 107.10it/s]
+[1ALoading weights:  43%|████▎     | 289/677 [00:02<00:03, 98.82it/s] 
+[1ALoading weights:  44%|████▍     | 300/677 [00:02<00:03, 98.63it/s]
+[1ALoading weights:  46%|████▌     | 311/677 [00:03<00:03, 92.65it/s]
+[1ALoading weights:  48%|████▊     | 324/677 [00:03<00:03, 100.18it/s]
+[1ALoading weights:  49%|████▉     | 335/677 [00:03<00:03, 89.27it/s] 
+[1ALoading weights:  51%|█████▏    | 348/677 [00:03<00:03, 95.95it/s]
+[1ALoading weights:  53%|█████▎    | 361/677 [00:03<00:03, 102.39it/s]
+[1ALoading weights:  55%|█████▌    | 373/677 [00:03<00:02, 102.31it/s]
+[1ALoading weights:  57%|█████▋    | 384/677 [00:03<00:02, 103.59it/s]
+[1ALoading weights:  59%|█████▊    | 397/677 [00:03<00:02, 106.18it/s]
+[1ALoading weights: 100%|██████████| 677/677 [00:03<00:00, 171.80it/s]
+10/113 completed
+20/113 completed
+30/113 completed
+40/113 completed
+50/113 completed
+60/113 completed
+70/113 completed
+80/113 completed
+90/113 completed
+100/113 completed
+110/113 completed
+g12_v06_B_raw: 90/113 correct on B (NVIDIA H100 80GB HBM3)
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/mahadikarya3/main/ap-9aj7s9oNlmIzAgMSnKkZNS

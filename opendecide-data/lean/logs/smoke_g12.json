@@ -1,0 +1,45 @@
+{
+  "cfg": {
+    "recipe": "A3",
+    "epochs": 0.004,
+    "lr": 5e-05,
+    "batch": 16,
+    "lam": 0.5,
+    "r": 16,
+    "alpha": 32,
+    "dropout": 0.05,
+    "beta": 1.0,
+    "seed": 20260925,
+    "train_file": "train_v06s.jsonl",
+    "rel_file": "train_v06s_relations.jsonl",
+    "grad_ckpt": true,
+    "base": "google/gemma-4-12B-it",
+    "targets": "^(?!.*(vision|audio|visual)).*layers\\.\\d+\\.(self_attn|mlp)\\.(q_proj|k_proj|v_proj|o_proj|gate_proj|up_proj|down_proj)"
+  },
+  "rows": 28550,
+  "relations": 7371,
+  "steps": 8,
+  "minutes": 0.76,
+  "log": [
+    {
+      "step": 0,
+      "of": 8,
+      "loss": 2.1406,
+      "task": 2.1406,
+      "cons": 0.0,
+      "kl": 0.0,
+      "lr": 4.8096988312782174e-05,
+      "min": 0.18
+    },
+    {
+      "step": 7,
+      "of": 8,
+      "loss": 2.3594,
+      "task": 2.2188,
+      "cons": 0.2773,
+      "kl": 0.0001,
+      "lr": 0.0,
+      "min": 0.74
+    }
+  ]
+}

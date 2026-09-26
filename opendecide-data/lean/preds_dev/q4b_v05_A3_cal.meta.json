@@ -1,0 +1,31 @@
+{
+  "name": "q4b_v05_A3",
+  "rows": 600,
+  "base": "Qwen/Qwen3-4B-Instruct-2507",
+  "train": {
+    "cfg": {
+      "recipe": "A3",
+      "epochs": 1.0,
+      "lr": 0.0001,
+      "batch": 16,
+      "lam": 0.5,
+      "r": 16,
+      "alpha": 32,
+      "dropout": 0.05,
+      "seed": 20260925,
+      "train_file": "train_v05.jsonl",
+      "rel_file": "train_v05_relations.jsonl",
+      "grad_ckpt": true,
+      "base": "Qwen/Qwen3-4B-Instruct-2507"
+    },
+    "rows": 39019,
+    "relations": 18776,
+    "steps": 2439,
+    "minutes": 36.51
+  },
+  "alpha": 1.0,
+  "temperature": {
+    "noul": 1.1,
+    "choice": 1.15
+  }
+}

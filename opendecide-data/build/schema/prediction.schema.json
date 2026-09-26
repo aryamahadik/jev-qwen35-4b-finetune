@@ -1,0 +1,75 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "$id": "https://opendecide.invalid/schema/prediction.schema.json",
+ "title": "OpenDecide prediction (od-1.0)",
+ "description": "One submitted prediction (DESIGN 1.2): {id, model, probs, raw_sum, invalid}. Outcomes are \"yes\"/\"no\" for Noul, option keys for Choice, and level indices \"0\"..\"K-1\" for Score. Scored by analysis/score.py, which renormalises and treats invalid rows as incorrect (accuracy) and uniform (proper scores). Each prediction may depend only on its row's state and question (R13).",
+ "type": "object",
+ "additionalProperties": false,
+ "required": [
+  "id",
+  "model",
+  "probs",
+  "raw_sum",
+  "invalid"
+ ],
+ "properties": {
+  "id": {
+   "type": "string",
+   "pattern": "^r_[0-9a-f]{12}$"
+  },
+  "model": {
+   "type": "string",
+   "minLength": 1
+  },
+  "probs": {
+   "type": [
+    "object",
+    "null"
+   ],
+   "additionalProperties": {
+    "type": "number",
+    "minimum": 0,
+    "maximum": 1
+   },
+   "propertyNames": {
+    "minLength": 1
+   }
+  },
+  "raw_sum": {
+   "type": [
+    "number",
+    "null"
+   ],
+   "minimum": 0
+  },
+  "invalid": {
+   "type": "boolean"
+  },
+  "seed": {
+   "type": [
+    "integer",
+    "null"
+   ],
+   "description": "training seed of a fine-tuned model (optional)"
+  }
+ },
+ "allOf": [
+  {
+   "if": {
+    "properties": {
+     "invalid": {
+      "const": false
+     }
+    }
+   },
+   "then": {
+    "properties": {
+     "probs": {
+      "type": "object",
+      "minProperties": 2
+     }
+    }
+   }
+  }
+ ]
+}

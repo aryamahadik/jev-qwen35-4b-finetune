@@ -1,0 +1,10 @@
+{
+  "name": "q4b_v03_A3",
+  "rows": 450,
+  "base": "Qwen/Qwen3-4B-Instruct-2507",
+  "embedder": "Alibaba-NLP/gte-modernbert-base",
+  "k": 64,
+  "chunk": 20,
+  "keep": 2,
+  "gpu": "NVIDIA L40S"
+}

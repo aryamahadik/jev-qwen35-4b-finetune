@@ -1,0 +1,60 @@
+✓ Initialized. View run at 
+https://modal.com/apps/mahadikarya3/main/ap-Ikwi9r5FXdV3tob3wTZ3Fc
+✓ Created objects.
+├── 🔨 Created mount 
+│   /Users/aryamahadik/Documents/jev/opendecide-data/lean/modal_od.py
+├── 🔨 Created mount 
+│   /Users/aryamahadik/Documents/jev/opendecide-data/lean/train.py
+├── 🔨 Created mount PythonPackage:decoder_io, PythonPackage:gliclass_io, 
+│   PythonPackage:train_decoder, PythonPackage:hc
+├── 🔨 Created mount PythonPackage:decoder_io, PythonPackage:train_decoder, 
+│   PythonPackage:hc
+├── 🔨 Created mount /Users/aryamahadik/Documents/jev/opendecide-data/lean/data
+├── 🔨 Created function zeroshot35.
+├── 🔨 Created function train_remote35.
+├── 🔨 Created function eval_remote35.
+├── 🔨 Created function latency35.
+├── 🔨 Created function hc_remote35.
+├── 🔨 Created function zeroshot.
+├── 🔨 Created function train_remote.
+├── 🔨 Created function train_gliclass_remote.
+├── 🔨 Created function eval_remote.
+├── 🔨 Created function latency_l4.
+├── 🔨 Created function hc_recall_remote.
+├── 🔨 Created function hc_shortlist_remote.
+└── 🔨 Created function hc_remote.
+
+[1ALoading checkpoint shards:   0%|          | 0/16 [00:00<?, ?it/s]
+[1ALoading checkpoint shards:   6%|▋         | 1/16 [00:01<00:16,  1.11s/it]
+[1ALoading checkpoint shards:  12%|█▎        | 2/16 [00:02<00:16,  1.20s/it]
+[1ALoading checkpoint shards:  19%|█▉        | 3/16 [00:03<00:16,  1.26s/it]
+[1ALoading checkpoint shards:  25%|██▌       | 4/16 [00:04<00:15,  1.26s/it]
+[1ALoading checkpoint shards:  31%|███▏      | 5/16 [00:06<00:13,  1.26s/it]
+[1ALoading checkpoint shards:  38%|███▊      | 6/16 [00:07<00:12,  1.25s/it]
+[1ALoading checkpoint shards:  44%|████▍     | 7/16 [00:08<00:11,  1.26s/it]
+[1ALoading checkpoint shards:  50%|█████     | 8/16 [00:09<00:09,  1.25s/it]
+[1ALoading checkpoint shards:  56%|█████▋    | 9/16 [00:11<00:08,  1.27s/it]
+[1ALoading checkpoint shards:  62%|██████▎   | 10/16 [00:12<00:07,  1.25s/it]
+[1ALoading checkpoint shards:  69%|██████▉   | 11/16 [00:13<00:06,  1.26s/it]
+[1ALoading checkpoint shards:  75%|███████▌  | 12/16 [00:15<00:06,  1.51s/it]
+[1ALoading checkpoint shards:  81%|████████▏ | 13/16 [00:19<00:06,  2.06s/it]
+[1ALoading checkpoint shards:  88%|████████▊ | 14/16 [00:20<00:03,  1.91s/it]
+[1ALoading checkpoint shards:  94%|█████████▍| 15/16 [00:21<00:01,  1.66s/it]
+[1ALoading checkpoint shards: 100%|██████████| 16/16 [00:22<00:00,  1.44s/it]
+[1ALoading checkpoint shards: 100%|██████████| 16/16 [00:22<00:00,  1.42s/it]
+an error occurred during closing of asynchronous generator <async_generator object async_merge at 0x105b1e710>
+asyncgen: <async_generator object async_merge at 0x105b1e710>
+Traceback (most recent call last):
+  File "/Users/aryamahadik/Documents/jev/opendecide-data/.venv/lib/python3.12/site-packages/modal/_utils/async_utils.py", line 856, in __iter__
+    yield from run_async_gen(runner, self._async_iterable)
+GeneratorExit
+
+During handling of the above exception, another exception occurred:
+
+RuntimeError: aclose(): asynchronous generator is already running
+wrote preds_devzs_card/qwen3-30b-a3b_zs.jsonl (800 rows)
+wrote preds_devzs2_card/qwen3-30b-a3b_zs.jsonl (760 rows)
+Stopping app - local entrypoint completed.
+Runner terminated.
+✓ App completed. View run at 
+https://modal.com/apps/mahadikarya3/main/ap-Ikwi9r5FXdV3tob3wTZ3Fc

@@ -1,0 +1,54 @@
+✓ Initialized. View run at 
+https://modal.com/apps/mahadikarya3/main/ap-j8zDcVr5jL67nfDPgNkyoo
+✓ Created objects.
+├── 🔨 Created mount 
+│   /Users/aryamahadik/Documents/jev/opendecide-data/lean/modal_od.py
+├── 🔨 Created mount 
+│   /Users/aryamahadik/Documents/jev/opendecide-data/lean/train.py
+├── 🔨 Created mount PythonPackage:decoder_io, PythonPackage:train_decoder, 
+│   PythonPackage:hc
+├── 🔨 Created mount PythonPackage:decoder_io, PythonPackage:gliclass_io, 
+│   PythonPackage:train_decoder, PythonPackage:hc
+├── 🔨 Created mount /Users/aryamahadik/Documents/jev/opendecide-data/lean/data
+├── 🔨 Created function zeroshot35.
+├── 🔨 Created function train_remote.
+├── 🔨 Created function train_gliclass_remote.
+├── 🔨 Created function zeroshot.
+├── 🔨 Created function latency_l4.
+├── 🔨 Created function train_remote35.
+├── 🔨 Created function eval_remote.
+├── 🔨 Created function hc_remote35.
+├── 🔨 Created function eval_remote35.
+├── 🔨 Created function hc_shortlist_remote.
+├── 🔨 Created function hc_recall_remote.
+├── 🔨 Created function latency35.
+└── 🔨 Created function hc_remote.
+
+[1ALoading checkpoint shards:   0%|          | 0/16 [00:00<?, ?it/s]
+[1ALoading checkpoint shards:   6%|▋         | 1/16 [00:01<00:15,  1.03s/it]
+[1ALoading checkpoint shards:  12%|█▎        | 2/16 [00:01<00:09,  1.49it/s]
+[1ALoading checkpoint shards:  25%|██▌       | 4/16 [00:01<00:03,  3.26it/s]
+[1ALoading checkpoint shards:  38%|███▊      | 6/16 [00:01<00:02,  4.91it/s]
+[1ALoading checkpoint shards:  50%|█████     | 8/16 [00:01<00:01,  6.33it/s]
+[1ALoading checkpoint shards:  62%|██████▎   | 10/16 [00:02<00:00,  7.56it/s]
+[1ALoading checkpoint shards:  75%|███████▌  | 12/16 [00:02<00:00,  8.44it/s]
+[1ALoading checkpoint shards:  88%|████████▊ | 14/16 [00:02<00:00,  9.18it/s]
+[1ALoading checkpoint shards: 100%|██████████| 16/16 [00:02<00:00, 11.01it/s]
+[1ALoading checkpoint shards: 100%|██████████| 16/16 [00:02<00:00,  6.08it/s]
+an error occurred during closing of asynchronous generator <async_generator object async_merge at 0x10681e710>
+asyncgen: <async_generator object async_merge at 0x10681e710>
+Traceback (most recent call last):
+  File "/Users/aryamahadik/Documents/jev/opendecide-data/.venv/lib/python3.12/site-packages/modal/_utils/async_utils.py", line 856, in __iter__
+    yield from run_async_gen(runner, self._async_iterable)
+GeneratorExit
+
+During handling of the above exception, another exception occurred:
+
+RuntimeError: aclose(): asynchronous generator is already running
+wrote preds_dev/qwen3-30b-a3b_zs.jsonl (600 rows)
+wrote preds_devzs/qwen3-30b-a3b_zs.jsonl (800 rows)
+wrote preds_devzs2/qwen3-30b-a3b_zs.jsonl (760 rows)
+Stopping app - local entrypoint completed.
+Runner terminated.
+✓ App completed. View run at 
+https://modal.com/apps/mahadikarya3/main/ap-j8zDcVr5jL67nfDPgNkyoo

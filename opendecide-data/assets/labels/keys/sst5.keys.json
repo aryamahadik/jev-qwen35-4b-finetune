@@ -1,0 +1,77 @@
+{
+ "authored_by": "llm:claude:label-key-author",
+ "counts_by_kind": {
+  "level": 1,
+  "predicate": 2
+ },
+ "created": "2026-09-25",
+ "dataset": "sst5",
+ "key_policy": "Choice key = natural 1-5 word English name of the label, fixed for every split, variant and model (DESIGN field rule 2, D8). Descriptions (D_*) and propositions (P_*) are authored separately per pool and never live in this file.",
+ "label_field": "label (continuous sentiment in [0, 1])",
+ "label_id_type": "predicate and scale ids defined here (the source has no label ids for them)",
+ "labels": [
+  {
+   "gold_rule": "R8 THRESH: 1[level in {0, 1}] (label <= 0.4)",
+   "key": "negative",
+   "kind": "predicate",
+   "label_id": "negative",
+   "note": "contrary of 'positive': both no on level-2 states (R5 both-no pairs)",
+   "parent": null,
+   "roles": [
+    "eval"
+   ],
+   "source_field": "label",
+   "threshold_adjacent_range": "label within +-0.05 of 0.4"
+  },
+  {
+   "gold_rule": "R8 THRESH: 1[level in {3, 4}] (label > 0.6)",
+   "key": "positive",
+   "kind": "predicate",
+   "label_id": "positive",
+   "parent": null,
+   "roles": [
+    "eval"
+   ],
+   "source_field": "label",
+   "threshold_adjacent_range": "label within +-0.05 of 0.6"
+  },
+  {
+   "K": 5,
+   "construct": "sentiment of the movie review sentence",
+   "key": "sentiment",
+   "kind": "level",
+   "label_id": "sentiment-5",
+   "levels": [
+    {
+     "level": 0,
+     "range": "[0.0, 0.2]"
+    },
+    {
+     "level": 1,
+     "range": "(0.2, 0.4]"
+    },
+    {
+     "level": 2,
+     "range": "(0.4, 0.6]"
+    },
+    {
+     "level": 3,
+     "range": "(0.6, 0.8]"
+    },
+    {
+     "level": 4,
+     "range": "(0.8, 1.0]"
+    }
+   ],
+   "parent": null,
+   "roles": [
+    "eval"
+   ],
+   "rule": "R0 + R12 SOFT (continuous label); items within +-0.02 of a bin edge are dropped from eval (DESIGN 3.3)",
+   "source_field": "label (continuous, [0, 1])"
+  }
+ ],
+ "n_labels": 3,
+ "schema_version": "od-keys-1.0",
+ "source": "stanfordnlp/sst (refs/convert/parquet data_dir=default) @ 8a7d55ee01d70b8ae53e0b3c66a83b2a6198c2a7"
+}

@@ -1,0 +1,558 @@
+{
+ "authored_by": "llm:claude:label-key-author",
+ "counts_by_kind": {
+  "intent": 77
+ },
+ "created": "2026-09-25",
+ "dataset": "banking77",
+ "key_policy": "Choice key = natural 1-5 word English name of the label, fixed for every split, variant and model (DESIGN field rule 2, D8). Descriptions (D_*) and propositions (P_*) are authored separately per pool and never live in this file.",
+ "label_field": "label",
+ "label_id_type": "classlabel_name",
+ "labels": [
+  {
+   "key": "refund not showing",
+   "kind": "intent",
+   "label_id": "Refund_not_showing_up",
+   "parent": null,
+   "source_index": 51
+  },
+  {
+   "key": "card activation",
+   "kind": "intent",
+   "label_id": "activate_my_card",
+   "parent": null,
+   "source_index": 0
+  },
+  {
+   "key": "age requirement",
+   "kind": "intent",
+   "label_id": "age_limit",
+   "parent": null,
+   "source_index": 1
+  },
+  {
+   "key": "Apple Pay or Google Pay",
+   "kind": "intent",
+   "label_id": "apple_pay_or_google_pay",
+   "parent": null,
+   "source_index": 2
+  },
+  {
+   "key": "ATM support",
+   "kind": "intent",
+   "label_id": "atm_support",
+   "parent": null,
+   "source_index": 3
+  },
+  {
+   "key": "automatic top-up",
+   "kind": "intent",
+   "label_id": "automatic_top_up",
+   "parent": null,
+   "source_index": 4
+  },
+  {
+   "key": "balance not updated after transfer",
+   "kind": "intent",
+   "label_id": "balance_not_updated_after_bank_transfer",
+   "parent": null,
+   "source_index": 5
+  },
+  {
+   "key": "balance not updated after deposit",
+   "kind": "intent",
+   "label_id": "balance_not_updated_after_cheque_or_cash_deposit",
+   "parent": null,
+   "source_index": 6
+  },
+  {
+   "key": "beneficiary not allowed",
+   "kind": "intent",
+   "label_id": "beneficiary_not_allowed",
+   "parent": null,
+   "source_index": 7
+  },
+  {
+   "key": "cancel a transfer",
+   "kind": "intent",
+   "label_id": "cancel_transfer",
+   "parent": null,
+   "source_index": 8
+  },
+  {
+   "key": "card about to expire",
+   "kind": "intent",
+   "label_id": "card_about_to_expire",
+   "parent": null,
+   "source_index": 9
+  },
+  {
+   "key": "card acceptance",
+   "kind": "intent",
+   "label_id": "card_acceptance",
+   "parent": null,
+   "source_index": 10
+  },
+  {
+   "key": "card arrival",
+   "kind": "intent",
+   "label_id": "card_arrival",
+   "parent": null,
+   "source_index": 11
+  },
+  {
+   "key": "card delivery estimate",
+   "kind": "intent",
+   "label_id": "card_delivery_estimate",
+   "parent": null,
+   "source_index": 12
+  },
+  {
+   "key": "linking card to app",
+   "key_note": "source examples ask how to link or show a card in the app",
+   "kind": "intent",
+   "label_id": "card_linking",
+   "parent": null,
+   "source_index": 13
+  },
+  {
+   "key": "card not working",
+   "kind": "intent",
+   "label_id": "card_not_working",
+   "parent": null,
+   "source_index": 14
+  },
+  {
+   "key": "card payment fee",
+   "kind": "intent",
+   "label_id": "card_payment_fee_charged",
+   "parent": null,
+   "source_index": 15
+  },
+  {
+   "key": "unrecognised card payment",
+   "kind": "intent",
+   "label_id": "card_payment_not_recognised",
+   "parent": null,
+   "source_index": 16
+  },
+  {
+   "key": "wrong rate on card payment",
+   "kind": "intent",
+   "label_id": "card_payment_wrong_exchange_rate",
+   "parent": null,
+   "source_index": 17
+  },
+  {
+   "key": "card swallowed by ATM",
+   "kind": "intent",
+   "label_id": "card_swallowed",
+   "parent": null,
+   "source_index": 18
+  },
+  {
+   "key": "cash withdrawal fee",
+   "kind": "intent",
+   "label_id": "cash_withdrawal_charge",
+   "parent": null,
+   "source_index": 19
+  },
+  {
+   "key": "unrecognised cash withdrawal",
+   "kind": "intent",
+   "label_id": "cash_withdrawal_not_recognised",
+   "parent": null,
+   "source_index": 20
+  },
+  {
+   "key": "change PIN",
+   "kind": "intent",
+   "label_id": "change_pin",
+   "parent": null,
+   "source_index": 21
+  },
+  {
+   "key": "compromised card",
+   "kind": "intent",
+   "label_id": "compromised_card",
+   "parent": null,
+   "source_index": 22
+  },
+  {
+   "key": "contactless not working",
+   "kind": "intent",
+   "label_id": "contactless_not_working",
+   "parent": null,
+   "source_index": 23
+  },
+  {
+   "key": "supported countries",
+   "kind": "intent",
+   "label_id": "country_support",
+   "parent": null,
+   "source_index": 24
+  },
+  {
+   "key": "declined card payment",
+   "kind": "intent",
+   "label_id": "declined_card_payment",
+   "parent": null,
+   "source_index": 25
+  },
+  {
+   "key": "declined cash withdrawal",
+   "kind": "intent",
+   "label_id": "declined_cash_withdrawal",
+   "parent": null,
+   "source_index": 26
+  },
+  {
+   "key": "declined transfer",
+   "kind": "intent",
+   "label_id": "declined_transfer",
+   "parent": null,
+   "source_index": 27
+  },
+  {
+   "key": "unrecognised direct debit",
+   "kind": "intent",
+   "label_id": "direct_debit_payment_not_recognised",
+   "parent": null,
+   "source_index": 28
+  },
+  {
+   "key": "disposable card limits",
+   "kind": "intent",
+   "label_id": "disposable_card_limits",
+   "parent": null,
+   "source_index": 29
+  },
+  {
+   "key": "edit personal details",
+   "kind": "intent",
+   "label_id": "edit_personal_details",
+   "parent": null,
+   "source_index": 30
+  },
+  {
+   "key": "currency exchange fee",
+   "kind": "intent",
+   "label_id": "exchange_charge",
+   "parent": null,
+   "source_index": 31
+  },
+  {
+   "key": "exchange rate",
+   "kind": "intent",
+   "label_id": "exchange_rate",
+   "parent": null,
+   "source_index": 32
+  },
+  {
+   "key": "exchange currency in app",
+   "kind": "intent",
+   "label_id": "exchange_via_app",
+   "parent": null,
+   "source_index": 33
+  },
+  {
+   "key": "extra charge on statement",
+   "kind": "intent",
+   "label_id": "extra_charge_on_statement",
+   "parent": null,
+   "source_index": 34
+  },
+  {
+   "key": "failed transfer",
+   "kind": "intent",
+   "label_id": "failed_transfer",
+   "parent": null,
+   "source_index": 35
+  },
+  {
+   "key": "fiat currency support",
+   "kind": "intent",
+   "label_id": "fiat_currency_support",
+   "parent": null,
+   "source_index": 36
+  },
+  {
+   "key": "get disposable virtual card",
+   "kind": "intent",
+   "label_id": "get_disposable_virtual_card",
+   "parent": null,
+   "source_index": 37
+  },
+  {
+   "key": "physical card PIN",
+   "key_note": "source examples are about finding or receiving the PIN of the physical card (scout 2.1; simonmesmith)",
+   "kind": "intent",
+   "label_id": "get_physical_card",
+   "parent": null,
+   "source_index": 38
+  },
+  {
+   "key": "additional card",
+   "key_note": "source examples ask for extra or duplicate cards",
+   "kind": "intent",
+   "label_id": "getting_spare_card",
+   "parent": null,
+   "source_index": 39
+  },
+  {
+   "key": "get virtual card",
+   "kind": "intent",
+   "label_id": "getting_virtual_card",
+   "parent": null,
+   "source_index": 40
+  },
+  {
+   "key": "lost or stolen card",
+   "kind": "intent",
+   "label_id": "lost_or_stolen_card",
+   "parent": null,
+   "source_index": 41
+  },
+  {
+   "key": "lost or stolen phone",
+   "kind": "intent",
+   "label_id": "lost_or_stolen_phone",
+   "parent": null,
+   "source_index": 42
+  },
+  {
+   "key": "order physical card",
+   "kind": "intent",
+   "label_id": "order_physical_card",
+   "parent": null,
+   "source_index": 43
+  },
+  {
+   "key": "forgotten passcode",
+   "kind": "intent",
+   "label_id": "passcode_forgotten",
+   "parent": null,
+   "source_index": 44
+  },
+  {
+   "key": "pending card payment",
+   "kind": "intent",
+   "label_id": "pending_card_payment",
+   "parent": null,
+   "source_index": 45
+  },
+  {
+   "key": "pending cash withdrawal",
+   "kind": "intent",
+   "label_id": "pending_cash_withdrawal",
+   "parent": null,
+   "source_index": 46
+  },
+  {
+   "key": "pending top-up",
+   "kind": "intent",
+   "label_id": "pending_top_up",
+   "parent": null,
+   "source_index": 47
+  },
+  {
+   "key": "pending transfer",
+   "kind": "intent",
+   "label_id": "pending_transfer",
+   "parent": null,
+   "source_index": 48
+  },
+  {
+   "key": "blocked PIN",
+   "kind": "intent",
+   "label_id": "pin_blocked",
+   "parent": null,
+   "source_index": 49
+  },
+  {
+   "key": "receiving money",
+   "kind": "intent",
+   "label_id": "receiving_money",
+   "parent": null,
+   "source_index": 50
+  },
+  {
+   "key": "request a refund",
+   "kind": "intent",
+   "label_id": "request_refund",
+   "parent": null,
+   "source_index": 52
+  },
+  {
+   "key": "reverted card payment",
+   "kind": "intent",
+   "label_id": "reverted_card_payment?",
+   "parent": null,
+   "source_index": 53
+  },
+  {
+   "key": "supported cards and currencies",
+   "kind": "intent",
+   "label_id": "supported_cards_and_currencies",
+   "parent": null,
+   "source_index": 54
+  },
+  {
+   "key": "close account",
+   "kind": "intent",
+   "label_id": "terminate_account",
+   "parent": null,
+   "source_index": 55
+  },
+  {
+   "key": "bank transfer top-up fee",
+   "kind": "intent",
+   "label_id": "top_up_by_bank_transfer_charge",
+   "parent": null,
+   "source_index": 56
+  },
+  {
+   "key": "card top-up fee",
+   "kind": "intent",
+   "label_id": "top_up_by_card_charge",
+   "parent": null,
+   "source_index": 57
+  },
+  {
+   "key": "cash or cheque top-up",
+   "kind": "intent",
+   "label_id": "top_up_by_cash_or_cheque",
+   "parent": null,
+   "source_index": 58
+  },
+  {
+   "key": "failed top-up",
+   "kind": "intent",
+   "label_id": "top_up_failed",
+   "parent": null,
+   "source_index": 59
+  },
+  {
+   "key": "top-up limits",
+   "kind": "intent",
+   "label_id": "top_up_limits",
+   "parent": null,
+   "source_index": 60
+  },
+  {
+   "key": "reverted top-up",
+   "kind": "intent",
+   "label_id": "top_up_reverted",
+   "parent": null,
+   "source_index": 61
+  },
+  {
+   "key": "top up by card",
+   "kind": "intent",
+   "label_id": "topping_up_by_card",
+   "parent": null,
+   "source_index": 62
+  },
+  {
+   "key": "charged twice",
+   "kind": "intent",
+   "label_id": "transaction_charged_twice",
+   "parent": null,
+   "source_index": 63
+  },
+  {
+   "key": "transfer fee",
+   "kind": "intent",
+   "label_id": "transfer_fee_charged",
+   "parent": null,
+   "source_index": 64
+  },
+  {
+   "key": "transfer into account",
+   "kind": "intent",
+   "label_id": "transfer_into_account",
+   "parent": null,
+   "source_index": 65
+  },
+  {
+   "key": "transfer not received by recipient",
+   "kind": "intent",
+   "label_id": "transfer_not_received_by_recipient",
+   "parent": null,
+   "source_index": 66
+  },
+  {
+   "key": "transfer timing",
+   "kind": "intent",
+   "label_id": "transfer_timing",
+   "parent": null,
+   "source_index": 67
+  },
+  {
+   "key": "unable to verify identity",
+   "kind": "intent",
+   "label_id": "unable_to_verify_identity",
+   "parent": null,
+   "source_index": 68
+  },
+  {
+   "key": "verify my identity",
+   "kind": "intent",
+   "label_id": "verify_my_identity",
+   "parent": null,
+   "source_index": 69
+  },
+  {
+   "key": "verify source of funds",
+   "kind": "intent",
+   "label_id": "verify_source_of_funds",
+   "parent": null,
+   "source_index": 70
+  },
+  {
+   "key": "verify a top-up",
+   "kind": "intent",
+   "label_id": "verify_top_up",
+   "parent": null,
+   "source_index": 71
+  },
+  {
+   "key": "virtual card not working",
+   "kind": "intent",
+   "label_id": "virtual_card_not_working",
+   "parent": null,
+   "source_index": 72
+  },
+  {
+   "key": "Visa or Mastercard",
+   "kind": "intent",
+   "label_id": "visa_or_mastercard",
+   "parent": null,
+   "source_index": 73
+  },
+  {
+   "key": "why verify identity",
+   "kind": "intent",
+   "label_id": "why_verify_identity",
+   "parent": null,
+   "source_index": 74
+  },
+  {
+   "key": "wrong cash amount received",
+   "kind": "intent",
+   "label_id": "wrong_amount_of_cash_received",
+   "parent": null,
+   "source_index": 75
+  },
+  {
+   "key": "wrong rate on cash withdrawal",
+   "kind": "intent",
+   "label_id": "wrong_exchange_rate_for_cash_withdrawal",
+   "parent": null,
+   "source_index": 76
+  }
+ ],
+ "n_labels": 77,
+ "schema_version": "od-keys-1.0",
+ "source": "legacy-datasets/banking77 @ f54121560de48f2852f90be299010d1d6dc612ec"
+}

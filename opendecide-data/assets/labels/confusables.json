@@ -1,0 +1,955 @@
+{
+ "_meta": {
+  "authored_by": "llm:claude:label-key-author",
+  "created": "2026-09-25",
+  "format": "{dataset: [[label_a, label_b, reason], ...]}; label ids as in keys/<dataset>.keys.json; pairs are unordered (label_a < label_b); keys starting with '_' are metadata",
+  "sources": [
+   "DESIGN 4.2 seed list (Banking77 card-arrival, top-up, transfer and card-not-working families; CLINC transactions/spending_history, distance/directions)",
+   "author review of source examples (train splits only for HINT3)",
+   "TF-IDF + logistic-regression 5-fold cross-fit on the train splits, pairs with >= 5% confusion considered as candidates (the build's MiniLM screen adds pairs in step 5)"
+  ],
+  "use": "confusable pairs are allowed as Choice options but never as Noul gold-no targets, L* targets, injection targets or complement/consistency pairs (DESIGN 3.1, 3.3, 6.2)"
+ },
+ "banking77": [
+  [
+   "Refund_not_showing_up",
+   "request_refund",
+   "refund questions: asking for vs missing refund"
+  ],
+  [
+   "activate_my_card",
+   "card_linking",
+   "'how do I activate and link my new card'"
+  ],
+  [
+   "atm_support",
+   "card_acceptance",
+   "where the card can be used"
+  ],
+  [
+   "automatic_top_up",
+   "top_up_limits",
+   "auto top-up limits"
+  ],
+  [
+   "balance_not_updated_after_bank_transfer",
+   "pending_transfer",
+   "DESIGN 4.2 transfer family"
+  ],
+  [
+   "balance_not_updated_after_bank_transfer",
+   "transfer_not_received_by_recipient",
+   "DESIGN 4.2 transfer family: money sent but not arrived"
+  ],
+  [
+   "balance_not_updated_after_bank_transfer",
+   "transfer_timing",
+   "DESIGN 4.2 transfer family: how long until a transfer shows"
+  ],
+  [
+   "beneficiary_not_allowed",
+   "declined_transfer",
+   "a transfer to a beneficiary that was rejected"
+  ],
+  [
+   "beneficiary_not_allowed",
+   "failed_transfer",
+   "a transfer to a beneficiary that failed"
+  ],
+  [
+   "card_acceptance",
+   "country_support",
+   "where the card can be used or obtained"
+  ],
+  [
+   "card_arrival",
+   "card_delivery_estimate",
+   "DESIGN 4.2 card-arrival family: a late card vs when a card will arrive"
+  ],
+  [
+   "card_arrival",
+   "order_physical_card",
+   "card-arrival family: 'I still don't have a card' appears under both"
+  ],
+  [
+   "card_delivery_estimate",
+   "order_physical_card",
+   "card-arrival family: shipping of a card being ordered"
+  ],
+  [
+   "card_not_working",
+   "contactless_not_working",
+   "DESIGN 4.2 card-not-working family"
+  ],
+  [
+   "card_not_working",
+   "declined_card_payment",
+   "DESIGN 4.2 card-not-working family: a card that is refused"
+  ],
+  [
+   "card_not_working",
+   "declined_cash_withdrawal",
+   "DESIGN 4.2 card-not-working family: card refused at an ATM"
+  ],
+  [
+   "card_not_working",
+   "pin_blocked",
+   "card-not-working family: 'too many PIN attempts and now my card won't work'"
+  ],
+  [
+   "card_not_working",
+   "virtual_card_not_working",
+   "DESIGN 4.2 card-not-working family"
+  ],
+  [
+   "card_payment_fee_charged",
+   "extra_charge_on_statement",
+   "an unexpected fee on the statement"
+  ],
+  [
+   "card_payment_not_recognised",
+   "cash_withdrawal_not_recognised",
+   "an unknown transaction on the statement"
+  ],
+  [
+   "card_payment_not_recognised",
+   "compromised_card",
+   "unknown payments reported as card fraud"
+  ],
+  [
+   "card_payment_not_recognised",
+   "direct_debit_payment_not_recognised",
+   "an unknown payment on the statement; screen 6%"
+  ],
+  [
+   "card_payment_not_recognised",
+   "extra_charge_on_statement",
+   "an unexplained charge on the statement"
+  ],
+  [
+   "card_payment_not_recognised",
+   "transaction_charged_twice",
+   "an unexpected payment line on the statement"
+  ],
+  [
+   "card_payment_wrong_exchange_rate",
+   "exchange_rate",
+   "exchange-rate questions about a payment"
+  ],
+  [
+   "card_payment_wrong_exchange_rate",
+   "wrong_exchange_rate_for_cash_withdrawal",
+   "wrong exchange rate, payment vs withdrawal; screen 5.5%"
+  ],
+  [
+   "cash_withdrawal_not_recognised",
+   "compromised_card",
+   "unknown withdrawals reported as card fraud"
+  ],
+  [
+   "change_pin",
+   "get_physical_card",
+   "PIN questions (get_physical_card is mostly about the card PIN)"
+  ],
+  [
+   "change_pin",
+   "pin_blocked",
+   "PIN questions: changing vs unblocking"
+  ],
+  [
+   "compromised_card",
+   "lost_or_stolen_card",
+   "card misuse vs a lost or stolen card"
+  ],
+  [
+   "declined_card_payment",
+   "declined_cash_withdrawal",
+   "card refused for a payment vs at an ATM"
+  ],
+  [
+   "declined_card_payment",
+   "reverted_card_payment?",
+   "'my card payment was cancelled'"
+  ],
+  [
+   "declined_cash_withdrawal",
+   "pending_cash_withdrawal",
+   "an ATM withdrawal that did not complete"
+  ],
+  [
+   "declined_cash_withdrawal",
+   "wrong_amount_of_cash_received",
+   "an ATM withdrawal that went wrong; screen 5.6%"
+  ],
+  [
+   "declined_transfer",
+   "failed_transfer",
+   "near-synonymous: declined vs failed transfer; screen 8.3%"
+  ],
+  [
+   "disposable_card_limits",
+   "get_disposable_virtual_card",
+   "disposable card questions; screen confusion 6%"
+  ],
+  [
+   "exchange_charge",
+   "exchange_rate",
+   "cost of exchanging currency vs the rate used"
+  ],
+  [
+   "fiat_currency_support",
+   "supported_cards_and_currencies",
+   "which currencies are supported"
+  ],
+  [
+   "get_disposable_virtual_card",
+   "getting_virtual_card",
+   "disposable vs ordinary virtual card"
+  ],
+  [
+   "get_disposable_virtual_card",
+   "virtual_card_not_working",
+   "virtual card requests; screen confusion 9.8%"
+  ],
+  [
+   "get_physical_card",
+   "pin_blocked",
+   "PIN questions; screen 6.1%"
+  ],
+  [
+   "getting_spare_card",
+   "order_physical_card",
+   "ordering an extra or first physical card"
+  ],
+  [
+   "getting_virtual_card",
+   "virtual_card_not_working",
+   "virtual card requests; screen confusion 14.6%"
+  ],
+  [
+   "pending_card_payment",
+   "reverted_card_payment?",
+   "a card payment whose status changed"
+  ],
+  [
+   "pending_cash_withdrawal",
+   "wrong_amount_of_cash_received",
+   "withdrawal money not showing as expected"
+  ],
+  [
+   "pending_top_up",
+   "top_up_failed",
+   "DESIGN 4.2 top-up family: a top-up that has not gone through"
+  ],
+  [
+   "pending_top_up",
+   "top_up_reverted",
+   "DESIGN 4.2 top-up family"
+  ],
+  [
+   "pending_top_up",
+   "topping_up_by_card",
+   "top-up family: card top-up money not showing"
+  ],
+  [
+   "pending_transfer",
+   "transfer_not_received_by_recipient",
+   "DESIGN 4.2 transfer family"
+  ],
+  [
+   "pending_transfer",
+   "transfer_timing",
+   "DESIGN 4.2 transfer family: 'how long will my transfer take'"
+  ],
+  [
+   "receiving_money",
+   "transfer_into_account",
+   "money coming into the account"
+  ],
+  [
+   "supported_cards_and_currencies",
+   "topping_up_by_card",
+   "which cards can be used to top up"
+  ],
+  [
+   "top_up_by_bank_transfer_charge",
+   "top_up_by_card_charge",
+   "top-up fees: 'do you charge anything for topping up'"
+  ],
+  [
+   "top_up_by_bank_transfer_charge",
+   "transfer_fee_charged",
+   "'how much does each transfer cost'"
+  ],
+  [
+   "top_up_by_bank_transfer_charge",
+   "transfer_into_account",
+   "topping up by bank transfer and its cost"
+  ],
+  [
+   "top_up_by_card_charge",
+   "topping_up_by_card",
+   "topping up by card and its cost"
+  ],
+  [
+   "top_up_failed",
+   "top_up_reverted",
+   "DESIGN 4.2 top-up family: failed vs returned top-up money"
+  ],
+  [
+   "top_up_failed",
+   "topping_up_by_card",
+   "top-up family: 'I used my card to top up but the money is gone'"
+  ],
+  [
+   "top_up_reverted",
+   "topping_up_by_card",
+   "top-up family: card top-up money disappeared"
+  ],
+  [
+   "transfer_not_received_by_recipient",
+   "transfer_timing",
+   "DESIGN 4.2 transfer family"
+  ],
+  [
+   "unable_to_verify_identity",
+   "verify_my_identity",
+   "identity verification: how to vs cannot"
+  ],
+  [
+   "unable_to_verify_identity",
+   "why_verify_identity",
+   "identity verification questions; screen 6.9%"
+  ],
+  [
+   "verify_my_identity",
+   "why_verify_identity",
+   "identity verification questions; screen 7.4%"
+  ]
+ ],
+ "clinc150": [
+  [
+   "accept_reservations",
+   "restaurant_reservation",
+   "reservation requests"
+  ],
+  [
+   "account_blocked",
+   "freeze_account",
+   "blocking an account vs a blocked account; screen 8%"
+  ],
+  [
+   "application_status",
+   "new_card",
+   "credit card application"
+  ],
+  [
+   "balance",
+   "bill_balance",
+   "'what is the balance on my account'"
+  ],
+  [
+   "bill_balance",
+   "bill_due",
+   "bill amount vs due date"
+  ],
+  [
+   "calendar",
+   "calendar_update",
+   "calendar read vs edit; screen 7%"
+  ],
+  [
+   "calendar",
+   "meeting_schedule",
+   "'what is on my calendar' vs 'what meetings do I have'"
+  ],
+  [
+   "calendar_update",
+   "schedule_meeting",
+   "adding a meeting to the calendar"
+  ],
+  [
+   "calories",
+   "nutrition_info",
+   "nutrition questions"
+  ],
+  [
+   "cancel_reservation",
+   "restaurant_reservation",
+   "reservation requests"
+  ],
+  [
+   "change_accent",
+   "change_language",
+   "voice and language settings"
+  ],
+  [
+   "change_ai_name",
+   "what_is_your_name",
+   "the assistant's name: set vs ask; screen 9%"
+  ],
+  [
+   "change_user_name",
+   "user_name",
+   "the user's name: set vs ask"
+  ],
+  [
+   "change_volume",
+   "whisper_mode",
+   "volume and whisper mode ('turn your volume up' appears under whisper_mode)"
+  ],
+  [
+   "confirm_reservation",
+   "restaurant_reservation",
+   "reservation requests"
+  ],
+  [
+   "credit_limit",
+   "credit_limit_change",
+   "credit limit: ask vs change"
+  ],
+  [
+   "credit_score",
+   "improve_credit_score",
+   "credit score questions; screen 7%"
+  ],
+  [
+   "current_location",
+   "share_location",
+   "location requests; screen 12%"
+  ],
+  [
+   "direct_deposit",
+   "payday",
+   "paycheck deposit"
+  ],
+  [
+   "directions",
+   "distance",
+   "DESIGN 4.2 (scout 2.2): route vs travel time; screen 6%"
+  ],
+  [
+   "directions",
+   "traffic",
+   "route questions"
+  ],
+  [
+   "gas",
+   "gas_type",
+   "fuel questions"
+  ],
+  [
+   "goodbye",
+   "thank_you",
+   "closing small talk; screen 6%"
+  ],
+  [
+   "income",
+   "payday",
+   "pay questions"
+  ],
+  [
+   "ingredients_list",
+   "recipe",
+   "'what do I need to make X'"
+  ],
+  [
+   "insurance",
+   "insurance_change",
+   "insurance questions"
+  ],
+  [
+   "last_maintenance",
+   "schedule_maintenance",
+   "car service history vs booking"
+  ],
+  [
+   "maybe",
+   "no",
+   "non-committal vs negative reply; screen 5%"
+  ],
+  [
+   "meal_suggestion",
+   "restaurant_suggestion",
+   "'where/what should I eat'"
+  ],
+  [
+   "meeting_schedule",
+   "schedule_meeting",
+   "meetings: check vs book"
+  ],
+  [
+   "min_payment",
+   "pay_bill",
+   "bill payment amount"
+  ],
+  [
+   "oil_change_how",
+   "oil_change_when",
+   "oil change questions"
+  ],
+  [
+   "oil_change_when",
+   "schedule_maintenance",
+   "booking or timing an oil change"
+  ],
+  [
+   "order",
+   "order_status",
+   "shopping orders"
+  ],
+  [
+   "play_music",
+   "update_playlist",
+   "music requests"
+  ],
+  [
+   "pto_balance",
+   "pto_used",
+   "time off left vs taken; screen 9%"
+  ],
+  [
+   "pto_request",
+   "pto_request_status",
+   "time-off request vs its status"
+  ],
+  [
+   "reminder",
+   "reminder_update",
+   "reminders read vs set"
+  ],
+  [
+   "report_fraud",
+   "report_lost_card",
+   "stolen card used without permission"
+  ],
+  [
+   "restaurant_suggestion",
+   "travel_suggestion",
+   "place suggestions; screen 6%"
+  ],
+  [
+   "shopping_list",
+   "shopping_list_update",
+   "shopping list read vs edit; screen 6%"
+  ],
+  [
+   "spending_history",
+   "transactions",
+   "DESIGN 4.2 (scout 2.2): past spending vs transaction list"
+  ],
+  [
+   "taxes",
+   "w2",
+   "tax documents"
+  ],
+  [
+   "time",
+   "timezone",
+   "'what is the time in X timezone'"
+  ],
+  [
+   "todo_list",
+   "todo_list_update",
+   "to-do list read vs edit; screen 8%"
+  ],
+  [
+   "travel_alert",
+   "travel_notification",
+   "near-identical names: travel advisory vs telling the bank about travel"
+  ],
+  [
+   "user_name",
+   "what_is_your_name",
+   "'what is my/your name'; screen 9%"
+  ],
+  [
+   "who_do_you_work_for",
+   "who_made_you",
+   "assistant origin questions; screen 7%"
+  ]
+ ],
+ "dbpedia14": [
+  [
+   "Album",
+   "Film",
+   "soundtrack albums of films"
+  ],
+  [
+   "Building",
+   "EducationalInstitution",
+   "school and university buildings"
+  ],
+  [
+   "NaturalPlace",
+   "Village",
+   "scout: some Village/NaturalPlace entries are ambiguous"
+  ]
+ ],
+ "hint3_curekart": [
+  [
+   "CALL_CENTER",
+   "CHAT_WITH_AGENT",
+   "contacting a person; screen 12%"
+  ],
+  [
+   "CANCEL_ORDER",
+   "REFUNDS_RETURNS_REPLACEMENTS",
+   "undoing an order"
+  ],
+  [
+   "CHECK_PINCODE",
+   "RESUME_DELIVERY",
+   "'are you delivering in <city>'; screen 14%"
+  ],
+  [
+   "CHECK_PINCODE",
+   "STORE_INFORMATION",
+   "'any store in <city>'"
+  ],
+  [
+   "CONSULT_START",
+   "RECOMMEND_PRODUCT",
+   "diet advice vs product advice; screen 15%"
+  ],
+  [
+   "CONSULT_START",
+   "USER_GOAL_FORM",
+   "fitness goals vs diet advice"
+  ],
+  [
+   "DELAY_IN_PARCEL",
+   "ORDER_STATUS",
+   "'I didn't receive my order'"
+  ],
+  [
+   "DELAY_IN_PARCEL",
+   "RESUME_DELIVERY",
+   "COVID delivery delays; screen 13%"
+  ],
+  [
+   "ORDER_STATUS",
+   "REFUNDS_RETURNS_REPLACEMENTS",
+   "status of a return or refund"
+  ],
+  [
+   "ORDER_STATUS",
+   "RESUME_DELIVERY",
+   "'when will my parcel come'; screen 19%"
+  ],
+  [
+   "ORDER_TAKING",
+   "RECOMMEND_PRODUCT",
+   "'I want to order <product>'"
+  ],
+  [
+   "ORDER_TAKING",
+   "RESUME_DELIVERY",
+   "ordering and delivery during lockdown"
+  ],
+  [
+   "PAYMENT_AND_BILL",
+   "REFUNDS_RETURNS_REPLACEMENTS",
+   "'money deducted but order not placed'"
+  ]
+ ],
+ "hint3_sofmattress": [
+  [
+   "100_NIGHT_TRIAL_OFFER",
+   "OFFERS",
+   "offers"
+  ],
+  [
+   "100_NIGHT_TRIAL_OFFER",
+   "RETURN_EXCHANGE",
+   "returning during the trial"
+  ],
+  [
+   "ABOUT_SOF_MATTRESS",
+   "PRODUCT_VARIANTS",
+   "'what are the SOF mattress products'"
+  ],
+  [
+   "CANCEL_ORDER",
+   "ORDER_STATUS",
+   "'cancellation status'"
+  ],
+  [
+   "CHECK_PINCODE",
+   "COD",
+   "'do you offer COD to my pincode'"
+  ],
+  [
+   "CHECK_PINCODE",
+   "DISTRIBUTORS",
+   "'is it available in <city>' vs 'is it delivered in <city>'"
+  ],
+  [
+   "COD",
+   "EMI",
+   "payment options"
+  ],
+  [
+   "COMPARISON",
+   "ERGO_FEATURES",
+   "features vs comparison of Ergo"
+  ],
+  [
+   "COMPARISON",
+   "ORTHO_FEATURES",
+   "features vs comparison of Ortho"
+  ],
+  [
+   "COMPARISON",
+   "PRODUCT_VARIANTS",
+   "product range and comparison"
+  ],
+  [
+   "DELAY_IN_DELIVERY",
+   "ORDER_STATUS",
+   "'I did not receive my order yet'"
+  ],
+  [
+   "DISTRIBUTORS",
+   "LEAD_GEN",
+   "where and how to buy"
+  ],
+  [
+   "EMI",
+   "OFFERS",
+   "'0% interest' offers"
+  ],
+  [
+   "ERGO_FEATURES",
+   "PRODUCT_VARIANTS",
+   "product information"
+  ],
+  [
+   "MATTRESS_COST",
+   "OFFERS",
+   "price and discount"
+  ],
+  [
+   "MATTRESS_COST",
+   "SIZE_CUSTOMIZATION",
+   "'custom size cost'"
+  ],
+  [
+   "ORTHO_FEATURES",
+   "PRODUCT_VARIANTS",
+   "product information"
+  ],
+  [
+   "PRODUCT_VARIANTS",
+   "WHAT_SIZE_TO_ORDER",
+   "'I need a mattress for a double bed'"
+  ],
+  [
+   "SIZE_CUSTOMIZATION",
+   "WHAT_SIZE_TO_ORDER",
+   "size questions; screen 22%"
+  ]
+ ],
+ "massive": [
+  [
+   "alarm_query",
+   "alarm_set",
+   "alarms: check vs set"
+  ],
+  [
+   "alarm_remove",
+   "alarm_set",
+   "alarms: remove vs set; screen 9%"
+  ],
+  [
+   "alarm_set",
+   "calendar_set",
+   "reminder-like alarms"
+  ],
+  [
+   "audio_volume_down",
+   "audio_volume_other",
+   "volume adjustments"
+  ],
+  [
+   "audio_volume_mute",
+   "audio_volume_other",
+   "volume adjustments"
+  ],
+  [
+   "audio_volume_other",
+   "audio_volume_up",
+   "volume adjustments; screen 22%"
+  ],
+  [
+   "calendar_query",
+   "calendar_remove",
+   "calendar: check vs remove"
+  ],
+  [
+   "calendar_query",
+   "calendar_set",
+   "calendar: check vs add"
+  ],
+  [
+   "calendar_query",
+   "datetime_query",
+   "date questions"
+  ],
+  [
+   "calendar_remove",
+   "lists_remove",
+   "removing an item; screen 6%"
+  ],
+  [
+   "cooking_query",
+   "cooking_recipe",
+   "cooking requests (cooking_query has 4 train rows)"
+  ],
+  [
+   "datetime_convert",
+   "datetime_query",
+   "'what time is it in X'; screen 27%"
+  ],
+  [
+   "email_addcontact",
+   "email_querycontact",
+   "contacts; screen 7%"
+  ],
+  [
+   "email_addcontact",
+   "email_sendemail",
+   "email actions; screen 7%"
+  ],
+  [
+   "email_query",
+   "email_querycontact",
+   "email and contacts questions"
+  ],
+  [
+   "general_greet",
+   "general_quirky",
+   "general_quirky is a catch-all; screen 28%"
+  ],
+  [
+   "general_joke",
+   "general_quirky",
+   "catch-all chat"
+  ],
+  [
+   "general_quirky",
+   "qa_factoid",
+   "catch-all vs factual questions; screen 10%"
+  ],
+  [
+   "iot_hue_lightchange",
+   "iot_hue_lightup",
+   "light adjustments"
+  ],
+  [
+   "iot_hue_lightdim",
+   "iot_hue_lightoff",
+   "dim vs switch off the lights"
+  ],
+  [
+   "iot_hue_lightoff",
+   "iot_wemo_off",
+   "'turn off the light socket'"
+  ],
+  [
+   "iot_hue_lighton",
+   "iot_hue_lightup",
+   "turn on vs brighten the lights; screen 14%"
+  ],
+  [
+   "iot_hue_lighton",
+   "iot_wemo_on",
+   "'turn on the light socket'"
+  ],
+  [
+   "lists_createoradd",
+   "lists_query",
+   "lists: add vs read"
+  ],
+  [
+   "lists_createoradd",
+   "lists_remove",
+   "lists: add vs remove"
+  ],
+  [
+   "music_query",
+   "play_music",
+   "music requests"
+  ],
+  [
+   "music_settings",
+   "play_music",
+   "shuffle/repeat requests while playing; screen 24%"
+  ],
+  [
+   "news_query",
+   "social_query",
+   "'what is trending'"
+  ],
+  [
+   "play_audiobook",
+   "play_music",
+   "playback requests; screen 15%"
+  ],
+  [
+   "play_audiobook",
+   "play_podcasts",
+   "spoken-audio playback"
+  ],
+  [
+   "play_music",
+   "play_radio",
+   "music playback; screen 10%"
+  ],
+  [
+   "qa_currency",
+   "qa_stock",
+   "financial rate questions"
+  ],
+  [
+   "qa_definition",
+   "qa_factoid",
+   "knowledge questions"
+  ],
+  [
+   "qa_factoid",
+   "qa_maths",
+   "knowledge questions; screen 8%"
+  ],
+  [
+   "recommendation_events",
+   "recommendation_locations",
+   "things and places nearby"
+  ],
+  [
+   "recommendation_events",
+   "recommendation_movies",
+   "'any good films on'; screen 6%"
+  ],
+  [
+   "social_post",
+   "social_query",
+   "social media requests"
+  ],
+  [
+   "takeaway_order",
+   "takeaway_query",
+   "takeaway requests; screen 10%"
+  ],
+  [
+   "transport_query",
+   "transport_ticket",
+   "train schedule vs ticket; screen 14%"
+  ],
+  [
+   "transport_query",
+   "transport_traffic",
+   "route and traffic questions"
+  ]
+ ]
+}

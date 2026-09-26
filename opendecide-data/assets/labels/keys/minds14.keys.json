@@ -1,0 +1,114 @@
+{
+ "authored_by": "llm:claude:label-key-author",
+ "counts_by_kind": {
+  "intent": 14
+ },
+ "created": "2026-09-25",
+ "dataset": "minds14",
+ "key_policy": "Choice key = natural 1-5 word English name of the label, fixed for every split, variant and model (DESIGN field rule 2, D8). Descriptions (D_*) and propositions (P_*) are authored separately per pool and never live in this file.",
+ "label_field": "intent_class",
+ "label_id_type": "classlabel_name",
+ "labels": [
+  {
+   "key": "using card abroad",
+   "kind": "intent",
+   "label_id": "abroad",
+   "parent": null,
+   "source_index": 0
+  },
+  {
+   "key": "change of address",
+   "kind": "intent",
+   "label_id": "address",
+   "parent": null,
+   "source_index": 1
+  },
+  {
+   "key": "app not working",
+   "kind": "intent",
+   "label_id": "app_error",
+   "parent": null,
+   "source_index": 2
+  },
+  {
+   "key": "ATM withdrawal limit",
+   "kind": "intent",
+   "label_id": "atm_limit",
+   "parent": null,
+   "source_index": 3
+  },
+  {
+   "key": "account balance",
+   "kind": "intent",
+   "label_id": "balance",
+   "parent": null,
+   "source_index": 4
+  },
+  {
+   "key": "business loan",
+   "kind": "intent",
+   "label_id": "business_loan",
+   "parent": null,
+   "source_index": 5
+  },
+  {
+   "key": "card problem",
+   "kind": "intent",
+   "label_id": "card_issues",
+   "parent": null,
+   "source_index": 6
+  },
+  {
+   "key": "depositing money",
+   "kind": "intent",
+   "label_id": "cash_deposit",
+   "parent": null,
+   "source_index": 7
+  },
+  {
+   "key": "direct debit",
+   "kind": "intent",
+   "label_id": "direct_debit",
+   "parent": null,
+   "source_index": 8
+  },
+  {
+   "key": "freeze card",
+   "kind": "intent",
+   "label_id": "freeze",
+   "parent": null,
+   "source_index": 9
+  },
+  {
+   "key": "large payment verification",
+   "kind": "intent",
+   "label_id": "high_value_payment",
+   "parent": null,
+   "source_index": 10
+  },
+  {
+   "key": "joint account",
+   "kind": "intent",
+   "label_id": "joint_account",
+   "parent": null,
+   "source_index": 11
+  },
+  {
+   "key": "recent transactions",
+   "kind": "intent",
+   "label_id": "latest_transactions",
+   "parent": null,
+   "source_index": 12
+  },
+  {
+   "key": "pay a bill",
+   "kind": "intent",
+   "label_id": "pay_bill",
+   "parent": null,
+   "source_index": 13
+  }
+ ],
+ "n_labels": 14,
+ "schema_version": "od-keys-1.0",
+ "source": "PolyAI/minds14 (en-US/en-GB/en-AU) @ 40ce77cb32a384e4d50a568e1ec39ac804019d33"
+}

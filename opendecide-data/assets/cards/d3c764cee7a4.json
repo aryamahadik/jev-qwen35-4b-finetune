@@ -1,0 +1,34 @@
+{
+ "key": "d3c764cee7a4",
+ "kind": "Tweet",
+ "instruction": "What market view does this tweet express?",
+ "labels": [
+  "neutral",
+  "bullish",
+  "bearish"
+ ],
+ "model": "qwen/qwen3-235b-a22b-2507",
+ "cards": {
+  "neutral": {
+   "definition": "The tweet expresses no clear stance on market direction, conveying general information, mixed sentiment, or uncertainty without indicating expectation of price increase or decrease.",
+   "examples": [
+    "Stock market was flat today with light trading volume ahead of the Fed meeting.",
+    "Not sure what to make of the latest earnings reports\u2014some beat, some missed."
+   ]
+  },
+  "bullish": {
+   "definition": "The tweet indicates a positive outlook on the market or a specific asset, expecting prices to rise, often using optimistic language or citing favorable fundamentals or trends.",
+   "examples": [
+    "Strong jobs data and cooling inflation? We\u2019re heading for a soft landing and a rally in equities!",
+    "Bitcoin breaks $50K again\u2014this is just the start of the bull run."
+   ]
+  },
+  "bearish": {
+   "definition": "The tweet reflects a negative market outlook, anticipating price declines due to weak fundamentals, adverse news, or technical signals, clearly distinguishing itself from mere caution or neutrality.",
+   "examples": [
+    "Earnings revisions are rolling over, and the yield curve is still inverted\u2014recession ahead, sell the rip.",
+    "Tech valuations are insane again; this correction is just the beginning."
+   ]
+  }
+ }
+}

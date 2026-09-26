@@ -1,0 +1,105 @@
+✓ Initialized. View run at 
+https://modal.com/apps/mahadikarya3/main/ap-f90KimAYTqm0990FfgiQRR
+✓ Created objects.
+├── 🔨 Created mount 
+│   /Users/aryamahadik/Documents/jev/opendecide-data/lean/modal_od.py
+├── 🔨 Created mount 
+│   /Users/aryamahadik/Documents/jev/opendecide-data/lean/train.py
+├── 🔨 Created mount /Users/aryamahadik/Documents/jev/opendecide-data/lean/data
+├── 🔨 Created mount PythonPackage:decoder_io, PythonPackage:train_decoder, 
+│   PythonPackage:hc
+├── 🔨 Created mount PythonPackage:decoder_io, PythonPackage:gliclass_io, 
+│   PythonPackage:train_decoder, PythonPackage:hc
+├── 🔨 Created function zeroshot35.
+├── 🔨 Created function train_remote35.
+├── 🔨 Created function eval_remote35.
+├── 🔨 Created function latency35.
+├── 🔨 Created function hc_remote35.
+├── 🔨 Created function zeroshot.
+├── 🔨 Created function train_remote.
+├── 🔨 Created function train_gliclass_remote.
+├── 🔨 Created function eval_remote.
+├── 🔨 Created function latency_l4.
+├── 🔨 Created function hc_recall_remote.
+├── 🔨 Created function hc_shortlist_remote.
+└── 🔨 Created function hc_remote.
+/usr/local/lib/python3.12/site-packages/huggingface_hub/constants.py:302: FutureWarning: The `HF_HUB_ENABLE_HF_TRANSFER` environment variable is deprecated as 'hf_transfer' is not used anymore. Please use `HF_XET_HIGH_PERFORMANCE` instead to enable high performance transfer with Xet. Visit https://huggingface.co/docs/huggingface_hub/package_reference/environment_variables#hfxethighperformance for more details.
+  warnings.warn(
+
+[1AFetching 2 files:   0%|          | 0/2 [00:00<?, ?it/s]Fetching 2 files: 100%|██████████| 2/2 [00:00<00:00, 475.06it/s]
+
+[1ALoading weights:   0%|          | 0/426 [00:00<?, ?it/s]
+[1ALoading weights:   4%|▍         | 18/426 [00:00<00:02, 171.85it/s]
+[1ALoading weights:   8%|▊         | 36/426 [00:00<00:02, 146.41it/s]
+[1ALoading weights:  13%|█▎        | 57/426 [00:00<00:02, 157.40it/s]
+[1ALoading weights:  17%|█▋        | 73/426 [00:00<00:02, 138.71it/s]
+[1ALoading weights:  21%|██        | 88/426 [00:00<00:02, 139.84it/s]
+[1ALoading weights:  26%|██▋       | 112/426 [00:00<00:01, 168.18it/s]
+[1ALoading weights:  31%|███       | 133/426 [00:00<00:01, 172.83it/s]
+[1ALoading weights:  35%|███▌      | 151/426 [00:00<00:01, 164.71it/s]
+[1ALoading weights:  39%|███▉      | 168/426 [00:01<00:01, 154.61it/s]
+[1ALoading weights:  43%|████▎     | 185/426 [00:01<00:01, 157.51it/s]
+[1ALoading weights:  47%|████▋     | 201/426 [00:01<00:01, 137.45it/s]
+[1ALoading weights:  52%|█████▏    | 222/426 [00:01<00:01, 152.81it/s]
+[1ALoading weights:  58%|█████▊    | 246/426 [00:01<00:01, 158.64it/s]
+[1ALoading weights:  62%|██████▏   | 263/426 [00:01<00:01, 142.59it/s]
+[1ALoading weights:  66%|██████▌   | 282/426 [00:01<00:01, 137.45it/s]
+[1ALoading weights:  71%|███████   | 301/426 [00:02<00:00, 140.28it/s]
+[1ALoading weights:  77%|███████▋  | 329/426 [00:02<00:00, 173.76it/s]
+[1ALoading weights:  82%|████████▏ | 348/426 [00:02<00:00, 165.48it/s]
+[1ALoading weights:  87%|████████▋ | 369/426 [00:02<00:00, 170.89it/s]
+[1ALoading weights:  91%|█████████ | 387/426 [00:02<00:00, 117.16it/s]
+[1ALoading weights: 100%|██████████| 426/426 [00:02<00:00, 160.94it/s]
+trainable params: 32,464,896 || all params: 4,238,216,192 || trainable%: 0.7660
+[transformers] `use_cache=True` is incompatible with gradient checkpointing. Setting `use_cache=False`.
+[transformers] `causal_conv1d_fn` is falling back to its reference PyTorch implementation because `causal_conv1d` is not installed. This is correct but much slower; install `causal_conv1d` for the optimized kernel.
+{"step": 0, "of": 2145, "loss": 0.7944, "task": 0.7944, "cons": 0.1761, "lr": 1.8691588785046728e-06, "min": 2.0}
+{"step": 25, "of": 2145, "loss": 0.6194, "task": 0.6185, "cons": 0.0309, "lr": 2.5233644859813084e-05, "min": 5.01}
+{"step": 50, "of": 2145, "loss": 0.7652, "task": 0.7621, "cons": 0.0544, "lr": 4.85981308411215e-05, "min": 8.1}
+{"step": 75, "of": 2145, "loss": 0.4569, "task": 0.4501, "cons": 0.078, "lr": 7.196261682242991e-05, "min": 8.81}
+{"step": 100, "of": 2145, "loss": 0.4832, "task": 0.4717, "cons": 0.098, "lr": 9.532710280373832e-05, "min": 10.42}
+Stopping app - user stopped from CLI.
+╭───────────────────── Traceback (most recent call last) ──────────────────────╮
+│ /Users/aryamahadik/Documents/jev/opendecide-data/lean/modal_od.py:268 in     │
+│ train                                                                        │
+│                                                                              │
+│   267 │   │      "train_file": train_file, "rel_file": rel_file, "grad_ckpt" │
+│ ❱ 268 │   if is35(base):                                                     │
+│   269 │   │   cfg["targets"] = QWEN35_TARGETS                                │
+│                                                                              │
+│ /Users/aryamahadik/Documents/jev/opendecide-data/.venv/lib/python3.12/site-p │
+│ ackages/modal/_object.py:46 in wrapped                                       │
+│                                                                              │
+│    45 │   │   await self.hydrate()                                           │
+│ ❱  46 │   │   return await method(self, *args, **kwargs)                     │
+│    47                                                                        │
+│                                                                              │
+│ /Users/aryamahadik/Documents/jev/opendecide-data/.venv/lib/python3.12/site-p │
+│ ackages/modal/_functions.py:1893 in remote                                   │
+│                                                                              │
+│   1892 │   │                                                                 │
+│ ❱ 1893 │   │   return await self._call_function(args, kwargs)                │
+│   1894                                                                       │
+│                                                                              │
+│ /Users/aryamahadik/Documents/jev/opendecide-data/.venv/lib/python3.12/site-p │
+│ ackages/modal/_functions.py:1830 in _call_function                           │
+│                                                                              │
+│   1829 │   │                                                                 │
+│ ❱ 1830 │   │   return await invocation.run_function()                        │
+│   1831                                                                       │
+│                                                                              │
+│ /Users/aryamahadik/Documents/jev/opendecide-data/.venv/lib/python3.12/site-p │
+│ ackages/modal/_functions.py:484 in run_function                              │
+│                                                                              │
+│    483 │   │   │   if await_response.output.result.status in TERMINAL_STATUS │
+│ ❱  484 │   │   │   │   return await _process_result(                         │
+│    485 │   │   │   │   │   await_response.output.result, await_response.outp │
+│                                                                              │
+│ /Users/aryamahadik/Documents/jev/opendecide-data/.venv/lib/python3.12/site-p │
+│ ackages/modal/_utils/function_utils.py:574 in _process_result                │
+│                                                                              │
+│   573 │   │                                                                  │
+│ ❱ 574 │   │   raise RemoteError(result.exception)                            │
+│   575                                                                        │
+╰──────────────────────────────────────────────────────────────────────────────╯
+RemoteError

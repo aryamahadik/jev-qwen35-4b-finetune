@@ -1,0 +1,26 @@
+{
+ "key": "b4474c04be14",
+ "kind": "Product review",
+ "instruction": "Is this review positive or negative?",
+ "labels": [
+  "negative",
+  "positive"
+ ],
+ "model": "qwen/qwen3-235b-a22b-2507",
+ "cards": {
+  "negative": {
+   "definition": "A review is labeled 'negative' if the overall sentiment expresses dissatisfaction with the product, highlighting flaws, unmet expectations, or poor experience, even if some neutral or slightly positive aspects are mentioned; borderline cases with mixed feedback are considered negative when the criticism outweighs praise or impacts usability.",
+   "examples": [
+    "The product arrived late and was damaged, and it stopped working after two days.",
+    "I regret buying this; it\u2019s overpriced and doesn\u2019t perform as advertised."
+   ]
+  },
+  "positive": {
+   "definition": "A review is labeled 'positive' if the overall sentiment shows clear satisfaction with the product, emphasizing its benefits, quality, or value, even if minor drawbacks are noted; borderline cases with slight criticism are still positive when the reviewer recommends the product or expresses clear enjoyment.",
+   "examples": [
+    "Love this gadget! It works perfectly and was easy to set up, even if the manual was a bit unclear.",
+    "Great quality and fast shipping\u2014exceeded my expectations!"
+   ]
+  }
+ }
+}

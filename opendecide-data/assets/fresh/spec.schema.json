@@ -1,0 +1,299 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "opendecide/assets/fresh/spec.schema.json",
+  "title": "OpenDecide fresh item spec (fr-spec-1)",
+  "description": "One line of fresh_specs.jsonl: an FR item (DESIGN section 7). Structure only: gold is never stored in a spec; gold_programs.py computes it from `parameters` and checks the family rules, card targets, free-variant Jaccard and safety rules that a schema cannot express. authored_by of this schema: llm:claude:fresh-coordinator.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["spec_version", "item_id", "group_id", "card_id", "family", "vertical", "complication", "length_bin",
+               "state_format", "authored_by", "doc", "agent", "scope", "facts", "parameters", "questions", "state",
+               "rationale"],
+  "properties": {
+    "spec_version": {"const": "fr-spec-1"},
+    "item_id": {"type": "string", "pattern": "^fr:FR-(NUM|DATE|HOP|LIT|PHISH|HNEG):[0-9]{3}$"},
+    "group_id": {"type": "string", "pattern": "^g:fresh:FR-(NUM|DATE|HOP|LIT|PHISH|HNEG):[0-9]{3}$"},
+    "card_id": {"type": "string", "pattern": "^card:FR-(NUM|DATE|HOP|LIT|PHISH|HNEG):[0-9]{3}$"},
+    "family": {"enum": ["FR-NUM", "FR-DATE", "FR-HOP", "FR-LIT", "FR-PHISH", "FR-HNEG"]},
+    "vertical": {"enum": ["telecom", "insurance", "utilities", "travel", "retail"]},
+    "complication": {"type": "string", "minLength": 3, "description": "copied from the scenario card"},
+    "length_bin": {"enum": ["short", "medium", "long"], "description": "short 60-99, medium 100-139, long 140-180 words"},
+    "state_format": {"type": "string", "minLength": 3, "description": "copied from the scenario card"},
+    "authored_by": {"enum": ["llm:claude:fresh-author-A", "llm:claude:fresh-author-B", "llm:claude:fresh-author-C"]},
+    "doc": {"type": "string", "minLength": 2, "maxLength": 60, "description": "noun for the state used by templates as {doc}, e.g. 'record', 'email', 'review', 'message'"},
+    "agent": {"type": "string", "minLength": 2, "maxLength": 40, "description": "noun for the writer or subject used by templates as {agent}, e.g. 'customer', 'reviewer', 'sender'"},
+    "scope": {"enum": ["record", null], "description": "R14: 'record' on FR-NUM, FR-DATE, FR-HOP (every question carries a scope phrase); null elsewhere"},
+    "facts": {"type": "array", "minItems": 2, "maxItems": 30, "items": {"$ref": "#/$defs/fact"},
+              "description": "every fact the gold depends on, in plain words; V1 ticks each one against the state"},
+    "parameters": {"type": "object", "description": "family-specific program inputs; see the allOf branches"},
+    "questions": {"type": "array", "minItems": 5, "maxItems": 6, "items": {"$ref": "#/$defs/question"},
+                  "description": "q1, q2, q3, q4, q5 and optionally q7, in this order (q6 is rendered by the build)"},
+    "state": {"type": ["string", "null"], "description": "the authored text (60-180 words, inside the card's length bin); null while drafting"},
+    "rationale": {"type": "string", "minLength": 10, "maxLength": 600, "description": "one or two sentences: why the gold is what it is"},
+    "status": {"enum": ["draft", "submitted", "revised"]},
+    "revision": {"type": "integer", "minimum": 0, "description": "0 for the first submission; +1 per text revision after verification"},
+    "revision_note": {"type": ["string", "null"], "maxLength": 600},
+    "author_notes": {"type": ["string", "null"], "maxLength": 1000, "description": "anything a reviewer should know (never shown to verifiers)"}
+  },
+  "allOf": [
+    {"if": {"properties": {"family": {"const": "FR-NUM"}}}, "then": {"properties": {"parameters": {"$ref": "#/$defs/num_params"}, "scope": {"const": "record"}}}},
+    {"if": {"properties": {"family": {"const": "FR-DATE"}}}, "then": {"properties": {"parameters": {"$ref": "#/$defs/date_params"}, "scope": {"const": "record"}}}},
+    {"if": {"properties": {"family": {"const": "FR-HOP"}}}, "then": {"properties": {"parameters": {"$ref": "#/$defs/hop_params"}, "scope": {"const": "record"}}}},
+    {"if": {"properties": {"family": {"const": "FR-LIT"}}}, "then": {"properties": {"parameters": {"$ref": "#/$defs/lit_params"}, "scope": {"const": null}}}},
+    {"if": {"properties": {"family": {"const": "FR-PHISH"}}}, "then": {"properties": {"parameters": {"$ref": "#/$defs/phish_params"}, "scope": {"const": null}}}},
+    {"if": {"properties": {"family": {"const": "FR-HNEG"}}}, "then": {"properties": {"parameters": {"$ref": "#/$defs/hneg_params"}, "scope": {"const": null}}}}
+  ],
+  "$defs": {
+    "name": {"type": "string", "pattern": "^[A-Za-z_][A-Za-z0-9_ -]*(:[A-Za-z0-9_ -]+)*$", "maxLength": 80},
+    "literal": {"oneOf": [
+      {"type": "number"}, {"type": "boolean"}, {"type": "string"},
+      {"type": "array", "items": {"type": ["number", "boolean", "string"]}}
+    ]},
+    "fact": {
+      "type": "object", "additionalProperties": false, "required": ["id", "statement"],
+      "properties": {
+        "id": {"type": "string", "pattern": "^f[0-9]{1,2}$"},
+        "statement": {"type": "string", "minLength": 5, "maxLength": 300},
+        "refs": {"type": "array", "items": {"type": "string"}, "description": "optional: parameter paths this fact supports"}
+      }
+    },
+    "pred": {
+      "description": "Predicate over the program environment (see gold_programs.eval_pred).",
+      "oneOf": [
+        {"type": "object", "additionalProperties": false, "required": ["var", "op", "value"],
+         "properties": {"var": {"$ref": "#/$defs/name"}, "op": {"$ref": "#/$defs/op"}, "value": {"$ref": "#/$defs/literal"}}},
+        {"type": "object", "additionalProperties": false, "required": ["var", "op", "var2"],
+         "properties": {"var": {"$ref": "#/$defs/name"}, "op": {"$ref": "#/$defs/op"}, "var2": {"$ref": "#/$defs/name"}}},
+        {"type": "object", "additionalProperties": false, "required": ["is_true"], "properties": {"is_true": {"$ref": "#/$defs/name"}}},
+        {"type": "object", "additionalProperties": false, "required": ["is_false"], "properties": {"is_false": {"$ref": "#/$defs/name"}}},
+        {"type": "object", "additionalProperties": false, "required": ["not"], "properties": {"not": {"$ref": "#/$defs/pred"}}},
+        {"type": "object", "additionalProperties": false, "required": ["all"], "properties": {"all": {"type": "array", "minItems": 2, "items": {"$ref": "#/$defs/pred"}}}},
+        {"type": "object", "additionalProperties": false, "required": ["any"], "properties": {"any": {"type": "array", "minItems": 2, "items": {"$ref": "#/$defs/pred"}}}}
+      ]
+    },
+    "op": {"enum": ["==", "!=", "<", "<=", ">", ">=", "in", "not_in", "contains", "not_contains"]},
+    "arg": {"oneOf": [
+      {"type": "number"}, {"$ref": "#/$defs/name"},
+      {"type": "object", "additionalProperties": false, "required": ["date"], "properties": {"date": {"$ref": "#/$defs/date"}}}
+    ]},
+    "date": {"type": "string", "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"},
+    "time": {"type": "string", "pattern": "^([01][0-9]|2[0-3]):[0-5][0-9]$"},
+    "vars": {"type": "object", "propertyNames": {"pattern": "^[A-Za-z_][A-Za-z0-9_]*$"},
+             "additionalProperties": {"$ref": "#/$defs/literal"},
+             "description": "stated facts {name: value}; strings in YYYY-MM-DD form become dates"},
+    "derived": {"type": "array", "items": {"oneOf": [
+      {"type": "object", "additionalProperties": false, "required": ["name", "op", "args"],
+       "properties": {"name": {"type": "string", "pattern": "^[A-Za-z_][A-Za-z0-9_]*$"},
+                      "op": {"enum": ["add", "sub", "mul", "div", "min", "max", "abs", "round2", "pct", "days_between", "add_days"]},
+                      "args": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/arg"}}}},
+      {"type": "object", "additionalProperties": false, "required": ["name", "op", "pred"],
+       "properties": {"name": {"type": "string", "pattern": "^[A-Za-z_][A-Za-z0-9_]*$"}, "op": {"const": "pred"}, "pred": {"$ref": "#/$defs/pred"}}},
+      {"type": "object", "additionalProperties": false, "required": ["name", "op", "preds"],
+       "properties": {"name": {"type": "string", "pattern": "^[A-Za-z_][A-Za-z0-9_]*$"}, "op": {"const": "count_true"},
+                      "preds": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/pred"}}}}
+    ]}},
+    "outcome_rules": {"type": "array", "minItems": 2, "maxItems": 8, "items": {
+      "type": "object", "additionalProperties": false, "required": ["outcome"],
+      "properties": {"when": {"$ref": "#/$defs/pred"}, "outcome": {"type": "string", "minLength": 2, "maxLength": 60}}},
+      "description": "ordered decision list; first match wins; the last rule has no 'when' (default)"},
+    "num_params": {
+      "type": "object", "additionalProperties": false, "required": ["outcome_rules"],
+      "properties": {
+        "currency": {"type": "string", "maxLength": 8},
+        "vars": {"$ref": "#/$defs/vars"},
+        "line_items": {"type": "array", "maxItems": 12, "items": {
+          "type": "object", "additionalProperties": false, "required": ["label", "amount"],
+          "properties": {"label": {"type": "string", "minLength": 1, "maxLength": 60, "pattern": "^[^:]+$"},
+                         "amount": {"type": "number"}, "qty": {"type": "integer", "minimum": 1},
+                         "counts": {"type": "boolean", "description": "false: listed but excluded from the threshold total"}}}},
+        "credits": {"type": "array", "maxItems": 6, "items": {
+          "type": "object", "additionalProperties": false, "required": ["label", "amount"],
+          "properties": {"label": {"type": "string", "minLength": 1, "maxLength": 60, "pattern": "^[^:]+$"},
+                         "amount": {"type": "number", "minimum": 0}}}},
+        "derived": {"$ref": "#/$defs/derived"},
+        "outcome_rules": {"$ref": "#/$defs/outcome_rules"}
+      }
+    },
+    "date_params": {
+      "type": "object", "additionalProperties": false, "required": ["today", "dates", "outcome_rules"],
+      "properties": {
+        "today": {"$ref": "#/$defs/date"},
+        "now": {"$ref": "#/$defs/time"},
+        "dates": {"type": "object", "minProperties": 1, "propertyNames": {"pattern": "^[A-Za-z_][A-Za-z0-9_]*$"},
+                  "additionalProperties": {"$ref": "#/$defs/date"}},
+        "holidays": {"type": "array", "items": {"$ref": "#/$defs/date"}},
+        "vars": {"$ref": "#/$defs/vars"},
+        "windows": {"type": "array", "maxItems": 4, "items": {
+          "type": "object", "additionalProperties": false, "required": ["name", "start", "length", "unit"],
+          "properties": {"name": {"type": "string", "pattern": "^[A-Za-z_][A-Za-z0-9_]*$"},
+                         "start": {"type": "string"}, "length": {"type": "integer", "minimum": 0},
+                         "unit": {"enum": ["calendar_days", "business_days"]},
+                         "end": {"type": "string", "description": "'today' (default) or a name in dates"},
+                         "cutoff": {"$ref": "#/$defs/time"}}}},
+        "derived": {"$ref": "#/$defs/derived"},
+        "outcome_rules": {"$ref": "#/$defs/outcome_rules"}
+      }
+    },
+    "hop_params": {
+      "type": "object", "additionalProperties": false, "required": ["vars", "conditions", "outcome_rules"],
+      "properties": {
+        "vars": {"$ref": "#/$defs/vars"},
+        "derived": {"$ref": "#/$defs/derived"},
+        "conditions": {"type": "array", "minItems": 2, "maxItems": 8, "items": {
+          "type": "object", "additionalProperties": false, "required": ["id", "test"],
+          "properties": {"id": {"type": "string", "pattern": "^c[0-9]{1,2}$"}, "test": {"$ref": "#/$defs/pred"},
+                         "clause": {"type": "string", "maxLength": 20, "description": "optional clause label as written in the state"}}}},
+        "waivers": {"type": "array", "maxItems": 4, "items": {
+          "type": "object", "additionalProperties": false, "required": ["id", "waives", "when"],
+          "properties": {"id": {"type": "string", "pattern": "^w[0-9]{1,2}$"},
+                         "waives": {"type": "array", "minItems": 1, "items": {"type": "string", "pattern": "^c[0-9]{1,2}$"}},
+                         "when": {"$ref": "#/$defs/pred"}, "unless": {"$ref": "#/$defs/pred"},
+                         "clause": {"type": "string", "maxLength": 20}}}},
+        "outcome_rules": {"$ref": "#/$defs/outcome_rules"}
+      }
+    },
+    "lit_params": {
+      "type": "object", "additionalProperties": false, "required": ["filters", "aspects"],
+      "properties": {
+        "vars": {"$ref": "#/$defs/vars"},
+        "filters": {"type": "object", "minProperties": 2, "maxProperties": 3, "propertyNames": {"pattern": "^[A-Z]$"},
+                    "additionalProperties": {"type": "object", "required": ["polarity"],
+                                             "properties": {"polarity": {"const": ["neg"]},
+                                                            "severity": {"type": "array", "minItems": 1, "items": {"enum": ["none", "cosmetic", "minor", "major"]}},
+                                                            "resolved": {"type": "array", "minItems": 1, "items": {"type": "boolean"}},
+                                                            "speaker": {"type": "array", "minItems": 1, "items": {"enum": ["reviewer", "other"]}},
+                                                            "topic": {"type": "array", "minItems": 1, "items": {"type": "string"}}},
+                                             "additionalProperties": {"type": "array", "minItems": 1}},
+                    "description": "complaint definitions; A is what q1/q3 use, B what the q2 criteria variant uses"},
+        "aspects": {"type": "array", "minItems": 2, "maxItems": 8, "items": {
+          "type": "object", "additionalProperties": false, "required": ["name", "remarks"],
+          "properties": {"name": {"type": "string", "minLength": 2, "maxLength": 40, "pattern": "^[^:]+$"},
+                         "remarks": {"type": "array", "maxItems": 6, "items": {
+                           "type": "object", "required": ["polarity"],
+                           "properties": {"polarity": {"enum": ["pos", "neg", "neutral"]},
+                                          "severity": {"enum": ["none", "cosmetic", "minor", "major"]},
+                                          "resolved": {"type": "boolean"}, "speaker": {"enum": ["reviewer", "other"]},
+                                          "topic": {"type": "string", "maxLength": 40}},
+                           "additionalProperties": {"type": ["string", "boolean"]}}}}}},
+        "derived": {"$ref": "#/$defs/derived"}
+      }
+    },
+    "phish_params": {
+      "type": "object", "additionalProperties": false, "required": ["known_domains", "email", "signs", "purpose"],
+      "properties": {
+        "vars": {"$ref": "#/$defs/vars"},
+        "known_domains": {"type": "array", "minItems": 1, "maxItems": 3, "items": {"$ref": "#/$defs/safe_domain"}},
+        "email": {"type": "object", "additionalProperties": false, "required": ["from_domain", "link_domains"],
+                  "properties": {"from_domain": {"$ref": "#/$defs/safe_domain"},
+                                 "reply_to_domain": {"$ref": "#/$defs/safe_domain"},
+                                 "link_domains": {"type": "array", "maxItems": 4, "items": {"$ref": "#/$defs/safe_domain"}}}},
+        "signs": {"type": "object", "additionalProperties": false,
+                  "required": ["asks_secret", "unusual_payment", "asks_personal_data", "unexpected_attachment",
+                               "threat_or_deadline", "generic_greeting", "prize_lure", "asks_click_or_call",
+                               "mentions_account_problem"],
+                  "properties": {"asks_secret": {"type": "boolean"}, "unusual_payment": {"type": "boolean"},
+                                 "asks_personal_data": {"type": "boolean"}, "unexpected_attachment": {"type": "boolean"},
+                                 "threat_or_deadline": {"type": "boolean"}, "generic_greeting": {"type": "boolean"},
+                                 "prize_lure": {"type": "boolean"}, "asks_click_or_call": {"type": "boolean"},
+                                 "mentions_account_problem": {"type": "boolean"}}},
+        "purpose": {"enum": ["promotion", "newsletter", "loyalty_offer", "bill", "receipt", "order_update", "booking_update",
+                             "account_notice", "security_notice", "service_notice", "claim_update", "personal_note",
+                             "personal_request"]},
+        "derived": {"$ref": "#/$defs/derived"}
+      }
+    },
+    "safe_domain": {"type": "string", "pattern": "^[a-z0-9]([a-z0-9.-]*[a-z0-9])?\\.(example|test)$"},
+    "hneg_params": {
+      "type": "object", "additionalProperties": false, "required": ["request_types", "segments"],
+      "properties": {
+        "vars": {"$ref": "#/$defs/vars"},
+        "request_types": {"type": "array", "minItems": 2, "maxItems": 5, "uniqueItems": true,
+                          "items": {"type": "string", "minLength": 2, "maxLength": 40, "not": {"const": "none of these"}}},
+        "segments": {"type": "array", "minItems": 2, "maxItems": 10, "items": {
+          "type": "object", "additionalProperties": false, "required": ["id", "speaker", "act"],
+          "properties": {"id": {"type": "string", "pattern": "^s[0-9]{1,2}$"},
+                         "speaker": {"enum": ["customer", "third_party", "agent_note", "system"]},
+                         "act": {"enum": ["request", "withdraw", "replace", "decline", "info", "suggest", "claim"]},
+                         "type": {"type": "string"},
+                         "targets": {"type": "array", "items": {"type": "string", "pattern": "^s[0-9]{1,2}$"}},
+                         "gist": {"type": "string", "maxLength": 200, "description": "optional: what this segment says, in plain words"}}}},
+        "derived": {"$ref": "#/$defs/derived"}
+      }
+    },
+    "criteria": {"type": "object", "additionalProperties": false, "required": ["true", "false"],
+                 "properties": {"true": {"type": "string", "minLength": 3, "maxLength": 400},
+                                "false": {"type": "string", "minLength": 3, "maxLength": 400}}},
+    "score_spec": {"oneOf": [
+      {"type": "object", "additionalProperties": false, "required": ["kind", "preds"],
+       "properties": {"kind": {"const": "count"}, "preds": {"type": "array", "minItems": 3, "maxItems": 6, "items": {"$ref": "#/$defs/pred"}}}},
+      {"type": "object", "additionalProperties": false, "required": ["kind", "var"],
+       "properties": {"kind": {"const": "var"}, "var": {"$ref": "#/$defs/name"}}},
+      {"type": "object", "additionalProperties": false, "required": ["kind", "var", "bounds"],
+       "properties": {"kind": {"const": "bins"}, "var": {"$ref": "#/$defs/name"},
+                      "bounds": {"type": "array", "minItems": 3, "maxItems": 6, "items": {"type": ["number", "string"]}},
+                      "closed": {"enum": ["lower", "upper"]}}},
+      {"type": "object", "additionalProperties": false, "required": ["kind", "var", "map"],
+       "properties": {"kind": {"const": "map"}, "var": {"$ref": "#/$defs/name"},
+                      "map": {"type": "object", "additionalProperties": {"type": "integer", "minimum": 0, "maximum": 6}}}}
+    ]},
+    "asks": {"oneOf": [
+      {"type": "object", "additionalProperties": false, "required": ["choice_is"], "properties": {"choice_is": {"type": "string", "minLength": 2}},
+       "description": "q1: Noul about option L* of q3; gold = 1[gold(q3) == L*]"},
+      {"type": "object", "additionalProperties": false, "required": ["pred"], "properties": {"pred": {"$ref": "#/$defs/pred"}},
+       "description": "q2 Noul"},
+      {"type": "object", "additionalProperties": false, "required": ["choice_var"],
+       "properties": {"choice_var": {"$ref": "#/$defs/name"}, "value_to_key": {"type": "object", "additionalProperties": {"type": "string"}}},
+       "description": "q3 Choice: outcome (NUM, DATE, HOP), category (PHISH), final_request (HNEG), stance:<filter>:<aspect> (LIT)"},
+      {"type": "object", "additionalProperties": false, "required": ["score"], "properties": {"score": {"$ref": "#/$defs/score_spec"}},
+       "description": "q2 Score (FR-NUM, K=4) or q7 Score"},
+      {"type": "object", "additionalProperties": false, "required": ["negation_of"], "properties": {"negation_of": {"const": "q1"}},
+       "description": "q4 free negation: gold = 1 - gold(q1) (R2_NEG)"},
+      {"type": "object", "additionalProperties": false, "required": ["paraphrase_of"], "properties": {"paraphrase_of": {"const": "q1"}},
+       "description": "q5 free paraphrase: gold = gold(q1) (R3_EQUIV)"}
+    ]},
+    "question": {
+      "type": "object", "additionalProperties": false, "required": ["slot", "role", "type", "instructions", "asks"],
+      "properties": {
+        "slot": {"enum": ["q1", "q2", "q3", "q4", "q5", "q7"]},
+        "role": {"enum": ["base", "criteria_variant", "free_negation", "free_paraphrase"]},
+        "type": {"enum": ["noul", "choice", "score"]},
+        "instructions": {"type": "string", "minLength": 8, "maxLength": 400},
+        "criteria": {"oneOf": [{"type": "null"}, {"$ref": "#/$defs/criteria"}]},
+        "options": {"type": "object", "minProperties": 2, "maxProperties": 6,
+                    "propertyNames": {"minLength": 2, "maxLength": 40},
+                    "additionalProperties": {"type": "string", "minLength": 8, "maxLength": 300}},
+        "scale_order": {"type": "array", "minItems": 2, "maxItems": 6, "uniqueItems": true, "items": {"type": "string"},
+                        "description": "FR-NUM/DATE/HOP q3: every option key once, most to least favourable"},
+        "levels": {"type": "array", "minItems": 4, "maxItems": 7, "items": {"type": "string", "minLength": 1, "maxLength": 120}},
+        "K": {"enum": [4, 7]},
+        "asks": {"$ref": "#/$defs/asks"},
+        "scope_phrase": {"type": ["string", "null"], "minLength": 5, "maxLength": 80,
+                         "description": "R14: required on FR-NUM/DATE/HOP; must appear verbatim in the instructions"},
+        "proposition": {"type": "object", "additionalProperties": false, "required": ["p", "negP"],
+                        "properties": {"p": {"type": "string", "minLength": 5, "maxLength": 200},
+                                       "negP": {"type": "string", "minLength": 5, "maxLength": 220}},
+                        "description": "q1 only: clause form of q1 and its clause-internal negation; the build renders q6 (DNEG or CHOICE2) from it"}
+      },
+      "allOf": [
+        {"if": {"properties": {"type": {"const": "noul"}}},
+         "then": {"required": ["criteria"], "properties": {"criteria": {"$ref": "#/$defs/criteria"}},
+                  "not": {"anyOf": [{"required": ["options"]}, {"required": ["levels"]}, {"required": ["K"]}]}}},
+        {"if": {"properties": {"type": {"const": "choice"}}},
+         "then": {"required": ["options"], "not": {"anyOf": [{"required": ["levels"]}, {"required": ["K"]}]}}},
+        {"if": {"properties": {"type": {"const": "score"}}},
+         "then": {"required": ["levels", "K"], "not": {"anyOf": [{"required": ["options"]}]}}},
+        {"if": {"properties": {"slot": {"const": "q1"}}},
+         "then": {"required": ["proposition"], "properties": {"type": {"const": "noul"}, "role": {"const": "base"}, "asks": {"required": ["choice_is"]}}}},
+        {"if": {"properties": {"slot": {"const": "q3"}}},
+         "then": {"properties": {"type": {"const": "choice"}, "role": {"const": "base"}, "asks": {"required": ["choice_var"]}}}},
+        {"if": {"properties": {"slot": {"const": "q4"}}},
+         "then": {"properties": {"type": {"const": "noul"}, "role": {"const": "free_negation"}, "asks": {"required": ["negation_of"]}}}},
+        {"if": {"properties": {"slot": {"const": "q5"}}},
+         "then": {"properties": {"type": {"const": "noul"}, "role": {"const": "free_paraphrase"}, "asks": {"required": ["paraphrase_of"]}}}},
+        {"if": {"properties": {"slot": {"const": "q7"}}},
+         "then": {"properties": {"type": {"const": "score"}, "role": {"const": "base"}, "asks": {"required": ["score"]}}}},
+        {"if": {"properties": {"slot": {"const": "q2"}}},
+         "then": {"properties": {"type": {"enum": ["noul", "score"]}, "role": {"enum": ["base", "criteria_variant"]}}}}
+      ]
+    }
+  }
+}

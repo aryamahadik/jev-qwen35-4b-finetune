@@ -1,0 +1,26 @@
+{
+ "key": "e97dddd73b9a",
+ "kind": "Movie review",
+ "instruction": "Choose the label that fits this text.",
+ "labels": [
+  "positive",
+  "negative"
+ ],
+ "model": "qwen/qwen3-235b-a22b-2507",
+ "cards": {
+  "positive": {
+   "definition": "The review expresses clear satisfaction with the movie, highlighting enjoyable aspects such as acting, plot, or visuals, and conveys a recommendation or strong approval, even if minor flaws are acknowledged.",
+   "examples": [
+    "This film was a thrilling ride from start to finish\u2014great pacing and unforgettable characters!",
+    "Despite a slow start, the emotional payoff was worth it; I loved every minute."
+   ]
+  },
+  "negative": {
+   "definition": "The review expresses disappointment or criticism of the movie, focusing on significant flaws in storytelling, performance, or production that detract from the experience, and implies or states a lack of recommendation.",
+   "examples": [
+    "The plot was confusing and the characters felt flat\u2014hard to stay engaged.",
+    "Poor acting and a weak script made this movie a real letdown."
+   ]
+  }
+ }
+}

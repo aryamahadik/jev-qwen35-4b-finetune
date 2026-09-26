@@ -1,0 +1,158 @@
+{
+ "authored_by": "llm:claude:label-key-author",
+ "counts_by_kind": {
+  "level": 2,
+  "predicate": 4
+ },
+ "created": "2026-09-25",
+ "dataset": "clothing",
+ "key_policy": "Choice key = natural 1-5 word English name of the label, fixed for every split, variant and model (DESIGN field rule 2, D8). Descriptions (D_*) and propositions (P_*) are authored separately per pool and never live in this file.",
+ "label_field": "rating (1-5), recommended_ind (0/1)",
+ "label_id_type": "predicate and scale ids defined here (the source has no label ids for them)",
+ "labels": [
+  {
+   "gold_rule": "1[rating <= 2]; rating 3 -> 0",
+   "key": "negative",
+   "kind": "predicate",
+   "label_id": "negative",
+   "note": "contrary of 'positive' (not a complement)",
+   "parent": null,
+   "roles": [
+    "train",
+    "dev"
+   ],
+   "source_field": "rating"
+  },
+  {
+   "gold_rule": "1[rating >= 4]; rating 3 -> 0",
+   "key": "positive",
+   "kind": "predicate",
+   "label_id": "positive",
+   "note": "used with 'negative' as a contrary pair; rating-3 states are both-no trap rows (DESIGN 4.4)",
+   "parent": null,
+   "roles": [
+    "train",
+    "dev"
+   ],
+   "source_field": "rating"
+  },
+  {
+   "gold_rule": "R8 THRESH: 1[rating >= 4]",
+   "key": "rating at least 4",
+   "kind": "predicate",
+   "label_id": "rating_ge_4",
+   "note": "threshold-adjacent ratings are hard_ok=false (train eps 0.20)",
+   "parent": null,
+   "roles": [
+    "train",
+    "dev",
+    "eval"
+   ],
+   "source_field": "rating",
+   "threshold_adjacent_values": [
+    3,
+    4
+   ]
+  },
+  {
+   "gold_rule": "R0: 1[recommended_ind = 1]",
+   "key": "recommend",
+   "kind": "predicate",
+   "label_id": "recommend",
+   "note": "human-floor Noul (Q5); train soft target eps = 0.03",
+   "parent": null,
+   "roles": [
+    "train",
+    "dev",
+    "eval"
+   ],
+   "source_field": "recommended_ind"
+  },
+  {
+   "K": 3,
+   "construct": "reviewer satisfaction, coarse (train rebin of satisfaction-5)",
+   "key": "coarse satisfaction",
+   "kind": "level",
+   "label_id": "satisfaction-3",
+   "levels": [
+    {
+     "level": 0,
+     "source_values": [
+      1,
+      2
+     ]
+    },
+    {
+     "level": 1,
+     "source_values": [
+      3
+     ]
+    },
+    {
+     "level": 2,
+     "source_values": [
+      4,
+      5
+     ]
+    }
+   ],
+   "parent": null,
+   "roles": [
+    "train",
+    "dev"
+   ],
+   "rule": "rebin of satisfaction-5 (DESIGN 3.1 '30% rebinned to 3'; bins defined here, see build_decisions.md)",
+   "source_field": "rating"
+  },
+  {
+   "K": 5,
+   "construct": "reviewer satisfaction with the product (self-rating 1-5 stars)",
+   "key": "satisfaction",
+   "kind": "level",
+   "label_id": "satisfaction-5",
+   "levels": [
+    {
+     "level": 0,
+     "source_values": [
+      1
+     ]
+    },
+    {
+     "level": 1,
+     "source_values": [
+      2
+     ]
+    },
+    {
+     "level": 2,
+     "source_values": [
+      3
+     ]
+    },
+    {
+     "level": 3,
+     "source_values": [
+      4
+     ]
+    },
+    {
+     "level": 4,
+     "source_values": [
+      5
+     ]
+    }
+   ],
+   "parent": null,
+   "roles": [
+    "train",
+    "dev",
+    "eval"
+   ],
+   "rule": "R0 BASE_SRC; polarity reversal R7 allowed",
+   "source_field": "rating"
+  }
+ ],
+ "n_labels": 6,
+ "schema_version": "od-keys-1.0",
+ "source": "saattrupdan/womens-clothing-ecommerce-reviews @ 4e788183125a6143d8bdba24e58f1efda2e4b48f"
+}

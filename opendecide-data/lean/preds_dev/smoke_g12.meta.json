@@ -1,0 +1,28 @@
+{
+  "name": "smoke_g12",
+  "rows": 600,
+  "base": "google/gemma-4-12B-it",
+  "train": {
+    "cfg": {
+      "recipe": "A3",
+      "epochs": 0.004,
+      "lr": 5e-05,
+      "batch": 16,
+      "lam": 0.5,
+      "r": 16,
+      "alpha": 32,
+      "dropout": 0.05,
+      "beta": 1.0,
+      "seed": 20260925,
+      "train_file": "train_v06s.jsonl",
+      "rel_file": "train_v06s_relations.jsonl",
+      "grad_ckpt": true,
+      "base": "google/gemma-4-12B-it",
+      "targets": "^(?!.*(vision|audio|visual)).*layers\\.\\d+\\.(self_attn|mlp)\\.(q_proj|k_proj|v_proj|o_proj|gate_proj|up_proj|down_proj)"
+    },
+    "rows": 28550,
+    "relations": 7371,
+    "steps": 8,
+    "minutes": 0.76
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "name": "q4b_v03_A3",
+  "rows": 1915,
+  "base": "Qwen/Qwen3-4B-Instruct-2507",
+  "train": {
+    "cfg": {
+      "recipe": "A3",
+      "epochs": 1.0,
+      "lr": 0.0001,
+      "batch": 16,
+      "lam": 0.5,
+      "r": 16,
+      "alpha": 32,
+      "dropout": 0.05,
+      "seed": 20260925,
+      "train_file": "train_v03.jsonl",
+      "rel_file": "train_v03_relations.jsonl",
+      "grad_ckpt": true,
+      "base": "Qwen/Qwen3-4B-Instruct-2507"
+    },
+    "rows": 34319,
+    "relations": 18076,
+    "steps": 2145,
+    "minutes": 33.47
+  },
+  "latency_l4": {
+    "device": "NVIDIA L4",
+    "median_ms": 56.782205999997615,
+    "p95_ms": 59.40899099999797,
+    "n": 200
+  },
+  "latency_h100": {
+    "device": "NVIDIA H100 80GB HBM3",
+    "median_ms": 27.491963999999314,
+    "p95_ms": 39.5714500000004,
+    "n": 200
+  }
+}

@@ -1,0 +1,26 @@
+{
+ "key": "eedbd3f9d5a2",
+ "kind": "Question",
+ "instruction": "Does the sentence answer the question?",
+ "labels": [
+  "answers the question",
+  "does not answer the question"
+ ],
+ "model": "qwen/qwen3-235b-a22b-2507",
+ "cards": {
+  "answers the question": {
+   "definition": "The sentence directly provides relevant information that addresses the core of the question, making it clear that the intended query is resolved or sufficiently responded to.",
+   "examples": [
+    "Yes, the meeting was rescheduled for Friday at 3 PM.",
+    "The capital of France is Paris."
+   ]
+  },
+  "does not answer the question": {
+   "definition": "The sentence fails to address the specific content or intent of the question, either by being irrelevant, too vague, or discussing a different topic altogether.",
+   "examples": [
+    "I like watching birds in the morning.",
+    "The weather has been unusual lately."
+   ]
+  }
+ }
+}

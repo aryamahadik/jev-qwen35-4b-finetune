@@ -1,0 +1,17 @@
+{
+  "model": "knowledgator/gliclass-edge-v3.0",
+  "name": "edge_zeroshot",
+  "rows": 1915,
+  "latency_mps": {
+    "device": "mps",
+    "median_ms": 7.829457987099886,
+    "p95_ms": 101.31575004197657,
+    "n": 200
+  },
+  "latency_cpu": {
+    "device": "cpu",
+    "median_ms": 7.0451670326292515,
+    "p95_ms": 9.197917068377137,
+    "n": 100
+  }
+}

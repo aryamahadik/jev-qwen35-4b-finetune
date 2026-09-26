@@ -1,0 +1,26 @@
+{
+ "key": "3af294412bdb",
+ "kind": "Product review",
+ "instruction": "Does the reviewer recommend the product?",
+ "labels": [
+  "would recommend",
+  "would not recommend"
+ ],
+ "model": "qwen/qwen3-235b-a22b-2507",
+ "cards": {
+  "would recommend": {
+   "definition": "The reviewer expresses clear satisfaction with the product and indicates, either explicitly or through strong positive sentiment, that others should purchase or use it; borderline cases where the reviewer mentions minor drawbacks but still concludes positively are included.",
+   "examples": [
+    "This blender works amazingly well and is worth every penny\u2014I'd definitely buy it again!",
+    "Despite being a bit noisy, this vacuum cleans perfectly and I have no problem recommending it to anyone."
+   ]
+  },
+  "would not recommend": {
+   "definition": "The reviewer expresses dissatisfaction with the product and indicates, either explicitly or through strong negative sentiment, that others should avoid it; borderline cases where the reviewer notes some positives but ultimately deems the product not worth it are included.",
+   "examples": [
+    "The headphones broke after two days and the sound quality was poor\u2014save your money and avoid this brand.",
+    "It looked nice at first, but the fabric fell apart after one wash; I can't recommend something so poorly made."
+   ]
+  }
+ }
+}

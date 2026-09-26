@@ -1,0 +1,75 @@
+✓ Initialized. View run at 
+https://modal.com/apps/mahadikarya3/main/ap-jA17Nmpv6vyXRKhXexIucf
+✓ Created objects.
+├── 🔨 Created mount 
+│   /Users/aryamahadik/Documents/jev/opendecide-data/lean/modal_od.py
+├── 🔨 Created mount 
+│   /Users/aryamahadik/Documents/jev/opendecide-data/lean/train.py
+├── 🔨 Created mount /Users/aryamahadik/Documents/jev/bench/splits
+├── 🔨 Created mount 
+│   /Users/aryamahadik/Documents/jev/bench/jevbench/datasets/public
+├── 🔨 Created mount /Users/aryamahadik/Documents/jev/opendecide-data/lean/data
+├── 🔨 Created mount PythonPackage:decoder_io, PythonPackage:gliclass_io, 
+│   PythonPackage:train_decoder, PythonPackage:hc, PythonPackage:jevbench_od
+├── 🔨 Created mount PythonPackage:decoder_io, PythonPackage:train_decoder, 
+│   PythonPackage:hc, PythonPackage:jevbench_od
+├── 🔨 Created mount /Users/aryamahadik/Documents/jev/bench/jevbench/jevbench
+├── 🔨 Created function zeroshot.
+├── 🔨 Created function train_remote.
+├── 🔨 Created function train_gliclass_remote.
+├── 🔨 Created function eval_remote.
+├── 🔨 Created function latency_l4.
+├── 🔨 Created function hc_recall_remote.
+├── 🔨 Created function hc_shortlist_remote.
+├── 🔨 Created function hc_remote.
+├── 🔨 Created function jevbench_remote.
+├── 🔨 Created function zeroshot35.
+├── 🔨 Created function train_remote35.
+├── 🔨 Created function eval_remote35.
+├── 🔨 Created function latency35.
+├── 🔨 Created function hc_remote35.
+└── 🔨 Created function jevbench_remote35.
+/usr/local/lib/python3.12/site-packages/huggingface_hub/constants.py:302: FutureWarning: The `HF_HUB_ENABLE_HF_TRANSFER` environment variable is deprecated as 'hf_transfer' is not used anymore. Please use `HF_XET_HIGH_PERFORMANCE` instead to enable high performance transfer with Xet. Visit https://huggingface.co/docs/huggingface_hub/package_reference/environment_variables#hfxethighperformance for more details.
+  warnings.warn(
+
+[1ALoading weights:   0%|          | 0/677 [00:00<?, ?it/s]
+[1ALoading weights:   2%|▏         | 14/677 [00:00<00:11, 60.23it/s]
+[1ALoading weights:   3%|▎         | 21/677 [00:01<00:46, 13.96it/s]
+[1ALoading weights:   4%|▎         | 24/677 [00:01<01:00, 10.76it/s]
+[1ALoading weights:   4%|▍         | 26/677 [00:02<01:38,  6.58it/s]
+[1ALoading weights:   4%|▍         | 30/677 [00:03<01:46,  6.06it/s]
+[1ALoading weights:   5%|▍         | 31/677 [00:04<02:25,  4.43it/s]
+[1ALoading weights:   5%|▍         | 32/677 [00:05<03:37,  2.97it/s]
+[1ALoading weights:   5%|▌         | 36/677 [00:05<02:34,  4.14it/s]
+[1ALoading weights:   6%|▌         | 39/677 [00:06<02:15,  4.70it/s]
+[1ALoading weights:   7%|▋         | 49/677 [00:06<01:07,  9.36it/s]
+[1ALoading weights:  10%|▉         | 65/677 [00:06<00:32, 19.11it/s]
+[1ALoading weights:  10%|█         | 69/677 [00:06<00:29, 20.67it/s]
+[1ALoading weights:  13%|█▎        | 88/677 [00:07<00:14, 39.57it/s]
+[1ALoading weights:  16%|█▌        | 107/677 [00:07<00:09, 59.66it/s]
+[1ALoading weights:  20%|██        | 137/677 [00:07<00:05, 97.76it/s]
+[1ALoading weights:  24%|██▍       | 161/677 [00:07<00:04, 122.98it/s]
+[1ALoading weights:  27%|██▋       | 180/677 [00:07<00:03, 136.13it/s]
+[1ALoading weights:  30%|███       | 206/677 [00:07<00:02, 164.40it/s]
+[1ALoading weights:  34%|███▎      | 227/677 [00:07<00:02, 167.97it/s]
+[1ALoading weights:  37%|███▋      | 248/677 [00:07<00:02, 177.68it/s]
+[1ALoading weights:  40%|███▉      | 268/677 [00:07<00:02, 176.78it/s]
+[1ALoading weights:  43%|████▎     | 294/677 [00:07<00:01, 196.94it/s]
+[1ALoading weights:  47%|████▋     | 315/677 [00:08<00:01, 197.78it/s]
+[1ALoading weights:  51%|█████     | 344/677 [00:08<00:01, 219.55it/s]
+[1ALoading weights:  54%|█████▍    | 367/677 [00:08<00:01, 208.63it/s]
+[1ALoading weights:  58%|█████▊    | 390/677 [00:08<00:01, 210.44it/s]
+[1ALoading weights:  61%|██████    | 412/677 [00:08<00:01, 209.48it/s]
+[1ALoading weights:  65%|██████▍   | 438/677 [00:08<00:01, 222.78it/s]
+[1ALoading weights: 100%|██████████| 677/677 [00:08<00:00, 78.37it/s] 
+[W926 05:00:26.434831647 CUDACachingAllocator.cpp:3934] memory allocation failed with OOM on device 0 while trying to allocate 480247808 bytes (free: 200540160, total: 50867666944).
+wrote preds_dev/g12_v06_A3.jsonl (600 rows)
+wrote preds_devp/g12_v06_A3.jsonl (1728 rows)
+wrote preds_devp_card/g12_v06_A3.jsonl (1728 rows)
+wrote preds/g12_v06_A3.jsonl (1915 rows)
+wrote preds_eval_card/g12_v06_A3.jsonl (1915 rows)
+wrote preds_eval_multi/g12_v06_A3.jsonl (360 rows)
+wrote preds_eval_long/g12_v06_A3.jsonl (400 rows)
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/mahadikarya3/main/ap-jA17Nmpv6vyXRKhXexIucf

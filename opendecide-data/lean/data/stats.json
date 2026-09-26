@@ -1,0 +1,48 @@
+{
+  "eval_rows": 1915,
+  "eval_calls": 515,
+  "train_rows": 19944,
+  "eval_by_track": {
+    "ID": 1000,
+    "ZS": 475,
+    "INJ": 360,
+    "DIST": 80
+  },
+  "train_by_track": {
+    "L0": 5848,
+    "L2": 12496,
+    "L3": 1600
+  },
+  "eval_by_role": {
+    "choice": 515,
+    "aff": 515,
+    "neg": 295,
+    "para": 295,
+    "dneg": 295
+  },
+  "train_by_type": {
+    "choice": 3324,
+    "noul": 16620
+  },
+  "eval_noul_yes_rate": {
+    "ID": 0.475,
+    "ZS": 0.503,
+    "INJ": 0.333,
+    "DIST": 0.5
+  },
+  "train_noul_yes_rate": 0.498,
+  "dedup": {
+    "banking77_test_kept": 2137,
+    "banking77_test_total": 3080,
+    "clinc_test_kept": 4886,
+    "clinc_test_total": 5500
+  },
+  "eval_relations": {
+    "complement": 295,
+    "equiv": 590
+  },
+  "train_relations": {
+    "complement": 5848,
+    "equiv": 6648
+  }
+}

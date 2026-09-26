@@ -1,0 +1,34 @@
+{
+ "key": "ed9586f8d716",
+ "kind": "News article",
+ "instruction": "Choose the label that fits this text.",
+ "labels": [
+  "business",
+  "entertainment",
+  "sport"
+ ],
+ "model": "qwen/qwen3-235b-a22b-2507",
+ "cards": {
+  "business": {
+   "definition": "Covers topics related to companies, markets, finance, the economy, and commerce, focusing on economic activities rather than personal lives or athletic events; differs from entertainment and sport by emphasizing financial impact and industry developments rather than leisure or competition.",
+   "examples": [
+    "Apple reports record quarterly profits driven by strong iPhone sales in Asia.",
+    "The Federal Reserve announces interest rate hike to combat inflation."
+   ]
+  },
+  "entertainment": {
+   "definition": "Focuses on film, television, music, celebrities, and cultural events, highlighting creative works and personal lives of public figures; differs from business and sport by emphasizing artistic expression and leisure rather than economic activity or athletic competition.",
+   "examples": [
+    "Taylor Swift's new album breaks streaming records worldwide.",
+    "Oscars 2024: 'Oppenheimer' wins Best Picture and six other awards."
+   ]
+  },
+  "sport": {
+   "definition": "Covers athletic competitions, teams, players, and related events, emphasizing physical performance and game outcomes; differs from business and entertainment by focusing on organized games and results rather than financial matters or artistic content.",
+   "examples": [
+    "Lionel Messi scores winning goal as Inter Miami claims MLS Cup.",
+    "Wimbledon 2024: Novak Djokovic defeats Carlos Alcaraz in five-set final."
+   ]
+  }
+ }
+}

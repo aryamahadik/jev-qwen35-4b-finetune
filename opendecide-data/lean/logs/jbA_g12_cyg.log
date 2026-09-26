@@ -1,0 +1,75 @@
+✓ Initialized. View run at 
+https://modal.com/apps/mahadikarya3/main/ap-rAzhEHfUJKtBWzP7rq6o9q
+✓ Created objects.
+├── 🔨 Created mount 
+│   /Users/aryamahadik/Documents/jev/opendecide-data/lean/modal_od.py
+├── 🔨 Created mount 
+│   /Users/aryamahadik/Documents/jev/opendecide-data/lean/train.py
+├── 🔨 Created mount /Users/aryamahadik/Documents/jev/bench/splits
+├── 🔨 Created mount 
+│   /Users/aryamahadik/Documents/jev/bench/jevbench/datasets/public
+├── 🔨 Created mount /Users/aryamahadik/Documents/jev/opendecide-data/lean/data
+├── 🔨 Created mount PythonPackage:decoder_io, PythonPackage:train_decoder, 
+│   PythonPackage:hc, PythonPackage:jevbench_od
+├── 🔨 Created mount PythonPackage:decoder_io, PythonPackage:gliclass_io, 
+│   PythonPackage:train_decoder, PythonPackage:hc, PythonPackage:jevbench_od
+├── 🔨 Created mount /Users/aryamahadik/Documents/jev/bench/jevbench/jevbench
+├── 🔨 Created function zeroshot.
+├── 🔨 Created function train_remote.
+├── 🔨 Created function train_gliclass_remote.
+├── 🔨 Created function eval_remote.
+├── 🔨 Created function latency_l4.
+├── 🔨 Created function hc_recall_remote.
+├── 🔨 Created function hc_shortlist_remote.
+├── 🔨 Created function hc_remote.
+├── 🔨 Created function jevbench_remote.
+├── 🔨 Created function zeroshot35.
+├── 🔨 Created function train_remote35.
+├── 🔨 Created function eval_remote35.
+├── 🔨 Created function hc_remote35.
+├── 🔨 Created function jevbench_remote35.
+├── 🔨 Created function gen_diag_remote.
+└── 🔨 Created function latency35.
+/usr/local/lib/python3.12/site-packages/huggingface_hub/constants.py:302: FutureWarning: The `HF_HUB_ENABLE_HF_TRANSFER` environment variable is deprecated as 'hf_transfer' is not used anymore. Please use `HF_XET_HIGH_PERFORMANCE` instead to enable high performance transfer with Xet. Visit https://huggingface.co/docs/huggingface_hub/package_reference/environment_variables#hfxethighperformance for more details.
+  warnings.warn(
+
+[1ALoading weights:   0%|          | 0/677 [00:00<?, ?it/s]
+[1ALoading weights:   2%|▏         | 16/677 [00:00<00:04, 144.85it/s]
+[1ALoading weights:   5%|▌         | 35/677 [00:00<00:03, 168.96it/s]
+[1ALoading weights:   8%|▊         | 52/677 [00:00<00:03, 164.42it/s]
+[1ALoading weights:  10%|█         | 69/677 [00:00<00:03, 152.61it/s]
+[1ALoading weights:  13%|█▎        | 87/677 [00:00<00:03, 160.00it/s]
+[1ALoading weights:  16%|█▌        | 110/677 [00:00<00:03, 180.50it/s]
+[1ALoading weights:  19%|█▉        | 130/677 [00:00<00:02, 184.92it/s]
+[1ALoading weights:  22%|██▏       | 149/677 [00:00<00:02, 181.76it/s]
+[1ALoading weights:  25%|██▍       | 168/677 [00:01<00:03, 164.35it/s]
+[1ALoading weights:  28%|██▊       | 189/677 [00:01<00:02, 175.70it/s]
+[1ALoading weights:  31%|███▏      | 212/677 [00:01<00:02, 188.16it/s]
+[1ALoading weights:  34%|███▍      | 232/677 [00:01<00:02, 177.49it/s]
+[1ALoading weights:  37%|███▋      | 251/677 [00:01<00:02, 169.42it/s]
+[1ALoading weights:  40%|███▉      | 270/677 [00:01<00:02, 173.20it/s]
+[1ALoading weights:  43%|████▎     | 288/677 [00:01<00:02, 167.21it/s]
+[1ALoading weights:  45%|████▌     | 305/677 [00:01<00:02, 167.95it/s]
+[1ALoading weights:  48%|████▊     | 322/677 [00:01<00:02, 167.73it/s]
+[1ALoading weights:  51%|█████     | 342/677 [00:01<00:01, 174.62it/s]
+[1ALoading weights:  53%|█████▎    | 360/677 [00:02<00:01, 171.54it/s]
+[1ALoading weights:  57%|█████▋    | 385/677 [00:02<00:01, 189.24it/s]
+[1ALoading weights:  60%|█████▉    | 404/677 [00:02<00:01, 186.34it/s]
+[1ALoading weights:  62%|██████▏   | 423/677 [00:02<00:01, 185.99it/s]
+[1ALoading weights:  66%|██████▌   | 444/677 [00:02<00:01, 187.65it/s]
+[1ALoading weights: 100%|██████████| 677/677 [00:02<00:00, 267.06it/s]
+10/118 completed
+20/118 completed
+30/118 completed
+40/118 completed
+50/118 completed
+60/118 completed
+70/118 completed
+80/118 completed
+90/118 completed
+100/118 completed
+110/118 completed
+g12_v06_A_cyg: 99/118 correct on A (NVIDIA H100 80GB HBM3)
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/mahadikarya3/main/ap-rAzhEHfUJKtBWzP7rq6o9q

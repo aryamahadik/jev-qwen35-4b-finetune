@@ -1,0 +1,26 @@
+{
+ "key": "bfd51051b6a5",
+ "kind": "Passage",
+ "instruction": "Does the statement follow from the passage?",
+ "labels": [
+  "follows",
+  "does not follow"
+ ],
+ "model": "qwen/qwen3-235b-a22b-2507",
+ "cards": {
+  "follows": {
+   "definition": "The statement is logically entailed by the information in the passage, meaning it can be directly inferred without adding external assumptions or interpreting beyond what is explicitly stated.",
+   "examples": [
+    "Passage: The meeting was rescheduled for Friday at 3 PM. Question: Was the meeting moved to Friday? Answer: follows",
+    "Passage: Only students with IDs can enter the exam hall. Question: Can someone without an ID enter the exam hall? Answer: follows"
+   ]
+  },
+  "does not follow": {
+   "definition": "The statement is not supported by the passage, either because it introduces new information, makes an assumption not justified by the text, or contradicts what is stated.",
+   "examples": [
+    "Passage: The cat is sleeping on the sofa. Question: Is the cat hungry? Answer: does not follow",
+    "Passage: All managers attended the training session. Question: Did the CEO attend the session? Answer: does not follow"
+   ]
+  }
+ }
+}

@@ -1,0 +1,12 @@
+{
+  "name": "gemma4_12b_frozen_A_s2",
+  "base": "google/gemma-4-12B-it",
+  "adapter": "",
+  "temps": [
+    1.0,
+    1.0
+  ],
+  "gpu": "NVIDIA L40S",
+  "tiers": "A",
+  "think_below": 0.9
+}

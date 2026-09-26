@@ -1,0 +1,19 @@
+# secrets (OpenRouter key etc.) — never commit
+.env
+**/.env
+
+# environments and caches
+.venv/
+__pycache__/
+*.pyc
+.DS_Store
+
+# model weights: backed up as plain files in backups/ (see HANDOFF.md), not in git
+backups/
+opendecide-data/lean/models/
+
+# JevBench is a public repo cloned at a pinned commit (see HANDOFF.md), not our code
+bench/jevbench/
+
+# raw provider responses kept by the benchmark runner
+bench/runs/*/raw/

@@ -1,0 +1,11 @@
+{
+  "name": "q35_9b_frozen_A",
+  "base": "Qwen/Qwen3.5-9B",
+  "adapter": "",
+  "temps": [
+    1.0,
+    1.0
+  ],
+  "gpu": "NVIDIA L40S",
+  "tiers": "A"
+}

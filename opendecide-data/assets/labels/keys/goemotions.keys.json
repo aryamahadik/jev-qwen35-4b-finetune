@@ -1,0 +1,182 @@
+{
+ "authored_by": "llm:claude:label-key-author",
+ "counts_by_kind": {
+  "emotion_group": 7,
+  "level": 1
+ },
+ "created": "2026-09-25",
+ "dataset": "goemotions",
+ "fine_to_group": {
+  "admiration": "joy",
+  "amusement": "joy",
+  "anger": "anger",
+  "annoyance": "anger",
+  "approval": "joy",
+  "caring": "joy",
+  "confusion": "surprise",
+  "curiosity": "surprise",
+  "desire": "joy",
+  "disappointment": "sadness",
+  "disapproval": "anger",
+  "disgust": "disgust",
+  "embarrassment": "sadness",
+  "excitement": "joy",
+  "fear": "fear",
+  "gratitude": "joy",
+  "grief": "sadness",
+  "joy": "joy",
+  "love": "joy",
+  "nervousness": "fear",
+  "neutral": "neutral",
+  "optimism": "joy",
+  "pride": "joy",
+  "realization": "surprise",
+  "relief": "joy",
+  "remorse": "sadness",
+  "sadness": "sadness",
+  "surprise": "surprise"
+ },
+ "fine_to_group_source": "official goemotions/data/ekman_mapping.json (neutral added as its own group, as DESIGN 3.3 lists Ekman-7)",
+ "key_policy": "Choice key = natural 1-5 word English name of the label, fixed for every split, variant and model (DESIGN field rule 2, D8). Descriptions (D_*) and propositions (P_*) are authored separately per pool and never live in this file.",
+ "label_field": "raw per-rater 0/1 emotion columns, aggregated to Ekman groups by fine_to_group",
+ "label_id_type": "ekman_mapping.json group name ('neutral' = the dataset's neutral column)",
+ "labels": [
+  {
+   "fine_emotions": [
+    "anger",
+    "annoyance",
+    "disapproval"
+   ],
+   "key": "anger",
+   "kind": "emotion_group",
+   "label_id": "anger",
+   "parent": null,
+   "valence": "negative"
+  },
+  {
+   "fine_emotions": [
+    "disgust"
+   ],
+   "key": "disgust",
+   "kind": "emotion_group",
+   "label_id": "disgust",
+   "parent": null,
+   "valence": "negative"
+  },
+  {
+   "fine_emotions": [
+    "fear",
+    "nervousness"
+   ],
+   "key": "fear",
+   "kind": "emotion_group",
+   "label_id": "fear",
+   "parent": null,
+   "valence": "negative"
+  },
+  {
+   "fine_emotions": [
+    "admiration",
+    "amusement",
+    "approval",
+    "caring",
+    "desire",
+    "excitement",
+    "gratitude",
+    "joy",
+    "love",
+    "optimism",
+    "pride",
+    "relief"
+   ],
+   "key": "joy",
+   "kind": "emotion_group",
+   "label_id": "joy",
+   "parent": null,
+   "valence": "positive"
+  },
+  {
+   "fine_emotions": [
+    "neutral"
+   ],
+   "key": "neutral",
+   "kind": "emotion_group",
+   "label_id": "neutral",
+   "parent": null,
+   "valence": "neutral"
+  },
+  {
+   "fine_emotions": [
+    "disappointment",
+    "embarrassment",
+    "grief",
+    "remorse",
+    "sadness"
+   ],
+   "key": "sadness",
+   "kind": "emotion_group",
+   "label_id": "sadness",
+   "parent": null,
+   "valence": "negative"
+  },
+  {
+   "fine_emotions": [
+    "confusion",
+    "curiosity",
+    "realization",
+    "surprise"
+   ],
+   "key": "surprise",
+   "kind": "emotion_group",
+   "label_id": "surprise",
+   "parent": null,
+   "valence": "ambiguous"
+  },
+  {
+   "K": 3,
+   "construct": "how strongly the comment expresses the asked emotion (rater votes)",
+   "key": "emotion strength",
+   "kind": "level",
+   "label_id": "emotion-strength-3",
+   "levels": [
+    {
+     "level": 0,
+     "votes": "0"
+    },
+    {
+     "level": 1,
+     "votes": "1"
+    },
+    {
+     "level": 2,
+     "votes": ">=2"
+    }
+   ],
+   "parent": null,
+   "roles": [
+    "train",
+    "dev"
+   ],
+   "rule": "DESIGN 4.3: 0 votes -> 0, 1 -> 1, >=2 -> 2",
+   "source_field": "raw rater votes for the asked emotion/group"
+  }
+ ],
+ "n_labels": 8,
+ "schema_version": "od-keys-1.0",
+ "source": "google-research-datasets/go_emotions (raw) @ add492243ff905527e67aeb8b80c082af02207c3; split membership via 'simplified' ids",
+ "source_files": [
+  {
+   "commit": "2adf640a14f11025ae5a9d0ec493b78530d276d3",
+   "path": "goemotions/data/ekman_mapping.json",
+   "repo": "github:google-research/google-research",
+   "sha256": "d6b1fea382917c1685c42e1324a0344106be9390f52a3850ce032656d103a328"
+  },
+  {
+   "commit": "2adf640a14f11025ae5a9d0ec493b78530d276d3",
+   "path": "goemotions/data/sentiment_mapping.json",
+   "repo": "github:google-research/google-research",
+   "sha256": "801f6f028082141bd38541a4b14d65b33bdc55d29c7b2aaa029fefecf206f76b"
+  }
+ ],
+ "valence_source": "official goemotions/data/sentiment_mapping.json; every fine emotion of a group shares one sentiment, so 'valence' is exact (used for DESIGN 3.3 'zero-vote same-valence group')"
+}

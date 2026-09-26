@@ -1,0 +1,26 @@
+{
+ "key": "1c1368fe3112",
+ "kind": "Business review",
+ "instruction": "What is the overall tone of this review?",
+ "labels": [
+  "positive",
+  "negative"
+ ],
+ "model": "qwen/qwen3-235b-a22b-2507",
+ "cards": {
+  "positive": {
+   "definition": "The review expresses clear satisfaction with the business, highlighting favorable experiences, good service, or high-quality products, and does not contain significant criticism that would outweigh the praise.",
+   "examples": [
+    "Great atmosphere and friendly staff\u2014the food was delicious and worth every penny!",
+    "I love this place! The customer service is excellent, and everything is always clean and well-organized."
+   ]
+  },
+  "negative": {
+   "definition": "The review conveys dissatisfaction with the business, focusing on poor service, subpar products, or negative experiences, and the complaints clearly dominate any positive remarks.",
+   "examples": [
+    "Waited over an hour for cold food, and the staff was rude when we complained.",
+    "Dirty tables, broken chairs, and the manager refused to help. Never coming back."
+   ]
+  }
+ }
+}

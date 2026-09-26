@@ -1,0 +1,12 @@
+{
+  "name": "g12_v06_B_raw",
+  "base": "google/gemma-4-12B-it",
+  "adapter": "/vol/models/g12_v06_A3",
+  "temps": [
+    1.0,
+    1.0
+  ],
+  "gpu": "NVIDIA H100 80GB HBM3",
+  "tiers": "B",
+  "think_below": -1.0
+}

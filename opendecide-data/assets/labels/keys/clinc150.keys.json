@@ -1,0 +1,1155 @@
+{
+ "authored_by": "llm:claude:label-key-author",
+ "counts_by_kind": {
+  "domain": 10,
+  "intent": 150,
+  "oos": 1
+ },
+ "created": "2026-09-25",
+ "dataset": "clinc150",
+ "key_policy": "Choice key = natural 1-5 word English name of the label, fixed for every split, variant and model (DESIGN field rule 2, D8). Descriptions (D_*) and propositions (P_*) are authored separately per pool and never live in this file.",
+ "label_field": "intent",
+ "label_id_type": "classlabel_name",
+ "labels": [
+  {
+   "key": "auto and commute",
+   "kind": "domain",
+   "label_id": "auto_and_commute",
+   "n_children": 15,
+   "parent": null
+  },
+  {
+   "key": "banking",
+   "kind": "domain",
+   "label_id": "banking",
+   "n_children": 15,
+   "parent": null
+  },
+  {
+   "key": "credit cards",
+   "kind": "domain",
+   "label_id": "credit_cards",
+   "n_children": 15,
+   "parent": null
+  },
+  {
+   "key": "home",
+   "kind": "domain",
+   "label_id": "home",
+   "n_children": 15,
+   "parent": null
+  },
+  {
+   "key": "kitchen and dining",
+   "kind": "domain",
+   "label_id": "kitchen_and_dining",
+   "n_children": 15,
+   "parent": null
+  },
+  {
+   "key": "assistant settings and control",
+   "kind": "domain",
+   "label_id": "meta",
+   "n_children": 15,
+   "parent": null
+  },
+  {
+   "key": "small talk",
+   "kind": "domain",
+   "label_id": "small_talk",
+   "n_children": 15,
+   "parent": null
+  },
+  {
+   "key": "travel",
+   "kind": "domain",
+   "label_id": "travel",
+   "n_children": 15,
+   "parent": null
+  },
+  {
+   "key": "utilities",
+   "kind": "domain",
+   "label_id": "utility",
+   "n_children": 15,
+   "parent": null
+  },
+  {
+   "key": "work",
+   "kind": "domain",
+   "label_id": "work",
+   "n_children": 15,
+   "parent": null
+  },
+  {
+   "key": "accepts reservations",
+   "kind": "intent",
+   "label_id": "accept_reservations",
+   "parent": "kitchen_and_dining",
+   "source_index": 9
+  },
+  {
+   "key": "blocked account",
+   "kind": "intent",
+   "label_id": "account_blocked",
+   "parent": "banking",
+   "source_index": 2
+  },
+  {
+   "key": "set an alarm",
+   "kind": "intent",
+   "label_id": "alarm",
+   "parent": "utility",
+   "source_index": 83
+  },
+  {
+   "key": "card application status",
+   "kind": "intent",
+   "label_id": "application_status",
+   "parent": "credit_cards",
+   "source_index": 103
+  },
+  {
+   "key": "annual percentage rate",
+   "kind": "intent",
+   "label_id": "apr",
+   "parent": "credit_cards",
+   "source_index": 132
+  },
+  {
+   "key": "are you a bot",
+   "kind": "intent",
+   "label_id": "are_you_a_bot",
+   "parent": "small_talk",
+   "source_index": 117
+  },
+  {
+   "key": "account balance",
+   "kind": "intent",
+   "label_id": "balance",
+   "parent": "banking",
+   "source_index": 35
+  },
+  {
+   "key": "bill amount owed",
+   "kind": "intent",
+   "label_id": "bill_balance",
+   "parent": "banking",
+   "source_index": 27
+  },
+  {
+   "key": "bill due date",
+   "kind": "intent",
+   "label_id": "bill_due",
+   "parent": "banking",
+   "source_index": 56
+  },
+  {
+   "key": "book a flight",
+   "kind": "intent",
+   "label_id": "book_flight",
+   "parent": "travel",
+   "source_index": 63
+  },
+  {
+   "key": "book a hotel",
+   "kind": "intent",
+   "label_id": "book_hotel",
+   "parent": "travel",
+   "source_index": 116
+  },
+  {
+   "key": "calculation",
+   "kind": "intent",
+   "label_id": "calculator",
+   "parent": "utility",
+   "source_index": 138
+  },
+  {
+   "key": "check calendar",
+   "kind": "intent",
+   "label_id": "calendar",
+   "parent": "home",
+   "source_index": 60
+  },
+  {
+   "key": "update calendar",
+   "kind": "intent",
+   "label_id": "calendar_update",
+   "parent": "home",
+   "source_index": 105
+  },
+  {
+   "key": "calorie count",
+   "kind": "intent",
+   "label_id": "calories",
+   "parent": "kitchen_and_dining",
+   "source_index": 135
+  },
+  {
+   "key": "cancel current action",
+   "kind": "intent",
+   "label_id": "cancel",
+   "parent": "meta",
+   "source_index": 147
+  },
+  {
+   "key": "cancel reservation",
+   "kind": "intent",
+   "label_id": "cancel_reservation",
+   "parent": "kitchen_and_dining",
+   "source_index": 67
+  },
+  {
+   "key": "car rental",
+   "kind": "intent",
+   "label_id": "car_rental",
+   "parent": "travel",
+   "source_index": 40
+  },
+  {
+   "key": "declined card",
+   "kind": "intent",
+   "label_id": "card_declined",
+   "parent": "credit_cards",
+   "source_index": 49
+  },
+  {
+   "key": "carry-on rules",
+   "kind": "intent",
+   "label_id": "carry_on",
+   "parent": "travel",
+   "source_index": 62
+  },
+  {
+   "key": "change voice or accent",
+   "kind": "intent",
+   "label_id": "change_accent",
+   "parent": "meta",
+   "source_index": 51
+  },
+  {
+   "key": "rename assistant",
+   "kind": "intent",
+   "label_id": "change_ai_name",
+   "parent": "meta",
+   "source_index": 55
+  },
+  {
+   "key": "change language",
+   "kind": "intent",
+   "label_id": "change_language",
+   "parent": "meta",
+   "source_index": 29
+  },
+  {
+   "key": "change speaking speed",
+   "kind": "intent",
+   "label_id": "change_speed",
+   "parent": "meta",
+   "source_index": 119
+  },
+  {
+   "key": "change user's name",
+   "kind": "intent",
+   "label_id": "change_user_name",
+   "parent": "meta",
+   "source_index": 144
+  },
+  {
+   "key": "change volume",
+   "kind": "intent",
+   "label_id": "change_volume",
+   "parent": "meta",
+   "source_index": 150
+  },
+  {
+   "key": "confirm reservation",
+   "kind": "intent",
+   "label_id": "confirm_reservation",
+   "parent": "kitchen_and_dining",
+   "source_index": 85
+  },
+  {
+   "key": "cooking time",
+   "kind": "intent",
+   "label_id": "cook_time",
+   "parent": "kitchen_and_dining",
+   "source_index": 86
+  },
+  {
+   "key": "credit limit",
+   "kind": "intent",
+   "label_id": "credit_limit",
+   "parent": "credit_cards",
+   "source_index": 41
+  },
+  {
+   "key": "change credit limit",
+   "kind": "intent",
+   "label_id": "credit_limit_change",
+   "parent": "credit_cards",
+   "source_index": 109
+  },
+  {
+   "key": "credit score",
+   "kind": "intent",
+   "label_id": "credit_score",
+   "parent": "credit_cards",
+   "source_index": 69
+  },
+  {
+   "key": "current location",
+   "kind": "intent",
+   "label_id": "current_location",
+   "parent": "auto_and_commute",
+   "source_index": 136
+  },
+  {
+   "key": "damaged card",
+   "kind": "intent",
+   "label_id": "damaged_card",
+   "parent": "credit_cards",
+   "source_index": 87
+  },
+  {
+   "key": "today's date",
+   "kind": "intent",
+   "label_id": "date",
+   "parent": "utility",
+   "source_index": 95
+  },
+  {
+   "key": "word definition",
+   "kind": "intent",
+   "label_id": "definition",
+   "parent": "utility",
+   "source_index": 139
+  },
+  {
+   "key": "direct deposit",
+   "kind": "intent",
+   "label_id": "direct_deposit",
+   "parent": "work",
+   "source_index": 108
+  },
+  {
+   "key": "directions",
+   "kind": "intent",
+   "label_id": "directions",
+   "parent": "auto_and_commute",
+   "source_index": 72
+  },
+  {
+   "key": "travel time estimate",
+   "kind": "intent",
+   "label_id": "distance",
+   "parent": "auto_and_commute",
+   "source_index": 78
+  },
+  {
+   "key": "assistant's pets",
+   "kind": "intent",
+   "label_id": "do_you_have_pets",
+   "parent": "small_talk",
+   "source_index": 34
+  },
+  {
+   "key": "exchange rate",
+   "kind": "intent",
+   "label_id": "exchange_rate",
+   "parent": "travel",
+   "source_index": 38
+  },
+  {
+   "key": "card expiration date",
+   "kind": "intent",
+   "label_id": "expiration_date",
+   "parent": "credit_cards",
+   "source_index": 44
+  },
+  {
+   "key": "find my phone",
+   "kind": "intent",
+   "label_id": "find_phone",
+   "parent": "utility",
+   "source_index": 81
+  },
+  {
+   "key": "flight status",
+   "kind": "intent",
+   "label_id": "flight_status",
+   "parent": "travel",
+   "source_index": 80
+  },
+  {
+   "key": "flip a coin",
+   "kind": "intent",
+   "label_id": "flip_coin",
+   "parent": "utility",
+   "source_index": 33
+  },
+  {
+   "key": "food shelf life",
+   "kind": "intent",
+   "label_id": "food_last",
+   "parent": "kitchen_and_dining",
+   "source_index": 54
+  },
+  {
+   "key": "freeze account",
+   "kind": "intent",
+   "label_id": "freeze_account",
+   "parent": "banking",
+   "source_index": 20
+  },
+  {
+   "key": "fun fact",
+   "kind": "intent",
+   "label_id": "fun_fact",
+   "parent": "small_talk",
+   "source_index": 129
+  },
+  {
+   "key": "fuel level",
+   "kind": "intent",
+   "label_id": "gas",
+   "parent": "auto_and_commute",
+   "source_index": 110
+  },
+  {
+   "key": "fuel type",
+   "kind": "intent",
+   "label_id": "gas_type",
+   "parent": "auto_and_commute",
+   "source_index": 8
+  },
+  {
+   "key": "goodbye",
+   "kind": "intent",
+   "label_id": "goodbye",
+   "parent": "small_talk",
+   "source_index": 114
+  },
+  {
+   "key": "greeting",
+   "kind": "intent",
+   "label_id": "greeting",
+   "parent": "small_talk",
+   "source_index": 82
+  },
+  {
+   "key": "restaurant wait time",
+   "kind": "intent",
+   "label_id": "how_busy",
+   "parent": "kitchen_and_dining",
+   "source_index": 102
+  },
+  {
+   "key": "assistant's age",
+   "kind": "intent",
+   "label_id": "how_old_are_you",
+   "parent": "small_talk",
+   "source_index": 99
+  },
+  {
+   "key": "improve credit score",
+   "kind": "intent",
+   "label_id": "improve_credit_score",
+   "parent": "credit_cards",
+   "source_index": 28
+  },
+  {
+   "key": "income",
+   "kind": "intent",
+   "label_id": "income",
+   "parent": "work",
+   "source_index": 93
+  },
+  {
+   "key": "ingredient substitution",
+   "kind": "intent",
+   "label_id": "ingredient_substitution",
+   "parent": "kitchen_and_dining",
+   "source_index": 134
+  },
+  {
+   "key": "ingredients list",
+   "kind": "intent",
+   "label_id": "ingredients_list",
+   "parent": "kitchen_and_dining",
+   "source_index": 112
+  },
+  {
+   "key": "insurance benefits",
+   "kind": "intent",
+   "label_id": "insurance",
+   "parent": "work",
+   "source_index": 74
+  },
+  {
+   "key": "change insurance",
+   "kind": "intent",
+   "label_id": "insurance_change",
+   "parent": "work",
+   "source_index": 64
+  },
+  {
+   "key": "interest rate",
+   "kind": "intent",
+   "label_id": "interest_rate",
+   "parent": "banking",
+   "source_index": 7
+  },
+  {
+   "key": "foreign transaction fees",
+   "kind": "intent",
+   "label_id": "international_fees",
+   "parent": "credit_cards",
+   "source_index": 137
+  },
+  {
+   "key": "visa requirements",
+   "kind": "intent",
+   "label_id": "international_visa",
+   "parent": "travel",
+   "source_index": 59
+  },
+  {
+   "key": "jump-start a car",
+   "kind": "intent",
+   "label_id": "jump_start",
+   "parent": "auto_and_commute",
+   "source_index": 17
+  },
+  {
+   "key": "last car service",
+   "kind": "intent",
+   "label_id": "last_maintenance",
+   "parent": "auto_and_commute",
+   "source_index": 37
+  },
+  {
+   "key": "lost luggage",
+   "kind": "intent",
+   "label_id": "lost_luggage",
+   "parent": "travel",
+   "source_index": 113
+  },
+  {
+   "key": "make a call",
+   "kind": "intent",
+   "label_id": "make_call",
+   "parent": "utility",
+   "source_index": 25
+  },
+  {
+   "key": "unsure reply",
+   "kind": "intent",
+   "label_id": "maybe",
+   "parent": "meta",
+   "source_index": 121
+  },
+  {
+   "key": "meal suggestion",
+   "kind": "intent",
+   "label_id": "meal_suggestion",
+   "parent": "kitchen_and_dining",
+   "source_index": 46
+  },
+  {
+   "key": "meaning of life",
+   "kind": "intent",
+   "label_id": "meaning_of_life",
+   "parent": "small_talk",
+   "source_index": 22
+  },
+  {
+   "key": "unit conversion",
+   "kind": "intent",
+   "label_id": "measurement_conversion",
+   "parent": "utility",
+   "source_index": 31
+  },
+  {
+   "key": "check meetings",
+   "kind": "intent",
+   "label_id": "meeting_schedule",
+   "parent": "work",
+   "source_index": 19
+  },
+  {
+   "key": "minimum payment",
+   "kind": "intent",
+   "label_id": "min_payment",
+   "parent": "banking",
+   "source_index": 143
+  },
+  {
+   "key": "fuel economy",
+   "kind": "intent",
+   "label_id": "mpg",
+   "parent": "auto_and_commute",
+   "source_index": 142
+  },
+  {
+   "key": "apply for new card",
+   "kind": "intent",
+   "label_id": "new_card",
+   "parent": "credit_cards",
+   "source_index": 91
+  },
+  {
+   "key": "next holiday",
+   "kind": "intent",
+   "label_id": "next_holiday",
+   "parent": "work",
+   "source_index": 140
+  },
+  {
+   "key": "next song",
+   "kind": "intent",
+   "label_id": "next_song",
+   "parent": "home",
+   "source_index": 118
+  },
+  {
+   "key": "negative reply",
+   "kind": "intent",
+   "label_id": "no",
+   "parent": "meta",
+   "source_index": 30
+  },
+  {
+   "key": "nutrition information",
+   "kind": "intent",
+   "label_id": "nutrition_info",
+   "parent": "kitchen_and_dining",
+   "source_index": 1
+  },
+  {
+   "key": "how to change oil",
+   "kind": "intent",
+   "label_id": "oil_change_how",
+   "parent": "auto_and_commute",
+   "source_index": 3
+  },
+  {
+   "key": "when to change oil",
+   "kind": "intent",
+   "label_id": "oil_change_when",
+   "parent": "auto_and_commute",
+   "source_index": 123
+  },
+  {
+   "key": "place an order",
+   "kind": "intent",
+   "label_id": "order",
+   "parent": "home",
+   "source_index": 16
+  },
+  {
+   "key": "order checks",
+   "kind": "intent",
+   "label_id": "order_checks",
+   "parent": "banking",
+   "source_index": 127
+  },
+  {
+   "key": "order status",
+   "kind": "intent",
+   "label_id": "order_status",
+   "parent": "home",
+   "source_index": 84
+  },
+  {
+   "key": "pay a bill",
+   "kind": "intent",
+   "label_id": "pay_bill",
+   "parent": "banking",
+   "source_index": 111
+  },
+  {
+   "key": "payday",
+   "kind": "intent",
+   "label_id": "payday",
+   "parent": "work",
+   "source_index": 79
+  },
+  {
+   "key": "change PIN",
+   "kind": "intent",
+   "label_id": "pin_change",
+   "parent": "banking",
+   "source_index": 89
+  },
+  {
+   "key": "play music",
+   "kind": "intent",
+   "label_id": "play_music",
+   "parent": "home",
+   "source_index": 106
+  },
+  {
+   "key": "plug type",
+   "kind": "intent",
+   "label_id": "plug_type",
+   "parent": "travel",
+   "source_index": 120
+  },
+  {
+   "key": "time-off balance",
+   "kind": "intent",
+   "label_id": "pto_balance",
+   "parent": "work",
+   "source_index": 126
+  },
+  {
+   "key": "request time off",
+   "kind": "intent",
+   "label_id": "pto_request",
+   "parent": "work",
+   "source_index": 97
+  },
+  {
+   "key": "time-off request status",
+   "kind": "intent",
+   "label_id": "pto_request_status",
+   "parent": "work",
+   "source_index": 101
+  },
+  {
+   "key": "time off used",
+   "kind": "intent",
+   "label_id": "pto_used",
+   "parent": "work",
+   "source_index": 148
+  },
+  {
+   "key": "recipe",
+   "kind": "intent",
+   "label_id": "recipe",
+   "parent": "kitchen_and_dining",
+   "source_index": 104
+  },
+  {
+   "key": "redeem rewards",
+   "kind": "intent",
+   "label_id": "redeem_rewards",
+   "parent": "credit_cards",
+   "source_index": 6
+  },
+  {
+   "key": "check reminders",
+   "kind": "intent",
+   "label_id": "reminder",
+   "parent": "home",
+   "source_index": 76
+  },
+  {
+   "key": "set a reminder",
+   "kind": "intent",
+   "label_id": "reminder_update",
+   "parent": "home",
+   "source_index": 53
+  },
+  {
+   "key": "repeat that",
+   "kind": "intent",
+   "label_id": "repeat",
+   "parent": "meta",
+   "source_index": 13
+  },
+  {
+   "key": "replacement card wait",
+   "kind": "intent",
+   "label_id": "replacement_card_duration",
+   "parent": "credit_cards",
+   "source_index": 90
+  },
+  {
+   "key": "report fraud",
+   "kind": "intent",
+   "label_id": "report_fraud",
+   "parent": "banking",
+   "source_index": 70
+  },
+  {
+   "key": "report lost card",
+   "kind": "intent",
+   "label_id": "report_lost_card",
+   "parent": "credit_cards",
+   "source_index": 12
+  },
+  {
+   "key": "factory reset",
+   "kind": "intent",
+   "label_id": "reset_settings",
+   "parent": "meta",
+   "source_index": 88
+  },
+  {
+   "key": "restaurant reservation",
+   "kind": "intent",
+   "label_id": "restaurant_reservation",
+   "parent": "kitchen_and_dining",
+   "source_index": 23
+  },
+  {
+   "key": "restaurant reviews",
+   "kind": "intent",
+   "label_id": "restaurant_reviews",
+   "parent": "kitchen_and_dining",
+   "source_index": 0
+  },
+  {
+   "key": "restaurant suggestion",
+   "kind": "intent",
+   "label_id": "restaurant_suggestion",
+   "parent": "kitchen_and_dining",
+   "source_index": 145
+  },
+  {
+   "key": "rewards balance",
+   "kind": "intent",
+   "label_id": "rewards_balance",
+   "parent": "credit_cards",
+   "source_index": 50
+  },
+  {
+   "key": "roll dice",
+   "kind": "intent",
+   "label_id": "roll_dice",
+   "parent": "utility",
+   "source_index": 92
+  },
+  {
+   "key": "401k rollover",
+   "kind": "intent",
+   "label_id": "rollover_401k",
+   "parent": "work",
+   "source_index": 100
+  },
+  {
+   "key": "routing number",
+   "kind": "intent",
+   "label_id": "routing",
+   "parent": "banking",
+   "source_index": 45
+  },
+  {
+   "key": "schedule car service",
+   "kind": "intent",
+   "label_id": "schedule_maintenance",
+   "parent": "auto_and_commute",
+   "source_index": 131
+  },
+  {
+   "key": "schedule a meeting",
+   "kind": "intent",
+   "label_id": "schedule_meeting",
+   "parent": "work",
+   "source_index": 18
+  },
+  {
+   "key": "share location",
+   "kind": "intent",
+   "label_id": "share_location",
+   "parent": "utility",
+   "source_index": 58
+  },
+  {
+   "key": "check shopping list",
+   "kind": "intent",
+   "label_id": "shopping_list",
+   "parent": "home",
+   "source_index": 43
+  },
+  {
+   "key": "update shopping list",
+   "kind": "intent",
+   "label_id": "shopping_list_update",
+   "parent": "home",
+   "source_index": 125
+  },
+  {
+   "key": "smart home control",
+   "kind": "intent",
+   "label_id": "smart_home",
+   "parent": "home",
+   "source_index": 10
+  },
+  {
+   "key": "spelling",
+   "kind": "intent",
+   "label_id": "spelling",
+   "parent": "utility",
+   "source_index": 73
+  },
+  {
+   "key": "spending history",
+   "kind": "intent",
+   "label_id": "spending_history",
+   "parent": "banking",
+   "source_index": 71
+  },
+  {
+   "key": "connect to phone",
+   "kind": "intent",
+   "label_id": "sync_device",
+   "parent": "meta",
+   "source_index": 130
+  },
+  {
+   "key": "taxes",
+   "kind": "intent",
+   "label_id": "taxes",
+   "parent": "work",
+   "source_index": 94
+  },
+  {
+   "key": "tell a joke",
+   "kind": "intent",
+   "label_id": "tell_joke",
+   "parent": "small_talk",
+   "source_index": 36
+  },
+  {
+   "key": "send a text",
+   "kind": "intent",
+   "label_id": "text",
+   "parent": "utility",
+   "source_index": 26
+  },
+  {
+   "key": "thanks",
+   "kind": "intent",
+   "label_id": "thank_you",
+   "parent": "small_talk",
+   "source_index": 124
+  },
+  {
+   "key": "current time",
+   "kind": "intent",
+   "label_id": "time",
+   "parent": "utility",
+   "source_index": 4
+  },
+  {
+   "key": "set a timer",
+   "kind": "intent",
+   "label_id": "timer",
+   "parent": "utility",
+   "source_index": 32
+  },
+  {
+   "key": "time zone",
+   "kind": "intent",
+   "label_id": "timezone",
+   "parent": "travel",
+   "source_index": 66
+  },
+  {
+   "key": "when to replace tires",
+   "kind": "intent",
+   "label_id": "tire_change",
+   "parent": "auto_and_commute",
+   "source_index": 47
+  },
+  {
+   "key": "tire pressure",
+   "kind": "intent",
+   "label_id": "tire_pressure",
+   "parent": "auto_and_commute",
+   "source_index": 98
+  },
+  {
+   "key": "check to-do list",
+   "kind": "intent",
+   "label_id": "todo_list",
+   "parent": "home",
+   "source_index": 48
+  },
+  {
+   "key": "update to-do list",
+   "kind": "intent",
+   "label_id": "todo_list_update",
+   "parent": "home",
+   "source_index": 65
+  },
+  {
+   "key": "traffic conditions",
+   "kind": "intent",
+   "label_id": "traffic",
+   "parent": "auto_and_commute",
+   "source_index": 24
+  },
+  {
+   "key": "recent transactions",
+   "kind": "intent",
+   "label_id": "transactions",
+   "parent": "banking",
+   "source_index": 68
+  },
+  {
+   "key": "money transfer",
+   "kind": "intent",
+   "label_id": "transfer",
+   "parent": "banking",
+   "source_index": 133
+  },
+  {
+   "key": "translation",
+   "kind": "intent",
+   "label_id": "translate",
+   "parent": "travel",
+   "source_index": 61
+  },
+  {
+   "key": "travel advisory",
+   "kind": "intent",
+   "label_id": "travel_alert",
+   "parent": "travel",
+   "source_index": 128
+  },
+  {
+   "key": "tell bank about travel",
+   "kind": "intent",
+   "label_id": "travel_notification",
+   "parent": "travel",
+   "source_index": 146
+  },
+  {
+   "key": "travel suggestion",
+   "kind": "intent",
+   "label_id": "travel_suggestion",
+   "parent": "travel",
+   "source_index": 149
+  },
+  {
+   "key": "book a rideshare",
+   "kind": "intent",
+   "label_id": "uber",
+   "parent": "auto_and_commute",
+   "source_index": 39
+  },
+  {
+   "key": "update playlist",
+   "kind": "intent",
+   "label_id": "update_playlist",
+   "parent": "home",
+   "source_index": 141
+  },
+  {
+   "key": "user's name",
+   "kind": "intent",
+   "label_id": "user_name",
+   "parent": "meta",
+   "source_index": 11
+  },
+  {
+   "key": "travel vaccines",
+   "kind": "intent",
+   "label_id": "vaccines",
+   "parent": "travel",
+   "source_index": 52
+  },
+  {
+   "key": "W-2 form",
+   "kind": "intent",
+   "label_id": "w2",
+   "parent": "work",
+   "source_index": 122
+  },
+  {
+   "key": "weather",
+   "kind": "intent",
+   "label_id": "weather",
+   "parent": "utility",
+   "source_index": 5
+  },
+  {
+   "key": "assistant's hobbies",
+   "kind": "intent",
+   "label_id": "what_are_your_hobbies",
+   "parent": "small_talk",
+   "source_index": 15
+  },
+  {
+   "key": "what I can ask",
+   "kind": "intent",
+   "label_id": "what_can_i_ask_you",
+   "parent": "small_talk",
+   "source_index": 115
+  },
+  {
+   "key": "assistant's name",
+   "kind": "intent",
+   "label_id": "what_is_your_name",
+   "parent": "small_talk",
+   "source_index": 75
+  },
+  {
+   "key": "identify current song",
+   "kind": "intent",
+   "label_id": "what_song",
+   "parent": "home",
+   "source_index": 21
+  },
+  {
+   "key": "where you are from",
+   "kind": "intent",
+   "label_id": "where_are_you_from",
+   "parent": "small_talk",
+   "source_index": 77
+  },
+  {
+   "key": "whisper mode",
+   "kind": "intent",
+   "label_id": "whisper_mode",
+   "parent": "meta",
+   "source_index": 14
+  },
+  {
+   "key": "who you work for",
+   "kind": "intent",
+   "label_id": "who_do_you_work_for",
+   "parent": "small_talk",
+   "source_index": 57
+  },
+  {
+   "key": "who made you",
+   "kind": "intent",
+   "label_id": "who_made_you",
+   "parent": "small_talk",
+   "source_index": 96
+  },
+  {
+   "key": "affirmative reply",
+   "kind": "intent",
+   "label_id": "yes",
+   "parent": "meta",
+   "source_index": 107
+  },
+  {
+   "key": null,
+   "key_note": "no key: out-of-scope items take the 'none of these' option from the none_option bank",
+   "kind": "oos",
+   "label_id": "oos",
+   "parent": null,
+   "source_index": 42
+  }
+ ],
+ "n_labels": 161,
+ "parent_field": "domain (data/domains.json of clinc/oos-eval)",
+ "schema_version": "od-keys-1.0",
+ "source": "clinc/clinc_oos (plus) @ 155b9c710419136e17307b80d0a13e68cd46b4ec",
+ "source_files": [
+  {
+   "commit": "828f8093932c8fe6ca7936c3d2e52903b1c523de",
+   "path": "data/domains.json",
+   "repo": "github:clinc/oos-eval",
+   "sha256": "b947b579d3b8e74b06f93b01083d8efaff2888b43a3e362533bd88a6e1211b3a"
+  }
+ ]
+}

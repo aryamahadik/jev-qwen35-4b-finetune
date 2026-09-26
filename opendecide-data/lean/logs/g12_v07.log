@@ -1,0 +1,75 @@
+✓ Initialized. View run at 
+https://modal.com/apps/mahadikarya3/main/ap-F93h30az11s24UMwgO72Nf
+✓ Created objects.
+├── 🔨 Created mount 
+│   /Users/aryamahadik/Documents/jev/opendecide-data/lean/modal_od.py
+├── 🔨 Created mount 
+│   /Users/aryamahadik/Documents/jev/opendecide-data/lean/train.py
+├── 🔨 Created mount /Users/aryamahadik/Documents/jev/bench/splits
+├── 🔨 Created mount 
+│   /Users/aryamahadik/Documents/jev/bench/jevbench/datasets/public
+├── 🔨 Created mount /Users/aryamahadik/Documents/jev/opendecide-data/lean/data
+├── 🔨 Created mount /Users/aryamahadik/Documents/jev/bench/jevbench/jevbench
+├── 🔨 Created mount PythonPackage:decoder_io, PythonPackage:train_decoder, 
+│   PythonPackage:hc, PythonPackage:jevbench_od
+├── 🔨 Created mount PythonPackage:decoder_io, PythonPackage:gliclass_io, 
+│   PythonPackage:train_decoder, PythonPackage:hc, PythonPackage:jevbench_od
+├── 🔨 Created function zeroshot35.
+├── 🔨 Created function train_remote35.
+├── 🔨 Created function eval_remote35.
+├── 🔨 Created function latency35.
+├── 🔨 Created function hc_remote35.
+├── 🔨 Created function jevbench_remote35.
+├── 🔨 Created function gen_diag_remote.
+├── 🔨 Created function zeroshot.
+├── 🔨 Created function train_remote.
+├── 🔨 Created function train_gliclass_remote.
+├── 🔨 Created function eval_remote.
+├── 🔨 Created function latency_l4.
+├── 🔨 Created function hc_recall_remote.
+├── 🔨 Created function hc_shortlist_remote.
+├── 🔨 Created function hc_remote.
+└── 🔨 Created function jevbench_remote.
+/usr/local/lib/python3.12/site-packages/huggingface_hub/constants.py:302: FutureWarning: The `HF_HUB_ENABLE_HF_TRANSFER` environment variable is deprecated as 'hf_transfer' is not used anymore. Please use `HF_XET_HIGH_PERFORMANCE` instead to enable high performance transfer with Xet. Visit https://huggingface.co/docs/huggingface_hub/package_reference/environment_variables#hfxethighperformance for more details.
+  warnings.warn(
+
+[1ALoading weights:   0%|          | 0/677 [00:00<?, ?it/s]
+[1ALoading weights:   2%|▏         | 14/677 [00:00<00:05, 111.76it/s]
+[1ALoading weights:   4%|▍         | 28/677 [00:00<00:05, 119.89it/s]
+[1ALoading weights:   6%|▌         | 41/677 [00:00<00:05, 112.93it/s]
+[1ALoading weights:   8%|▊         | 55/677 [00:00<00:05, 118.23it/s]
+[1ALoading weights:  10%|▉         | 67/677 [00:00<00:05, 106.21it/s]
+[1ALoading weights:  13%|█▎        | 88/677 [00:00<00:04, 123.37it/s]
+[1ALoading weights:  16%|█▋        | 111/677 [00:00<00:03, 147.37it/s]
+[1ALoading weights:  19%|█▉        | 127/677 [00:00<00:03, 145.89it/s]
+[1ALoading weights:  21%|██        | 142/677 [00:01<00:03, 138.41it/s]
+[1ALoading weights:  23%|██▎       | 156/677 [00:01<00:04, 126.82it/s]
+[1ALoading weights:  26%|██▌       | 176/677 [00:01<00:03, 137.76it/s]
+[1ALoading weights:  30%|██▉       | 201/677 [00:01<00:03, 156.96it/s]
+[1ALoading weights:  32%|███▏      | 217/677 [00:01<00:03, 143.80it/s]
+[1ALoading weights:  34%|███▍      | 233/677 [00:01<00:03, 145.45it/s]
+[1ALoading weights:  37%|███▋      | 248/677 [00:01<00:02, 143.64it/s]
+[1ALoading weights:  39%|███▉      | 263/677 [00:01<00:02, 141.58it/s]
+[1ALoading weights:  41%|████▏     | 280/677 [00:02<00:02, 145.51it/s]
+[1ALoading weights:  44%|████▎     | 295/677 [00:02<00:02, 134.14it/s]
+[1ALoading weights:  46%|████▌     | 309/677 [00:02<00:02, 128.89it/s]
+[1ALoading weights:  48%|████▊     | 324/677 [00:02<00:02, 131.97it/s]
+[1ALoading weights:  50%|█████     | 341/677 [00:02<00:02, 139.71it/s]
+[1ALoading weights:  53%|█████▎    | 356/677 [00:02<00:02, 134.15it/s]
+[1ALoading weights:  55%|█████▍    | 370/677 [00:02<00:02, 128.20it/s]
+[1ALoading weights:  57%|█████▋    | 386/677 [00:02<00:02, 130.06it/s]
+[1ALoading weights:  61%|██████    | 410/677 [00:02<00:01, 155.44it/s]
+[1ALoading weights:  63%|██████▎   | 426/677 [00:03<00:01, 156.60it/s]
+[1ALoading weights:  81%|████████  | 550/677 [00:03<00:00, 458.50it/s]
+[1ALoading weights: 100%|██████████| 677/677 [00:03<00:00, 212.12it/s]
+trainable params: 65,568,768 || all params: 12,025,298,944 || trainable%: 0.5453
+[transformers] `use_cache=True` is incompatible with gradient checkpointing. Setting `use_cache=False`.
+{"step": 0, "of": 714, "loss": 1.6807, "task": 1.6807, "cons": 0.0001, "kl": 0.0, "lr": 2.8571428571428573e-06, "min": 0.16}
+{"step": 25, "of": 714, "loss": 1.0202, "task": 0.8793, "cons": null, "kl": 0.1409, "lr": 3.857142857142858e-05, "min": 1.53}
+{"step": 50, "of": 714, "loss": 0.3281, "task": 0.2765, "cons": 0.0705, "kl": 0.0392, "lr": 4.9931528186679534e-05, "min": 2.91}
+{"step": 75, "of": 714, "loss": 1.1418, "task": 0.4682, "cons": 0.0851, "kl": 0.6512, "lr": 4.955152816591259e-05, "min": 4.29}
+{"step": 100, "of": 714, "loss": 0.4335, "task": 0.3438, "cons": 0.0999, "kl": 0.0547, "lr": 4.884340681099665e-05, "min": 5.59}
+{"step": 125, "of": 714, "loss": 1.0233, "task": 0.7703, "cons": 0.0354, "kl": 0.2375, "lr": 4.781662788003851e-05, "min": 7.02}
+{"step": 150, "of": 714, "loss": 0.6257, "task": 0.4552, "cons": 0.0105, "kl": 0.1652, "lr": 4.6484913861936826e-05, "min": 8.15}
+{"step": 175, "of": 714, "loss": 0.6771, "task": 0.5306, "cons": 0.0006, "kl": 0.1462, "lr": 4.486606258081773e-05, "min": 9.42}
+Stopping app - user stopped from CLI.

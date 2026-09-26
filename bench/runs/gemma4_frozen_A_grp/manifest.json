@@ -1,0 +1,12 @@
+{
+  "name": "gemma4_frozen_A_grp",
+  "base": "google/gemma-4-12B-it",
+  "adapter": "",
+  "temps": [
+    1.0,
+    1.0
+  ],
+  "gpu": "NVIDIA H100 NVL",
+  "tiers": "A",
+  "think_below": -1.0
+}

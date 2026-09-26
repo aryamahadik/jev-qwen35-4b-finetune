@@ -1,0 +1,34 @@
+{
+ "key": "a97b081471dc",
+ "kind": "Tweet",
+ "instruction": "Which label describes this message?",
+ "labels": [
+  "positive",
+  "neutral",
+  "negative"
+ ],
+ "model": "qwen/qwen3-235b-a22b-2507",
+ "cards": {
+  "positive": {
+   "definition": "The message expresses clear approval, happiness, or optimism, and does not contain any significant criticism or negative sentiment; borderline cases with mild enthusiasm still belong here if no conflicting sentiment is present.",
+   "examples": [
+    "Loving the sunshine and good vibes today! \u2600\ufe0f\ud83d\ude0a",
+    "Just got promoted\u2014best day ever!"
+   ]
+  },
+  "neutral": {
+   "definition": "The message conveys factual information, observation, or a statement without clear emotional tone or judgment; borderline cases include mild expressions that could be interpreted either way but lack strong sentiment in either direction.",
+   "examples": [
+    "The meeting has been rescheduled to Friday at 3 PM.",
+    "Traffic is heavier than usual on the highway."
+   ]
+  },
+  "negative": {
+   "definition": "The message expresses clear dissatisfaction, sadness, anger, or criticism, and does not contain redeeming positive sentiment; borderline cases with frustration or disappointment still belong here if no positive counterbalance is present.",
+   "examples": [
+    "Can't believe I missed the bus again\u2014this day keeps getting worse.",
+    "The service at that restaurant was terrible and overpriced."
+   ]
+  }
+ }
+}

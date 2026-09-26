@@ -1,0 +1,247 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "$id": "https://opendecide.invalid/schema/relation.schema.json",
+ "title": "OpenDecide relation (od-1.0)",
+ "description": "One logical constraint between independently scored rows ({train,dev,eval}_relations.jsonl; DESIGN 1.3).",
+ "type": "object",
+ "additionalProperties": false,
+ "required": [
+  "relation_id",
+  "type",
+  "rows",
+  "expr",
+  "code",
+  "valid_if",
+  "group_id",
+  "same_call",
+  "negation_class",
+  "template_ids",
+  "gold_consistent",
+  "endpoint",
+  "track",
+  "headline"
+ ],
+ "properties": {
+  "relation_id": {
+   "type": "string",
+   "pattern": "^rel_[0-9]{6}$"
+  },
+  "type": {
+   "enum": [
+    "complement",
+    "soft_complement",
+    "paraphrase",
+    "double_negation",
+    "choice_noul",
+    "choice2",
+    "choice3_noul",
+    "score_reversal",
+    "threshold_tail",
+    "rebin",
+    "monotone",
+    "conj",
+    "disj",
+    "contrary",
+    "trap",
+    "other_than",
+    "edit_contrast",
+    "criteria_variant",
+    "human_floor",
+    "invariance"
+   ]
+  },
+  "rows": {
+   "type": "object",
+   "minProperties": 1,
+   "propertyNames": {
+    "pattern": "^[a-z][a-z0-9_]*$"
+   },
+   "additionalProperties": {
+    "type": "string",
+    "pattern": "^r_[0-9a-f]{12}$"
+   }
+  },
+  "expr": {
+   "type": "string",
+   "minLength": 1
+  },
+  "code": {
+   "enum": [
+    "SUM_EQ_1",
+    "EQ",
+    "MIRROR",
+    "TAIL_EQ",
+    "REBIN",
+    "LE",
+    "CONJ",
+    "DISJ",
+    "SUM_LE_1",
+    "SUM_GE_1",
+    "ALL_CORRECT",
+    "DIFFERENT",
+    "INVARIANT",
+    null
+   ],
+   "description": "null only for human_floor (no identity)"
+  },
+  "valid_if": {
+   "type": [
+    "string",
+    "null"
+   ]
+  },
+  "params": {
+   "type": [
+    "object",
+    "null"
+   ],
+   "description": "type-specific parameters, e.g. threshold t (TAIL_EQ) or the level index map (REBIN)"
+  },
+  "group_id": {
+   "type": "string",
+   "pattern": "^g:[^:\\s]+:[^:\\s]+:[^:\\s]+$"
+  },
+  "same_call": {
+   "type": "boolean"
+  },
+  "negation_class": {
+   "enum": [
+    "unseen_class",
+    "seen_class",
+    "human",
+    "free",
+    null
+   ]
+  },
+  "template_ids": {
+   "type": "array",
+   "items": {
+    "type": "string"
+   }
+  },
+  "gold_consistent": {
+   "type": "boolean"
+  },
+  "endpoint": {
+   "enum": [
+    "E1",
+    "E2",
+    "E3",
+    "E4",
+    "E5",
+    null
+   ]
+  },
+  "track": {
+   "enum": [
+    "L0_base",
+    "L2_consistency",
+    "L3_injection",
+    "L3_distractor",
+    "ID",
+    "ZS",
+    "FR",
+    "INJ",
+    "DIST",
+    "CMP",
+    "ANC",
+    "DIAG"
+   ]
+  },
+  "headline": {
+   "type": "boolean"
+  }
+ },
+ "allOf": [
+  {
+   "if": {
+    "properties": {
+     "type": {
+      "enum": [
+       "complement",
+       "soft_complement",
+       "choice_noul",
+       "choice2",
+       "choice3_noul",
+       "paraphrase",
+       "double_negation",
+       "score_reversal",
+       "threshold_tail",
+       "rebin",
+       "monotone",
+       "contrary",
+       "trap",
+       "other_than",
+       "criteria_variant",
+       "human_floor"
+      ]
+     }
+    }
+   },
+   "then": {
+    "properties": {
+     "rows": {
+      "required": [
+       "a",
+       "b"
+      ]
+     }
+    }
+   }
+  },
+  {
+   "if": {
+    "properties": {
+     "type": {
+      "const": "trap"
+     }
+    }
+   },
+   "then": {
+    "properties": {
+     "code": {
+      "const": "SUM_LE_1"
+     },
+     "endpoint": {
+      "const": null
+     }
+    }
+   }
+  },
+  {
+   "if": {
+    "properties": {
+     "type": {
+      "const": "other_than"
+     }
+    }
+   },
+   "then": {
+    "properties": {
+     "code": {
+      "const": "SUM_GE_1"
+     },
+     "endpoint": {
+      "const": null
+     }
+    }
+   }
+  },
+  {
+   "if": {
+    "properties": {
+     "type": {
+      "const": "soft_complement"
+     }
+    }
+   },
+   "then": {
+    "properties": {
+     "code": {
+      "const": "SUM_EQ_1"
+     }
+    }
+   }
+  }
+ ]
+}

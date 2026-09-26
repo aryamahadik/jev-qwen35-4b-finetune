@@ -1,0 +1,199 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "$id": "https://opendecide.invalid/schema/call.schema.json",
+ "title": "OpenDecide Jev call (od-1.0)",
+ "description": "One line of eval_calls.jsonl (DESIGN 1.2): every question about one byte-identical state, sent as one Jev systemone request. Also validated offline against typesafe_sdk._schemas.models.SystemOneRequest (V1).",
+ "type": "object",
+ "additionalProperties": false,
+ "required": [
+  "call_id",
+  "model",
+  "state",
+  "questions",
+  "row_map",
+  "order_seed",
+  "est_input_tokens"
+ ],
+ "properties": {
+  "call_id": {
+   "type": "string",
+   "pattern": "^c_[0-9a-f]{12}$"
+  },
+  "model": {
+   "const": "jev-1.13.0"
+  },
+  "state": {
+   "oneOf": [
+    {
+     "type": "string",
+     "minLength": 1
+    },
+    {
+     "type": "object",
+     "required": [
+      "text"
+     ],
+     "additionalProperties": false,
+     "properties": {
+      "text": {
+       "type": "string"
+      }
+     }
+    }
+   ]
+  },
+  "questions": {
+   "type": "object",
+   "minProperties": 1,
+   "propertyNames": {
+    "pattern": "^q[0-9]+$"
+   },
+   "additionalProperties": {
+    "$ref": "#/$defs/question"
+   }
+  },
+  "row_map": {
+   "type": "object",
+   "minProperties": 1,
+   "propertyNames": {
+    "pattern": "^q[0-9]+$"
+   },
+   "additionalProperties": {
+    "type": "string",
+    "pattern": "^r_[0-9a-f]{12}$"
+   }
+  },
+  "order_seed": {
+   "type": "integer"
+  },
+  "est_input_tokens": {
+   "type": "integer",
+   "minimum": 0
+  },
+  "kind": {
+   "enum": [
+    "core",
+    "inj",
+    "dist",
+    "cmp",
+    "anc"
+   ],
+   "description": "optional block tag for run ordering (CMP+ANC -> REL -> core -> INJ -> DIST)"
+  }
+ },
+ "$defs": {
+  "question": {
+   "type": "object",
+   "description": "Jev wire-format question, verbatim (DESIGN 1.1 field rules 1-3).",
+   "required": [
+    "type",
+    "instructions",
+    "criteria"
+   ],
+   "additionalProperties": false,
+   "properties": {
+    "type": {
+     "enum": [
+      "noul",
+      "choice",
+      "score"
+     ]
+    },
+    "instructions": {
+     "type": "string",
+     "minLength": 1
+    },
+    "criteria": {}
+   },
+   "allOf": [
+    {
+     "if": {
+      "properties": {
+       "type": {
+        "const": "noul"
+       }
+      }
+     },
+     "then": {
+      "properties": {
+       "criteria": {
+        "oneOf": [
+         {
+          "type": "null"
+         },
+         {
+          "type": "object",
+          "required": [
+           "true",
+           "false"
+          ],
+          "additionalProperties": false,
+          "properties": {
+           "true": {
+            "type": "string",
+            "minLength": 1
+           },
+           "false": {
+            "type": "string",
+            "minLength": 1
+           }
+          }
+         }
+        ]
+       }
+      }
+     }
+    },
+    {
+     "if": {
+      "properties": {
+       "type": {
+        "const": "choice"
+       }
+      }
+     },
+     "then": {
+      "properties": {
+       "criteria": {
+        "type": "object",
+        "minProperties": 2,
+        "maxProperties": 72,
+        "propertyNames": {
+         "minLength": 1
+        },
+        "additionalProperties": {
+         "type": [
+          "string",
+          "null"
+         ]
+        }
+       }
+      }
+     }
+    },
+    {
+     "if": {
+      "properties": {
+       "type": {
+        "const": "score"
+       }
+      }
+     },
+     "then": {
+      "properties": {
+       "criteria": {
+        "type": "array",
+        "minItems": 2,
+        "maxItems": 10,
+        "items": {
+         "type": "string",
+         "minLength": 1
+        }
+       }
+      }
+     }
+    }
+   ]
+  }
+ }
+}

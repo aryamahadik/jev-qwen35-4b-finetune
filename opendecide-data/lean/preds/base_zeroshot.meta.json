@@ -1,0 +1,17 @@
+{
+  "model": "knowledgator/gliclass-modern-base-v3.0",
+  "name": "base_zeroshot",
+  "rows": 1915,
+  "latency_mps": {
+    "device": "mps",
+    "median_ms": 68.95712506957352,
+    "p95_ms": 221.69745794963092,
+    "n": 200
+  },
+  "latency_cpu": {
+    "device": "cpu",
+    "median_ms": 122.03829200007021,
+    "p95_ms": 302.34749999362975,
+    "n": 100
+  }
+}

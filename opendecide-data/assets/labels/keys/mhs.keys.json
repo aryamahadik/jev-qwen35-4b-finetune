@@ -1,0 +1,73 @@
+{
+ "authored_by": "llm:claude:label-key-author",
+ "counts_by_kind": {
+  "level": 1,
+  "predicate": 1
+ },
+ "created": "2026-09-25",
+ "dataset": "mhs",
+ "key_policy": "Choice key = natural 1-5 word English name of the label, fixed for every split, variant and model (DESIGN field rule 2, D8). Descriptions (D_*) and propositions (P_*) are authored separately per pool and never live in this file.",
+ "label_field": "insult (per-annotator 0-4)",
+ "label_id_type": "predicate and scale ids defined here (the source has no label ids for them)",
+ "labels": [
+  {
+   "gold_rule": "1 if median insult >= 3; 0 if <= 1; soft-only (hard_ok=false) if 2",
+   "key": "insulting",
+   "kind": "predicate",
+   "label_id": "insulting",
+   "parent": null,
+   "roles": [
+    "eval"
+   ],
+   "source_field": "insult"
+  },
+  {
+   "K": 5,
+   "construct": "how insulting the comment is (MHS insult item, 0-4)",
+   "key": "how insulting",
+   "kind": "level",
+   "label_id": "insult-5",
+   "levels": [
+    {
+     "level": 0,
+     "source_values": [
+      0
+     ]
+    },
+    {
+     "level": 1,
+     "source_values": [
+      1
+     ]
+    },
+    {
+     "level": 2,
+     "source_values": [
+      2
+     ]
+    },
+    {
+     "level": 3,
+     "source_values": [
+      3
+     ]
+    },
+    {
+     "level": 4,
+     "source_values": [
+      4
+     ]
+    }
+   ],
+   "parent": null,
+   "roles": [
+    "eval"
+   ],
+   "rule": "R0 + R12 SOFT; MIRROR wording 'How free of insult...' uses the same anchors reversed (R7)",
+   "source_field": "insult (per annotator 0-4; gold level = median over >= 3 annotators; soft = annotator distribution)"
+  }
+ ],
+ "n_labels": 2,
+ "schema_version": "od-keys-1.0",
+ "source": "ucberkeley-dlab/measuring-hate-speech @ 5468f6e118396646b02a2f691e771f6b6d9502ea"
+}

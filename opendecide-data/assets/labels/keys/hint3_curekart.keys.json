@@ -1,0 +1,223 @@
+{
+ "authored_by": "llm:claude:label-key-author",
+ "bot_domain": "health supplement store",
+ "counts_by_kind": {
+  "intent": 20,
+  "oos": 1
+ },
+ "created": "2026-09-25",
+ "dataset": "hint3_curekart",
+ "eval_split": "test",
+ "excluded_labels": [
+  {
+   "label_id": "IMMUNITY",
+   "n_train": 6,
+   "reason": "train-only label: absent from the v2 test split, so a test request of this kind can only carry another label or NO_NODES_DETECTED; offering it as an option would make 'none of these' gold unsafe"
+  },
+  {
+   "label_id": "INTERNATIONAL_SHIPPING",
+   "n_train": 3,
+   "reason": "train-only label: absent from the v2 test split, so a test request of this kind can only carry another label or NO_NODES_DETECTED; offering it as an option would make 'none of these' gold unsafe"
+  },
+  {
+   "label_id": "MODES_OF_PAYMENTS",
+   "n_train": 7,
+   "reason": "train-only label: absent from the v2 test split, so a test request of this kind can only carry another label or NO_NODES_DETECTED; offering it as an option would make 'none of these' gold unsafe"
+  },
+  {
+   "label_id": "ORDER_QUERY",
+   "n_train": 7,
+   "reason": "train-only label: absent from the v2 test split, so a test request of this kind can only carry another label or NO_NODES_DETECTED; offering it as an option would make 'none of these' gold unsafe"
+  },
+  {
+   "label_id": "PORTAL_ISSUE",
+   "n_train": 4,
+   "reason": "train-only label: absent from the v2 test split, so a test request of this kind can only carry another label or NO_NODES_DETECTED; offering it as an option would make 'none of these' gold unsafe"
+  },
+  {
+   "label_id": "REFER_EARN",
+   "n_train": 13,
+   "reason": "train-only label: absent from the v2 test split, so a test request of this kind can only carry another label or NO_NODES_DETECTED; offering it as an option would make 'none of these' gold unsafe"
+  },
+  {
+   "label_id": "START_OVER",
+   "n_train": 5,
+   "reason": "train-only label: absent from the v2 test split, so a test request of this kind can only carry another label or NO_NODES_DETECTED; offering it as an option would make 'none of these' gold unsafe"
+  },
+  {
+   "label_id": "WORK_FROM_HOME",
+   "n_train": 10,
+   "reason": "train-only label: absent from the v2 test split, so a test request of this kind can only carry another label or NO_NODES_DETECTED; offering it as an option would make 'none of these' gold unsafe"
+  }
+ ],
+ "key_policy": "Choice key = natural 1-5 word English name of the label, fixed for every split, variant and model (DESIGN field rule 2, D8). Descriptions (D_*) and propositions (P_*) are authored separately per pool and never live in this file.",
+ "label_field": "label",
+ "label_id_type": "csv label string",
+ "labels": [
+  {
+   "key": "call centre contact",
+   "kind": "intent",
+   "label_id": "CALL_CENTER",
+   "n_test": 5,
+   "parent": null
+  },
+  {
+   "key": "cancel order",
+   "kind": "intent",
+   "label_id": "CANCEL_ORDER",
+   "n_test": 32,
+   "parent": null
+  },
+  {
+   "key": "chat with an agent",
+   "kind": "intent",
+   "label_id": "CHAT_WITH_AGENT",
+   "n_test": 14,
+   "parent": null
+  },
+  {
+   "key": "delivery area check",
+   "kind": "intent",
+   "label_id": "CHECK_PINCODE",
+   "n_test": 22,
+   "parent": null
+  },
+  {
+   "key": "diet and fitness advice",
+   "kind": "intent",
+   "label_id": "CONSULT_START",
+   "n_test": 16,
+   "parent": null
+  },
+  {
+   "key": "delayed parcel",
+   "kind": "intent",
+   "label_id": "DELAY_IN_PARCEL",
+   "n_test": 10,
+   "parent": null
+  },
+  {
+   "key": "product expiry date",
+   "kind": "intent",
+   "label_id": "EXPIRY_DATE",
+   "n_test": 13,
+   "parent": null
+  },
+  {
+   "key": "become a seller",
+   "kind": "intent",
+   "label_id": "FRANCHISE",
+   "n_test": 12,
+   "parent": null
+  },
+  {
+   "key": "change delivery address",
+   "kind": "intent",
+   "label_id": "MODIFY_ADDRESS",
+   "n_test": 3,
+   "parent": null
+  },
+  {
+   "key": "order status",
+   "kind": "intent",
+   "label_id": "ORDER_STATUS",
+   "n_test": 12,
+   "parent": null
+  },
+  {
+   "key": "placing an order",
+   "kind": "intent",
+   "label_id": "ORDER_TAKING",
+   "n_test": 19,
+   "parent": null
+  },
+  {
+   "key": "product authenticity",
+   "kind": "intent",
+   "label_id": "ORIGINAL_PRODUCT",
+   "n_test": 43,
+   "parent": null
+  },
+  {
+   "key": "payments and bills",
+   "kind": "intent",
+   "label_id": "PAYMENT_AND_BILL",
+   "n_test": 3,
+   "parent": null
+  },
+  {
+   "key": "product recommendation",
+   "kind": "intent",
+   "label_id": "RECOMMEND_PRODUCT",
+   "n_test": 205,
+   "parent": null
+  },
+  {
+   "key": "refund, return or replacement",
+   "kind": "intent",
+   "label_id": "REFUNDS_RETURNS_REPLACEMENTS",
+   "n_test": 20,
+   "parent": null
+  },
+  {
+   "key": "resuming deliveries",
+   "kind": "intent",
+   "label_id": "RESUME_DELIVERY",
+   "n_test": 9,
+   "parent": null
+  },
+  {
+   "key": "side effects",
+   "kind": "intent",
+   "label_id": "SIDE_EFFECT",
+   "n_test": 5,
+   "parent": null
+  },
+  {
+   "key": "new user sign-up",
+   "kind": "intent",
+   "label_id": "SIGN_UP",
+   "n_test": 3,
+   "parent": null
+  },
+  {
+   "key": "physical stores",
+   "kind": "intent",
+   "label_id": "STORE_INFORMATION",
+   "n_test": 11,
+   "parent": null
+  },
+  {
+   "key": "fitness goal form",
+   "kind": "intent",
+   "label_id": "USER_GOAL_FORM",
+   "n_test": 2,
+   "parent": null
+  },
+  {
+   "key": null,
+   "key_note": "no key: out-of-scope items take the 'none of these' option from the none_option bank",
+   "kind": "oos",
+   "label_id": "NO_NODES_DETECTED",
+   "n_test": 532,
+   "parent": null
+  }
+ ],
+ "n_labels": 21,
+ "schema_version": "od-keys-1.0",
+ "source": "github:hellohaptik/HINT3 @ 99965c892ea9a6801a87083d3861b0b04c91a4e7 (dataset v2)",
+ "source_files": [
+  {
+   "commit": "99965c892ea9a6801a87083d3861b0b04c91a4e7",
+   "path": "dataset/v2/test/curekart_test.csv",
+   "repo": "github:hellohaptik/HINT3",
+   "sha256": "47bf651cafa8b8f476ca4bea3052ee9a29c5bc6a4d841f2162f12ad16064f5a0"
+  },
+  {
+   "commit": "99965c892ea9a6801a87083d3861b0b04c91a4e7",
+   "path": "dataset/v2/train/curekart_train.csv",
+   "repo": "github:hellohaptik/HINT3",
+   "sha256": "99620b357d20801cbbebe2823d606d1afecd9414074d97a7386aaf2493f8911f"
+  }
+ ]
+}

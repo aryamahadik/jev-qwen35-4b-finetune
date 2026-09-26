@@ -1,0 +1,58 @@
+{
+ "key": "6ca729c54757",
+ "kind": "Social media post",
+ "instruction": "Which label describes this message?",
+ "labels": [
+  "joy",
+  "love",
+  "anger",
+  "fear",
+  "sadness",
+  "surprise"
+ ],
+ "model": "qwen/qwen3-235b-a22b-2507",
+ "cards": {
+  "joy": {
+   "definition": "Joy refers to a clear expression of happiness, delight, or positive excitement about an event or situation, distinct from love in that it focuses on personal emotional uplift rather than affection toward others, and differs from surprise by being purely positive without sudden shock.",
+   "examples": [
+    "Just got promoted at work! Best day ever!",
+    "Sunny weather, ice cream, and a good book\u2014life is perfect!"
+   ]
+  },
+  "love": {
+   "definition": "Love expresses deep affection, warmth, or emotional attachment toward a person, pet, or thing, differing from joy in its relational focus and from joy or surprise by emphasizing connection rather than momentary pleasure or shock.",
+   "examples": [
+    "I can't imagine my life without you. You mean everything to me.",
+    "Spent the whole weekend cuddling my dog\u2014pure love."
+   ]
+  },
+  "anger": {
+   "definition": "Anger conveys frustration, irritation, or outrage directed at a person, situation, or injustice, distinct from sadness in its outward intensity and from fear by its aggressive tone rather than avoidance or apprehension.",
+   "examples": [
+    "Unbelievable how rude that customer service rep was\u2014so fed up!",
+    "They lied again. I'm not putting up with this anymore."
+   ]
+  },
+  "fear": {
+   "definition": "Fear expresses anxiety, dread, or worry about potential danger or negative outcomes, differing from sadness by focusing on anticipation rather than loss, and from anger by showing vulnerability rather than confrontation.",
+   "examples": [
+    "Heard a loud noise outside at 3 AM and now I'm too scared to check.",
+    "What if I fail the exam and lose my scholarship?"
+   ]
+  },
+  "sadness": {
+   "definition": "Sadness reflects feelings of sorrow, disappointment, or grief due to loss, rejection, or unmet expectations, distinct from fear by focusing on present or past pain rather than future threat, and from anger by its inward, resigned tone.",
+   "examples": [
+    "Can't believe Grandma is gone. I miss her so much.",
+    "Nobody remembered my birthday. Feels like no one cares."
+   ]
+  },
+  "surprise": {
+   "definition": "Surprise indicates a reaction to something unexpected or shocking, which can be neutral or mixed in valence, differing from joy or fear by the element of unpredictability rather than pure emotion, and often lacks the sustained tone of other emotions.",
+   "examples": [
+    "Wait\u2014did she just propose to him during the concert?",
+    "My phone battery died in the middle of the call\u2014out of nowhere!"
+   ]
+  }
+ }
+}

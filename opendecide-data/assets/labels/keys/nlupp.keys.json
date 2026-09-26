@@ -1,0 +1,1172 @@
+{
+ "authored_by": "llm:claude:label-key-author",
+ "counts_by_kind": {
+  "module": 62
+ },
+ "created": "2026-09-25",
+ "dataset": "nlupp",
+ "inventories": {
+  "banking": [
+   "account",
+   "acknowledge",
+   "affirm",
+   "appointment",
+   "arrival",
+   "balance",
+   "business",
+   "cancel_close_leave_freeze",
+   "card",
+   "change",
+   "cheque",
+   "contactless",
+   "credit",
+   "current",
+   "debit",
+   "deny",
+   "direct_debit",
+   "dont_know",
+   "end_call",
+   "existing",
+   "fees_interests",
+   "greet",
+   "handoff",
+   "how",
+   "how_long",
+   "how_much",
+   "international",
+   "less_lower_before",
+   "limits",
+   "loan",
+   "lost_stolen",
+   "make_open_apply_setup_get_activate",
+   "more_higher_after",
+   "mortgage",
+   "new",
+   "overdraft",
+   "pin",
+   "refund",
+   "repeat",
+   "request_info",
+   "savings",
+   "standing_order",
+   "thank",
+   "transfer_payment_deposit",
+   "when",
+   "why",
+   "withdrawal",
+   "wrong_notworking_notshowing"
+  ],
+  "hotels": [
+   "accesibility",
+   "acknowledge",
+   "affirm",
+   "booking",
+   "cancel_close_leave_freeze",
+   "change",
+   "check_in",
+   "check_out",
+   "deny",
+   "dont_know",
+   "end_call",
+   "existing",
+   "greet",
+   "gym",
+   "handoff",
+   "housekeeping",
+   "how",
+   "how_long",
+   "how_much",
+   "less_lower_before",
+   "limits",
+   "lost_stolen",
+   "make_open_apply_setup_get_activate",
+   "more_higher_after",
+   "new",
+   "parking",
+   "pets",
+   "refund",
+   "repeat",
+   "request_info",
+   "restaurant",
+   "room_ammenities",
+   "room_service",
+   "spa",
+   "swimming_pool",
+   "thank",
+   "when",
+   "why",
+   "wifi",
+   "wrong_notworking_notshowing"
+  ]
+ },
+ "inventory_sizes": {
+  "banking": 48,
+  "hotels": 40
+ },
+ "key_policy": "Choice key = natural 1-5 word English name of the label, fixed for every split, variant and model (DESIGN field rule 2, D8). Descriptions (D_*) and propositions (P_*) are authored separately per pool and never live in this file.",
+ "label_field": "intents (multi-label module list; missing = none)",
+ "label_id_type": "ontology intent (module) name",
+ "labels": [
+  {
+   "domain": [
+    "hotels"
+   ],
+   "inventories": [
+    "hotels"
+   ],
+   "key": "accessibility",
+   "kind": "module",
+   "label_id": "accesibility",
+   "n_rows": {
+    "hotels": 10
+   },
+   "ontology_question": "is the intent to ask something related to accessibility?",
+   "parent": null
+  },
+  {
+   "domain": [
+    "banking"
+   ],
+   "inventories": [
+    "banking"
+   ],
+   "key": "account",
+   "kind": "module",
+   "label_id": "account",
+   "n_rows": {
+    "banking": 230
+   },
+   "ontology_question": "is the intent asking about some account?",
+   "parent": null
+  },
+  {
+   "domain": [
+    "general"
+   ],
+   "inventories": [
+    "banking",
+    "hotels"
+   ],
+   "key": "acknowledgement",
+   "kind": "module",
+   "label_id": "acknowledge",
+   "n_rows": {
+    "banking": 39,
+    "hotels": 12
+   },
+   "ontology_question": "is the intent to acknowledge what was said?",
+   "parent": null
+  },
+  {
+   "domain": [
+    "general"
+   ],
+   "inventories": [
+    "banking",
+    "hotels"
+   ],
+   "key": "affirmation",
+   "kind": "module",
+   "label_id": "affirm",
+   "n_rows": {
+    "banking": 131,
+    "hotels": 19
+   },
+   "ontology_question": "is the intent to affirm something?",
+   "parent": null
+  },
+  {
+   "domain": [
+    "banking"
+   ],
+   "inventories": [
+    "banking"
+   ],
+   "key": "appointment",
+   "kind": "module",
+   "label_id": "appointment",
+   "n_rows": {
+    "banking": 65
+   },
+   "ontology_question": "is the intent to ask about something about an appointment?",
+   "parent": null
+  },
+  {
+   "domain": [
+    "banking"
+   ],
+   "inventories": [
+    "banking"
+   ],
+   "key": "arrival",
+   "kind": "module",
+   "label_id": "arrival",
+   "n_rows": {
+    "banking": 44
+   },
+   "ontology_question": "is the intent to ask about the arrival of something?",
+   "parent": null
+  },
+  {
+   "domain": [
+    "banking"
+   ],
+   "inventories": [
+    "banking"
+   ],
+   "key": "balance",
+   "kind": "module",
+   "label_id": "balance",
+   "n_rows": {
+    "banking": 71
+   },
+   "ontology_question": "is the intent to ask about balance?",
+   "parent": null
+  },
+  {
+   "domain": [
+    "hotels"
+   ],
+   "inventories": [
+    "hotels"
+   ],
+   "key": "booking",
+   "kind": "module",
+   "label_id": "booking",
+   "n_rows": {
+    "hotels": 268
+   },
+   "ontology_question": "is the intent to talk about some booking?",
+   "parent": null
+  },
+  {
+   "domain": [
+    "banking"
+   ],
+   "inventories": [
+    "banking"
+   ],
+   "key": "business account",
+   "kind": "module",
+   "label_id": "business",
+   "n_rows": {
+    "banking": 29
+   },
+   "ontology_question": "is the intent to ask something about the business account?",
+   "parent": null
+  },
+  {
+   "domain": [
+    "general"
+   ],
+   "inventories": [
+    "banking",
+    "hotels"
+   ],
+   "key": "cancel, close or freeze",
+   "kind": "module",
+   "label_id": "cancel_close_leave_freeze",
+   "n_rows": {
+    "banking": 111,
+    "hotels": 33
+   },
+   "ontology_question": "is the intent asking about canceling or closing something?",
+   "parent": null
+  },
+  {
+   "domain": [
+    "banking"
+   ],
+   "inventories": [
+    "banking"
+   ],
+   "key": "card",
+   "kind": "module",
+   "label_id": "card",
+   "n_rows": {
+    "banking": 235
+   },
+   "ontology_question": "is the intent to ask about something related to a card or cards?",
+   "parent": null
+  },
+  {
+   "domain": [
+    "general"
+   ],
+   "inventories": [
+    "banking",
+    "hotels"
+   ],
+   "key": "change or modify",
+   "kind": "module",
+   "label_id": "change",
+   "n_rows": {
+    "banking": 120,
+    "hotels": 84
+   },
+   "ontology_question": "is the intent to change or modify something?",
+   "parent": null
+  },
+  {
+   "domain": [
+    "hotels"
+   ],
+   "inventories": [
+    "hotels"
+   ],
+   "key": "check-in",
+   "kind": "module",
+   "label_id": "check_in",
+   "n_rows": {
+    "hotels": 28
+   },
+   "ontology_question": "is the intent to ask about check in?",
+   "parent": null
+  },
+  {
+   "domain": [
+    "hotels"
+   ],
+   "inventories": [
+    "hotels"
+   ],
+   "key": "check-out",
+   "kind": "module",
+   "label_id": "check_out",
+   "n_rows": {
+    "hotels": 22
+   },
+   "ontology_question": "is the intent to ask about check out?",
+   "parent": null
+  },
+  {
+   "domain": [
+    "banking"
+   ],
+   "inventories": [
+    "banking"
+   ],
+   "key": "cheque",
+   "kind": "module",
+   "label_id": "cheque",
+   "n_rows": {
+    "banking": 39
+   },
+   "ontology_question": "is the intent to ask about cheque?",
+   "parent": null
+  },
+  {
+   "domain": [
+    "banking"
+   ],
+   "inventories": [
+    "banking"
+   ],
+   "key": "contactless",
+   "kind": "module",
+   "label_id": "contactless",
+   "n_rows": {
+    "banking": 63
+   },
+   "ontology_question": "is the intent to ask about contactless?",
+   "parent": null
+  },
+  {
+   "domain": [
+    "banking"
+   ],
+   "inventories": [
+    "banking"
+   ],
+   "key": "credit",
+   "kind": "module",
+   "label_id": "credit",
+   "n_rows": {
+    "banking": 43
+   },
+   "ontology_question": "is the intent asking about something related to credit?",
+   "parent": null
+  },
+  {
+   "domain": [
+    "banking"
+   ],
+   "inventories": [
+    "banking"
+   ],
+   "key": "current account",
+   "kind": "module",
+   "label_id": "current",
+   "n_rows": {
+    "banking": 70
+   },
+   "ontology_question": "is the intent asking about the current account?",
+   "parent": null
+  },
+  {
+   "domain": [
+    "banking"
+   ],
+   "inventories": [
+    "banking"
+   ],
+   "key": "debit",
+   "kind": "module",
+   "label_id": "debit",
+   "n_rows": {
+    "banking": 58
+   },
+   "ontology_question": "is the intent asking about something related to debit?",
+   "parent": null
+  },
+  {
+   "domain": [
+    "general"
+   ],
+   "inventories": [
+    "banking",
+    "hotels"
+   ],
+   "key": "denial",
+   "kind": "module",
+   "label_id": "deny",
+   "n_rows": {
+    "banking": 131,
+    "hotels": 20
+   },
+   "ontology_question": "is the intent to deny something?",
+   "parent": null
+  },
+  {
+   "domain": [
+    "banking"
+   ],
+   "inventories": [
+    "banking"
+   ],
+   "key": "direct debit",
+   "kind": "module",
+   "label_id": "direct_debit",
+   "n_rows": {
+    "banking": 54
+   },
+   "ontology_question": "is the intent to ask about direct debit?",
+   "parent": null
+  },
+  {
+   "domain": [
+    "general"
+   ],
+   "inventories": [
+    "banking",
+    "hotels"
+   ],
+   "key": "saying I don't know",
+   "kind": "module",
+   "label_id": "dont_know",
+   "n_rows": {
+    "banking": 71,
+    "hotels": 12
+   },
+   "ontology_question": "is the intent to say I don’t know?",
+   "parent": null
+  },
+  {
+   "domain": [
+    "general"
+   ],
+   "inventories": [
+    "banking",
+    "hotels"
+   ],
+   "key": "end call or goodbye",
+   "kind": "module",
+   "label_id": "end_call",
+   "n_rows": {
+    "banking": 35,
+    "hotels": 18
+   },
+   "ontology_question": "is the intent to end call or say goodbye?",
+   "parent": null
+  },
+  {
+   "domain": [
+    "general"
+   ],
+   "inventories": [
+    "banking",
+    "hotels"
+   ],
+   "key": "something existing",
+   "kind": "module",
+   "label_id": "existing",
+   "n_rows": {
+    "banking": 22,
+    "hotels": 59
+   },
+   "ontology_question": "is the intent asking about something that already exists?",
+   "parent": null
+  },
+  {
+   "domain": [
+    "banking"
+   ],
+   "inventories": [
+    "banking"
+   ],
+   "key": "fees or interest",
+   "kind": "module",
+   "label_id": "fees_interests",
+   "n_rows": {
+    "banking": 104
+   },
+   "ontology_question": "is the intent to ask about fees or interests?",
+   "parent": null
+  },
+  {
+   "domain": [
+    "general"
+   ],
+   "inventories": [
+    "banking",
+    "hotels"
+   ],
+   "key": "greeting",
+   "kind": "module",
+   "label_id": "greet",
+   "n_rows": {
+    "banking": 47,
+    "hotels": 16
+   },
+   "ontology_question": "is the intent to greet someone?",
+   "parent": null
+  },
+  {
+   "domain": [
+    "hotels"
+   ],
+   "inventories": [
+    "hotels"
+   ],
+   "key": "gym",
+   "kind": "module",
+   "label_id": "gym",
+   "n_rows": {
+    "hotels": 36
+   },
+   "ontology_question": "is the intent to ask something related to gym?",
+   "parent": null
+  },
+  {
+   "domain": [
+    "general"
+   ],
+   "inventories": [
+    "banking",
+    "hotels"
+   ],
+   "key": "speak to a human",
+   "kind": "module",
+   "label_id": "handoff",
+   "n_rows": {
+    "banking": 65,
+    "hotels": 18
+   },
+   "ontology_question": "is the intent to speak to a human or hand off?",
+   "parent": null
+  },
+  {
+   "domain": [
+    "hotels"
+   ],
+   "inventories": [
+    "hotels"
+   ],
+   "key": "housekeeping",
+   "kind": "module",
+   "label_id": "housekeeping",
+   "n_rows": {
+    "hotels": 10
+   },
+   "ontology_question": "is the intent to talk about housekeeping issues?",
+   "parent": null
+  },
+  {
+   "domain": [
+    "general"
+   ],
+   "inventories": [
+    "banking",
+    "hotels"
+   ],
+   "key": "how-to question",
+   "kind": "module",
+   "label_id": "how",
+   "n_rows": {
+    "banking": 56,
+    "hotels": 15
+   },
+   "ontology_question": "is the intent asking how to do something?",
+   "parent": null
+  },
+  {
+   "domain": [
+    "general"
+   ],
+   "inventories": [
+    "banking",
+    "hotels"
+   ],
+   "key": "duration question",
+   "kind": "module",
+   "label_id": "how_long",
+   "n_rows": {
+    "banking": 17,
+    "hotels": 10
+   },
+   "ontology_question": "is the intent asking about how long something takes?",
+   "parent": null
+  },
+  {
+   "domain": [
+    "general"
+   ],
+   "inventories": [
+    "banking",
+    "hotels"
+   ],
+   "key": "quantity question",
+   "kind": "module",
+   "label_id": "how_much",
+   "n_rows": {
+    "banking": 134,
+    "hotels": 26
+   },
+   "ontology_question": "is the intent asking about some quantity or how much?",
+   "parent": null
+  },
+  {
+   "domain": [
+    "banking"
+   ],
+   "inventories": [
+    "banking"
+   ],
+   "key": "international",
+   "kind": "module",
+   "label_id": "international",
+   "n_rows": {
+    "banking": 90
+   },
+   "ontology_question": "is the intent to ask about something related to international issues?",
+   "parent": null
+  },
+  {
+   "domain": [
+    "general"
+   ],
+   "inventories": [
+    "banking",
+    "hotels"
+   ],
+   "key": "less or lower",
+   "kind": "module",
+   "label_id": "less_lower_before",
+   "n_rows": {
+    "banking": 73,
+    "hotels": 20
+   },
+   "ontology_question": "is the intent to indicate something less, lower, before or decreasing?",
+   "parent": null
+  },
+  {
+   "domain": [
+    "general"
+   ],
+   "inventories": [
+    "banking",
+    "hotels"
+   ],
+   "key": "limits",
+   "kind": "module",
+   "label_id": "limits",
+   "n_rows": {
+    "banking": 80,
+    "hotels": 10
+   },
+   "ontology_question": "is the intent asking about some sort of limit?",
+   "parent": null
+  },
+  {
+   "domain": [
+    "banking"
+   ],
+   "inventories": [
+    "banking"
+   ],
+   "key": "loan",
+   "kind": "module",
+   "label_id": "loan",
+   "n_rows": {
+    "banking": 68
+   },
+   "ontology_question": "is the intent to ask about loans?",
+   "parent": null
+  },
+  {
+   "domain": [
+    "general"
+   ],
+   "inventories": [
+    "banking",
+    "hotels"
+   ],
+   "key": "lost or stolen",
+   "kind": "module",
+   "label_id": "lost_stolen",
+   "n_rows": {
+    "banking": 50,
+    "hotels": 31
+   },
+   "ontology_question": "is the intent asking about something being lost or stolen?",
+   "parent": null
+  },
+  {
+   "domain": [
+    "general"
+   ],
+   "inventories": [
+    "banking",
+    "hotels"
+   ],
+   "key": "open, set up or activate",
+   "kind": "module",
+   "label_id": "make_open_apply_setup_get_activate",
+   "n_rows": {
+    "banking": 231,
+    "hotels": 150
+   },
+   "ontology_question": "is the intent to make, open, apply, set up or activate something?",
+   "parent": null
+  },
+  {
+   "domain": [
+    "general"
+   ],
+   "inventories": [
+    "banking",
+    "hotels"
+   ],
+   "key": "more or higher",
+   "kind": "module",
+   "label_id": "more_higher_after",
+   "n_rows": {
+    "banking": 122,
+    "hotels": 31
+   },
+   "ontology_question": "is the intent to indicate something more, higher, after or increasing?",
+   "parent": null
+  },
+  {
+   "domain": [
+    "banking"
+   ],
+   "inventories": [
+    "banking"
+   ],
+   "key": "mortgage",
+   "kind": "module",
+   "label_id": "mortgage",
+   "n_rows": {
+    "banking": 58
+   },
+   "ontology_question": "is the intent asking about mortgage?",
+   "parent": null
+  },
+  {
+   "domain": [
+    "general"
+   ],
+   "inventories": [
+    "banking",
+    "hotels"
+   ],
+   "key": "something new",
+   "kind": "module",
+   "label_id": "new",
+   "n_rows": {
+    "banking": 48,
+    "hotels": 19
+   },
+   "ontology_question": "is the intent asking about something new?",
+   "parent": null
+  },
+  {
+   "domain": [
+    "banking"
+   ],
+   "inventories": [
+    "banking"
+   ],
+   "key": "overdraft",
+   "kind": "module",
+   "label_id": "overdraft",
+   "n_rows": {
+    "banking": 69
+   },
+   "ontology_question": "is the intent to ask about ovedraft?",
+   "parent": null
+  },
+  {
+   "domain": [
+    "hotels"
+   ],
+   "inventories": [
+    "hotels"
+   ],
+   "key": "parking",
+   "kind": "module",
+   "label_id": "parking",
+   "n_rows": {
+    "hotels": 30
+   },
+   "ontology_question": "is the intent to ask something related to parking?",
+   "parent": null
+  },
+  {
+   "domain": [
+    "hotels"
+   ],
+   "inventories": [
+    "hotels"
+   ],
+   "key": "pets",
+   "kind": "module",
+   "label_id": "pets",
+   "n_rows": {
+    "hotels": 22
+   },
+   "ontology_question": "is the intent to ask something related to pets?",
+   "parent": null
+  },
+  {
+   "domain": [
+    "banking"
+   ],
+   "inventories": [
+    "banking"
+   ],
+   "key": "PIN",
+   "kind": "module",
+   "label_id": "pin",
+   "n_rows": {
+    "banking": 43
+   },
+   "ontology_question": "is the intent to ask something about the pin number?",
+   "parent": null
+  },
+  {
+   "domain": [
+    "banking",
+    "hotels"
+   ],
+   "inventories": [
+    "banking",
+    "hotels"
+   ],
+   "key": "refund",
+   "kind": "module",
+   "label_id": "refund",
+   "n_rows": {
+    "banking": 54,
+    "hotels": 10
+   },
+   "ontology_question": "is the intent to ask about some refund?",
+   "parent": null
+  },
+  {
+   "domain": [
+    "general"
+   ],
+   "inventories": [
+    "banking",
+    "hotels"
+   ],
+   "key": "repeat request",
+   "kind": "module",
+   "label_id": "repeat",
+   "n_rows": {
+    "banking": 10,
+    "hotels": 11
+   },
+   "ontology_question": "is the intent asking to repeat the previous sentence?",
+   "parent": null
+  },
+  {
+   "domain": [
+    "general"
+   ],
+   "inventories": [
+    "banking",
+    "hotels"
+   ],
+   "key": "information request",
+   "kind": "module",
+   "label_id": "request_info",
+   "n_rows": {
+    "banking": 429,
+    "hotels": 128
+   },
+   "ontology_question": "is the intent to ask or request some information?",
+   "parent": null
+  },
+  {
+   "domain": [
+    "hotels"
+   ],
+   "inventories": [
+    "hotels"
+   ],
+   "key": "restaurant",
+   "kind": "module",
+   "label_id": "restaurant",
+   "n_rows": {
+    "hotels": 78
+   },
+   "ontology_question": "is the intent to ask something related to restaurant?",
+   "parent": null
+  },
+  {
+   "domain": [
+    "hotels"
+   ],
+   "inventories": [
+    "hotels"
+   ],
+   "key": "room amenities",
+   "kind": "module",
+   "label_id": "room_ammenities",
+   "n_rows": {
+    "hotels": 39
+   },
+   "ontology_question": "is the intent to ask something related to some room amenities?",
+   "parent": null
+  },
+  {
+   "domain": [
+    "hotels"
+   ],
+   "inventories": [
+    "hotels"
+   ],
+   "key": "room service",
+   "kind": "module",
+   "label_id": "room_service",
+   "n_rows": {
+    "hotels": 42
+   },
+   "ontology_question": "is the intent to talk about room service?",
+   "parent": null
+  },
+  {
+   "domain": [
+    "banking"
+   ],
+   "inventories": [
+    "banking"
+   ],
+   "key": "savings account",
+   "kind": "module",
+   "label_id": "savings",
+   "n_rows": {
+    "banking": 69
+   },
+   "ontology_question": "is the intent asking about the savings account?",
+   "parent": null
+  },
+  {
+   "domain": [
+    "hotels"
+   ],
+   "inventories": [
+    "hotels"
+   ],
+   "key": "spa or beauty",
+   "kind": "module",
+   "label_id": "spa",
+   "n_rows": {
+    "hotels": 52
+   },
+   "ontology_question": "is the intent to ask something related to spa or beauty services?",
+   "parent": null
+  },
+  {
+   "domain": [
+    "banking"
+   ],
+   "inventories": [
+    "banking"
+   ],
+   "key": "standing order",
+   "kind": "module",
+   "label_id": "standing_order",
+   "n_rows": {
+    "banking": 34
+   },
+   "ontology_question": "is the intent asking about a standing order?",
+   "parent": null
+  },
+  {
+   "domain": [
+    "hotels"
+   ],
+   "inventories": [
+    "hotels"
+   ],
+   "key": "swimming pool",
+   "kind": "module",
+   "label_id": "swimming_pool",
+   "n_rows": {
+    "hotels": 25
+   },
+   "ontology_question": "is the intent to ask something related to the swimming pool?",
+   "parent": null
+  },
+  {
+   "domain": [
+    "general"
+   ],
+   "inventories": [
+    "banking",
+    "hotels"
+   ],
+   "key": "thanks",
+   "kind": "module",
+   "label_id": "thank",
+   "n_rows": {
+    "banking": 59,
+    "hotels": 10
+   },
+   "ontology_question": "is the intent to thank someone?",
+   "parent": null
+  },
+  {
+   "domain": [
+    "banking"
+   ],
+   "inventories": [
+    "banking"
+   ],
+   "key": "transfer, payment or deposit",
+   "kind": "module",
+   "label_id": "transfer_payment_deposit",
+   "n_rows": {
+    "banking": 513
+   },
+   "ontology_question": "is the intent to ask about something related to a transfer, payment or deposit?",
+   "parent": null
+  },
+  {
+   "domain": [
+    "general"
+   ],
+   "inventories": [
+    "banking",
+    "hotels"
+   ],
+   "key": "when question",
+   "kind": "module",
+   "label_id": "when",
+   "n_rows": {
+    "banking": 67,
+    "hotels": 28
+   },
+   "ontology_question": "is the intent to ask about when or what time something happens?",
+   "parent": null
+  },
+  {
+   "domain": [
+    "general"
+   ],
+   "inventories": [
+    "banking",
+    "hotels"
+   ],
+   "key": "why question",
+   "kind": "module",
+   "label_id": "why",
+   "n_rows": {
+    "banking": 67,
+    "hotels": 10
+   },
+   "ontology_question": "is the intent to ask why something happened or needs to be done?",
+   "parent": null
+  },
+  {
+   "domain": [
+    "hotels"
+   ],
+   "inventories": [
+    "hotels"
+   ],
+   "key": "wifi",
+   "kind": "module",
+   "label_id": "wifi",
+   "n_rows": {
+    "hotels": 23
+   },
+   "ontology_question": "is the intent to ask something related to wifi or wireless?",
+   "parent": null
+  },
+  {
+   "domain": [
+    "banking"
+   ],
+   "inventories": [
+    "banking"
+   ],
+   "key": "withdrawal",
+   "kind": "module",
+   "label_id": "withdrawal",
+   "n_rows": {
+    "banking": 49
+   },
+   "ontology_question": "is the intent to ask about withdrawals?",
+   "parent": null
+  },
+  {
+   "domain": [
+    "general"
+   ],
+   "inventories": [
+    "banking",
+    "hotels"
+   ],
+   "key": "something wrong or missing",
+   "kind": "module",
+   "label_id": "wrong_notworking_notshowing",
+   "n_rows": {
+    "banking": 296,
+    "hotels": 46
+   },
+   "ontology_question": "is the intent asking about something wrong, missing or not working?",
+   "parent": null
+  }
+ ],
+ "n_labels": 62,
+ "n_utterances": {
+  "banking": 2071,
+  "hotels": 1009
+ },
+ "note": "Multi-label: every module is a separate Noul target; 'ontology_question' is PolyAI's human question (the base for P_ev1 per DESIGN 4.2); 'domain' is the ontology tag; 'inventories' says which domain file set can carry the module (general modules belong to both).",
+ "schema_version": "od-keys-1.0",
+ "source": "github:PolyAI-LDN/task-specific-datasets @ 57ec275d8078af65b7731c2a98be812d844a6d6b nlupp/data/{banking,hotels}/fold0-19.json + ontology.json",
+ "source_files": [
+  {
+   "commit": "57ec275d8078af65b7731c2a98be812d844a6d6b",
+   "path": "nlupp/data/ontology.json",
+   "repo": "github:PolyAI-LDN/task-specific-datasets",
+   "sha256": "58736607898d17f73e8afa4fa41ca455670756398f3fc91751c31b62327e38c5"
+  }
+ ]
+}

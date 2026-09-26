@@ -1,0 +1,37 @@
+✓ Initialized. View run at 
+https://modal.com/apps/mahadikarya3/main/ap-EX9hXIO69umb3h1BUS8xSV
+✓ Created objects.
+├── 🔨 Created mount 
+│   /Users/aryamahadik/Documents/jev/opendecide-data/lean/modal_od.py
+├── 🔨 Created mount 
+│   /Users/aryamahadik/Documents/jev/opendecide-data/lean/train.py
+├── 🔨 Created mount PythonPackage:decoder_io, PythonPackage:gliclass_io, 
+│   PythonPackage:train_decoder, PythonPackage:hc
+├── 🔨 Created mount PythonPackage:decoder_io, PythonPackage:train_decoder, 
+│   PythonPackage:hc
+├── 🔨 Created mount /Users/aryamahadik/Documents/jev/opendecide-data/lean/data
+├── 🔨 Created function zeroshot.
+├── 🔨 Created function train_remote.
+├── 🔨 Created function eval_remote.
+├── 🔨 Created function zeroshot35.
+├── 🔨 Created function eval_remote35.
+├── 🔨 Created function latency35.
+├── 🔨 Created function hc_recall_remote.
+├── 🔨 Created function train_gliclass_remote.
+├── 🔨 Created function hc_shortlist_remote.
+├── 🔨 Created function hc_remote.
+├── 🔨 Created function latency_l4.
+├── 🔨 Created function train_remote35.
+└── 🔨 Created function hc_remote35.
+/usr/local/lib/python3.12/site-packages/torch/_inductor/compile_fx.py:282: UserWarning: TensorFloat32 tensor cores for float32 matrix multiplication available but not enabled. Consider setting `torch.set_float32_matmul_precision('high')` for better performance.
+  warnings.warn(
+W0926 02:14:42.758000 2 site-packages/torch/_inductor/utils.py:1436] [1/0_1] Not enough SMs to use max_autotune_gemm mode
+{
+  "device": "NVIDIA L4",
+  "median_ms": 26.017277000001116,
+  "p95_ms": 27.811253999999508,
+  "n": 200
+}
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/mahadikarya3/main/ap-EX9hXIO69umb3h1BUS8xSV

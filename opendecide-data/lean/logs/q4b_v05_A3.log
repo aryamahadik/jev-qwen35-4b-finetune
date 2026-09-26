@@ -1,0 +1,139 @@
+✓ Initialized. View run at 
+https://modal.com/apps/mahadikarya3/main/ap-Xa6bBjKFi2ASN7NdBBHpbc
+✓ Created objects.
+├── 🔨 Created mount 
+│   /Users/aryamahadik/Documents/jev/opendecide-data/lean/modal_od.py
+├── 🔨 Created mount 
+│   /Users/aryamahadik/Documents/jev/opendecide-data/lean/train.py
+├── 🔨 Created mount PythonPackage:decoder_io, PythonPackage:train_decoder, 
+│   PythonPackage:hc
+├── 🔨 Created mount PythonPackage:decoder_io, PythonPackage:gliclass_io, 
+│   PythonPackage:train_decoder, PythonPackage:hc
+├── 🔨 Created mount /Users/aryamahadik/Documents/jev/opendecide-data/lean/data
+├── 🔨 Created function zeroshot35.
+├── 🔨 Created function train_remote35.
+├── 🔨 Created function eval_remote35.
+├── 🔨 Created function latency35.
+├── 🔨 Created function hc_remote35.
+├── 🔨 Created function zeroshot.
+├── 🔨 Created function train_remote.
+├── 🔨 Created function train_gliclass_remote.
+├── 🔨 Created function eval_remote.
+├── 🔨 Created function latency_l4.
+├── 🔨 Created function hc_recall_remote.
+├── 🔨 Created function hc_shortlist_remote.
+└── 🔨 Created function hc_remote.
+
+[1ALoading checkpoint shards:   0%|          | 0/3 [00:00<?, ?it/s]
+[1ALoading checkpoint shards:  33%|███▎      | 1/3 [00:00<00:01,  1.17it/s]
+[1ALoading checkpoint shards:  67%|██████▋   | 2/3 [00:01<00:00,  1.00it/s]
+[1ALoading checkpoint shards: 100%|██████████| 3/3 [00:01<00:00,  1.51it/s]
+trainable params: 33,030,144 || all params: 4,055,498,240 || trainable%: 0.8145
+`use_cache=True` is incompatible with gradient checkpointing. Setting `use_cache=False`.
+{"step": 0, "of": 2439, "loss": 2.1452, "task": 2.1452, "cons": 0.1136, "lr": 1.6528925619834712e-06, "min": 0.03}
+{"step": 25, "of": 2439, "loss": 1.6498, "task": 1.6473, "cons": 0.0967, "lr": 2.231404958677686e-05, "min": 0.44}
+{"step": 50, "of": 2439, "loss": 0.5802, "task": 0.5717, "cons": 0.1672, "lr": 4.2975206611570254e-05, "min": 0.8}
+{"step": 75, "of": 2439, "loss": 0.5969, "task": 0.588, "cons": 0.1155, "lr": 6.363636363636364e-05, "min": 1.18}
+{"step": 100, "of": 2439, "loss": 0.5343, "task": 0.5297, "cons": 0.0448, "lr": 8.429752066115702e-05, "min": 1.49}
+{"step": 125, "of": 2439, "loss": 0.4642, "task": 0.4585, "cons": 0.044, "lr": 9.999885197528565e-05, "min": 1.82}
+{"step": 150, "of": 2439, "loss": 0.7921, "task": 0.7856, "cons": 0.0421, "lr": 9.995867664544708e-05, "min": 2.18}
+{"step": 175, "of": 2439, "loss": 1.2651, "task": 1.252, "cons": 0.0731, "lr": 9.986115278743953e-05, "min": 2.72}
+{"step": 200, "of": 2439, "loss": 0.2621, "task": 0.2598, "cons": 0.0114, "lr": 9.970639235077997e-05, "min": 3.08}
+{"step": 225, "of": 2439, "loss": 0.9926, "task": 0.9918, "cons": 0.0035, "lr": 9.949457298795753e-05, "min": 3.44}
+{"step": 250, "of": 2439, "loss": 0.3155, "task": 0.3155, "cons": 0.0001, "lr": 9.922593785050286e-05, "min": 3.79}
+{"step": 275, "of": 2439, "loss": 0.2468, "task": 0.2464, "cons": 0.0015, "lr": 9.890079530986982e-05, "min": 4.21}
+{"step": 300, "of": 2439, "loss": 0.2533, "task": 0.2517, "cons": 0.0053, "lr": 9.851951860344977e-05, "min": 4.55}
+{"step": 325, "of": 2439, "loss": 0.3248, "task": 0.3247, "cons": 0.0001, "lr": 9.80825454061254e-05, "min": 4.85}
+{"step": 350, "of": 2439, "loss": 0.5633, "task": 0.5633, "cons": null, "lr": 9.759037732785514e-05, "min": 5.27}
+{"step": 375, "of": 2439, "loss": 0.5099, "task": 0.4979, "cons": 0.0312, "lr": 9.70435793378655e-05, "min": 5.55}
+{"step": 400, "of": 2439, "loss": 0.4654, "task": 0.4653, "cons": 0.0002, "lr": 9.64427791161119e-05, "min": 5.86}
+{"step": 425, "of": 2439, "loss": 0.3778, "task": 0.3693, "cons": 0.0195, "lr": 9.578866633275288e-05, "min": 6.18}
+{"step": 450, "of": 2439, "loss": 0.2643, "task": 0.2643, "cons": 0.0002, "lr": 9.508199185646432e-05, "min": 6.56}
+{"step": 475, "of": 2439, "loss": 0.9523, "task": 0.8885, "cons": 0.131, "lr": 9.432356689250287e-05, "min": 6.93}
+{"step": 500, "of": 2439, "loss": 0.6692, "task": 0.669, "cons": 0.0004, "lr": 9.351426205150777e-05, "min": 7.26}
+{"step": 525, "of": 2439, "loss": 0.4807, "task": 0.466, "cons": 0.0294, "lr": 9.265500635011011e-05, "min": 7.67}
+{"step": 550, "of": 2439, "loss": 0.344, "task": 0.3436, "cons": 0.0008, "lr": 9.174678614449674e-05, "min": 8.19}
+{"step": 575, "of": 2439, "loss": 0.4128, "task": 0.4104, "cons": 0.0046, "lr": 9.079064399815297e-05, "min": 8.71}
+{"step": 600, "of": 2439, "loss": 0.2755, "task": 0.2742, "cons": 0.0028, "lr": 8.978767748508386e-05, "min": 9.04}
+{"step": 625, "of": 2439, "loss": 0.2823, "task": 0.2815, "cons": 0.0016, "lr": 8.873903792988787e-05, "min": 9.41}
+{"step": 650, "of": 2439, "loss": 0.7104, "task": 0.6998, "cons": 0.021, "lr": 8.764592908612908e-05, "min": 9.82}
+{"step": 675, "of": 2439, "loss": 0.4978, "task": 0.4977, "cons": 0.0002, "lr": 8.650960575452535e-05, "min": 10.27}
+{"step": 700, "of": 2439, "loss": 0.3597, "task": 0.3597, "cons": 0.0, "lr": 8.533137234253838e-05, "min": 10.6}
+{"step": 725, "of": 2439, "loss": 0.3132, "task": 0.3052, "cons": 0.0159, "lr": 8.411258136701917e-05, "min": 10.96}
+{"step": 750, "of": 2439, "loss": 0.7549, "task": 0.7532, "cons": 0.0034, "lr": 8.285463190162788e-05, "min": 11.36}
+{"step": 775, "of": 2439, "loss": 0.3535, "task": 0.3528, "cons": 0.0015, "lr": 8.15589679708102e-05, "min": 11.7}
+{"step": 800, "of": 2439, "loss": 0.381, "task": 0.3809, "cons": 0.0001, "lr": 8.02270768921739e-05, "min": 12.1}
+{"step": 825, "of": 2439, "loss": 1.1832, "task": 1.1831, "cons": 0.0002, "lr": 7.886048756916817e-05, "min": 12.45}
+{"step": 850, "of": 2439, "loss": 0.3035, "task": 0.3032, "cons": 0.0005, "lr": 7.746076873602596e-05, "min": 12.82}
+{"step": 875, "of": 2439, "loss": 0.8638, "task": 0.7817, "cons": 0.1642, "lr": 7.602952715698365e-05, "min": 13.25}
+{"step": 900, "of": 2439, "loss": 0.2574, "task": 0.2562, "cons": 0.0023, "lr": 7.456840578184542e-05, "min": 13.55}
+{"step": 925, "of": 2439, "loss": 0.617, "task": 0.6159, "cons": 0.0021, "lr": 7.307908186000952e-05, "min": 13.99}
+{"step": 950, "of": 2439, "loss": 0.3132, "task": 0.3131, "cons": 0.0003, "lr": 7.15632650151213e-05, "min": 14.36}
+{"step": 975, "of": 2439, "loss": 0.5624, "task": 0.5212, "cons": 0.0824, "lr": 7.002269528256334e-05, "min": 14.69}
+{"step": 1000, "of": 2439, "loss": 0.3663, "task": 0.3663, "cons": 0.0, "lr": 6.845914111203515e-05, "min": 15.12}
+{"step": 1025, "of": 2439, "loss": 0.3003, "task": 0.2992, "cons": 0.0023, "lr": 6.687439733751582e-05, "min": 15.5}
+{"step": 1050, "of": 2439, "loss": 0.4113, "task": 0.4113, "cons": 0.0, "lr": 6.527028311693939e-05, "min": 15.98}
+{"step": 1075, "of": 2439, "loss": 0.6004, "task": 0.6, "cons": 0.0008, "lr": 6.364863984394838e-05, "min": 16.33}
+{"step": 1100, "of": 2439, "loss": 0.9278, "task": 0.9277, "cons": 0.0002, "lr": 6.201132903412262e-05, "min": 16.89}
+{"step": 1125, "of": 2439, "loss": 0.3895, "task": 0.3871, "cons": 0.0046, "lr": 6.036023018810949e-05, "min": 17.32}
+{"step": 1150, "of": 2439, "loss": 0.3494, "task": 0.3275, "cons": 0.0437, "lr": 5.8697238634108985e-05, "min": 17.68}
+{"step": 1175, "of": 2439, "loss": 0.2333, "task": 0.2332, "cons": 0.0002, "lr": 5.702426335218991e-05, "min": 17.95}
+{"step": 1200, "of": 2439, "loss": 1.0932, "task": 1.091, "cons": 0.0045, "lr": 5.53432247829348e-05, "min": 18.36}
+{"step": 1225, "of": 2439, "loss": 0.2402, "task": 0.2401, "cons": 0.0002, "lr": 5.365605262292925e-05, "min": 18.74}
+{"step": 1250, "of": 2439, "loss": 0.7308, "task": 0.725, "cons": 0.0117, "lr": 5.196468360962588e-05, "min": 19.06}
+{"step": 1275, "of": 2439, "loss": 0.4436, "task": 0.4434, "cons": 0.0003, "lr": 5.027105929812619e-05, "min": 19.43}
+{"step": 1300, "of": 2439, "loss": 0.2244, "task": 0.2231, "cons": 0.0027, "lr": 4.857712383243192e-05, "min": 19.73}
+{"step": 1325, "of": 2439, "loss": 0.4255, "task": 0.3782, "cons": 0.0945, "lr": 4.688482171372472e-05, "min": 20.11}
+{"step": 1350, "of": 2439, "loss": 0.2146, "task": 0.2144, "cons": 0.0004, "lr": 4.519609556823573e-05, "min": 20.46}
+{"step": 1375, "of": 2439, "loss": 0.215, "task": 0.215, "cons": 0.0, "lr": 4.35128839172675e-05, "min": 20.82}
+{"step": 1400, "of": 2439, "loss": 0.5775, "task": 0.5773, "cons": 0.0005, "lr": 4.1837118951928026e-05, "min": 21.22}
+{"step": 1425, "of": 2439, "loss": 0.8196, "task": 0.8169, "cons": 0.0052, "lr": 4.0170724315131205e-05, "min": 21.56}
+{"step": 1450, "of": 2439, "loss": 0.2569, "task": 0.2565, "cons": 0.0007, "lr": 3.851561289341022e-05, "min": 21.82}
+{"step": 1475, "of": 2439, "loss": 0.5152, "task": 0.5145, "cons": 0.0015, "lr": 3.687368462107809e-05, "min": 22.22}
+{"step": 1500, "of": 2439, "loss": 0.3759, "task": 0.3757, "cons": 0.0004, "lr": 3.524682429925643e-05, "min": 22.61}
+{"step": 1525, "of": 2439, "loss": 0.4363, "task": 0.436, "cons": 0.0006, "lr": 3.3636899432275994e-05, "min": 22.91}
+{"step": 1550, "of": 2439, "loss": 0.3524, "task": 0.3524, "cons": 0.0001, "lr": 3.2045758083932375e-05, "min": 23.27}
+{"step": 1575, "of": 2439, "loss": 0.3207, "task": 0.3205, "cons": 0.0004, "lr": 3.047522675605795e-05, "min": 23.56}
+{"step": 1600, "of": 2439, "loss": 0.6228, "task": 0.622, "cons": 0.0018, "lr": 2.8927108291845207e-05, "min": 23.9}
+{"step": 1625, "of": 2439, "loss": 0.2469, "task": 0.2467, "cons": 0.0004, "lr": 2.740317980632834e-05, "min": 24.32}
+{"step": 1650, "of": 2439, "loss": 0.3344, "task": 0.3328, "cons": 0.0032, "lr": 2.5905190646398537e-05, "min": 24.66}
+{"step": 1675, "of": 2439, "loss": 0.4977, "task": 0.4765, "cons": 0.0424, "lr": 2.443486038269508e-05, "min": 24.99}
+{"step": 1700, "of": 2439, "loss": 0.6965, "task": 0.6919, "cons": 0.0092, "lr": 2.299387683567693e-05, "min": 25.38}
+{"step": 1725, "of": 2439, "loss": 0.2568, "task": 0.2568, "cons": 0.0001, "lr": 2.1583894138141142e-05, "min": 25.77}
+{"step": 1750, "of": 2439, "loss": 0.2942, "task": 0.2941, "cons": 0.0002, "lr": 2.020653083641197e-05, "min": 26.14}
+{"step": 1775, "of": 2439, "loss": 0.2375, "task": 0.2374, "cons": 0.0002, "lr": 1.886336803238023e-05, "min": 26.5}
+{"step": 1800, "of": 2439, "loss": 0.2265, "task": 0.2264, "cons": 0.0001, "lr": 1.7555947568526032e-05, "min": 26.87}
+{"step": 1825, "of": 2439, "loss": 0.3842, "task": 0.3791, "cons": 0.0101, "lr": 1.62857702580081e-05, "min": 27.22}
+{"step": 1850, "of": 2439, "loss": 0.3193, "task": 0.3193, "cons": 0.0001, "lr": 1.5054294161851284e-05, "min": 27.53}
+{"step": 1875, "of": 2439, "loss": 0.2794, "task": 0.2774, "cons": 0.0041, "lr": 1.3862932915210363e-05, "min": 27.89}
+{"step": 1900, "of": 2439, "loss": 0.2494, "task": 0.2489, "cons": 0.0009, "lr": 1.2713054104630823e-05, "min": 28.27}
+{"step": 1925, "of": 2439, "loss": 0.2665, "task": 0.2664, "cons": 0.0001, "lr": 1.1605977698170001e-05, "min": 28.67}
+{"step": 1950, "of": 2439, "loss": 0.3571, "task": 0.357, "cons": 0.0002, "lr": 1.0542974530180327e-05, "min": 29.05}
+{"step": 1975, "of": 2439, "loss": 0.2454, "task": 0.2452, "cons": 0.0002, "lr": 9.525264842493964e-06, "min": 29.4}
+{"step": 2000, "of": 2439, "loss": 0.2653, "task": 0.2591, "cons": 0.0123, "lr": 8.554016883683746e-06, "min": 29.8}
+{"step": 2025, "of": 2439, "loss": 0.2354, "task": 0.2351, "cons": 0.0005, "lr": 7.630345568008135e-06, "min": 30.18}
+{"step": 2050, "of": 2439, "loss": 0.2844, "task": 0.2844, "cons": 0.0, "lr": 6.755311195579589e-06, "min": 30.58}
+{"step": 2075, "of": 2439, "loss": 0.413, "task": 0.4098, "cons": 0.0064, "lr": 5.929918235225645e-06, "min": 30.96}
+{"step": 2100, "of": 2439, "loss": 0.559, "task": 0.5565, "cons": 0.005, "lr": 5.1551141714398285e-06, "min": 31.3}
+{"step": 2125, "of": 2439, "loss": 0.2961, "task": 0.2955, "cons": 0.0011, "lr": 4.431788416745852e-06, "min": 31.66}
+{"step": 2150, "of": 2439, "loss": 0.4054, "task": 0.4054, "cons": 0.0, "lr": 3.7607712907238967e-06, "min": 32.04}
+{"step": 2175, "of": 2439, "loss": 0.6249, "task": 0.6249, "cons": 0.0, "lr": 3.1428330668707428e-06, "min": 32.44}
+{"step": 2200, "of": 2439, "loss": 0.3436, "task": 0.3435, "cons": 0.0002, "lr": 2.5786830883879174e-06, "min": 32.79}
+{"step": 2225, "of": 2439, "loss": 0.2175, "task": 0.2175, "cons": 0.0, "lr": 2.068968953913064e-06, "min": 33.13}
+{"step": 2250, "of": 2439, "loss": 0.2052, "task": 0.2052, "cons": 0.0, "lr": 1.614275774128876e-06, "min": 33.51}
+{"step": 2275, "of": 2439, "loss": 0.2819, "task": 0.2819, "cons": 0.0, "lr": 1.215125500103309e-06, "min": 33.83}
+{"step": 2300, "of": 2439, "loss": 0.2673, "task": 0.2671, "cons": 0.0003, "lr": 8.719763241319068e-07, "min": 34.31}
+{"step": 2325, "of": 2439, "loss": 0.2098, "task": 0.2098, "cons": 0.0, "lr": 5.852221537699709e-07, "min": 34.66}
+{"step": 2350, "of": 2439, "loss": 0.2361, "task": 0.2357, "cons": 0.0008, "lr": 3.5519215965854614e-07, "min": 35.13}
+{"step": 2375, "of": 2439, "loss": 0.3139, "task": 0.3138, "cons": 0.0001, "lr": 1.821503976630501e-07, "min": 35.59}
+{"step": 2400, "of": 2439, "loss": 0.227, "task": 0.2269, "cons": 0.0002, "lr": 6.629550575847354e-08, "min": 35.99}
+{"step": 2425, "of": 2439, "loss": 0.2414, "task": 0.2395, "cons": 0.0039, "lr": 7.76047600902774e-09, "min": 36.3}
+{"step": 2438, "of": 2439, "loss": 0.4687, "task": 0.4687, "cons": 0.0, "lr": 0.0, "min": 36.5}
+wrote preds_dev/q4b_v05_A3.jsonl (600 rows)
+wrote preds_devzs/q4b_v05_A3.jsonl (800 rows)
+wrote preds_devzs2/q4b_v05_A3.jsonl (760 rows)
+wrote preds/q4b_v05_A3.jsonl (1915 rows)
+wrote preds_eval_multi/q4b_v05_A3.jsonl (360 rows)
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/mahadikarya3/main/ap-Xa6bBjKFi2ASN7NdBBHpbc

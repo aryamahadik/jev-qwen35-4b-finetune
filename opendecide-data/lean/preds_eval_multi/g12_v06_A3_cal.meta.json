@@ -1,0 +1,10 @@
+{
+  "name": "g12_v06_A3",
+  "rows": 360,
+  "base": "google/gemma-4-12B-it",
+  "alpha": 1.0,
+  "temperature": {
+    "noul": 0.8,
+    "choice": 0.95
+  }
+}

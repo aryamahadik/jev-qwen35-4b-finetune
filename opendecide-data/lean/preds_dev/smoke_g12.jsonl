@@ -1,0 +1,600 @@
+{"id": "r_008e50d49905", "model": "smoke_g12", "probs": {"wrong rate on card payment": 0.00015382852870970964, "reverted card payment": 0.0017494232160970569, "pending card payment": 5.609227082459256e-05, "declined card payment": 0.9966883063316345, "card payment fee": 2.293086981808301e-05, "declined cash withdrawal": 2.4644978111609817e-05, "unrecognised card payment": 0.0003925636410713196, "declined transfer": 9.464049799134955e-05, "none of these": 0.0008176050032489002}}
+{"id": "r_00c7204843cc", "model": "smoke_g12", "probs": {"yes": 0.10383006185293198, "no": 0.8961699604988098}}
+{"id": "r_01834276cd10", "model": "smoke_g12", "probs": {"factory reset": 3.589209518395364e-05, "fuel economy": 2.5418657969566993e-05, "car rental": 3.645122706075199e-05, "book a flight": 2.688433141884161e-06, "schedule car service": 8.955524208431598e-06, "book a rideshare": 1.4850897059659474e-05, "last car service": 0.00045174959814175963, "jump-start a car": 0.998187243938446, "none of these": 0.0012367311865091324}}
+{"id": "r_01d81b2ee139", "model": "smoke_g12", "probs": {"goodbye": 0.000151630345499143, "today's date": 2.2535883545060642e-05, "spelling": 5.9916055761277676e-05, "negative reply": 2.36431264966086e-06, "affirmative reply": 1.4929011740605347e-05, "greeting": 0.9819117784500122, "translation": 0.0009823899017646909, "who you work for": 0.0001398785097990185, "none of these": 0.01671453006565571}}
+{"id": "r_01ec33675f08", "model": "smoke_g12", "probs": {"yes": 0.9985058307647705, "no": 0.0014941854169592261}}
+{"id": "r_02513a748fd7", "model": "smoke_g12", "probs": {"yes": 0.9998278617858887, "no": 0.00017212571401614696}}
+{"id": "r_036ea81e8e0a", "model": "smoke_g12", "probs": {"yes": 0.4505945146083832, "no": 0.5494054555892944}}
+{"id": "r_03f051ffbbc4", "model": "smoke_g12", "probs": {"yes": 0.9216058850288391, "no": 0.07839411497116089}}
+{"id": "r_04265150f9f1", "model": "smoke_g12", "probs": {"yes": 0.04215352609753609, "no": 0.9578465223312378}}
+{"id": "r_04756bae9999", "model": "smoke_g12", "probs": {"yes": 0.11451078951358795, "no": 0.8854892253875732}}
+{"id": "r_049e21fa90db", "model": "smoke_g12", "probs": {"request a refund": 1.3823479093844071e-05, "close account": 0.999889612197876, "edit personal details": 6.76234867569292e-06, "unable to verify identity": 2.602465201562154e-06, "cash withdrawal fee": 2.8158777354292397e-07, "cancel a transfer": 1.0219166597380536e-06, "verify my identity": 3.037845090148039e-05, "transfer into account": 1.9297392555017723e-06, "none of these": 5.356996553018689e-05}}
+{"id": "r_05a8add09377", "model": "smoke_g12", "probs": {"yes": 0.03766908869147301, "no": 0.9623309373855591}}
+{"id": "r_05ec127d7e0c", "model": "smoke_g12", "probs": {"yes": 5.621082891593687e-06, "no": 0.9999943971633911}}
+{"id": "r_0799f63cc76a", "model": "smoke_g12", "probs": {"yes": 0.01056253258138895, "no": 0.989437460899353}}
+{"id": "r_08532929de25", "model": "smoke_g12", "probs": {"thanks": 0.0001432255085092038, "repeat that": 0.9983364939689636, "spelling": 3.8624686567345634e-05, "affirmative reply": 1.379950663249474e-05, "carry-on rules": 1.967343905562302e-06, "fun fact": 0.00011624080070760101, "tell a joke": 0.00019031018018722534, "assistant's hobbies": 1.809546483855229e-05, "none of these": 0.001141230808570981}}
+{"id": "r_08a029e1ee25", "model": "smoke_g12", "probs": {"yes": 0.002055460587143898, "no": 0.9979445338249207}}
+{"id": "r_09176763ead8", "model": "smoke_g12", "probs": {"yes": 0.06923863291740417, "no": 0.9307613968849182}}
+{"id": "r_09614bca9794", "model": "smoke_g12", "probs": {"yes": 0.0011694112326949835, "no": 0.9988306164741516}}
+{"id": "r_09a8fec0f2be", "model": "smoke_g12", "probs": {"yes": 5.570465873461217e-06, "no": 0.9999943971633911}}
+{"id": "r_09edc5123495", "model": "smoke_g12", "probs": {"yes": 0.01827467791736126, "no": 0.98172527551651}}
+{"id": "r_0a6c84c67abb", "model": "smoke_g12", "probs": {"yes": 2.8620928787859157e-05, "no": 0.9999713897705078}}
+{"id": "r_0ab957646196", "model": "smoke_g12", "probs": {"yes": 0.12872417271137238, "no": 0.8712758421897888}}
+{"id": "r_0b3dbd92fe75", "model": "smoke_g12", "probs": {"yes": 3.938279041904025e-05, "no": 0.9999606609344482}}
+{"id": "r_0b9b3f6163b7", "model": "smoke_g12", "probs": {"unrecognised cash withdrawal": 0.00045094636152498424, "balance not updated after transfer": 0.8745864033699036, "wrong rate on cash withdrawal": 3.475674020592123e-05, "reverted card payment": 6.087662768550217e-06, "wrong cash amount received": 2.1253501472529024e-05, "wrong rate on card payment": 2.4436025341856293e-05, "refund not showing": 0.0020879507064819336, "balance not updated after deposit": 0.12228464335203171, "none of these": 0.0005035215872339904}}
+{"id": "r_0c0614583a05", "model": "smoke_g12", "probs": {"yes": 0.9998607635498047, "no": 0.00013926482643000782}}
+{"id": "r_0c187b435c8e", "model": "smoke_g12", "probs": {"yes": 0.0005663056508637965, "no": 0.999433696269989}}
+{"id": "r_0cfdc30b2e1e", "model": "smoke_g12", "probs": {"yes": 0.00045351070002652705, "no": 0.999546468257904}}
+{"id": "r_0d7b3567bf75", "model": "smoke_g12", "probs": {"exchange rate": 6.690888403682038e-05, "roll dice": 0.0001517988130217418, "unsure reply": 8.130166679620743e-05, "flip a coin": 0.998791515827179, "negative reply": 1.529363726149313e-05, "money transfer": 6.259528890950605e-05, "pay a bill": 0.00010583247058093548, "affirmative reply": 8.582042210036889e-05, "none of these": 0.0006388525362126529}}
+{"id": "r_0e1449d5c5f2", "model": "smoke_g12", "probs": {"yes": 0.0008315463783219457, "no": 0.9991685152053833}}
+{"id": "r_0e1d0f5e035f", "model": "smoke_g12", "probs": {"yes": 0.9982295632362366, "no": 0.0017703998601064086}}
+{"id": "r_0e3acafbc159", "model": "smoke_g12", "probs": {"yes": 0.006860284134745598, "no": 0.9931396842002869}}
+{"id": "r_0e82ef1d6aa0", "model": "smoke_g12", "probs": {"yes": 0.06046922132372856, "no": 0.9395307898521423}}
+{"id": "r_0f5e12862ff1", "model": "smoke_g12", "probs": {"yes": 0.027548568323254585, "no": 0.972451388835907}}
+{"id": "r_0f8c602a2253", "model": "smoke_g12", "probs": {"yes": 0.9776470065116882, "no": 0.022353071719408035}}
+{"id": "r_0fe2b430350b", "model": "smoke_g12", "probs": {"yes": 0.997379720211029, "no": 0.0026202541776001453}}
+{"id": "r_1074c2d98c8a", "model": "smoke_g12", "probs": {"yes": 0.9961215853691101, "no": 0.0038783480413258076}}
+{"id": "r_1087230cf75c", "model": "smoke_g12", "probs": {"yes": 0.8835523128509521, "no": 0.11644768714904785}}
+{"id": "r_113e980e5e60", "model": "smoke_g12", "probs": {"change PIN": 7.991931488504633e-05, "roll dice": 1.717281156743411e-05, "connect to phone": 9.73262831394095e-06, "car rental": 9.245572982763406e-06, "plug type": 0.9990992546081543, "fuel type": 6.958332232898101e-05, "payday": 8.04587616585195e-05, "ingredient substitution": 2.4649454644531943e-05, "none of these": 0.0006100952159613371}}
+{"id": "r_11ed0951165a", "model": "smoke_g12", "probs": {"yes": 0.9075983166694641, "no": 0.09240169823169708}}
+{"id": "r_128e67dc770c", "model": "smoke_g12", "probs": {"yes": 1.1660396921797656e-05, "no": 0.999988317489624}}
+{"id": "r_134519eee387", "model": "smoke_g12", "probs": {"yes": 0.3374601900577545, "no": 0.6625397801399231}}
+{"id": "r_148e0a79dbf8", "model": "smoke_g12", "probs": {"credit score": 2.2503672880702652e-05, "time-off balance": 1.9969822460552678e-05, "rewards balance": 0.9962522387504578, "pay a bill": 2.9665015972568654e-05, "account balance": 0.0001053664818755351, "redeem rewards": 6.90202068653889e-05, "accepts reservations": 0.0001952362945303321, "payday": 1.921970397233963e-05, "none of these": 0.003286798484623432}}
+{"id": "r_14d8ec4895e9", "model": "smoke_g12", "probs": {"where you are from": 1.1683490811265074e-05, "goodbye": 7.650377483514603e-06, "change language": 6.130071415100247e-05, "spelling": 2.998777745233383e-06, "affirmative reply": 6.832220265096112e-07, "greeting": 0.00019632735347840935, "translation": 0.9992577433586121, "recipe": 8.083950524451211e-05, "none of these": 0.00038069396396167576}}
+{"id": "r_14d9daa44300", "model": "smoke_g12", "probs": {"yes": 0.8603499531745911, "no": 0.1396501064300537}}
+{"id": "r_152b683322b0", "model": "smoke_g12", "probs": {"car rental": 0.8618535995483398, "schedule car service": 0.00011600073048612103, "share location": 1.8491195078240708e-05, "direct deposit": 4.514695319812745e-06, "fuel economy": 1.9002765156983514e-06, "book a hotel": 5.481454081746051e-06, "book a rideshare": 0.13419713079929352, "last car service": 4.38045863120351e-05, "none of these": 0.003759135026484728}}
+{"id": "r_157ca44c409d", "model": "smoke_g12", "probs": {"yes": 0.32577231526374817, "no": 0.6742277145385742}}
+{"id": "r_15ed543b52a9", "model": "smoke_g12", "probs": {"yes": 0.257990300655365, "no": 0.742009699344635}}
+{"id": "r_15f19839ed7c", "model": "smoke_g12", "probs": {"yes": 0.00017790535639505833, "no": 0.9998220801353455}}
+{"id": "r_1638a6a52a8a", "model": "smoke_g12", "probs": {"change PIN": 3.0601757316617295e-05, "declined card": 7.763759640511125e-06, "card expiration date": 2.491078021193971e-06, "card application status": 7.090778581186896e-06, "damaged card": 0.9996393918991089, "replacement card wait": 2.517949542379938e-05, "report lost card": 5.2934577979613096e-05, "apply for new card": 3.67090106010437e-05, "none of these": 0.00019784668984357268}}
+{"id": "r_16760fca09c7", "model": "smoke_g12", "probs": {"yes": 0.006949456408619881, "no": 0.9930505752563477}}
+{"id": "r_16f04fb13e24", "model": "smoke_g12", "probs": {"get disposable virtual card": 5.004386366636027e-06, "physical card PIN": 5.98335782342474e-06, "card acceptance": 4.77456342196092e-06, "card arrival": 1.2906759366160259e-05, "additional card": 3.0446028631558875e-06, "card activation": 2.347041800021543e-06, "card about to expire": 2.452224725857377e-05, "order physical card": 0.9998490810394287, "none of these": 9.239149221684784e-05}}
+{"id": "r_176208086d8c", "model": "smoke_g12", "probs": {"yes": 0.01781252957880497, "no": 0.9821875095367432}}
+{"id": "r_1817912ff3f8", "model": "smoke_g12", "probs": {"transfer into account": 5.981258436804637e-05, "transfer not received by recipient": 0.00039263011422008276, "cancel a transfer": 0.9989678859710693, "pending transfer": 8.280422480311245e-05, "transfer fee": 3.7397558116936125e-06, "declined transfer": 5.02567718285718e-06, "transfer timing": 6.080422826926224e-05, "failed transfer": 3.3988973882514983e-05, "none of these": 0.0003932405379600823}}
+{"id": "r_18b15a9f8d76", "model": "smoke_g12", "probs": {"yes": 0.11309695243835449, "no": 0.8869029879570007}}
+{"id": "r_18ed897d66ef", "model": "smoke_g12", "probs": {"yes": 0.04185664281249046, "no": 0.9581432938575745}}
+{"id": "r_19e31d4e3a53", "model": "smoke_g12", "probs": {"yes": 0.9897415637969971, "no": 0.010258474387228489}}
+{"id": "r_1a9897725e6b", "model": "smoke_g12", "probs": {"yes": 0.5835626125335693, "no": 0.41643738746643066}}
+{"id": "r_1ac143b85a45", "model": "smoke_g12", "probs": {"yes": 0.18323282897472382, "no": 0.816767156124115}}
+{"id": "r_1b722cbb74d5", "model": "smoke_g12", "probs": {"yes": 5.869500819244422e-05, "no": 0.999941349029541}}
+{"id": "r_1c31a4547272", "model": "smoke_g12", "probs": {"yes": 0.000525489158462733, "no": 0.9994745850563049}}
+{"id": "r_1c4106c13d6a", "model": "smoke_g12", "probs": {"credit limit": 5.331728971214034e-06, "bill amount owed": 5.7460538300802e-06, "time-off balance": 2.255896106362343e-06, "spending history": 7.800398975632561e-07, "money transfer": 1.307910451942007e-06, "rewards balance": 6.74445072945673e-06, "freeze account": 4.8567409976385534e-05, "account balance": 0.9998238682746887, "none of these": 0.00010539496724959463}}
+{"id": "r_1c8a202b9896", "model": "smoke_g12", "probs": {"declined transfer": 0.00831290427595377, "wrong rate on card payment": 7.409934187307954e-05, "unrecognised card payment": 2.9868569981772453e-05, "reverted card payment": 5.4222500693867914e-06, "pending card payment": 2.045826295216102e-05, "declined card payment": 0.9901093244552612, "card payment fee": 0.00014255614951252937, "declined cash withdrawal": 4.7417379391845316e-05, "none of these": 0.0012579401955008507}}
+{"id": "r_1c8ed09ed9d8", "model": "smoke_g12", "probs": {"yes": 0.0019459780305624008, "no": 0.998054027557373}}
+{"id": "r_1cada935a062", "model": "smoke_g12", "probs": {"assistant's hobbies": 2.617308018670883e-05, "thanks": 1.2359751053736545e-05, "repeat that": 2.428564039291814e-05, "affirmative reply": 6.839732577645918e-06, "carry-on rules": 5.4596771406068e-06, "spelling": 6.841569120297208e-05, "tell a joke": 0.000908727350179106, "fun fact": 0.9934244155883789, "none of these": 0.005523310042917728}}
+{"id": "r_1cb2be5d5189", "model": "smoke_g12", "probs": {"yes": 0.0013962499797344208, "no": 0.9986037611961365}}
+{"id": "r_1d7f120ea863", "model": "smoke_g12", "probs": {"declined cash withdrawal": 0.00018780813843477517, "reverted card payment": 0.00032756946166045964, "declined transfer": 2.2296677343547344e-05, "card payment fee": 3.189834842487471e-06, "pending card payment": 5.872853762411978e-06, "wrong rate on card payment": 2.669102104846388e-05, "unrecognised card payment": 0.0010429145768284798, "declined card payment": 0.9962133765220642, "none of these": 0.0021702235098928213}}
+{"id": "r_1db559bb5f86", "model": "smoke_g12", "probs": {"yes": 5.522950959857553e-05, "no": 0.999944806098938}}
+{"id": "r_1dbaf4f79b05", "model": "smoke_g12", "probs": {"yes": 0.9613966941833496, "no": 0.0386032834649086}}
+{"id": "r_1dfd5cbb8f30", "model": "smoke_g12", "probs": {"how to change oil": 3.253067552577704e-05, "change PIN": 9.015691375680035e-07, "cooking time": 1.7127925957538537e-06, "fuel level": 6.105944407863717e-07, "change language": 2.1949485926597845e-06, "when to change oil": 0.9989851117134094, "change insurance": 0.00016884734213817865, "when to replace tires": 0.00010989159636665136, "none of these": 0.0006981050246395171}}
+{"id": "r_1e2034d77377", "model": "smoke_g12", "probs": {"minimum payment": 0.0005482411943376064, "bill amount owed": 0.9906877875328064, "pay a bill": 0.00033311263541691005, "account balance": 0.007913990877568722, "bill due date": 6.7830847001459915e-06, "money transfer": 6.912095159350429e-06, "interest rate": 8.755094313528389e-05, "spending history": 2.2654054191662e-05, "none of these": 0.0003929644590243697}}
+{"id": "r_1e5ad157be60", "model": "smoke_g12", "probs": {"yes": 0.932414710521698, "no": 0.06758525967597961}}
+{"id": "r_1ed74f33f098", "model": "smoke_g12", "probs": {"find my phone": 9.343860438093543e-05, "travel advisory": 5.701433565263869e-06, "direct deposit": 2.806444399539032e-06, "book a hotel": 1.6003390328478417e-06, "share location": 0.999690055847168, "car rental": 2.1976406060275622e-05, "travel suggestion": 2.197802132286597e-05, "current location": 5.8953926782123744e-05, "none of these": 0.00010358120198361576}}
+{"id": "r_1ee3a32c8875", "model": "smoke_g12", "probs": {"yes": 0.20857474207878113, "no": 0.7914252877235413}}
+{"id": "r_20301f06cb0b", "model": "smoke_g12", "probs": {"yes": 0.9996727705001831, "no": 0.00032721756724640727}}
+{"id": "r_208b8ac6d943", "model": "smoke_g12", "probs": {"yes": 0.0026224583853036165, "no": 0.9973775148391724}}
+{"id": "r_21ece51a5af4", "model": "smoke_g12", "probs": {"yes": 0.9996967315673828, "no": 0.0003033132816199213}}
+{"id": "r_22894af2279b", "model": "smoke_g12", "probs": {"yes": 0.27715763449668884, "no": 0.7228423357009888}}
+{"id": "r_22c418b5e6c7", "model": "smoke_g12", "probs": {"food shelf life": 0.9994774460792542, "restaurant wait time": 2.2447604351327755e-05, "meal suggestion": 8.884251656127162e-06, "meaning of life": 1.42177009365696e-06, "nutrition information": 3.9770793591742404e-07, "card expiration date": 3.7317670376069145e-06, "recipe": 8.858337423589546e-06, "cooking time": 2.9284885840752395e-06, "none of these": 0.00047392069245688617}}
+{"id": "r_22e149c04903", "model": "smoke_g12", "probs": {"yes": 0.00667495746165514, "no": 0.9933250546455383}}
+{"id": "r_2336359d930d", "model": "smoke_g12", "probs": {"yes": 0.08104801177978516, "no": 0.9189519882202148}}
+{"id": "r_235b94041644", "model": "smoke_g12", "probs": {"payday": 1.9671215341077186e-05, "check calendar": 0.3269009292125702, "next holiday": 0.6701867580413818, "bill due date": 3.909835504600778e-05, "update calendar": 1.1273159543634392e-06, "today's date": 5.696092102880357e-06, "next song": 0.0003652019950095564, "current time": 9.059598596650176e-06, "none of these": 0.002472503110766411}}
+{"id": "r_2371897218fa", "model": "smoke_g12", "probs": {"yes": 0.011789259500801563, "no": 0.9882107973098755}}
+{"id": "r_23f62faebc1d", "model": "smoke_g12", "probs": {"yes": 0.017121123149991035, "no": 0.9828789234161377}}
+{"id": "r_24055f6a73fb", "model": "smoke_g12", "probs": {"yes": 0.03152848780155182, "no": 0.9684715270996094}}
+{"id": "r_24536f19a4f0", "model": "smoke_g12", "probs": {"yes": 0.031573422253131866, "no": 0.9684265851974487}}
+{"id": "r_24c620282535", "model": "smoke_g12", "probs": {"yes": 0.9138860106468201, "no": 0.08611399680376053}}
+{"id": "r_24e48a9abc2e", "model": "smoke_g12", "probs": {"yes": 0.30109265446662903, "no": 0.6989073157310486}}
+{"id": "r_2503f6b7cb1b", "model": "smoke_g12", "probs": {"taxes": 9.56924122874625e-06, "greeting": 3.9063565054675564e-05, "meaning of life": 0.9950148463249207, "goodbye": 1.7661950550973415e-05, "translation": 2.0178422346361913e-06, "word definition": 8.78140599525068e-06, "income": 8.981625433079898e-05, "food shelf life": 1.3022324310441036e-05, "none of these": 0.00480527151376009}}
+{"id": "r_255239a4f912", "model": "smoke_g12", "probs": {"yes": 0.6162752509117126, "no": 0.38372471928596497}}
+{"id": "r_258dee463930", "model": "smoke_g12", "probs": {"yes": 0.858352780342102, "no": 0.14164718985557556}}
+{"id": "r_262a259e676d", "model": "smoke_g12", "probs": {"yes": 0.0018595922738313675, "no": 0.9981404542922974}}
+{"id": "r_265885df38a7", "model": "smoke_g12", "probs": {"yes": 0.007941855117678642, "no": 0.9920582175254822}}
+{"id": "r_265b5e43cdd3", "model": "smoke_g12", "probs": {"yes": 1.8205339074484073e-05, "no": 0.9999817609786987}}
+{"id": "r_28348f903211", "model": "smoke_g12", "probs": {"yes": 0.13004031777381897, "no": 0.8699597120285034}}
+{"id": "r_28db329f06ea", "model": "smoke_g12", "probs": {"yes": 0.021057261154055595, "no": 0.9789426922798157}}
+{"id": "r_29a826cb2e87", "model": "smoke_g12", "probs": {"visa requirements": 0.9992243051528931, "credit limit": 2.7383079213905148e-05, "card application status": 7.0654555202054325e-06, "tell bank about travel": 2.0366992430354003e-06, "apply for new card": 2.856972116660472e-07, "minimum payment": 1.4810790389674366e-06, "foreign transaction fees": 1.3635851246363018e-05, "travel advisory": 6.092331204854418e-06, "none of these": 0.000717645394615829}}
+{"id": "r_2ac96c6c56a3", "model": "smoke_g12", "probs": {"yes": 0.6498017311096191, "no": 0.35019823908805847}}
+{"id": "r_2dcae73ef3b0", "model": "smoke_g12", "probs": {"ATM support": 0.00014787547115702182, "fiat currency support": 0.9724751710891724, "currency exchange fee": 0.00011046743748011068, "supported cards and currencies": 0.02650335244834423, "exchange currency in app": 6.431711881305091e-06, "supported countries": 3.0114666515146382e-05, "Visa or Mastercard": 0.0001806652726372704, "exchange rate": 2.473718450346496e-05, "none of these": 0.0005211599636822939}}
+{"id": "r_2e534556ddee", "model": "smoke_g12", "probs": {"yes": 0.41151493787765503, "no": 0.5884850025177002}}
+{"id": "r_2e879023f98e", "model": "smoke_g12", "probs": {"yes": 0.07425981760025024, "no": 0.9257402420043945}}
+{"id": "r_2ec4b9bf756c", "model": "smoke_g12", "probs": {"yes": 0.0525619313120842, "no": 0.9474380612373352}}
+{"id": "r_2eefbf62baad", "model": "smoke_g12", "probs": {"yes": 0.09041702002286911, "no": 0.9095829725265503}}
+{"id": "r_2f4dc7e9355a", "model": "smoke_g12", "probs": {"travel advisory": 1.9926954337279312e-05, "lost luggage": 7.236520104925148e-06, "traffic conditions": 4.319228537497111e-06, "book a flight": 4.661473667511018e-06, "carry-on rules": 0.9996523857116699, "order checks": 3.998782631242648e-05, "time-off balance": 2.1758407456218265e-05, "place an order": 2.8150889193057083e-05, "none of these": 0.00022151261509861797}}
+{"id": "r_2feba2107e6a", "model": "smoke_g12", "probs": {"yes": 0.00841846875846386, "no": 0.9915814995765686}}
+{"id": "r_311ac1549914", "model": "smoke_g12", "probs": {"nutrition information": 0.6903306841850281, "food shelf life": 0.00010812040272867307, "account balance": 2.737834074650891e-05, "calculation": 6.054767254681792e-06, "fuel level": 2.4457613108097576e-06, "recipe": 1.5780944522703066e-05, "meal suggestion": 0.00046684208791702986, "calorie count": 0.30660656094551086, "none of these": 0.0024360977113246918}}
+{"id": "r_321c608711d8", "model": "smoke_g12", "probs": {"last car service": 5.812144809169695e-05, "car rental": 9.203817171510309e-06, "set a reminder": 3.505554923322052e-05, "set an alarm": 1.3625489145852043e-06, "schedule car service": 0.9992198944091797, "schedule a meeting": 0.00017307668167632073, "jump-start a car": 6.344162829918787e-05, "set a timer": 6.904940164531581e-06, "none of these": 0.0004329015500843525}}
+{"id": "r_32b934ce0d4a", "model": "smoke_g12", "probs": {"yes": 0.05153907462954521, "no": 0.9484609365463257}}
+{"id": "r_340108db88a0", "model": "smoke_g12", "probs": {"yes": 0.9980390667915344, "no": 0.001961001893505454}}
+{"id": "r_3435c13e748e", "model": "smoke_g12", "probs": {"yes": 0.45585525035858154, "no": 0.5441447496414185}}
+{"id": "r_34901155c67e", "model": "smoke_g12", "probs": {"yes": 0.1360052525997162, "no": 0.8639947772026062}}
+{"id": "r_34abb7f5b480", "model": "smoke_g12", "probs": {"declined card": 0.9997181296348572, "card application status": 6.643306551268324e-05, "card expiration date": 8.723434802959673e-06, "apply for new card": 1.8985775795954396e-06, "damaged card": 4.395481880692387e-07, "report lost card": 2.20663741856697e-06, "negative reply": 1.6136338672367856e-05, "replacement card wait": 3.112103513558395e-06, "none of these": 0.00018285067926626652}}
+{"id": "r_34b783d452a6", "model": "smoke_g12", "probs": {"yes": 0.19719341397285461, "no": 0.8028066158294678}}
+{"id": "r_34e27832868d", "model": "smoke_g12", "probs": {"set an alarm": 9.853088158706669e-06, "assistant's name": 4.067780082550598e-06, "rename assistant": 1.7987015326070832e-06, "assistant's hobbies": 1.572554356243927e-05, "assistant's pets": 0.9993435740470886, "who you work for": 3.619465132942423e-05, "last car service": 2.5999464924097992e-05, "assistant's age": 3.483003456494771e-05, "none of these": 0.0005280611221678555}}
+{"id": "r_352195f14021", "model": "smoke_g12", "probs": {"yes": 0.3312756419181824, "no": 0.6687243580818176}}
+{"id": "r_3551265b27f6", "model": "smoke_g12", "probs": {"yes": 0.005315370392054319, "no": 0.994684636592865}}
+{"id": "r_35be2d95bef5", "model": "smoke_g12", "probs": {"current time": 3.265585837652907e-05, "restaurant suggestion": 4.851016274187714e-05, "time off used": 4.076255936524831e-05, "cooking time": 0.9834956526756287, "time zone": 1.0928853043878917e-05, "meal suggestion": 3.385950913070701e-05, "restaurant wait time": 0.000136342627229169, "recipe": 0.015238417312502861, "none of these": 0.0009629203123040497}}
+{"id": "r_35c39cc8a6b5", "model": "smoke_g12", "probs": {"yes": 0.0004514670290518552, "no": 0.9995484948158264}}
+{"id": "r_35e4b66a0522", "model": "smoke_g12", "probs": {"yes": 0.7004939913749695, "no": 0.2995060086250305}}
+{"id": "r_35f6183a3a8b", "model": "smoke_g12", "probs": {"yes": 8.204449113691226e-05, "no": 0.9999179840087891}}
+{"id": "r_3691e39095f3", "model": "smoke_g12", "probs": {"yes": 0.0349016971886158, "no": 0.9650982618331909}}
+{"id": "r_36ab8ed96b4c", "model": "smoke_g12", "probs": {"yes": 0.001580071751959622, "no": 0.9984198808670044}}
+{"id": "r_374ff6517c80", "model": "smoke_g12", "probs": {"yes": 0.04222327470779419, "no": 0.9577767252922058}}
+{"id": "r_375a8578166c", "model": "smoke_g12", "probs": {"yes": 0.05862300843000412, "no": 0.9413770437240601}}
+{"id": "r_3763a861f2f0", "model": "smoke_g12", "probs": {"yes": 0.02506798692047596, "no": 0.974932074546814}}
+{"id": "r_3777ac5e66a5", "model": "smoke_g12", "probs": {"yes": 0.026832200586795807, "no": 0.9731677770614624}}
+{"id": "r_38784505b701", "model": "smoke_g12", "probs": {"yes": 0.36594778299331665, "no": 0.6340521574020386}}
+{"id": "r_39be8861d9d9", "model": "smoke_g12", "probs": {"yes": 0.11359016597270966, "no": 0.8864098787307739}}
+{"id": "r_39fe80b26bef", "model": "smoke_g12", "probs": {"ingredients list": 4.865352821070701e-05, "car rental": 1.7564902009326033e-05, "how to change oil": 6.4385390032839496e-06, "fuel economy": 4.930562681693118e-06, "recipe": 5.209460141486488e-06, "fuel type": 0.9987333416938782, "plug type": 0.00019082702056039125, "fuel level": 0.0001420844637323171, "none of these": 0.0008509285398758948}}
+{"id": "r_3a5c6e34a8ac", "model": "smoke_g12", "probs": {"yes": 0.29472458362579346, "no": 0.7052754163742065}}
+{"id": "r_3a8c2c74e1af", "model": "smoke_g12", "probs": {"yes": 0.018438689410686493, "no": 0.9815612435340881}}
+{"id": "r_3ae122c395f5", "model": "smoke_g12", "probs": {"yes": 0.15395045280456543, "no": 0.8460494875907898}}
+{"id": "r_3b01bd3071bf", "model": "smoke_g12", "probs": {"word definition": 1.9001618056790903e-05, "recipe": 4.300933596823597e-06, "greeting": 1.3737443623540457e-05, "tell a joke": 3.18020806844288e-06, "payday": 2.266819819851662e-06, "next holiday": 4.954536052537151e-05, "spelling": 0.9983987212181091, "translation": 0.0006568350363522768, "none of these": 0.000852486933581531}}
+{"id": "r_3b59c04ee606", "model": "smoke_g12", "probs": {"yes": 0.5091308951377869, "no": 0.49086910486221313}}
+{"id": "r_3c1343d62cfe", "model": "smoke_g12", "probs": {"currency exchange fee": 0.00013175205094739795, "exchange rate": 0.9981539845466614, "supported cards and currencies": 9.291536844102666e-05, "fiat currency support": 9.914715519698802e-06, "transfer fee": 2.3054128632793436e-06, "exchange currency in app": 2.5935794838005677e-05, "wrong rate on cash withdrawal": 0.0003876657283399254, "wrong rate on card payment": 5.662003604811616e-05, "none of these": 0.0011388631537556648}}
+{"id": "r_3c2dc4a244ab", "model": "smoke_g12", "probs": {"income": 5.565914307226194e-06, "direct deposit": 2.7973048418061808e-05, "pay a bill": 0.9867890477180481, "account balance": 3.224162583137513e-06, "credit limit": 1.2133116342738504e-06, "minimum payment": 0.012988884933292866, "money transfer": 3.741030377568677e-05, "bill amount owed": 1.9094108210993e-05, "none of these": 0.00012760964455083013}}
+{"id": "r_3c914e416fc4", "model": "smoke_g12", "probs": {"calculation": 0.03891778364777565, "annual percentage rate": 0.00011124533193651587, "foreign transaction fees": 8.049250027397648e-05, "exchange rate": 0.9558055996894836, "account balance": 6.818564725108445e-05, "money transfer": 3.7639540096279234e-05, "income": 0.00016775836411397904, "interest rate": 1.036574030877091e-05, "none of these": 0.004800837952643633}}
+{"id": "r_3cafd3c6e239", "model": "smoke_g12", "probs": {"yes": 0.9549271464347839, "no": 0.04507288336753845}}
+{"id": "r_3ccc0132f911", "model": "smoke_g12", "probs": {"yes": 0.9581329226493835, "no": 0.041867125779390335}}
+{"id": "r_3da0580e7e27", "model": "smoke_g12", "probs": {"yes": 0.005023332312703133, "no": 0.9949766397476196}}
+{"id": "r_3def5d10d37a", "model": "smoke_g12", "probs": {"yes": 0.8528326153755188, "no": 0.14716742932796478}}
+{"id": "r_3e76bead43b0", "model": "smoke_g12", "probs": {"today's date": 2.92719869321445e-05, "update shopping list": 1.9169094684912125e-06, "check calendar": 2.412452658973052e-06, "set a reminder": 6.22101106273476e-06, "schedule a meeting": 0.03359023109078407, "update calendar": 0.9660590887069702, "check reminders": 6.379064143402502e-05, "update playlist": 2.0359391783131287e-05, "none of these": 0.0002266106166644022}}
+{"id": "r_3f4e2c134726", "model": "smoke_g12", "probs": {"yes": 0.9980764389038086, "no": 0.001923509524203837}}
+{"id": "r_3f4f31e19678", "model": "smoke_g12", "probs": {"restaurant suggestion": 1.8933777027996257e-05, "order status": 0.00010505306272534654, "place an order": 0.9993384480476379, "accepts reservations": 1.840594813984353e-05, "directions": 1.143943336501252e-06, "order checks": 7.291369001904968e-06, "schedule a meeting": 1.8360628018854186e-05, "restaurant reservation": 2.7656671591103077e-05, "none of these": 0.0004647228925023228}}
+{"id": "r_3f50cfa7fce8", "model": "smoke_g12", "probs": {"assistant's name": 4.5161606976762414e-05, "assistant's pets": 7.497488695662469e-06, "restaurant suggestion": 9.98025370790856e-06, "book a rideshare": 4.3126124182890635e-06, "who you work for": 2.2991343939793296e-06, "assistant's age": 4.2292213038308546e-05, "assistant's hobbies": 0.9982982277870178, "rename assistant": 0.00047084924881346524, "none of these": 0.0011194070102646947}}
+{"id": "r_3f7b881c0b98", "model": "smoke_g12", "probs": {"yes": 0.04237525910139084, "no": 0.9576247334480286}}
+{"id": "r_3f9393c01238", "model": "smoke_g12", "probs": {"yes": 0.00010846526856767014, "no": 0.9998915195465088}}
+{"id": "r_3fb38ec84c7e", "model": "smoke_g12", "probs": {"yes": 7.276040560100228e-05, "no": 0.999927282333374}}
+{"id": "r_3fe13db60b5d", "model": "smoke_g12", "probs": {"yes": 0.6247215867042542, "no": 0.37527844309806824}}
+{"id": "r_3ff968e7c35b", "model": "smoke_g12", "probs": {"yes": 0.006760904099792242, "no": 0.9932390451431274}}
+{"id": "r_4087486544b4", "model": "smoke_g12", "probs": {"yes": 0.006553939543664455, "no": 0.9934460520744324}}
+{"id": "r_40a930ab5edb", "model": "smoke_g12", "probs": {"set a reminder": 6.124498031567782e-05, "set an alarm": 1.9707145838765427e-05, "cancel reservation": 6.861399469926255e-06, "set a timer": 2.8527706490422133e-06, "current time": 1.141462053055875e-05, "negative reply": 0.8483091592788696, "current location": 0.0004556745698209852, "cancel current action": 0.007948133163154125, "none of these": 0.14318495988845825}}
+{"id": "r_4112742ffb06", "model": "smoke_g12", "probs": {"yes": 0.03057173267006874, "no": 0.9694282412528992}}
+{"id": "r_4192441d4358", "model": "smoke_g12", "probs": {"card arrival": 2.4086637495202012e-05, "additional card": 3.3674346923362464e-05, "card not working": 3.2824245863594115e-05, "card activation": 5.538727236853447e-06, "order physical card": 2.8694557840935886e-06, "compromised card": 1.2362690540612675e-05, "pending card payment": 0.00016356077685486525, "card about to expire": 0.9991931319236755, "none of these": 0.0005320708733052015}}
+{"id": "r_4194e5a7b415", "model": "smoke_g12", "probs": {"yes": 0.8539572358131409, "no": 0.14604276418685913}}
+{"id": "r_41a52e423eb3", "model": "smoke_g12", "probs": {"yes": 0.022626036778092384, "no": 0.9773739576339722}}
+{"id": "r_41b537db9a6e", "model": "smoke_g12", "probs": {"yes": 0.3483060300350189, "no": 0.6516939401626587}}
+{"id": "r_41c0a844c3ac", "model": "smoke_g12", "probs": {"what I can ask": 1.0963162822008599e-05, "negative reply": 1.4787479813094251e-05, "are you a bot": 5.548913122765953e-06, "flip a coin": 7.421733243972994e-06, "declined card": 6.222644515219145e-07, "affirmative reply": 1.0644259418768343e-05, "tell a joke": 4.830162652069703e-05, "unsure reply": 0.9997417330741882, "none of these": 0.00016006555233616382}}
+{"id": "r_41cd3b11f566", "model": "smoke_g12", "probs": {"declined card payment": 0.012728729285299778, "pending cash withdrawal": 5.859010707354173e-05, "unrecognised cash withdrawal": 2.105180283251684e-05, "cash withdrawal fee": 4.877001174463658e-06, "wrong cash amount received": 6.963113264646381e-06, "declined cash withdrawal": 0.986127495765686, "declined transfer": 0.0004899012856185436, "wrong rate on cash withdrawal": 8.225451892940328e-05, "none of these": 0.0004802205367013812}}
+{"id": "r_41f981b6c856", "model": "smoke_g12", "probs": {"yes": 0.7914397716522217, "no": 0.2085602581501007}}
+{"id": "r_427980d4f80f", "model": "smoke_g12", "probs": {"yes": 0.12600886821746826, "no": 0.8739911317825317}}
+{"id": "r_43b5a7474d24", "model": "smoke_g12", "probs": {"yes": 0.961201548576355, "no": 0.03879842534661293}}
+{"id": "r_4471c1503106", "model": "smoke_g12", "probs": {"yes": 8.106892346404493e-05, "no": 0.9999189376831055}}
+{"id": "r_459757804eef", "model": "smoke_g12", "probs": {"change language": 6.872182439110475e-06, "assistant's name": 0.0366690531373024, "rename assistant": 0.9629058837890625, "change user's name": 1.5302071915357374e-05, "assistant's hobbies": 1.8481036079265323e-07, "assistant's pets": 7.141962896639598e-07, "assistant's age": 2.6803420041687787e-05, "change voice or accent": 2.576055976533098e-06, "none of these": 0.00037258441443555057}}
+{"id": "r_45e09e2f48d2", "model": "smoke_g12", "probs": {"edit personal details": 2.348491398151964e-05, "cash withdrawal fee": 1.637370587559417e-05, "close account": 0.9994229078292847, "cancel a transfer": 1.814593269955367e-05, "transfer into account": 1.8667686845219578e-06, "verify my identity": 3.4920458347187378e-06, "unable to verify identity": 2.3736538423690945e-05, "request a refund": 1.4869833648845088e-05, "none of these": 0.00047518464270979166}}
+{"id": "r_4698452ff79a", "model": "smoke_g12", "probs": {"yes": 0.03208494558930397, "no": 0.9679150581359863}}
+{"id": "r_46c112fbb5f8", "model": "smoke_g12", "probs": {"yes": 0.16333332657814026, "no": 0.8366666436195374}}
+{"id": "r_47a311dc5574", "model": "smoke_g12", "probs": {"yes": 0.0039972527883946896, "no": 0.996002733707428}}
+{"id": "r_480507d33883", "model": "smoke_g12", "probs": {"yes": 4.127686406718567e-05, "no": 0.9999587535858154}}
+{"id": "r_48bbd010bfc6", "model": "smoke_g12", "probs": {"yes": 0.03292113542556763, "no": 0.9670788049697876}}
+{"id": "r_4957cde5d1b3", "model": "smoke_g12", "probs": {"yes": 0.011516766622662544, "no": 0.9884832501411438}}
+{"id": "r_4a3a868eb243", "model": "smoke_g12", "probs": {"current time": 4.5088152546668425e-05, "current location": 1.8354241547058336e-05, "cancel current action": 0.00016902585048228502, "set a timer": 3.697854026540881e-06, "cancel reservation": 1.0899934750341345e-05, "negative reply": 0.9969598054885864, "set an alarm": 0.0001759955775924027, "set a reminder": 7.956768240546808e-05, "none of these": 0.0025375804398208857}}
+{"id": "r_4a8b79a77cbb", "model": "smoke_g12", "probs": {"yes": 0.8563319444656372, "no": 0.14366808533668518}}
+{"id": "r_4b2dba3f87e6", "model": "smoke_g12", "probs": {"restaurant reservation": 4.2124207539018244e-05, "restaurant wait time": 3.6512681163003435e-06, "cancel current action": 0.0004119200457353145, "accepts reservations": 1.6888648133317474e-06, "declined card": 2.840480192389805e-06, "cancel reservation": 0.9991146922111511, "confirm reservation": 0.00017610102077014744, "time-off balance": 1.394837090629153e-05, "none of these": 0.00023302310728468}}
+{"id": "r_4b302155168d", "model": "smoke_g12", "probs": {"yes": 0.8888580799102783, "no": 0.1111418679356575}}
+{"id": "r_4b629d90c15b", "model": "smoke_g12", "probs": {"money transfer": 0.00010123877291334793, "minimum payment": 2.446632606734056e-05, "account balance": 1.1488053132779896e-05, "pay a bill": 0.9997194409370422, "payday": 1.669755693001207e-05, "bill due date": 1.0218114766757935e-05, "bill amount owed": 1.6717791368137114e-05, "spending history": 5.487660018843599e-06, "none of these": 9.420081914868206e-05}}
+{"id": "r_4b8b8ecb792d", "model": "smoke_g12", "probs": {"yes": 0.9994192123413086, "no": 0.0005808181595057249}}
+{"id": "r_4c3e743270f7", "model": "smoke_g12", "probs": {"yes": 0.012899872846901417, "no": 0.9871001243591309}}
+{"id": "r_4c64f533848c", "model": "smoke_g12", "probs": {"yes": 0.2367153763771057, "no": 0.7632846236228943}}
+{"id": "r_4c735dea5c94", "model": "smoke_g12", "probs": {"yes": 0.1782141625881195, "no": 0.8217858076095581}}
+{"id": "r_4cd859775fed", "model": "smoke_g12", "probs": {"yes": 0.23496469855308533, "no": 0.7650352716445923}}
+{"id": "r_4d0626a1ebfe", "model": "smoke_g12", "probs": {"yes": 0.22482603788375854, "no": 0.7751739621162415}}
+{"id": "r_4e4edaa7d124", "model": "smoke_g12", "probs": {"yes": 0.9998520612716675, "no": 0.00014795566676184535}}
+{"id": "r_4e79514f4a9c", "model": "smoke_g12", "probs": {"yes": 0.07259034365415573, "no": 0.9274097084999084}}
+{"id": "r_4ee8a6968e4b", "model": "smoke_g12", "probs": {"translation": 1.6314586900989525e-05, "spelling": 1.3197088719607564e-06, "who you work for": 2.5772051230887882e-06, "today's date": 4.100355965874769e-07, "affirmative reply": 5.464055902848486e-06, "greeting": 0.9997405409812927, "negative reply": 0.00012779157259501517, "goodbye": 1.2292110113776289e-05, "none of these": 9.321085235569626e-05}}
+{"id": "r_4fc3e8f7b318", "model": "smoke_g12", "probs": {"yes": 0.0006545961368829012, "no": 0.9993453621864319}}
+{"id": "r_508e7c9681bf", "model": "smoke_g12", "probs": {"physical card PIN": 2.4439745175186545e-05, "ATM support": 0.00015154194261413068, "card not working": 2.4802940970403142e-05, "change PIN": 5.345076715457253e-06, "forgotten passcode": 1.706776970422652e-06, "compromised card": 4.810264272236964e-06, "card swallowed by ATM": 3.493804615573026e-05, "blocked PIN": 0.9996501207351685, "none of these": 0.0001023339427774772}}
+{"id": "r_51081c009bd5", "model": "smoke_g12", "probs": {"yes": 0.9998032450675964, "no": 0.00019680973491631448}}
+{"id": "r_51220f33f9b5", "model": "smoke_g12", "probs": {"yes": 0.021026145666837692, "no": 0.9789738655090332}}
+{"id": "r_513516d7b110", "model": "smoke_g12", "probs": {"card not working": 6.524422497022897e-05, "reverted card payment": 2.4163537091226317e-05, "additional card": 2.0853645764873363e-05, "blocked PIN": 7.347448445216287e-06, "compromised card": 4.795688710146351e-06, "physical card PIN": 0.005821877624839544, "change PIN": 0.9914376139640808, "ATM support": 0.0021763357799500227, "none of these": 0.0004417924501467496}}
+{"id": "r_519b5d808935", "model": "smoke_g12", "probs": {"yes": 0.031215736642479897, "no": 0.9687842726707458}}
+{"id": "r_53575c3a7dac", "model": "smoke_g12", "probs": {"update calendar": 0.00025733717484399676, "make a call": 5.4202632782107685e-06, "update playlist": 4.5097663132764865e-06, "check to-do list": 6.835577096353518e-06, "set a reminder": 1.5214281120279338e-05, "update to-do list": 0.9993059635162354, "update shopping list": 0.0001225545711349696, "check shopping list": 2.3644388420507312e-05, "none of these": 0.00025846215430647135}}
+{"id": "r_53b7a396958b", "model": "smoke_g12", "probs": {"weather": 0.9996497631072998, "where you are from": 2.226789729320444e-05, "flight status": 1.0561350791249424e-05, "today's date": 2.38096413340827e-06, "greeting": 3.900005651757965e-07, "traffic conditions": 1.339358732366236e-06, "goodbye": 2.8952949833183084e-06, "time zone": 1.9881617845385335e-06, "none of these": 0.0003084410273004323}}
+{"id": "r_540f5f2e8d68", "model": "smoke_g12", "probs": {"yes": 0.981155514717102, "no": 0.01884448155760765}}
+{"id": "r_54f9c40c19a9", "model": "smoke_g12", "probs": {"yes": 0.8878251314163208, "no": 0.112174853682518}}
+{"id": "r_557f61cffae5", "model": "smoke_g12", "probs": {"yes": 0.02976427972316742, "no": 0.9702357649803162}}
+{"id": "r_5608692cc508", "model": "smoke_g12", "probs": {"yes": 8.440110832452774e-05, "no": 0.999915599822998}}
+{"id": "r_563a72dda835", "model": "smoke_g12", "probs": {"yes": 0.9848513007164001, "no": 0.015148644335567951}}
+{"id": "r_5659253fb73c", "model": "smoke_g12", "probs": {"yes": 0.045011598616838455, "no": 0.954988420009613}}
+{"id": "r_56a726cd30c9", "model": "smoke_g12", "probs": {"yes": 7.016455492703244e-05, "no": 0.9999297857284546}}
+{"id": "r_5727634d52c2", "model": "smoke_g12", "probs": {"yes": 0.998132050037384, "no": 0.001867971383035183}}
+{"id": "r_574e3a7a3ab0", "model": "smoke_g12", "probs": {"yes": 0.011035131290555, "no": 0.9889649152755737}}
+{"id": "r_57b64d233c6b", "model": "smoke_g12", "probs": {"yes": 0.16185151040554047, "no": 0.8381484746932983}}
+{"id": "r_58cab9ba0733", "model": "smoke_g12", "probs": {"yes": 0.4131048619747162, "no": 0.5868951678276062}}
+{"id": "r_58fe0f29cd3f", "model": "smoke_g12", "probs": {"yes": 0.9998182654380798, "no": 0.00018175294098909944}}
+{"id": "r_59123202c76f", "model": "smoke_g12", "probs": {"yes": 0.04347655177116394, "no": 0.9565234184265137}}
+{"id": "r_593773396d4e", "model": "smoke_g12", "probs": {"yes": 0.37889617681503296, "no": 0.621103823184967}}
+{"id": "r_59820c89229b", "model": "smoke_g12", "probs": {"yes": 0.9994503855705261, "no": 0.00054961908608675}}
+{"id": "r_599c46f6d089", "model": "smoke_g12", "probs": {"yes": 0.04760283604264259, "no": 0.9523972272872925}}
+{"id": "r_5a254719f56e", "model": "smoke_g12", "probs": {"yes": 9.090325875149574e-06, "no": 0.9999909400939941}}
+{"id": "r_5a5285bb1dfb", "model": "smoke_g12", "probs": {"yes": 0.19490449130535126, "no": 0.8050954937934875}}
+{"id": "r_5a5de3b68090", "model": "smoke_g12", "probs": {"yes": 0.8978472352027893, "no": 0.1021527573466301}}
+{"id": "r_5b5e9d2f048d", "model": "smoke_g12", "probs": {"yes": 0.9801166653633118, "no": 0.019883347675204277}}
+{"id": "r_5bc9e25e3be0", "model": "smoke_g12", "probs": {"yes": 0.2560289800167084, "no": 0.7439709901809692}}
+{"id": "r_5d95ed3144b3", "model": "smoke_g12", "probs": {"next song": 0.00013767735799774528, "ingredients list": 6.930217932676896e-05, "current location": 0.0004378595913294703, "connect to phone": 9.146255615632981e-05, "how to change oil": 5.5587511269550305e-06, "recipe": 3.399379056645557e-05, "directions": 0.9529114365577698, "place an order": 0.0009140793117694557, "none of these": 0.04539860412478447}}
+{"id": "r_5de96f37abee", "model": "smoke_g12", "probs": {"yes": 0.37926429510116577, "no": 0.6207356452941895}}
+{"id": "r_5e2f21d26bb4", "model": "smoke_g12", "probs": {"yes": 0.015152857638895512, "no": 0.9848471283912659}}
+{"id": "r_5e43273d764c", "model": "smoke_g12", "probs": {"yes": 0.99760901927948, "no": 0.0023910189047455788}}
+{"id": "r_5e81a03a65e3", "model": "smoke_g12", "probs": {"yes": 0.09533514827489853, "no": 0.9046648740768433}}
+{"id": "r_5f1d69bc9b1c", "model": "smoke_g12", "probs": {"yes": 0.9947242140769958, "no": 0.00527571514248848}}
+{"id": "r_5f543c607305", "model": "smoke_g12", "probs": {"yes": 9.082195902010426e-05, "no": 0.9999091625213623}}
+{"id": "r_605577e62899", "model": "smoke_g12", "probs": {"yes": 0.3161308765411377, "no": 0.6838691234588623}}
+{"id": "r_606e594648da", "model": "smoke_g12", "probs": {"yes": 0.14198888838291168, "no": 0.8580110669136047}}
+{"id": "r_608ef8e4dceb", "model": "smoke_g12", "probs": {"yes": 0.6621609926223755, "no": 0.3378389775753021}}
+{"id": "r_61414943befd", "model": "smoke_g12", "probs": {"yes": 0.9987471103668213, "no": 0.0012528594816103578}}
+{"id": "r_624d7cdf8dee", "model": "smoke_g12", "probs": {"yes": 0.054746996611356735, "no": 0.9452530145645142}}
+{"id": "r_62bea9e288e5", "model": "smoke_g12", "probs": {"yes": 0.013142207637429237, "no": 0.9868577718734741}}
+{"id": "r_62ce937cd889", "model": "smoke_g12", "probs": {"yes": 0.023237813264131546, "no": 0.9767622351646423}}
+{"id": "r_630e79f8c38c", "model": "smoke_g12", "probs": {"yes": 0.7974295616149902, "no": 0.20257040858268738}}
+{"id": "r_63cc8c3650c5", "model": "smoke_g12", "probs": {"yes": 0.22398681938648224, "no": 0.776013195514679}}
+{"id": "r_63e67ea44bbb", "model": "smoke_g12", "probs": {"yes": 6.664278316748096e-06, "no": 0.9999933242797852}}
+{"id": "r_6447a3793a46", "model": "smoke_g12", "probs": {"yes": 0.053574733436107635, "no": 0.9464252591133118}}
+{"id": "r_64542b8a8adf", "model": "smoke_g12", "probs": {"apply for new card": 2.7969475922873244e-05, "change insurance": 1.3621792049889336e-06, "change volume": 2.70447890216019e-06, "replacement card wait": 9.019198614623747e-07, "damaged card": 9.279192454414442e-06, "change PIN": 0.9995452761650085, "how to change oil": 1.7988406398217194e-05, "change credit limit": 1.5475405234610662e-05, "none of these": 0.0003791659255512059}}
+{"id": "r_64bfc8d3c344", "model": "smoke_g12", "probs": {"set a timer": 0.0002435633505228907, "schedule a meeting": 3.940380338463001e-06, "make a call": 1.9372632777958643e-06, "check calendar": 5.392710136220558e-07, "check reminders": 6.49644061923027e-06, "set a reminder": 0.9993466734886169, "set an alarm": 4.4780281314160675e-05, "update calendar": 1.0378778824815527e-05, "none of these": 0.0003417000698391348}}
+{"id": "r_6564cf9bf43d", "model": "smoke_g12", "probs": {"declined card payment": 0.9996414184570312, "pending card payment": 8.150738722179085e-05, "unrecognised card payment": 1.5486933989450336e-05, "declined transfer": 3.6391172670846572e-06, "reverted card payment": 5.686714530384052e-07, "wrong rate on card payment": 1.3274973298393888e-06, "declined cash withdrawal": 1.686751602392178e-05, "card payment fee": 4.756072030431824e-06, "none of these": 0.00023432490706909448}}
+{"id": "r_666ecb73a0e9", "model": "smoke_g12", "probs": {"yes": 2.8260234103072435e-05, "no": 0.9999717473983765}}
+{"id": "r_668da091b8c9", "model": "smoke_g12", "probs": {"yes": 0.033282287418842316, "no": 0.9667177200317383}}
+{"id": "r_6758cd8ed89d", "model": "smoke_g12", "probs": {"freeze account": 0.9997214674949646, "change user's name": 4.015380909550004e-05, "factory reset": 7.1621880124439485e-06, "blocked account": 2.4908383693400538e-06, "time-off balance": 2.9199480877650785e-07, "cancel reservation": 7.959739605212235e-07, "user's name": 2.8994954845984466e-06, "account balance": 1.8135048094336526e-06, "none of these": 0.0002230266109108925}}
+{"id": "r_68684a46d1bd", "model": "smoke_g12", "probs": {"yes": 0.8637136220932007, "no": 0.13628633320331573}}
+{"id": "r_68b121c883e7", "model": "smoke_g12", "probs": {"yes": 0.8463707566261292, "no": 0.15362925827503204}}
+{"id": "r_68ce5b05a3a4", "model": "smoke_g12", "probs": {"yes": 0.0005984428571537137, "no": 0.9994015693664551}}
+{"id": "r_69c67b3c9755", "model": "smoke_g12", "probs": {"yes": 7.482118235202506e-05, "no": 0.9999251365661621}}
+{"id": "r_6a034b15f4e3", "model": "smoke_g12", "probs": {"yes": 4.74411244795192e-05, "no": 0.9999525547027588}}
+{"id": "r_6a170422d517", "model": "smoke_g12", "probs": {"yes": 0.01309706550091505, "no": 0.9869029521942139}}
+{"id": "r_6a30ce01b783", "model": "smoke_g12", "probs": {"yes": 0.9613603949546814, "no": 0.0386396199464798}}
+{"id": "r_6a80b532312d", "model": "smoke_g12", "probs": {"yes": 0.02376413717865944, "no": 0.9762358069419861}}
+{"id": "r_6a99b056796a", "model": "smoke_g12", "probs": {"yes": 0.33868134021759033, "no": 0.6613186597824097}}
+{"id": "r_6b0646bd53af", "model": "smoke_g12", "probs": {"yes": 0.6926655769348145, "no": 0.3073344826698303}}
+{"id": "r_6b0d6be46066", "model": "smoke_g12", "probs": {"yes": 0.016842275857925415, "no": 0.9831576943397522}}
+{"id": "r_6b80244ada04", "model": "smoke_g12", "probs": {"yes": 0.9998002648353577, "no": 0.000199790476472117}}
+{"id": "r_6c17c40d40eb", "model": "smoke_g12", "probs": {"yes": 0.07677703350782394, "no": 0.9232229590415955}}
+{"id": "r_6c476d9bab60", "model": "smoke_g12", "probs": {"yes": 0.00157357647549361, "no": 0.9984264373779297}}
+{"id": "r_6ca7819f2915", "model": "smoke_g12", "probs": {"yes": 0.011324684135615826, "no": 0.9886753559112549}}
+{"id": "r_6cb29f9b8834", "model": "smoke_g12", "probs": {"yes": 0.5404359698295593, "no": 0.4595640003681183}}
+{"id": "r_6d856a3f8b9d", "model": "smoke_g12", "probs": {"yes": 0.028701337054371834, "no": 0.9712986350059509}}
+{"id": "r_6da17203e23f", "model": "smoke_g12", "probs": {"yes": 0.004457981325685978, "no": 0.9955419898033142}}
+{"id": "r_6e040340f3e2", "model": "smoke_g12", "probs": {"unrecognised cash withdrawal": 0.000480417424114421, "pending cash withdrawal": 4.345318302512169e-05, "wrong cash amount received": 0.9981112480163574, "cash withdrawal fee": 1.1897828699147794e-05, "receiving money": 1.380550884277909e-06, "wrong rate on card payment": 6.034864782122895e-06, "wrong rate on cash withdrawal": 0.0011659740703180432, "declined cash withdrawal": 1.866146340034902e-05, "none of these": 0.0001609416212886572}}
+{"id": "r_6e0a7f9f05ea", "model": "smoke_g12", "probs": {"supported cards and currencies": 0.0004647721361834556, "exchange currency in app": 2.3855784093029797e-05, "supported countries": 1.5696608897997066e-05, "ATM support": 1.479421712247131e-06, "currency exchange fee": 9.84756638899853e-07, "Visa or Mastercard": 9.733706974657252e-06, "exchange rate": 9.32033290155232e-05, "fiat currency support": 0.9992871880531311, "none of these": 0.00010310589277651161}}
+{"id": "r_6ec17f83fb34", "model": "smoke_g12", "probs": {"yes": 0.7890118360519409, "no": 0.21098817884922028}}
+{"id": "r_6ee35512edab", "model": "smoke_g12", "probs": {"time-off balance": 2.2272741261986084e-05, "accepts reservations": 1.6438755210401723e-06, "pay a bill": 1.2786640581907704e-06, "payday": 6.311562970040541e-07, "account balance": 0.00013963943638373166, "rewards balance": 0.9975632429122925, "credit score": 0.0004465424281079322, "redeem rewards": 0.00047489925054833293, "none of these": 0.0013497653417289257}}
+{"id": "r_6f155e14f942", "model": "smoke_g12", "probs": {"yes": 0.99988853931427, "no": 0.0001114576734835282}}
+{"id": "r_6fdd8ab7ac9f", "model": "smoke_g12", "probs": {"yes": 0.015062070451676846, "no": 0.9849379062652588}}
+{"id": "r_6fe9eff4a7c9", "model": "smoke_g12", "probs": {"yes": 8.288796379929408e-05, "no": 0.9999171495437622}}
+{"id": "r_700dbc0d69ef", "model": "smoke_g12", "probs": {"yes": 0.11425420641899109, "no": 0.8857458233833313}}
+{"id": "r_7097e08f26c6", "model": "smoke_g12", "probs": {"yes": 0.999496340751648, "no": 0.0005036465590819716}}
+{"id": "r_70c2deefb91a", "model": "smoke_g12", "probs": {"yes": 0.99960857629776, "no": 0.0003914692788384855}}
+{"id": "r_710d9b9a7e5e", "model": "smoke_g12", "probs": {"recipe": 6.470317021012306e-05, "spelling": 0.998273491859436, "word definition": 4.5010685425950214e-05, "tell a joke": 9.956828762369696e-06, "payday": 8.354666078957962e-07, "greeting": 5.064097877038876e-06, "next holiday": 0.0001050968567142263, "translation": 2.222112743766047e-05, "none of these": 0.0014735899167135358}}
+{"id": "r_71bc41dc07c6", "model": "smoke_g12", "probs": {"yes": 0.15613706409931183, "no": 0.8438629508018494}}
+{"id": "r_73e4ba91328a", "model": "smoke_g12", "probs": {"unable to verify identity": 0.00019077783508691937, "verify source of funds": 0.9984017014503479, "balance not updated after deposit": 2.620666055008769e-05, "transfer into account": 2.8220545573276468e-05, "why verify identity": 2.378690169280162e-06, "wrong cash amount received": 4.443100806383882e-06, "verify my identity": 0.00033955121762119234, "receiving money": 0.000637036981061101, "none of these": 0.0003697037464007735}}
+{"id": "r_74f88eb401a0", "model": "smoke_g12", "probs": {"yes": 0.0009647461120039225, "no": 0.9990352392196655}}
+{"id": "r_757c0c037c53", "model": "smoke_g12", "probs": {"change user's name": 3.9346105040749535e-05, "change voice or accent": 1.3127987585903611e-05, "change insurance": 1.21804887385224e-05, "translation": 0.00021829354227520525, "rename assistant": 6.379475053108763e-06, "change speaking speed": 3.425403338042088e-05, "change language": 0.9982272982597351, "change volume": 0.0001766918576322496, "none of these": 0.0012725465930998325}}
+{"id": "r_76185e445aae", "model": "smoke_g12", "probs": {"yes": 0.9653018116950989, "no": 0.03469822555780411}}
+{"id": "r_764f6d13d071", "model": "smoke_g12", "probs": {"yes": 0.594460666179657, "no": 0.40553930401802063}}
+{"id": "r_76c78c4186bf", "model": "smoke_g12", "probs": {"yes": 0.993411123752594, "no": 0.00658884784206748}}
+{"id": "r_77225e5c0a61", "model": "smoke_g12", "probs": {"yes": 5.0215458031743765e-05, "no": 0.9999498128890991}}
+{"id": "r_77ce2522de25", "model": "smoke_g12", "probs": {"additional card": 0.00027776515344157815, "request a refund": 0.000118482050311286, "card top-up fee": 8.538178917660844e-06, "unrecognised card payment": 0.021140936762094498, "extra charge on statement": 0.9773488640785217, "card payment fee": 2.7445852538221516e-05, "charged twice": 0.0006827840115875006, "transfer fee": 4.098849603906274e-05, "none of these": 0.00035420915810391307}}
+{"id": "r_783281a9eede", "model": "smoke_g12", "probs": {"yes": 0.28262409567832947, "no": 0.7173759341239929}}
+{"id": "r_784a87271ceb", "model": "smoke_g12", "probs": {"ingredient substitution": 0.9996891021728516, "nutrition information": 2.8032090995111503e-05, "unit conversion": 4.236638233123813e-06, "recipe": 8.90121611973882e-07, "translation": 1.4085460975366004e-07, "rename assistant": 7.092500027283677e-07, "ingredients list": 1.7535234064780525e-06, "meal suggestion": 1.2348172049314599e-06, "none of these": 0.0002740115742199123}}
+{"id": "r_7887469dbd83", "model": "smoke_g12", "probs": {"yes": 0.9968818426132202, "no": 0.0031182251404970884}}
+{"id": "r_788dfbe8e2a3", "model": "smoke_g12", "probs": {"ingredients list": 0.0007387321093119681, "nutrition information": 7.160375389503315e-05, "ingredient substitution": 0.0001571645843796432, "meal suggestion": 0.06746115535497665, "directions": 0.0018550623208284378, "cooking time": 3.70340931112878e-05, "recipe": 0.8592008352279663, "restaurant suggestion": 0.0003408022166695446, "none of these": 0.07013766467571259}}
+{"id": "r_78b90af1a2fe", "model": "smoke_g12", "probs": {"yes": 0.9992659687995911, "no": 0.0007340767187997699}}
+{"id": "r_78e9e35e890b", "model": "smoke_g12", "probs": {"yes": 0.05135886371135712, "no": 0.9486411809921265}}
+{"id": "r_7a09ae2a16f5", "model": "smoke_g12", "probs": {"time zone": 3.955657666665502e-05, "who you work for": 0.00032440025825053453, "where you are from": 0.9966322779655457, "translation": 2.455706817272585e-05, "current location": 2.204022712248843e-05, "greeting": 9.036755727720447e-06, "what I can ask": 0.0003533734998200089, "unsure reply": 0.00010131902672583237, "none of these": 0.0024934797547757626}}
+{"id": "r_7a51d1e639f0", "model": "smoke_g12", "probs": {"card top-up fee": 0.00013397129077930003, "bank transfer top-up fee": 0.002394112991169095, "transfer into account": 0.32344719767570496, "card payment fee": 3.871473381877877e-05, "cash or cheque top-up": 0.00010147676221095026, "transfer fee": 0.11401242017745972, "currency exchange fee": 0.000544707989320159, "cash withdrawal fee": 9.176811727229506e-05, "none of these": 0.5592355728149414}}
+{"id": "r_7ae43f74119e", "model": "smoke_g12", "probs": {"currency exchange fee": 3.786608067457564e-05, "exchange rate": 3.247087443014607e-05, "fiat currency support": 0.09065761417150497, "supported countries": 1.823020284064114e-05, "supported cards and currencies": 0.8964958190917969, "exchange currency in app": 0.00018880174320656806, "Visa or Mastercard": 0.00023181986762210727, "ATM support": 4.3235104385530576e-05, "none of these": 0.012294179759919643}}
+{"id": "r_7b16c9e2f9e8", "model": "smoke_g12", "probs": {"yes": 0.9014304280281067, "no": 0.09856954216957092}}
+{"id": "r_7b4e282042f2", "model": "smoke_g12", "probs": {"yes": 0.0001498389756307006, "no": 0.9998501539230347}}
+{"id": "r_7d61aadd9fa1", "model": "smoke_g12", "probs": {"yes": 0.0016234074719250202, "no": 0.9983766078948975}}
+{"id": "r_7dec3578c88e", "model": "smoke_g12", "probs": {"yes": 0.14950905740261078, "no": 0.850490927696228}}
+{"id": "r_7dfd814556dd", "model": "smoke_g12", "probs": {"yes": 0.5862864851951599, "no": 0.4137135148048401}}
+{"id": "r_7e5db4fc4cc4", "model": "smoke_g12", "probs": {"card acceptance": 0.8793111443519592, "additional card": 0.00023924204288050532, "exchange rate": 4.417866512085311e-05, "Visa or Mastercard": 2.1660031052306294e-05, "exchange currency in app": 3.185359446433722e-06, "physical card PIN": 8.85152167029446e-06, "supported cards and currencies": 0.11847708374261856, "fiat currency support": 0.0001410634577041492, "none of these": 0.001753679709509015}}
+{"id": "r_7eb5ec10ab14", "model": "smoke_g12", "probs": {"unrecognised cash withdrawal": 0.9997389912605286, "unrecognised direct debit": 4.0178030758397654e-05, "declined cash withdrawal": 9.028360182128381e-06, "wrong rate on cash withdrawal": 1.1410920706111938e-06, "wrong cash amount received": 3.535275254762382e-07, "cash withdrawal fee": 8.849393680065987e-07, "unrecognised card payment": 2.9468501452356577e-05, "pending cash withdrawal": 6.807403678976698e-06, "none of these": 0.00017319119069725275}}
+{"id": "r_7f887472ef30", "model": "smoke_g12", "probs": {"yes": 0.7995395064353943, "no": 0.20046044886112213}}
+{"id": "r_7f9f892b4579", "model": "smoke_g12", "probs": {"calculation": 7.249123154906556e-05, "recipe": 3.6361267120810226e-05, "food shelf life": 2.3691211026743986e-05, "fuel level": 4.00016870116815e-06, "meal suggestion": 4.5921638047730085e-06, "account balance": 2.7575566491577774e-05, "calorie count": 0.6158180236816406, "nutrition information": 0.3817128539085388, "none of these": 0.00230040424503386}}
+{"id": "r_7fd53e43625c", "model": "smoke_g12", "probs": {"yes": 0.9998140931129456, "no": 0.00018599099712446332}}
+{"id": "r_815a8df2f169", "model": "smoke_g12", "probs": {"yes": 0.07277751713991165, "no": 0.927222490310669}}
+{"id": "r_815dba6cc613", "model": "smoke_g12", "probs": {"yes": 0.017153926193714142, "no": 0.9828460812568665}}
+{"id": "r_8224eab55cd3", "model": "smoke_g12", "probs": {"yes": 0.03892701864242554, "no": 0.9610729217529297}}
+{"id": "r_832ecab61bf7", "model": "smoke_g12", "probs": {"verify source of funds": 0.0045057921670377254, "transfer into account": 0.04744018241763115, "transfer not received by recipient": 3.3715587051119655e-05, "card arrival": 3.7957390759402188e-06, "wrong cash amount received": 6.200635834829882e-05, "receiving money": 0.1327909529209137, "request a refund": 0.000549441552720964, "cash or cheque top-up": 0.00036991649540141225, "none of these": 0.8142441511154175}}
+{"id": "r_834a830668ff", "model": "smoke_g12", "probs": {"yes": 0.999663233757019, "no": 0.0003367305616848171}}
+{"id": "r_83fe44e9c938", "model": "smoke_g12", "probs": {"yes": 0.03957397863268852, "no": 0.9604260325431824}}
+{"id": "r_8439a49841e7", "model": "smoke_g12", "probs": {"transfer fee": 0.0011273346608504653, "cash withdrawal fee": 8.383462409256026e-05, "bank transfer top-up fee": 0.00018714142788667232, "currency exchange fee": 0.9962514042854309, "exchange rate": 2.4393195417360403e-05, "fiat currency support": 4.2069190385518596e-05, "card payment fee": 0.0002828843716997653, "exchange currency in app": 0.0006173456786200404, "none of these": 0.00138361775316298}}
+{"id": "r_8539f5b8057a", "model": "smoke_g12", "probs": {"yes": 0.011968359351158142, "no": 0.9880316257476807}}
+{"id": "r_85709ae49f89", "model": "smoke_g12", "probs": {"yes": 0.00798330269753933, "no": 0.9920166730880737}}
+{"id": "r_858885c37dc1", "model": "smoke_g12", "probs": {"yes": 0.01022602990269661, "no": 0.9897740483283997}}
+{"id": "r_8591354635d8", "model": "smoke_g12", "probs": {"yes": 0.9980664849281311, "no": 0.0019335505785420537}}
+{"id": "r_85ca5049d368", "model": "smoke_g12", "probs": {"yes": 0.9759382605552673, "no": 0.024061748757958412}}
+{"id": "r_86ab5d1e6145", "model": "smoke_g12", "probs": {"yes": 0.310659259557724, "no": 0.6893407106399536}}
+{"id": "r_8711d6e9ac3b", "model": "smoke_g12", "probs": {"yes": 0.013880242593586445, "no": 0.9861197471618652}}
+{"id": "r_87a13670b18b", "model": "smoke_g12", "probs": {"yes": 0.07165411114692688, "no": 0.9283459186553955}}
+{"id": "r_888f67ea5210", "model": "smoke_g12", "probs": {"yes": 8.504263860231731e-06, "no": 0.9999915361404419}}
+{"id": "r_88b4ee93497c", "model": "smoke_g12", "probs": {"yes": 0.41443267464637756, "no": 0.5855673551559448}}
+{"id": "r_8933b912e531", "model": "smoke_g12", "probs": {"yes": 0.644573450088501, "no": 0.3554265797138214}}
+{"id": "r_8a204db52926", "model": "smoke_g12", "probs": {"yes": 0.25104260444641113, "no": 0.7489574551582336}}
+{"id": "r_8a866c07b304", "model": "smoke_g12", "probs": {"yes": 0.0966145247220993, "no": 0.9033854603767395}}
+{"id": "r_8ae233049417", "model": "smoke_g12", "probs": {"yes": 0.99824059009552, "no": 0.0017593781230971217}}
+{"id": "r_8b639bc13189", "model": "smoke_g12", "probs": {"yes": 0.00030386087018996477, "no": 0.9996961355209351}}
+{"id": "r_8b641abf1ab5", "model": "smoke_g12", "probs": {"yes": 0.9997617602348328, "no": 0.00023825485550332814}}
+{"id": "r_8ba367a35ec9", "model": "smoke_g12", "probs": {"yes": 0.3121512830257416, "no": 0.687848687171936}}
+{"id": "r_8c409c997582", "model": "smoke_g12", "probs": {"report lost card": 3.58622673957143e-05, "replacement card wait": 3.561812263797037e-05, "declined card": 0.9994220733642578, "card application status": 6.472574023064226e-05, "negative reply": 1.4013758118380792e-06, "damaged card": 8.585482646594755e-06, "card expiration date": 3.9253689465112984e-05, "apply for new card": 1.9629569578683004e-05, "none of these": 0.00037296960363164544}}
+{"id": "r_8c6b14f109df", "model": "smoke_g12", "probs": {"yes": 0.05275804176926613, "no": 0.9472419619560242}}
+{"id": "r_8d1540324647", "model": "smoke_g12", "probs": {"yes": 0.0001533386966912076, "no": 0.9998466968536377}}
+{"id": "r_8d1bf9aeb285", "model": "smoke_g12", "probs": {"payday": 2.2177946448209696e-05, "redeem rewards": 4.979498771717772e-05, "roll dice": 0.9975714087486267, "rewards balance": 3.114504215773195e-05, "flip a coin": 2.631555844345712e-06, "make a call": 8.55584949022159e-06, "plug type": 6.374083022819832e-05, "taxes": 1.0420638318464626e-05, "none of these": 0.0022401143796741962}}
+{"id": "r_8d3406abddb6", "model": "smoke_g12", "probs": {"yes": 0.00030750728910788894, "no": 0.9996925592422485}}
+{"id": "r_8d68cac924e8", "model": "smoke_g12", "probs": {"yes": 0.05645083636045456, "no": 0.9435492157936096}}
+{"id": "r_8da2ae407e00", "model": "smoke_g12", "probs": {"yes": 0.6478865146636963, "no": 0.35211342573165894}}
+{"id": "r_8e6282b8e207", "model": "smoke_g12", "probs": {"yes": 0.011399930343031883, "no": 0.9886000752449036}}
+{"id": "r_8eeb6bed668d", "model": "smoke_g12", "probs": {"yes": 0.7909112572669983, "no": 0.20908872783184052}}
+{"id": "r_8f376e75d9bc", "model": "smoke_g12", "probs": {"yes": 0.007858513854444027, "no": 0.9921414852142334}}
+{"id": "r_8f68c44a89d0", "model": "smoke_g12", "probs": {"yes": 0.07251756638288498, "no": 0.9274823665618896}}
+{"id": "r_903548c214e1", "model": "smoke_g12", "probs": {"yes": 0.34839048981666565, "no": 0.651609480381012}}
+{"id": "r_904c9d8fa9e0", "model": "smoke_g12", "probs": {"yes": 0.0052510895766317844, "no": 0.9947488903999329}}
+{"id": "r_90a6d83a20d6", "model": "smoke_g12", "probs": {"yes": 0.998805046081543, "no": 0.001194970216602087}}
+{"id": "r_913d3684ae33", "model": "smoke_g12", "probs": {"yes": 0.7008760571479797, "no": 0.29912397265434265}}
+{"id": "r_919b7f51c942", "model": "smoke_g12", "probs": {"yes": 0.9781227707862854, "no": 0.021877247840166092}}
+{"id": "r_92eda33e4e36", "model": "smoke_g12", "probs": {"yes": 0.09827166795730591, "no": 0.9017283320426941}}
+{"id": "r_936787175a39", "model": "smoke_g12", "probs": {"check to-do list": 6.955444405321032e-05, "ingredients list": 0.0010485159000381827, "ingredient substitution": 2.0350742488517426e-05, "nutrition information": 6.448012754844967e-06, "check shopping list": 1.1301925042062066e-05, "meal suggestion": 0.0011827948037534952, "directions": 0.0017753111897036433, "recipe": 0.9662243127822876, "none of these": 0.02966141141951084}}
+{"id": "r_93d5b97dc655", "model": "smoke_g12", "probs": {"yes": 0.9996570348739624, "no": 0.0003429784264881164}}
+{"id": "r_94caa8daa4b1", "model": "smoke_g12", "probs": {"yes": 0.09991171211004257, "no": 0.9000883102416992}}
+{"id": "r_9573d8da9abc", "model": "smoke_g12", "probs": {"yes": 0.007172629237174988, "no": 0.9928273558616638}}
+{"id": "r_95b6669f6f44", "model": "smoke_g12", "probs": {"yes": 0.06016145646572113, "no": 0.9398385882377625}}
+{"id": "r_960fc6cd47d0", "model": "smoke_g12", "probs": {"yes": 9.439588757231832e-05, "no": 0.9999055862426758}}
+{"id": "r_96312279e9cc", "model": "smoke_g12", "probs": {"yes": 0.045907676219940186, "no": 0.9540923237800598}}
+{"id": "r_9691c718e51f", "model": "smoke_g12", "probs": {"yes": 0.29973137378692627, "no": 0.7002686858177185}}
+{"id": "r_96e9c36a4c10", "model": "smoke_g12", "probs": {"yes": 0.7185288071632385, "no": 0.2814711630344391}}
+{"id": "r_96f89671c455", "model": "smoke_g12", "probs": {"yes": 0.7249617576599121, "no": 0.2750382423400879}}
+{"id": "r_97109a77aeb5", "model": "smoke_g12", "probs": {"yes": 0.9798863530158997, "no": 0.020113611593842506}}
+{"id": "r_97716713ca19", "model": "smoke_g12", "probs": {"card not working": 0.00012484988837968558, "change PIN": 0.9938459992408752, "ATM support": 0.0038508824072778225, "blocked PIN": 2.3114629584597424e-05, "compromised card": 1.2386352636895026e-06, "additional card": 1.252597303391667e-05, "reverted card payment": 0.00038170412881299853, "physical card PIN": 0.001299514900892973, "none of these": 0.00046012108214199543}}
+{"id": "r_9787404948c8", "model": "smoke_g12", "probs": {"yes": 0.0033825808204710484, "no": 0.9966174960136414}}
+{"id": "r_97891f8281d6", "model": "smoke_g12", "probs": {"yes": 0.9857466220855713, "no": 0.01425339188426733}}
+{"id": "r_97fb3be109c5", "model": "smoke_g12", "probs": {"pending transfer": 0.0021655613090842962, "pending top-up": 0.9953919649124146, "verify a top-up": 0.00016106052498798817, "failed top-up": 2.953731018351391e-05, "reverted top-up": 3.878318693750771e-06, "automatic top-up": 1.1141402865177952e-05, "top up by card": 0.00012954333215020597, "top-up limits": 2.4511004085070454e-05, "none of these": 0.0020828701090067625}}
+{"id": "r_984cd939ab8e", "model": "smoke_g12", "probs": {"yes": 0.2965905964374542, "no": 0.7034093737602234}}
+{"id": "r_984e768e343d", "model": "smoke_g12", "probs": {"yes": 0.8639557957649231, "no": 0.13604427874088287}}
+{"id": "r_987496c6ed98", "model": "smoke_g12", "probs": {"yes": 0.545051634311676, "no": 0.45494839549064636}}
+{"id": "r_9952e8db33dc", "model": "smoke_g12", "probs": {"yes": 0.03802385926246643, "no": 0.961976170539856}}
+{"id": "r_99a622ea6d2c", "model": "smoke_g12", "probs": {"yes": 0.9946985244750977, "no": 0.005301502998918295}}
+{"id": "r_99c028f37594", "model": "smoke_g12", "probs": {"pending transfer": 0.9997335076332092, "pending cash withdrawal": 7.75627268012613e-05, "declined transfer": 1.1173777238582261e-05, "failed transfer": 1.5372263533208752e-06, "cancel a transfer": 4.226585872402211e-07, "transfer not received by recipient": 1.662970362303895e-06, "pending card payment": 8.224879820772912e-06, "transfer fee": 3.9996048144530505e-06, "none of these": 0.00016183538537006825}}
+{"id": "r_99d569cb7793", "model": "smoke_g12", "probs": {"pending transfer": 0.0006218705093488097, "balance not updated after transfer": 3.0793205951340497e-05, "transfer not received by recipient": 9.937840331986081e-06, "cancel a transfer": 1.1724214346031658e-06, "failed transfer": 0.998855710029602, "transfer fee": 2.690404471650254e-05, "declined transfer": 0.00028495804872363806, "transfer into account": 2.8027932785334997e-05, "none of these": 0.00014054132043384016}}
+{"id": "r_9a81f9a1fe4c", "model": "smoke_g12", "probs": {"yes": 0.024666445329785347, "no": 0.975333571434021}}
+{"id": "r_9afb39b390df", "model": "smoke_g12", "probs": {"yes": 0.9997051358222961, "no": 0.0002948075416497886}}
+{"id": "r_9d3c226d2586", "model": "smoke_g12", "probs": {"flip a coin": 1.7220918380189687e-05, "tell a joke": 2.3014945327304304e-05, "repeat that": 0.9991023540496826, "next song": 4.178312519798055e-05, "factory reset": 2.241097945443471e-06, "set a reminder": 6.3185198087012395e-06, "thanks": 0.00015688624989707023, "fun fact": 2.156049777113367e-05, "none of these": 0.0006287293508648872}}
+{"id": "r_9d3e165d1fcf", "model": "smoke_g12", "probs": {"yes": 0.9986543655395508, "no": 0.001345646334812045}}
+{"id": "r_9d5782343922", "model": "smoke_g12", "probs": {"identify current song": 2.650235728651751e-05, "connect to phone": 2.0501534891081974e-05, "play music": 0.9997757077217102, "next song": 2.289772055519279e-05, "find my phone": 1.6165910210474976e-06, "update playlist": 6.0742272580682766e-06, "tell a joke": 1.6738593330956064e-05, "pay a bill": 5.6854314607335255e-06, "none of these": 0.00012425711611285806}}
+{"id": "r_9d60b1f6c383", "model": "smoke_g12", "probs": {"yes": 0.9998520612716675, "no": 0.00014787794498261064}}
+{"id": "r_9d6e102e30da", "model": "smoke_g12", "probs": {"yes": 0.04457279294729233, "no": 0.9554272294044495}}
+{"id": "r_9d86f0dd7e2b", "model": "smoke_g12", "probs": {"current location": 3.765871952055022e-05, "place an order": 4.082726809429005e-05, "directions": 0.9991733431816101, "connect to phone": 9.185383532894775e-05, "next song": 2.092850536428159e-06, "ingredients list": 3.849142558465246e-06, "how to change oil": 2.9092576369293965e-05, "recipe": 5.170383701624814e-06, "none of these": 0.0006160746561363339}}
+{"id": "r_9daee36fb9f7", "model": "smoke_g12", "probs": {"set an alarm": 1.4165594620862976e-05, "assistant's pets": 0.0008375296019949019, "assistant's name": 1.4049313904251903e-05, "last car service": 2.0690351902885595e-06, "rename assistant": 1.2910454643133562e-06, "who you work for": 8.17922227724921e-06, "assistant's age": 0.00022947826073504984, "assistant's hobbies": 0.007497774437069893, "none of these": 0.9913954138755798}}
+{"id": "r_9dbb4d351734", "model": "smoke_g12", "probs": {"yes": 0.02012305147945881, "no": 0.9798769354820251}}
+{"id": "r_9e3e2cb82be7", "model": "smoke_g12", "probs": {"exchange rate": 4.7433677536901087e-05, "supported cards and currencies": 0.15764379501342773, "Visa or Mastercard": 0.00010446766100358218, "exchange currency in app": 3.0034950668778038e-06, "card acceptance": 0.8391827940940857, "fiat currency support": 6.024878894095309e-05, "physical card PIN": 0.0004563177062664181, "additional card": 0.000484027958009392, "none of these": 0.0020178586710244417}}
+{"id": "r_9e43bfa88ef8", "model": "smoke_g12", "probs": {"card arrival": 2.9637119951075874e-05, "card activation": 4.310970689402893e-05, "unrecognised card payment": 1.4878764886816498e-05, "pending card payment": 2.0785773813258857e-06, "card not working": 0.9993090629577637, "card about to expire": 7.119990914361551e-05, "compromised card": 6.109119567554444e-05, "virtual card not working": 0.00036001738044433296, "none of these": 0.00010890547127928585}}
+{"id": "r_9e54d6835e37", "model": "smoke_g12", "probs": {"yes": 0.0012864983873441815, "no": 0.998713493347168}}
+{"id": "r_9f05b2b77edb", "model": "smoke_g12", "probs": {"yes": 0.5069151520729065, "no": 0.4930848777294159}}
+{"id": "r_a05cff9f0a02", "model": "smoke_g12", "probs": {"pending cash withdrawal": 9.390458217239939e-06, "unrecognised cash withdrawal": 0.0018736631609499454, "unrecognised direct debit": 0.9977896213531494, "wrong cash amount received": 9.819637853070162e-06, "pending transfer": 8.234052302213968e-07, "beneficiary not allowed": 3.3595617878745543e-06, "declined cash withdrawal": 5.979692650726065e-05, "unrecognised card payment": 0.00011987641482846811, "none of these": 0.0001336198765784502}}
+{"id": "r_a0655b360794", "model": "smoke_g12", "probs": {"yes": 0.06745988875627518, "no": 0.9325401186943054}}
+{"id": "r_a0aeff1a882e", "model": "smoke_g12", "probs": {"yes": 0.06753852218389511, "no": 0.9324614405632019}}
+{"id": "r_a1a749d48b75", "model": "smoke_g12", "probs": {"yes": 0.9992893934249878, "no": 0.0007105968543328345}}
+{"id": "r_a1c3d5f3c0a0", "model": "smoke_g12", "probs": {"yes": 0.008182954043149948, "no": 0.991817057132721}}
+{"id": "r_a2275964729c", "model": "smoke_g12", "probs": {"yes": 0.5764870047569275, "no": 0.4235129654407501}}
+{"id": "r_a22cabbe9638", "model": "smoke_g12", "probs": {"yes": 0.9997910857200623, "no": 0.000208915545954369}}
+{"id": "r_a23796556c66", "model": "smoke_g12", "probs": {"yes": 0.7787541151046753, "no": 0.22124584019184113}}
+{"id": "r_a297843c70e1", "model": "smoke_g12", "probs": {"yes": 0.05158552527427673, "no": 0.9484144449234009}}
+{"id": "r_a394b1f37c49", "model": "smoke_g12", "probs": {"identify current song": 4.414021168486215e-05, "connect to phone": 9.518037586531136e-06, "pay a bill": 6.9435777731996495e-06, "play music": 0.9998528957366943, "find my phone": 5.017078819946619e-06, "update playlist": 1.3401760952547193e-05, "next song": 2.7853382562170736e-05, "tell a joke": 7.640062904101796e-06, "none of these": 3.260215453337878e-05}}
+{"id": "r_a421ab1a0718", "model": "smoke_g12", "probs": {"yes": 0.022952592000365257, "no": 0.9770474433898926}}
+{"id": "r_a48f652d6659", "model": "smoke_g12", "probs": {"are you a bot": 4.826921576750465e-05, "negative reply": 0.0071684131398797035, "unsure reply": 0.9898129105567932, "tell a joke": 9.938323273672722e-06, "what I can ask": 4.4869757402921095e-06, "affirmative reply": 0.0003412257938180119, "flip a coin": 4.042273576487787e-05, "declined card": 0.00012680754298344254, "none of these": 0.002447443548589945}}
+{"id": "r_a4cc6ed8fec5", "model": "smoke_g12", "probs": {"yes": 0.024480918422341347, "no": 0.9755191206932068}}
+{"id": "r_a723ea8a3009", "model": "smoke_g12", "probs": {"check reminders": 7.44336375646526e-06, "update playlist": 7.447630650858628e-06, "schedule a meeting": 3.169763658661395e-05, "update shopping list": 3.3102728593803477e-06, "set a reminder": 3.6521719266602304e-06, "today's date": 3.398538183319033e-06, "check calendar": 0.000584228546358645, "update calendar": 0.9988893866539001, "none of these": 0.0004694121889770031}}
+{"id": "r_a74be9616fdd", "model": "smoke_g12", "probs": {"yes": 0.006145930849015713, "no": 0.9938540458679199}}
+{"id": "r_a793daeb43a2", "model": "smoke_g12", "probs": {"yes": 0.48627814650535583, "no": 0.5137218236923218}}
+{"id": "r_a89d5862aae1", "model": "smoke_g12", "probs": {"yes": 0.9309619665145874, "no": 0.06903805583715439}}
+{"id": "r_a89e125ce7e6", "model": "smoke_g12", "probs": {"pay a bill": 6.593926809728146e-05, "spending history": 9.151717677013949e-06, "interest rate": 1.2628702279471327e-06, "money transfer": 1.0772920404633624e-06, "bill amount owed": 0.9955897331237793, "account balance": 0.003929877188056707, "minimum payment": 4.345105480751954e-05, "bill due date": 2.427792969683651e-05, "none of these": 0.0003352158237248659}}
+{"id": "r_a9af8958e588", "model": "smoke_g12", "probs": {"yes": 0.219766303896904, "no": 0.7802337408065796}}
+{"id": "r_a9c7742dbaa1", "model": "smoke_g12", "probs": {"yes": 0.011168327182531357, "no": 0.988831639289856}}
+{"id": "r_a9d5f4541af6", "model": "smoke_g12", "probs": {"yes": 0.3703387975692749, "no": 0.6296612024307251}}
+{"id": "r_aa17ef443d5f", "model": "smoke_g12", "probs": {"yes": 0.9990699887275696, "no": 0.0009300520177930593}}
+{"id": "r_aa86f17dd7a0", "model": "smoke_g12", "probs": {"yes": 0.022628145292401314, "no": 0.977371871471405}}
+{"id": "r_aaf7b486ef54", "model": "smoke_g12", "probs": {"yes": 0.09353219717741013, "no": 0.9064677953720093}}
+{"id": "r_ab6c649045f6", "model": "smoke_g12", "probs": {"yes": 0.07545934617519379, "no": 0.924540638923645}}
+{"id": "r_ab7271a38eb6", "model": "smoke_g12", "probs": {"yes": 0.9986956715583801, "no": 0.0013043712824583054}}
+{"id": "r_ab8389a1f945", "model": "smoke_g12", "probs": {"yes": 0.002359552774578333, "no": 0.9976404905319214}}
+{"id": "r_abd30b68d6e4", "model": "smoke_g12", "probs": {"yes": 0.6173148155212402, "no": 0.3826851546764374}}
+{"id": "r_ac45c1a6bff4", "model": "smoke_g12", "probs": {"close account": 0.00011300264304736629, "failed transfer": 9.120946924667805e-05, "declined transfer": 2.658156881807372e-05, "transfer into account": 0.9986420273780823, "transfer not received by recipient": 7.649656618013978e-05, "cancel a transfer": 4.251661812304519e-05, "transfer fee": 0.000226173346163705, "balance not updated after transfer": 6.143367500044405e-05, "none of these": 0.0007205447182059288}}
+{"id": "r_ac83ee5cd632", "model": "smoke_g12", "probs": {"yes": 0.00019207250443287194, "no": 0.9998078942298889}}
+{"id": "r_acb81282251a", "model": "smoke_g12", "probs": {"yes": 0.010952632874250412, "no": 0.9890473484992981}}
+{"id": "r_acd68c54e1a5", "model": "smoke_g12", "probs": {"yes": 0.8390265703201294, "no": 0.160973459482193}}
+{"id": "r_ad32071bf42e", "model": "smoke_g12", "probs": {"yes": 0.03220035880804062, "no": 0.9677996635437012}}
+{"id": "r_adc19c1f3657", "model": "smoke_g12", "probs": {"check shopping list": 2.7502446755534038e-05, "set an alarm": 1.435170997865498e-05, "check meetings": 2.1745814592577517e-05, "update calendar": 2.9848856684111524e-06, "set a reminder": 3.892515906045446e-06, "check calendar": 1.6305821191053838e-05, "check reminders": 0.989339292049408, "check to-do list": 0.010145747102797031, "none of these": 0.00042817843495868146}}
+{"id": "r_ae3427de5fb6", "model": "smoke_g12", "probs": {"interest rate": 1.1618742973951157e-05, "account balance": 0.0015056808479130268, "money transfer": 5.511289600690361e-06, "minimum payment": 6.7028104240307584e-06, "bill amount owed": 0.9978567957878113, "spending history": 4.251537029631436e-05, "pay a bill": 0.00011679640738293529, "bill due date": 2.2900176190887578e-05, "none of these": 0.0004314584075473249}}
+{"id": "r_ae8f7487a3e3", "model": "smoke_g12", "probs": {"yes": 0.3876051902770996, "no": 0.6123947501182556}}
+{"id": "r_aedadad08d45", "model": "smoke_g12", "probs": {"set a reminder": 0.00043908797670155764, "set an alarm": 0.9993225336074829, "schedule a meeting": 1.026430709316628e-05, "check calendar": 4.406114840094233e-06, "set a timer": 9.756639656188781e-07, "smart home control": 2.7030253022530815e-06, "check reminders": 2.405708801234141e-05, "make a call": 1.998485458898358e-06, "none of these": 0.000193967527593486}}
+{"id": "r_af11b7af591b", "model": "smoke_g12", "probs": {"yes": 0.006093829404562712, "no": 0.9939061999320984}}
+{"id": "r_afe03b396b63", "model": "smoke_g12", "probs": {"assistant's name": 8.946382877184078e-05, "assistant's age": 2.5043476853170432e-05, "last car service": 7.033754627627786e-06, "rename assistant": 9.081009011424612e-06, "assistant's pets": 0.889597475528717, "who you work for": 0.00014351123536471277, "assistant's hobbies": 0.0024416055530309677, "set an alarm": 9.266842243960127e-05, "none of these": 0.10759403556585312}}
+{"id": "r_b0ab4cba093d", "model": "smoke_g12", "probs": {"yes": 0.18755695223808289, "no": 0.8124430775642395}}
+{"id": "r_b0b42a2357f7", "model": "smoke_g12", "probs": {"yes": 0.04948117211461067, "no": 0.950518786907196}}
+{"id": "r_b0e91f6bde7a", "model": "smoke_g12", "probs": {"make a call": 9.39662495511584e-05, "check shopping list": 1.9817754946416244e-05, "check to-do list": 0.000767710676882416, "check reminders": 1.2131381481594872e-05, "schedule a meeting": 1.744506516843103e-05, "check meetings": 0.629987895488739, "order checks": 0.0013700274284929037, "check calendar": 0.3670455813407898, "none of these": 0.0006853753584437072}}
+{"id": "r_b155e8ad17b0", "model": "smoke_g12", "probs": {"yes": 0.017752299085259438, "no": 0.9822477698326111}}
+{"id": "r_b3478c7676d6", "model": "smoke_g12", "probs": {"set an alarm": 0.0012253024615347385, "make a call": 7.858702156227082e-05, "set a reminder": 0.9972061514854431, "check reminders": 5.5465890909545124e-05, "schedule a meeting": 2.94755409413483e-06, "check calendar": 5.646879344567424e-06, "update calendar": 3.709614975377917e-05, "set a timer": 1.4331562852021307e-05, "none of these": 0.0013744202442467213}}
+{"id": "r_b35256c25e7a", "model": "smoke_g12", "probs": {"yes": 0.21766766905784607, "no": 0.7823323607444763}}
+{"id": "r_b414957890d9", "model": "smoke_g12", "probs": {"yes": 0.06189436465501785, "no": 0.9381056427955627}}
+{"id": "r_b47de6d03b1d", "model": "smoke_g12", "probs": {"yes": 0.39441460371017456, "no": 0.6055853962898254}}
+{"id": "r_b4a514afc953", "model": "smoke_g12", "probs": {"yes": 0.0653330534696579, "no": 0.9346669912338257}}
+{"id": "r_b4addfc2463a", "model": "smoke_g12", "probs": {"yes": 0.007712955586612225, "no": 0.9922870397567749}}
+{"id": "r_b53395063261", "model": "smoke_g12", "probs": {"food shelf life": 1.0132538591278717e-05, "card application status": 5.201175099500688e-06, "apply for new card": 6.4831547206267715e-06, "damaged card": 2.335311592105427e-06, "report lost card": 9.726295502332505e-07, "replacement card wait": 1.0747628948593047e-05, "card expiration date": 0.9997339844703674, "declined card": 8.512462954968214e-05, "none of these": 0.00014502520207315683}}
+{"id": "r_b5e330f0a73a", "model": "smoke_g12", "probs": {"yes": 0.48160192370414734, "no": 0.518398106098175}}
+{"id": "r_b5f337a2dc34", "model": "smoke_g12", "probs": {"yes": 0.5797294974327087, "no": 0.42027053236961365}}
+{"id": "r_b6467ca7306f", "model": "smoke_g12", "probs": {"yes": 0.8808766007423401, "no": 0.11912345141172409}}
+{"id": "r_b6c884e23cbe", "model": "smoke_g12", "probs": {"yes": 0.086146280169487, "no": 0.9138537645339966}}
+{"id": "r_b6cb04dd845e", "model": "smoke_g12", "probs": {"yes": 0.09502026438713074, "no": 0.9049797058105469}}
+{"id": "r_b740e30ba9f4", "model": "smoke_g12", "probs": {"yes": 0.2240276038646698, "no": 0.7759724259376526}}
+{"id": "r_b7a0d309e83d", "model": "smoke_g12", "probs": {"card about to expire": 1.482360403315397e-05, "card delivery estimate": 6.40445614408236e-06, "card top-up fee": 3.4792476526490645e-06, "get disposable virtual card": 0.00015548068040516227, "disposable card limits": 0.9996324777603149, "additional card": 1.9749117200262845e-05, "physical card PIN": 1.1861562597914599e-05, "card activation": 1.024290486384416e-05, "none of these": 0.0001454238808946684}}
+{"id": "r_b87c26f1de9f", "model": "smoke_g12", "probs": {"yes": 0.1438138633966446, "no": 0.8561861515045166}}
+{"id": "r_b8d94704b1ec", "model": "smoke_g12", "probs": {"yes": 0.9996676445007324, "no": 0.00033234182046726346}}
+{"id": "r_ba5387132932", "model": "smoke_g12", "probs": {"yes": 0.00724434619769454, "no": 0.9927557110786438}}
+{"id": "r_ba8136a232a0", "model": "smoke_g12", "probs": {"yes": 0.03667594864964485, "no": 0.9633240103721619}}
+{"id": "r_bb05fa37335d", "model": "smoke_g12", "probs": {"yes": 0.011408165097236633, "no": 0.9885918498039246}}
+{"id": "r_bb2c77cb1e12", "model": "smoke_g12", "probs": {"yes": 0.004683644976466894, "no": 0.9953163862228394}}
+{"id": "r_bb580785ff2a", "model": "smoke_g12", "probs": {"yes": 0.7213246822357178, "no": 0.27867525815963745}}
+{"id": "r_bb6812d582fd", "model": "smoke_g12", "probs": {"yes": 0.06853068619966507, "no": 0.9314693212509155}}
+{"id": "r_bc2904cab882", "model": "smoke_g12", "probs": {"who you work for": 4.792421168531291e-05, "set an alarm": 6.380103059200337e-06, "assistant's hobbies": 9.32035891310079e-06, "rename assistant": 4.477671154745622e-06, "assistant's name": 3.80523269996047e-05, "last car service": 1.428630366717698e-05, "assistant's age": 0.9980113506317139, "assistant's pets": 0.0003245543921366334, "none of these": 0.0015437295660376549}}
+{"id": "r_bc6196764ae9", "model": "smoke_g12", "probs": {"yes": 0.6234010457992554, "no": 0.37659892439842224}}
+{"id": "r_bd2d4394c600", "model": "smoke_g12", "probs": {"yes": 0.9032925963401794, "no": 0.09670745581388474}}
+{"id": "r_bd51e58e0dfc", "model": "smoke_g12", "probs": {"yes": 0.0405205637216568, "no": 0.9594794511795044}}
+{"id": "r_be9bc08b476f", "model": "smoke_g12", "probs": {"yes": 0.9208239912986755, "no": 0.07917596399784088}}
+{"id": "r_bf2a7e3e3824", "model": "smoke_g12", "probs": {"time-off balance": 7.25200834494899e-06, "translation": 1.886940844997298e-05, "greeting": 8.545048331143335e-05, "negative reply": 4.801987415703479e-06, "time off used": 7.619848361173354e-07, "next song": 3.5770963222603314e-06, "weather": 4.015187005279586e-05, "goodbye": 0.9983136653900146, "none of these": 0.0015254878671839833}}
+{"id": "r_bfd23b702ae1", "model": "smoke_g12", "probs": {"yes": 0.07375110685825348, "no": 0.9262488484382629}}
+{"id": "r_c02d72259929", "model": "smoke_g12", "probs": {"yes": 0.12517708539962769, "no": 0.8748229146003723}}
+{"id": "r_c05239a79ca2", "model": "smoke_g12", "probs": {"yes": 0.03402324020862579, "no": 0.9659767746925354}}
+{"id": "r_c0e0c0bf3605", "model": "smoke_g12", "probs": {"assistant's name": 0.0009062227327376604, "assistant's hobbies": 2.1490330254891887e-05, "change language": 8.34308684716234e-06, "change voice or accent": 7.869150067563169e-06, "rename assistant": 0.996032178401947, "assistant's pets": 1.877142676676158e-05, "assistant's age": 1.8661225112737156e-05, "change user's name": 0.0008311084238812327, "none of these": 0.0021553547121584415}}
+{"id": "r_c1ba60683d63", "model": "smoke_g12", "probs": {"yes": 0.05142487958073616, "no": 0.9485750794410706}}
+{"id": "r_c1c169f6da6f", "model": "smoke_g12", "probs": {"yes": 0.04272095113992691, "no": 0.9572790861129761}}
+{"id": "r_c1d5d8ef927a", "model": "smoke_g12", "probs": {"yes": 0.05524929612874985, "no": 0.9447507262229919}}
+{"id": "r_c2232e2004c2", "model": "smoke_g12", "probs": {"assistant's name": 0.0031099349725991488, "assistant's age": 1.7188029232784174e-05, "change user's name": 7.320495205931365e-05, "assistant's pets": 5.657307156070601e-06, "rename assistant": 0.9956985712051392, "assistant's hobbies": 5.37210462425719e-06, "change voice or accent": 1.576635258970782e-05, "change language": 7.484671186830383e-06, "none of these": 0.0010667812312021852}}
+{"id": "r_c2b27a219106", "model": "smoke_g12", "probs": {"yes": 0.6499692797660828, "no": 0.35003072023391724}}
+{"id": "r_c3259399215d", "model": "smoke_g12", "probs": {"yes": 0.3223859369754791, "no": 0.6776140332221985}}
+{"id": "r_c49262f948e2", "model": "smoke_g12", "probs": {"yes": 0.11234135925769806, "no": 0.8876586556434631}}
+{"id": "r_c550c81343d8", "model": "smoke_g12", "probs": {"recipe": 6.982723789406009e-06, "meal suggestion": 1.1099209586973302e-06, "rename assistant": 1.4640312429037294e-06, "translation": 2.501033975477185e-07, "ingredients list": 2.5774113510124153e-06, "ingredient substitution": 0.9997327923774719, "nutrition information": 4.2805422708624974e-05, "unit conversion": 7.265587555593811e-06, "none of these": 0.00020479524391703308}}
+{"id": "r_c5760a88812b", "model": "smoke_g12", "probs": {"yes": 0.02543279342353344, "no": 0.9745672345161438}}
+{"id": "r_c6016d6a5e11", "model": "smoke_g12", "probs": {"yes": 0.1473223716020584, "no": 0.852677583694458}}
+{"id": "r_c619c7413f8c", "model": "smoke_g12", "probs": {"yes": 0.35249078273773193, "no": 0.6475092172622681}}
+{"id": "r_c68f0d3122cc", "model": "smoke_g12", "probs": {"lost or stolen card": 0.0120853828266263, "failed transfer": 7.081886724336073e-05, "compromised card": 4.446379534783773e-05, "lost or stolen phone": 0.9853075742721558, "unrecognised card payment": 7.612089120812016e-06, "forgotten passcode": 7.073405868140981e-06, "card activation": 2.358303390792571e-05, "request a refund": 1.5459982023457997e-05, "none of these": 0.0024380118120461702}}
+{"id": "r_c7bc3e5f6f8c", "model": "smoke_g12", "probs": {"yes": 0.5938604474067688, "no": 0.4061394929885864}}
+{"id": "r_c8490a7ebed2", "model": "smoke_g12", "probs": {"reverted top-up": 0.3536432385444641, "automatic top-up": 0.0002567435149103403, "top-up limits": 1.5036845070426352e-05, "pending top-up": 1.3257446880743373e-05, "top up by card": 6.909162766532972e-05, "failed top-up": 0.5524779558181763, "card top-up fee": 0.00032002103398554027, "verify a top-up": 0.00020836046314798295, "none of these": 0.09299632161855698}}
+{"id": "r_c85afc2c9ecf", "model": "smoke_g12", "probs": {"travel suggestion": 0.00021693344751838595, "book a flight": 2.7037549443775788e-05, "travel advisory": 9.877986485662404e-06, "time zone": 9.013319868245162e-06, "travel time estimate": 0.9941500425338745, "traffic conditions": 0.0003829236375167966, "current time": 9.425653115613386e-05, "travel vaccines": 3.746867514564656e-05, "none of these": 0.005072486121207476}}
+{"id": "r_c8ea8f8fac22", "model": "smoke_g12", "probs": {"wrong cash amount received": 0.0004377634613774717, "unrecognised cash withdrawal": 0.04892256483435631, "pending cash withdrawal": 0.005646684672683477, "pending transfer": 5.8697693020803854e-05, "wrong rate on cash withdrawal": 1.2310030797380023e-05, "cash withdrawal fee": 7.683599687879905e-05, "declined cash withdrawal": 0.935495913028717, "pending card payment": 0.0018382432172074914, "none of these": 0.00751095125451684}}
+{"id": "r_c9988d97793a", "model": "smoke_g12", "probs": {"replacement card wait": 7.035851012915373e-05, "check shopping list": 1.3951798791822512e-05, "check to-do list": 3.8634639167867135e-06, "redeem rewards": 7.134826773835812e-07, "update playlist": 4.690958121500444e-06, "update shopping list": 0.9995909333229065, "update calendar": 8.784847159404308e-05, "update to-do list": 0.00010626716539263725, "none of these": 0.00012140245962655172}}
+{"id": "r_ca4d8bcdc7ed", "model": "smoke_g12", "probs": {"yes": 0.1281302273273468, "no": 0.8718698024749756}}
+{"id": "r_ca78939db86e", "model": "smoke_g12", "probs": {"yes": 0.0175300445407629, "no": 0.9824700355529785}}
+{"id": "r_cb6f82338e22", "model": "smoke_g12", "probs": {"set a timer": 0.9995977282524109, "set an alarm": 4.029379124403931e-05, "request time off": 3.419567065066076e-06, "current time": 5.667073992299265e-07, "time-off request status": 1.8311682481453317e-07, "set a reminder": 5.965460445622739e-07, "time-off balance": 7.516478603974974e-07, "time off used": 7.216789867925399e-07, "none of these": 0.00035573102650232613}}
+{"id": "r_cc0f1d7db63e", "model": "smoke_g12", "probs": {"yes": 0.8556556701660156, "no": 0.1443442702293396}}
+{"id": "r_cc3e9925c6f8", "model": "smoke_g12", "probs": {"yes": 0.11900580674409866, "no": 0.8809941411018372}}
+{"id": "r_cc4438955b1e", "model": "smoke_g12", "probs": {"yes": 0.9958315491676331, "no": 0.004168456885963678}}
+{"id": "r_cc85c8670822", "model": "smoke_g12", "probs": {"tell bank about travel": 0.00017986564489547163, "restaurant suggestion": 5.74215009692125e-05, "travel time estimate": 4.451481800060719e-05, "travel suggestion": 0.9980061650276184, "travel advisory": 3.541818659869023e-05, "book a hotel": 5.91141106269788e-05, "book a flight": 0.00027163358754478395, "travel vaccines": 6.913302058819681e-05, "none of these": 0.0012766841100528836}}
+{"id": "r_cc93cfc19dcd", "model": "smoke_g12", "probs": {"yes": 0.003720068372786045, "no": 0.9962798953056335}}
+{"id": "r_ce5f89dc6376", "model": "smoke_g12", "probs": {"yes": 0.031018037348985672, "no": 0.9689819812774658}}
+{"id": "r_ce69b482fad8", "model": "smoke_g12", "probs": {"yes": 0.8708604574203491, "no": 0.1291395127773285}}
+{"id": "r_cf47d6133c81", "model": "smoke_g12", "probs": {"yes": 0.046044375747442245, "no": 0.9539556503295898}}
+{"id": "r_cf4afe7e8e6d", "model": "smoke_g12", "probs": {"yes": 0.6293729543685913, "no": 0.3706270456314087}}
+{"id": "r_d0a64edf22b2", "model": "smoke_g12", "probs": {"yes": 0.46203356981277466, "no": 0.5379664897918701}}
+{"id": "r_d0def12b37d6", "model": "smoke_g12", "probs": {"yes": 0.2814542055130005, "no": 0.7185457944869995}}
+{"id": "r_d186e740c683", "model": "smoke_g12", "probs": {"yes": 0.26378458738327026, "no": 0.7362154126167297}}
+{"id": "r_d1aa5f960043", "model": "smoke_g12", "probs": {"wrong rate on card payment": 0.00020983458671253175, "wrong cash amount received": 0.0008415979100391269, "exchange rate": 0.0023368867114186287, "declined cash withdrawal": 5.347307251213351e-06, "cash withdrawal fee": 4.209624421491753e-06, "pending cash withdrawal": 1.4293114872998558e-05, "unrecognised cash withdrawal": 0.0004883971996605396, "wrong rate on cash withdrawal": 0.9958957433700562, "none of these": 0.00020377723558340222}}
+{"id": "r_d1c148b2d0d1", "model": "smoke_g12", "probs": {"yes": 0.806557834148407, "no": 0.19344212114810944}}
+{"id": "r_d1fc7922c2da", "model": "smoke_g12", "probs": {"yes": 0.004227097146213055, "no": 0.9957728981971741}}
+{"id": "r_d24b9471fb07", "model": "smoke_g12", "probs": {"yes": 0.045554086565971375, "no": 0.9544458985328674}}
+{"id": "r_d275f8e3b042", "model": "smoke_g12", "probs": {"yes": 6.675435543002095e-06, "no": 0.9999933242797852}}
+{"id": "r_d2b2894e8412", "model": "smoke_g12", "probs": {"yes": 0.015638170763850212, "no": 0.9843617677688599}}
+{"id": "r_d36183d924b0", "model": "smoke_g12", "probs": {"make a call": 3.5356042644707486e-05, "check reminders": 8.140926365740597e-05, "order checks": 1.033166245179018e-05, "schedule a meeting": 6.7398632381809875e-06, "check calendar": 0.788956880569458, "check to-do list": 4.0859871660359204e-05, "check shopping list": 0.00024909069179557264, "check meetings": 0.20963533222675323, "none of these": 0.000983971985988319}}
+{"id": "r_d4967f4ddbe1", "model": "smoke_g12", "probs": {"yes": 0.9783227443695068, "no": 0.02167721465229988}}
+{"id": "r_d4ab52af50e6", "model": "smoke_g12", "probs": {"yes": 0.49076712131500244, "no": 0.5092329382896423}}
+{"id": "r_d53d363feb9a", "model": "smoke_g12", "probs": {"damaged card": 3.342314357723808e-06, "recent transactions": 3.178396218572743e-05, "order checks": 2.1574003312707646e-06, "tell bank about travel": 2.0428593927590555e-07, "blocked account": 3.8621934095317556e-07, "declined card": 2.5015165192598943e-06, "report lost card": 3.540465695550665e-05, "report fraud": 0.9998812675476074, "none of these": 4.287364208721556e-05}}
+{"id": "r_d5564ebc83bf", "model": "smoke_g12", "probs": {"verify source of funds": 3.877879134961404e-05, "supported countries": 0.999409556388855, "fiat currency support": 3.983486021752469e-05, "ATM support": 6.408574336091988e-06, "Visa or Mastercard": 1.1768745480367215e-06, "card acceptance": 4.533080300461734e-06, "blocked PIN": 9.961921750800684e-05, "supported cards and currencies": 0.00023367948597297072, "none of these": 0.00016642794071231037}}
+{"id": "r_d55d7e96af55", "model": "smoke_g12", "probs": {"yes": 0.44223421812057495, "no": 0.557765781879425}}
+{"id": "r_d57a5858c650", "model": "smoke_g12", "probs": {"yes": 0.00039233980351127684, "no": 0.9996077418327332}}
+{"id": "r_d597c0ee9095", "model": "smoke_g12", "probs": {"yes": 0.8123776912689209, "no": 0.1876223385334015}}
+{"id": "r_d5a41fba92d7", "model": "smoke_g12", "probs": {"verify source of funds": 9.038748976308852e-05, "transfer into account": 4.8800589866004884e-05, "why verify identity": 0.00029303846531547606, "edit personal details": 5.303296347847208e-06, "card activation": 2.801159553200705e-06, "unable to verify identity": 6.0085541917942464e-05, "verify my identity": 0.9987700581550598, "close account": 0.00012418744154274464, "none of these": 0.0006053645047359169}}
+{"id": "r_d614d5b9373f", "model": "smoke_g12", "probs": {"yes": 0.9659742116928101, "no": 0.034025806933641434}}
+{"id": "r_d64a26fe2679", "model": "smoke_g12", "probs": {"yes": 0.7481324076652527, "no": 0.2518675923347473}}
+{"id": "r_d6852a44afbc", "model": "smoke_g12", "probs": {"yes": 0.03955433517694473, "no": 0.9604456424713135}}
+{"id": "r_d81eddbab63e", "model": "smoke_g12", "probs": {"yes": 0.08097176253795624, "no": 0.9190282821655273}}
+{"id": "r_d837fb53cdce", "model": "smoke_g12", "probs": {"assistant's pets": 0.00013557856436818838, "assistant's age": 3.125163493677974e-05, "restaurant suggestion": 2.3567416064906865e-05, "assistant's hobbies": 0.9987951517105103, "book a rideshare": 1.0956490768876392e-05, "assistant's name": 3.325779834995046e-05, "who you work for": 0.00013428226520773023, "rename assistant": 4.673167131841183e-05, "none of these": 0.0007892146822996438}}
+{"id": "r_d86483540e1a", "model": "smoke_g12", "probs": {"yes": 0.22882391512393951, "no": 0.7711760401725769}}
+{"id": "r_d8a08187802f", "model": "smoke_g12", "probs": {"yes": 0.9997634291648865, "no": 0.00023661945306230336}}
+{"id": "r_d8b329f4c901", "model": "smoke_g12", "probs": {"order physical card": 0.00011877704673679546, "compromised card": 0.00013009636313654482, "virtual card not working": 0.00015041913138702512, "disposable card limits": 6.919341831235215e-05, "get virtual card": 0.00288484338670969, "card activation": 2.743492768786382e-05, "physical card PIN": 0.0017031177412718534, "get disposable virtual card": 0.9669814109802246, "none of these": 0.02793470025062561}}
+{"id": "r_d94c50350127", "model": "smoke_g12", "probs": {"request time off": 0.9995236396789551, "time zone": 5.692208287655376e-05, "restaurant wait time": 4.926371730107348e-06, "time off used": 1.5465325304830913e-06, "set a timer": 2.613240326354571e-07, "time-off balance": 1.2037907026751782e-06, "time-off request status": 8.163908205460757e-06, "cooking time": 1.8172623867940274e-06, "none of these": 0.00040160276694223285}}
+{"id": "r_d990247e6159", "model": "smoke_g12", "probs": {"yes": 0.004708307795226574, "no": 0.9952917098999023}}
+{"id": "r_d9bd951919db", "model": "smoke_g12", "probs": {"restaurant wait time": 5.57294006284792e-05, "card application status": 0.0026714203413575888, "apply for new card": 3.619629569584504e-05, "card expiration date": 3.2489638215338346e-06, "damaged card": 9.56175699684536e-06, "replacement card wait": 0.9942973256111145, "report lost card": 0.0003622974327299744, "declined card": 7.530867151217535e-05, "none of these": 0.002488852944225073}}
+{"id": "r_d9e4bd5b66a7", "model": "smoke_g12", "probs": {"yes": 0.03390514478087425, "no": 0.9660947918891907}}
+{"id": "r_dad8cb766d8b", "model": "smoke_g12", "probs": {"pending top-up": 0.000279395462712273, "verify a top-up": 0.00011436269414843991, "top-up limits": 1.782653998816386e-05, "automatic top-up": 3.2694681522116298e-06, "top up by card": 6.356549420161173e-05, "failed top-up": 0.9980687499046326, "card top-up fee": 0.00025291010388173163, "reverted top-up": 0.0006349360919557512, "none of these": 0.0005650190869346261}}
+{"id": "r_db394a2c896f", "model": "smoke_g12", "probs": {"yes": 0.0005754456506110728, "no": 0.9994245767593384}}
+{"id": "r_dbdf143e9806", "model": "smoke_g12", "probs": {"yes": 0.04303696006536484, "no": 0.956963062286377}}
+{"id": "r_dc2873162b4d", "model": "smoke_g12", "probs": {"yes": 0.03449901193380356, "no": 0.9655010104179382}}
+{"id": "r_dcd5ca19417f", "model": "smoke_g12", "probs": {"update calendar": 1.2942437933816109e-05, "set a reminder": 3.572710556909442e-05, "set an alarm": 1.911136496346444e-05, "check to-do list": 0.0004620515392161906, "check meetings": 2.2621004518441623e-06, "check calendar": 6.472462700912729e-06, "check shopping list": 0.00011355524475220591, "check reminders": 0.9992538094520569, "none of these": 9.401141142006963e-05}}
+{"id": "r_dd10b3394f47", "model": "smoke_g12", "probs": {"pending transfer": 2.9569671823992394e-05, "cancel a transfer": 5.68448467674898e-06, "transfer into account": 2.3376358058158075e-06, "balance not updated after transfer": 2.375933399889618e-05, "transfer not received by recipient": 0.9997207522392273, "failed transfer": 0.00013370509259402752, "transfer fee": 1.5268615243257955e-05, "declined transfer": 1.9309256458655e-05, "none of these": 4.9519505409989506e-05}}
+{"id": "r_dd4b84ba1146", "model": "smoke_g12", "probs": {"yes": 6.452442903537303e-05, "no": 0.999935507774353}}
+{"id": "r_dd8286dfb410", "model": "smoke_g12", "probs": {"yes": 0.007286870386451483, "no": 0.9927131533622742}}
+{"id": "r_de57c55a99a0", "model": "smoke_g12", "probs": {"yes": 0.8268693685531616, "no": 0.1731305867433548}}
+{"id": "r_df3a9a606e35", "model": "smoke_g12", "probs": {"yes": 0.008521062321960926, "no": 0.9914789795875549}}
+{"id": "r_dfc44197e57f", "model": "smoke_g12", "probs": {"yes": 0.0060589490458369255, "no": 0.993941068649292}}
+{"id": "r_e0178fda9832", "model": "smoke_g12", "probs": {"yes": 0.9956986904144287, "no": 0.004301376640796661}}
+{"id": "r_e02401dcfe81", "model": "smoke_g12", "probs": {"yes": 0.1188952624797821, "no": 0.8811047673225403}}
+{"id": "r_e0be5a715c68", "model": "smoke_g12", "probs": {"transfer not received by recipient": 6.510532693937421e-05, "pending cash withdrawal": 1.246815827471437e-05, "pending card payment": 3.894490419042995e-06, "failed transfer": 1.353672473669576e-06, "declined transfer": 3.22448158840416e-07, "transfer fee": 1.9688964130182285e-06, "cancel a transfer": 1.9043283828068525e-05, "pending transfer": 0.9998476505279541, "none of these": 4.822352639166638e-05}}
+{"id": "r_e13b5017f833", "model": "smoke_g12", "probs": {"yes": 0.36791810393333435, "no": 0.632081925868988}}
+{"id": "r_e14ff674de0a", "model": "smoke_g12", "probs": {"pending card payment": 6.4805790316313505e-06, "card not working": 5.505170520336833e-06, "unrecognised card payment": 4.454007012100192e-06, "declined card payment": 2.7366174890630646e-06, "card payment fee": 4.558949910915544e-07, "wrong rate on card payment": 4.774484295921866e-06, "compromised card": 3.668050703709014e-05, "reverted card payment": 0.9998925924301147, "none of these": 4.6382749133044854e-05}}
+{"id": "r_e1537d38d5e8", "model": "smoke_g12", "probs": {"yes": 0.0020493234042078257, "no": 0.9979507327079773}}
+{"id": "r_e17a6bd0478a", "model": "smoke_g12", "probs": {"yes": 6.345202564261854e-05, "no": 0.999936580657959}}
+{"id": "r_e192fa962438", "model": "smoke_g12", "probs": {"yes": 0.9136778712272644, "no": 0.086322121322155}}
+{"id": "r_e1bbe7a4c17c", "model": "smoke_g12", "probs": {"wrong cash amount received": 6.328176095848903e-05, "unrecognised card payment": 0.00010949635179713368, "pending transfer": 4.794610049430048e-06, "declined cash withdrawal": 9.18168836960831e-07, "unrecognised cash withdrawal": 1.2036072803311981e-05, "unrecognised direct debit": 0.9994279742240906, "pending cash withdrawal": 0.00011408187128836289, "beneficiary not allowed": 6.851329089840874e-05, "none of these": 0.00019887031521648169}}
+{"id": "r_e1c152c35040", "model": "smoke_g12", "probs": {"yes": 0.04454859346151352, "no": 0.9554513692855835}}
+{"id": "r_e1e8bda4f193", "model": "smoke_g12", "probs": {"automatic top-up": 4.189322135061957e-05, "reverted top-up": 7.390521932393312e-05, "verify a top-up": 0.9990665316581726, "card top-up fee": 2.0689598386525176e-05, "failed top-up": 4.219794845994329e-06, "pending top-up": 1.0162554644921329e-05, "top up by card": 0.00011831428128061816, "top-up limits": 2.5794681278057396e-05, "none of these": 0.0006386154564097524}}
+{"id": "r_e2249ad0f6a7", "model": "smoke_g12", "probs": {"age requirement": 0.9981257319450378, "Visa or Mastercard": 5.1190461817895994e-05, "additional card": 1.7331527487840503e-05, "card acceptance": 5.634015451505547e-06, "card activation": 5.816642669742578e-07, "disposable card limits": 2.5532963263685815e-06, "beneficiary not allowed": 5.551475624088198e-05, "card about to expire": 1.1584903404582292e-05, "none of these": 0.001729891519062221}}
+{"id": "r_e276e586ede1", "model": "smoke_g12", "probs": {"yes": 0.07199717313051224, "no": 0.9280027747154236}}
+{"id": "r_e29658f74abc", "model": "smoke_g12", "probs": {"yes": 0.0005995373358018696, "no": 0.9994004964828491}}
+{"id": "r_e29fd0032197", "model": "smoke_g12", "probs": {"yes": 0.012333452701568604, "no": 0.9876666069030762}}
+{"id": "r_e2c3f283bbc5", "model": "smoke_g12", "probs": {"blocked PIN": 6.0604314057854936e-05, "forgotten passcode": 0.9991973042488098, "compromised card": 2.021385807893239e-05, "card activation": 5.0192907110613305e-06, "lost or stolen phone": 6.8054223447688855e-06, "lost or stolen card": 3.1892825063550845e-05, "unrecognised card payment": 7.931605068733916e-05, "physical card PIN": 1.0447720342199318e-05, "none of these": 0.0005883589619770646}}
+{"id": "r_e2ea24e4d728", "model": "smoke_g12", "probs": {"restaurant wait time": 2.1169906176510267e-05, "card expiration date": 5.496297944773687e-06, "meaning of life": 3.2422435651824344e-06, "recipe": 1.2408401062202756e-06, "meal suggestion": 8.283576789835934e-06, "food shelf life": 0.999468982219696, "nutrition information": 5.4007665312383324e-05, "cooking time": 2.2536280084750615e-05, "none of these": 0.0004150105523876846}}
+{"id": "r_e37b56e2afce", "model": "smoke_g12", "probs": {"yes": 0.32383057475090027, "no": 0.6761694550514221}}
+{"id": "r_e3ef2c2add4c", "model": "smoke_g12", "probs": {"yes": 0.9295023083686829, "no": 0.07049770653247833}}
+{"id": "r_e445cd615292", "model": "smoke_g12", "probs": {"yes": 0.9953990578651428, "no": 0.004600933287292719}}
+{"id": "r_e5713f72ec88", "model": "smoke_g12", "probs": {"assistant's age": 0.00022363293101079762, "restaurant suggestion": 0.00011823136446764693, "rename assistant": 0.00011477675434434786, "assistant's hobbies": 0.9986396431922913, "assistant's name": 9.23646948649548e-05, "assistant's pets": 7.837365410523489e-05, "book a rideshare": 8.789160347077996e-05, "who you work for": 8.356615580851212e-05, "none of these": 0.0005615834961645305}}
+{"id": "r_e578c5c48758", "model": "smoke_g12", "probs": {"yes": 0.003212818643078208, "no": 0.9967871904373169}}
+{"id": "r_e5b685e509e2", "model": "smoke_g12", "probs": {"affirmative reply": 0.00025604627444408834, "goodbye": 5.374438114813529e-05, "declined card": 0.00010240995470667258, "unsure reply": 1.3471840247802902e-05, "flip a coin": 7.3766527748375665e-06, "negative reply": 0.9992551207542419, "translation": 8.728475222596899e-05, "greeting": 2.6395582608529367e-05, "none of these": 0.0001981257228180766}}
+{"id": "r_e5be0ea08860", "model": "smoke_g12", "probs": {"yes": 0.022102652117609978, "no": 0.9778973460197449}}
+{"id": "r_e6e6785995d1", "model": "smoke_g12", "probs": {"failed transfer": 1.050543778546853e-05, "request a refund": 5.503350621438585e-06, "lost or stolen card": 3.30271250277292e-05, "compromised card": 1.9059161786572076e-06, "card activation": 5.631707153952448e-07, "forgotten passcode": 3.6556371924234554e-05, "lost or stolen phone": 0.9990389347076416, "unrecognised card payment": 0.0003553871065378189, "none of these": 0.0005177296116016805}}
+{"id": "r_e72f5061cdc6", "model": "smoke_g12", "probs": {"yes": 0.013255687430500984, "no": 0.9867442846298218}}
+{"id": "r_e73dab4ce773", "model": "smoke_g12", "probs": {"yes": 0.9990202188491821, "no": 0.000979808159172535}}
+{"id": "r_e7a582afce22", "model": "smoke_g12", "probs": {"yes": 0.7733855247497559, "no": 0.22661443054676056}}
+{"id": "r_e7babf096aa1", "model": "smoke_g12", "probs": {"yes": 0.9998993873596191, "no": 0.00010057071631308645}}
+{"id": "r_e7e7238f9412", "model": "smoke_g12", "probs": {"yes": 0.01860811561346054, "no": 0.9813918471336365}}
+{"id": "r_e88ff24b5146", "model": "smoke_g12", "probs": {"yes": 0.07185062766075134, "no": 0.9281493425369263}}
+{"id": "r_e8aa50cb6477", "model": "smoke_g12", "probs": {"yes": 0.7125865817070007, "no": 0.2874133586883545}}
+{"id": "r_e8c31ac7d5c2", "model": "smoke_g12", "probs": {"yes": 0.0902583971619606, "no": 0.9097415804862976}}
+{"id": "r_e8ec98c39593", "model": "smoke_g12", "probs": {"yes": 0.28884679079055786, "no": 0.7111532092094421}}
+{"id": "r_e92e12aaf33a", "model": "smoke_g12", "probs": {"declined cash withdrawal": 4.1986670112237334e-05, "wrong rate on card payment": 5.504283763002604e-05, "reverted card payment": 4.397078009787947e-05, "pending card payment": 5.285001407173695e-06, "declined transfer": 3.7863865145482123e-06, "unrecognised card payment": 3.4091193811036646e-05, "card payment fee": 0.0001387839438393712, "declined card payment": 0.9990410208702087, "none of these": 0.0006361040286719799}}
+{"id": "r_e95c4393ce0d", "model": "smoke_g12", "probs": {"unsure reply": 0.0001900528877740726, "where you are from": 0.9970370531082153, "translation": 3.5388417018111795e-05, "time zone": 5.524188054550905e-06, "greeting": 6.293845672189491e-06, "who you work for": 1.3318734090717044e-05, "what I can ask": 0.00030181935289874673, "current location": 0.0014118205290287733, "none of these": 0.0009987656958401203}}
+{"id": "r_e97eadec99dd", "model": "smoke_g12", "probs": {"yes": 0.07386128604412079, "no": 0.926138699054718}}
+{"id": "r_ea0fa1df84c8", "model": "smoke_g12", "probs": {"yes": 0.03565972298383713, "no": 0.9643402695655823}}
+{"id": "r_ea14b437963a", "model": "smoke_g12", "probs": {"yes": 0.19193071126937866, "no": 0.8080693483352661}}
+{"id": "r_ea79445d18b4", "model": "smoke_g12", "probs": {"pending transfer": 0.0020240459125488997, "failed top-up": 0.9065913558006287, "pending top-up": 0.05558149516582489, "automatic top-up": 1.4891053979226854e-05, "reverted top-up": 8.269515092251822e-05, "top-up limits": 1.6117352060973644e-05, "top up by card": 0.00046648120041936636, "verify a top-up": 0.0010241434210911393, "none of these": 0.034198835492134094}}
+{"id": "r_eb20fed06569", "model": "smoke_g12", "probs": {"yes": 0.8237671852111816, "no": 0.17623284459114075}}
+{"id": "r_eb61e7f8c2b3", "model": "smoke_g12", "probs": {"yes": 0.6603075861930847, "no": 0.3396924138069153}}
+{"id": "r_ec1c368db466", "model": "smoke_g12", "probs": {"yes": 0.2023671418428421, "no": 0.7976329326629639}}
+{"id": "r_ec37a3eb8b7b", "model": "smoke_g12", "probs": {"yes": 0.4055213928222656, "no": 0.5944786071777344}}
+{"id": "r_ecbbb5bc710b", "model": "smoke_g12", "probs": {"yes": 0.011702248826622963, "no": 0.9882977604866028}}
+{"id": "r_ece9825ea6bc", "model": "smoke_g12", "probs": {"yes": 0.03774438798427582, "no": 0.9622556567192078}}
+{"id": "r_ed12548b22b4", "model": "smoke_g12", "probs": {"yes": 0.01125814113765955, "no": 0.988741934299469}}
+{"id": "r_ed58d0eef7f5", "model": "smoke_g12", "probs": {"yes": 0.22754979133605957, "no": 0.7724501490592957}}
+{"id": "r_eeead5110184", "model": "smoke_g12", "probs": {"yes": 0.8162882924079895, "no": 0.18371173739433289}}
+{"id": "r_eef9ba6f1ed2", "model": "smoke_g12", "probs": {"yes": 0.0019660270772874355, "no": 0.9980339407920837}}
+{"id": "r_ef3946baee5d", "model": "smoke_g12", "probs": {"yes": 0.9987238049507141, "no": 0.0012761688558384776}}
+{"id": "r_ef7639b36920", "model": "smoke_g12", "probs": {"yes": 0.09503468871116638, "no": 0.9049652814865112}}
+{"id": "r_ef8db01ad2ae", "model": "smoke_g12", "probs": {"yes": 4.6644477151858155e-06, "no": 0.9999953508377075}}
+{"id": "r_efa55271130a", "model": "smoke_g12", "probs": {"yes": 0.10427138954401016, "no": 0.8957286477088928}}
+{"id": "r_efd03bcac574", "model": "smoke_g12", "probs": {"yes": 0.9996069073677063, "no": 0.0003931199898943305}}
+{"id": "r_efd4ab909652", "model": "smoke_g12", "probs": {"yes": 0.9898932576179504, "no": 0.010106702335178852}}
+{"id": "r_eff3f54f6031", "model": "smoke_g12", "probs": {"yes": 0.027473708614706993, "no": 0.9725262522697449}}
+{"id": "r_f015dace92a8", "model": "smoke_g12", "probs": {"yes": 0.0002769454731605947, "no": 0.9997230172157288}}
+{"id": "r_f022e5eb4098", "model": "smoke_g12", "probs": {"yes": 0.039555277675390244, "no": 0.9604447484016418}}
+{"id": "r_f06598203426", "model": "smoke_g12", "probs": {"yes": 0.016011016443371773, "no": 0.9839889407157898}}
+{"id": "r_f156c2d3877e", "model": "smoke_g12", "probs": {"spelling": 0.000729780993424356, "who you work for": 0.00012745882850140333, "tell a joke": 0.00014825099788140506, "what I can ask": 0.9847527146339417, "unsure reply": 5.6243712606374174e-05, "affirmative reply": 3.0431243430939503e-05, "make a call": 0.00020189072529319674, "where you are from": 6.540114554809406e-05, "none of these": 0.013887887820601463}}
+{"id": "r_f2007d9679eb", "model": "smoke_g12", "probs": {"check reminders": 3.058361107832752e-05, "check meetings": 0.004057826939970255, "set a reminder": 6.406547981896438e-06, "payday": 1.6606873032287695e-06, "check calendar": 0.9955732822418213, "check shopping list": 1.3061207937425934e-05, "update calendar": 6.23555897618644e-05, "today's date": 1.118209729611408e-05, "none of these": 0.00024367398873437196}}
+{"id": "r_f2dcf9c2dc50", "model": "smoke_g12", "probs": {"yes": 0.012168359942734241, "no": 0.9878316521644592}}
+{"id": "r_f34ce0dac61d", "model": "smoke_g12", "probs": {"yes": 0.6546791195869446, "no": 0.34532082080841064}}
+{"id": "r_f350fe053ce5", "model": "smoke_g12", "probs": {"yes": 0.09125801920890808, "no": 0.9087419509887695}}
+{"id": "r_f3b9378f2b57", "model": "smoke_g12", "probs": {"card top-up fee": 4.982015161658637e-05, "top up by card": 0.0018425023881718516, "failed top-up": 0.9953912496566772, "pending top-up": 5.466655784402974e-05, "verify a top-up": 4.750049811264034e-06, "automatic top-up": 7.489964900742052e-06, "top-up limits": 7.602276309626177e-05, "reverted top-up": 7.64168071327731e-05, "none of these": 0.002497069537639618}}
+{"id": "r_f44a53bef7a8", "model": "smoke_g12", "probs": {"set an alarm": 0.00020793515432160348, "assistant's age": 0.9978152513504028, "assistant's hobbies": 4.646497473004274e-05, "assistant's name": 8.052590419538319e-05, "rename assistant": 7.558299785159761e-06, "assistant's pets": 1.1637411262199748e-05, "last car service": 7.777998689562082e-05, "who you work for": 4.263154187356122e-05, "none of these": 0.0017101711127907038}}
+{"id": "r_f5fd6cc8a468", "model": "smoke_g12", "probs": {"yes": 0.033819783478975296, "no": 0.9661802649497986}}
+{"id": "r_f61e1bdf809f", "model": "smoke_g12", "probs": {"yes": 0.3367134630680084, "no": 0.6632865071296692}}
+{"id": "r_f68072e30d16", "model": "smoke_g12", "probs": {"next song": 0.00025007271324284375, "send a text": 0.00022087265097070485, "change volume": 0.00041240089922212064, "make a call": 2.261405643366743e-05, "change voice or accent": 1.236350362887606e-05, "whisper mode": 0.9950423240661621, "change speaking speed": 0.0004703378945123404, "connect to phone": 5.806864646729082e-05, "none of these": 0.003510991344228387}}
+{"id": "r_f7af837e1dac", "model": "smoke_g12", "probs": {"declined transfer": 0.00023775080626364797, "transfer not received by recipient": 0.006235186476260424, "transfer fee": 1.0685351298889145e-05, "cancel a transfer": 3.6704425383504713e-06, "transfer into account": 2.9116659788996913e-05, "pending transfer": 0.9910872578620911, "failed transfer": 0.000693378911819309, "balance not updated after transfer": 0.00013192830374464393, "none of these": 0.0015709882136434317}}
+{"id": "r_f84d43555715", "model": "smoke_g12", "probs": {"yes": 3.5477194160193903e-06, "no": 0.9999964237213135}}
+{"id": "r_f91507446227", "model": "smoke_g12", "probs": {"yes": 7.13471308699809e-05, "no": 0.9999285936355591}}
+{"id": "r_f9370f0de98c", "model": "smoke_g12", "probs": {"pending top-up": 0.00015573218115605414, "top up by card": 7.782396278344095e-05, "automatic top-up": 0.002083146944642067, "reverted top-up": 1.4059176464797929e-05, "failed top-up": 1.4624627510784194e-05, "top-up limits": 0.9948712587356567, "verify a top-up": 0.0017446825513616204, "cash or cheque top-up": 4.8252320993924513e-05, "none of these": 0.0009904723847284913}}
+{"id": "r_f9569472294c", "model": "smoke_g12", "probs": {"taxes": 2.6231731681036763e-05, "money transfer": 3.37455167027656e-05, "account balance": 4.927374902763404e-05, "spending history": 0.9990918636322021, "bill amount owed": 8.117524703266099e-05, "income": 4.822720802621916e-05, "bill due date": 8.750717825023457e-05, "pay a bill": 6.005568502587266e-05, "none of these": 0.0005219642189331353}}
+{"id": "r_f97a9b31bbde", "model": "smoke_g12", "probs": {"yes": 0.9972731471061707, "no": 0.002726832404732704}}
+{"id": "r_fa58c0d6386d", "model": "smoke_g12", "probs": {"yes": 0.008372912183403969, "no": 0.9916270971298218}}
+{"id": "r_faa636dfe474", "model": "smoke_g12", "probs": {"yes": 0.9976546764373779, "no": 0.002345349406823516}}
+{"id": "r_faa7b07fcc68", "model": "smoke_g12", "probs": {"declined transfer": 0.0010084890527650714, "transfer into account": 1.704187525319867e-05, "transfer not received by recipient": 1.5666135368519463e-05, "transfer fee": 1.492716933171323e-06, "pending transfer": 1.5157112102315295e-05, "cancel a transfer": 0.9983805418014526, "transfer timing": 7.253438525367528e-05, "failed transfer": 8.858490036800504e-05, "none of these": 0.0004005379742011428}}
+{"id": "r_fb44ab5c9921", "model": "smoke_g12", "probs": {"yes": 0.059959348291158676, "no": 0.940040647983551}}
+{"id": "r_fc016080ee48", "model": "smoke_g12", "probs": {"yes": 0.9987983703613281, "no": 0.001201634993776679}}
+{"id": "r_fc40eba3900a", "model": "smoke_g12", "probs": {"yes": 0.009479246102273464, "no": 0.990520715713501}}
+{"id": "r_fd6188baa10b", "model": "smoke_g12", "probs": {"yes": 0.005724554881453514, "no": 0.9942753911018372}}
+{"id": "r_ff8d82bf35bc", "model": "smoke_g12", "probs": {"transfer not received by recipient": 0.46999746561050415, "unrecognised direct debit": 0.0006802579155191779, "receiving money": 0.0005103216972202063, "declined cash withdrawal": 4.408792301546782e-05, "declined card payment": 8.747234824113548e-05, "beneficiary not allowed": 0.40785443782806396, "unable to verify identity": 0.000414209789596498, "unrecognised cash withdrawal": 0.00012109937233617529, "none of these": 0.12029071152210236}}

@@ -1,0 +1,64 @@
+{
+ "authored_by": "llm:claude:label-key-author",
+ "counts_by_kind": {
+  "level": 1,
+  "predicate": 1
+ },
+ "created": "2026-09-25",
+ "dataset": "civil",
+ "key_policy": "Choice key = natural 1-5 word English name of the label, fixed for every split, variant and model (DESIGN field rule 2, D8). Descriptions (D_*) and propositions (P_*) are authored separately per pool and never live in this file.",
+ "label_field": "toxicity (rater fraction q)",
+ "label_id_type": "predicate and scale ids defined here (the source has no label ids for them)",
+ "labels": [
+  {
+   "gold_rule": "R8/R12: 1[q >= 0.5], soft = q (= toxicity-4 levels 2-3)",
+   "key": "toxic",
+   "kind": "predicate",
+   "label_id": "toxic",
+   "note": "Q1 wording 'Would at least half of readers find this comment toxic?'; NEG is a complement only if q <= .2 or >= .8",
+   "parent": null,
+   "roles": [
+    "eval"
+   ],
+   "source_field": "toxicity"
+  },
+  {
+   "K": 4,
+   "construct": "how many readers would find the comment toxic (rater fraction)",
+   "key": "reader toxicity share",
+   "kind": "level",
+   "label_id": "toxicity-4",
+   "levels": [
+    {
+     "fixed_anchor": "almost none",
+     "level": 0,
+     "range": "[0.0, 0.2)"
+    },
+    {
+     "fixed_anchor": "some",
+     "level": 1,
+     "range": "[0.2, 0.5)"
+    },
+    {
+     "fixed_anchor": "most",
+     "level": 2,
+     "range": "[0.5, 0.8)"
+    },
+    {
+     "fixed_anchor": "nearly all",
+     "level": 3,
+     "range": "[0.8, 1.0]"
+    }
+   ],
+   "parent": null,
+   "roles": [
+    "eval"
+   ],
+   "rule": "DESIGN 3.3 civil Q4 (anchors fixed by the spec, review #19)",
+   "source_field": "toxicity (fraction of raters)"
+  }
+ ],
+ "n_labels": 2,
+ "schema_version": "od-keys-1.0",
+ "source": "google/civil_comments @ f2970eb3a55777454c94069077cc8d9b5866312d (test, streamed)"
+}

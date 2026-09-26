@@ -1,0 +1,41 @@
+{
+  "cfg": {
+    "recipe": "A3",
+    "epochs": 0.005,
+    "lr": 0.0001,
+    "batch": 16,
+    "lam": 0.5,
+    "r": 16,
+    "alpha": 32,
+    "dropout": 0.05,
+    "seed": 20260925,
+    "train_file": "train_v03.jsonl",
+    "rel_file": "train_v03_relations.jsonl",
+    "grad_ckpt": true,
+    "base": "Qwen/Qwen3-1.7B"
+  },
+  "rows": 34319,
+  "relations": 18076,
+  "steps": 11,
+  "minutes": 0.22,
+  "log": [
+    {
+      "step": 0,
+      "of": 11,
+      "loss": 3.2403,
+      "task": 3.2403,
+      "cons": 0.4368,
+      "lr": 9.797464868072488e-05,
+      "min": 0.04
+    },
+    {
+      "step": 10,
+      "of": 11,
+      "loss": 0.7988,
+      "task": 0.6894,
+      "cons": 0.2188,
+      "lr": 0.0,
+      "min": 0.2
+    }
+  ]
+}

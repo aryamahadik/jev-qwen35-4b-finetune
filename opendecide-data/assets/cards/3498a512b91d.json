@@ -1,0 +1,26 @@
+{
+ "key": "3498a512b91d",
+ "kind": "Online comment",
+ "instruction": "Is this comment toxic?",
+ "labels": [
+  "toxic",
+  "not toxic"
+ ],
+ "model": "qwen/qwen3-235b-a22b-2507",
+ "cards": {
+  "toxic": {
+   "definition": "A comment is toxic if it contains direct insults, threats, or hostile language targeting an individual or group based on identity, behavior, or opinions, including clear use of profanity or dehumanizing terms; borderline cases involving sarcasm or strong criticism are included only if they clearly aim to demean or belittle.",
+   "examples": [
+    "You're a complete idiot and shouldn't be allowed to speak online.",
+    "People like you deserve to suffer for holding such stupid views."
+   ]
+  },
+  "not toxic": {
+   "definition": "A comment is not toxic if it expresses disagreement, criticism, or strong opinion without personal attacks, threats, or abusive language; even if blunt or emotionally charged, it remains focused on ideas or actions rather than attacking the person.",
+   "examples": [
+    "I strongly disagree with your take on this policy\u2014it's poorly thought out.",
+    "That argument doesn't make sense given the data we have."
+   ]
+  }
+ }
+}

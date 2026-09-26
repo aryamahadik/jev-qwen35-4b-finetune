@@ -1,0 +1,115 @@
+✓ Initialized. View run at 
+https://modal.com/apps/mahadikarya3/main/ap-6EYrusJ7AAzqMIRz7iILno
+✓ Created objects.
+├── 🔨 Created mount 
+│   /Users/aryamahadik/Documents/jev/opendecide-data/lean/modal_od.py
+├── 🔨 Created mount 
+│   /Users/aryamahadik/Documents/jev/opendecide-data/lean/train.py
+├── 🔨 Created mount PythonPackage:decoder_io, PythonPackage:gliclass_io, 
+│   PythonPackage:train_decoder
+├── 🔨 Created mount /Users/aryamahadik/Documents/jev/opendecide-data/lean/data
+├── 🔨 Created function zeroshot.
+├── 🔨 Created function train_remote.
+├── 🔨 Created function train_gliclass_remote.
+├── 🔨 Created function latency_l4.
+└── 🔨 Created function eval_remote.
+`torch_dtype` is deprecated! Use `dtype` instead!
+
+[1ALoading checkpoint shards:   0%|          | 0/3 [00:00<?, ?it/s]
+[1ALoading checkpoint shards:  33%|███▎      | 1/3 [00:02<00:04,  2.39s/it]
+[1ALoading checkpoint shards:  67%|██████▋   | 2/3 [00:04<00:02,  2.47s/it]
+[1ALoading checkpoint shards: 100%|██████████| 3/3 [00:05<00:00,  1.67s/it]
+`use_cache=True` is incompatible with gradient checkpointing. Setting `use_cache=False`.
+{"step": 0, "of": 2145, "loss": 4.2268, "task": 4.2268, "cons": null, "lr": 1.8691588785046728e-06, "min": 0.03}
+{"step": 25, "of": 2145, "loss": 1.1513, "task": 1.1513, "cons": null, "lr": 2.5233644859813084e-05, "min": 0.31}
+{"step": 50, "of": 2145, "loss": 0.3827, "task": 0.3827, "cons": null, "lr": 4.85981308411215e-05, "min": 0.58}
+{"step": 75, "of": 2145, "loss": 0.5274, "task": 0.5274, "cons": null, "lr": 7.196261682242991e-05, "min": 0.87}
+{"step": 100, "of": 2145, "loss": 0.5344, "task": 0.5344, "cons": null, "lr": 9.532710280373832e-05, "min": 1.15}
+{"step": 125, "of": 2145, "loss": 0.334, "task": 0.334, "cons": null, "lr": 9.997855591348526e-05, "min": 1.44}
+{"step": 150, "of": 2145, "loss": 0.3656, "task": 0.3656, "cons": null, "lr": 9.98850337814529e-05, "min": 1.71}
+{"step": 175, "of": 2145, "loss": 0.4782, "task": 0.4782, "cons": null, "lr": 9.97174338753633e-05, "min": 1.99}
+{"step": 200, "of": 2145, "loss": 0.4827, "task": 0.4827, "cons": null, "lr": 9.947600507603368e-05, "min": 2.25}
+{"step": 225, "of": 2145, "loss": 0.3405, "task": 0.3405, "cons": null, "lr": 9.916110589796612e-05, "min": 2.53}
+{"step": 250, "of": 2145, "loss": 0.8541, "task": 0.8541, "cons": null, "lr": 9.877320395696431e-05, "min": 2.79}
+{"step": 275, "of": 2145, "loss": 0.3718, "task": 0.3718, "cons": null, "lr": 9.831287527573816e-05, "min": 3.08}
+{"step": 300, "of": 2145, "loss": 0.62, "task": 0.62, "cons": null, "lr": 9.778080342852735e-05, "min": 3.35}
+{"step": 325, "of": 2145, "loss": 0.4313, "task": 0.4313, "cons": null, "lr": 9.717777852601427e-05, "min": 3.62}
+{"step": 350, "of": 2145, "loss": 0.6745, "task": 0.6745, "cons": null, "lr": 9.650469604203326e-05, "min": 3.89}
+{"step": 375, "of": 2145, "loss": 0.4845, "task": 0.4845, "cons": null, "lr": 9.576255548381912e-05, "min": 4.14}
+{"step": 400, "of": 2145, "loss": 0.6128, "task": 0.6128, "cons": null, "lr": 9.495245890776875e-05, "min": 4.42}
+{"step": 425, "of": 2145, "loss": 0.8636, "task": 0.8636, "cons": null, "lr": 9.40756092829207e-05, "min": 4.7}
+{"step": 450, "of": 2145, "loss": 0.3316, "task": 0.3316, "cons": null, "lr": 9.313330870458227e-05, "min": 4.97}
+{"step": 475, "of": 2145, "loss": 0.3939, "task": 0.3939, "cons": null, "lr": 9.212695646075719e-05, "min": 5.23}
+{"step": 500, "of": 2145, "loss": 0.3935, "task": 0.3935, "cons": null, "lr": 9.105804695424504e-05, "min": 5.5}
+{"step": 525, "of": 2145, "loss": 0.3997, "task": 0.3997, "cons": null, "lr": 8.992816748349806e-05, "min": 5.77}
+{"step": 550, "of": 2145, "loss": 0.2799, "task": 0.2799, "cons": null, "lr": 8.87389958855307e-05, "min": 6.03}
+{"step": 575, "of": 2145, "loss": 0.4899, "task": 0.4899, "cons": null, "lr": 8.749229804438215e-05, "min": 6.3}
+{"step": 600, "of": 2145, "loss": 0.4937, "task": 0.4937, "cons": null, "lr": 8.618992526883171e-05, "min": 6.58}
+{"step": 625, "of": 2145, "loss": 0.2851, "task": 0.2851, "cons": null, "lr": 8.483381154326092e-05, "min": 6.85}
+{"step": 650, "of": 2145, "loss": 0.4294, "task": 0.4294, "cons": null, "lr": 8.342597065574492e-05, "min": 7.12}
+{"step": 675, "of": 2145, "loss": 0.2703, "task": 0.2703, "cons": null, "lr": 8.196849320763787e-05, "min": 7.39}
+{"step": 700, "of": 2145, "loss": 0.7511, "task": 0.7511, "cons": null, "lr": 8.046354350909269e-05, "min": 7.65}
+{"step": 725, "of": 2145, "loss": 0.3716, "task": 0.3716, "cons": null, "lr": 7.891335636512579e-05, "min": 7.94}
+{"step": 750, "of": 2145, "loss": 0.2743, "task": 0.2743, "cons": null, "lr": 7.732023375699873e-05, "min": 8.22}
+{"step": 775, "of": 2145, "loss": 0.4447, "task": 0.4447, "cons": null, "lr": 7.568654142384533e-05, "min": 8.5}
+{"step": 800, "of": 2145, "loss": 0.426, "task": 0.426, "cons": null, "lr": 7.401470534962035e-05, "min": 8.77}
+{"step": 825, "of": 2145, "loss": 0.4915, "task": 0.4915, "cons": null, "lr": 7.230720816058616e-05, "min": 9.06}
+{"step": 850, "of": 2145, "loss": 0.6073, "task": 0.6073, "cons": null, "lr": 7.05665854386876e-05, "min": 9.36}
+{"step": 875, "of": 2145, "loss": 0.2458, "task": 0.2458, "cons": null, "lr": 6.8795421956289e-05, "min": 9.64}
+{"step": 900, "of": 2145, "loss": 0.2207, "task": 0.2207, "cons": null, "lr": 6.699634783786499e-05, "min": 9.91}
+{"step": 925, "of": 2145, "loss": 0.6283, "task": 0.6283, "cons": null, "lr": 6.517203465434487e-05, "min": 10.18}
+{"step": 950, "of": 2145, "loss": 0.604, "task": 0.604, "cons": null, "lr": 6.332519145591012e-05, "min": 10.45}
+{"step": 975, "of": 2145, "loss": 0.3641, "task": 0.3641, "cons": null, "lr": 6.14585607491364e-05, "min": 10.73}
+{"step": 1000, "of": 2145, "loss": 0.236, "task": 0.236, "cons": null, "lr": 5.957491442445381e-05, "min": 11.0}
+{"step": 1025, "of": 2145, "loss": 0.3918, "task": 0.3918, "cons": null, "lr": 5.7677049639973044e-05, "min": 11.28}
+{"step": 1050, "of": 2145, "loss": 0.2746, "task": 0.2746, "cons": null, "lr": 5.576778466778974e-05, "min": 11.53}
+{"step": 1075, "of": 2145, "loss": 0.4735, "task": 0.4735, "cons": null, "lr": 5.384995470893521e-05, "min": 11.8}
+{"step": 1100, "of": 2145, "loss": 0.4749, "task": 0.4749, "cons": null, "lr": 5.192640768318827e-05, "min": 12.06}
+{"step": 1125, "of": 2145, "loss": 0.3323, "task": 0.3323, "cons": null, "lr": 5e-05, "min": 12.32}
+{"step": 1150, "of": 2145, "loss": 0.591, "task": 0.591, "cons": null, "lr": 4.8073592316811754e-05, "min": 12.58}
+{"step": 1175, "of": 2145, "loss": 0.354, "task": 0.354, "cons": null, "lr": 4.615004529106481e-05, "min": 12.85}
+{"step": 1200, "of": 2145, "loss": 0.4739, "task": 0.4739, "cons": null, "lr": 4.423221533221028e-05, "min": 13.11}
+{"step": 1225, "of": 2145, "loss": 0.2354, "task": 0.2354, "cons": null, "lr": 4.2322950360026974e-05, "min": 13.38}
+{"step": 1250, "of": 2145, "loss": 0.3089, "task": 0.3089, "cons": null, "lr": 4.042508557554621e-05, "min": 13.65}
+{"step": 1275, "of": 2145, "loss": 0.5156, "task": 0.5156, "cons": null, "lr": 3.854143925086362e-05, "min": 13.91}
+{"step": 1300, "of": 2145, "loss": 0.2386, "task": 0.2386, "cons": null, "lr": 3.66748085440899e-05, "min": 14.18}
+{"step": 1325, "of": 2145, "loss": 0.3265, "task": 0.3265, "cons": null, "lr": 3.482796534565514e-05, "min": 14.44}
+{"step": 1350, "of": 2145, "loss": 0.6272, "task": 0.6272, "cons": null, "lr": 3.300365216213503e-05, "min": 14.72}
+{"step": 1375, "of": 2145, "loss": 0.7406, "task": 0.7406, "cons": null, "lr": 3.1204578043711016e-05, "min": 14.99}
+{"step": 1400, "of": 2145, "loss": 0.2685, "task": 0.2685, "cons": null, "lr": 2.9433414561312407e-05, "min": 15.25}
+{"step": 1425, "of": 2145, "loss": 0.2328, "task": 0.2328, "cons": null, "lr": 2.7692791839413858e-05, "min": 15.54}
+{"step": 1450, "of": 2145, "loss": 0.2384, "task": 0.2384, "cons": null, "lr": 2.5985294650379666e-05, "min": 15.81}
+{"step": 1475, "of": 2145, "loss": 0.5548, "task": 0.5548, "cons": null, "lr": 2.431345857615468e-05, "min": 16.09}
+{"step": 1500, "of": 2145, "loss": 0.3044, "task": 0.3044, "cons": null, "lr": 2.2679766243001277e-05, "min": 16.36}
+{"step": 1525, "of": 2145, "loss": 0.2248, "task": 0.2248, "cons": null, "lr": 2.1086643634874216e-05, "min": 16.64}
+{"step": 1550, "of": 2145, "loss": 0.2496, "task": 0.2496, "cons": null, "lr": 1.9536456490907324e-05, "min": 16.91}
+{"step": 1575, "of": 2145, "loss": 0.3868, "task": 0.3868, "cons": null, "lr": 1.803150679236217e-05, "min": 17.18}
+{"step": 1600, "of": 2145, "loss": 0.258, "task": 0.258, "cons": null, "lr": 1.6574029344255095e-05, "min": 17.45}
+{"step": 1625, "of": 2145, "loss": 0.2294, "task": 0.2294, "cons": null, "lr": 1.5166188456739106e-05, "min": 17.74}
+{"step": 1650, "of": 2145, "loss": 0.2595, "task": 0.2595, "cons": null, "lr": 1.3810074731168294e-05, "min": 18.01}
+{"step": 1675, "of": 2145, "loss": 0.4119, "task": 0.4119, "cons": null, "lr": 1.2507701955617862e-05, "min": 18.29}
+{"step": 1700, "of": 2145, "loss": 0.2282, "task": 0.2282, "cons": null, "lr": 1.1261004114469315e-05, "min": 18.57}
+{"step": 1725, "of": 2145, "loss": 0.2389, "task": 0.2389, "cons": null, "lr": 1.0071832516501962e-05, "min": 18.82}
+{"step": 1750, "of": 2145, "loss": 0.2335, "task": 0.2335, "cons": null, "lr": 8.94195304575497e-06, "min": 19.1}
+{"step": 1775, "of": 2145, "loss": 0.2804, "task": 0.2804, "cons": null, "lr": 7.87304353924282e-06, "min": 19.37}
+{"step": 1800, "of": 2145, "loss": 0.3309, "task": 0.3309, "cons": null, "lr": 6.866691295417732e-06, "min": 19.63}
+{"step": 1825, "of": 2145, "loss": 0.2635, "task": 0.2635, "cons": null, "lr": 5.924390717079303e-06, "min": 19.91}
+{"step": 1850, "of": 2145, "loss": 0.4268, "task": 0.4268, "cons": null, "lr": 5.04754109223125e-06, "min": 20.18}
+{"step": 1875, "of": 2145, "loss": 0.2318, "task": 0.2318, "cons": null, "lr": 4.2374445161808885e-06, "min": 20.43}
+{"step": 1900, "of": 2145, "loss": 0.2267, "task": 0.2267, "cons": null, "lr": 3.4953039579667336e-06, "min": 20.7}
+{"step": 1925, "of": 2145, "loss": 0.2229, "task": 0.2229, "cons": null, "lr": 2.8222214739857423e-06, "min": 20.96}
+{"step": 1950, "of": 2145, "loss": 0.2203, "task": 0.2203, "cons": null, "lr": 2.219196571472648e-06, "min": 21.23}
+{"step": 1975, "of": 2145, "loss": 0.2762, "task": 0.2762, "cons": null, "lr": 1.6871247242618516e-06, "min": 21.49}
+{"step": 2000, "of": 2145, "loss": 0.3427, "task": 0.3427, "cons": null, "lr": 1.226796043035694e-06, "min": 21.77}
+{"step": 2025, "of": 2145, "loss": 0.4473, "task": 0.4473, "cons": null, "lr": 8.388941020338991e-07, "min": 22.04}
+{"step": 2050, "of": 2145, "loss": 0.4827, "task": 0.4827, "cons": null, "lr": 5.239949239663367e-07, "min": 22.3}
+{"step": 2075, "of": 2145, "loss": 0.2329, "task": 0.2329, "cons": null, "lr": 2.8256612463671286e-07, "min": 22.56}
+{"step": 2100, "of": 2145, "loss": 0.2623, "task": 0.2623, "cons": null, "lr": 1.1496621854710232e-07, "min": 22.85}
+{"step": 2125, "of": 2145, "loss": 0.2251, "task": 0.2251, "cons": null, "lr": 2.1444086514749162e-08, "min": 23.11}
+{"step": 2144, "of": 2145, "loss": 0.2429, "task": 0.2429, "cons": null, "lr": 0.0, "min": 23.31}
+wrote preds_dev/q4b_v03_A0.jsonl (600 rows)
+wrote preds_devzs/q4b_v03_A0.jsonl (800 rows)
+wrote preds/q4b_v03_A0.jsonl (1915 rows)
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/mahadikarya3/main/ap-6EYrusJ7AAzqMIRz7iILno

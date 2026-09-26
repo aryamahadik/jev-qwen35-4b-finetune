@@ -1,0 +1,42 @@
+{
+ "key": "84dab2619c10",
+ "kind": "News article",
+ "instruction": "Which label describes this message?",
+ "labels": [
+  "business",
+  "sports",
+  "world news",
+  "science and technology"
+ ],
+ "model": "qwen/qwen3-235b-a22b-2507",
+ "cards": {
+  "business": {
+   "definition": "Covers topics related to companies, markets, finance, the economy, and commercial activities, focusing on economic impact rather than scientific innovation or sports events.",
+   "examples": [
+    "Apple reports record quarterly profits driven by strong iPhone sales in Asia.",
+    "The Federal Reserve announces an interest rate hike to combat inflation."
+   ]
+  },
+  "sports": {
+   "definition": "Focuses on athletic competitions, teams, players, and related events, excluding general health or scientific aspects of exercise.",
+   "examples": [
+    "Lionel Messi scores winning goal as Inter Miami claims MLS Cup.",
+    "The US women's soccer team advances to the World Cup final after penalty shootout victory."
+   ]
+  },
+  "world news": {
+   "definition": "Reports on significant international events, politics, conflicts, and diplomacy, especially those with broad societal or geopolitical impact beyond business or science.",
+   "examples": [
+    "Ceasefire agreement reached between Israel and Hamas after weeks of negotiations.",
+    "Protests erupt in France over proposed pension reform legislation."
+   ]
+  },
+  "science and technology": {
+   "definition": "Covers discoveries, innovations, and research in science, engineering, computing, and technology, emphasizing new knowledge or technical advancement rather than commercial use or athletic performance.",
+   "examples": [
+    "NASA's James Webb Space Telescope detects water vapor in atmosphere of distant exoplanet.",
+    "Researchers develop AI model that predicts protein folding with unprecedented accuracy."
+   ]
+  }
+ }
+}

@@ -1,0 +1,600 @@
+{"id": "r_008e50d49905", "model": "q4b_v05_A3", "probs": {"wrong rate on card payment": 0.006773748900741339, "reverted card payment": 0.00788032729178667, "pending card payment": 0.006891702301800251, "declined card payment": 0.9253471493721008, "card payment fee": 0.007086125668138266, "declined cash withdrawal": 0.006280192639678717, "unrecognised card payment": 0.006565104704350233, "declined transfer": 0.007748157251626253, "none of these": 0.02542746067047119}}
+{"id": "r_00c7204843cc", "model": "q4b_v05_A3", "probs": {"yes": 0.683073103427887, "no": 0.31692683696746826}}
+{"id": "r_01834276cd10", "model": "q4b_v05_A3", "probs": {"factory reset": 0.005382263567298651, "fuel economy": 0.005009200889617205, "car rental": 0.003447507740929723, "book a flight": 0.003852271940559149, "schedule car service": 0.00743057718500495, "book a rideshare": 0.004692246671766043, "last car service": 0.004870990756899118, "jump-start a car": 0.9523659944534302, "none of these": 0.012949039228260517}}
+{"id": "r_01d81b2ee139", "model": "q4b_v05_A3", "probs": {"goodbye": 0.014422803185880184, "today's date": 0.009649631567299366, "spelling": 0.00791165605187416, "negative reply": 0.006496806629002094, "affirmative reply": 0.015720359981060028, "greeting": 0.8175084590911865, "translation": 0.02265038527548313, "who you work for": 0.01628241129219532, "none of these": 0.089357390999794}}
+{"id": "r_01ec33675f08", "model": "q4b_v05_A3", "probs": {"yes": 0.9485135078430176, "no": 0.05148651823401451}}
+{"id": "r_02513a748fd7", "model": "q4b_v05_A3", "probs": {"yes": 0.9429908394813538, "no": 0.05700911954045296}}
+{"id": "r_036ea81e8e0a", "model": "q4b_v05_A3", "probs": {"yes": 0.8165578246116638, "no": 0.183442160487175}}
+{"id": "r_03f051ffbbc4", "model": "q4b_v05_A3", "probs": {"yes": 0.05282127484679222, "no": 0.9471787214279175}}
+{"id": "r_04265150f9f1", "model": "q4b_v05_A3", "probs": {"yes": 0.9522626996040344, "no": 0.04773725941777229}}
+{"id": "r_04756bae9999", "model": "q4b_v05_A3", "probs": {"yes": 0.045096855610609055, "no": 0.9549031257629395}}
+{"id": "r_049e21fa90db", "model": "q4b_v05_A3", "probs": {"request a refund": 0.005967453122138977, "close account": 0.9649492502212524, "edit personal details": 0.005227948073297739, "unable to verify identity": 0.0032594427466392517, "cash withdrawal fee": 0.0029141984414309263, "cancel a transfer": 0.0035382770001888275, "verify my identity": 0.003844222752377391, "transfer into account": 0.0032278101425617933, "none of these": 0.007071423809975386}}
+{"id": "r_05a8add09377", "model": "q4b_v05_A3", "probs": {"yes": 0.9512819647789001, "no": 0.04871801286935806}}
+{"id": "r_05ec127d7e0c", "model": "q4b_v05_A3", "probs": {"yes": 0.047510601580142975, "no": 0.9524893760681152}}
+{"id": "r_0799f63cc76a", "model": "q4b_v05_A3", "probs": {"yes": 0.8974970579147339, "no": 0.10250290483236313}}
+{"id": "r_08532929de25", "model": "q4b_v05_A3", "probs": {"thanks": 0.004797999747097492, "repeat that": 0.942974328994751, "spelling": 0.00639682961627841, "affirmative reply": 0.004013863392174244, "carry-on rules": 0.004207214806228876, "fun fact": 0.01842358149588108, "tell a joke": 0.007139691151678562, "assistant's hobbies": 0.004061328712850809, "none of these": 0.007985224016010761}}
+{"id": "r_08a029e1ee25", "model": "q4b_v05_A3", "probs": {"yes": 0.9447130560874939, "no": 0.05528688058257103}}
+{"id": "r_09176763ead8", "model": "q4b_v05_A3", "probs": {"yes": 0.9528748393058777, "no": 0.047125108540058136}}
+{"id": "r_09614bca9794", "model": "q4b_v05_A3", "probs": {"yes": 0.9390429854393005, "no": 0.060957059264183044}}
+{"id": "r_09a8fec0f2be", "model": "q4b_v05_A3", "probs": {"yes": 0.04783112183213234, "no": 0.952168881893158}}
+{"id": "r_09edc5123495", "model": "q4b_v05_A3", "probs": {"yes": 0.9404910206794739, "no": 0.0595090389251709}}
+{"id": "r_0a6c84c67abb", "model": "q4b_v05_A3", "probs": {"yes": 0.05079155042767525, "no": 0.9492084383964539}}
+{"id": "r_0ab957646196", "model": "q4b_v05_A3", "probs": {"yes": 0.04792850464582443, "no": 0.9520715475082397}}
+{"id": "r_0b3dbd92fe75", "model": "q4b_v05_A3", "probs": {"yes": 0.050294406712055206, "no": 0.9497056007385254}}
+{"id": "r_0b9b3f6163b7", "model": "q4b_v05_A3", "probs": {"unrecognised cash withdrawal": 0.006435193121433258, "balance not updated after transfer": 0.9169162511825562, "wrong rate on cash withdrawal": 0.005439251661300659, "reverted card payment": 0.004366270266473293, "wrong cash amount received": 0.00531846284866333, "wrong rate on card payment": 0.004286390729248524, "refund not showing": 0.008175880648195744, "balance not updated after deposit": 0.02030511200428009, "none of these": 0.02875709906220436}}
+{"id": "r_0c0614583a05", "model": "q4b_v05_A3", "probs": {"yes": 0.9586129188537598, "no": 0.04138706251978874}}
+{"id": "r_0c187b435c8e", "model": "q4b_v05_A3", "probs": {"yes": 0.0482013076543808, "no": 0.951798677444458}}
+{"id": "r_0cfdc30b2e1e", "model": "q4b_v05_A3", "probs": {"yes": 0.07650666683912277, "no": 0.9234933257102966}}
+{"id": "r_0d7b3567bf75", "model": "q4b_v05_A3", "probs": {"exchange rate": 0.003673464758321643, "roll dice": 0.0040140217170119286, "unsure reply": 0.004523987881839275, "flip a coin": 0.9682583808898926, "negative reply": 0.0030598107259720564, "money transfer": 0.003428149502724409, "pay a bill": 0.002976383315399289, "affirmative reply": 0.0038270624354481697, "none of these": 0.006238746456801891}}
+{"id": "r_0e1449d5c5f2", "model": "q4b_v05_A3", "probs": {"yes": 0.9465233087539673, "no": 0.05347670242190361}}
+{"id": "r_0e1d0f5e035f", "model": "q4b_v05_A3", "probs": {"yes": 0.9437347650527954, "no": 0.05626530572772026}}
+{"id": "r_0e3acafbc159", "model": "q4b_v05_A3", "probs": {"yes": 0.9380645751953125, "no": 0.06193535402417183}}
+{"id": "r_0e82ef1d6aa0", "model": "q4b_v05_A3", "probs": {"yes": 0.9287142753601074, "no": 0.07128576934337616}}
+{"id": "r_0f5e12862ff1", "model": "q4b_v05_A3", "probs": {"yes": 0.05346835404634476, "no": 0.9465315937995911}}
+{"id": "r_0f8c602a2253", "model": "q4b_v05_A3", "probs": {"yes": 0.9524347186088562, "no": 0.0475652739405632}}
+{"id": "r_0fe2b430350b", "model": "q4b_v05_A3", "probs": {"yes": 0.9478926062583923, "no": 0.05210740119218826}}
+{"id": "r_1074c2d98c8a", "model": "q4b_v05_A3", "probs": {"yes": 0.9370197057723999, "no": 0.0629802867770195}}
+{"id": "r_1087230cf75c", "model": "q4b_v05_A3", "probs": {"yes": 0.04544168710708618, "no": 0.9545583128929138}}
+{"id": "r_113e980e5e60", "model": "q4b_v05_A3", "probs": {"change PIN": 0.005492337513715029, "roll dice": 0.0038470965810120106, "connect to phone": 0.003796761389821768, "car rental": 0.006444862112402916, "plug type": 0.9472015500068665, "fuel type": 0.005984507966786623, "payday": 0.0034475154243409634, "ingredient substitution": 0.004437530878931284, "none of these": 0.019347894936800003}}
+{"id": "r_11ed0951165a", "model": "q4b_v05_A3", "probs": {"yes": 0.05165943503379822, "no": 0.9483405351638794}}
+{"id": "r_128e67dc770c", "model": "q4b_v05_A3", "probs": {"yes": 0.04934951290488243, "no": 0.9506504535675049}}
+{"id": "r_134519eee387", "model": "q4b_v05_A3", "probs": {"yes": 0.9492118954658508, "no": 0.05078805238008499}}
+{"id": "r_148e0a79dbf8", "model": "q4b_v05_A3", "probs": {"credit score": 0.005806082393974066, "time-off balance": 0.006859535817056894, "rewards balance": 0.9251666069030762, "pay a bill": 0.005085280165076256, "account balance": 0.006751301698386669, "redeem rewards": 0.0061750453896820545, "accepts reservations": 0.005403663497418165, "payday": 0.0077716573141515255, "none of these": 0.030980734154582024}}
+{"id": "r_14d8ec4895e9", "model": "q4b_v05_A3", "probs": {"where you are from": 0.007496736943721771, "goodbye": 0.003757019992917776, "change language": 0.004739875439554453, "spelling": 0.0030334594193845987, "affirmative reply": 0.0042231325060129166, "greeting": 0.10234308987855911, "translation": 0.8618255257606506, "recipe": 0.005209687631577253, "none of these": 0.007371449843049049}}
+{"id": "r_14d9daa44300", "model": "q4b_v05_A3", "probs": {"yes": 0.0885322093963623, "no": 0.9114677906036377}}
+{"id": "r_152b683322b0", "model": "q4b_v05_A3", "probs": {"car rental": 0.9616625308990479, "schedule car service": 0.012703523971140385, "share location": 0.0042930301278829575, "direct deposit": 0.002796838991343975, "fuel economy": 0.0029852287843823433, "book a hotel": 0.002848503179848194, "book a rideshare": 0.0030790180899202824, "last car service": 0.003304904792457819, "none of these": 0.006326483096927404}}
+{"id": "r_157ca44c409d", "model": "q4b_v05_A3", "probs": {"yes": 0.045885033905506134, "no": 0.9541149139404297}}
+{"id": "r_15ed543b52a9", "model": "q4b_v05_A3", "probs": {"yes": 0.9516737461090088, "no": 0.048326246440410614}}
+{"id": "r_15f19839ed7c", "model": "q4b_v05_A3", "probs": {"yes": 0.04810531809926033, "no": 0.9518947005271912}}
+{"id": "r_1638a6a52a8a", "model": "q4b_v05_A3", "probs": {"change PIN": 0.004770338069647551, "declined card": 0.004427339881658554, "card expiration date": 0.003599789459258318, "card application status": 0.0052664983086287975, "damaged card": 0.9539416432380676, "replacement card wait": 0.005049525294452906, "report lost card": 0.00493006082251668, "apply for new card": 0.004895297344774008, "none of these": 0.013119525276124477}}
+{"id": "r_16760fca09c7", "model": "q4b_v05_A3", "probs": {"yes": 0.9394868016242981, "no": 0.060513172298669815}}
+{"id": "r_16f04fb13e24", "model": "q4b_v05_A3", "probs": {"get disposable virtual card": 0.004707523621618748, "physical card PIN": 0.004132333677262068, "card acceptance": 0.0034856926649808884, "card arrival": 0.004224411211907864, "additional card": 0.003122820984572172, "card activation": 0.0037656810600310564, "card about to expire": 0.00470611359924078, "order physical card": 0.9629475474357605, "none of these": 0.008907856419682503}}
+{"id": "r_176208086d8c", "model": "q4b_v05_A3", "probs": {"yes": 0.0476352721452713, "no": 0.9523648023605347}}
+{"id": "r_1817912ff3f8", "model": "q4b_v05_A3", "probs": {"transfer into account": 0.005721537861973047, "transfer not received by recipient": 0.007477786857634783, "cancel a transfer": 0.9393479228019714, "pending transfer": 0.007283965591341257, "transfer fee": 0.005719104781746864, "declined transfer": 0.005171562545001507, "transfer timing": 0.0073103271424770355, "failed transfer": 0.007493834942579269, "none of these": 0.014474020339548588}}
+{"id": "r_18b15a9f8d76", "model": "q4b_v05_A3", "probs": {"yes": 0.952046275138855, "no": 0.04795375093817711}}
+{"id": "r_18ed897d66ef", "model": "q4b_v05_A3", "probs": {"yes": 0.047420963644981384, "no": 0.9525790214538574}}
+{"id": "r_19e31d4e3a53", "model": "q4b_v05_A3", "probs": {"yes": 0.9417984485626221, "no": 0.05820160359144211}}
+{"id": "r_1a9897725e6b", "model": "q4b_v05_A3", "probs": {"yes": 0.9371774792671204, "no": 0.06282255053520203}}
+{"id": "r_1ac143b85a45", "model": "q4b_v05_A3", "probs": {"yes": 0.9560565948486328, "no": 0.0439433827996254}}
+{"id": "r_1b722cbb74d5", "model": "q4b_v05_A3", "probs": {"yes": 0.04696623608469963, "no": 0.9530337452888489}}
+{"id": "r_1c31a4547272", "model": "q4b_v05_A3", "probs": {"yes": 0.04982953891158104, "no": 0.9501703977584839}}
+{"id": "r_1c4106c13d6a", "model": "q4b_v05_A3", "probs": {"credit limit": 0.005254752468317747, "bill amount owed": 0.00475193839520216, "time-off balance": 0.003333466360345483, "spending history": 0.003991714678704739, "money transfer": 0.002554870443418622, "rewards balance": 0.0034191368613392115, "freeze account": 0.004045197740197182, "account balance": 0.9657211303710938, "none of these": 0.006927771493792534}}
+{"id": "r_1c8a202b9896", "model": "q4b_v05_A3", "probs": {"declined transfer": 0.005503383465111256, "wrong rate on card payment": 0.005258065182715654, "unrecognised card payment": 0.004478112328797579, "reverted card payment": 0.004261872731149197, "pending card payment": 0.008150245063006878, "declined card payment": 0.9509438872337341, "card payment fee": 0.006758840288966894, "declined cash withdrawal": 0.005209227092564106, "none of these": 0.009436370804905891}}
+{"id": "r_1c8ed09ed9d8", "model": "q4b_v05_A3", "probs": {"yes": 0.9510861039161682, "no": 0.04891391843557358}}
+{"id": "r_1cada935a062", "model": "q4b_v05_A3", "probs": {"assistant's hobbies": 0.006601307541131973, "thanks": 0.004638318903744221, "repeat that": 0.003589972387999296, "affirmative reply": 0.0029778783209621906, "carry-on rules": 0.003106361487880349, "spelling": 0.0038233755622059107, "tell a joke": 0.004356337245553732, "fun fact": 0.9519936442375183, "none of these": 0.018912820145487785}}
+{"id": "r_1cb2be5d5189", "model": "q4b_v05_A3", "probs": {"yes": 0.9518843293190002, "no": 0.04811571538448334}}
+{"id": "r_1d7f120ea863", "model": "q4b_v05_A3", "probs": {"declined cash withdrawal": 0.007169557269662619, "reverted card payment": 0.006444437894970179, "declined transfer": 0.004395114723592997, "card payment fee": 0.004239748232066631, "pending card payment": 0.0037857701536267996, "wrong rate on card payment": 0.0039259567856788635, "unrecognised card payment": 0.0037126741372048855, "declined card payment": 0.9572287201881409, "none of these": 0.009097973816096783}}
+{"id": "r_1db559bb5f86", "model": "q4b_v05_A3", "probs": {"yes": 0.04779594764113426, "no": 0.9522040486335754}}
+{"id": "r_1dbaf4f79b05", "model": "q4b_v05_A3", "probs": {"yes": 0.06133294105529785, "no": 0.9386669993400574}}
+{"id": "r_1dfd5cbb8f30", "model": "q4b_v05_A3", "probs": {"how to change oil": 0.0042433179914951324, "change PIN": 0.0031636708881706, "cooking time": 0.0028500379994511604, "fuel level": 0.003038633381947875, "change language": 0.004317467100918293, "when to change oil": 0.9692971706390381, "change insurance": 0.0040281121619045734, "when to replace tires": 0.0035293330438435078, "none of these": 0.005532356444746256}}
+{"id": "r_1e2034d77377", "model": "q4b_v05_A3", "probs": {"minimum payment": 0.004260496702045202, "bill amount owed": 0.9596865773200989, "pay a bill": 0.005988024640828371, "account balance": 0.004157549701631069, "bill due date": 0.0035860147327184677, "money transfer": 0.0026464369148015976, "interest rate": 0.003694223240017891, "spending history": 0.003472547046840191, "none of these": 0.012508164159953594}}
+{"id": "r_1e5ad157be60", "model": "q4b_v05_A3", "probs": {"yes": 0.051728952676057816, "no": 0.9482710957527161}}
+{"id": "r_1ed74f33f098", "model": "q4b_v05_A3", "probs": {"find my phone": 0.0042843944393098354, "travel advisory": 0.0033399753738194704, "direct deposit": 0.0026998515240848064, "book a hotel": 0.0033845449797809124, "share location": 0.9611733555793762, "car rental": 0.004703454207628965, "travel suggestion": 0.003642525291070342, "current location": 0.006993425078690052, "none of these": 0.009778397157788277}}
+{"id": "r_1ee3a32c8875", "model": "q4b_v05_A3", "probs": {"yes": 0.9042947292327881, "no": 0.09570526331663132}}
+{"id": "r_20301f06cb0b", "model": "q4b_v05_A3", "probs": {"yes": 0.9546800851821899, "no": 0.04531989246606827}}
+{"id": "r_208b8ac6d943", "model": "q4b_v05_A3", "probs": {"yes": 0.9538606405258179, "no": 0.04613938927650452}}
+{"id": "r_21ece51a5af4", "model": "q4b_v05_A3", "probs": {"yes": 0.9489631056785583, "no": 0.05103684961795807}}
+{"id": "r_22894af2279b", "model": "q4b_v05_A3", "probs": {"yes": 0.8720324039459229, "no": 0.12796762585639954}}
+{"id": "r_22c418b5e6c7", "model": "q4b_v05_A3", "probs": {"food shelf life": 0.9701363444328308, "restaurant wait time": 0.0045487722381949425, "meal suggestion": 0.004082893952727318, "meaning of life": 0.002730258973315358, "nutrition information": 0.0037655048072338104, "card expiration date": 0.0027089575305581093, "recipe": 0.002130531705915928, "cooking time": 0.0029925007838755846, "none of these": 0.006904258858412504}}
+{"id": "r_22e149c04903", "model": "q4b_v05_A3", "probs": {"yes": 0.05850853770971298, "no": 0.9414914846420288}}
+{"id": "r_2336359d930d", "model": "q4b_v05_A3", "probs": {"yes": 0.09693378955125809, "no": 0.9030661582946777}}
+{"id": "r_235b94041644", "model": "q4b_v05_A3", "probs": {"payday": 0.0038461077492684126, "check calendar": 0.00745043670758605, "next holiday": 0.9660679697990417, "bill due date": 0.004252071026712656, "update calendar": 0.0028006788343191147, "today's date": 0.0028449923265725374, "next song": 0.003061516210436821, "current time": 0.0038074920885264874, "none of these": 0.005868653301149607}}
+{"id": "r_2371897218fa", "model": "q4b_v05_A3", "probs": {"yes": 0.06536281853914261, "no": 0.934637188911438}}
+{"id": "r_23f62faebc1d", "model": "q4b_v05_A3", "probs": {"yes": 0.061820320785045624, "no": 0.9381796717643738}}
+{"id": "r_24055f6a73fb", "model": "q4b_v05_A3", "probs": {"yes": 0.04368070140480995, "no": 0.956319272518158}}
+{"id": "r_24536f19a4f0", "model": "q4b_v05_A3", "probs": {"yes": 0.14439094066619873, "no": 0.855609118938446}}
+{"id": "r_24c620282535", "model": "q4b_v05_A3", "probs": {"yes": 0.06533981114625931, "no": 0.9346601963043213}}
+{"id": "r_24e48a9abc2e", "model": "q4b_v05_A3", "probs": {"yes": 0.06533089280128479, "no": 0.9346690773963928}}
+{"id": "r_2503f6b7cb1b", "model": "q4b_v05_A3", "probs": {"taxes": 0.0054175965487957, "greeting": 0.007394546177238226, "meaning of life": 0.9470739364624023, "goodbye": 0.004871619399636984, "translation": 0.003862465964630246, "word definition": 0.00477647315710783, "income": 0.004595499951392412, "food shelf life": 0.00537140853703022, "none of these": 0.016636524349451065}}
+{"id": "r_255239a4f912", "model": "q4b_v05_A3", "probs": {"yes": 0.9494777321815491, "no": 0.05052224174141884}}
+{"id": "r_258dee463930", "model": "q4b_v05_A3", "probs": {"yes": 0.09467426687479019, "no": 0.9053257703781128}}
+{"id": "r_262a259e676d", "model": "q4b_v05_A3", "probs": {"yes": 0.9462137818336487, "no": 0.053786247968673706}}
+{"id": "r_265885df38a7", "model": "q4b_v05_A3", "probs": {"yes": 0.9567914605140686, "no": 0.0432085283100605}}
+{"id": "r_265b5e43cdd3", "model": "q4b_v05_A3", "probs": {"yes": 0.04938608035445213, "no": 0.9506139159202576}}
+{"id": "r_28348f903211", "model": "q4b_v05_A3", "probs": {"yes": 0.06284085661172867, "no": 0.9371591210365295}}
+{"id": "r_28db329f06ea", "model": "q4b_v05_A3", "probs": {"yes": 0.9423432946205139, "no": 0.05765669047832489}}
+{"id": "r_29a826cb2e87", "model": "q4b_v05_A3", "probs": {"visa requirements": 0.9636640548706055, "credit limit": 0.005420770961791277, "card application status": 0.005038234870880842, "tell bank about travel": 0.0038052869495004416, "apply for new card": 0.0037878931034356356, "minimum payment": 0.002681030659005046, "foreign transaction fees": 0.0025117588229477406, "travel advisory": 0.003787051420658827, "none of these": 0.009303889237344265}}
+{"id": "r_2ac96c6c56a3", "model": "q4b_v05_A3", "probs": {"yes": 0.05526656657457352, "no": 0.9447333812713623}}
+{"id": "r_2dcae73ef3b0", "model": "q4b_v05_A3", "probs": {"ATM support": 0.003932648338377476, "fiat currency support": 0.8961209654808044, "currency exchange fee": 0.006152995862066746, "supported cards and currencies": 0.06510090082883835, "exchange currency in app": 0.006456751376390457, "supported countries": 0.004596990533173084, "Visa or Mastercard": 0.005506285931915045, "exchange rate": 0.0038488893769681454, "none of these": 0.00828348845243454}}
+{"id": "r_2e534556ddee", "model": "q4b_v05_A3", "probs": {"yes": 0.9477123022079468, "no": 0.05228772759437561}}
+{"id": "r_2e879023f98e", "model": "q4b_v05_A3", "probs": {"yes": 0.9430859684944153, "no": 0.05691404268145561}}
+{"id": "r_2ec4b9bf756c", "model": "q4b_v05_A3", "probs": {"yes": 0.6514685750007629, "no": 0.34853145480155945}}
+{"id": "r_2eefbf62baad", "model": "q4b_v05_A3", "probs": {"yes": 0.9486296772956848, "no": 0.051370296627283096}}
+{"id": "r_2f4dc7e9355a", "model": "q4b_v05_A3", "probs": {"travel advisory": 0.004520671907812357, "lost luggage": 0.0037466497160494328, "traffic conditions": 0.0033453914802521467, "book a flight": 0.004771016538143158, "carry-on rules": 0.9621610641479492, "order checks": 0.004309707321226597, "time-off balance": 0.0028201474342495203, "place an order": 0.0034948138054460287, "none of these": 0.010830523446202278}}
+{"id": "r_2feba2107e6a", "model": "q4b_v05_A3", "probs": {"yes": 0.9457276463508606, "no": 0.054272402077913284}}
+{"id": "r_311ac1549914", "model": "q4b_v05_A3", "probs": {"nutrition information": 0.02052740752696991, "food shelf life": 0.007275082636624575, "account balance": 0.005496733821928501, "calculation": 0.003605299862101674, "fuel level": 0.0028972465079277754, "recipe": 0.004085382912307978, "meal suggestion": 0.0037098389584571123, "calorie count": 0.946801483631134, "none of these": 0.005601572338491678}}
+{"id": "r_321c608711d8", "model": "q4b_v05_A3", "probs": {"last car service": 0.004885168746113777, "car rental": 0.0037020076997578144, "set a reminder": 0.002770849037915468, "set an alarm": 0.003908648621290922, "schedule car service": 0.9668410420417786, "schedule a meeting": 0.004634978249669075, "jump-start a car": 0.002840290777385235, "set a timer": 0.003478855360299349, "none of these": 0.0069381799548864365}}
+{"id": "r_32b934ce0d4a", "model": "q4b_v05_A3", "probs": {"yes": 0.047954969108104706, "no": 0.9520450830459595}}
+{"id": "r_340108db88a0", "model": "q4b_v05_A3", "probs": {"yes": 0.9284845590591431, "no": 0.07151541858911514}}
+{"id": "r_3435c13e748e", "model": "q4b_v05_A3", "probs": {"yes": 0.04980137199163437, "no": 0.9501985907554626}}
+{"id": "r_34901155c67e", "model": "q4b_v05_A3", "probs": {"yes": 0.06383468955755234, "no": 0.9361653327941895}}
+{"id": "r_34abb7f5b480", "model": "q4b_v05_A3", "probs": {"declined card": 0.9605380892753601, "card application status": 0.005491148214787245, "card expiration date": 0.004926009103655815, "apply for new card": 0.00407041423022747, "damaged card": 0.004465566948056221, "report lost card": 0.0025821165181696415, "negative reply": 0.002495687222108245, "replacement card wait": 0.003481636056676507, "none of these": 0.011949313804507256}}
+{"id": "r_34b783d452a6", "model": "q4b_v05_A3", "probs": {"yes": 0.9502890110015869, "no": 0.049711018800735474}}
+{"id": "r_34e27832868d", "model": "q4b_v05_A3", "probs": {"set an alarm": 0.0037671029567718506, "assistant's name": 0.0035146160516887903, "rename assistant": 0.00280026369728148, "assistant's hobbies": 0.005954692605882883, "assistant's pets": 0.9641190767288208, "who you work for": 0.004522804636508226, "last car service": 0.0029323515482246876, "assistant's age": 0.004149753134697676, "none of these": 0.008239416405558586}}
+{"id": "r_352195f14021", "model": "q4b_v05_A3", "probs": {"yes": 0.07683654129505157, "no": 0.9231634140014648}}
+{"id": "r_3551265b27f6", "model": "q4b_v05_A3", "probs": {"yes": 0.05911852419376373, "no": 0.9408815503120422}}
+{"id": "r_35be2d95bef5", "model": "q4b_v05_A3", "probs": {"current time": 0.0034229205921292305, "restaurant suggestion": 0.003313342807814479, "time off used": 0.004351034760475159, "cooking time": 0.9623375535011292, "time zone": 0.0033165577333420515, "meal suggestion": 0.0034747186582535505, "restaurant wait time": 0.004682250786572695, "recipe": 0.004882487002760172, "none of these": 0.010219088755548}}
+{"id": "r_35c39cc8a6b5", "model": "q4b_v05_A3", "probs": {"yes": 0.0734638050198555, "no": 0.9265362620353699}}
+{"id": "r_35e4b66a0522", "model": "q4b_v05_A3", "probs": {"yes": 0.0578383132815361, "no": 0.9421616792678833}}
+{"id": "r_35f6183a3a8b", "model": "q4b_v05_A3", "probs": {"yes": 0.05324845016002655, "no": 0.946751594543457}}
+{"id": "r_3691e39095f3", "model": "q4b_v05_A3", "probs": {"yes": 0.9546312093734741, "no": 0.04536880925297737}}
+{"id": "r_36ab8ed96b4c", "model": "q4b_v05_A3", "probs": {"yes": 0.9421561360359192, "no": 0.05784382298588753}}
+{"id": "r_374ff6517c80", "model": "q4b_v05_A3", "probs": {"yes": 0.8978801965713501, "no": 0.10211978852748871}}
+{"id": "r_375a8578166c", "model": "q4b_v05_A3", "probs": {"yes": 0.09886278212070465, "no": 0.9011372327804565}}
+{"id": "r_3763a861f2f0", "model": "q4b_v05_A3", "probs": {"yes": 0.9509803652763367, "no": 0.049019705504179}}
+{"id": "r_3777ac5e66a5", "model": "q4b_v05_A3", "probs": {"yes": 0.947097659111023, "no": 0.05290229991078377}}
+{"id": "r_38784505b701", "model": "q4b_v05_A3", "probs": {"yes": 0.06111085042357445, "no": 0.9388890862464905}}
+{"id": "r_39be8861d9d9", "model": "q4b_v05_A3", "probs": {"yes": 0.9562714099884033, "no": 0.043728526681661606}}
+{"id": "r_39fe80b26bef", "model": "q4b_v05_A3", "probs": {"ingredients list": 0.004923179745674133, "car rental": 0.00399925047531724, "how to change oil": 0.00420882273465395, "fuel economy": 0.004888884723186493, "recipe": 0.005911157466471195, "fuel type": 0.9585994482040405, "plug type": 0.0053195771761238575, "fuel level": 0.004361732862889767, "none of these": 0.0077879116870462894}}
+{"id": "r_3a5c6e34a8ac", "model": "q4b_v05_A3", "probs": {"yes": 0.048939742147922516, "no": 0.9510602355003357}}
+{"id": "r_3a8c2c74e1af", "model": "q4b_v05_A3", "probs": {"yes": 0.7474408745765686, "no": 0.25255918502807617}}
+{"id": "r_3ae122c395f5", "model": "q4b_v05_A3", "probs": {"yes": 0.055367134511470795, "no": 0.9446328282356262}}
+{"id": "r_3b01bd3071bf", "model": "q4b_v05_A3", "probs": {"word definition": 0.007013281341642141, "recipe": 0.004104597494006157, "greeting": 0.004499291535466909, "tell a joke": 0.00322295562364161, "payday": 0.0028463134076446295, "next holiday": 0.004335840232670307, "spelling": 0.9641589522361755, "translation": 0.0037098503671586514, "none of these": 0.006108901929110289}}
+{"id": "r_3b59c04ee606", "model": "q4b_v05_A3", "probs": {"yes": 0.9157413840293884, "no": 0.08425861597061157}}
+{"id": "r_3c1343d62cfe", "model": "q4b_v05_A3", "probs": {"currency exchange fee": 0.00541949225589633, "exchange rate": 0.9515634179115295, "supported cards and currencies": 0.006133831571787596, "fiat currency support": 0.0043243118561804295, "transfer fee": 0.004009466618299484, "exchange currency in app": 0.0056021688506007195, "wrong rate on cash withdrawal": 0.006770509760826826, "wrong rate on card payment": 0.004621597472578287, "none of these": 0.01155517902225256}}
+{"id": "r_3c2dc4a244ab", "model": "q4b_v05_A3", "probs": {"income": 0.004825887270271778, "direct deposit": 0.006277101114392281, "pay a bill": 0.025555932894349098, "account balance": 0.0044848183169960976, "credit limit": 0.005927999969571829, "minimum payment": 0.9287161231040955, "money transfer": 0.00764901889488101, "bill amount owed": 0.006736890412867069, "none of these": 0.009826152585446835}}
+{"id": "r_3c914e416fc4", "model": "q4b_v05_A3", "probs": {"calculation": 0.00540512427687645, "annual percentage rate": 0.004305537324398756, "foreign transaction fees": 0.005524424370378256, "exchange rate": 0.9507192969322205, "account balance": 0.005636521615087986, "money transfer": 0.0048181526362895966, "income": 0.00432259077206254, "interest rate": 0.004649002570658922, "none of these": 0.01461938489228487}}
+{"id": "r_3cafd3c6e239", "model": "q4b_v05_A3", "probs": {"yes": 0.9551543593406677, "no": 0.044845614582300186}}
+{"id": "r_3ccc0132f911", "model": "q4b_v05_A3", "probs": {"yes": 0.8254930377006531, "no": 0.17450697720050812}}
+{"id": "r_3da0580e7e27", "model": "q4b_v05_A3", "probs": {"yes": 0.04835103452205658, "no": 0.951649010181427}}
+{"id": "r_3def5d10d37a", "model": "q4b_v05_A3", "probs": {"yes": 0.05511489510536194, "no": 0.9448851346969604}}
+{"id": "r_3e76bead43b0", "model": "q4b_v05_A3", "probs": {"today's date": 0.007092697080224752, "update shopping list": 0.005360817536711693, "check calendar": 0.006278330460190773, "set a reminder": 0.006221849005669355, "schedule a meeting": 0.04062753915786743, "update calendar": 0.9041805267333984, "check reminders": 0.006167421583086252, "update playlist": 0.006509133614599705, "none of these": 0.01756172627210617}}
+{"id": "r_3f4e2c134726", "model": "q4b_v05_A3", "probs": {"yes": 0.9506099224090576, "no": 0.04939001798629761}}
+{"id": "r_3f4f31e19678", "model": "q4b_v05_A3", "probs": {"restaurant suggestion": 0.00823764968663454, "order status": 0.010072518140077591, "place an order": 0.9073548316955566, "accepts reservations": 0.0075333560816943645, "directions": 0.005780857056379318, "order checks": 0.0063532209023833275, "schedule a meeting": 0.009380707517266273, "restaurant reservation": 0.011657212860882282, "none of these": 0.0336296372115612}}
+{"id": "r_3f50cfa7fce8", "model": "q4b_v05_A3", "probs": {"assistant's name": 0.007022110745310783, "assistant's pets": 0.003805942367762327, "restaurant suggestion": 0.004347314592450857, "book a rideshare": 0.0034028515219688416, "who you work for": 0.003020944306626916, "assistant's age": 0.0039099738933146, "assistant's hobbies": 0.9623164534568787, "rename assistant": 0.003929029684513807, "none of these": 0.008245324715971947}}
+{"id": "r_3f7b881c0b98", "model": "q4b_v05_A3", "probs": {"yes": 0.0701063871383667, "no": 0.9298935532569885}}
+{"id": "r_3f9393c01238", "model": "q4b_v05_A3", "probs": {"yes": 0.05620269477367401, "no": 0.9437972903251648}}
+{"id": "r_3fb38ec84c7e", "model": "q4b_v05_A3", "probs": {"yes": 0.9429652094841003, "no": 0.05703476443886757}}
+{"id": "r_3fe13db60b5d", "model": "q4b_v05_A3", "probs": {"yes": 0.0578957200050354, "no": 0.9421043395996094}}
+{"id": "r_3ff968e7c35b", "model": "q4b_v05_A3", "probs": {"yes": 0.9385147094726562, "no": 0.061485256999731064}}
+{"id": "r_4087486544b4", "model": "q4b_v05_A3", "probs": {"yes": 0.9500933885574341, "no": 0.04990658164024353}}
+{"id": "r_40a930ab5edb", "model": "q4b_v05_A3", "probs": {"set a reminder": 0.012344161979854107, "set an alarm": 0.011691990308463573, "cancel reservation": 0.009516513906419277, "set a timer": 0.014125467278063297, "current time": 0.007567425724118948, "negative reply": 0.00759471207857132, "current location": 0.009275836870074272, "cancel current action": 0.2361050546169281, "none of these": 0.6917787790298462}}
+{"id": "r_4112742ffb06", "model": "q4b_v05_A3", "probs": {"yes": 0.9500701427459717, "no": 0.04992992430925369}}
+{"id": "r_4192441d4358", "model": "q4b_v05_A3", "probs": {"card arrival": 0.005901105236262083, "additional card": 0.00523323705419898, "card not working": 0.004264787770807743, "card activation": 0.004567332565784454, "order physical card": 0.0038527019787579775, "compromised card": 0.0038098907098174095, "pending card payment": 0.004957239143550396, "card about to expire": 0.9565887451171875, "none of these": 0.010824963450431824}}
+{"id": "r_4194e5a7b415", "model": "q4b_v05_A3", "probs": {"yes": 0.0547221302986145, "no": 0.9452779293060303}}
+{"id": "r_41a52e423eb3", "model": "q4b_v05_A3", "probs": {"yes": 0.8873416185379028, "no": 0.11265843361616135}}
+{"id": "r_41b537db9a6e", "model": "q4b_v05_A3", "probs": {"yes": 0.9420399069786072, "no": 0.057960145175457}}
+{"id": "r_41c0a844c3ac", "model": "q4b_v05_A3", "probs": {"what I can ask": 0.00834306888282299, "negative reply": 0.005696715787053108, "are you a bot": 0.004461321514099836, "flip a coin": 0.0036968726199120283, "declined card": 0.0033793956972658634, "affirmative reply": 0.003930533304810524, "tell a joke": 0.00546674057841301, "unsure reply": 0.9519028663635254, "none of these": 0.01312243565917015}}
+{"id": "r_41cd3b11f566", "model": "q4b_v05_A3", "probs": {"declined card payment": 0.0064058322459459305, "pending cash withdrawal": 0.0049601467326283455, "unrecognised cash withdrawal": 0.005401685368269682, "cash withdrawal fee": 0.004097731318324804, "wrong cash amount received": 0.006345013156533241, "declined cash withdrawal": 0.9529610276222229, "declined transfer": 0.005599684547632933, "wrong rate on cash withdrawal": 0.0050164335407316685, "none of these": 0.009212372824549675}}
+{"id": "r_41f981b6c856", "model": "q4b_v05_A3", "probs": {"yes": 0.06555762141942978, "no": 0.934442400932312}}
+{"id": "r_427980d4f80f", "model": "q4b_v05_A3", "probs": {"yes": 0.8285380601882935, "no": 0.17146199941635132}}
+{"id": "r_43b5a7474d24", "model": "q4b_v05_A3", "probs": {"yes": 0.047241684049367905, "no": 0.9527583122253418}}
+{"id": "r_4471c1503106", "model": "q4b_v05_A3", "probs": {"yes": 0.053883787244558334, "no": 0.9461162090301514}}
+{"id": "r_459757804eef", "model": "q4b_v05_A3", "probs": {"change language": 0.004607700277119875, "assistant's name": 0.012843468226492405, "rename assistant": 0.9574713706970215, "change user's name": 0.003983804956078529, "assistant's hobbies": 0.002640716265887022, "assistant's pets": 0.002755474764853716, "assistant's age": 0.003975174855440855, "change voice or accent": 0.0044034249149262905, "none of these": 0.007318880874663591}}
+{"id": "r_45e09e2f48d2", "model": "q4b_v05_A3", "probs": {"edit personal details": 0.004309728741645813, "cash withdrawal fee": 0.005318653769791126, "close account": 0.95624178647995, "cancel a transfer": 0.004844143986701965, "transfer into account": 0.0033392019104212523, "verify my identity": 0.0028944858349859715, "unable to verify identity": 0.004085017368197441, "request a refund": 0.006416677497327328, "none of these": 0.012550263665616512}}
+{"id": "r_4698452ff79a", "model": "q4b_v05_A3", "probs": {"yes": 0.9124758839607239, "no": 0.08752407133579254}}
+{"id": "r_46c112fbb5f8", "model": "q4b_v05_A3", "probs": {"yes": 0.4415483772754669, "no": 0.5584516525268555}}
+{"id": "r_47a311dc5574", "model": "q4b_v05_A3", "probs": {"yes": 0.35738638043403625, "no": 0.6426136493682861}}
+{"id": "r_480507d33883", "model": "q4b_v05_A3", "probs": {"yes": 0.05208196863532066, "no": 0.9479179978370667}}
+{"id": "r_48bbd010bfc6", "model": "q4b_v05_A3", "probs": {"yes": 0.05794806778430939, "no": 0.9420519471168518}}
+{"id": "r_4957cde5d1b3", "model": "q4b_v05_A3", "probs": {"yes": 0.935132622718811, "no": 0.06486743688583374}}
+{"id": "r_4a3a868eb243", "model": "q4b_v05_A3", "probs": {"current time": 0.01220018696039915, "current location": 0.011674521490931511, "cancel current action": 0.7302594780921936, "set a timer": 0.01451965980231762, "cancel reservation": 0.01311520580202341, "negative reply": 0.010558413341641426, "set an alarm": 0.011448651552200317, "set a reminder": 0.01798691600561142, "none of these": 0.1782369613647461}}
+{"id": "r_4a8b79a77cbb", "model": "q4b_v05_A3", "probs": {"yes": 0.05317835137248039, "no": 0.9468216896057129}}
+{"id": "r_4b2dba3f87e6", "model": "q4b_v05_A3", "probs": {"restaurant reservation": 0.004919060505926609, "restaurant wait time": 0.005358403082937002, "cancel current action": 0.010548589751124382, "accepts reservations": 0.004194722976535559, "declined card": 0.00544031010940671, "cancel reservation": 0.9517641067504883, "confirm reservation": 0.006380804348737001, "time-off balance": 0.004568386822938919, "none of these": 0.0068255322985351086}}
+{"id": "r_4b302155168d", "model": "q4b_v05_A3", "probs": {"yes": 0.047658201307058334, "no": 0.9523417353630066}}
+{"id": "r_4b629d90c15b", "model": "q4b_v05_A3", "probs": {"money transfer": 0.0039711990393698215, "minimum payment": 0.0044674351811409, "account balance": 0.004523118492215872, "pay a bill": 0.9528210759162903, "payday": 0.005257332697510719, "bill due date": 0.004884062334895134, "bill amount owed": 0.005586046259850264, "spending history": 0.0048576355911791325, "none of these": 0.013632257468998432}}
+{"id": "r_4b8b8ecb792d", "model": "q4b_v05_A3", "probs": {"yes": 0.9533021450042725, "no": 0.046697866171598434}}
+{"id": "r_4c3e743270f7", "model": "q4b_v05_A3", "probs": {"yes": 0.9501994848251343, "no": 0.04980047419667244}}
+{"id": "r_4c64f533848c", "model": "q4b_v05_A3", "probs": {"yes": 0.05964416265487671, "no": 0.9403558373451233}}
+{"id": "r_4c735dea5c94", "model": "q4b_v05_A3", "probs": {"yes": 0.9548795223236084, "no": 0.0451204776763916}}
+{"id": "r_4cd859775fed", "model": "q4b_v05_A3", "probs": {"yes": 0.05726868659257889, "no": 0.9427313208580017}}
+{"id": "r_4d0626a1ebfe", "model": "q4b_v05_A3", "probs": {"yes": 0.9301274418830872, "no": 0.06987261027097702}}
+{"id": "r_4e4edaa7d124", "model": "q4b_v05_A3", "probs": {"yes": 0.9558712840080261, "no": 0.04412870109081268}}
+{"id": "r_4e79514f4a9c", "model": "q4b_v05_A3", "probs": {"yes": 0.9253864884376526, "no": 0.07461357861757278}}
+{"id": "r_4ee8a6968e4b", "model": "q4b_v05_A3", "probs": {"translation": 0.0052293092012405396, "spelling": 0.004423475358635187, "who you work for": 0.0035156405065208673, "today's date": 0.003327319398522377, "affirmative reply": 0.005094516556710005, "greeting": 0.9598681926727295, "negative reply": 0.006571715231984854, "goodbye": 0.005599416792392731, "none of these": 0.006370399612933397}}
+{"id": "r_4fc3e8f7b318", "model": "q4b_v05_A3", "probs": {"yes": 0.0566655769944191, "no": 0.9433344006538391}}
+{"id": "r_508e7c9681bf", "model": "q4b_v05_A3", "probs": {"physical card PIN": 0.005119387526065111, "ATM support": 0.004000287037342787, "card not working": 0.0035989517346024513, "change PIN": 0.004318310413509607, "forgotten passcode": 0.003793073818087578, "compromised card": 0.003417269792407751, "card swallowed by ATM": 0.0044418880715966225, "blocked PIN": 0.9617655873298645, "none of these": 0.009545148350298405}}
+{"id": "r_51081c009bd5", "model": "q4b_v05_A3", "probs": {"yes": 0.9573063850402832, "no": 0.04269354045391083}}
+{"id": "r_51220f33f9b5", "model": "q4b_v05_A3", "probs": {"yes": 0.9423821568489075, "no": 0.05761784315109253}}
+{"id": "r_513516d7b110", "model": "q4b_v05_A3", "probs": {"card not working": 0.006505748722702265, "reverted card payment": 0.0040663667023181915, "additional card": 0.004258285742253065, "blocked PIN": 0.0037198038771748543, "compromised card": 0.003518814919516444, "physical card PIN": 0.004716235678642988, "change PIN": 0.9601715803146362, "ATM support": 0.005315567832440138, "none of these": 0.007727587595582008}}
+{"id": "r_519b5d808935", "model": "q4b_v05_A3", "probs": {"yes": 0.1879902333021164, "no": 0.8120097517967224}}
+{"id": "r_53575c3a7dac", "model": "q4b_v05_A3", "probs": {"update calendar": 0.005768683739006519, "make a call": 0.004917104262858629, "update playlist": 0.0041373251006007195, "check to-do list": 0.004777287598699331, "set a reminder": 0.006000810768455267, "update to-do list": 0.9540349245071411, "update shopping list": 0.005574025213718414, "check shopping list": 0.005887568462640047, "none of these": 0.008902153931558132}}
+{"id": "r_53b7a396958b", "model": "q4b_v05_A3", "probs": {"weather": 0.9741936326026917, "where you are from": 0.004316000267863274, "flight status": 0.0034168397542089224, "today's date": 0.002814894076436758, "greeting": 0.0030192553531378508, "traffic conditions": 0.0019625676795840263, "goodbye": 0.001846239436417818, "time zone": 0.0028435620479285717, "none of these": 0.005586981773376465}}
+{"id": "r_540f5f2e8d68", "model": "q4b_v05_A3", "probs": {"yes": 0.9539251327514648, "no": 0.04607479274272919}}
+{"id": "r_54f9c40c19a9", "model": "q4b_v05_A3", "probs": {"yes": 0.16646330058574677, "no": 0.833536684513092}}
+{"id": "r_557f61cffae5", "model": "q4b_v05_A3", "probs": {"yes": 0.9397668838500977, "no": 0.06023310124874115}}
+{"id": "r_5608692cc508", "model": "q4b_v05_A3", "probs": {"yes": 0.04856284707784653, "no": 0.9514371156692505}}
+{"id": "r_563a72dda835", "model": "q4b_v05_A3", "probs": {"yes": 0.8781349658966064, "no": 0.12186505645513535}}
+{"id": "r_5659253fb73c", "model": "q4b_v05_A3", "probs": {"yes": 0.05936168134212494, "no": 0.9406383633613586}}
+{"id": "r_56a726cd30c9", "model": "q4b_v05_A3", "probs": {"yes": 0.04858224093914032, "no": 0.9514178037643433}}
+{"id": "r_5727634d52c2", "model": "q4b_v05_A3", "probs": {"yes": 0.947881817817688, "no": 0.05211823806166649}}
+{"id": "r_574e3a7a3ab0", "model": "q4b_v05_A3", "probs": {"yes": 0.8967991471290588, "no": 0.10320091247558594}}
+{"id": "r_57b64d233c6b", "model": "q4b_v05_A3", "probs": {"yes": 0.05250098556280136, "no": 0.9474990367889404}}
+{"id": "r_58cab9ba0733", "model": "q4b_v05_A3", "probs": {"yes": 0.048469122499227524, "no": 0.951530933380127}}
+{"id": "r_58fe0f29cd3f", "model": "q4b_v05_A3", "probs": {"yes": 0.9580904841423035, "no": 0.04190957173705101}}
+{"id": "r_59123202c76f", "model": "q4b_v05_A3", "probs": {"yes": 0.9451656341552734, "no": 0.05483436584472656}}
+{"id": "r_593773396d4e", "model": "q4b_v05_A3", "probs": {"yes": 0.04819641262292862, "no": 0.9518036246299744}}
+{"id": "r_59820c89229b", "model": "q4b_v05_A3", "probs": {"yes": 0.06501302123069763, "no": 0.9349870085716248}}
+{"id": "r_599c46f6d089", "model": "q4b_v05_A3", "probs": {"yes": 0.949923574924469, "no": 0.0500764362514019}}
+{"id": "r_5a254719f56e", "model": "q4b_v05_A3", "probs": {"yes": 0.050859272480010986, "no": 0.949140727519989}}
+{"id": "r_5a5285bb1dfb", "model": "q4b_v05_A3", "probs": {"yes": 0.05922188609838486, "no": 0.9407781362533569}}
+{"id": "r_5a5de3b68090", "model": "q4b_v05_A3", "probs": {"yes": 0.39642542600631714, "no": 0.6035745143890381}}
+{"id": "r_5b5e9d2f048d", "model": "q4b_v05_A3", "probs": {"yes": 0.04957423731684685, "no": 0.9504257440567017}}
+{"id": "r_5bc9e25e3be0", "model": "q4b_v05_A3", "probs": {"yes": 0.0511234775185585, "no": 0.9488765001296997}}
+{"id": "r_5d95ed3144b3", "model": "q4b_v05_A3", "probs": {"next song": 0.006574696395546198, "ingredients list": 0.004322116728872061, "current location": 0.005495266988873482, "connect to phone": 0.005038500297814608, "how to change oil": 0.003892820328474045, "recipe": 0.004659282509237528, "directions": 0.9380136132240295, "place an order": 0.0058503057807683945, "none of these": 0.02615334838628769}}
+{"id": "r_5de96f37abee", "model": "q4b_v05_A3", "probs": {"yes": 0.046457014977931976, "no": 0.953542947769165}}
+{"id": "r_5e2f21d26bb4", "model": "q4b_v05_A3", "probs": {"yes": 0.7860849499702454, "no": 0.21391500532627106}}
+{"id": "r_5e43273d764c", "model": "q4b_v05_A3", "probs": {"yes": 0.9476643204689026, "no": 0.05233566090464592}}
+{"id": "r_5e81a03a65e3", "model": "q4b_v05_A3", "probs": {"yes": 0.04726658761501312, "no": 0.9527333974838257}}
+{"id": "r_5f1d69bc9b1c", "model": "q4b_v05_A3", "probs": {"yes": 0.7765527963638306, "no": 0.22344720363616943}}
+{"id": "r_5f543c607305", "model": "q4b_v05_A3", "probs": {"yes": 0.059157732874155045, "no": 0.9408422708511353}}
+{"id": "r_605577e62899", "model": "q4b_v05_A3", "probs": {"yes": 0.0811276063323021, "no": 0.9188724160194397}}
+{"id": "r_606e594648da", "model": "q4b_v05_A3", "probs": {"yes": 0.9120025634765625, "no": 0.0879974439740181}}
+{"id": "r_608ef8e4dceb", "model": "q4b_v05_A3", "probs": {"yes": 0.9009720087051392, "no": 0.09902798384428024}}
+{"id": "r_61414943befd", "model": "q4b_v05_A3", "probs": {"yes": 0.9485687613487244, "no": 0.05143120884895325}}
+{"id": "r_624d7cdf8dee", "model": "q4b_v05_A3", "probs": {"yes": 0.051913484930992126, "no": 0.9480865597724915}}
+{"id": "r_62bea9e288e5", "model": "q4b_v05_A3", "probs": {"yes": 0.947480320930481, "no": 0.05251967906951904}}
+{"id": "r_62ce937cd889", "model": "q4b_v05_A3", "probs": {"yes": 0.9508946537971497, "no": 0.04910540208220482}}
+{"id": "r_630e79f8c38c", "model": "q4b_v05_A3", "probs": {"yes": 0.15053433179855347, "no": 0.8494657278060913}}
+{"id": "r_63cc8c3650c5", "model": "q4b_v05_A3", "probs": {"yes": 0.9088592529296875, "no": 0.09114079922437668}}
+{"id": "r_63e67ea44bbb", "model": "q4b_v05_A3", "probs": {"yes": 0.048927318304777145, "no": 0.9510727524757385}}
+{"id": "r_6447a3793a46", "model": "q4b_v05_A3", "probs": {"yes": 0.04519355297088623, "no": 0.9548065066337585}}
+{"id": "r_64542b8a8adf", "model": "q4b_v05_A3", "probs": {"apply for new card": 0.0032710253726691008, "change insurance": 0.0032421359792351723, "change volume": 0.0029877929482609034, "replacement card wait": 0.0029511936008930206, "damaged card": 0.004361398052424192, "change PIN": 0.9689565896987915, "how to change oil": 0.003727866103872657, "change credit limit": 0.00407211109995842, "none of these": 0.006429949775338173}}
+{"id": "r_64bfc8d3c344", "model": "q4b_v05_A3", "probs": {"set a timer": 0.004806205630302429, "schedule a meeting": 0.0045716287568211555, "make a call": 0.004522657487541437, "check calendar": 0.004339693579822779, "check reminders": 0.00602119043469429, "set a reminder": 0.9593138694763184, "set an alarm": 0.0057349056005477905, "update calendar": 0.00452208798378706, "none of these": 0.00616774195805192}}
+{"id": "r_6564cf9bf43d", "model": "q4b_v05_A3", "probs": {"declined card payment": 0.964687705039978, "pending card payment": 0.005850127898156643, "unrecognised card payment": 0.0052084047347307205, "declined transfer": 0.00416170759126544, "reverted card payment": 0.005088023841381073, "wrong rate on card payment": 0.002617674181237817, "declined cash withdrawal": 0.002927574096247554, "card payment fee": 0.003174825571477413, "none of these": 0.006283912807703018}}
+{"id": "r_666ecb73a0e9", "model": "q4b_v05_A3", "probs": {"yes": 0.04982651770114899, "no": 0.9501734375953674}}
+{"id": "r_668da091b8c9", "model": "q4b_v05_A3", "probs": {"yes": 0.06054479256272316, "no": 0.9394552111625671}}
+{"id": "r_6758cd8ed89d", "model": "q4b_v05_A3", "probs": {"freeze account": 0.9659955501556396, "change user's name": 0.004708577413111925, "factory reset": 0.003998736850917339, "blocked account": 0.004889058414846659, "time-off balance": 0.0031430597882717848, "cancel reservation": 0.0034443663898855448, "user's name": 0.0025677504017949104, "account balance": 0.0032704102341085672, "none of these": 0.00798248965293169}}
+{"id": "r_68684a46d1bd", "model": "q4b_v05_A3", "probs": {"yes": 0.05308043211698532, "no": 0.9469195604324341}}
+{"id": "r_68b121c883e7", "model": "q4b_v05_A3", "probs": {"yes": 0.05315040796995163, "no": 0.9468495845794678}}
+{"id": "r_68ce5b05a3a4", "model": "q4b_v05_A3", "probs": {"yes": 0.9473958015441895, "no": 0.05260416492819786}}
+{"id": "r_69c67b3c9755", "model": "q4b_v05_A3", "probs": {"yes": 0.050821952521800995, "no": 0.9491780996322632}}
+{"id": "r_6a034b15f4e3", "model": "q4b_v05_A3", "probs": {"yes": 0.0495130755007267, "no": 0.950486958026886}}
+{"id": "r_6a170422d517", "model": "q4b_v05_A3", "probs": {"yes": 0.05629514530301094, "no": 0.9437049031257629}}
+{"id": "r_6a30ce01b783", "model": "q4b_v05_A3", "probs": {"yes": 0.06694135814905167, "no": 0.9330586791038513}}
+{"id": "r_6a80b532312d", "model": "q4b_v05_A3", "probs": {"yes": 0.9275659918785095, "no": 0.07243403047323227}}
+{"id": "r_6a99b056796a", "model": "q4b_v05_A3", "probs": {"yes": 0.07262399047613144, "no": 0.9273760914802551}}
+{"id": "r_6b0646bd53af", "model": "q4b_v05_A3", "probs": {"yes": 0.04850735142827034, "no": 0.9514926075935364}}
+{"id": "r_6b0d6be46066", "model": "q4b_v05_A3", "probs": {"yes": 0.9419288039207458, "no": 0.058071158826351166}}
+{"id": "r_6b80244ada04", "model": "q4b_v05_A3", "probs": {"yes": 0.9540669322013855, "no": 0.045932989567518234}}
+{"id": "r_6c17c40d40eb", "model": "q4b_v05_A3", "probs": {"yes": 0.9515476226806641, "no": 0.04845236614346504}}
+{"id": "r_6c476d9bab60", "model": "q4b_v05_A3", "probs": {"yes": 0.04614279046654701, "no": 0.9538572430610657}}
+{"id": "r_6ca7819f2915", "model": "q4b_v05_A3", "probs": {"yes": 0.9402920007705688, "no": 0.05970805883407593}}
+{"id": "r_6cb29f9b8834", "model": "q4b_v05_A3", "probs": {"yes": 0.10924490541219711, "no": 0.8907551169395447}}
+{"id": "r_6d856a3f8b9d", "model": "q4b_v05_A3", "probs": {"yes": 0.045354314148426056, "no": 0.9546456933021545}}
+{"id": "r_6da17203e23f", "model": "q4b_v05_A3", "probs": {"yes": 0.950982391834259, "no": 0.049017664045095444}}
+{"id": "r_6e040340f3e2", "model": "q4b_v05_A3", "probs": {"unrecognised cash withdrawal": 0.0073755099438130856, "pending cash withdrawal": 0.008327323943376541, "wrong cash amount received": 0.9273637533187866, "cash withdrawal fee": 0.007601814344525337, "receiving money": 0.0054782964289188385, "wrong rate on card payment": 0.005481013096868992, "wrong rate on cash withdrawal": 0.012907911092042923, "declined cash withdrawal": 0.008507313206791878, "none of these": 0.016957081854343414}}
+{"id": "r_6e0a7f9f05ea", "model": "q4b_v05_A3", "probs": {"supported cards and currencies": 0.022436680272221565, "exchange currency in app": 0.005737479776144028, "supported countries": 0.004130881279706955, "ATM support": 0.003224846674129367, "currency exchange fee": 0.0024163329508155584, "Visa or Mastercard": 0.0031371379736810923, "exchange rate": 0.002855876460671425, "fiat currency support": 0.950592577457428, "none of these": 0.005468151066452265}}
+{"id": "r_6ec17f83fb34", "model": "q4b_v05_A3", "probs": {"yes": 0.08392433077096939, "no": 0.9160757064819336}}
+{"id": "r_6ee35512edab", "model": "q4b_v05_A3", "probs": {"time-off balance": 0.004350116476416588, "accepts reservations": 0.004105720669031143, "pay a bill": 0.003728915471583605, "payday": 0.004013409372419119, "account balance": 0.0181703120470047, "rewards balance": 0.9458827972412109, "credit score": 0.004843506030738354, "redeem rewards": 0.006984586361795664, "none of these": 0.007920598611235619}}
+{"id": "r_6f155e14f942", "model": "q4b_v05_A3", "probs": {"yes": 0.9576219916343689, "no": 0.042378008365631104}}
+{"id": "r_6fdd8ab7ac9f", "model": "q4b_v05_A3", "probs": {"yes": 0.9535614848136902, "no": 0.046438559889793396}}
+{"id": "r_6fe9eff4a7c9", "model": "q4b_v05_A3", "probs": {"yes": 0.04728823900222778, "no": 0.9527117609977722}}
+{"id": "r_700dbc0d69ef", "model": "q4b_v05_A3", "probs": {"yes": 0.9494616985321045, "no": 0.05053830146789551}}
+{"id": "r_7097e08f26c6", "model": "q4b_v05_A3", "probs": {"yes": 0.9299835562705994, "no": 0.07001647353172302}}
+{"id": "r_70c2deefb91a", "model": "q4b_v05_A3", "probs": {"yes": 0.9475821852684021, "no": 0.05241784080862999}}
+{"id": "r_710d9b9a7e5e", "model": "q4b_v05_A3", "probs": {"recipe": 0.0057984027080237865, "spelling": 0.9633846282958984, "word definition": 0.006530339363962412, "tell a joke": 0.0034909017849713564, "payday": 0.0027831150218844414, "greeting": 0.003102667164057493, "next holiday": 0.004186126869171858, "translation": 0.0038338517770171165, "none of these": 0.006890010554343462}}
+{"id": "r_71bc41dc07c6", "model": "q4b_v05_A3", "probs": {"yes": 0.048828404396772385, "no": 0.9511716365814209}}
+{"id": "r_73e4ba91328a", "model": "q4b_v05_A3", "probs": {"unable to verify identity": 0.005198011640459299, "verify source of funds": 0.960204541683197, "balance not updated after deposit": 0.005359088070690632, "transfer into account": 0.003736532060429454, "why verify identity": 0.0033136848360300064, "wrong cash amount received": 0.003001200035214424, "verify my identity": 0.004883983638137579, "receiving money": 0.004181665368378162, "none of these": 0.010121325962245464}}
+{"id": "r_74f88eb401a0", "model": "q4b_v05_A3", "probs": {"yes": 0.05863742530345917, "no": 0.9413625597953796}}
+{"id": "r_757c0c037c53", "model": "q4b_v05_A3", "probs": {"change user's name": 0.005231587681919336, "change voice or accent": 0.0036939741112291813, "change insurance": 0.004440629854798317, "translation": 0.00420056888833642, "rename assistant": 0.0022904295474290848, "change speaking speed": 0.0033555328845977783, "change language": 0.9686786532402039, "change volume": 0.002889967290684581, "none of these": 0.0052185975946486}}
+{"id": "r_76185e445aae", "model": "q4b_v05_A3", "probs": {"yes": 0.5650655031204224, "no": 0.43493446707725525}}
+{"id": "r_764f6d13d071", "model": "q4b_v05_A3", "probs": {"yes": 0.06158081442117691, "no": 0.9384192228317261}}
+{"id": "r_76c78c4186bf", "model": "q4b_v05_A3", "probs": {"yes": 0.9315885305404663, "no": 0.0684114471077919}}
+{"id": "r_77225e5c0a61", "model": "q4b_v05_A3", "probs": {"yes": 0.050338294357061386, "no": 0.9496617317199707}}
+{"id": "r_77ce2522de25", "model": "q4b_v05_A3", "probs": {"additional card": 0.007192136254161596, "request a refund": 0.005523254629224539, "card top-up fee": 0.005241729784756899, "unrecognised card payment": 0.01911785453557968, "extra charge on statement": 0.9199707508087158, "card payment fee": 0.007469771429896355, "charged twice": 0.007468681316822767, "transfer fee": 0.006662590429186821, "none of these": 0.021353211253881454}}
+{"id": "r_783281a9eede", "model": "q4b_v05_A3", "probs": {"yes": 0.8685238361358643, "no": 0.13147610425949097}}
+{"id": "r_784a87271ceb", "model": "q4b_v05_A3", "probs": {"ingredient substitution": 0.9622116088867188, "nutrition information": 0.00580422580242157, "unit conversion": 0.005302932113409042, "recipe": 0.0038828987162560225, "translation": 0.0035578275565057993, "rename assistant": 0.0023886372800916433, "ingredients list": 0.004681223072111607, "meal suggestion": 0.0033998144790530205, "none of these": 0.008770916610956192}}
+{"id": "r_7887469dbd83", "model": "q4b_v05_A3", "probs": {"yes": 0.9507666826248169, "no": 0.049233272671699524}}
+{"id": "r_788dfbe8e2a3", "model": "q4b_v05_A3", "probs": {"ingredients list": 0.015520039014518261, "nutrition information": 0.007685445714741945, "ingredient substitution": 0.00818070862442255, "meal suggestion": 0.008184470236301422, "directions": 0.02668674848973751, "cooking time": 0.008925192058086395, "recipe": 0.8959193825721741, "restaurant suggestion": 0.009244593791663647, "none of these": 0.019653400406241417}}
+{"id": "r_78b90af1a2fe", "model": "q4b_v05_A3", "probs": {"yes": 0.9530813097953796, "no": 0.04691874608397484}}
+{"id": "r_78e9e35e890b", "model": "q4b_v05_A3", "probs": {"yes": 0.9226253032684326, "no": 0.07737470418214798}}
+{"id": "r_7a09ae2a16f5", "model": "q4b_v05_A3", "probs": {"time zone": 0.008260194212198257, "who you work for": 0.008024868555366993, "where you are from": 0.8946753740310669, "translation": 0.006894973106682301, "current location": 0.022940808907151222, "greeting": 0.006920236628502607, "what I can ask": 0.008501952514052391, "unsure reply": 0.010850409045815468, "none of these": 0.032931119203567505}}
+{"id": "r_7a51d1e639f0", "model": "q4b_v05_A3", "probs": {"card top-up fee": 0.007354696746915579, "bank transfer top-up fee": 0.8434293270111084, "transfer into account": 0.014059815555810928, "card payment fee": 0.008852451108396053, "cash or cheque top-up": 0.01083550788462162, "transfer fee": 0.04469854012131691, "currency exchange fee": 0.011712681502103806, "cash withdrawal fee": 0.010964540764689445, "none of these": 0.04809248074889183}}
+{"id": "r_7ae43f74119e", "model": "q4b_v05_A3", "probs": {"currency exchange fee": 0.008166269399225712, "exchange rate": 0.010253350250422955, "fiat currency support": 0.862933874130249, "supported countries": 0.007747293449938297, "supported cards and currencies": 0.06633234024047852, "exchange currency in app": 0.009202130138874054, "Visa or Mastercard": 0.005154282785952091, "ATM support": 0.008005578070878983, "none of these": 0.022204803302884102}}
+{"id": "r_7b16c9e2f9e8", "model": "q4b_v05_A3", "probs": {"yes": 0.9503036737442017, "no": 0.04969628155231476}}
+{"id": "r_7b4e282042f2", "model": "q4b_v05_A3", "probs": {"yes": 0.06327245384454727, "no": 0.9367275834083557}}
+{"id": "r_7d61aadd9fa1", "model": "q4b_v05_A3", "probs": {"yes": 0.9499532580375671, "no": 0.05004667863249779}}
+{"id": "r_7dec3578c88e", "model": "q4b_v05_A3", "probs": {"yes": 0.05397453159093857, "no": 0.9460254311561584}}
+{"id": "r_7dfd814556dd", "model": "q4b_v05_A3", "probs": {"yes": 0.9520201086997986, "no": 0.04797988012433052}}
+{"id": "r_7e5db4fc4cc4", "model": "q4b_v05_A3", "probs": {"card acceptance": 0.01088238786906004, "additional card": 0.005255387630313635, "exchange rate": 0.0049688252620399, "Visa or Mastercard": 0.005588470492511988, "exchange currency in app": 0.004963369574397802, "physical card PIN": 0.005079487804323435, "supported cards and currencies": 0.9408289790153503, "fiat currency support": 0.00651365052908659, "none of these": 0.015919510275125504}}
+{"id": "r_7eb5ec10ab14", "model": "q4b_v05_A3", "probs": {"unrecognised cash withdrawal": 0.9685313701629639, "unrecognised direct debit": 0.005642533302307129, "declined cash withdrawal": 0.0042278519831597805, "wrong rate on cash withdrawal": 0.003466153983026743, "wrong cash amount received": 0.003929911181330681, "cash withdrawal fee": 0.002291523152962327, "unrecognised card payment": 0.002499643247574568, "pending cash withdrawal": 0.0028519609477370977, "none of these": 0.006558993831276894}}
+{"id": "r_7f887472ef30", "model": "q4b_v05_A3", "probs": {"yes": 0.05869609862565994, "no": 0.9413039684295654}}
+{"id": "r_7f9f892b4579", "model": "q4b_v05_A3", "probs": {"calculation": 0.006583062000572681, "recipe": 0.004055312369018793, "food shelf life": 0.004612200427800417, "fuel level": 0.003089738776907325, "meal suggestion": 0.002566596493124962, "account balance": 0.0038874014280736446, "calorie count": 0.9578107595443726, "nutrition information": 0.011585565283894539, "none of these": 0.005809443071484566}}
+{"id": "r_7fd53e43625c", "model": "q4b_v05_A3", "probs": {"yes": 0.9463926553726196, "no": 0.053607333451509476}}
+{"id": "r_815a8df2f169", "model": "q4b_v05_A3", "probs": {"yes": 0.05768965929746628, "no": 0.9423103928565979}}
+{"id": "r_815dba6cc613", "model": "q4b_v05_A3", "probs": {"yes": 0.05676828324794769, "no": 0.9432317614555359}}
+{"id": "r_8224eab55cd3", "model": "q4b_v05_A3", "probs": {"yes": 0.9449014067649841, "no": 0.05509855970740318}}
+{"id": "r_832ecab61bf7", "model": "q4b_v05_A3", "probs": {"verify source of funds": 0.019787803292274475, "transfer into account": 0.014162017032504082, "transfer not received by recipient": 0.010023697279393673, "card arrival": 0.007028078194707632, "wrong cash amount received": 0.012922756373882294, "receiving money": 0.8429545164108276, "request a refund": 0.008250216022133827, "cash or cheque top-up": 0.010712973773479462, "none of these": 0.0741579681634903}}
+{"id": "r_834a830668ff", "model": "q4b_v05_A3", "probs": {"yes": 0.9550029039382935, "no": 0.04499708488583565}}
+{"id": "r_83fe44e9c938", "model": "q4b_v05_A3", "probs": {"yes": 0.05145159363746643, "no": 0.9485483765602112}}
+{"id": "r_8439a49841e7", "model": "q4b_v05_A3", "probs": {"transfer fee": 0.009203135967254639, "cash withdrawal fee": 0.005568144377321005, "bank transfer top-up fee": 0.013861577026546001, "currency exchange fee": 0.937501847743988, "exchange rate": 0.006083905231207609, "fiat currency support": 0.0043325359001755714, "card payment fee": 0.00370780099183321, "exchange currency in app": 0.0067518181167542934, "none of these": 0.01298920065164566}}
+{"id": "r_8539f5b8057a", "model": "q4b_v05_A3", "probs": {"yes": 0.94596928358078, "no": 0.054030708968639374}}
+{"id": "r_85709ae49f89", "model": "q4b_v05_A3", "probs": {"yes": 0.05531772971153259, "no": 0.9446823000907898}}
+{"id": "r_858885c37dc1", "model": "q4b_v05_A3", "probs": {"yes": 0.041868656873703, "no": 0.9581313729286194}}
+{"id": "r_8591354635d8", "model": "q4b_v05_A3", "probs": {"yes": 0.9366326928138733, "no": 0.06336724758148193}}
+{"id": "r_85ca5049d368", "model": "q4b_v05_A3", "probs": {"yes": 0.9044276475906372, "no": 0.09557238221168518}}
+{"id": "r_86ab5d1e6145", "model": "q4b_v05_A3", "probs": {"yes": 0.048132799565792084, "no": 0.9518672227859497}}
+{"id": "r_8711d6e9ac3b", "model": "q4b_v05_A3", "probs": {"yes": 0.9338902831077576, "no": 0.06610969454050064}}
+{"id": "r_87a13670b18b", "model": "q4b_v05_A3", "probs": {"yes": 0.9513574838638306, "no": 0.048642490059137344}}
+{"id": "r_888f67ea5210", "model": "q4b_v05_A3", "probs": {"yes": 0.35472747683525085, "no": 0.6452724933624268}}
+{"id": "r_88b4ee93497c", "model": "q4b_v05_A3", "probs": {"yes": 0.06930810958147049, "no": 0.9306918978691101}}
+{"id": "r_8933b912e531", "model": "q4b_v05_A3", "probs": {"yes": 0.060740478336811066, "no": 0.9392595887184143}}
+{"id": "r_8a204db52926", "model": "q4b_v05_A3", "probs": {"yes": 0.9471349716186523, "no": 0.05286505073308945}}
+{"id": "r_8a866c07b304", "model": "q4b_v05_A3", "probs": {"yes": 0.9396690726280212, "no": 0.06033088266849518}}
+{"id": "r_8ae233049417", "model": "q4b_v05_A3", "probs": {"yes": 0.955000638961792, "no": 0.04499942436814308}}
+{"id": "r_8b639bc13189", "model": "q4b_v05_A3", "probs": {"yes": 0.05655546486377716, "no": 0.943444550037384}}
+{"id": "r_8b641abf1ab5", "model": "q4b_v05_A3", "probs": {"yes": 0.9589632749557495, "no": 0.041036687791347504}}
+{"id": "r_8ba367a35ec9", "model": "q4b_v05_A3", "probs": {"yes": 0.9451791644096375, "no": 0.05482077971100807}}
+{"id": "r_8c409c997582", "model": "q4b_v05_A3", "probs": {"report lost card": 0.005116757471114397, "replacement card wait": 0.005666786339133978, "declined card": 0.9475504159927368, "card application status": 0.005244951229542494, "negative reply": 0.004356244578957558, "damaged card": 0.004054027609527111, "card expiration date": 0.005490076262503862, "apply for new card": 0.006643657572567463, "none of these": 0.01587715558707714}}
+{"id": "r_8c6b14f109df", "model": "q4b_v05_A3", "probs": {"yes": 0.9406497478485107, "no": 0.059350285679101944}}
+{"id": "r_8d1540324647", "model": "q4b_v05_A3", "probs": {"yes": 0.04961801692843437, "no": 0.9503819346427917}}
+{"id": "r_8d1bf9aeb285", "model": "q4b_v05_A3", "probs": {"payday": 0.0033359115477651358, "redeem rewards": 0.005904560908675194, "roll dice": 0.9617807865142822, "rewards balance": 0.004252320155501366, "flip a coin": 0.003734579775482416, "make a call": 0.0027487787883728743, "plug type": 0.003306017490103841, "taxes": 0.00448764581233263, "none of these": 0.010449265129864216}}
+{"id": "r_8d3406abddb6", "model": "q4b_v05_A3", "probs": {"yes": 0.04949835687875748, "no": 0.9505016803741455}}
+{"id": "r_8d68cac924e8", "model": "q4b_v05_A3", "probs": {"yes": 0.942669153213501, "no": 0.057330865412950516}}
+{"id": "r_8da2ae407e00", "model": "q4b_v05_A3", "probs": {"yes": 0.058610159903764725, "no": 0.941389799118042}}
+{"id": "r_8e6282b8e207", "model": "q4b_v05_A3", "probs": {"yes": 0.9534348845481873, "no": 0.04656511917710304}}
+{"id": "r_8eeb6bed668d", "model": "q4b_v05_A3", "probs": {"yes": 0.9527347087860107, "no": 0.047265347093343735}}
+{"id": "r_8f376e75d9bc", "model": "q4b_v05_A3", "probs": {"yes": 0.08408378809690475, "no": 0.9159162044525146}}
+{"id": "r_8f68c44a89d0", "model": "q4b_v05_A3", "probs": {"yes": 0.1609506458044052, "no": 0.8390493392944336}}
+{"id": "r_903548c214e1", "model": "q4b_v05_A3", "probs": {"yes": 0.9438436627388, "no": 0.056156326085329056}}
+{"id": "r_904c9d8fa9e0", "model": "q4b_v05_A3", "probs": {"yes": 0.9307061433792114, "no": 0.06929384171962738}}
+{"id": "r_90a6d83a20d6", "model": "q4b_v05_A3", "probs": {"yes": 0.9501379132270813, "no": 0.04986206442117691}}
+{"id": "r_913d3684ae33", "model": "q4b_v05_A3", "probs": {"yes": 0.04748610034584999, "no": 0.9525138735771179}}
+{"id": "r_919b7f51c942", "model": "q4b_v05_A3", "probs": {"yes": 0.04992712289094925, "no": 0.9500729441642761}}
+{"id": "r_92eda33e4e36", "model": "q4b_v05_A3", "probs": {"yes": 0.1046256273984909, "no": 0.8953744173049927}}
+{"id": "r_936787175a39", "model": "q4b_v05_A3", "probs": {"check to-do list": 0.0050730714574456215, "ingredients list": 0.9444767236709595, "ingredient substitution": 0.006766459904611111, "nutrition information": 0.004037745296955109, "check shopping list": 0.00368389836512506, "meal suggestion": 0.003637911519035697, "directions": 0.005049998871982098, "recipe": 0.014274874702095985, "none of these": 0.012999316677451134}}
+{"id": "r_93d5b97dc655", "model": "q4b_v05_A3", "probs": {"yes": 0.7922890186309814, "no": 0.20771099627017975}}
+{"id": "r_94caa8daa4b1", "model": "q4b_v05_A3", "probs": {"yes": 0.9554322361946106, "no": 0.044567760080099106}}
+{"id": "r_9573d8da9abc", "model": "q4b_v05_A3", "probs": {"yes": 0.049750182777643204, "no": 0.9502498507499695}}
+{"id": "r_95b6669f6f44", "model": "q4b_v05_A3", "probs": {"yes": 0.9449176788330078, "no": 0.055082328617572784}}
+{"id": "r_960fc6cd47d0", "model": "q4b_v05_A3", "probs": {"yes": 0.9358199834823608, "no": 0.06418006867170334}}
+{"id": "r_96312279e9cc", "model": "q4b_v05_A3", "probs": {"yes": 0.9487949013710022, "no": 0.0512051060795784}}
+{"id": "r_9691c718e51f", "model": "q4b_v05_A3", "probs": {"yes": 0.95179682970047, "no": 0.04820319637656212}}
+{"id": "r_96e9c36a4c10", "model": "q4b_v05_A3", "probs": {"yes": 0.9534939527511597, "no": 0.046506091952323914}}
+{"id": "r_96f89671c455", "model": "q4b_v05_A3", "probs": {"yes": 0.05311845242977142, "no": 0.9468815326690674}}
+{"id": "r_97109a77aeb5", "model": "q4b_v05_A3", "probs": {"yes": 0.9536270499229431, "no": 0.04637297987937927}}
+{"id": "r_97716713ca19", "model": "q4b_v05_A3", "probs": {"card not working": 0.0051876516081392765, "change PIN": 0.9342681765556335, "ATM support": 0.025494538247585297, "blocked PIN": 0.005650287959724665, "compromised card": 0.004283134359866381, "additional card": 0.0036242108326405287, "reverted card payment": 0.0043622166849672794, "physical card PIN": 0.004510167054831982, "none of these": 0.012619616463780403}}
+{"id": "r_9787404948c8", "model": "q4b_v05_A3", "probs": {"yes": 0.942002534866333, "no": 0.05799749493598938}}
+{"id": "r_97891f8281d6", "model": "q4b_v05_A3", "probs": {"yes": 0.9433887600898743, "no": 0.056611258536577225}}
+{"id": "r_97fb3be109c5", "model": "q4b_v05_A3", "probs": {"pending transfer": 0.00502707390114665, "pending top-up": 0.9521105289459229, "verify a top-up": 0.0064299218356609344, "failed top-up": 0.0040223305113613605, "reverted top-up": 0.004541205707937479, "automatic top-up": 0.00464816577732563, "top up by card": 0.005984470248222351, "top-up limits": 0.0037199691869318485, "none of these": 0.013516290113329887}}
+{"id": "r_984cd939ab8e", "model": "q4b_v05_A3", "probs": {"yes": 0.9487849473953247, "no": 0.05121511593461037}}
+{"id": "r_984e768e343d", "model": "q4b_v05_A3", "probs": {"yes": 0.9195036888122559, "no": 0.08049634844064713}}
+{"id": "r_987496c6ed98", "model": "q4b_v05_A3", "probs": {"yes": 0.05709182471036911, "no": 0.9429081678390503}}
+{"id": "r_9952e8db33dc", "model": "q4b_v05_A3", "probs": {"yes": 0.865468442440033, "no": 0.13453154265880585}}
+{"id": "r_99a622ea6d2c", "model": "q4b_v05_A3", "probs": {"yes": 0.9559280276298523, "no": 0.044071976095438004}}
+{"id": "r_99c028f37594", "model": "q4b_v05_A3", "probs": {"pending transfer": 0.9667835831642151, "pending cash withdrawal": 0.005147565621882677, "declined transfer": 0.004065769258886576, "failed transfer": 0.003810534253716469, "cancel a transfer": 0.004484676755964756, "transfer not received by recipient": 0.0023140066768974066, "pending card payment": 0.0021497674752026796, "transfer fee": 0.0030954733956605196, "none of these": 0.00814856681972742}}
+{"id": "r_99d569cb7793", "model": "q4b_v05_A3", "probs": {"pending transfer": 0.006612863857299089, "balance not updated after transfer": 0.006439011078327894, "transfer not received by recipient": 0.005316489841789007, "cancel a transfer": 0.006044836714863777, "failed transfer": 0.9448977708816528, "transfer fee": 0.006506119854748249, "declined transfer": 0.0062784762121737, "transfer into account": 0.005721875932067633, "none of these": 0.012182456441223621}}
+{"id": "r_9a81f9a1fe4c", "model": "q4b_v05_A3", "probs": {"yes": 0.8835676312446594, "no": 0.11643239855766296}}
+{"id": "r_9afb39b390df", "model": "q4b_v05_A3", "probs": {"yes": 0.9506322145462036, "no": 0.04936772212386131}}
+{"id": "r_9d3c226d2586", "model": "q4b_v05_A3", "probs": {"flip a coin": 0.0041594174690544605, "tell a joke": 0.005787796340882778, "repeat that": 0.957560122013092, "next song": 0.004749719053506851, "factory reset": 0.003474104218184948, "set a reminder": 0.0038412639405578375, "thanks": 0.005485527217388153, "fun fact": 0.0054895938374102116, "none of these": 0.00945250503718853}}
+{"id": "r_9d3e165d1fcf", "model": "q4b_v05_A3", "probs": {"yes": 0.9557299613952637, "no": 0.04427007585763931}}
+{"id": "r_9d5782343922", "model": "q4b_v05_A3", "probs": {"identify current song": 0.008501491509377956, "connect to phone": 0.008459976874291897, "play music": 0.9154109358787537, "next song": 0.008044016547501087, "find my phone": 0.006553454790264368, "update playlist": 0.006124270148575306, "tell a joke": 0.006376893725246191, "pay a bill": 0.009434347972273827, "none of these": 0.03109470009803772}}
+{"id": "r_9d60b1f6c383", "model": "q4b_v05_A3", "probs": {"yes": 0.9351750612258911, "no": 0.06482499092817307}}
+{"id": "r_9d6e102e30da", "model": "q4b_v05_A3", "probs": {"yes": 0.9533993601799011, "no": 0.04660060629248619}}
+{"id": "r_9d86f0dd7e2b", "model": "q4b_v05_A3", "probs": {"current location": 0.005095453932881355, "place an order": 0.0056662471033632755, "directions": 0.9413403868675232, "connect to phone": 0.005105430725961924, "next song": 0.0038452239241451025, "ingredients list": 0.0038424120284616947, "how to change oil": 0.005290007218718529, "recipe": 0.007490010932087898, "none of these": 0.02232483960688114}}
+{"id": "r_9daee36fb9f7", "model": "q4b_v05_A3", "probs": {"set an alarm": 0.0052728368900716305, "assistant's pets": 0.9143548607826233, "assistant's name": 0.006457366514950991, "last car service": 0.004431827925145626, "rename assistant": 0.0041931141167879105, "who you work for": 0.004543472081422806, "assistant's age": 0.006745946127921343, "assistant's hobbies": 0.015339585952460766, "none of these": 0.038660965859889984}}
+{"id": "r_9dbb4d351734", "model": "q4b_v05_A3", "probs": {"yes": 0.04836942255496979, "no": 0.9516305327415466}}
+{"id": "r_9e3e2cb82be7", "model": "q4b_v05_A3", "probs": {"exchange rate": 0.005670812446624041, "supported cards and currencies": 0.9222500920295715, "Visa or Mastercard": 0.010615641251206398, "exchange currency in app": 0.006504812277853489, "card acceptance": 0.005743335001170635, "fiat currency support": 0.010525979101657867, "physical card PIN": 0.0054147145710885525, "additional card": 0.0056561972014606, "none of these": 0.02761845476925373}}
+{"id": "r_9e43bfa88ef8", "model": "q4b_v05_A3", "probs": {"card arrival": 0.0038412786088883877, "card activation": 0.0036200806498527527, "unrecognised card payment": 0.0027054238598793745, "pending card payment": 0.003939210902899504, "card not working": 0.9680164456367493, "card about to expire": 0.004657816607505083, "compromised card": 0.0028859928715974092, "virtual card not working": 0.0037140094209462404, "none of these": 0.0066197761334478855}}
+{"id": "r_9e54d6835e37", "model": "q4b_v05_A3", "probs": {"yes": 0.9465674161911011, "no": 0.0534326508641243}}
+{"id": "r_9f05b2b77edb", "model": "q4b_v05_A3", "probs": {"yes": 0.051870230585336685, "no": 0.9481298327445984}}
+{"id": "r_a05cff9f0a02", "model": "q4b_v05_A3", "probs": {"pending cash withdrawal": 0.005062580108642578, "unrecognised cash withdrawal": 0.008295709267258644, "unrecognised direct debit": 0.9564269781112671, "wrong cash amount received": 0.004624718334525824, "pending transfer": 0.003157684113830328, "beneficiary not allowed": 0.0030670189298689365, "declined cash withdrawal": 0.0028558275662362576, "unrecognised card payment": 0.004647829104214907, "none of these": 0.011861622333526611}}
+{"id": "r_a0655b360794", "model": "q4b_v05_A3", "probs": {"yes": 0.047369807958602905, "no": 0.9526301622390747}}
+{"id": "r_a0aeff1a882e", "model": "q4b_v05_A3", "probs": {"yes": 0.04943570867180824, "no": 0.9505642652511597}}
+{"id": "r_a1a749d48b75", "model": "q4b_v05_A3", "probs": {"yes": 0.950671374797821, "no": 0.04932866990566254}}
+{"id": "r_a1c3d5f3c0a0", "model": "q4b_v05_A3", "probs": {"yes": 0.9547154307365417, "no": 0.045284584164619446}}
+{"id": "r_a2275964729c", "model": "q4b_v05_A3", "probs": {"yes": 0.05562127009034157, "no": 0.944378674030304}}
+{"id": "r_a22cabbe9638", "model": "q4b_v05_A3", "probs": {"yes": 0.9576876163482666, "no": 0.0423123799264431}}
+{"id": "r_a23796556c66", "model": "q4b_v05_A3", "probs": {"yes": 0.07019515335559845, "no": 0.929804801940918}}
+{"id": "r_a297843c70e1", "model": "q4b_v05_A3", "probs": {"yes": 0.06319883465766907, "no": 0.9368011355400085}}
+{"id": "r_a394b1f37c49", "model": "q4b_v05_A3", "probs": {"identify current song": 0.00527092395350337, "connect to phone": 0.003711703699082136, "pay a bill": 0.003776218043640256, "play music": 0.953183114528656, "find my phone": 0.004178843926638365, "update playlist": 0.0036161502357572317, "next song": 0.004497501067817211, "tell a joke": 0.005244874395430088, "none of these": 0.016520699486136436}}
+{"id": "r_a421ab1a0718", "model": "q4b_v05_A3", "probs": {"yes": 0.04678289219737053, "no": 0.953217089176178}}
+{"id": "r_a48f652d6659", "model": "q4b_v05_A3", "probs": {"are you a bot": 0.009466337040066719, "negative reply": 0.011659039184451103, "unsure reply": 0.8831889629364014, "tell a joke": 0.008616567589342594, "what I can ask": 0.008535443805158138, "affirmative reply": 0.007742234040051699, "flip a coin": 0.008766100741922855, "declined card": 0.011381725780665874, "none of these": 0.05064358934760094}}
+{"id": "r_a4cc6ed8fec5", "model": "q4b_v05_A3", "probs": {"yes": 0.9311854243278503, "no": 0.06881453841924667}}
+{"id": "r_a723ea8a3009", "model": "q4b_v05_A3", "probs": {"check reminders": 0.00578935444355011, "update playlist": 0.0045617190189659595, "schedule a meeting": 0.004874897189438343, "update shopping list": 0.00484894122928381, "set a reminder": 0.0032733785919845104, "today's date": 0.0035361170303076506, "check calendar": 0.006383582483977079, "update calendar": 0.9550841450691223, "none of these": 0.011647856794297695}}
+{"id": "r_a74be9616fdd", "model": "q4b_v05_A3", "probs": {"yes": 0.9443480968475342, "no": 0.05565188452601433}}
+{"id": "r_a793daeb43a2", "model": "q4b_v05_A3", "probs": {"yes": 0.9292115569114685, "no": 0.07078839838504791}}
+{"id": "r_a89d5862aae1", "model": "q4b_v05_A3", "probs": {"yes": 0.05076879635453224, "no": 0.9492312669754028}}
+{"id": "r_a89e125ce7e6", "model": "q4b_v05_A3", "probs": {"pay a bill": 0.004853620659559965, "spending history": 0.004957857541739941, "interest rate": 0.0030921061988919973, "money transfer": 0.0037712648045271635, "bill amount owed": 0.95707768201828, "account balance": 0.007872210815548897, "minimum payment": 0.0039947759360075, "bill due date": 0.004432259127497673, "none of these": 0.00994812324643135}}
+{"id": "r_a9af8958e588", "model": "q4b_v05_A3", "probs": {"yes": 0.05524849519133568, "no": 0.944751501083374}}
+{"id": "r_a9c7742dbaa1", "model": "q4b_v05_A3", "probs": {"yes": 0.054658327251672745, "no": 0.9453416466712952}}
+{"id": "r_a9d5f4541af6", "model": "q4b_v05_A3", "probs": {"yes": 0.10205729305744171, "no": 0.8979427218437195}}
+{"id": "r_aa17ef443d5f", "model": "q4b_v05_A3", "probs": {"yes": 0.9478810429573059, "no": 0.052118994295597076}}
+{"id": "r_aa86f17dd7a0", "model": "q4b_v05_A3", "probs": {"yes": 0.04648308828473091, "no": 0.9535169005393982}}
+{"id": "r_aaf7b486ef54", "model": "q4b_v05_A3", "probs": {"yes": 0.9252064228057861, "no": 0.07479360699653625}}
+{"id": "r_ab6c649045f6", "model": "q4b_v05_A3", "probs": {"yes": 0.9546107053756714, "no": 0.04538930207490921}}
+{"id": "r_ab7271a38eb6", "model": "q4b_v05_A3", "probs": {"yes": 0.950687050819397, "no": 0.049312930554151535}}
+{"id": "r_ab8389a1f945", "model": "q4b_v05_A3", "probs": {"yes": 0.9453887343406677, "no": 0.054611291736364365}}
+{"id": "r_abd30b68d6e4", "model": "q4b_v05_A3", "probs": {"yes": 0.047355953603982925, "no": 0.9526440501213074}}
+{"id": "r_ac45c1a6bff4", "model": "q4b_v05_A3", "probs": {"close account": 0.004832304548472166, "failed transfer": 0.005013113375753164, "declined transfer": 0.005068676546216011, "transfer into account": 0.9422240853309631, "transfer not received by recipient": 0.005055110901594162, "cancel a transfer": 0.004377801902592182, "transfer fee": 0.004953088704496622, "balance not updated after transfer": 0.007774708792567253, "none of these": 0.020701143890619278}}
+{"id": "r_ac83ee5cd632", "model": "q4b_v05_A3", "probs": {"yes": 0.051640983670949936, "no": 0.9483590126037598}}
+{"id": "r_acb81282251a", "model": "q4b_v05_A3", "probs": {"yes": 0.9355423450469971, "no": 0.06445762515068054}}
+{"id": "r_acd68c54e1a5", "model": "q4b_v05_A3", "probs": {"yes": 0.05095308646559715, "no": 0.9490469694137573}}
+{"id": "r_ad32071bf42e", "model": "q4b_v05_A3", "probs": {"yes": 0.8954287767410278, "no": 0.10457123070955276}}
+{"id": "r_adc19c1f3657", "model": "q4b_v05_A3", "probs": {"check shopping list": 0.004895713180303574, "set an alarm": 0.002893883502110839, "check meetings": 0.003452121978625655, "update calendar": 0.00299266679212451, "set a reminder": 0.002800998743623495, "check calendar": 0.0034019025042653084, "check reminders": 0.9703798890113831, "check to-do list": 0.0035358744207769632, "none of these": 0.005647057201713324}}
+{"id": "r_ae3427de5fb6", "model": "q4b_v05_A3", "probs": {"interest rate": 0.006726506631821394, "account balance": 0.0071175796911120415, "money transfer": 0.0041378880850970745, "minimum payment": 0.0054633463732898235, "bill amount owed": 0.9323897361755371, "spending history": 0.007699639070779085, "pay a bill": 0.007165233138948679, "bill due date": 0.007574053015559912, "none of these": 0.021726002916693687}}
+{"id": "r_ae8f7487a3e3", "model": "q4b_v05_A3", "probs": {"yes": 0.04892207682132721, "no": 0.951077938079834}}
+{"id": "r_aedadad08d45", "model": "q4b_v05_A3", "probs": {"set a reminder": 0.00529005192220211, "set an alarm": 0.9607627391815186, "schedule a meeting": 0.005898783914744854, "check calendar": 0.004131479654461145, "set a timer": 0.003344424767419696, "smart home control": 0.003564184531569481, "check reminders": 0.0052197715267539024, "make a call": 0.003786615561693907, "none of these": 0.008001944050192833}}
+{"id": "r_af11b7af591b", "model": "q4b_v05_A3", "probs": {"yes": 0.9411420226097107, "no": 0.05885796621441841}}
+{"id": "r_afe03b396b63", "model": "q4b_v05_A3", "probs": {"assistant's name": 0.006808591075241566, "assistant's age": 0.004890807904303074, "last car service": 0.003939480520784855, "rename assistant": 0.0045852442272007465, "assistant's pets": 0.936562716960907, "who you work for": 0.007917682640254498, "assistant's hobbies": 0.005504886154085398, "set an alarm": 0.005733370315283537, "none of these": 0.02405726909637451}}
+{"id": "r_b0ab4cba093d", "model": "q4b_v05_A3", "probs": {"yes": 0.05202620476484299, "no": 0.9479738473892212}}
+{"id": "r_b0b42a2357f7", "model": "q4b_v05_A3", "probs": {"yes": 0.04825734347105026, "no": 0.9517425894737244}}
+{"id": "r_b0e91f6bde7a", "model": "q4b_v05_A3", "probs": {"make a call": 0.004348347429186106, "check shopping list": 0.004147323779761791, "check to-do list": 0.006541596259921789, "check reminders": 0.006531179882586002, "schedule a meeting": 0.006811707280576229, "check meetings": 0.9408703446388245, "order checks": 0.005381385795772076, "check calendar": 0.01640974171459675, "none of these": 0.008958329446613789}}
+{"id": "r_b155e8ad17b0", "model": "q4b_v05_A3", "probs": {"yes": 0.952574610710144, "no": 0.047425445169210434}}
+{"id": "r_b3478c7676d6", "model": "q4b_v05_A3", "probs": {"set an alarm": 0.0050063044764101505, "make a call": 0.005845873150974512, "set a reminder": 0.9629432559013367, "check reminders": 0.004589993041008711, "schedule a meeting": 0.003298606025055051, "check calendar": 0.0025563363451510668, "update calendar": 0.004471231251955032, "set a timer": 0.0043408507481217384, "none of these": 0.0069474512711167336}}
+{"id": "r_b35256c25e7a", "model": "q4b_v05_A3", "probs": {"yes": 0.9407651424407959, "no": 0.0592348538339138}}
+{"id": "r_b414957890d9", "model": "q4b_v05_A3", "probs": {"yes": 0.08934295922517776, "no": 0.9106569886207581}}
+{"id": "r_b47de6d03b1d", "model": "q4b_v05_A3", "probs": {"yes": 0.04383225739002228, "no": 0.9561677575111389}}
+{"id": "r_b4a514afc953", "model": "q4b_v05_A3", "probs": {"yes": 0.9568396210670471, "no": 0.043160416185855865}}
+{"id": "r_b4addfc2463a", "model": "q4b_v05_A3", "probs": {"yes": 0.08810388296842575, "no": 0.9118961095809937}}
+{"id": "r_b53395063261", "model": "q4b_v05_A3", "probs": {"food shelf life": 0.0054786973632872105, "card application status": 0.003469100221991539, "apply for new card": 0.0038248205091804266, "damaged card": 0.0032631289213895798, "report lost card": 0.0028046034276485443, "replacement card wait": 0.00350515590980649, "card expiration date": 0.9687474370002747, "declined card": 0.002850892022252083, "none of these": 0.006056181620806456}}
+{"id": "r_b5e330f0a73a", "model": "q4b_v05_A3", "probs": {"yes": 0.05583640933036804, "no": 0.9441635608673096}}
+{"id": "r_b5f337a2dc34", "model": "q4b_v05_A3", "probs": {"yes": 0.047630853950977325, "no": 0.9523690938949585}}
+{"id": "r_b6467ca7306f", "model": "q4b_v05_A3", "probs": {"yes": 0.056048355996608734, "no": 0.9439517259597778}}
+{"id": "r_b6c884e23cbe", "model": "q4b_v05_A3", "probs": {"yes": 0.9545135498046875, "no": 0.04548642784357071}}
+{"id": "r_b6cb04dd845e", "model": "q4b_v05_A3", "probs": {"yes": 0.05064411461353302, "no": 0.9493558406829834}}
+{"id": "r_b740e30ba9f4", "model": "q4b_v05_A3", "probs": {"yes": 0.7980143427848816, "no": 0.20198564231395721}}
+{"id": "r_b7a0d309e83d", "model": "q4b_v05_A3", "probs": {"card about to expire": 0.004383002407848835, "card delivery estimate": 0.003982700873166323, "card top-up fee": 0.0030341153033077717, "get disposable virtual card": 0.007395551074296236, "disposable card limits": 0.964146077632904, "additional card": 0.0037116482853889465, "physical card PIN": 0.002495342865586281, "card activation": 0.0032366656232625246, "none of these": 0.007614979520440102}}
+{"id": "r_b87c26f1de9f", "model": "q4b_v05_A3", "probs": {"yes": 0.05526009202003479, "no": 0.9447398781776428}}
+{"id": "r_b8d94704b1ec", "model": "q4b_v05_A3", "probs": {"yes": 0.9512332081794739, "no": 0.048766832798719406}}
+{"id": "r_ba5387132932", "model": "q4b_v05_A3", "probs": {"yes": 0.9484524130821228, "no": 0.05154765397310257}}
+{"id": "r_ba8136a232a0", "model": "q4b_v05_A3", "probs": {"yes": 0.9409768581390381, "no": 0.059023212641477585}}
+{"id": "r_bb05fa37335d", "model": "q4b_v05_A3", "probs": {"yes": 0.05806412175297737, "no": 0.9419358968734741}}
+{"id": "r_bb2c77cb1e12", "model": "q4b_v05_A3", "probs": {"yes": 0.9430768489837646, "no": 0.05692321062088013}}
+{"id": "r_bb580785ff2a", "model": "q4b_v05_A3", "probs": {"yes": 0.05111714079976082, "no": 0.9488828182220459}}
+{"id": "r_bb6812d582fd", "model": "q4b_v05_A3", "probs": {"yes": 0.04351849481463432, "no": 0.9564815163612366}}
+{"id": "r_bc2904cab882", "model": "q4b_v05_A3", "probs": {"who you work for": 0.006063798908144236, "set an alarm": 0.0032295044511556625, "assistant's hobbies": 0.0033989958465099335, "rename assistant": 0.0027237229514867067, "assistant's name": 0.0027785191778093576, "last car service": 0.0035053568426519632, "assistant's age": 0.9681887626647949, "assistant's pets": 0.003169617848470807, "none of these": 0.006941652856767178}}
+{"id": "r_bc6196764ae9", "model": "q4b_v05_A3", "probs": {"yes": 0.054566994309425354, "no": 0.9454330205917358}}
+{"id": "r_bd2d4394c600", "model": "q4b_v05_A3", "probs": {"yes": 0.05887560546398163, "no": 0.941124439239502}}
+{"id": "r_bd51e58e0dfc", "model": "q4b_v05_A3", "probs": {"yes": 0.9317020177841187, "no": 0.06829800456762314}}
+{"id": "r_be9bc08b476f", "model": "q4b_v05_A3", "probs": {"yes": 0.052229296416044235, "no": 0.9477707743644714}}
+{"id": "r_bf2a7e3e3824", "model": "q4b_v05_A3", "probs": {"time-off balance": 0.0046154046431183815, "translation": 0.0034836940467357635, "greeting": 0.002894541947171092, "negative reply": 0.0034511687699705362, "time off used": 0.0029787016101181507, "next song": 0.0027341560926288366, "weather": 0.004824252799153328, "goodbye": 0.9644609093666077, "none of these": 0.010557201690971851}}
+{"id": "r_bfd23b702ae1", "model": "q4b_v05_A3", "probs": {"yes": 0.9430907368659973, "no": 0.056909285485744476}}
+{"id": "r_c02d72259929", "model": "q4b_v05_A3", "probs": {"yes": 0.8002580404281616, "no": 0.19974195957183838}}
+{"id": "r_c05239a79ca2", "model": "q4b_v05_A3", "probs": {"yes": 0.9574891924858093, "no": 0.04251084104180336}}
+{"id": "r_c0e0c0bf3605", "model": "q4b_v05_A3", "probs": {"assistant's name": 0.5446590781211853, "assistant's hobbies": 0.01114698126912117, "change language": 0.006040619220584631, "change voice or accent": 0.0057274834252893925, "rename assistant": 0.3996754288673401, "assistant's pets": 0.005629809573292732, "assistant's age": 0.004814742598682642, "change user's name": 0.012273379601538181, "none of these": 0.010032432153820992}}
+{"id": "r_c1ba60683d63", "model": "q4b_v05_A3", "probs": {"yes": 0.947458803653717, "no": 0.052541181445121765}}
+{"id": "r_c1c169f6da6f", "model": "q4b_v05_A3", "probs": {"yes": 0.9510554671287537, "no": 0.048944536596536636}}
+{"id": "r_c1d5d8ef927a", "model": "q4b_v05_A3", "probs": {"yes": 0.7144899368286133, "no": 0.2855100929737091}}
+{"id": "r_c2232e2004c2", "model": "q4b_v05_A3", "probs": {"assistant's name": 0.005574029870331287, "assistant's age": 0.004843433853238821, "change user's name": 0.08176600933074951, "assistant's pets": 0.004375957418233156, "rename assistant": 0.8828615546226501, "assistant's hobbies": 0.0051449877209961414, "change voice or accent": 0.004419149365276098, "change language": 0.004256498534232378, "none of these": 0.006758380681276321}}
+{"id": "r_c2b27a219106", "model": "q4b_v05_A3", "probs": {"yes": 0.9443170428276062, "no": 0.055682968348264694}}
+{"id": "r_c3259399215d", "model": "q4b_v05_A3", "probs": {"yes": 0.9532020688056946, "no": 0.046797990798950195}}
+{"id": "r_c49262f948e2", "model": "q4b_v05_A3", "probs": {"yes": 0.0559287928044796, "no": 0.9440712332725525}}
+{"id": "r_c550c81343d8", "model": "q4b_v05_A3", "probs": {"recipe": 0.006416539661586285, "meal suggestion": 0.005769791081547737, "rename assistant": 0.004482218995690346, "translation": 0.003536089090630412, "ingredients list": 0.006520694587379694, "ingredient substitution": 0.9554811120033264, "nutrition information": 0.004854473751038313, "unit conversion": 0.005247405730187893, "none of these": 0.007691642735153437}}
+{"id": "r_c5760a88812b", "model": "q4b_v05_A3", "probs": {"yes": 0.04612864553928375, "no": 0.9538713693618774}}
+{"id": "r_c6016d6a5e11", "model": "q4b_v05_A3", "probs": {"yes": 0.05898958444595337, "no": 0.9410104155540466}}
+{"id": "r_c619c7413f8c", "model": "q4b_v05_A3", "probs": {"yes": 0.05868429318070412, "no": 0.9413156509399414}}
+{"id": "r_c68f0d3122cc", "model": "q4b_v05_A3", "probs": {"lost or stolen card": 0.008349929004907608, "failed transfer": 0.006380645092576742, "compromised card": 0.0074302214197814465, "lost or stolen phone": 0.9154970645904541, "unrecognised card payment": 0.008671173825860023, "forgotten passcode": 0.005796229001134634, "card activation": 0.006000746972858906, "request a refund": 0.006812290288507938, "none of these": 0.03506173565983772}}
+{"id": "r_c7bc3e5f6f8c", "model": "q4b_v05_A3", "probs": {"yes": 0.41390183568000793, "no": 0.5860981941223145}}
+{"id": "r_c8490a7ebed2", "model": "q4b_v05_A3", "probs": {"reverted top-up": 0.9099280834197998, "automatic top-up": 0.010729357600212097, "top-up limits": 0.007633406203240156, "pending top-up": 0.012578532099723816, "top up by card": 0.013779985718429089, "failed top-up": 0.008255735039710999, "card top-up fee": 0.005375327542424202, "verify a top-up": 0.00867619551718235, "none of these": 0.023043442517518997}}
+{"id": "r_c85afc2c9ecf", "model": "q4b_v05_A3", "probs": {"travel suggestion": 0.008703244850039482, "book a flight": 0.006013448350131512, "travel advisory": 0.004315010271966457, "time zone": 0.004902705550193787, "travel time estimate": 0.932854175567627, "traffic conditions": 0.007663231808692217, "current time": 0.005578087642788887, "travel vaccines": 0.006437623407691717, "none of these": 0.023532535880804062}}
+{"id": "r_c8ea8f8fac22", "model": "q4b_v05_A3", "probs": {"wrong cash amount received": 0.039413031190633774, "unrecognised cash withdrawal": 0.15975147485733032, "pending cash withdrawal": 0.10893896222114563, "pending transfer": 0.01696970872581005, "wrong rate on cash withdrawal": 0.019717900082468987, "cash withdrawal fee": 0.025413764640688896, "declined cash withdrawal": 0.5723752379417419, "pending card payment": 0.017609024420380592, "none of these": 0.039810895919799805}}
+{"id": "r_c9988d97793a", "model": "q4b_v05_A3", "probs": {"replacement card wait": 0.004874411039054394, "check shopping list": 0.005078203976154327, "check to-do list": 0.004632390569895506, "redeem rewards": 0.003973737359046936, "update playlist": 0.005416355561465025, "update shopping list": 0.9548049569129944, "update calendar": 0.004773471038788557, "update to-do list": 0.008267365396022797, "none of these": 0.008179239928722382}}
+{"id": "r_ca4d8bcdc7ed", "model": "q4b_v05_A3", "probs": {"yes": 0.04876187816262245, "no": 0.9512381553649902}}
+{"id": "r_ca78939db86e", "model": "q4b_v05_A3", "probs": {"yes": 0.08073653280735016, "no": 0.9192634224891663}}
+{"id": "r_cb6f82338e22", "model": "q4b_v05_A3", "probs": {"set a timer": 0.9657217860221863, "set an alarm": 0.005476152990013361, "request time off": 0.004052509553730488, "current time": 0.00328789371997118, "time-off request status": 0.003304119687527418, "set a reminder": 0.0032545013818889856, "time-off balance": 0.0027906810864806175, "time off used": 0.0032900015357881784, "none of these": 0.008822344243526459}}
+{"id": "r_cc0f1d7db63e", "model": "q4b_v05_A3", "probs": {"yes": 0.060709573328495026, "no": 0.9392904043197632}}
+{"id": "r_cc3e9925c6f8", "model": "q4b_v05_A3", "probs": {"yes": 0.9364191889762878, "no": 0.06358074396848679}}
+{"id": "r_cc4438955b1e", "model": "q4b_v05_A3", "probs": {"yes": 0.9530779719352722, "no": 0.04692202806472778}}
+{"id": "r_cc85c8670822", "model": "q4b_v05_A3", "probs": {"tell bank about travel": 0.0033362058456987143, "restaurant suggestion": 0.002980081597343087, "travel time estimate": 0.00422698725014925, "travel suggestion": 0.9641414284706116, "travel advisory": 0.0034817929845303297, "book a hotel": 0.00479352381080389, "book a flight": 0.00604386068880558, "travel vaccines": 0.0031752646900713444, "none of these": 0.00782082136720419}}
+{"id": "r_cc93cfc19dcd", "model": "q4b_v05_A3", "probs": {"yes": 0.059732045978307724, "no": 0.9402679204940796}}
+{"id": "r_ce5f89dc6376", "model": "q4b_v05_A3", "probs": {"yes": 0.04505104944109917, "no": 0.9549489617347717}}
+{"id": "r_ce69b482fad8", "model": "q4b_v05_A3", "probs": {"yes": 0.14567692577838898, "no": 0.8543230295181274}}
+{"id": "r_cf47d6133c81", "model": "q4b_v05_A3", "probs": {"yes": 0.051371876150369644, "no": 0.9486280679702759}}
+{"id": "r_cf4afe7e8e6d", "model": "q4b_v05_A3", "probs": {"yes": 0.053442198783159256, "no": 0.9465577602386475}}
+{"id": "r_d0a64edf22b2", "model": "q4b_v05_A3", "probs": {"yes": 0.9391455054283142, "no": 0.06085456535220146}}
+{"id": "r_d0def12b37d6", "model": "q4b_v05_A3", "probs": {"yes": 0.07040264457464218, "no": 0.9295973181724548}}
+{"id": "r_d186e740c683", "model": "q4b_v05_A3", "probs": {"yes": 0.9446808099746704, "no": 0.05531912297010422}}
+{"id": "r_d1aa5f960043", "model": "q4b_v05_A3", "probs": {"wrong rate on card payment": 0.027504196390509605, "wrong cash amount received": 0.03610896319150925, "exchange rate": 0.0416310578584671, "declined cash withdrawal": 0.010163653641939163, "cash withdrawal fee": 0.005380601156502962, "pending cash withdrawal": 0.005706351716071367, "unrecognised cash withdrawal": 0.006406255532056093, "wrong rate on cash withdrawal": 0.8547610640525818, "none of these": 0.01233785692602396}}
+{"id": "r_d1c148b2d0d1", "model": "q4b_v05_A3", "probs": {"yes": 0.04872017353773117, "no": 0.9512798190116882}}
+{"id": "r_d1fc7922c2da", "model": "q4b_v05_A3", "probs": {"yes": 0.8967689275741577, "no": 0.10323109477758408}}
+{"id": "r_d24b9471fb07", "model": "q4b_v05_A3", "probs": {"yes": 0.04834352806210518, "no": 0.9516564607620239}}
+{"id": "r_d275f8e3b042", "model": "q4b_v05_A3", "probs": {"yes": 0.05386628955602646, "no": 0.9461337327957153}}
+{"id": "r_d2b2894e8412", "model": "q4b_v05_A3", "probs": {"yes": 0.9576418995857239, "no": 0.042358119040727615}}
+{"id": "r_d36183d924b0", "model": "q4b_v05_A3", "probs": {"make a call": 0.004981593228876591, "check reminders": 0.0038076238706707954, "order checks": 0.0036736519541591406, "schedule a meeting": 0.005251244641840458, "check calendar": 0.011528365314006805, "check to-do list": 0.0043923514895141125, "check shopping list": 0.0033312540035694838, "check meetings": 0.955746054649353, "none of these": 0.007287933491170406}}
+{"id": "r_d4967f4ddbe1", "model": "q4b_v05_A3", "probs": {"yes": 0.9514704942703247, "no": 0.048529502004384995}}
+{"id": "r_d4ab52af50e6", "model": "q4b_v05_A3", "probs": {"yes": 0.073987677693367, "no": 0.9260123372077942}}
+{"id": "r_d53d363feb9a", "model": "q4b_v05_A3", "probs": {"damaged card": 0.00720789423212409, "recent transactions": 0.008453823626041412, "order checks": 0.0056725493632256985, "tell bank about travel": 0.004045800305902958, "blocked account": 0.003154383972287178, "declined card": 0.0049283732660114765, "report lost card": 0.004687681794166565, "report fraud": 0.9477987885475159, "none of these": 0.014050612226128578}}
+{"id": "r_d5564ebc83bf", "model": "q4b_v05_A3", "probs": {"verify source of funds": 0.004230378661304712, "supported countries": 0.9674526453018188, "fiat currency support": 0.0048002805560827255, "ATM support": 0.003206575056537986, "Visa or Mastercard": 0.002752830972895026, "card acceptance": 0.0036241987254470587, "blocked PIN": 0.0030358664225786924, "supported cards and currencies": 0.0051572429947555065, "none of these": 0.0057399156503379345}}
+{"id": "r_d55d7e96af55", "model": "q4b_v05_A3", "probs": {"yes": 0.7759408950805664, "no": 0.2240591049194336}}
+{"id": "r_d57a5858c650", "model": "q4b_v05_A3", "probs": {"yes": 0.05359320715069771, "no": 0.9464067816734314}}
+{"id": "r_d597c0ee9095", "model": "q4b_v05_A3", "probs": {"yes": 0.9562354683876038, "no": 0.04376455768942833}}
+{"id": "r_d5a41fba92d7", "model": "q4b_v05_A3", "probs": {"verify source of funds": 0.00970407947897911, "transfer into account": 0.006771393120288849, "why verify identity": 0.008717873133718967, "edit personal details": 0.005975084379315376, "card activation": 0.004156726412475109, "unable to verify identity": 0.006935940124094486, "verify my identity": 0.9416969418525696, "close account": 0.005608887877315283, "none of these": 0.010433112271130085}}
+{"id": "r_d614d5b9373f", "model": "q4b_v05_A3", "probs": {"yes": 0.05677828937768936, "no": 0.9432216882705688}}
+{"id": "r_d64a26fe2679", "model": "q4b_v05_A3", "probs": {"yes": 0.0712600126862526, "no": 0.9287399649620056}}
+{"id": "r_d6852a44afbc", "model": "q4b_v05_A3", "probs": {"yes": 0.04183947294950485, "no": 0.9581605195999146}}
+{"id": "r_d81eddbab63e", "model": "q4b_v05_A3", "probs": {"yes": 0.061052002012729645, "no": 0.9389479756355286}}
+{"id": "r_d837fb53cdce", "model": "q4b_v05_A3", "probs": {"assistant's pets": 0.003701278241351247, "assistant's age": 0.0037319196853786707, "restaurant suggestion": 0.004739012103527784, "assistant's hobbies": 0.9647791385650635, "book a rideshare": 0.003625520272180438, "assistant's name": 0.00327674369327724, "who you work for": 0.0030643148347735405, "rename assistant": 0.004046253859996796, "none of these": 0.009035739116370678}}
+{"id": "r_d86483540e1a", "model": "q4b_v05_A3", "probs": {"yes": 0.047828081995248795, "no": 0.9521719217300415}}
+{"id": "r_d8a08187802f", "model": "q4b_v05_A3", "probs": {"yes": 0.9538726806640625, "no": 0.04612739011645317}}
+{"id": "r_d8b329f4c901", "model": "q4b_v05_A3", "probs": {"order physical card": 0.0051586562767624855, "compromised card": 0.004886997397989035, "virtual card not working": 0.004465556237846613, "disposable card limits": 0.006949997507035732, "get virtual card": 0.011586660519242287, "card activation": 0.004190770909190178, "physical card PIN": 0.003428261959925294, "get disposable virtual card": 0.9506925940513611, "none of these": 0.008640523999929428}}
+{"id": "r_d94c50350127", "model": "q4b_v05_A3", "probs": {"request time off": 0.9577595591545105, "time zone": 0.005123990122228861, "restaurant wait time": 0.0051442901603877544, "time off used": 0.004439513199031353, "set a timer": 0.004470822401344776, "time-off balance": 0.005196398124098778, "time-off request status": 0.004557953216135502, "cooking time": 0.003779382910579443, "none of these": 0.009527980349957943}}
+{"id": "r_d990247e6159", "model": "q4b_v05_A3", "probs": {"yes": 0.9444201588630676, "no": 0.05557985603809357}}
+{"id": "r_d9bd951919db", "model": "q4b_v05_A3", "probs": {"restaurant wait time": 0.005029535386711359, "card application status": 0.004970337264239788, "apply for new card": 0.004616976715624332, "card expiration date": 0.004164678975939751, "damaged card": 0.006095187738537788, "replacement card wait": 0.9533191323280334, "report lost card": 0.007745515555143356, "declined card": 0.004424716345965862, "none of these": 0.009633881039917469}}
+{"id": "r_d9e4bd5b66a7", "model": "q4b_v05_A3", "probs": {"yes": 0.9553195834159851, "no": 0.044680383056402206}}
+{"id": "r_dad8cb766d8b", "model": "q4b_v05_A3", "probs": {"pending top-up": 0.00753415934741497, "verify a top-up": 0.007123538292944431, "top-up limits": 0.005396208260208368, "automatic top-up": 0.005085668992251158, "top up by card": 0.007172148209065199, "failed top-up": 0.00855895597487688, "card top-up fee": 0.006679791957139969, "reverted top-up": 0.9348644614219666, "none of these": 0.017585081979632378}}
+{"id": "r_db394a2c896f", "model": "q4b_v05_A3", "probs": {"yes": 0.053839270025491714, "no": 0.9461607336997986}}
+{"id": "r_dbdf143e9806", "model": "q4b_v05_A3", "probs": {"yes": 0.050467558205127716, "no": 0.9495323896408081}}
+{"id": "r_dc2873162b4d", "model": "q4b_v05_A3", "probs": {"yes": 0.9546626210212708, "no": 0.045337434858083725}}
+{"id": "r_dcd5ca19417f", "model": "q4b_v05_A3", "probs": {"update calendar": 0.0037923636846244335, "set a reminder": 0.004473309963941574, "set an alarm": 0.0032840927597135305, "check to-do list": 0.004323755856603384, "check meetings": 0.0024093431420624256, "check calendar": 0.003383187809959054, "check shopping list": 0.004127378109842539, "check reminders": 0.9686365723609924, "none of these": 0.005569901783019304}}
+{"id": "r_dd10b3394f47", "model": "q4b_v05_A3", "probs": {"pending transfer": 0.0066874707117676735, "cancel a transfer": 0.004777355585247278, "transfer into account": 0.0038009043782949448, "balance not updated after transfer": 0.015288878232240677, "transfer not received by recipient": 0.939863920211792, "failed transfer": 0.007471648044884205, "transfer fee": 0.004160557873547077, "declined transfer": 0.004923503380268812, "none of these": 0.013025728054344654}}
+{"id": "r_dd4b84ba1146", "model": "q4b_v05_A3", "probs": {"yes": 0.04694182053208351, "no": 0.953058123588562}}
+{"id": "r_dd8286dfb410", "model": "q4b_v05_A3", "probs": {"yes": 0.9418454766273499, "no": 0.058154523372650146}}
+{"id": "r_de57c55a99a0", "model": "q4b_v05_A3", "probs": {"yes": 0.05544085428118706, "no": 0.9445591568946838}}
+{"id": "r_df3a9a606e35", "model": "q4b_v05_A3", "probs": {"yes": 0.06361886113882065, "no": 0.9363811612129211}}
+{"id": "r_dfc44197e57f", "model": "q4b_v05_A3", "probs": {"yes": 0.9443981647491455, "no": 0.05560188740491867}}
+{"id": "r_e0178fda9832", "model": "q4b_v05_A3", "probs": {"yes": 0.9175035357475281, "no": 0.0824965238571167}}
+{"id": "r_e02401dcfe81", "model": "q4b_v05_A3", "probs": {"yes": 0.9493893980979919, "no": 0.050610609352588654}}
+{"id": "r_e0be5a715c68", "model": "q4b_v05_A3", "probs": {"transfer not received by recipient": 0.005722839385271072, "pending cash withdrawal": 0.004202207084745169, "pending card payment": 0.0038072296883910894, "failed transfer": 0.004429100546985865, "declined transfer": 0.00426118727773428, "transfer fee": 0.0034860786981880665, "cancel a transfer": 0.0036728372797369957, "pending transfer": 0.9640733003616333, "none of these": 0.0063451859168708324}}
+{"id": "r_e13b5017f833", "model": "q4b_v05_A3", "probs": {"yes": 0.9565702080726624, "no": 0.04342977702617645}}
+{"id": "r_e14ff674de0a", "model": "q4b_v05_A3", "probs": {"pending card payment": 0.005166272167116404, "card not working": 0.0050539360381662846, "unrecognised card payment": 0.0037440434098243713, "declined card payment": 0.004159228876233101, "card payment fee": 0.003282677149400115, "wrong rate on card payment": 0.003824943443760276, "compromised card": 0.003970933612436056, "reverted card payment": 0.9642916321754456, "none of these": 0.006506317760795355}}
+{"id": "r_e1537d38d5e8", "model": "q4b_v05_A3", "probs": {"yes": 0.06393825262784958, "no": 0.9360617399215698}}
+{"id": "r_e17a6bd0478a", "model": "q4b_v05_A3", "probs": {"yes": 0.06164819002151489, "no": 0.9383518099784851}}
+{"id": "r_e192fa962438", "model": "q4b_v05_A3", "probs": {"yes": 0.04870457947254181, "no": 0.9512954354286194}}
+{"id": "r_e1bbe7a4c17c", "model": "q4b_v05_A3", "probs": {"wrong cash amount received": 0.004797559231519699, "unrecognised card payment": 0.004624983761459589, "pending transfer": 0.004017286002635956, "declined cash withdrawal": 0.003598799230530858, "unrecognised cash withdrawal": 0.007421114947646856, "unrecognised direct debit": 0.9563040137290955, "pending cash withdrawal": 0.0044389935210347176, "beneficiary not allowed": 0.004333824384957552, "none of these": 0.01046348363161087}}
+{"id": "r_e1c152c35040", "model": "q4b_v05_A3", "probs": {"yes": 0.9369227886199951, "no": 0.06307721883058548}}
+{"id": "r_e1e8bda4f193", "model": "q4b_v05_A3", "probs": {"automatic top-up": 0.015323408879339695, "reverted top-up": 0.01297304593026638, "verify a top-up": 0.6877387762069702, "card top-up fee": 0.010268555022776127, "failed top-up": 0.026886340230703354, "pending top-up": 0.05707313120365143, "top up by card": 0.01914972998201847, "top-up limits": 0.01558308769017458, "none of these": 0.15500392019748688}}
+{"id": "r_e2249ad0f6a7", "model": "q4b_v05_A3", "probs": {"age requirement": 0.9591799378395081, "Visa or Mastercard": 0.005930139683187008, "additional card": 0.00518228393048048, "card acceptance": 0.004520882852375507, "card activation": 0.004820916801691055, "disposable card limits": 0.0037445996422320604, "beneficiary not allowed": 0.0033253931906074286, "card about to expire": 0.003357325680553913, "none of these": 0.009938475675880909}}
+{"id": "r_e276e586ede1", "model": "q4b_v05_A3", "probs": {"yes": 0.9390976428985596, "no": 0.060902323573827744}}
+{"id": "r_e29658f74abc", "model": "q4b_v05_A3", "probs": {"yes": 0.9392838478088379, "no": 0.06071610003709793}}
+{"id": "r_e29fd0032197", "model": "q4b_v05_A3", "probs": {"yes": 0.06497170031070709, "no": 0.9350282549858093}}
+{"id": "r_e2c3f283bbc5", "model": "q4b_v05_A3", "probs": {"blocked PIN": 0.005038469098508358, "forgotten passcode": 0.9652596116065979, "compromised card": 0.0047338176518678665, "card activation": 0.0036965974140912294, "lost or stolen phone": 0.003243124345317483, "lost or stolen card": 0.004028553608804941, "unrecognised card payment": 0.0036418563686311245, "physical card PIN": 0.002159768482670188, "none of these": 0.00819817092269659}}
+{"id": "r_e2ea24e4d728", "model": "q4b_v05_A3", "probs": {"restaurant wait time": 0.005544865503907204, "card expiration date": 0.004128385800868273, "meaning of life": 0.004304817412048578, "recipe": 0.004041553940623999, "meal suggestion": 0.00673949858173728, "food shelf life": 0.9547058343887329, "nutrition information": 0.0052158827893435955, "cooking time": 0.005119103007018566, "none of these": 0.01020006649196148}}
+{"id": "r_e37b56e2afce", "model": "q4b_v05_A3", "probs": {"yes": 0.08747244626283646, "no": 0.9125275015830994}}
+{"id": "r_e3ef2c2add4c", "model": "q4b_v05_A3", "probs": {"yes": 0.053013600409030914, "no": 0.9469863772392273}}
+{"id": "r_e445cd615292", "model": "q4b_v05_A3", "probs": {"yes": 0.06941541284322739, "no": 0.9305846095085144}}
+{"id": "r_e5713f72ec88", "model": "q4b_v05_A3", "probs": {"assistant's age": 0.0037531147245317698, "restaurant suggestion": 0.0037412180099636316, "rename assistant": 0.004273982718586922, "assistant's hobbies": 0.9633563160896301, "assistant's name": 0.0039736623875796795, "assistant's pets": 0.003673131112009287, "book a rideshare": 0.0037396950647234917, "who you work for": 0.003861892269924283, "none of these": 0.009626959450542927}}
+{"id": "r_e578c5c48758", "model": "q4b_v05_A3", "probs": {"yes": 0.9422503709793091, "no": 0.0577496662735939}}
+{"id": "r_e5b685e509e2", "model": "q4b_v05_A3", "probs": {"affirmative reply": 0.0069675203412771225, "goodbye": 0.008051400072872639, "declined card": 0.006288654170930386, "unsure reply": 0.006216313689947128, "flip a coin": 0.0070600057952106, "negative reply": 0.9407557249069214, "translation": 0.007591729983687401, "greeting": 0.00649304362013936, "none of these": 0.010575637221336365}}
+{"id": "r_e5be0ea08860", "model": "q4b_v05_A3", "probs": {"yes": 0.051423486322164536, "no": 0.9485764503479004}}
+{"id": "r_e6e6785995d1", "model": "q4b_v05_A3", "probs": {"failed transfer": 0.004856832325458527, "request a refund": 0.0030998317524790764, "lost or stolen card": 0.004071191418915987, "compromised card": 0.0032115785870701075, "card activation": 0.0023674825206398964, "forgotten passcode": 0.0029641124419867992, "lost or stolen phone": 0.970740020275116, "unrecognised card payment": 0.002925626002252102, "none of these": 0.005763276480138302}}
+{"id": "r_e72f5061cdc6", "model": "q4b_v05_A3", "probs": {"yes": 0.9546281695365906, "no": 0.045371826738119125}}
+{"id": "r_e73dab4ce773", "model": "q4b_v05_A3", "probs": {"yes": 0.944318413734436, "no": 0.05568161606788635}}
+{"id": "r_e7a582afce22", "model": "q4b_v05_A3", "probs": {"yes": 0.053485207259655, "no": 0.9465148448944092}}
+{"id": "r_e7babf096aa1", "model": "q4b_v05_A3", "probs": {"yes": 0.9572762846946716, "no": 0.04272371903061867}}
+{"id": "r_e7e7238f9412", "model": "q4b_v05_A3", "probs": {"yes": 0.049288392066955566, "no": 0.9507116675376892}}
+{"id": "r_e88ff24b5146", "model": "q4b_v05_A3", "probs": {"yes": 0.8950801491737366, "no": 0.10491982102394104}}
+{"id": "r_e8aa50cb6477", "model": "q4b_v05_A3", "probs": {"yes": 0.9475341439247131, "no": 0.05246589705348015}}
+{"id": "r_e8c31ac7d5c2", "model": "q4b_v05_A3", "probs": {"yes": 0.04493299871683121, "no": 0.9550670385360718}}
+{"id": "r_e8ec98c39593", "model": "q4b_v05_A3", "probs": {"yes": 0.9410649538040161, "no": 0.05893503502011299}}
+{"id": "r_e92e12aaf33a", "model": "q4b_v05_A3", "probs": {"declined cash withdrawal": 0.005362050142139196, "wrong rate on card payment": 0.005285326857119799, "reverted card payment": 0.004213697277009487, "pending card payment": 0.004118666984140873, "declined transfer": 0.0036297019105404615, "unrecognised card payment": 0.004196349531412125, "card payment fee": 0.004016319289803505, "declined card payment": 0.9591003060340881, "none of these": 0.010077555663883686}}
+{"id": "r_e95c4393ce0d", "model": "q4b_v05_A3", "probs": {"unsure reply": 0.005240567959845066, "where you are from": 0.9457722306251526, "translation": 0.006045344285666943, "time zone": 0.0036876886151731014, "greeting": 0.0033976954873651266, "who you work for": 0.0037435507401823997, "what I can ask": 0.007623468525707722, "current location": 0.007545079104602337, "none of these": 0.01694440096616745}}
+{"id": "r_e97eadec99dd", "model": "q4b_v05_A3", "probs": {"yes": 0.05055262893438339, "no": 0.9494473934173584}}
+{"id": "r_ea0fa1df84c8", "model": "q4b_v05_A3", "probs": {"yes": 0.9513341784477234, "no": 0.048665840178728104}}
+{"id": "r_ea14b437963a", "model": "q4b_v05_A3", "probs": {"yes": 0.04863225296139717, "no": 0.9513677358627319}}
+{"id": "r_ea79445d18b4", "model": "q4b_v05_A3", "probs": {"pending transfer": 0.014381376095116138, "failed top-up": 0.03461341932415962, "pending top-up": 0.7432935833930969, "automatic top-up": 0.01667645387351513, "reverted top-up": 0.07497741281986237, "top-up limits": 0.01154116727411747, "top up by card": 0.01039737369865179, "verify a top-up": 0.01769830659031868, "none of these": 0.07642092555761337}}
+{"id": "r_eb20fed06569", "model": "q4b_v05_A3", "probs": {"yes": 0.05199987813830376, "no": 0.9480001926422119}}
+{"id": "r_eb61e7f8c2b3", "model": "q4b_v05_A3", "probs": {"yes": 0.049213096499443054, "no": 0.950786828994751}}
+{"id": "r_ec1c368db466", "model": "q4b_v05_A3", "probs": {"yes": 0.05065668374300003, "no": 0.9493432641029358}}
+{"id": "r_ec37a3eb8b7b", "model": "q4b_v05_A3", "probs": {"yes": 0.08441606163978577, "no": 0.9155839085578918}}
+{"id": "r_ecbbb5bc710b", "model": "q4b_v05_A3", "probs": {"yes": 0.9103410243988037, "no": 0.0896589532494545}}
+{"id": "r_ece9825ea6bc", "model": "q4b_v05_A3", "probs": {"yes": 0.05146658793091774, "no": 0.9485334753990173}}
+{"id": "r_ed12548b22b4", "model": "q4b_v05_A3", "probs": {"yes": 0.0462878979742527, "no": 0.9537120461463928}}
+{"id": "r_ed58d0eef7f5", "model": "q4b_v05_A3", "probs": {"yes": 0.06638791412115097, "no": 0.933612048625946}}
+{"id": "r_eeead5110184", "model": "q4b_v05_A3", "probs": {"yes": 0.0474255308508873, "no": 0.9525744915008545}}
+{"id": "r_eef9ba6f1ed2", "model": "q4b_v05_A3", "probs": {"yes": 0.05484336242079735, "no": 0.9451566338539124}}
+{"id": "r_ef3946baee5d", "model": "q4b_v05_A3", "probs": {"yes": 0.9472477436065674, "no": 0.05275232717394829}}
+{"id": "r_ef7639b36920", "model": "q4b_v05_A3", "probs": {"yes": 0.04935546591877937, "no": 0.9506444931030273}}
+{"id": "r_ef8db01ad2ae", "model": "q4b_v05_A3", "probs": {"yes": 0.055638354271650314, "no": 0.944361686706543}}
+{"id": "r_efa55271130a", "model": "q4b_v05_A3", "probs": {"yes": 0.9459919333457947, "no": 0.05400804802775383}}
+{"id": "r_efd03bcac574", "model": "q4b_v05_A3", "probs": {"yes": 0.9549285173416138, "no": 0.04507148638367653}}
+{"id": "r_efd4ab909652", "model": "q4b_v05_A3", "probs": {"yes": 0.9514997005462646, "no": 0.04850022494792938}}
+{"id": "r_eff3f54f6031", "model": "q4b_v05_A3", "probs": {"yes": 0.9569091200828552, "no": 0.04309083893895149}}
+{"id": "r_f015dace92a8", "model": "q4b_v05_A3", "probs": {"yes": 0.062395110726356506, "no": 0.9376048445701599}}
+{"id": "r_f022e5eb4098", "model": "q4b_v05_A3", "probs": {"yes": 0.9503266215324402, "no": 0.0496734119951725}}
+{"id": "r_f06598203426", "model": "q4b_v05_A3", "probs": {"yes": 0.04557789862155914, "no": 0.954422116279602}}
+{"id": "r_f156c2d3877e", "model": "q4b_v05_A3", "probs": {"spelling": 0.008719590492546558, "who you work for": 0.0064825317822396755, "tell a joke": 0.006330335512757301, "what I can ask": 0.8408459424972534, "unsure reply": 0.011159580200910568, "affirmative reply": 0.006983380764722824, "make a call": 0.006430195644497871, "where you are from": 0.0074663665145635605, "none of these": 0.105582095682621}}
+{"id": "r_f2007d9679eb", "model": "q4b_v05_A3", "probs": {"check reminders": 0.00910783652216196, "check meetings": 0.013624881394207478, "set a reminder": 0.00593115109950304, "payday": 0.005512604024261236, "check calendar": 0.9135631322860718, "check shopping list": 0.007371827960014343, "update calendar": 0.007060026749968529, "today's date": 0.009552881121635437, "none of these": 0.02827560156583786}}
+{"id": "r_f2dcf9c2dc50", "model": "q4b_v05_A3", "probs": {"yes": 0.9446527361869812, "no": 0.05534723773598671}}
+{"id": "r_f34ce0dac61d", "model": "q4b_v05_A3", "probs": {"yes": 0.9439892768859863, "no": 0.05601072311401367}}
+{"id": "r_f350fe053ce5", "model": "q4b_v05_A3", "probs": {"yes": 0.9401730895042419, "no": 0.05982692539691925}}
+{"id": "r_f3b9378f2b57", "model": "q4b_v05_A3", "probs": {"card top-up fee": 0.009989575482904911, "top up by card": 0.009385043755173683, "failed top-up": 0.8768328428268433, "pending top-up": 0.014071834273636341, "verify a top-up": 0.010028166696429253, "automatic top-up": 0.006266889162361622, "top-up limits": 0.00699921278283, "reverted top-up": 0.02504679188132286, "none of these": 0.0413796603679657}}
+{"id": "r_f44a53bef7a8", "model": "q4b_v05_A3", "probs": {"set an alarm": 0.004149010870605707, "assistant's age": 0.9678263664245605, "assistant's hobbies": 0.0047697341069579124, "assistant's name": 0.003476262092590332, "rename assistant": 0.0024683254305273294, "assistant's pets": 0.0024307251442223787, "last car service": 0.003965221811085939, "who you work for": 0.002747040009126067, "none of these": 0.008167421445250511}}
+{"id": "r_f5fd6cc8a468", "model": "q4b_v05_A3", "probs": {"yes": 0.0764911100268364, "no": 0.923508882522583}}
+{"id": "r_f61e1bdf809f", "model": "q4b_v05_A3", "probs": {"yes": 0.06247242912650108, "no": 0.937527596950531}}
+{"id": "r_f68072e30d16", "model": "q4b_v05_A3", "probs": {"next song": 0.0048645916394889355, "send a text": 0.00463565019890666, "change volume": 0.00448470888659358, "make a call": 0.0049993861466646194, "change voice or accent": 0.005871770437806845, "whisper mode": 0.9574872255325317, "change speaking speed": 0.006141759920865297, "connect to phone": 0.004424604587256908, "none of these": 0.007090275641530752}}
+{"id": "r_f7af837e1dac", "model": "q4b_v05_A3", "probs": {"declined transfer": 0.019363492727279663, "transfer not received by recipient": 0.1193675696849823, "transfer fee": 0.01590801402926445, "cancel a transfer": 0.00923511479049921, "transfer into account": 0.018343638628721237, "pending transfer": 0.6489261984825134, "failed transfer": 0.017574794590473175, "balance not updated after transfer": 0.024683473631739616, "none of these": 0.12659777700901031}}
+{"id": "r_f84d43555715", "model": "q4b_v05_A3", "probs": {"yes": 0.05576586350798607, "no": 0.9442341327667236}}
+{"id": "r_f91507446227", "model": "q4b_v05_A3", "probs": {"yes": 0.05845218896865845, "no": 0.9415478110313416}}
+{"id": "r_f9370f0de98c", "model": "q4b_v05_A3", "probs": {"pending top-up": 0.0062490347772836685, "top up by card": 0.008058236911892891, "automatic top-up": 0.9366779923439026, "reverted top-up": 0.004921407904475927, "failed top-up": 0.005589735694229603, "top-up limits": 0.010482785291969776, "verify a top-up": 0.004761147778481245, "cash or cheque top-up": 0.006275706924498081, "none of these": 0.016983967274427414}}
+{"id": "r_f9569472294c", "model": "q4b_v05_A3", "probs": {"taxes": 0.005444335285574198, "money transfer": 0.004736264236271381, "account balance": 0.005548163782805204, "spending history": 0.9350441098213196, "bill amount owed": 0.006563170813024044, "income": 0.004726423416286707, "bill due date": 0.004951987881213427, "pay a bill": 0.0063625117763876915, "none of these": 0.026623060926795006}}
+{"id": "r_f97a9b31bbde", "model": "q4b_v05_A3", "probs": {"yes": 0.9473696947097778, "no": 0.05263031646609306}}
+{"id": "r_fa58c0d6386d", "model": "q4b_v05_A3", "probs": {"yes": 0.9346979260444641, "no": 0.06530213356018066}}
+{"id": "r_faa636dfe474", "model": "q4b_v05_A3", "probs": {"yes": 0.9441335797309875, "no": 0.05586638301610947}}
+{"id": "r_faa7b07fcc68", "model": "q4b_v05_A3", "probs": {"declined transfer": 0.007068139500916004, "transfer into account": 0.004705590195953846, "transfer not received by recipient": 0.004763379227370024, "transfer fee": 0.003056145505979657, "pending transfer": 0.006531514693051577, "cancel a transfer": 0.9585682153701782, "transfer timing": 0.0056358566507697105, "failed transfer": 0.004504598211497068, "none of these": 0.005166700109839439}}
+{"id": "r_fb44ab5c9921", "model": "q4b_v05_A3", "probs": {"yes": 0.0458606593310833, "no": 0.9541393518447876}}
+{"id": "r_fc016080ee48", "model": "q4b_v05_A3", "probs": {"yes": 0.952374279499054, "no": 0.04762570932507515}}
+{"id": "r_fc40eba3900a", "model": "q4b_v05_A3", "probs": {"yes": 0.3104460835456848, "no": 0.6895539164543152}}
+{"id": "r_fd6188baa10b", "model": "q4b_v05_A3", "probs": {"yes": 0.9552794694900513, "no": 0.04472053796052933}}
+{"id": "r_ff8d82bf35bc", "model": "q4b_v05_A3", "probs": {"transfer not received by recipient": 0.005149531178176403, "unrecognised direct debit": 0.005020834039896727, "receiving money": 0.004275051411241293, "declined cash withdrawal": 0.0035079193767160177, "declined card payment": 0.005659106653183699, "beneficiary not allowed": 0.9582362174987793, "unable to verify identity": 0.004881600849330425, "unrecognised cash withdrawal": 0.004134857561439276, "none of these": 0.009134819731116295}}

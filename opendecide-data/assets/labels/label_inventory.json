@@ -1,0 +1,726 @@
+{
+ "authored_by": "llm:claude:label-key-author",
+ "created": "2026-09-25",
+ "datasets": {
+  "banking77": {
+   "counts_by_kind": {
+    "intent": 77
+   },
+   "eval_tracks": [
+    "ID",
+    "INJ",
+    "DIST",
+    "DIAG"
+   ],
+   "keys_file": "assets/labels/keys/banking77.keys.json",
+   "label_asset": true,
+   "n_keyed": 77,
+   "n_labels": 77,
+   "roles": [
+    "train",
+    "dev",
+    "eval",
+    "cmp"
+   ],
+   "source": "legacy-datasets/banking77 @ f54121560de48f2852f90be299010d1d6dc612ec",
+   "splits_note": "train: train split minus dev hold-out; dev: train remainder; eval: test; cmp: CMP-B77 uses btzsc/btzsc banking77 (72 BTZSC hypotheses as label_000.. keys), not these keys"
+  },
+  "becel_snli": {
+   "eval_tracks": [
+    "ZS"
+   ],
+   "keys_file": null,
+   "label_asset": false,
+   "note": "NLI: no label asset",
+   "roles": [
+    "eval"
+   ],
+   "scale_constructs": [],
+   "source": "MJ-Jang/BECEL @ f5bdd119… data/snli"
+  },
+  "boolq": {
+   "eval_tracks": [
+    "ID",
+    "INJ",
+    "DIST"
+   ],
+   "keys_file": null,
+   "label_asset": false,
+   "note": "QA: QF/QN banks + scope bank; no label asset",
+   "roles": [
+    "train",
+    "dev",
+    "eval"
+   ],
+   "scale_constructs": [],
+   "source": "google/boolq @ 35b264d0… (+ BECEL boolq files and tasksource/boolq-natural-perturbations in eval boolq_bundle)"
+  },
+  "btzsc_banking77": {
+   "eval_tracks": [
+    "CMP"
+   ],
+   "keys_file": null,
+   "label_asset": false,
+   "note": "AbdelStark replay: 72 BTZSC hypotheses as criteria with keys label_000.. (verbatim, not ours)",
+   "roles": [
+    "cmp"
+   ],
+   "scale_constructs": [],
+   "source": "btzsc/btzsc banking77 @ fef2a2ac…"
+  },
+  "civil": {
+   "counts_by_kind": {
+    "level": 1,
+    "predicate": 1
+   },
+   "eval_tracks": [
+    "ZS"
+   ],
+   "keys_file": "assets/labels/keys/civil.keys.json",
+   "label_asset": true,
+   "n_keyed": 2,
+   "n_labels": 2,
+   "roles": [
+    "eval"
+   ],
+   "source": "google/civil_comments @ f2970eb3a55777454c94069077cc8d9b5866312d (test, streamed)",
+   "splits_note": "test, streamed (zero-shot)"
+  },
+  "clinc150": {
+   "counts_by_kind": {
+    "domain": 10,
+    "intent": 150,
+    "oos": 1
+   },
+   "eval_tracks": [
+    "ID",
+    "INJ",
+    "DIST",
+    "DIAG"
+   ],
+   "keys_file": "assets/labels/keys/clinc150.keys.json",
+   "label_asset": true,
+   "n_keyed": 160,
+   "n_labels": 161,
+   "roles": [
+    "train",
+    "dev",
+    "eval"
+   ],
+   "source": "clinc/clinc_oos (plus) @ 155b9c710419136e17307b80d0a13e68cd46b4ec",
+   "splits_note": "train: plus train; dev: validation; eval: plus test"
+  },
+  "clothing": {
+   "counts_by_kind": {
+    "level": 2,
+    "predicate": 4
+   },
+   "eval_tracks": [
+    "ID",
+    "INJ"
+   ],
+   "keys_file": "assets/labels/keys/clothing.keys.json",
+   "label_asset": true,
+   "n_keyed": 6,
+   "n_labels": 6,
+   "roles": [
+    "train",
+    "dev",
+    "eval"
+   ],
+   "source": "saattrupdan/womens-clothing-ecommerce-reviews @ 4e788183125a6143d8bdba24e58f1efda2e4b48f",
+   "splits_note": "train / validation / test"
+  },
+  "condaqa": {
+   "eval_tracks": [
+    "ID"
+   ],
+   "keys_file": null,
+   "label_asset": false,
+   "note": "QA: no label asset; Choice-3 bank",
+   "roles": [
+    "train",
+    "dev",
+    "eval"
+   ],
+   "scale_constructs": [],
+   "source": "lasha-nlp/CONDAQA @ 3c9caa2f…"
+  },
+  "dbpedia14": {
+   "counts_by_kind": {
+    "class": 14,
+    "superclass": 6
+   },
+   "eval_tracks": [],
+   "keys_file": "assets/labels/keys/dbpedia14.keys.json",
+   "label_asset": true,
+   "n_keyed": 20,
+   "n_labels": 20,
+   "roles": [
+    "train",
+    "dev"
+   ],
+   "source": "fancyzhx/dbpedia_14 @ 9abd46cf7fc8b4c64290f26993c540b92aa145ac",
+   "splits_note": "train: train; dev: train remainder"
+  },
+  "drug": {
+   "counts_by_kind": {
+    "level": 4,
+    "predicate": 3
+   },
+   "eval_tracks": [
+    "ID"
+   ],
+   "keys_file": "assets/labels/keys/drug.keys.json",
+   "label_asset": true,
+   "n_keyed": 7,
+   "n_labels": 7,
+   "roles": [
+    "train",
+    "dev",
+    "eval"
+   ],
+   "source": "lewtun/drug-reviews @ 07722f82287d0a94ddc80151390f34e65183b2c3 (cite UCI Drug Review, CC BY 4.0)",
+   "splits_note": "pool train+test regrouped by normalised text, 80/10/10 by hash"
+  },
+  "fresh": {
+   "eval_tracks": [
+    "FR"
+   ],
+   "keys_file": null,
+   "label_asset": false,
+   "note": "options and Score levels are authored per item; no keys file",
+   "roles": [
+    "eval"
+   ],
+   "scale_constructs": [
+    "fresh-4",
+    "fresh-7"
+   ],
+   "source": "authored FR items (DESIGN 7)"
+  },
+  "goemotions": {
+   "counts_by_kind": {
+    "emotion_group": 7,
+    "level": 1
+   },
+   "eval_tracks": [
+    "ID",
+    "DIST",
+    "DIAG"
+   ],
+   "keys_file": "assets/labels/keys/goemotions.keys.json",
+   "label_asset": true,
+   "n_keyed": 8,
+   "n_labels": 8,
+   "roles": [
+    "train",
+    "dev",
+    "eval"
+   ],
+   "source": "google-research-datasets/go_emotions (raw) @ add492243ff905527e67aeb8b80c082af02207c3; split membership via 'simplified' ids",
+   "splits_note": "raw config; split membership via simplified ids (train / validation / test)"
+  },
+  "hans": {
+   "eval_tracks": [],
+   "keys_file": null,
+   "label_asset": false,
+   "note": "NLI: no label asset",
+   "roles": [
+    "dev_zs"
+   ],
+   "scale_constructs": [],
+   "source": "jhu-cogsci/hans refs/convert/parquet validation"
+  },
+  "hint3_curekart": {
+   "counts_by_kind": {
+    "intent": 20,
+    "oos": 1
+   },
+   "eval_tracks": [
+    "ZS",
+    "INJ",
+    "DIST"
+   ],
+   "excluded_labels": [
+    "IMMUNITY",
+    "INTERNATIONAL_SHIPPING",
+    "MODES_OF_PAYMENTS",
+    "ORDER_QUERY",
+    "PORTAL_ISSUE",
+    "REFER_EARN",
+    "START_OVER",
+    "WORK_FROM_HOME"
+   ],
+   "keys_file": "assets/labels/keys/hint3_curekart.keys.json",
+   "label_asset": true,
+   "n_keyed": 20,
+   "n_labels": 21,
+   "roles": [
+    "eval"
+   ],
+   "source": "github:hellohaptik/HINT3 @ 99965c892ea9a6801a87083d3861b0b04c91a4e7 (dataset v2)",
+   "splits_note": "v2 test (zero-shot)"
+  },
+  "hint3_sofmattress": {
+   "counts_by_kind": {
+    "intent": 20,
+    "oos": 1
+   },
+   "eval_tracks": [
+    "ZS",
+    "INJ",
+    "DIST"
+   ],
+   "excluded_labels": [
+    "WARRANTY"
+   ],
+   "keys_file": "assets/labels/keys/hint3_sofmattress.keys.json",
+   "label_asset": true,
+   "n_keyed": 20,
+   "n_labels": 21,
+   "roles": [
+    "eval"
+   ],
+   "source": "github:hellohaptik/HINT3 @ 99965c892ea9a6801a87083d3861b0b04c91a4e7 (dataset v2)",
+   "splits_note": "v2 test (zero-shot)"
+  },
+  "massive": {
+   "counts_by_kind": {
+    "intent": 60,
+    "scenario": 18
+   },
+   "eval_tracks": [],
+   "keys_file": "assets/labels/keys/massive.keys.json",
+   "label_asset": true,
+   "n_keyed": 78,
+   "n_labels": 78,
+   "roles": [
+    "train",
+    "dev"
+   ],
+   "source": "AmazonScience/massive (refs/convert/parquet data_dir=en-US) @ ed58ac423a2f4121720918bf5301577edce4ffd3",
+   "splits_note": "train: en-US train; dev: en-US validation"
+  },
+  "mhs": {
+   "counts_by_kind": {
+    "level": 1,
+    "predicate": 1
+   },
+   "eval_tracks": [
+    "ZS"
+   ],
+   "keys_file": "assets/labels/keys/mhs.keys.json",
+   "label_asset": true,
+   "n_keyed": 2,
+   "n_labels": 2,
+   "roles": [
+    "eval"
+   ],
+   "source": "ucberkeley-dlab/measuring-hate-speech @ 5468f6e118396646b02a2f691e771f6b6d9502ea",
+   "splits_note": "train (only split), comments with >= 3 annotators (zero-shot)"
+  },
+  "minds14": {
+   "counts_by_kind": {
+    "intent": 14
+   },
+   "eval_tracks": [],
+   "keys_file": "assets/labels/keys/minds14.keys.json",
+   "label_asset": true,
+   "n_keyed": 14,
+   "n_labels": 14,
+   "roles": [
+    "dev_zs"
+   ],
+   "source": "PolyAI/minds14 (en-US/en-GB/en-AU) @ 40ce77cb32a384e4d50a568e1ec39ac804019d33",
+   "splits_note": "en-US/en-GB/en-AU train, audio dropped; deduplicated against Banking77"
+  },
+  "mnli": {
+   "eval_tracks": [],
+   "keys_file": null,
+   "label_asset": false,
+   "note": "NLI: the hypothesis is the proposition; Choice-3 keys true/false/cannot tell come from the choice3 bank",
+   "roles": [
+    "train",
+    "dev"
+   ],
+   "scale_constructs": [
+    "nli-3"
+   ],
+   "source": "nyu-mll/multi_nli @ da70db2a…"
+  },
+  "nan_nli": {
+   "eval_tracks": [
+    "ZS"
+   ],
+   "keys_file": null,
+   "label_asset": false,
+   "note": "NLI: no label asset",
+   "roles": [
+    "eval"
+   ],
+   "scale_constructs": [],
+   "source": "joey234/nan-nli @ bb442425…"
+  },
+  "nlupp": {
+   "counts_by_kind": {
+    "module": 62
+   },
+   "eval_tracks": [
+    "ZS",
+    "INJ",
+    "DIST"
+   ],
+   "inventory_sizes": {
+    "banking": 48,
+    "hotels": 40
+   },
+   "keys_file": "assets/labels/keys/nlupp.keys.json",
+   "label_asset": true,
+   "n_keyed": 62,
+   "n_labels": 62,
+   "roles": [
+    "eval"
+   ],
+   "source": "github:PolyAI-LDN/task-specific-datasets @ 57ec275d8078af65b7731c2a98be812d844a6d6b nlupp/data/{banking,hotels}/fold0-19.json + ontology.json",
+   "splits_note": "banking + hotels folds 0-19 (zero-shot)"
+  },
+  "sms_spam": {
+   "counts_by_kind": {
+    "class": 2
+   },
+   "eval_tracks": [
+    "ZS",
+    "INJ",
+    "DIST"
+   ],
+   "keys_file": "assets/labels/keys/sms_spam.keys.json",
+   "label_asset": true,
+   "n_keyed": 2,
+   "n_labels": 2,
+   "roles": [
+    "eval"
+   ],
+   "source": "ucirvine/sms_spam (plain_text) @ cae486f927c250fe1d4a5b55f11357964ed1646c",
+   "splits_note": "train (only split), deduplicated (zero-shot)"
+  },
+  "snips": {
+   "counts_by_kind": {
+    "intent": 7
+   },
+   "eval_tracks": [],
+   "keys_file": "assets/labels/keys/snips.keys.json",
+   "label_asset": true,
+   "n_keyed": 7,
+   "n_labels": 7,
+   "roles": [
+    "dev_zs"
+   ],
+   "source": "benayas/snips @ 16915b895754dd4028068abe52b6851a904977d7",
+   "splits_note": "benayas/snips"
+  },
+  "sst5": {
+   "counts_by_kind": {
+    "level": 1,
+    "predicate": 2
+   },
+   "eval_tracks": [
+    "ZS",
+    "INJ",
+    "DIST"
+   ],
+   "keys_file": "assets/labels/keys/sst5.keys.json",
+   "label_asset": true,
+   "n_keyed": 3,
+   "n_labels": 3,
+   "roles": [
+    "eval"
+   ],
+   "source": "stanfordnlp/sst (refs/convert/parquet data_dir=default) @ 8a7d55ee01d70b8ae53e0b3c66a83b2a6198c2a7",
+   "splits_note": "test minus RT-train sentences (zero-shot)"
+  },
+  "supertweeteval": {
+   "counts_by_kind": {
+    "level": 1,
+    "predicate": 1
+   },
+   "eval_tracks": [
+    "ZS",
+    "INJ"
+   ],
+   "keys_file": "assets/labels/keys/supertweeteval.keys.json",
+   "label_asset": true,
+   "n_keyed": 2,
+   "n_labels": 2,
+   "roles": [
+    "eval"
+   ],
+   "source": "cardiffnlp/super_tweeteval (tweet_sentiment) @ a10ac3d27a3499e870b6371df64c14e5a656131a",
+   "splits_note": "tweet_sentiment test (zero-shot)"
+  },
+  "tfns": {
+   "counts_by_kind": {
+    "class": 3
+   },
+   "eval_tracks": [
+    "ZS"
+   ],
+   "keys_file": "assets/labels/keys/tfns.keys.json",
+   "label_asset": true,
+   "n_keyed": 3,
+   "n_labels": 3,
+   "roles": [
+    "eval"
+   ],
+   "source": "zeroshot/twitter-financial-news-sentiment @ ccbe24de388e287beb92dd393a335c376b350ac3",
+   "splits_note": "validation (zero-shot)"
+  },
+  "vitaminc": {
+   "eval_tracks": [
+    "ID"
+   ],
+   "keys_file": null,
+   "label_asset": false,
+   "note": "fact verification: the claim is the proposition; no label asset",
+   "roles": [
+    "train",
+    "dev",
+    "eval"
+   ],
+   "scale_constructs": [
+    "vitaminc-3"
+   ],
+   "source": "tals/vitaminc @ be6febb7…"
+  },
+  "wanli": {
+   "eval_tracks": [],
+   "keys_file": null,
+   "label_asset": false,
+   "note": "NLI: no label asset (DESIGN 4.2)",
+   "roles": [
+    "train",
+    "dev"
+   ],
+   "scale_constructs": [],
+   "source": "alisawuffles/WANLI @ 61c95318…"
+  }
+ },
+ "datasets_by_role": {
+  "cmp": [
+   "banking77",
+   "btzsc_banking77"
+  ],
+  "dev": [
+   "banking77",
+   "boolq",
+   "clinc150",
+   "clothing",
+   "condaqa",
+   "dbpedia14",
+   "drug",
+   "goemotions",
+   "massive",
+   "mnli",
+   "vitaminc",
+   "wanli"
+  ],
+  "dev_zs": [
+   "hans",
+   "minds14",
+   "snips"
+  ],
+  "eval": [
+   "banking77",
+   "becel_snli",
+   "boolq",
+   "civil",
+   "clinc150",
+   "clothing",
+   "condaqa",
+   "drug",
+   "fresh",
+   "goemotions",
+   "hint3_curekart",
+   "hint3_sofmattress",
+   "mhs",
+   "nan_nli",
+   "nlupp",
+   "sms_spam",
+   "sst5",
+   "supertweeteval",
+   "tfns",
+   "vitaminc"
+  ],
+  "train": [
+   "banking77",
+   "boolq",
+   "clinc150",
+   "clothing",
+   "condaqa",
+   "dbpedia14",
+   "drug",
+   "goemotions",
+   "massive",
+   "mnli",
+   "vitaminc",
+   "wanli"
+  ]
+ },
+ "roles_legend": {
+  "cmp": "comparability replay CMP-B77 (3.4)",
+  "dev": "dev (3.2)",
+  "dev_zs": "zero-shot checkpoint selection (3.2)",
+  "eval": "frozen eval: ID/ZS/FR core and INJ/DIST robustness (3.3, 6.2, 6.3)",
+  "train": "train L0-L3 (3.1)"
+ },
+ "scale_constructs": {
+  "drug-10": {
+   "K": 10,
+   "dataset": "drug",
+   "roles": [
+    "train",
+    "dev",
+    "eval"
+   ]
+  },
+  "drug-2": {
+   "K": 2,
+   "dataset": "drug",
+   "roles": [
+    "train",
+    "dev"
+   ]
+  },
+  "drug-3": {
+   "K": 3,
+   "dataset": "drug",
+   "roles": [
+    "train",
+    "dev"
+   ]
+  },
+  "drug-5": {
+   "K": 5,
+   "dataset": "drug",
+   "roles": [
+    "train",
+    "dev",
+    "eval"
+   ]
+  },
+  "emotion-strength-3": {
+   "K": 3,
+   "dataset": "goemotions",
+   "roles": [
+    "train",
+    "dev"
+   ]
+  },
+  "fresh-4": {
+   "K": 4,
+   "dataset": "fresh",
+   "levels_low_to_high": "authored per item",
+   "roles": [
+    "eval"
+   ]
+  },
+  "fresh-7": {
+   "K": 7,
+   "dataset": "fresh",
+   "levels_low_to_high": "authored per item",
+   "roles": [
+    "eval"
+   ]
+  },
+  "insult-5": {
+   "K": 5,
+   "dataset": "mhs",
+   "roles": [
+    "eval"
+   ]
+  },
+  "nli-3": {
+   "K": 3,
+   "dataset": "mnli",
+   "levels_low_to_high": [
+    "contradicts",
+    "neither",
+    "supports"
+   ],
+   "roles": [
+    "train",
+    "dev"
+   ]
+  },
+  "satisfaction-3": {
+   "K": 3,
+   "dataset": "clothing",
+   "roles": [
+    "train",
+    "dev"
+   ]
+  },
+  "satisfaction-5": {
+   "K": 5,
+   "dataset": "clothing",
+   "roles": [
+    "train",
+    "dev",
+    "eval"
+   ]
+  },
+  "sentiment-5": {
+   "K": 5,
+   "dataset": "sst5",
+   "roles": [
+    "eval"
+   ]
+  },
+  "target-sentiment-5": {
+   "K": 5,
+   "dataset": "supertweeteval",
+   "roles": [
+    "eval"
+   ]
+  },
+  "toxicity-4": {
+   "K": 4,
+   "dataset": "civil",
+   "roles": [
+    "eval"
+   ]
+  },
+  "vitaminc-3": {
+   "K": 3,
+   "dataset": "vitaminc",
+   "levels_low_to_high": [
+    "refutes",
+    "not enough info",
+    "supports"
+   ],
+   "roles": [
+    "train",
+    "dev"
+   ]
+  }
+ },
+ "schema_version": "od-keys-1.0",
+ "spec_refs": "DESIGN sections 3 (sources and roles), 4.2 (label assets), 6.1 (Score constructs), 12, deviation D8",
+ "totals": {
+  "by_kind": {
+   "class": 19,
+   "domain": 10,
+   "emotion_group": 7,
+   "intent": 348,
+   "level": 11,
+   "module": 62,
+   "oos": 3,
+   "predicate": 12,
+   "scenario": 18,
+   "superclass": 6
+  },
+  "keyed_labels": 493,
+  "keys_files": 18,
+  "labels": 496
+ }
+}

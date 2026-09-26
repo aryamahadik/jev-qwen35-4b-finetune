@@ -1,0 +1,74 @@
+{
+ "authored_by": "llm:claude:label-key-author",
+ "counts_by_kind": {
+  "level": 1,
+  "predicate": 1
+ },
+ "created": "2026-09-25",
+ "dataset": "supertweeteval",
+ "key_policy": "Choice key = natural 1-5 word English name of the label, fixed for every split, variant and model (DESIGN field rule 2, D8). Descriptions (D_*) and propositions (P_*) are authored separately per pool and never live in this file.",
+ "label_field": "gold_label (0-4), target",
+ "label_id_type": "predicate and scale ids defined here (the source has no label ids for them)",
+ "labels": [
+  {
+   "gold_rule": "R8 THRESH: 1[gold_label in {3, 4}]",
+   "key": "positive toward target",
+   "kind": "predicate",
+   "label_id": "positive_toward_target",
+   "note": "the target string is slotted into the question, not the key",
+   "parent": null,
+   "roles": [
+    "eval"
+   ],
+   "source_field": "gold_label"
+  },
+  {
+   "K": 5,
+   "construct": "sentiment of the tweet toward the named target",
+   "key": "sentiment toward target",
+   "kind": "level",
+   "label_id": "target-sentiment-5",
+   "levels": [
+    {
+     "level": 0,
+     "source_values": [
+      0
+     ]
+    },
+    {
+     "level": 1,
+     "source_values": [
+      1
+     ]
+    },
+    {
+     "level": 2,
+     "source_values": [
+      2
+     ]
+    },
+    {
+     "level": 3,
+     "source_values": [
+      3
+     ]
+    },
+    {
+     "level": 4,
+     "source_values": [
+      4
+     ]
+    }
+   ],
+   "parent": null,
+   "roles": [
+    "eval"
+   ],
+   "rule": "R0 BASE_SRC; polarity reversal R7 allowed",
+   "source_field": "gold_label (0-4, SemEval-2016 Task 4C: strongly negative .. strongly positive)"
+  }
+ ],
+ "n_labels": 2,
+ "schema_version": "od-keys-1.0",
+ "source": "cardiffnlp/super_tweeteval (tweet_sentiment) @ a10ac3d27a3499e870b6371df64c14e5a656131a"
+}

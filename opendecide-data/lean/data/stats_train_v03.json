@@ -1,0 +1,36 @@
+{
+  "rows": 34319,
+  "new_rows": 14375,
+  "relations": 18076,
+  "added": {
+    "n1_para": 1160,
+    "n1_neg": 1965,
+    "n1_dneg": 830,
+    "n1_clause": 620,
+    "n2_trap_pairs": 400,
+    "n3_boolq": 2000,
+    "n3_boolq_neg": 500,
+    "n3_condaqa": 2000,
+    "n4_long": 400,
+    "n5_inj": 600,
+    "n6_yahoo": 1000,
+    "dup_rows_dropped": 5,
+    "conflicting_ids_dropped": 0
+  },
+  "by_source": {
+    "clinc150": 8643,
+    "mnli": 4126,
+    "clothing": 2243,
+    "dbpedia": 2964,
+    "banking77": 8539,
+    "mnli_neutral": 800,
+    "boolq": 2500,
+    "condaqa": 1999,
+    "yahoo": 2505
+  },
+  "by_type": {
+    "choice": 5324,
+    "noul": 28995
+  },
+  "noul_yes_rate": 0.48860148301431283
+}

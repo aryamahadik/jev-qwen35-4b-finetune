@@ -1,0 +1,26 @@
+{
+ "key": "c5f83d91d378",
+ "kind": "Email",
+ "instruction": "Which label describes this message?",
+ "labels": [
+  "spam",
+  "legitimate"
+ ],
+ "model": "qwen/qwen3-235b-a22b-2507",
+ "cards": {
+  "spam": {
+   "definition": "A message is 'spam' if it is unsolicited, often sent in bulk, and typically promotes products, services, or scams; it may include misleading subject lines, excessive punctuation, or requests for personal information, distinguishing it from legitimate emails even when the topic appears similar.",
+   "examples": [
+    "Get rich quick! Earn $5000 per week from home! No experience needed! Click here now!",
+    "URGENT: Your email account will be closed! Confirm your password immediately to avoid loss!"
+   ]
+  },
+  "legitimate": {
+   "definition": "A 'legitimate' message is a solicited or expected communication, such as personal correspondence, work-related updates, or confirmed subscriptions, and does not attempt to deceive or push unwanted offers, even if occasionally promotional in nature.",
+   "examples": [
+    "Hi John, just checking in about the project deadline next Monday. Are you on track?",
+    "Your monthly newsletter from The New York Times: here's what you missed this week."
+   ]
+  }
+ }
+}

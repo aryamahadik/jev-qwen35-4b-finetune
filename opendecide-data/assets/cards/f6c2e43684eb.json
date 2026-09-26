@@ -1,0 +1,50 @@
+{
+ "key": "f6c2e43684eb",
+ "kind": "Business review",
+ "instruction": "Rate the review's overall sentiment on this scale. Use the level the text supports best.",
+ "labels": [
+  "0: 1 star: very negative",
+  "1: 2 stars: negative",
+  "2: 3 stars: mixed or neutral",
+  "3: 4 stars: positive",
+  "4: 5 stars: very positive"
+ ],
+ "model": "qwen/qwen3-235b-a22b-2507",
+ "cards": {
+  "0: 1 star: very negative": {
+   "definition": "The review expresses strong dissatisfaction with extreme criticism, indicating a complete failure in service, product, or experience, with no redeeming qualities mentioned.",
+   "examples": [
+    "Terrible service, food was cold and inedible, and the staff was rude. I will never come back.",
+    "Worst experience of my life. The place was filthy, and they overcharged me. Avoid at all costs."
+   ]
+  },
+  "1: 2 stars: negative": {
+   "definition": "The review is predominantly critical, mentioning significant problems or disappointments, but may include minor positive remarks that do not outweigh the overall negative impression.",
+   "examples": [
+    "The food was okay, but the wait took over an hour and the server forgot our drinks.",
+    "I almost left after 10 minutes due to poor cleanliness, but the manager apologized and we stayed."
+   ]
+  },
+  "2: 3 stars: mixed or neutral": {
+   "definition": "The review presents a balance of positive and negative elements or expresses mild satisfaction without enthusiasm, making it unclear whether the experience was ultimately good or bad.",
+   "examples": [
+    "The restaurant is average\u2014some dishes were good, others were bland, and the service was slow but polite.",
+    "It wasn't bad, but nothing stood out. The price was fair for what we got."
+   ]
+  },
+  "3: 4 stars: positive": {
+   "definition": "The review is clearly favorable, highlighting several good aspects and expressing satisfaction, though it stops short of calling the experience exceptional or perfect.",
+   "examples": [
+    "Great food and friendly staff! Only the wait time was a bit long, but everything else was excellent.",
+    "I enjoyed my meal and the atmosphere was cozy. Definitely coming back."
+   ]
+  },
+  "4: 5 stars: very positive": {
+   "definition": "The review is highly enthusiastic, praising nearly every aspect of the experience with superlative language and strong recommendations, indicating exceptional quality or service.",
+   "examples": [
+    "Absolutely amazing! Best meal I've ever had\u2014the service, ambiance, and food were all perfect.",
+    "Outstanding in every way. I can't recommend this place enough. A five-star experience!"
+   ]
+  }
+ }
+}

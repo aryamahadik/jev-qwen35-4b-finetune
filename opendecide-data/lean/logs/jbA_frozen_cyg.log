@@ -1,0 +1,71 @@
+✓ Initialized. View run at 
+https://modal.com/apps/mahadikarya3/main/ap-5v5XVBfdDU0WgXoHNycnhq
+✓ Created objects.
+├── 🔨 Created mount 
+│   /Users/aryamahadik/Documents/jev/opendecide-data/lean/modal_od.py
+├── 🔨 Created mount 
+│   /Users/aryamahadik/Documents/jev/opendecide-data/lean/train.py
+├── 🔨 Created mount /Users/aryamahadik/Documents/jev/bench/splits
+├── 🔨 Created mount 
+│   /Users/aryamahadik/Documents/jev/bench/jevbench/datasets/public
+├── 🔨 Created mount PythonPackage:decoder_io, PythonPackage:gliclass_io, 
+│   PythonPackage:train_decoder, PythonPackage:hc, PythonPackage:jevbench_od
+├── 🔨 Created mount /Users/aryamahadik/Documents/jev/opendecide-data/lean/data
+├── 🔨 Created mount PythonPackage:decoder_io, PythonPackage:train_decoder, 
+│   PythonPackage:hc, PythonPackage:jevbench_od
+├── 🔨 Created mount /Users/aryamahadik/Documents/jev/bench/jevbench/jevbench
+├── 🔨 Created function zeroshot.
+├── 🔨 Created function train_remote.
+├── 🔨 Created function train_gliclass_remote.
+├── 🔨 Created function eval_remote.
+├── 🔨 Created function latency_l4.
+├── 🔨 Created function hc_recall_remote.
+├── 🔨 Created function hc_shortlist_remote.
+├── 🔨 Created function hc_remote.
+├── 🔨 Created function jevbench_remote.
+├── 🔨 Created function zeroshot35.
+├── 🔨 Created function train_remote35.
+├── 🔨 Created function eval_remote35.
+├── 🔨 Created function latency35.
+├── 🔨 Created function hc_remote35.
+├── 🔨 Created function jevbench_remote35.
+└── 🔨 Created function gen_diag_remote.
+/usr/local/lib/python3.12/site-packages/huggingface_hub/constants.py:302: FutureWarning: The `HF_HUB_ENABLE_HF_TRANSFER` environment variable is deprecated as 'hf_transfer' is not used anymore. Please use `HF_XET_HIGH_PERFORMANCE` instead to enable high performance transfer with Xet. Visit https://huggingface.co/docs/huggingface_hub/package_reference/environment_variables#hfxethighperformance for more details.
+  warnings.warn(
+
+[1ALoading weights:   0%|          | 0/677 [00:00<?, ?it/s]
+[1ALoading weights:   3%|▎         | 23/677 [00:00<00:03, 213.80it/s]
+[1ALoading weights:   7%|▋         | 45/677 [00:00<00:03, 190.29it/s]
+[1ALoading weights:  10%|▉         | 66/677 [00:00<00:03, 192.91it/s]
+[1ALoading weights:  13%|█▎        | 86/677 [00:00<00:03, 192.22it/s]
+[1ALoading weights:  16%|█▌        | 106/677 [00:00<00:02, 190.70it/s]
+[1ALoading weights:  20%|█▉        | 133/677 [00:00<00:02, 213.21it/s]
+[1ALoading weights:  23%|██▎       | 156/677 [00:00<00:02, 214.92it/s]
+[1ALoading weights:  27%|██▋       | 180/677 [00:00<00:02, 217.99it/s]
+[1ALoading weights:  30%|██▉       | 202/677 [00:00<00:02, 209.56it/s]
+[1ALoading weights:  33%|███▎      | 224/677 [00:01<00:02, 205.26it/s]
+[1ALoading weights:  36%|███▌      | 245/677 [00:01<00:02, 206.30it/s]
+[1ALoading weights:  39%|███▉      | 266/677 [00:01<00:02, 202.27it/s]
+[1ALoading weights:  43%|████▎     | 291/677 [00:01<00:01, 203.43it/s]
+[1ALoading weights:  46%|████▋     | 314/677 [00:01<00:01, 207.48it/s]
+[1ALoading weights:  49%|████▉     | 335/677 [00:01<00:01, 199.16it/s]
+[1ALoading weights:  53%|█████▎    | 357/677 [00:01<00:01, 203.66it/s]
+[1ALoading weights:  56%|█████▌    | 378/677 [00:01<00:01, 203.62it/s]
+[1ALoading weights:  59%|█████▉    | 399/677 [00:01<00:01, 199.41it/s]
+[1ALoading weights:  62%|██████▏   | 419/677 [00:02<00:01, 179.98it/s]
+[1ALoading weights: 100%|██████████| 677/677 [00:02<00:00, 318.09it/s]
+10/118 completed
+20/118 completed
+30/118 completed
+40/118 completed
+50/118 completed
+60/118 completed
+70/118 completed
+80/118 completed
+90/118 completed
+100/118 completed
+110/118 completed
+gemma4_frozen_A_cyg: 104/118 correct on A (NVIDIA H100 80GB HBM3)
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/mahadikarya3/main/ap-5v5XVBfdDU0WgXoHNycnhq

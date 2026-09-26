@@ -1,0 +1,26 @@
+{
+ "key": "69b0ba147bf1",
+ "kind": "User comment",
+ "instruction": "Is this comment toxic or not?",
+ "labels": [
+  "toxic",
+  "not toxic"
+ ],
+ "model": "qwen/qwen3-235b-a22b-2507",
+ "cards": {
+  "toxic": {
+   "definition": "A comment is toxic if it contains language that is insulting, threatening, or expresses hostility toward an individual or group, including but not limited to name-calling, hate speech, or aggressive intimidation; borderline cases may include sarcasm or strong opinions without personal attacks, which should not be labeled as toxic.",
+   "examples": [
+    "You're a complete idiot and don't deserve to speak on this topic.",
+    "People like you should be banned from the internet for being so stupid."
+   ]
+  },
+  "not toxic": {
+   "definition": "A comment is not toxic if it expresses disagreement, criticism, or strong opinions without using insults, threats, or hostile language; borderline cases involving heated but respectful debate or blunt honesty without personal attacks fall into this category.",
+   "examples": [
+    "I strongly disagree with your point, but I appreciate you sharing it.",
+    "This policy has serious flaws and needs to be revised immediately."
+   ]
+  }
+ }
+}

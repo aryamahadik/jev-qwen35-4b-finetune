@@ -1,0 +1,26 @@
+{
+ "key": "33e6b8453977",
+ "kind": "Sentence 1",
+ "instruction": "Do the two sentences say the same thing?",
+ "labels": [
+  "different meaning",
+  "same meaning"
+ ],
+ "model": "qwen/qwen3-235b-a22b-2507",
+ "cards": {
+  "different meaning": {
+   "definition": "The two sentences convey distinct ideas, facts, or implications, such that one cannot be reasonably inferred from the other, even if they share some words or context; borderline cases involve similar topics but differing key details like time, intent, or outcome.",
+   "examples": [
+    "She started the car and drove to the store.",
+    "She refused to go anywhere and stayed home all day."
+   ]
+  },
+  "same meaning": {
+   "definition": "The two sentences express equivalent information or intent, with differences only in wording or structure, such that one can be inferred from the other without loss or change of meaning; borderline cases include paraphrasing with minor emphasis shifts but identical core content.",
+   "examples": [
+    "He finished his homework before dinner.",
+    "His homework was completed prior to dinner."
+   ]
+  }
+ }
+}

@@ -1,0 +1,34 @@
+{
+ "key": "8b1efc59bc71",
+ "kind": "Passage",
+ "instruction": "What is the relation between the statement and the passage?",
+ "labels": [
+  "conflicts with the passage",
+  "follows from the passage",
+  "cannot be determined from the passage"
+ ],
+ "model": "qwen/qwen3-235b-a22b-2507",
+ "cards": {
+  "conflicts with the passage": {
+   "definition": "The statement directly contradicts information explicitly stated in the passage, making it impossible for both the passage and the statement to be true at the same time.",
+   "examples": [
+    "Passage: The meeting was scheduled for Monday at 3 PM. Statement: The meeting was set for Tuesday.",
+    "Passage: All samples were stored at -20\u00b0C. Statement: The samples were kept at room temperature."
+   ]
+  },
+  "follows from the passage": {
+   "definition": "The statement is logically entailed by the passage, meaning it can be directly inferred without adding assumptions beyond what is stated.",
+   "examples": [
+    "Passage: Only students who passed the exam were allowed to graduate. Statement: If someone graduated, they passed the exam.",
+    "Passage: The museum is closed on Mondays. Statement: No one can visit the museum on a Monday."
+   ]
+  },
+  "cannot be determined from the passage": {
+   "definition": "The passage does not provide enough information to confirm or deny the statement, even though it may be plausible or related.",
+   "examples": [
+    "Passage: The train arrived late due to weather conditions. Statement: The train was delayed by more than an hour.",
+    "Passage: Maria enjoys painting and often spends weekends at art galleries. Statement: Maria has never visited the Louvre."
+   ]
+  }
+ }
+}

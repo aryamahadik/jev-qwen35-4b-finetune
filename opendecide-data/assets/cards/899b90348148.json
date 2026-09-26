@@ -1,0 +1,26 @@
+{
+ "key": "899b90348148",
+ "kind": "Tweet",
+ "instruction": "Choose the label that fits this text.",
+ "labels": [
+  "not hateful",
+  "hateful"
+ ],
+ "model": "qwen/qwen3-235b-a22b-2507",
+ "cards": {
+  "not hateful": {
+   "definition": "The text does not contain any language that expresses, promotes, or incites hatred or hostility toward an individual or group based on attributes such as race, religion, gender, or sexual orientation, even if it includes mild disagreement or sarcasm.",
+   "examples": [
+    "I can't believe how much I'm enjoying this new coffee shop downtown!",
+    "Sometimes I wonder why people still use flip phones in 2024."
+   ]
+  },
+  "hateful": {
+   "definition": "The text contains clear expressions of hatred, contempt, or dehumanization toward a person or group based on protected attributes, going beyond strong disagreement into derogatory or threatening language.",
+   "examples": [
+    "All [racial slur] should just go back where they came from.",
+    "Women who speak up are just asking to be silenced."
+   ]
+  }
+ }
+}

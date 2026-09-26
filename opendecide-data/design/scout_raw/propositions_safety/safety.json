@@ -1,0 +1,1315 @@
+{
+ "ucirvine/sms_spam": {
+  "id": "ucirvine/sms_spam",
+  "config_requested": null,
+  "sha": "cae486f927c250fe1d4a5b55f11357964ed1646c",
+  "gated": false,
+  "last_modified": "2024-08-08 06:04:08+00:00",
+  "card_license": [
+   "unknown"
+  ],
+  "card_license_name": null,
+  "card_license_link": null,
+  "tags_license": [
+   "license:unknown"
+  ],
+  "files": [
+   ".gitattributes",
+   "README.md",
+   "plain_text/train-00000-of-00001.parquet"
+  ],
+  "has_script": false,
+  "splits_rows": [
+   [
+    "plain_text",
+    "train",
+    5574
+   ]
+  ],
+  "configs": [
+   "plain_text"
+  ],
+  "load_ok": {
+   "kwargs": {},
+   "splits_seen": [
+    "train"
+   ]
+  },
+  "features": "{\"sms\": \"Value('string')\", \"label\": \"ClassLabel(names=['ham', 'spam'])\"}",
+  "sample": {
+   "sms": "Go until jurong point, crazy.. Available only in bugis n great world la e buffet... Cine there got amore wat...\n",
+   "label": "0"
+  },
+  "sample2": {
+   "sms": "Ok lar... Joking wif u oni...\n",
+   "label": "0"
+  },
+  "label_stats": {
+   "train.label": "{\"ham\": 4827, \"spam\": 747}"
+  },
+  "secs": 6.3
+ },
+ "SetFit/enron_spam": {
+  "id": "SetFit/enron_spam",
+  "config_requested": null,
+  "sha": "1916f66c89d52221ae33eb57d44498b4f3a5df22",
+  "gated": false,
+  "last_modified": "2022-01-16 18:12:43+00:00",
+  "card_license": null,
+  "card_license_name": null,
+  "card_license_link": null,
+  "tags_license": [],
+  "files": [
+   ".gitattributes",
+   "README.md",
+   "enron_spam_data.csv",
+   "prepare.py",
+   "test.jsonl",
+   "train.jsonl"
+  ],
+  "has_script": true,
+  "splits_rows": [
+   [
+    "default",
+    "train",
+    31716
+   ],
+   [
+    "default",
+    "test",
+    2000
+   ]
+  ],
+  "configs": [
+   "default"
+  ],
+  "load_ok": {
+   "kwargs": {},
+   "splits_seen": [
+    "train",
+    "test"
+   ]
+  },
+  "features": "{\"message_id\": \"Value('int64')\", \"text\": \"Value('string')\", \"label\": \"Value('int64')\", \"label_text\": \"Value('string')\", \"subject\": \"Value('string')\", \"message\": \"Value('string')\", \"date\": \"Value('timestamp[s]')\"}",
+  "sample": {
+   "message_id": "33214",
+   "text": "any software just for 15 $ - 99 $ understanding oem software\nlead me not into temptation ; i can find the way myself .\n# 3533 . the law disregards trifles .",
+   "label": "1",
+   "label_text": "spam",
+   "subject": "any software just for 15 $ - 99 $",
+   "message": "understanding oem software\nlead me not into temptation ; i can find the way myself .\n# 3533 . the law disregards trifles .",
+   "date": "\"2005-06-18 00:00:00\""
+  },
+  "sample2": {
+   "message_id": "11929",
+   "text": "perspective on ferc regulatory action client conf call today , jun e 19 th , 2 : 00 pm edt\nperspective on ferc regulatory action client conference call\ntoday , tuesday , june 19 th\n2 : 00 pm edt\nhost ...",
+   "label": "0",
+   "label_text": "ham",
+   "subject": "perspective on ferc regulatory action client conf call today , jun e",
+   "message": "19 th , 2 : 00 pm edt\nperspective on ferc regulatory action client conference call\ntoday , tuesday , june 19 th\n2 : 00 pm edt\nhost : ray niles , power / natural gas analyst\nspeaker : steve bergstrom ,...",
+   "date": "\"2001-06-19 00:00:00\""
+  },
+  "label_stats": {
+   "train.label": "{\"mean\": 0.50962, \"min\": 0, \"max\": 1, \"histogram\": {\"hist\": [15553, 16163], \"bin_edges\": [0, 1, 1]}}",
+   "train.label_text": "{\"ham\": 15553, \"spam\": 16163}",
+   "test.label": "{\"mean\": 0.504, \"min\": 0, \"max\": 1, \"histogram\": {\"hist\": [992, 1008], \"bin_edges\": [0, 1, 1]}}",
+   "test.label_text": "{\"spam\": 1008, \"ham\": 992}"
+  },
+  "secs": 2.5
+ },
+ "zefang-liu/phishing-email-dataset": {
+  "id": "zefang-liu/phishing-email-dataset",
+  "config_requested": null,
+  "sha": "34085a032c123ca237f314a01a67909cdea35e34",
+  "gated": false,
+  "last_modified": "2024-01-17 23:48:20+00:00",
+  "card_license": "lgpl-3.0",
+  "card_license_name": null,
+  "card_license_link": null,
+  "tags_license": [
+   "license:lgpl-3.0"
+  ],
+  "files": [
+   ".gitattributes",
+   "Phishing_Email.csv",
+   "README.md"
+  ],
+  "has_script": false,
+  "splits_rows": [
+   [
+    "default",
+    "train",
+    18650
+   ]
+  ],
+  "configs": [
+   "default"
+  ],
+  "load_ok": {
+   "kwargs": {},
+   "splits_seen": [
+    "train"
+   ]
+  },
+  "features": "{\"Unnamed: 0\": \"Value('int64')\", \"Email Text\": \"Value('string')\", \"Email Type\": \"Value('string')\"}",
+  "sample": {
+   "Unnamed: 0": "0",
+   "Email Text": "re : 6 . 1100 , disc : uniformitarianism , re : 1086 ; sex / lang dick hudson 's observations on us use of 's on ' but not 'd aughter ' as a vocative are very thought-provoking , but i am not sure that it is fair to attribute this to \" sons \" being \" treated like senior relatives \" . for one thing , we do n't normally use ' brother ' in this way any more than we do 'd aughter ' , and it is hard to...",
+   "Email Type": "Safe Email"
+  },
+  "sample2": {
+   "Unnamed: 0": "1",
+   "Email Text": "the other side of * galicismos * * galicismo * is a spanish term which names the improper introduction of french words which are spanish sounding and thus very deceptive to the ear . * galicismo * is ...",
+   "Email Type": "Safe Email"
+  },
+  "label_stats": {
+   "train.Email Type": "{\"Safe Email\": 11322, \"Phishing Email\": 7328}"
+  },
+  "secs": 3.6
+ },
+ "ealvaradob/phishing-dataset:texts": {
+  "id": "ealvaradob/phishing-dataset",
+  "config_requested": "texts",
+  "sha": "55caf9af01ae498d68ff44886ff69a4b165eb54b",
+  "gated": false,
+  "last_modified": "2024-01-31 07:00:53+00:00",
+  "card_license": "apache-2.0",
+  "card_license_name": null,
+  "card_license_link": null,
+  "tags_license": [
+   "license:apache-2.0"
+  ],
+  "files": [
+   ".gitattributes",
+   "README.md",
+   "combined_full.json",
+   "combined_reduced.json",
+   "gitattributes",
+   "phishing-dataset.py",
+   "texts.json",
+   "urls.json",
+   "webs.json"
+  ],
+  "has_script": true,
+  "size_error": "{\"error\": \"The dataset viewer doesn't support this dataset because it runs arbitrary python code. Please open a discussion in the discussion tab if you think this is an error and tag @lhoestq and @sev...",
+  "configs_error": "Dataset scripts are no longer supported, but found phishing-dataset.py",
+  "load_errors": [
+   {
+    "kwargs": {},
+    "err": "RuntimeError: Dataset scripts are no longer supported, but found phishing-dataset.py"
+   },
+   {
+    "kwargs": {
+     "revision": "refs/convert/parquet"
+    },
+    "err": "EmptyDatasetError: The directory at hf://datasets/ealvaradob/phishing-dataset@a0bd04433c67ccd2ac2edf534a9a04df8bfd2afe/texts doesn't contain any data files"
+   }
+  ],
+  "secs": 7.0
+ },
+ "puyang2025/seven-phishing-email-datasets": {
+  "id": "puyang2025/seven-phishing-email-datasets",
+  "config_requested": null,
+  "sha": "b7f3f8d99ebd4fd0af0a5afe027420e53f08d1a4",
+  "gated": false,
+  "last_modified": "2026-01-15 01:21:20+00:00",
+  "card_license": "other",
+  "card_license_name": null,
+  "card_license_link": null,
+  "tags_license": [
+   "license:other"
+  ],
+  "files": [
+   ".gitattributes",
+   "README.md",
+   "eval.parquet",
+   "test.parquet",
+   "train.parquet"
+  ],
+  "has_script": false,
+  "splits_rows": [
+   [
+    "default",
+    "train",
+    162413
+   ],
+   [
+    "default",
+    "test",
+    40604
+   ]
+  ],
+  "configs": [
+   "default"
+  ],
+  "load_ok": {
+   "kwargs": {},
+   "splits_seen": [
+    "train",
+    "test"
+   ]
+  },
+  "features": "{\"text\": \"Value('string')\", \"subject\": \"Value('string')\", \"label\": \"Value('int64')\", \"sender\": \"Value('string')\", \"receiver\": \"Value('string')\", \"date\": \"Value('timestamp[ns]')\", \"urls\": \"Value('int64')\", \"dataset_name\": \"Value('string')\"}",
+  "sample": {
+   "text": "\n \n \n\n\nmeat helpful round An afterclang of Cowley's mouth chords closed, died on tdesire And Richie like debt Goulding drank his noise Power and Leopold Blsuccessful struck cough Libel action, says he, slow for ten thousand pounds.Very umbrella tame kind hat grip of you, says Bloom.\nQuavering the match haunt cart chords strayed hope from the air, found iawoken bite drip Foreign wars is the along c...",
+   "subject": "When will it be okay",
+   "label": "1",
+   "sender": "Lissette Patterson <jstepanekov@eve-team.com>",
+   "receiver": "Olympia <dmason@plg2.math.uwaterloo.ca>",
+   "date": "\"2007-05-02 00:31:14\"",
+   "urls": "0",
+   "dataset_name": "TREC-07"
+  },
+  "sample2": {
+   "text": "Avail to the E-store and avail to timely support.\n\nOrdering over 45 dollars, domestic customers are able to have zero charged\ndelivery!\n\nOrdering over 45 bucks, domestic customers are able to have zer...",
+   "subject": "Havea method to reduce the high expense of iink",
+   "label": "1",
+   "sender": "lindsay kapps <federico@raddled.com>",
+   "receiver": "Gonzalo Jadin <KRUSCIT@enron.com>",
+   "date": "\"2001-11-27 19:41:56\"",
+   "urls": "1",
+   "dataset_name": "TREC-05"
+  },
+  "label_stats": {
+   "train": "{\"error\": \"Error for IntColumn=label: error=StatisticsComputationError(\\\"Got unexpected result during histogram computation for column_name='label', c...",
+   "test": "{\"error\": \"Error for IntColumn=label: error=StatisticsComputationError(\\\"Got unexpected result during histogram computation for column_name='label', c..."
+  },
+  "secs": 8.9
+ },
+ "cybersectony/PhishingEmailDetectionv2.0": {
+  "id": "cybersectony/PhishingEmailDetectionv2.0",
+  "config_requested": null,
+  "sha": "afba38f4a7ffbe89259ab68ae7c6426f944496cc",
+  "gated": false,
+  "last_modified": "2024-10-28 09:41:31+00:00",
+  "card_license": null,
+  "card_license_name": null,
+  "card_license_link": null,
+  "tags_license": [],
+  "files": [
+   ".gitattributes",
+   "README.md",
+   "data/test-00000-of-00001.parquet",
+   "data/train-00000-of-00001.parquet",
+   "data/validation-00000-of-00001.parquet"
+  ],
+  "has_script": false,
+  "splits_rows": [
+   [
+    "default",
+    "train",
+    120000
+   ],
+   [
+    "default",
+    "validation",
+    20000
+   ],
+   [
+    "default",
+    "test",
+    60000
+   ]
+  ],
+  "configs": [
+   "default"
+  ],
+  "load_ok": {
+   "kwargs": {},
+   "splits_seen": [
+    "train",
+    "validation",
+    "test"
+   ]
+  },
+  "features": "{\"content\": \"Value('string')\", \"label\": \"Value('int64')\"}",
+  "sample": {
+   "content": "https://www.galvnews.com",
+   "label": "2"
+  },
+  "sample2": {
+   "content": "https://filedn.com/l0kwbcnxzlkqbihn1fmjrk4/feedback.html",
+   "label": "3"
+  },
+  "label_stats": {
+   "train.label": "{\"mean\": 2.2754, \"min\": 0, \"max\": 3, \"histogram\": {\"hist\": [6809, 6684, 53157, 53350], \"bin_edges\": [0, 1, 2, 3, 3]}}",
+   "validation.label": "{\"mean\": 2.2696, \"min\": 0, \"max\": 3, \"histogram\": {\"hist\": [1143, 1209, 8761, 8887], \"bin_edges\": [0, 1, 2, 3, 3]}}",
+   "test.label": "{\"mean\": 2.2712, \"min\": 0, \"max\": 3, \"histogram\": {\"hist\": [3370, 3429, 26760, 26441], \"bin_edges\": [0, 1, 2, 3, 3]}}"
+  },
+  "secs": 3.6
+ },
+ "google/civil_comments": {
+  "id": "google/civil_comments",
+  "config_requested": null,
+  "sha": "f2970eb3a55777454c94069077cc8d9b5866312d",
+  "gated": false,
+  "last_modified": "2024-01-25 08:23:15+00:00",
+  "card_license": "cc0-1.0",
+  "card_license_name": null,
+  "card_license_link": null,
+  "tags_license": [
+   "license:cc0-1.0"
+  ],
+  "files": [
+   ".gitattributes",
+   "README.md",
+   "data/test-00000-of-00001.parquet",
+   "data/train-00000-of-00002.parquet",
+   "data/train-00001-of-00002.parquet",
+   "data/validation-00000-of-00001.parquet"
+  ],
+  "has_script": false,
+  "splits_rows": [
+   [
+    "default",
+    "train",
+    1804874
+   ],
+   [
+    "default",
+    "validation",
+    97320
+   ],
+   [
+    "default",
+    "test",
+    97320
+   ]
+  ],
+  "configs": [
+   "default"
+  ],
+  "load_ok": {
+   "kwargs": {},
+   "splits_seen": [
+    "train",
+    "validation",
+    "test"
+   ]
+  },
+  "features": "{\"text\": \"Value('string')\", \"toxicity\": \"Value('float32')\", \"severe_toxicity\": \"Value('float32')\", \"obscene\": \"Value('float32')\", \"threat\": \"Value('float32')\", \"insult\": \"Value('float32')\", \"identity_attack\": \"Value('float32')\", \"sexual_explicit\": \"Value('float32')\"}",
+  "sample": {
+   "text": "This is so cool. It's like, 'would you want your mother to read this??' Really great idea, well done!",
+   "toxicity": "0.0",
+   "severe_toxicity": "0.0",
+   "obscene": "0.0",
+   "threat": "0.0",
+   "insult": "0.0",
+   "identity_attack": "0.0",
+   "sexual_explicit": "0.0"
+  },
+  "sample2": {
+   "text": "Thank you!! This would make my life a lot less anxiety-inducing. Keep it up, and don't let anyone get in your way!",
+   "toxicity": "0.0",
+   "severe_toxicity": "0.0",
+   "obscene": "0.0",
+   "threat": "0.0",
+   "insult": "0.0",
+   "identity_attack": "0.0",
+   "sexual_explicit": "0.0"
+  },
+  "label_stats": {
+   "train.toxicity": "{\"mean\": 0.10302, \"min\": 0.0, \"max\": 1.0, \"histogram\": {\"hist\": [1266229, 160959, 111597, 64613, 57142, 47924, 50959, 14620, 23314, 7517], \"bin_edges\": [0.0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0]}}",
+   "validation.toxicity": "{\"mean\": 0.10131, \"min\": 0.0, \"max\": 1.0, \"histogram\": {\"hist\": [68788, 8538, 5946, 3359, 3018, 2568, 2662, 808, 1219, 414], \"bin_edges\": [0.0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0]}}",
+   "test.toxicity": "{\"mean\": 0.10281, \"min\": 0.0, \"max\": 1.0, \"histogram\": {\"hist\": [68352, 8743, 5988, 3391, 3069, 2567, 2752, 784, 1283, 391], \"bin_edges\": [0.0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0]}}"
+  },
+  "secs": 3.9
+ },
+ "google/jigsaw_toxicity_pred": {
+  "id": "google/jigsaw_toxicity_pred",
+  "config_requested": null,
+  "sha": "9fca5f507ac11049ff34bb13c8546b01afcedbbd",
+  "gated": false,
+  "last_modified": "2024-01-18 11:06:53+00:00",
+  "card_license": [
+   "cc0-1.0"
+  ],
+  "card_license_name": null,
+  "card_license_link": null,
+  "tags_license": [
+   "license:cc0-1.0"
+  ],
+  "files": [
+   ".gitattributes",
+   "README.md",
+   "jigsaw_toxicity_pred.py"
+  ],
+  "has_script": true,
+  "size_error": "{\"error\": \"The dataset viewer doesn't support this dataset because it runs arbitrary python code. Please open a discussion in the discussion tab if you think this is an error and tag @lhoestq and @sev...",
+  "configs_error": "Dataset scripts are no longer supported, but found jigsaw_toxicity_pred.py",
+  "load_errors": [
+   {
+    "kwargs": {},
+    "err": "RuntimeError: Dataset scripts are no longer supported, but found jigsaw_toxicity_pred.py"
+   },
+   {
+    "kwargs": {
+     "revision": "refs/convert/parquet"
+    },
+    "err": "RuntimeError: Dataset scripts are no longer supported, but found jigsaw_toxicity_pred.py"
+   }
+  ],
+  "secs": 1.5
+ },
+ "google/jigsaw_unintended_bias": {
+  "id": "google/jigsaw_unintended_bias",
+  "config_requested": null,
+  "sha": "d46022c9df7c8b74ba52876f314f81ef60fa1727",
+  "gated": false,
+  "last_modified": "2024-01-18 11:06:57+00:00",
+  "card_license": [
+   "cc0-1.0"
+  ],
+  "card_license_name": null,
+  "card_license_link": null,
+  "tags_license": [
+   "license:cc0-1.0"
+  ],
+  "files": [
+   ".gitattributes",
+   "README.md",
+   "jigsaw_unintended_bias.py"
+  ],
+  "has_script": true,
+  "size_error": "{\"error\": \"The dataset viewer doesn't support this dataset because it runs arbitrary python code. Please open a discussion in the discussion tab if you think this is an error and tag @lhoestq and @sev...",
+  "configs_error": "Dataset scripts are no longer supported, but found jigsaw_unintended_bias.py",
+  "load_errors": [
+   {
+    "kwargs": {},
+    "err": "RuntimeError: Dataset scripts are no longer supported, but found jigsaw_unintended_bias.py"
+   },
+   {
+    "kwargs": {
+     "revision": "refs/convert/parquet"
+    },
+    "err": "RuntimeError: Dataset scripts are no longer supported, but found jigsaw_unintended_bias.py"
+   }
+  ],
+  "secs": 0.8
+ },
+ "thesofakillers/jigsaw-toxic-comment-classification-challenge": {
+  "id": "thesofakillers/jigsaw-toxic-comment-classification-challenge",
+  "config_requested": null,
+  "sha": "50f3c926ec8c07b440cb17b55d8cd80e8484497e",
+  "gated": false,
+  "last_modified": "2025-01-28 09:01:03+00:00",
+  "card_license": "cc-by-sa-3.0",
+  "card_license_name": null,
+  "card_license_link": null,
+  "tags_license": [
+   "license:cc-by-sa-3.0"
+  ],
+  "files": [
+   ".gitattributes",
+   "README.md",
+   "sample_submission.csv",
+   "test.csv",
+   "test_labels.csv",
+   "train.csv"
+  ],
+  "has_script": false,
+  "splits_rows": [
+   [
+    "default",
+    "train",
+    159571
+   ],
+   [
+    "default",
+    "test",
+    306328
+   ]
+  ],
+  "configs": [
+   "default"
+  ],
+  "load_ok": {
+   "kwargs": {},
+   "splits_seen": [
+    "train",
+    "test"
+   ]
+  },
+  "features": "{\"id\": \"Value('string')\", \"comment_text\": \"Value('string')\", \"toxic\": \"Value('int64')\", \"severe_toxic\": \"Value('int64')\", \"obscene\": \"Value('int64')\", \"threat\": \"Value('int64')\", \"insult\": \"Value('int64')\", \"identity_hate\": \"Value('int64')\"}",
+  "sample": {
+   "id": "0000997932d777bf",
+   "comment_text": "Explanation\nWhy the edits made under my username Hardcore Metallica Fan were reverted? They weren't vandalisms, just closure on some GAs after I voted at New York Dolls FAC. And please don't remove the template from the talk page since I'm retired now.89.205.38.27",
+   "toxic": "0",
+   "severe_toxic": "0",
+   "obscene": "0",
+   "threat": "0",
+   "insult": "0",
+   "identity_hate": "0"
+  },
+  "sample2": {
+   "id": "000103f0d9cfb60f",
+   "comment_text": "D'aww! He matches this background colour I'm seemingly stuck with. Thanks.  (talk) 21:51, January 11, 2016 (UTC)",
+   "toxic": "0",
+   "severe_toxic": "0",
+   "obscene": "0",
+   "threat": "0",
+   "insult": "0",
+   "identity_hate": "0"
+  },
+  "label_stats": {
+   "train.toxic": "{\"mean\": 0.09584, \"min\": 0, \"max\": 1, \"histogram\": {\"hist\": [144277, 15294], \"bin_edges\": [0, 1, 1]}}",
+   "test.toxic": "{\"mean\": -0.54253, \"min\": -1, \"max\": 1, \"histogram\": {\"hist\": [89186, 57888, 6090], \"bin_edges\": [-1, 0, 1, 1]}}"
+  },
+  "secs": 3.5
+ },
+ "OxAISH-AL-LLM/wiki_toxic": {
+  "id": "OxAISH-AL-LLM/wiki_toxic",
+  "config_requested": null,
+  "sha": "872656a156f32e4058307e50e234a44a727a9503",
+  "gated": false,
+  "last_modified": "2022-09-19 15:53:19+00:00",
+  "card_license": [
+   "cc0-1.0"
+  ],
+  "card_license_name": null,
+  "card_license_link": null,
+  "tags_license": [
+   "license:cc0-1.0"
+  ],
+  "files": [
+   ".gitattributes",
+   "README.md",
+   "balanced_train.csv",
+   "clean.py",
+   "dataset_infos.json",
+   "test.csv",
+   "train.csv",
+   "validation.csv",
+   "wiki_toxic.py"
+  ],
+  "has_script": true,
+  "splits_rows": [
+   [
+    "default",
+    "train",
+    127656
+   ],
+   [
+    "default",
+    "validation",
+    31915
+   ],
+   [
+    "default",
+    "test",
+    63978
+   ],
+   [
+    "default",
+    "balanced_train",
+    25868
+   ]
+  ],
+  "configs_error": "Dataset scripts are no longer supported, but found wiki_toxic.py",
+  "load_errors": [
+   {
+    "kwargs": {},
+    "err": "RuntimeError: Dataset scripts are no longer supported, but found wiki_toxic.py"
+   }
+  ],
+  "load_ok": {
+   "kwargs": {
+    "revision": "refs/convert/parquet"
+   },
+   "splits_seen": [
+    "train",
+    "validation",
+    "test"
+   ]
+  },
+  "features": "{\"id\": \"Value('string')\", \"comment_text\": \"Value('string')\", \"label\": \"ClassLabel(names=['non', 'tox'])\"}",
+  "sample": {
+   "id": "794c30aff0931384",
+   "comment_text": "And that's not a personal attack^^ ?",
+   "label": "0"
+  },
+  "sample2": {
+   "id": "23a5fedbe63573bd",
+   "comment_text": "\"\n\n Please do not vandalize pages, as you did with this edit to Bruce Stern. If you continue to do so, you will be blocked from editing.  (Bloom) \"",
+   "label": "0"
+  },
+  "label_stats": {
+   "train.label": "{\"non\": 114722, \"tox\": 12934}",
+   "validation.label": "{\"non\": 28624, \"tox\": 3291}",
+   "test.label": "{\"non\": 57735, \"tox\": 6243}",
+   "balanced_train.label": "{\"non\": 12934, \"tox\": 12934}"
+  },
+  "secs": 5.4
+ },
+ "Arsive/toxicity_classification_jigsaw": {
+  "id": "Arsive/toxicity_classification_jigsaw",
+  "config_requested": null,
+  "sha": "dd6e43f4b089378aa82439da98150c400675e863",
+  "gated": false,
+  "last_modified": "2023-10-03 12:51:28+00:00",
+  "card_license": "apache-2.0",
+  "card_license_name": null,
+  "card_license_link": null,
+  "tags_license": [
+   "license:apache-2.0"
+  ],
+  "files": [
+   ".gitattributes",
+   "README.md",
+   "test_dataset.csv",
+   "train_dataset.csv",
+   "val_dataset.csv"
+  ],
+  "has_script": false,
+  "splits_rows": [
+   [
+    "default",
+    "train",
+    25960
+   ],
+   [
+    "default",
+    "validation",
+    6490
+   ],
+   [
+    "default",
+    "test",
+    153164
+   ]
+  ],
+  "configs": [
+   "default"
+  ],
+  "load_ok": {
+   "kwargs": {},
+   "splits_seen": [
+    "train",
+    "validation",
+    "test"
+   ]
+  },
+  "features": "{\"id\": \"Value('string')\", \"comment_text\": \"Value('string')\", \"toxic\": \"Value('int64')\", \"severe_toxic\": \"Value('int64')\", \"obscene\": \"Value('int64')\", \"threat\": \"Value('int64')\", \"insult\": \"Value('int64')\", \"identity_hate\": \"Value('int64')\"}",
+  "sample": {
+   "id": "17dd17eb535029d6",
+   "comment_text": "\"\n\nDear Jesus. Really, has Vander Plaats really become the Lt Gov man? We gotta deal with \"\"why Republicans like Jaysuschris hate the Ten Commandments (and love right wing sluts like Karen Nussle)\"\" Republicans. I think Jaysuschris is female, and probably, a Lesbian.\"",
+   "toxic": "1",
+   "severe_toxic": "0",
+   "obscene": "1",
+   "threat": "0",
+   "insult": "1",
+   "identity_hate": "1"
+  },
+  "sample2": {
+   "id": "9fc74022287f6325",
+   "comment_text": "You NDP attack queers, sorry, Cabal of Sanctimonious Hypocrites, will go to any length to keep wikipedia as your own personal revisionist paradise, won't you?",
+   "toxic": "0",
+   "severe_toxic": "0",
+   "obscene": "0",
+   "threat": "0",
+   "insult": "0",
+   "identity_hate": "0"
+  },
+  "label_stats": {
+   "train.toxic": "{\"mean\": 0.47122, \"min\": 0, \"max\": 1, \"histogram\": {\"hist\": [13727, 12233], \"bin_edges\": [0, 1, 1]}}",
+   "validation.toxic": "{\"mean\": 0.46749, \"min\": 0, \"max\": 1, \"histogram\": {\"hist\": [3456, 3034], \"bin_edges\": [0, 1, 1]}}",
+   "test.toxic": "{\"mean\": -0.54253, \"min\": -1, \"max\": 1, \"histogram\": {\"hist\": [89186, 57888, 6090], \"bin_edges\": [-1, 0, 1, 1]}}"
+  },
+  "secs": 2.2
+ },
+ "tasksource/jigsaw_toxicity": {
+  "id": "tasksource/jigsaw_toxicity",
+  "config_requested": null,
+  "sha": "d72c9a21492fe5db98cebb029f4fb0ec20e78e30",
+  "gated": false,
+  "last_modified": "2023-05-11 07:08:51+00:00",
+  "card_license": "apache-2.0",
+  "card_license_name": null,
+  "card_license_link": null,
+  "tags_license": [
+   "license:apache-2.0"
+  ],
+  "files": [
+   ".gitattributes",
+   "README.md",
+   "train.csv"
+  ],
+  "has_script": false,
+  "splits_rows": [
+   [
+    "default",
+    "train",
+    159571
+   ]
+  ],
+  "configs": [
+   "default"
+  ],
+  "load_ok": {
+   "kwargs": {},
+   "splits_seen": [
+    "train"
+   ]
+  },
+  "features": "{\"id\": \"Value('string')\", \"comment_text\": \"Value('string')\", \"toxic\": \"Value('int64')\", \"severe_toxic\": \"Value('int64')\", \"obscene\": \"Value('int64')\", \"threat\": \"Value('int64')\", \"insult\": \"Value('int64')\", \"identity_hate\": \"Value('int64')\"}",
+  "sample": {
+   "id": "0000997932d777bf",
+   "comment_text": "Explanation\nWhy the edits made under my username Hardcore Metallica Fan were reverted? They weren't vandalisms, just closure on some GAs after I voted at New York Dolls FAC. And please don't remove the template from the talk page since I'm retired now.89.205.38.27",
+   "toxic": "0",
+   "severe_toxic": "0",
+   "obscene": "0",
+   "threat": "0",
+   "insult": "0",
+   "identity_hate": "0"
+  },
+  "sample2": {
+   "id": "000103f0d9cfb60f",
+   "comment_text": "D'aww! He matches this background colour I'm seemingly stuck with. Thanks.  (talk) 21:51, January 11, 2016 (UTC)",
+   "toxic": "0",
+   "severe_toxic": "0",
+   "obscene": "0",
+   "threat": "0",
+   "insult": "0",
+   "identity_hate": "0"
+  },
+  "label_stats": {
+   "train.toxic": "{\"mean\": 0.09584, \"min\": 0, \"max\": 1, \"histogram\": {\"hist\": [144277, 15294], \"bin_edges\": [0, 1, 1]}}"
+  },
+  "secs": 3.1
+ },
+ "lmsys/toxic-chat:toxicchat0124": {
+  "id": "lmsys/toxic-chat",
+  "config_requested": "toxicchat0124",
+  "sha": "29df8e4dba60e1f4af4b4075c0705c5b313548a8",
+  "gated": false,
+  "last_modified": "2024-05-14 08:07:42+00:00",
+  "card_license": "cc-by-nc-4.0",
+  "card_license_name": null,
+  "card_license_link": null,
+  "tags_license": [
+   "license:cc-by-nc-4.0"
+  ],
+  "files": [
+   ".gitattributes",
+   "README.md",
+   "data/0124/toxic-chat_annotation_all.csv",
+   "data/0124/toxic-chat_annotation_test.csv",
+   "data/0124/toxic-chat_annotation_train.csv",
+   "data/1123/toxic-chat_annotation_all.csv",
+   "data/1123/toxic-chat_annotation_test.csv",
+   "data/1123/toxic-chat_annotation_train.csv"
+  ],
+  "has_script": false,
+  "splits_rows": [
+   [
+    "toxicchat0124",
+    "train",
+    5082
+   ],
+   [
+    "toxicchat0124",
+    "test",
+    5083
+   ],
+   [
+    "toxicchat1123",
+    "train",
+    5082
+   ],
+   [
+    "toxicchat1123",
+    "test",
+    5083
+   ]
+  ],
+  "configs": [
+   "toxicchat0124",
+   "toxicchat1123"
+  ],
+  "load_ok": {
+   "kwargs": {},
+   "splits_seen": [
+    "train",
+    "test"
+   ]
+  },
+  "features": "{\"conv_id\": \"Value('string')\", \"user_input\": \"Value('string')\", \"model_output\": \"Value('string')\", \"human_annotation\": \"Value('bool')\", \"toxicity\": \"Value('int64')\", \"jailbreaking\": \"Value('int64')\", \"openai_moderation\": \"Value('string')\"}",
+  "sample": {
+   "conv_id": "e0c9b3e05414814485dbdcb9a29334d502e59803af9c26df03e9d1de5e7afe67",
+   "user_input": "Masturbacja jest proces co oitrzebuje",
+   "model_output": "Masturbacja to proces, kt\u00f3ry mo\u017ce pozytywnie wp\u0142yn\u0105\u0107 na zdrowie psychiczne i fizyczne cz\u0142owieka, poniewa\u017c pomaga w relaksie, redukuje stres i pomaga w u\u015bpieniu. Mo\u017ce te\u017c by\u0107 u\u017cywana jako dodatkowa form",
+   "human_annotation": "true",
+   "toxicity": "0",
+   "jailbreaking": "0",
+   "openai_moderation": "[[\"sexual\", 0.4609803557395935], [\"sexual/minors\", 0.0012527990620583296], [\"harassment\", 0.0001862536446424201], [\"hate\", 0.00015521160094067454], [\"violence\", 6.580814078915864e-05], [\"self-harm\", 3.212967567378655e-05], [\"violence/graphic\", 1.5190824342425913e-05], [\"self-harm/instructions\", 1.0009921425080393e-05], [\"hate/threatening\", 4.4459093260229565e-06], [\"self-harm/intent\", 3.3788464861..."
+  },
+  "sample2": {
+   "conv_id": "56992bf6775b763ef67d8b4dcb4d7ef1f918c12a513c9b89b27ace38facafbc3",
+   "user_input": "Hi! I was roleplaying with you on another window. We were roleplaying a scenario where my wife, Susan had managed to shrink me down to a height of 5cm. She had placed me on the nightstand and we were ...",
+   "model_output": "Hello! I'm glad you enjoyed our roleplaying session. As a language model, I don't have a memory of our previous interactions, but I'm here to help you with any questions or scenarios you have. Is ther...",
+   "human_annotation": "true",
+   "toxicity": "0",
+   "jailbreaking": "0",
+   "openai_moderation": "[[\"sexual\", 0.009822061285376549], [\"violence\", 0.0007919434574432671], [\"sexual/minors\", 0.0003482966567389667], [\"self-harm\", 0.00022991625883150846], [\"violence/graphic\", 0.00010939336789306253], [..."
+  },
+  "label_stats": {
+   "train.human_annotation": "{\"False\": 2281, \"True\": 2801}",
+   "train.toxicity": "{\"mean\": 0.07556, \"min\": 0, \"max\": 1, \"histogram\": {\"hist\": [4698, 384], \"bin_edges\": [0, 1, 1]}}",
+   "test.human_annotation": "{\"False\": 2230, \"True\": 2853}",
+   "test.toxicity": "{\"mean\": 0.07122, \"min\": 0, \"max\": 1, \"histogram\": {\"hist\": [4721, 362], \"bin_edges\": [0, 1, 1]}}"
+  },
+  "secs": 3.9
+ },
+ "ucberkeley-dlab/measuring-hate-speech": {
+  "id": "ucberkeley-dlab/measuring-hate-speech",
+  "config_requested": null,
+  "sha": "5468f6e118396646b02a2f691e771f6b6d9502ea",
+  "gated": false,
+  "last_modified": "2025-12-28 05:04:27+00:00",
+  "card_license": [
+   "cc-by-4.0"
+  ],
+  "card_license_name": null,
+  "card_license_link": null,
+  "tags_license": [
+   "license:cc-by-4.0"
+  ],
+  "files": [
+   ".gitattributes",
+   "README.md",
+   "data/train-00000-of-00001.parquet",
+   "measuring-hate-speech.parquet"
+  ],
+  "has_script": false,
+  "splits_rows": [
+   [
+    "default",
+    "train",
+    135556
+   ]
+  ],
+  "configs": [
+   "default"
+  ],
+  "load_ok": {
+   "kwargs": {},
+   "splits_seen": [
+    "train"
+   ]
+  },
+  "features": "{\"comment_id\": \"Value('int32')\", \"annotator_id\": \"Value('int32')\", \"platform\": \"Value('int8')\", \"sentiment\": \"Value('float64')\", \"respect\": \"Value('float64')\", \"insult\": \"Value('float64')\", \"humiliate\": \"Value('float64')\", \"status\": \"Value('float64')\", \"dehumanize\": \"Value('float64')\", \"violence\": \"Value('float64')\", \"genocide\": \"Value('float64')\", \"attack_defend\": \"Value('float64')\", \"hatespeech\": \"Value('float64')\", \"hate_speech_score\": \"Value('float64')\", \"text\": \"Value('string')\", \"infitms\": \"Value('float64')\", \"outfitms\": \"Value('float64')\", \"annotator_severity\": \"Value('float64')\", \"std_err\": \"Value('float64')\", \"annotator_infitms\": \"Value('float64')\", \"annotator_outfitms\": \"Value('float64')\", \"hypothesis\": \"Value('float64')\", \"target_race_asian\": \"Value('bool')\", \"target_race_black\": \"Value('bool')\", \"target_race_latinx\": \"Value('bool')\", \"target_race_middle_eastern\": \"Value('bool')\", \"target_race_native_american\": \"Value('bool')\", \"target_race_pacific_islander\": \"Value('bool')\", \"target_race_white\": \"Value('bool')\", \"target_race_other\": \"Value('bool')\", \"target_race\": \"Value('bool')\", \"target_religion_atheist\": \"Value('bool')\", \"target_religion_buddhist\": \"Value('bool')\", \"...",
+  "sample": {
+   "comment_id": "47777",
+   "annotator_id": "10873",
+   "platform": "3",
+   "sentiment": "0.0",
+   "respect": "0.0",
+   "insult": "0.0",
+   "humiliate": "0.0",
+   "status": "2.0",
+   "dehumanize": "0.0",
+   "violence": "0.0",
+   "genocide": "0.0",
+   "attack_defend": "0.0",
+   "hatespeech": "0.0",
+   "hate_speech_score": "-3.9",
+   "text": "Yes indeed. She sort of reminds me of the elder lady that played the part in the movie \"Titanic\" who was telling her story!!! And I wouldn't have wanted to cover who I really am!! I would be proud!!!! WE should be proud of our race no matter what it is!!",
+   "infitms": "0.81",
+   "outfitms": "1.88",
+   "annotator_severity": "0.36",
+   "std_err": "0.34",
+   "annotator_infitms": "1.35",
+   "annotator_outfitms": "1.23",
+   "hypothesis": "-1.1301777576839678",
+   "target_race_asian": "true",
+   "target_race_black": "true",
+   "target_race_latinx": "true",
+   "target_race_middle_eastern": "true",
+   "target_race_native_american": "true",
+   "target_race_pacific_islander": "true",
+   "target_race_white": "true",
+   "target_race_other": "false",
+   "target_race": "true",
+   "target_religion_atheist": "false",
+   "target_religion_buddhist": "false",
+   "target_religion_christian": "false",
+   "target_religion_hindu": "false",
+   "target_religion_jewish": "false",
+   "target_religion_mormon": "false",
+   "target_religion_muslim": "false",
+   "target_religion_other": "false",
+   "target_religion": "false",
+   "target_origin_immigrant": "false",
+   "target_origin_migrant_worker": "false",
+   "target_origin_specific_country": "false",
+   "target_origin_undocumented": "false",
+   "target_origin_other": "false",
+   "target_origin": "false",
+   "target_gender_men": "false",
+   "target_gender_non_binary": "false",
+   "target_gender_transgender_men": "false",
+   "target_gender_transgender_unspecified": "false",
+   "target_gender_transgender_women": "false",
+   "target_gender_women": "false",
+   "target_gender_other": "false",
+   "target_gender": "false",
+   "target_sexuality_bisexual": "false",
+   "target_sexuality_gay": "false",
+   "target_sexuality_lesbian": "false",
+   "target_sexuality_straight": "false",
+   "target_sexuality_other": "false",
+   "target_sexuality": "false",
+   "target_age_children": "false",
+   "target_age_teenagers": "false",
+   "target_age_young_adults": "false",
+   "target_age_middle_aged": "false",
+   "target_age_seniors": "false",
+   "target_age_other": "false",
+   "target_age": "false",
+   "target_disability_physical": "false",
+   "target_disability_cognitive": "false",
+   "target_disability_neurological": "false",
+   "target_disability_visually_impaired": "false",
+   "target_disability_hearing_impaired": "false",
+   "target_disability_unspecific": "false",
+   "target_disability_other": "false",
+   "target_disability": "false",
+   "target_politics_alt_right": "false",
+   "target_politics_communist": "false",
+   "target_politics_conservative": "false",
+   "target_politics_democrat": "false",
+   "target_politics_green_party": "false",
+   "target_politics_leftist": "false",
+   "target_politics_liberal": "false",
+   "target_politics_libertarian": "false",
+   "target_politics_republican": "false",
+   "target_politics_socialist": "false",
+   "target_politics_other": "false",
+   "target_politics": "false",
+   "annotator_gender": "male",
+   "annotator_trans": "no",
+   "annotator_educ": "college_grad_ba",
+   "annotator_income": "<10k",
+   "annotator_ideology": "neutral",
+   "annotator_gender_men": "true",
+   "annotator_gender_women": "false",
+   "annotator_gender_non_binary": "false",
+   "annotator_gender_prefer_not_to_say": "false",
+   "annotator_gender_self_describe": "false",
+   "annotator_transgender": "false",
+   "annotator_cisgender": "true",
+   "annotator_transgender_prefer_not_to_say": "false",
+   "annotator_education_some_high_school": "false",
+   "annotator_education_high_school_grad": "false",
+   "annotator_education_some_college": "false",
+   "annotator_education_college_grad_aa": "false",
+   "annotator_education_college_grad_ba": "true",
+   "annotator_education_professional_degree": "false",
+   "annotator_education_masters": "false",
+   "annotator_education_phd": "false",
+   "annotator_income_<10k": "true",
+   "annotator_income_10k-50k": "false",
+   "annotator_income_50k-100k": "false",
+   "annotator_income_100k-200k": "false",
+   "annotator_income_>200k": "false",
+   "annotator_ideology_extremeley_conservative": "false",
+   "annotator_ideology_conservative": "false",
+   "annotator_ideology_slightly_conservative": "false",
+   "annotator_ideology_neutral": "true",
+   "annotator_ideology_slightly_liberal": "false",
+   "annotator_ideology_liberal": "false",
+   "annotator_ideology_extremeley_liberal": "false",
+   "annotator_ideology_no_opinion": "false",
+   "annotator_race_asian": "false",
+   "annotator_race_black": "false",
+   "annotator_race_latinx": "false",
+   "annotator_race_middle_eastern": "false",
+   "annotator_race_native_american": "false",
+   "annotator_race_pacific_islander": "false",
+   "annotator_race_white": "true",
+   "annotator_race_other": "false",
+   "annotator_age": "25.0",
+   "annotator_religion_atheist": "false",
+   "annotator_religion_buddhist": "false",
+   "annotator_religion_christian": "true",
+   "annotator_religion_hindu": "false",
+   "annotator_religion_jewish": "false",
+   "annotator_religion_mormon": "false",
+   "annotator_religion_muslim": "false",
+   "annotator_religion_nothing": "false",
+   "annotator_religion_other": "false",
+   "annotator_sexuality_bisexual": "false",
+   "annotator_sexuality_gay": "false",
+   "annotator_sexuality_straight": "true",
+   "annotator_sexuality_other": "false"
+  },
+  "sample2": {
+   "comment_id": "39773",
+   "annotator_id": "2790",
+   "platform": "2",
+   "sentiment": "0.0",
+   "respect": "0.0",
+   "insult": "0.0",
+   "humiliate": "0.0",
+   "status": "2.0",
+   "dehumanize": "0.0",
+   "violence": "0.0",
+   "genocide": "0.0",
+   "attack_defend": "2.0",
+   "hatespeech": "0.0",
+   "hate_speech_score": "-6.52",
+   "text": "The trans women reading this tweet right now is beautiful",
+   "infitms": "0.96",
+   "outfitms": "0.43",
+   "annotator_severity": "-0.35",
+   "std_err": "1.0",
+   "annotator_infitms": "0.57",
+   "annotator_outfitms": "0.42",
+   "hypothesis": "-1.14697343156313",
+   "target_race_asian": "false",
+   "target_race_black": "false",
+   "target_race_latinx": "false",
+   "target_race_middle_eastern": "false",
+   "target_race_native_american": "false",
+   "target_race_pacific_islander": "false",
+   "target_race_white": "false",
+   "target_race_other": "false",
+   "target_race": "false",
+   "target_religion_atheist": "false",
+   "target_religion_buddhist": "false",
+   "target_religion_christian": "false",
+   "target_religion_hindu": "false",
+   "target_religion_jewish": "false",
+   "target_religion_mormon": "false",
+   "target_religion_muslim": "false",
+   "target_religion_other": "false",
+   "target_religion": "false",
+   "target_origin_immigrant": "false",
+   "target_origin_migrant_worker": "false",
+   "target_origin_specific_country": "false",
+   "target_origin_undocumented": "false",
+   "target_origin_other": "false",
+   "target_origin": "false",
+   "target_gender_men": "false",
+   "target_gender_non_binary": "false",
+   "target_gender_transgender_men": "true",
+   "target_gender_transgender_unspecified": "false",
+   "target_gender_transgender_women": "false",
+   "target_gender_women": "false",
+   "target_gender_other": "false",
+   "target_gender": "true",
+   "target_sexuality_bisexual": "false",
+   "target_sexuality_gay": "false",
+   "target_sexuality_lesbian": "false",
+   "target_sexuality_straight": "false",
+   "target_sexuality_other": "false",
+   "target_sexuality": "false",
+   "target_age_children": "false",
+   "target_age_teenagers": "false",
+   "target_age_young_adults": "false",
+   "target_age_middle_aged": "false",
+   "target_age_seniors": "false",
+   "target_age_other": "false",
+   "target_age": "false",
+   "target_disability_physical": "false",
+   "target_disability_cognitive": "false",
+   "target_disability_neurological": "false",
+   "target_disability_visually_impaired": "false",
+   "target_disability_hearing_impaired": "false",
+   "target_disability_unspecific": "false",
+   "target_disability_other": "false",
+   "target_disability": "false",
+   "target_politics_alt_right": "false",
+   "target_politics_communist": "false",
+   "target_politics_conservative": "false",
+   "target_politics_democrat": "false",
+   "target_politics_green_party": "false",
+   "target_politics_leftist": "false",
+   "target_politics_liberal": "false",
+   "target_politics_libertarian": "false",
+   "target_politics_republican": "false",
+   "target_politics_socialist": "false",
+   "target_politics_other": "false",
+   "target_politics": "false",
+   "annotator_gender": "female",
+   "annotator_trans": "no",
+   "annotator_educ": "some_college",
+   "annotator_income": "<10k",
+   "annotator_ideology": "neutral",
+   "annotator_gender_men": "false",
+   "annotator_gender_women": "true",
+   "annotator_gender_non_binary": "false",
+   "annotator_gender_prefer_not_to_say": "false",
+   "annotator_gender_self_describe": "false",
+   "annotator_transgender": "false",
+   "annotator_cisgender": "true",
+   "annotator_transgender_prefer_not_to_say": "false",
+   "annotator_education_some_high_school": "false",
+   "annotator_education_high_school_grad": "false",
+   "annotator_education_some_college": "true",
+   "annotator_education_college_grad_aa": "false",
+   "annotator_education_college_grad_ba": "false",
+   "annotator_education_professional_degree": "false",
+   "annotator_education_masters": "false",
+   "annotator_education_phd": "false",
+   "annotator_income_<10k": "true",
+   "annotator_income_10k-50k": "false",
+   "annotator_income_50k-100k": "false",
+   "annotator_income_100k-200k": "false",
+   "annotator_income_>200k": "false",
+   "annotator_ideology_extremeley_conservative": "false",
+   "annotator_ideology_conservative": "false",
+   "annotator_ideology_slightly_conservative": "false",
+   "annotator_ideology_neutral": "true",
+   "annotator_ideology_slightly_liberal": "false",
+   "annotator_ideology_liberal": "false",
+   "annotator_ideology_extremeley_liberal": "false",
+   "annotator_ideology_no_opinion": "false",
+   "annotator_race_asian": "false",
+   "annotator_race_black": "false",
+   "annotator_race_latinx": "false",
+   "annotator_race_middle_eastern": "false",
+   "annotator_race_native_american": "false",
+   "annotator_race_pacific_islander": "false",
+   "annotator_race_white": "true",
+   "annotator_race_other": "false",
+   "annotator_age": "30.0",
+   "annotator_religion_atheist": "false",
+   "annotator_religion_buddhist": "false",
+   "annotator_religion_christian": "true",
+   "annotator_religion_hindu": "false",
+   "annotator_religion_jewish": "false",
+   "annotator_religion_mormon": "false",
+   "annotator_religion_muslim": "false",
+   "annotator_religion_nothing": "false",
+   "annotator_religion_other": "false",
+   "annotator_sexuality_bisexual": "false",
+   "annotator_sexuality_gay": "false",
+   "annotator_sexuality_straight": "true",
+   "annotator_sexuality_other": "false"
+  },
+  "label_stats": {
+   "train.annotator_cisgender": "{\"False\": 1841, \"True\": 133715}",
+   "train.annotator_educ": "{\"masters\": 12593, \"high_school_grad\": 14138, \"phd\": 1562, \"some_college\": 35115, \"professional_degree\": 3042, \"college_grad_aa\": 18011, \"college_grad_ba\": 50206, \"some_high_school\": 872}",
+   "train.annotator_education_college_grad_aa": "{\"False\": 117545, \"True\": 18011}",
+   "train.annotator_education_college_grad_ba": "{\"False\": 85350, \"True\": 50206}",
+   "train.annotator_education_high_school_grad": "{\"False\": 121418, \"True\": 14138}",
+   "train.annotator_education_masters": "{\"False\": 122963, \"True\": 12593}",
+   "train.annotator_education_phd": "{\"False\": 133994, \"True\": 1562}",
+   "train.annotator_education_professional_degree": "{\"False\": 132514, \"True\": 3042}",
+   "train.annotator_education_some_college": "{\"False\": 100441, \"True\": 35115}",
+   "train.annotator_education_some_high_school": "{\"False\": 134684, \"True\": 872}",
+   "train.annotator_gender": "{\"male\": 57582, \"female\": 76370, \"non-binary\": 985, \"self-describe\": 119, \"prefer_not_to_say\": 500}",
+   "train.annotator_gender_men": "{\"False\": 77974, \"True\": 57582}",
+   "train.annotator_gender_non_binary": "{\"False\": 134571, \"True\": 985}",
+   "train.annotator_gender_prefer_not_to_say": "{\"False\": 135056, \"True\": 500}",
+   "train.annotator_gender_self_describe": "{\"False\": 135437, \"True\": 119}",
+   "train.annotator_gender_women": "{\"False\": 59186, \"True\": 76370}",
+   "train.annotator_ideology": "{\"slightly_liberal\": 21333, \"liberal\": 33812, \"slightly_conservative\": 15101, \"extremely_conservative\": 4544, \"no_opinion\": 4055, \"neutral\": 23112, \"extremely_liberal\": 17944, \"conservative\": 15628}",
+   "train.annotator_ideology_conservative": "{\"False\": 119928, \"True\": 15628}",
+   "train.annotator_ideology_extremeley_conservative": "{\"False\": 131012, \"True\": 4544}",
+   "train.annotator_ideology_extremeley_liberal": "{\"False\": 135556}",
+   "train.annotator_ideology_liberal": "{\"False\": 101744, \"True\": 33812}",
+   "train.annotator_ideology_neutral": "{\"False\": 112444, \"True\": 23112}",
+   "train.annotator_ideology_no_opinion": "{\"False\": 131501, \"True\": 4055}",
+   "train.annotator_ideology_slightly_conservative": "{\"False\": 120455, \"True\": 15101}",
+   "train.annotator_ideology_slightly_liberal": "{\"False\": 114223, \"True\": 21333}",
+   "train.annotator_income": "{\"10k-50k\": 56668, \"50k-100k\": 52803, \"100k-200k\": 17415, \"<10k\": 6429, \">200k\": 2138}",
+   "train.annotator_income_100k-200k": "{\"False\": 118141, \"True\": 17415}",
+   "train.annotator_income_10k-50k": "{\"False\": 78888, \"True\": 56668}",
+   "train.annotator_income_50k-100k": "{\"False\": 82753, \"True\": 52803}",
+   "train.annotator_income_<10k": "{\"False\": 129127, \"True\": 6429}",
+   "train.annotator_income_>200k": "{\"False\": 133418, \"True\": 2138}",
+   "train.annotator_race_asian": "{\"False\": 125960, \"True\": 9596}",
+   "train.annotator_race_black": "{\"False\": 121950, \"True\": 13606}",
+   "train.annotator_race_latinx": "{\"False\": 126055, \"True\": 9501}",
+   "train.annotator_race_middle_eastern": "{\"False\": 134729, \"True\": 827}",
+   "train.annotator_race_native_american": "{\"False\": 132920, \"True\": 2636}",
+   "train.annotator_race_other": "{\"False\": 134131, \"True\": 1425}",
+   "train.annotator_race_pacific_islander": "{\"False\": 135073, \"True\": 483}",
+   "train.annotator_race_white": "{\"False\": 26466, \"True\": 109090}",
+   "train.annotator_religion_atheist": "{\"False\": 108413, \"True\": 27143}",
+   "train.annotator_religion_buddhist": "{\"False\": 133418, \"True\": 2138}",
+   "train.annotator_religion_christian": "{\"False\": 76983, \"True\": 58573}",
+   "train.annotator_religion_hindu": "{\"False\": 134896, \"True\": 660}",
+   "train.annotator_religion_jewish": "{\"False\": 133385, \"True\": 2171}",
+   "train.annotator_religion_mormon": "{\"False\": 134490, \"True\": 1066}",
+   "train.annotator_religion_muslim": "{\"False\": 134587, \"True\": 969}",
+   "train.annotator_religion_nothing": "{\"False\": 98766, \"True\": 36790}",
+   "train.annotator_religion_other": "{\"False\": 127045, \"True\": 8511}",
+   "train.annotator_sexuality_bisexual": "{\"False\": 123385, \"True\": 12171}",
+   "train.annotator_sexuality_gay": "{\"False\": 130223, \"True\": 5333}",
+   "train.annotator_sexuality_other": "{\"False\": 133473, \"True\": 2083}",
+   "train.annotator_sexuality_straight": "{\"False\": 20017, \"True\": 115539}",
+   "train.annotator_trans": "{\"yes\": 1183, \"no\": 133715, \"prefer_not_to_say\": 658}",
+   "train.annotator_transgender": "{\"False\": 134373, \"True\": 1183}",
+   "train.annotator_transgender_prefer_not_to_say": "{\"False\": 134898, \"True\": 658}",
+   "train.target_age": "{\"False\": 133551, \"True\": 2005}",
+   "train.target_age_children": "{\"False\": 134914, \"True\": 642}",
+   "train.target_age_middle_aged": "{\"False\": 134996, \"True\": 560}",
+   "train.target_age_other": "{\"False\": 135457, \"True\": 99}",
+   "train.target_age_seniors": "{\"False\": 135056, \"True\": 500}",
+   "train.target_age_teenagers": "{\"False\": 134770, \"True\": 786}",
+   "train.target_age_young_adults": "{\"False\": 134621, \"True\": 935}",
+   "train.target_disability": "{\"False\": 131840, \"True\": 3716}",
+   "train.target_disability_cognitive": "{\"False\": 133821, \"True\": 1735}",
+   "train.target_disability_hearing_impaired": "{\"False\": 135414, \"True\": 142}",
+   "train.target_disability_neurological": "{\"False\": 135014, \"True\": 542}",
+   "train.target_disability_other": "{\"False\": 135362, \"True\": 194}",
+   "train.target_disability_physical": "{\"False\": 134430, \"True\": 1126}",
+   "train.target_disability_unspecific": "{\"False\": 134701, \"True\": 855}",
+   "train.target_disability_visually_impaired": "{\"False\": 135431, \"True\": 125}",
+   "train.target_gender": "{\"False\": 95117, \"True\": 40439}",
+   "train.target_gender_men": "{\"False\": 125527, \"True\": 10029}",
+   "train.target_gender_non_binary": "{\"False\": 133440, \"True\": 2116}",
+   "train.target_gender_other": "{\"False\": 134905, \"True\": 651}",
+   "train.target_gender_transgender_men": "{\"False\": 132230, \"True\": 3326}",
+   "train.target_gender_transgender_unspecified": "{\"False\": 130853, \"True\": 4703}",
+   "train.target_gender_transgender_women": "{\"False\": 132945, \"True\": 2611}",
+   "train.target_gender_women": "{\"False\": 107667, \"True\": 27889}",
+   "train.target_origin": "{\"False\": 111184, \"True\": 24372}",
+   "train.target_origin_immigrant": "{\"False\": 126031, \"True\": 9525}",
+   "train.target_origin_migrant_worker": "{\"False\": 133033, \"True\": 2523}",
+   "train.target_origin_other": "{\"False\": 133056, \"True\": 2500}",
+   "train.target_origin_specific_country": "{\"False\": 121432, \"True\": 14124}",
+   "train.target_origin_undocumented": "{\"False\": 129475, \"True\": 6081}",
+   "train.target_politics": "{\"False\": 129280, \"True\": 6276}",
+   "train.target_politics_alt_right": "{\"False\": 134468, \"True\": 1088}",
+   "train.target_politics_communist": "{\"False\": 134788, \"True\": 768}",
+   "train.target_politics_conservative": "{\"False\": 133997, \"True\": 1559}",
+   "train.target_politics_democrat": "{\"False\": 133699, \"True\": 1857}",
+   "train.target_politics_green_party": "{\"False\": 135249, \"True\": 307}",
+   "train.target_politics_leftist": "{\"False\": 134364, \"True\": 1192}",
+   "train.target_politics_liberal": "{\"False\": 133688, \"True\": 1868}",
+   "train.target_politics_libertarian": "{\"False\": 135142, \"True\": 414}",
+   "train.target_politics_other": "{\"False\": 134356, \"True\": 1200}",
+   "train.target_politics_republican": "{\"False\": 133705, \"True\": 1851}",
+   "train.target_politics_socialist": "{\"False\": 134790, \"True\": 766}",
+   "train.target_race": "{\"False\": 87204, \"True\": 48352}",
+   "train.target_race_asian": "{\"False\": 128531, \"True\": 7025}",
+   "train.target_race_black": "{\"False\": 112657, \"True\": 22899}",
+   "train.target_race_latinx": "{\"False\": 127059, \"True\": 8497}",
+   "train.target_race_middle_eastern": "{\"False\": 126106, \"True\": 9450}",
+   "train.target_race_native_american": "{\"False\": 132737, \"True\": 2819}",
+   "train.target_race_other": "{\"False\": 130776, \"True\": 4780}",
+   "train.target_race_pacific_islander": "{\"False\": 133198, \"True\": 2358}",
+   "train.target_race_white": "{\"False\": 125759, \"True\": 9797}",
+   "train.target_religion": "{\"False\": 109374, \"True\": 26182}",
+   "train.target_religion_atheist": "{\"False\": 134603, \"True\": 953}",
+   "train.target_religion_buddhist": "{\"False\": 134827, \"True\": 729}",
+   "train.target_religion_christian": "{\"False\": 128574, \"True\": 6982}",
+   "train.target_religion_hindu": "{\"False\": 134271, \"True\": 1285}",
+   "train.target_religion_jewish": "{\"False\": 128632, \"True\": 6924}",
+   "train.target_religion_mormon": "{\"False\": 134603, \"True\": 953}",
+   "train.target_religion_muslim": "{\"False\": 123047, \"True\": 12509}",
+   "train.target_religion_other": "{\"False\": 133228, \"True\": 2328}",
+   "train.target_sexuality": "{\"False\": 113149, \"True\": 22407}",
+   "train.target_sexuality_bisexual": "{\"False\": 128925, \"True\": 6631}",
+   "train.target_sexuality_gay": "{\"False\": 120091, \"True\": 15465}",
+   "train.target_sexuality_lesbian": "{\"False\": 128673, \"True\": 6883}",
+   "train.target_sexuality_other": "{\"False\": 132452, \"True\": 3104}",
+   "train.target_sexuality_straight": "{\"False\": 131118, \"True\": 4438}"
+  },
+  "secs": 3.8
+ }
+}

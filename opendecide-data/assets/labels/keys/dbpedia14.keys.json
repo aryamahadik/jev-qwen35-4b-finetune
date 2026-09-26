@@ -1,0 +1,186 @@
+{
+ "authored_by": "llm:claude:label-key-author",
+ "counts_by_kind": {
+  "class": 14,
+  "superclass": 6
+ },
+ "created": "2026-09-25",
+ "dataset": "dbpedia14",
+ "key_policy": "Choice key = natural 1-5 word English name of the label, fixed for every split, variant and model (DESIGN field rule 2, D8). Descriptions (D_*) and propositions (P_*) are authored separately per pool and never live in this file.",
+ "label_field": "label",
+ "label_id_type": "classlabel_name (classes); super-class ids defined here",
+ "labels": [
+  {
+   "key": "organisation",
+   "kind": "superclass",
+   "label_id": "Organisation",
+   "n_children": 2,
+   "parent": null
+  },
+  {
+   "key": "person",
+   "kind": "superclass",
+   "label_id": "Person",
+   "n_children": 3,
+   "parent": null
+  },
+  {
+   "key": "place",
+   "kind": "superclass",
+   "label_id": "Place",
+   "n_children": 3,
+   "parent": null
+  },
+  {
+   "key": "species",
+   "kind": "superclass",
+   "label_id": "Species",
+   "n_children": 2,
+   "parent": null
+  },
+  {
+   "key": "vehicle",
+   "kind": "superclass",
+   "label_id": "Vehicle",
+   "n_children": 1,
+   "parent": null
+  },
+  {
+   "key": "creative work",
+   "kind": "superclass",
+   "label_id": "Work",
+   "n_children": 3,
+   "parent": null
+  },
+  {
+   "key": "album",
+   "kind": "class",
+   "label_id": "Album",
+   "parent": "Work",
+   "source_index": 11
+  },
+  {
+   "key": "animal",
+   "kind": "class",
+   "label_id": "Animal",
+   "parent": "Species",
+   "source_index": 9
+  },
+  {
+   "key": "artist",
+   "kind": "class",
+   "label_id": "Artist",
+   "parent": "Person",
+   "source_index": 2
+  },
+  {
+   "key": "athlete",
+   "kind": "class",
+   "label_id": "Athlete",
+   "parent": "Person",
+   "source_index": 3
+  },
+  {
+   "key": "building",
+   "kind": "class",
+   "label_id": "Building",
+   "parent": "Place",
+   "source_index": 6
+  },
+  {
+   "key": "company",
+   "kind": "class",
+   "label_id": "Company",
+   "parent": "Organisation",
+   "source_index": 0
+  },
+  {
+   "key": "educational institution",
+   "kind": "class",
+   "label_id": "EducationalInstitution",
+   "parent": "Organisation",
+   "source_index": 1
+  },
+  {
+   "key": "film",
+   "kind": "class",
+   "label_id": "Film",
+   "parent": "Work",
+   "source_index": 12
+  },
+  {
+   "key": "means of transport",
+   "kind": "class",
+   "label_id": "MeanOfTransportation",
+   "parent": "Vehicle",
+   "source_index": 5
+  },
+  {
+   "key": "natural place",
+   "kind": "class",
+   "label_id": "NaturalPlace",
+   "parent": "Place",
+   "source_index": 7
+  },
+  {
+   "key": "office holder",
+   "kind": "class",
+   "label_id": "OfficeHolder",
+   "parent": "Person",
+   "source_index": 4
+  },
+  {
+   "key": "plant",
+   "kind": "class",
+   "label_id": "Plant",
+   "parent": "Species",
+   "source_index": 10
+  },
+  {
+   "key": "village",
+   "kind": "class",
+   "label_id": "Village",
+   "parent": "Place",
+   "source_index": 8
+  },
+  {
+   "key": "written work",
+   "kind": "class",
+   "label_id": "WrittenWork",
+   "parent": "Work",
+   "source_index": 13
+  }
+ ],
+ "n_labels": 20,
+ "schema_version": "od-keys-1.0",
+ "source": "fancyzhx/dbpedia_14 @ 9abd46cf7fc8b4c64290f26993c540b92aa145ac",
+ "superclass_basis": "DBpedia ontology parents: Artist/Athlete/OfficeHolder < dbo:Person; Company/EducationalInstitution < dbo:Organisation; Building/NaturalPlace/Village < dbo:Place; Animal/Plant < dbo:Species; Album/Film/WrittenWork < dbo:Work. dbo:MeanOfTransportation has no parent among these, so it forms the singleton super-class 'Vehicle' (id defined here). Rule R6 HIER: gold = 1[parent(gold class) = P].",
+ "superclass_map": {
+  "Organisation": [
+   "Company",
+   "EducationalInstitution"
+  ],
+  "Person": [
+   "Artist",
+   "Athlete",
+   "OfficeHolder"
+  ],
+  "Place": [
+   "Building",
+   "NaturalPlace",
+   "Village"
+  ],
+  "Species": [
+   "Animal",
+   "Plant"
+  ],
+  "Vehicle": [
+   "MeanOfTransportation"
+  ],
+  "Work": [
+   "Album",
+   "Film",
+   "WrittenWork"
+  ]
+ }
+}

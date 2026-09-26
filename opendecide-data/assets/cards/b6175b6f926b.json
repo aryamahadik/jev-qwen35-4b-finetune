@@ -1,0 +1,26 @@
+{
+ "key": "b6175b6f926b",
+ "kind": "Message",
+ "instruction": "Choose the label that fits this text.",
+ "labels": [
+  "spam",
+  "not spam"
+ ],
+ "model": "qwen/qwen3-235b-a22b-2507",
+ "cards": {
+  "spam": {
+   "definition": "Spam refers to unsolicited, often mass-sent messages that promote products, services, or scams, typically containing misleading claims, urgency, or suspicious links, distinguishing it from legitimate communication by intent to deceive or advertise\u672a\u7ecf\u8bf7\u6c42\u7684\u5185\u5bb9.",
+   "examples": [
+    "Congratulations! You've won $10000! Click here to claim now!",
+    "Get rich quick with this one simple trick! Limited time offer!"
+   ]
+  },
+  "not spam": {
+   "definition": "Not spam includes genuine, relevant messages sent with legitimate intent, such as personal communication or expected updates, differing from spam by authenticity, lack of promotional pressure, and clear sender identity.",
+   "examples": [
+    "Hi, are we still meeting for lunch tomorrow at 12:30?",
+    "Your monthly statement is now available in the app."
+   ]
+  }
+ }
+}

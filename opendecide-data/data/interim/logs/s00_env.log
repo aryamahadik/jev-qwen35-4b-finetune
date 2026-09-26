@@ -1,0 +1,353 @@
+2026-09-25 14:35:23 INFO [opendecide.s00_env] start s00_env (seed 20260925)
+2026-09-25 14:35:23 INFO [opendecide.s00_env] PASS python_version 3.12.10
+2026-09-25 14:35:23 INFO [opendecide.s00_env] PASS pin:datasets installed 4.8.5, required 4.8.5
+2026-09-25 14:35:23 INFO [opendecide.s00_env] PASS pin:transformers installed 4.57.6, required 4.57.6
+2026-09-25 14:35:23 INFO [opendecide.s00_env] PASS pin:gliclass installed 0.1.17, required 0.1.17
+2026-09-25 14:35:23 INFO [opendecide.s00_env] PASS pin:typesafe-sdk installed 0.7.1, required 0.7.1
+2026-09-25 14:35:23 INFO [opendecide.s00_env] PASS present:sentence-transformers 5.7.0
+2026-09-25 14:35:23 INFO [opendecide.s00_env] PASS present:datasketch 2.0.0
+2026-09-25 14:35:23 INFO [opendecide.s00_env] PASS present:spacy 3.8.16
+2026-09-25 14:35:23 INFO [opendecide.s00_env] PASS present:en-core-web-sm 3.8.0
+2026-09-25 14:35:23 INFO [opendecide.s00_env] PASS present:pyyaml 6.0.3
+2026-09-25 14:35:23 INFO [opendecide.s00_env] PASS present:jsonschema 4.26.0
+2026-09-25 14:35:23 INFO [opendecide.s00_env] PASS present:numpy 2.5.3
+2026-09-25 14:35:23 INFO [opendecide.s00_env] PASS present:pandas 3.0.6
+2026-09-25 14:35:23 INFO [opendecide.s00_env] PASS present:scikit-learn 1.9.1
+2026-09-25 14:35:23 INFO [opendecide.s00_env] PASS present:scipy 1.18.1
+2026-09-25 14:35:23 INFO [opendecide.s00_env] PASS present:requests 2.34.2
+2026-09-25 14:35:23 INFO [opendecide.s00_env] PASS present:huggingface-hub 0.36.2
+2026-09-25 14:35:23 INFO [opendecide.s00_env] PASS present:torch 2.14.0
+2026-09-25 14:35:23 INFO [opendecide.s00_env] PASS requirements_lock_exists build/requirements.lock.txt
+2026-09-25 14:35:23 INFO [opendecide.s00_env] PASS requirements_lock_match {'drift': {}, 'missing': [], 'extra_not_in_lock': []}
+2026-09-25 14:35:23 INFO [opendecide.s00_env] PASS minilm_cached_at_pin {'snapshot': '/Users/aryamahadik/.cache/huggingface/hub/models--sentence-transformers--all-MiniLM-L6-v2/snapshots/1110a243fdf4706b3f48f1d95db1a4f5529b4d41', 'missing': []}
+2026-09-25 14:35:24 INFO [opendecide.s00_env] PASS typesafe_request_schema typesafe_sdk._schemas.models.SystemOneRequest
+2026-09-25 14:35:25 INFO [opendecide.s00_env] PASS spacy_tagger ['NNP', 'VBZ', 'WRB', 'DT', 'NN', 'VBD', 'PRP$', 'NN', '.']
+2026-09-25 14:35:25 INFO [opendecide.s00_env] PASS sub_seed_rule 
+2026-09-25 14:35:25 INFO [opendecide.s00_env] PASS row_id_rule 
+2026-09-25 14:35:25 INFO [opendecide.s00_env] PASS call_id_rule 
+2026-09-25 14:35:25 INFO [opendecide.s00_env] PASS rng_deterministic [2026185393, 581899105, 1298844316]
+2026-09-25 14:35:25 INFO [opendecide.s00_env] PASS norm_text_rule card isn t here
+2026-09-25 14:35:25 INFO [opendecide.s00_env] PASS train.L0_rows 13000 vs 13000
+2026-09-25 14:35:25 INFO [opendecide.s00_env] PASS train.L2_rows 4600
+2026-09-25 14:35:25 INFO [opendecide.s00_env] PASS train.score_transforms 
+2026-09-25 14:35:25 INFO [opendecide.s00_env] PASS train.L3_rows 4140
+2026-09-25 14:35:25 INFO [opendecide.s00_env] PASS train.targeted_family_rows 
+2026-09-25 14:35:25 INFO [opendecide.s00_env] PASS train.targeted_echo_parity 
+2026-09-25 14:35:25 INFO [opendecide.s00_env] PASS train.rows_total 21740
+2026-09-25 14:35:25 INFO [opendecide.s00_env] PASS train.type_mix 
+2026-09-25 14:35:25 INFO [opendecide.s00_env] PASS train.drug_k_mix 
+2026-09-25 14:35:25 INFO [opendecide.s00_env] PASS train.ablation_rows 
+2026-09-25 14:35:25 INFO [opendecide.s00_env] PASS dev.rows 
+2026-09-25 14:35:25 INFO [opendecide.s00_env] PASS dev_zs.rows 
+2026-09-25 14:35:25 INFO [opendecide.s00_env] PASS cap.train_dev_devzs 24340 <= 25000
+2026-09-25 14:35:25 INFO [opendecide.s00_env] PASS eval.banking77.rows 
+2026-09-25 14:35:25 INFO [opendecide.s00_env] PASS eval.banking77.floor 40
+2026-09-25 14:35:25 INFO [opendecide.s00_env] PASS eval.clinc150.rows 
+2026-09-25 14:35:25 INFO [opendecide.s00_env] PASS eval.clinc150.floor 40
+2026-09-25 14:35:25 INFO [opendecide.s00_env] PASS eval.goemotions.rows 
+2026-09-25 14:35:25 INFO [opendecide.s00_env] PASS eval.goemotions.floor 24
+2026-09-25 14:35:25 INFO [opendecide.s00_env] PASS eval.clothing.rows 
+2026-09-25 14:35:25 INFO [opendecide.s00_env] PASS eval.clothing.floor 24
+2026-09-25 14:35:25 INFO [opendecide.s00_env] PASS eval.drug.rows 
+2026-09-25 14:35:25 INFO [opendecide.s00_env] PASS eval.drug.floor 24
+2026-09-25 14:35:25 INFO [opendecide.s00_env] PASS eval.boolq_bundle.rows 
+2026-09-25 14:35:25 INFO [opendecide.s00_env] PASS eval.boolq_bundle.floor 24
+2026-09-25 14:35:25 INFO [opendecide.s00_env] PASS eval.condaqa.rows 
+2026-09-25 14:35:25 INFO [opendecide.s00_env] PASS eval.condaqa.floor 24
+2026-09-25 14:35:25 INFO [opendecide.s00_env] PASS eval.condaqa_dk_trap.rows 
+2026-09-25 14:35:25 ERROR [opendecide.s00_env] FAIL eval.condaqa_dk_trap.floor 22
+2026-09-25 14:35:25 INFO [opendecide.s00_env] PASS eval.vitaminc_real.rows 
+2026-09-25 14:35:25 INFO [opendecide.s00_env] PASS eval.vitaminc_real.floor 24
+2026-09-25 14:35:25 INFO [opendecide.s00_env] PASS eval.vitaminc_nei_trap.rows 
+2026-09-25 14:35:25 ERROR [opendecide.s00_env] FAIL eval.vitaminc_nei_trap.floor 22
+2026-09-25 14:35:25 INFO [opendecide.s00_env] PASS eval.nlupp.rows 
+2026-09-25 14:35:25 INFO [opendecide.s00_env] PASS eval.nlupp.floor 40
+2026-09-25 14:35:25 INFO [opendecide.s00_env] PASS eval.hint3_v2.rows 
+2026-09-25 14:35:25 INFO [opendecide.s00_env] PASS eval.hint3_v2.floor 24
+2026-09-25 14:35:25 INFO [opendecide.s00_env] PASS eval.tfns.rows 
+2026-09-25 14:35:25 INFO [opendecide.s00_env] PASS eval.tfns.floor 24
+2026-09-25 14:35:25 INFO [opendecide.s00_env] PASS eval.sst5.rows 
+2026-09-25 14:35:25 INFO [opendecide.s00_env] PASS eval.sst5.floor 24
+2026-09-25 14:35:25 INFO [opendecide.s00_env] PASS eval.supertweeteval.rows 
+2026-09-25 14:35:25 INFO [opendecide.s00_env] PASS eval.supertweeteval.floor 24
+2026-09-25 14:35:25 INFO [opendecide.s00_env] PASS eval.nan_nli.rows 
+2026-09-25 14:35:25 INFO [opendecide.s00_env] PASS eval.nan_nli.floor 48
+2026-09-25 14:35:25 INFO [opendecide.s00_env] PASS eval.becel_snli.rows 
+2026-09-25 14:35:25 INFO [opendecide.s00_env] PASS eval.becel_snli.floor 24
+2026-09-25 14:35:25 INFO [opendecide.s00_env] PASS eval.sms_spam.rows 
+2026-09-25 14:35:25 INFO [opendecide.s00_env] PASS eval.sms_spam.floor 24
+2026-09-25 14:35:25 INFO [opendecide.s00_env] PASS eval.civil.rows 
+2026-09-25 14:35:25 INFO [opendecide.s00_env] PASS eval.civil.floor 24
+2026-09-25 14:35:25 INFO [opendecide.s00_env] PASS eval.mhs.rows 
+2026-09-25 14:35:25 INFO [opendecide.s00_env] PASS eval.mhs.floor 24
+2026-09-25 14:35:25 INFO [opendecide.s00_env] PASS eval.fresh.rows 
+2026-09-25 14:35:25 INFO [opendecide.s00_env] PASS eval.fresh.floor 96
+2026-09-25 14:35:25 INFO [opendecide.s00_env] PASS eval.track.ID states 268/268 rows 1184/1184
+2026-09-25 14:35:25 INFO [opendecide.s00_env] PASS eval.track.ID.max_share 0.149
+2026-09-25 14:35:25 INFO [opendecide.s00_env] PASS eval.track.ZS states 280/280 rows 1414/1414
+2026-09-25 14:35:25 INFO [opendecide.s00_env] PASS eval.track.ZS.max_share 0.171
+2026-09-25 14:35:25 INFO [opendecide.s00_env] PASS eval.track.FR states 96/96 rows 608/608
+2026-09-25 14:35:25 INFO [opendecide.s00_env] PASS eval.track.FR.max_share 1.0
+2026-09-25 14:35:25 INFO [opendecide.s00_env] PASS eval.core 644 states, 3206 rows
+2026-09-25 14:35:25 INFO [opendecide.s00_env] PASS eval.decisions 
+2026-09-25 14:35:25 INFO [opendecide.s00_env] PASS eval.relations {'complement': 485, 'paraphrase': 300, 'choice_noul': 224, 'dneg': 120, 'choice2': 136, 'monotone': 40, 'score_reversal': 120, 'threshold_tail': 144, 'human_floor': 24, 'rebin': 24, 'human_complement': 32, 'human_paraphrase': 28, 'choice3_noul': 128, 'edit_contrast': 18, 'trap': 63, 'contrary': 72, 'conj_disj': 40, 'soft_complement': 17, 'free_complement': 96, 'free_paraphrase': 96, 'criteria_variant': 16}
+2026-09-25 14:35:25 INFO [opendecide.s00_env] PASS inj.arms 450/780
+2026-09-25 14:35:25 INFO [opendecide.s00_env] PASS inj.items 60
+2026-09-25 14:35:25 INFO [opendecide.s00_env] PASS inj.e5_attacks 
+2026-09-25 14:35:25 INFO [opendecide.s00_env] PASS inj.h_items 
+2026-09-25 14:35:25 INFO [opendecide.s00_env] PASS dist.arms 172/344
+2026-09-25 14:35:25 INFO [opendecide.s00_env] PASS dist.items 
+2026-09-25 14:35:25 INFO [opendecide.s00_env] PASS cmp_anc 
+2026-09-25 14:35:25 INFO [opendecide.s00_env] PASS rel 
+2026-09-25 14:35:25 INFO [opendecide.s00_env] PASS eval.jev_calls 1494
+2026-09-25 14:35:25 INFO [opendecide.s00_env] PASS eval.jev_rows 4474
+2026-09-25 14:35:25 INFO [opendecide.s00_env] PASS eval.diag_rows 464
+2026-09-25 14:35:25 INFO [opendecide.s00_env] PASS eval.total_rows 4938
+2026-09-25 14:35:25 INFO [opendecide.s00_env] PASS banks.aff 
+2026-09-25 14:35:25 INFO [opendecide.s00_env] PASS banks.neg.train 
+2026-09-25 14:35:25 INFO [opendecide.s00_env] PASS banks.neg.dev 
+2026-09-25 14:35:25 INFO [opendecide.s00_env] PASS banks.neg.eval 
+2026-09-25 14:35:25 INFO [opendecide.s00_env] PASS banks.neg.asset 
+2026-09-25 14:35:25 INFO [opendecide.s00_env] PASS banks.qn.train 
+2026-09-25 14:35:25 INFO [opendecide.s00_env] PASS banks.qn.dev 
+2026-09-25 14:35:25 INFO [opendecide.s00_env] PASS banks.qn.eval 
+2026-09-25 14:35:25 INFO [opendecide.s00_env] PASS banks.qn.asset 
+2026-09-25 14:35:25 INFO [opendecide.s00_env] PASS fresh.items 
+2026-09-25 14:35:25 INFO [opendecide.s00_env] PASS design_plan.eval_datasets {}
+2026-09-25 14:35:25 INFO [opendecide.s00_env] PASS design_plan.totals {'calls': 1494, 'rows': 4938}
+2026-09-25 14:35:25 INFO [opendecide.s00_env] PASS design_plan.train {'L0_base': 13000, 'L2_consistency': 4600, 'L3_injection': 2390, 'L3_distractor': 1750}
+2026-09-25 14:35:25 ERROR [opendecide.s00_env] step s00_env reported failure: failed checks: ['eval.condaqa_dk_trap.floor', 'eval.vitaminc_nei_trap.floor']
+2026-09-25 14:35:45 INFO [opendecide.s00_env] start s00_env (seed 20260925)
+2026-09-25 14:35:45 INFO [opendecide.s00_env] PASS python_version 3.12.10
+2026-09-25 14:35:45 INFO [opendecide.s00_env] PASS pin:datasets installed 4.8.5, required 4.8.5
+2026-09-25 14:35:45 INFO [opendecide.s00_env] PASS pin:transformers installed 4.57.6, required 4.57.6
+2026-09-25 14:35:45 INFO [opendecide.s00_env] PASS pin:gliclass installed 0.1.17, required 0.1.17
+2026-09-25 14:35:45 INFO [opendecide.s00_env] PASS pin:typesafe-sdk installed 0.7.1, required 0.7.1
+2026-09-25 14:35:45 INFO [opendecide.s00_env] PASS present:sentence-transformers 5.7.0
+2026-09-25 14:35:45 INFO [opendecide.s00_env] PASS present:datasketch 2.0.0
+2026-09-25 14:35:45 INFO [opendecide.s00_env] PASS present:spacy 3.8.16
+2026-09-25 14:35:45 INFO [opendecide.s00_env] PASS present:en-core-web-sm 3.8.0
+2026-09-25 14:35:45 INFO [opendecide.s00_env] PASS present:pyyaml 6.0.3
+2026-09-25 14:35:45 INFO [opendecide.s00_env] PASS present:jsonschema 4.26.0
+2026-09-25 14:35:45 INFO [opendecide.s00_env] PASS present:numpy 2.5.3
+2026-09-25 14:35:45 INFO [opendecide.s00_env] PASS present:pandas 3.0.6
+2026-09-25 14:35:45 INFO [opendecide.s00_env] PASS present:scikit-learn 1.9.1
+2026-09-25 14:35:45 INFO [opendecide.s00_env] PASS present:scipy 1.18.1
+2026-09-25 14:35:45 INFO [opendecide.s00_env] PASS present:requests 2.34.2
+2026-09-25 14:35:45 INFO [opendecide.s00_env] PASS present:huggingface-hub 0.36.2
+2026-09-25 14:35:45 INFO [opendecide.s00_env] PASS present:torch 2.14.0
+2026-09-25 14:35:45 INFO [opendecide.s00_env] PASS requirements_lock_exists build/requirements.lock.txt
+2026-09-25 14:35:45 INFO [opendecide.s00_env] PASS requirements_lock_match {'drift': {}, 'missing': [], 'extra_not_in_lock': []}
+2026-09-25 14:35:45 INFO [opendecide.s00_env] PASS minilm_cached_at_pin {'snapshot': '/Users/aryamahadik/.cache/huggingface/hub/models--sentence-transformers--all-MiniLM-L6-v2/snapshots/1110a243fdf4706b3f48f1d95db1a4f5529b4d41', 'missing': []}
+2026-09-25 14:35:46 INFO [opendecide.s00_env] PASS typesafe_request_schema typesafe_sdk._schemas.models.SystemOneRequest
+2026-09-25 14:35:47 INFO [opendecide.s00_env] PASS spacy_tagger ['NNP', 'VBZ', 'WRB', 'DT', 'NN', 'VBD', 'PRP$', 'NN', '.']
+2026-09-25 14:35:47 INFO [opendecide.s00_env] PASS sub_seed_rule 
+2026-09-25 14:35:47 INFO [opendecide.s00_env] PASS row_id_rule 
+2026-09-25 14:35:47 INFO [opendecide.s00_env] PASS call_id_rule 
+2026-09-25 14:35:47 INFO [opendecide.s00_env] PASS rng_deterministic [2026185393, 581899105, 1298844316]
+2026-09-25 14:35:47 INFO [opendecide.s00_env] PASS norm_text_rule card isn t here
+2026-09-25 14:35:47 INFO [opendecide.s00_env] PASS train.L0_rows 13000 vs 13000
+2026-09-25 14:35:47 INFO [opendecide.s00_env] PASS train.L2_rows 4600
+2026-09-25 14:35:47 INFO [opendecide.s00_env] PASS train.score_transforms 
+2026-09-25 14:35:47 INFO [opendecide.s00_env] PASS train.L3_rows 4140
+2026-09-25 14:35:47 INFO [opendecide.s00_env] PASS train.targeted_family_rows 
+2026-09-25 14:35:47 INFO [opendecide.s00_env] PASS train.targeted_echo_parity 
+2026-09-25 14:35:47 INFO [opendecide.s00_env] PASS train.rows_total 21740
+2026-09-25 14:35:47 INFO [opendecide.s00_env] PASS train.type_mix 
+2026-09-25 14:35:47 INFO [opendecide.s00_env] PASS train.drug_k_mix 
+2026-09-25 14:35:47 INFO [opendecide.s00_env] PASS train.ablation_rows 
+2026-09-25 14:35:47 INFO [opendecide.s00_env] PASS dev.rows 
+2026-09-25 14:35:47 INFO [opendecide.s00_env] PASS dev_zs.rows 
+2026-09-25 14:35:47 INFO [opendecide.s00_env] PASS cap.train_dev_devzs 24340 <= 25000
+2026-09-25 14:35:47 INFO [opendecide.s00_env] PASS eval.banking77.rows 
+2026-09-25 14:35:47 INFO [opendecide.s00_env] PASS eval.clinc150.rows 
+2026-09-25 14:35:47 INFO [opendecide.s00_env] PASS eval.goemotions.rows 
+2026-09-25 14:35:47 INFO [opendecide.s00_env] PASS eval.clothing.rows 
+2026-09-25 14:35:47 INFO [opendecide.s00_env] PASS eval.drug.rows 
+2026-09-25 14:35:47 INFO [opendecide.s00_env] PASS eval.boolq_bundle.rows 
+2026-09-25 14:35:47 INFO [opendecide.s00_env] PASS eval.condaqa.rows 
+2026-09-25 14:35:47 INFO [opendecide.s00_env] PASS eval.condaqa_dk_trap.rows 
+2026-09-25 14:35:47 INFO [opendecide.s00_env] PASS eval.vitaminc_real.rows 
+2026-09-25 14:35:47 INFO [opendecide.s00_env] PASS eval.vitaminc_nei_trap.rows 
+2026-09-25 14:35:47 INFO [opendecide.s00_env] PASS eval.nlupp.rows 
+2026-09-25 14:35:47 INFO [opendecide.s00_env] PASS eval.hint3_v2.rows 
+2026-09-25 14:35:47 INFO [opendecide.s00_env] PASS eval.tfns.rows 
+2026-09-25 14:35:47 INFO [opendecide.s00_env] PASS eval.sst5.rows 
+2026-09-25 14:35:47 INFO [opendecide.s00_env] PASS eval.supertweeteval.rows 
+2026-09-25 14:35:47 INFO [opendecide.s00_env] PASS eval.nan_nli.rows 
+2026-09-25 14:35:47 INFO [opendecide.s00_env] PASS eval.becel_snli.rows 
+2026-09-25 14:35:47 INFO [opendecide.s00_env] PASS eval.sms_spam.rows 
+2026-09-25 14:35:47 INFO [opendecide.s00_env] PASS eval.civil.rows 
+2026-09-25 14:35:47 INFO [opendecide.s00_env] PASS eval.mhs.rows 
+2026-09-25 14:35:47 INFO [opendecide.s00_env] PASS eval.fresh.rows 
+2026-09-25 14:35:47 INFO [opendecide.s00_env] PASS eval.banking77.floor 40
+2026-09-25 14:35:47 INFO [opendecide.s00_env] PASS eval.clinc150.floor 40
+2026-09-25 14:35:47 INFO [opendecide.s00_env] PASS eval.goemotions.floor 24
+2026-09-25 14:35:47 INFO [opendecide.s00_env] PASS eval.clothing.floor 24
+2026-09-25 14:35:47 INFO [opendecide.s00_env] PASS eval.drug.floor 24
+2026-09-25 14:35:47 INFO [opendecide.s00_env] PASS eval.boolq_bundle.floor 24
+2026-09-25 14:35:47 INFO [opendecide.s00_env] PASS eval.condaqa.floor 46
+2026-09-25 14:35:47 INFO [opendecide.s00_env] PASS eval.vitaminc.floor 46
+2026-09-25 14:35:47 INFO [opendecide.s00_env] PASS eval.nlupp.floor 40
+2026-09-25 14:35:47 INFO [opendecide.s00_env] PASS eval.hint3_v2.floor 24
+2026-09-25 14:35:47 INFO [opendecide.s00_env] PASS eval.tfns.floor 24
+2026-09-25 14:35:47 INFO [opendecide.s00_env] PASS eval.sst5.floor 24
+2026-09-25 14:35:47 INFO [opendecide.s00_env] PASS eval.supertweeteval.floor 24
+2026-09-25 14:35:47 INFO [opendecide.s00_env] PASS eval.nan_nli.floor 48
+2026-09-25 14:35:47 INFO [opendecide.s00_env] PASS eval.becel_snli.floor 24
+2026-09-25 14:35:47 INFO [opendecide.s00_env] PASS eval.sms_spam.floor 24
+2026-09-25 14:35:47 INFO [opendecide.s00_env] PASS eval.civil.floor 24
+2026-09-25 14:35:47 INFO [opendecide.s00_env] PASS eval.mhs.floor 24
+2026-09-25 14:35:47 INFO [opendecide.s00_env] PASS eval.fresh.floor 96
+2026-09-25 14:35:47 INFO [opendecide.s00_env] PASS eval.track.ID states 268/268 rows 1184/1184
+2026-09-25 14:35:47 INFO [opendecide.s00_env] PASS eval.track.ID.max_share 0.149
+2026-09-25 14:35:47 INFO [opendecide.s00_env] PASS eval.track.ZS states 280/280 rows 1414/1414
+2026-09-25 14:35:47 INFO [opendecide.s00_env] PASS eval.track.ZS.max_share 0.171
+2026-09-25 14:35:47 INFO [opendecide.s00_env] PASS eval.track.FR states 96/96 rows 608/608
+2026-09-25 14:35:47 INFO [opendecide.s00_env] PASS eval.track.FR.max_share 1.0
+2026-09-25 14:35:47 INFO [opendecide.s00_env] PASS eval.core 644 states, 3206 rows
+2026-09-25 14:35:47 INFO [opendecide.s00_env] PASS eval.decisions 
+2026-09-25 14:35:47 INFO [opendecide.s00_env] PASS eval.relations {'complement': 485, 'paraphrase': 300, 'choice_noul': 224, 'dneg': 120, 'choice2': 136, 'monotone': 40, 'score_reversal': 120, 'threshold_tail': 144, 'human_floor': 24, 'rebin': 24, 'human_complement': 32, 'human_paraphrase': 28, 'choice3_noul': 128, 'edit_contrast': 18, 'trap': 63, 'contrary': 72, 'conj_disj': 40, 'soft_complement': 17, 'free_complement': 96, 'free_paraphrase': 96, 'criteria_variant': 16}
+2026-09-25 14:35:47 INFO [opendecide.s00_env] PASS inj.arms 450/780
+2026-09-25 14:35:47 INFO [opendecide.s00_env] PASS inj.items 60
+2026-09-25 14:35:47 INFO [opendecide.s00_env] PASS inj.e5_attacks 
+2026-09-25 14:35:47 INFO [opendecide.s00_env] PASS inj.h_items 
+2026-09-25 14:35:47 INFO [opendecide.s00_env] PASS dist.arms 172/344
+2026-09-25 14:35:47 INFO [opendecide.s00_env] PASS dist.items 
+2026-09-25 14:35:47 INFO [opendecide.s00_env] PASS cmp_anc 
+2026-09-25 14:35:47 INFO [opendecide.s00_env] PASS rel 
+2026-09-25 14:35:47 INFO [opendecide.s00_env] PASS eval.jev_calls 1494
+2026-09-25 14:35:47 INFO [opendecide.s00_env] PASS eval.jev_rows 4474
+2026-09-25 14:35:47 INFO [opendecide.s00_env] PASS eval.diag_rows 464
+2026-09-25 14:35:47 INFO [opendecide.s00_env] PASS eval.total_rows 4938
+2026-09-25 14:35:47 INFO [opendecide.s00_env] PASS banks.aff 
+2026-09-25 14:35:47 INFO [opendecide.s00_env] PASS banks.neg.train 
+2026-09-25 14:35:47 INFO [opendecide.s00_env] PASS banks.neg.dev 
+2026-09-25 14:35:47 INFO [opendecide.s00_env] PASS banks.neg.eval 
+2026-09-25 14:35:47 INFO [opendecide.s00_env] PASS banks.neg.asset 
+2026-09-25 14:35:47 INFO [opendecide.s00_env] PASS banks.qn.train 
+2026-09-25 14:35:47 INFO [opendecide.s00_env] PASS banks.qn.dev 
+2026-09-25 14:35:47 INFO [opendecide.s00_env] PASS banks.qn.eval 
+2026-09-25 14:35:47 INFO [opendecide.s00_env] PASS banks.qn.asset 
+2026-09-25 14:35:47 INFO [opendecide.s00_env] PASS fresh.items 
+2026-09-25 14:35:47 INFO [opendecide.s00_env] PASS design_plan.eval_datasets {}
+2026-09-25 14:35:47 INFO [opendecide.s00_env] PASS design_plan.totals {'calls': 1494, 'rows': 4938}
+2026-09-25 14:35:47 INFO [opendecide.s00_env] PASS design_plan.train {'L0_base': 13000, 'L2_consistency': 4600, 'L3_injection': 2390, 'L3_distractor': 1750}
+2026-09-25 14:35:47 INFO [opendecide.s00_env] done s00_env
+2026-09-25 14:39:26 INFO [opendecide.s00_env] start s00_env (seed 20260925)
+2026-09-25 14:39:26 INFO [opendecide.s00_env] PASS python_version 3.12.10
+2026-09-25 14:39:26 INFO [opendecide.s00_env] PASS pin:datasets installed 4.8.5, required 4.8.5
+2026-09-25 14:39:26 INFO [opendecide.s00_env] PASS pin:transformers installed 4.57.6, required 4.57.6
+2026-09-25 14:39:26 INFO [opendecide.s00_env] PASS pin:gliclass installed 0.1.17, required 0.1.17
+2026-09-25 14:39:26 INFO [opendecide.s00_env] PASS pin:typesafe-sdk installed 0.7.1, required 0.7.1
+2026-09-25 14:39:26 INFO [opendecide.s00_env] PASS present:sentence-transformers 5.7.0
+2026-09-25 14:39:26 INFO [opendecide.s00_env] PASS present:datasketch 2.0.0
+2026-09-25 14:39:26 INFO [opendecide.s00_env] PASS present:spacy 3.8.16
+2026-09-25 14:39:26 INFO [opendecide.s00_env] PASS present:en-core-web-sm 3.8.0
+2026-09-25 14:39:26 INFO [opendecide.s00_env] PASS present:pyyaml 6.0.3
+2026-09-25 14:39:26 INFO [opendecide.s00_env] PASS present:jsonschema 4.26.0
+2026-09-25 14:39:26 INFO [opendecide.s00_env] PASS present:numpy 2.5.3
+2026-09-25 14:39:26 INFO [opendecide.s00_env] PASS present:pandas 3.0.6
+2026-09-25 14:39:26 INFO [opendecide.s00_env] PASS present:scikit-learn 1.9.1
+2026-09-25 14:39:26 INFO [opendecide.s00_env] PASS present:scipy 1.18.1
+2026-09-25 14:39:26 INFO [opendecide.s00_env] PASS present:requests 2.34.2
+2026-09-25 14:39:26 INFO [opendecide.s00_env] PASS present:huggingface-hub 0.36.2
+2026-09-25 14:39:26 INFO [opendecide.s00_env] PASS present:torch 2.14.0
+2026-09-25 14:39:26 INFO [opendecide.s00_env] PASS requirements_lock_exists build/requirements.lock.txt
+2026-09-25 14:39:26 INFO [opendecide.s00_env] PASS requirements_lock_match {'drift': {}, 'missing': [], 'extra_not_in_lock': []}
+2026-09-25 14:39:26 INFO [opendecide.s00_env] PASS minilm_cached_at_pin {'snapshot': '/Users/aryamahadik/.cache/huggingface/hub/models--sentence-transformers--all-MiniLM-L6-v2/snapshots/1110a243fdf4706b3f48f1d95db1a4f5529b4d41', 'missing': []}
+2026-09-25 14:39:26 INFO [opendecide.s00_env] PASS typesafe_request_schema typesafe_sdk._schemas.models.SystemOneRequest
+2026-09-25 14:39:28 INFO [opendecide.s00_env] PASS spacy_tagger ['NNP', 'VBZ', 'WRB', 'DT', 'NN', 'VBD', 'PRP$', 'NN', '.']
+2026-09-25 14:39:28 INFO [opendecide.s00_env] PASS sub_seed_rule 
+2026-09-25 14:39:28 INFO [opendecide.s00_env] PASS row_id_rule 
+2026-09-25 14:39:28 INFO [opendecide.s00_env] PASS call_id_rule 
+2026-09-25 14:39:28 INFO [opendecide.s00_env] PASS rng_deterministic [2026185393, 581899105, 1298844316]
+2026-09-25 14:39:28 INFO [opendecide.s00_env] PASS norm_text_rule card isn t here
+2026-09-25 14:39:28 INFO [opendecide.s00_env] PASS train.L0_rows 13000 vs 13000
+2026-09-25 14:39:28 INFO [opendecide.s00_env] PASS train.L2_rows 4600
+2026-09-25 14:39:28 INFO [opendecide.s00_env] PASS train.score_transforms 
+2026-09-25 14:39:28 INFO [opendecide.s00_env] PASS train.L3_rows 4140
+2026-09-25 14:39:28 INFO [opendecide.s00_env] PASS train.targeted_family_rows 
+2026-09-25 14:39:28 INFO [opendecide.s00_env] PASS train.targeted_echo_parity 
+2026-09-25 14:39:28 INFO [opendecide.s00_env] PASS train.rows_total 21740
+2026-09-25 14:39:28 INFO [opendecide.s00_env] PASS train.type_mix 
+2026-09-25 14:39:28 INFO [opendecide.s00_env] PASS train.drug_k_mix 
+2026-09-25 14:39:28 INFO [opendecide.s00_env] PASS train.ablation_rows 
+2026-09-25 14:39:28 INFO [opendecide.s00_env] PASS dev.rows 
+2026-09-25 14:39:28 INFO [opendecide.s00_env] PASS dev_zs.rows 
+2026-09-25 14:39:28 INFO [opendecide.s00_env] PASS cap.train_dev_devzs 24340 <= 25000
+2026-09-25 14:39:28 INFO [opendecide.s00_env] PASS eval.banking77.rows 
+2026-09-25 14:39:28 INFO [opendecide.s00_env] PASS eval.clinc150.rows 
+2026-09-25 14:39:28 INFO [opendecide.s00_env] PASS eval.goemotions.rows 
+2026-09-25 14:39:28 INFO [opendecide.s00_env] PASS eval.clothing.rows 
+2026-09-25 14:39:28 INFO [opendecide.s00_env] PASS eval.drug.rows 
+2026-09-25 14:39:28 INFO [opendecide.s00_env] PASS eval.boolq_bundle.rows 
+2026-09-25 14:39:28 INFO [opendecide.s00_env] PASS eval.condaqa.rows 
+2026-09-25 14:39:28 INFO [opendecide.s00_env] PASS eval.condaqa_dk_trap.rows 
+2026-09-25 14:39:28 INFO [opendecide.s00_env] PASS eval.vitaminc_real.rows 
+2026-09-25 14:39:28 INFO [opendecide.s00_env] PASS eval.vitaminc_nei_trap.rows 
+2026-09-25 14:39:28 INFO [opendecide.s00_env] PASS eval.nlupp.rows 
+2026-09-25 14:39:28 INFO [opendecide.s00_env] PASS eval.hint3_v2.rows 
+2026-09-25 14:39:28 INFO [opendecide.s00_env] PASS eval.tfns.rows 
+2026-09-25 14:39:28 INFO [opendecide.s00_env] PASS eval.sst5.rows 
+2026-09-25 14:39:28 INFO [opendecide.s00_env] PASS eval.supertweeteval.rows 
+2026-09-25 14:39:28 INFO [opendecide.s00_env] PASS eval.nan_nli.rows 
+2026-09-25 14:39:28 INFO [opendecide.s00_env] PASS eval.becel_snli.rows 
+2026-09-25 14:39:28 INFO [opendecide.s00_env] PASS eval.sms_spam.rows 
+2026-09-25 14:39:28 INFO [opendecide.s00_env] PASS eval.civil.rows 
+2026-09-25 14:39:28 INFO [opendecide.s00_env] PASS eval.mhs.rows 
+2026-09-25 14:39:28 INFO [opendecide.s00_env] PASS eval.fresh.rows 
+2026-09-25 14:39:28 INFO [opendecide.s00_env] PASS eval.banking77.floor 40
+2026-09-25 14:39:28 INFO [opendecide.s00_env] PASS eval.clinc150.floor 40
+2026-09-25 14:39:28 INFO [opendecide.s00_env] PASS eval.goemotions.floor 24
+2026-09-25 14:39:28 INFO [opendecide.s00_env] PASS eval.clothing.floor 24
+2026-09-25 14:39:28 INFO [opendecide.s00_env] PASS eval.drug.floor 24
+2026-09-25 14:39:28 INFO [opendecide.s00_env] PASS eval.boolq_bundle.floor 24
+2026-09-25 14:39:28 INFO [opendecide.s00_env] PASS eval.condaqa.floor 46
+2026-09-25 14:39:28 INFO [opendecide.s00_env] PASS eval.vitaminc.floor 46
+2026-09-25 14:39:28 INFO [opendecide.s00_env] PASS eval.nlupp.floor 40
+2026-09-25 14:39:28 INFO [opendecide.s00_env] PASS eval.hint3_v2.floor 24
+2026-09-25 14:39:28 INFO [opendecide.s00_env] PASS eval.tfns.floor 24
+2026-09-25 14:39:28 INFO [opendecide.s00_env] PASS eval.sst5.floor 24
+2026-09-25 14:39:28 INFO [opendecide.s00_env] PASS eval.supertweeteval.floor 24
+2026-09-25 14:39:28 INFO [opendecide.s00_env] PASS eval.nan_nli.floor 48
+2026-09-25 14:39:28 INFO [opendecide.s00_env] PASS eval.becel_snli.floor 24
+2026-09-25 14:39:28 INFO [opendecide.s00_env] PASS eval.sms_spam.floor 24
+2026-09-25 14:39:28 INFO [opendecide.s00_env] PASS eval.civil.floor 24
+2026-09-25 14:39:28 INFO [opendecide.s00_env] PASS eval.mhs.floor 24
+2026-09-25 14:39:28 INFO [opendecide.s00_env] PASS eval.fresh.floor 96
+2026-09-25 14:39:28 INFO [opendecide.s00_env] PASS eval.track.ID states 268/268 rows 1184/1184
+2026-09-25 14:39:28 INFO [opendecide.s00_env] PASS eval.track.ID.max_share 0.149
+2026-09-25 14:39:28 INFO [opendecide.s00_env] PASS eval.track.ZS states 280/280 rows 1414/1414
+2026-09-25 14:39:28 INFO [opendecide.s00_env] PASS eval.track.ZS.max_share 0.171
+2026-09-25 14:39:28 INFO [opendecide.s00_env] PASS eval.track.FR states 96/96 rows 608/608
+2026-09-25 14:39:28 INFO [opendecide.s00_env] PASS eval.track.FR.max_share 1.0
+2026-09-25 14:39:28 INFO [opendecide.s00_env] PASS eval.core 644 states, 3206 rows
+2026-09-25 14:39:28 INFO [opendecide.s00_env] PASS eval.decisions 
+2026-09-25 14:39:28 INFO [opendecide.s00_env] PASS eval.relations {'complement': 485, 'paraphrase': 300, 'choice_noul': 224, 'dneg': 120, 'choice2': 136, 'monotone': 40, 'score_reversal': 120, 'threshold_tail': 144, 'human_floor': 24, 'rebin': 24, 'human_complement': 32, 'human_paraphrase': 28, 'choice3_noul': 128, 'edit_contrast': 18, 'trap': 63, 'contrary': 72, 'conj_disj': 40, 'soft_complement': 17, 'free_complement': 96, 'free_paraphrase': 96, 'criteria_variant': 16}
+2026-09-25 14:39:28 INFO [opendecide.s00_env] PASS inj.arms 450/780
+2026-09-25 14:39:28 INFO [opendecide.s00_env] PASS inj.items 60
+2026-09-25 14:39:28 INFO [opendecide.s00_env] PASS inj.e5_attacks 
+2026-09-25 14:39:28 INFO [opendecide.s00_env] PASS inj.h_items 
+2026-09-25 14:39:28 INFO [opendecide.s00_env] PASS dist.arms 172/344
+2026-09-25 14:39:28 INFO [opendecide.s00_env] PASS dist.items 
+2026-09-25 14:39:28 INFO [opendecide.s00_env] PASS cmp_anc 
+2026-09-25 14:39:28 INFO [opendecide.s00_env] PASS rel 
+2026-09-25 14:39:28 INFO [opendecide.s00_env] PASS eval.jev_calls 1494
+2026-09-25 14:39:28 INFO [opendecide.s00_env] PASS eval.jev_rows 4474
+2026-09-25 14:39:28 INFO [opendecide.s00_env] PASS eval.diag_rows 464
+2026-09-25 14:39:28 INFO [opendecide.s00_env] PASS eval.total_rows 4938
+2026-09-25 14:39:28 INFO [opendecide.s00_env] PASS banks.aff 
+2026-09-25 14:39:28 INFO [opendecide.s00_env] PASS banks.neg.train 
+2026-09-25 14:39:28 INFO [opendecide.s00_env] PASS banks.neg.dev 
+2026-09-25 14:39:28 INFO [opendecide.s00_env] PASS banks.neg.eval 
+2026-09-25 14:39:28 INFO [opendecide.s00_env] PASS banks.neg.asset 
+2026-09-25 14:39:28 INFO [opendecide.s00_env] PASS banks.qn.train 
+2026-09-25 14:39:28 INFO [opendecide.s00_env] PASS banks.qn.dev 
+2026-09-25 14:39:28 INFO [opendecide.s00_env] PASS banks.qn.eval 
+2026-09-25 14:39:28 INFO [opendecide.s00_env] PASS banks.qn.asset 
+2026-09-25 14:39:28 INFO [opendecide.s00_env] PASS fresh.items 
+2026-09-25 14:39:28 INFO [opendecide.s00_env] PASS design_plan.eval_datasets {}
+2026-09-25 14:39:28 INFO [opendecide.s00_env] PASS design_plan.totals {'calls': 1494, 'rows': 4938}
+2026-09-25 14:39:28 INFO [opendecide.s00_env] PASS design_plan.train {'L0_base': 13000, 'L2_consistency': 4600, 'L3_injection': 2390, 'L3_distractor': 1750}
+2026-09-25 14:39:29 INFO [opendecide.s00_env] done s00_env

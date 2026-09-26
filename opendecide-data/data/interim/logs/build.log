@@ -1,0 +1,25 @@
+2026-09-25 14:38:50 INFO [opendecide.build] build start: stage=all seed=20260925 lofo=None python=/Users/aryamahadik/Documents/551 CONTAINERS /ds-551-f26-c03-containers-aryamahadik2003/opendecide-data/.venv/bin/python
+2026-09-25 14:38:50 WARNING [opendecide.build] step s03_index is not implemented yet (build/steps/s03_index.py missing); skipped
+2026-09-25 14:38:50 WARNING [opendecide.build] step s04_sample_eval is not implemented yet (build/steps/s04_sample_eval.py missing); skipped
+2026-09-25 14:38:50 WARNING [opendecide.build] step s05_verification is not implemented yet (build/steps/s05_verification.py missing); skipped
+2026-09-25 14:38:50 WARNING [opendecide.build] step s06_sample_train_dev is not implemented yet (build/steps/s06_sample_train_dev.py missing); skipped
+2026-09-25 14:38:50 WARNING [opendecide.build] step s07_render is not implemented yet (build/steps/s07_render.py missing); skipped
+2026-09-25 14:38:50 WARNING [opendecide.build] step s08_variants is not implemented yet (build/steps/s08_variants.py missing); skipped
+2026-09-25 14:38:50 WARNING [opendecide.build] step s09_robustness is not implemented yet (build/steps/s09_robustness.py missing); skipped
+2026-09-25 14:38:50 WARNING [opendecide.build] step s10_fresh_cmp is not implemented yet (build/steps/s10_fresh_cmp.py missing); skipped
+2026-09-25 14:38:50 WARNING [opendecide.build] step s11_assemble is not implemented yet (build/steps/s11_assemble.py missing); skipped
+2026-09-25 14:38:50 WARNING [opendecide.build] step s12_validate is not implemented yet (build/steps/s12_validate.py missing); skipped
+2026-09-25 14:38:50 WARNING [opendecide.build] step s13_stats_power is not implemented yet (build/steps/s13_stats_power.py missing); skipped
+2026-09-25 14:38:50 WARNING [opendecide.build] step s14_package is not implemented yet (build/steps/s14_package.py missing); skipped
+2026-09-25 14:38:50 INFO [opendecide.build] s00_env needs a run (config changed)
+2026-09-25 14:38:50 INFO [opendecide.build] dry run: would run s00_env
+2026-09-25 14:38:50 INFO [opendecide.build] s01_lock needs a run (config changed)
+2026-09-25 14:38:50 INFO [opendecide.build] dry run: would run s01_lock
+2026-09-25 14:38:50 INFO [opendecide.build] skip s02_normalise (checkpoint current)
+2026-09-25 14:38:50 INFO [opendecide.build] build finished
+2026-09-25 14:39:26 INFO [opendecide.build] build start: stage=env seed=20260925 lofo=None python=/Users/aryamahadik/Documents/551 CONTAINERS /ds-551-f26-c03-containers-aryamahadik2003/opendecide-data/.venv/bin/python
+2026-09-25 14:39:26 INFO [opendecide.build] run s00_env: /Users/aryamahadik/Documents/551 CONTAINERS /ds-551-f26-c03-containers-aryamahadik2003/opendecide-data/build/steps/s00_env.py --seed 20260925
+2026-09-25 14:39:29 INFO [opendecide.build] s00_env finished rc=0 in 2.7s
+2026-09-25 14:39:29 INFO [opendecide.build] build start: stage=lock seed=20260925 lofo=None python=/Users/aryamahadik/Documents/551 CONTAINERS /ds-551-f26-c03-containers-aryamahadik2003/opendecide-data/.venv/bin/python
+2026-09-25 14:39:29 INFO [opendecide.build] run s01_lock: /Users/aryamahadik/Documents/551 CONTAINERS /ds-551-f26-c03-containers-aryamahadik2003/opendecide-data/build/steps/s01_lock.py --seed 20260925
+2026-09-25 14:39:32 INFO [opendecide.build] s01_lock finished rc=0 in 2.8s

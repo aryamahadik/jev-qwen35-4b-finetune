@@ -1,0 +1,58 @@
+{
+ "authored_by": "llm:claude:label-key-author",
+ "counts_by_kind": {
+  "intent": 7
+ },
+ "created": "2026-09-25",
+ "dataset": "snips",
+ "key_policy": "Choice key = natural 1-5 word English name of the label, fixed for every split, variant and model (DESIGN field rule 2, D8). Descriptions (D_*) and propositions (P_*) are authored separately per pool and never live in this file.",
+ "label_field": "category",
+ "label_id_type": "raw_value (string category)",
+ "labels": [
+  {
+   "key": "add to playlist",
+   "kind": "intent",
+   "label_id": "AddToPlaylist",
+   "parent": null
+  },
+  {
+   "key": "book a restaurant",
+   "kind": "intent",
+   "label_id": "BookRestaurant",
+   "parent": null
+  },
+  {
+   "key": "weather forecast",
+   "kind": "intent",
+   "label_id": "GetWeather",
+   "parent": null
+  },
+  {
+   "key": "play music",
+   "kind": "intent",
+   "label_id": "PlayMusic",
+   "parent": null
+  },
+  {
+   "key": "rate a book",
+   "kind": "intent",
+   "label_id": "RateBook",
+   "parent": null
+  },
+  {
+   "key": "find a creative work",
+   "kind": "intent",
+   "label_id": "SearchCreativeWork",
+   "parent": null
+  },
+  {
+   "key": "find movie showtimes",
+   "kind": "intent",
+   "label_id": "SearchScreeningEvent",
+   "parent": null
+  }
+ ],
+ "n_labels": 7,
+ "schema_version": "od-keys-1.0",
+ "source": "benayas/snips @ 16915b895754dd4028068abe52b6851a904977d7"
+}

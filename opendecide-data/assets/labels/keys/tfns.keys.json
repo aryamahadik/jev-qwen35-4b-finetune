@@ -1,0 +1,37 @@
+{
+ "authored_by": "llm:claude:label-key-author",
+ "counts_by_kind": {
+  "class": 3
+ },
+ "created": "2026-09-25",
+ "dataset": "tfns",
+ "key_policy": "Choice key = natural 1-5 word English name of the label, fixed for every split, variant and model (DESIGN field rule 2, D8). Descriptions (D_*) and propositions (P_*) are authored separately per pool and never live in this file.",
+ "label_field": "label",
+ "label_id_type": "raw_value (int as string; names from the dataset card: LABEL_0 Bearish, LABEL_1 Bullish, LABEL_2 Neutral)",
+ "labels": [
+  {
+   "key": "bearish",
+   "kind": "class",
+   "label_id": "0",
+   "parent": null,
+   "source_name": "Bearish"
+  },
+  {
+   "key": "bullish",
+   "kind": "class",
+   "label_id": "1",
+   "parent": null,
+   "source_name": "Bullish"
+  },
+  {
+   "key": "neutral",
+   "kind": "class",
+   "label_id": "2",
+   "parent": null,
+   "source_name": "Neutral"
+  }
+ ],
+ "n_labels": 3,
+ "schema_version": "od-keys-1.0",
+ "source": "zeroshot/twitter-financial-news-sentiment @ ccbe24de388e287beb92dd393a335c376b350ac3"
+}

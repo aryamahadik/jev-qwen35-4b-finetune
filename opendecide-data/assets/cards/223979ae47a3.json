@@ -1,0 +1,26 @@
+{
+ "key": "223979ae47a3",
+ "kind": "Tweet",
+ "instruction": "Choose the label that fits this text.",
+ "labels": [
+  "not ironic",
+  "ironic"
+ ],
+ "model": "qwen/qwen3-235b-a22b-2507",
+ "cards": {
+  "not ironic": {
+   "definition": "The text expresses a literal meaning without any contrast between expectation and reality, and the speaker's intent aligns with the surface meaning; borderline cases where sarcasm might be suspected are excluded if tone or context does not clearly indicate mockery or reversal.",
+   "examples": [
+    "Just got a great deal on these new headphones\u2014love upgrading my setup!",
+    "It's so nice to enjoy a sunny day at the park with friends."
+   ]
+  },
+  "ironic": {
+   "definition": "The text conveys a meaning that is opposite to its literal words, often highlighting a contradiction between expectation and reality, typically through sarcasm, understatement, or situational incongruity; clear cues like exaggerated tone or implausible praise signal intentional reversal.",
+   "examples": [
+    "Oh fantastic, another flat tire on my way to work\u2014just the highlight I needed!",
+    "Nothing says 'relaxing weekend' like spending 12 hours debugging old code."
+   ]
+  }
+ }
+}

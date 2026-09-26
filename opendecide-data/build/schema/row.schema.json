@@ -1,0 +1,1158 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "$id": "https://opendecide.invalid/schema/row.schema.json",
+ "title": "OpenDecide question row (od-1.0)",
+ "description": "One question about one state (DESIGN 1.1; *_rows_full.jsonl, train/dev/dev_zs files, diag_rows_full). A superset of the JevBench row and the Jev wire format. Cross-field rules (gold recomputation, expected in labels, criteria alignment, pools) are checked by the validator (V2-V25), not here.",
+ "type": "object",
+ "additionalProperties": false,
+ "required": [
+  "schema_version",
+  "id",
+  "key",
+  "group_id",
+  "call_id",
+  "split",
+  "track",
+  "subtrack",
+  "zs_distance",
+  "source_family",
+  "task_family",
+  "headline",
+  "failure_modes",
+  "state",
+  "state_meta",
+  "question",
+  "serial",
+  "question_meta",
+  "labels",
+  "expected",
+  "gold",
+  "verification",
+  "provenance",
+  "exposure",
+  "jev_call",
+  "canary",
+  "build"
+ ],
+ "properties": {
+  "schema_version": {
+   "const": "od-1.0"
+  },
+  "id": {
+   "type": "string",
+   "pattern": "^r_[0-9a-f]{12}$"
+  },
+  "key": {
+   "type": "string",
+   "pattern": "^[TDZE]:[^:\\s]+:[^:\\s]+:[^:#\\s]+#[^/\\s]+/\\S+$",
+   "description": "{split_code}:{source}:{source_split}:{source_id}#{state_variant}/{slot}"
+  },
+  "group_id": {
+   "type": "string",
+   "pattern": "^g:[^:\\s]+:[^:\\s]+:[^:\\s]+$"
+  },
+  "call_id": {
+   "type": [
+    "string",
+    "null"
+   ],
+   "pattern": "^c_[0-9a-f]{12}$",
+   "description": "null only on DIAG rows (jev_call=false)"
+  },
+  "split": {
+   "enum": [
+    "train",
+    "dev",
+    "dev_zs",
+    "eval"
+   ]
+  },
+  "track": {
+   "enum": [
+    "L0_base",
+    "L2_consistency",
+    "L3_injection",
+    "L3_distractor",
+    "ID",
+    "ZS",
+    "FR",
+    "INJ",
+    "DIST",
+    "CMP",
+    "ANC",
+    "DIAG"
+   ]
+  },
+  "subtrack": {
+   "enum": [
+    "zs_seen_task",
+    "zs_new_task",
+    "diag_wording",
+    "diag_option_perm",
+    null
+   ]
+  },
+  "zs_distance": {
+   "enum": [
+    "near",
+    "mid",
+    "far",
+    "novel",
+    null
+   ]
+  },
+  "source_family": {
+   "type": "string",
+   "minLength": 1
+  },
+  "task_family": {
+   "enum": [
+    "intent",
+    "topic",
+    "emotion",
+    "review",
+    "sentiment",
+    "nli",
+    "qa",
+    "fact",
+    "spam",
+    "toxicity",
+    "phishing",
+    "policy"
+   ]
+  },
+  "headline": {
+   "type": "boolean"
+  },
+  "failure_modes": {
+   "type": "array",
+   "uniqueItems": true,
+   "items": {
+    "type": "string",
+    "pattern": "^M[1-9]$"
+   }
+  },
+  "state": {
+   "description": "string; null in the idonly release; object only for CMP-B77 ({\"text\": ...})",
+   "oneOf": [
+    {
+     "type": "string",
+     "minLength": 1
+    },
+    {
+     "type": "null"
+    },
+    {
+     "type": "object",
+     "required": [
+      "text"
+     ],
+     "additionalProperties": false,
+     "properties": {
+      "text": {
+       "type": "string"
+      }
+     }
+    }
+   ]
+  },
+  "state_meta": {
+   "type": "object",
+   "required": [
+    "kind",
+    "n_tokens",
+    "fits"
+   ],
+   "additionalProperties": true,
+   "properties": {
+    "kind": {
+     "enum": [
+      "clean",
+      "injected",
+      "neutral_twin",
+      "field_neutral",
+      "echo_control",
+      "offtarget_control",
+      "distractor",
+      "hard_reference",
+      "placebo"
+     ]
+    },
+    "clean_call_id": {
+     "type": [
+      "string",
+      "null"
+     ],
+     "pattern": "^c_[0-9a-f]{12}$"
+    },
+    "attack": {
+     "oneOf": [
+      {
+       "type": "null"
+      },
+      {
+       "type": "object",
+       "additionalProperties": true,
+       "required": [
+        "family",
+        "template_id",
+        "pool",
+        "direction",
+        "placement",
+        "container"
+       ],
+       "properties": {
+        "family": {
+         "enum": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E",
+          "F",
+          "G",
+          "H",
+          "I",
+          "J",
+          "S",
+          "N",
+          "HN",
+          "O"
+         ]
+        },
+        "template_id": {
+         "type": "string"
+        },
+        "goal_id": {
+         "type": [
+          "string",
+          "null"
+         ]
+        },
+        "pool": {
+         "enum": [
+          "train",
+          "dev",
+          "eval"
+         ]
+        },
+        "direction": {
+         "enum": [
+          "targeted",
+          "echo",
+          "offtarget",
+          "neutral"
+         ]
+        },
+        "target": {
+         "type": [
+          "string",
+          "null"
+         ]
+        },
+        "placement": {
+         "enum": [
+          "prefix",
+          "suffix",
+          "middle",
+          "field"
+         ]
+        },
+        "container": {
+         "enum": [
+          "inline",
+          "forwarded",
+          "quoted_reply",
+          "retrieved_snippet",
+          "record_field"
+         ]
+        },
+        "lang": {
+         "type": "string"
+        }
+       }
+      }
+     ]
+    },
+    "filler": {
+     "oneOf": [
+      {
+       "type": "null"
+      },
+      {
+       "type": "object",
+       "additionalProperties": true,
+       "required": [
+        "corpus",
+        "ids",
+        "dose",
+        "position"
+       ],
+       "properties": {
+        "corpus": {
+         "enum": [
+          "simplewiki",
+          "pg19_test",
+          "boilerplate_B",
+          "reference_B",
+          "wikitext103",
+          "boilerplate_A",
+          "reference_A",
+          "gutenberg_dev",
+          "boilerplate_C"
+         ]
+        },
+        "ids": {
+         "type": "array",
+         "items": {
+          "type": "string"
+         }
+        },
+        "dose": {
+         "enum": [
+          "short",
+          "long",
+          "0.5x",
+          "1x",
+          "2x",
+          "4x",
+          "placebo"
+         ]
+        },
+        "added_tokens": {
+         "type": "integer",
+         "minimum": 0
+        },
+        "position": {
+         "enum": [
+          "prefix",
+          "suffix",
+          "interleave"
+         ]
+        }
+       }
+      }
+     ]
+    },
+    "untrusted_spans": {
+     "type": "array",
+     "items": {
+      "type": "array",
+      "minItems": 2,
+      "maxItems": 2,
+      "items": {
+       "type": "integer",
+       "minimum": 0
+      }
+     }
+    },
+    "seg_v1_blocks": {
+     "type": [
+      "integer",
+      "null"
+     ],
+     "minimum": 0
+    },
+    "n_tokens": {
+     "type": "object",
+     "additionalProperties": {
+      "type": "integer",
+      "minimum": 0
+     },
+     "properties": {
+      "ettin": {
+       "type": "integer"
+      },
+      "modernbert": {
+       "type": "integer"
+      },
+      "deberta_v3": {
+       "type": "integer"
+      }
+     }
+    },
+    "fits": {
+     "type": "object",
+     "additionalProperties": {
+      "type": "boolean"
+     },
+     "properties": {
+      "gliclass_1024": {
+       "type": "boolean"
+      },
+      "deberta_512": {
+       "type": "boolean"
+      }
+     }
+    }
+   }
+  },
+  "question": {
+   "oneOf": [
+    {
+     "type": "null"
+    },
+    {
+     "$ref": "#/$defs/question"
+    }
+   ],
+   "description": "null in the idonly release when it contains idonly source text (field rule 5)"
+  },
+  "serial": {
+   "type": "object",
+   "required": [
+    "nli_hypothesis",
+    "nli_option_template"
+   ],
+   "additionalProperties": true,
+   "properties": {
+    "nli_hypothesis": {
+     "type": [
+      "string",
+      "null"
+     ]
+    },
+    "nli_option_template": {
+     "type": [
+      "string",
+      "null"
+     ]
+    }
+   }
+  },
+  "question_meta": {
+   "type": "object",
+   "required": [
+    "slot",
+    "role",
+    "of"
+   ],
+   "additionalProperties": true,
+   "properties": {
+    "slot": {
+     "type": "string",
+     "pattern": "^q\\d+$"
+    },
+    "role": {
+     "enum": [
+      "base",
+      "negation",
+      "paraphrase_frame",
+      "paraphrase_prop",
+      "double_negation",
+      "choice2",
+      "choice3",
+      "score_reversed",
+      "score_rebin",
+      "threshold",
+      "hierarchy",
+      "conj",
+      "disj",
+      "slot_numeric",
+      "slot_date",
+      "human_negation",
+      "human_paraphrase",
+      "human_perturbation",
+      "free_negation",
+      "free_paraphrase",
+      "contrary",
+      "trap_affirm",
+      "trap_negation",
+      "other_than",
+      "criteria_variant",
+      "attack_row",
+      "cmp"
+     ]
+    },
+    "scope": {
+     "enum": [
+      "passage",
+      "evidence",
+      "record",
+      null
+     ]
+    },
+    "of": {
+     "type": [
+      "string",
+      "null"
+     ],
+     "pattern": "^r_[0-9a-f]{12}$"
+    },
+    "template_id": {
+     "type": [
+      "string",
+      "null"
+     ]
+    },
+    "template_pool": {
+     "enum": [
+      "train",
+      "dev",
+      "eval",
+      "human",
+      "native",
+      "free",
+      null
+     ]
+    },
+    "negation_class": {
+     "enum": [
+      "C1",
+      "C2",
+      "C4",
+      "C5",
+      "C6",
+      "C7",
+      "QA",
+      "QJ",
+      "QM",
+      "QD",
+      "human",
+      "free",
+      null
+     ]
+    },
+    "class_seen_in_train": {
+     "type": [
+      "boolean",
+      "null"
+     ]
+    },
+    "desc_ids": {
+     "type": "array",
+     "items": {
+      "type": "string"
+     }
+    },
+    "proposition_id": {
+     "type": [
+      "string",
+      "null"
+     ]
+    },
+    "criteria_mode": {
+     "enum": [
+      "null",
+      "restating",
+      "authored",
+      null
+     ],
+     "description": "Noul groups: the string mode name; JSON null = not applicable"
+    },
+    "neg_words": {
+     "type": "integer",
+     "minimum": 0
+    },
+    "target_kind": {
+     "enum": [
+      "gold",
+      "nearest",
+      "random",
+      null
+     ]
+    },
+    "n_options": {
+     "type": [
+      "integer",
+      "null"
+     ],
+     "minimum": 2,
+     "maximum": 72
+    },
+    "has_none_option": {
+     "type": [
+      "boolean",
+      "null"
+     ]
+    },
+    "gold_removed": {
+     "type": [
+      "boolean",
+      "null"
+     ]
+    },
+    "option_order_seed": {
+     "type": [
+      "integer",
+      "null"
+     ]
+    },
+    "score_levels": {
+     "type": [
+      "integer",
+      "null"
+     ],
+     "minimum": 2,
+     "maximum": 10
+    },
+    "score_construct": {
+     "type": [
+      "string",
+      "null"
+     ]
+    },
+    "decidable": {
+     "type": "boolean"
+    },
+    "exclusive_labels": {
+     "type": [
+      "boolean",
+      "null"
+     ]
+    },
+    "single_request": {
+     "enum": [
+      "verified",
+      "unverified",
+      null
+     ]
+    },
+    "threshold_adjacent": {
+     "type": "boolean"
+    },
+    "endpoint_pools": {
+     "type": "array",
+     "uniqueItems": true,
+     "items": {
+      "enum": [
+       "E1",
+       "E2",
+       "E3",
+       "E4",
+       "E5"
+      ]
+     }
+    }
+   }
+  },
+  "labels": {
+   "type": "array",
+   "minItems": 2,
+   "uniqueItems": true,
+   "items": {
+    "type": "string"
+   }
+  },
+  "expected": {
+   "type": "string"
+  },
+  "gold": {
+   "type": "object",
+   "additionalProperties": false,
+   "required": [
+    "type",
+    "value",
+    "soft",
+    "hard_ok",
+    "basis",
+    "rule_id"
+   ],
+   "properties": {
+    "type": {
+     "enum": [
+      "noul",
+      "choice",
+      "score"
+     ]
+    },
+    "value": {
+     "type": [
+      "integer",
+      "string"
+     ]
+    },
+    "soft": {
+     "description": "noul: float; choice: {key: p}; score: [p0..pK-1]",
+     "oneOf": [
+      {
+       "type": "null"
+      },
+      {
+       "type": "number",
+       "minimum": 0,
+       "maximum": 1
+      },
+      {
+       "type": "object",
+       "additionalProperties": {
+        "type": "number",
+        "minimum": 0,
+        "maximum": 1
+       }
+      },
+      {
+       "type": "array",
+       "minItems": 2,
+       "items": {
+        "type": "number",
+        "minimum": 0,
+        "maximum": 1
+       }
+      }
+     ]
+    },
+    "hard_ok": {
+     "type": "boolean"
+    },
+    "basis": {
+     "enum": [
+      "source_human",
+      "source_human_soft",
+      "rule",
+      "fresh_verified"
+     ]
+    },
+    "rule_id": {
+     "type": "string",
+     "pattern": "^R(0|[1-9][0-9]?)_[A-Z0-9_]+$"
+    }
+   },
+   "allOf": [
+    {
+     "if": {
+      "properties": {
+       "type": {
+        "const": "noul"
+       }
+      }
+     },
+     "then": {
+      "properties": {
+       "value": {
+        "enum": [
+         0,
+         1
+        ]
+       },
+       "soft": {
+        "type": [
+         "number",
+         "null"
+        ]
+       }
+      }
+     }
+    },
+    {
+     "if": {
+      "properties": {
+       "type": {
+        "const": "choice"
+       }
+      }
+     },
+     "then": {
+      "properties": {
+       "value": {
+        "type": "string",
+        "minLength": 1
+       },
+       "soft": {
+        "type": [
+         "object",
+         "null"
+        ]
+       }
+      }
+     }
+    },
+    {
+     "if": {
+      "properties": {
+       "type": {
+        "const": "score"
+       }
+      }
+     },
+     "then": {
+      "properties": {
+       "value": {
+        "type": "integer",
+        "minimum": 0,
+        "maximum": 9
+       },
+       "soft": {
+        "type": [
+         "array",
+         "null"
+        ]
+       }
+      }
+     }
+    }
+   ]
+  },
+  "verification": {
+   "type": "object",
+   "required": [
+    "status"
+   ],
+   "additionalProperties": true,
+   "properties": {
+    "status": {
+     "enum": [
+      "llm_2of2",
+      "llm_2of3",
+      "llm_fresh_2of2",
+      "llm_1v",
+      "rule",
+      "unverified",
+      "2of2",
+      "2of3",
+      "fresh_2of2",
+      "train_1v"
+     ],
+     "description": "v1.0-rc uses the llm_ statuses (deviation D1); the unprefixed ones are reserved for human sign-off (D4)"
+    },
+    "kappa_batch": {
+     "type": [
+      "string",
+      "null"
+     ]
+    }
+   }
+  },
+  "provenance": {
+   "type": "object",
+   "additionalProperties": true,
+   "required": [
+    "source",
+    "config",
+    "revision",
+    "source_split",
+    "source_id",
+    "source_label",
+    "text_sha256",
+    "license",
+    "commercial_ok",
+    "redistribute_text",
+    "release_tier",
+    "label_basis",
+    "exclude_reason",
+    "authored_by"
+   ],
+   "properties": {
+    "source": {
+     "type": "string",
+     "minLength": 1
+    },
+    "config": {
+     "type": [
+      "string",
+      "null"
+     ]
+    },
+    "revision": {
+     "type": [
+      "string",
+      "null"
+     ],
+     "pattern": "^[0-9a-f]{40}$",
+     "description": "full commit sha of the pinned source; null for authored items"
+    },
+    "source_split": {
+     "type": [
+      "string",
+      "null"
+     ]
+    },
+    "source_id": {
+     "type": [
+      "string",
+      "null"
+     ]
+    },
+    "source_label": {
+     "type": [
+      "string",
+      "integer",
+      "array",
+      "null"
+     ]
+    },
+    "text_sha256": {
+     "type": [
+      "string",
+      "null"
+     ],
+     "pattern": "^[0-9a-f]{64}$"
+    },
+    "license": {
+     "type": "string",
+     "minLength": 1
+    },
+    "commercial_ok": {
+     "type": "boolean"
+    },
+    "redistribute_text": {
+     "type": "boolean"
+    },
+    "release_tier": {
+     "enum": [
+      "open_by",
+      "open_sa",
+      "idonly",
+      "sealed"
+     ]
+    },
+    "label_basis": {
+     "type": "string"
+    },
+    "exclude_reason": {
+     "type": [
+      "string",
+      "null"
+     ]
+    },
+    "authored_by": {
+     "type": [
+      "string",
+      "null"
+     ],
+     "pattern": "^(llm:claude:[a-z0-9_.-]+|human:.+)$",
+     "description": "D1: agent-authored content carries llm:claude:<role>"
+    }
+   }
+  },
+  "exposure": {
+   "type": "object",
+   "additionalProperties": true,
+   "required": [
+    "gliclass_v3",
+    "deberta_c",
+    "deberta_nonc",
+    "small_llm",
+    "jev"
+   ],
+   "properties": {
+    "gliclass_v3": {
+     "enum": [
+      "none_declared",
+      "benchmark",
+      "sibling",
+      "trained"
+     ]
+    },
+    "deberta_c": {
+     "enum": [
+      "none_declared",
+      "trained"
+     ]
+    },
+    "deberta_nonc": {
+     "enum": [
+      "none_declared",
+      "sibling",
+      "trained"
+     ]
+    },
+    "small_llm": {
+     "enum": [
+      "likely",
+      "possible",
+      "unlikely"
+     ]
+    },
+    "jev": {
+     "enum": [
+      "unknown",
+      "fresh"
+     ]
+    }
+   }
+  },
+  "loss_weight": {
+   "type": "number",
+   "minimum": 0
+  },
+  "jev_call": {
+   "type": "boolean"
+  },
+  "canary": {
+   "type": "string",
+   "pattern": "^OPENDECIDE-CANARY-"
+  },
+  "build": {
+   "type": "object",
+   "required": [
+    "version",
+    "seed",
+    "rng_key"
+   ],
+   "additionalProperties": true,
+   "properties": {
+    "version": {
+     "type": "string"
+    },
+    "seed": {
+     "type": "integer"
+    },
+    "rng_key": {
+     "type": "string"
+    }
+   }
+  }
+ },
+ "allOf": [
+  {
+   "if": {
+    "properties": {
+     "split": {
+      "enum": [
+       "train",
+       "dev",
+       "dev_zs"
+      ]
+     }
+    }
+   },
+   "then": {
+    "required": [
+     "loss_weight"
+    ]
+   }
+  },
+  {
+   "if": {
+    "properties": {
+     "track": {
+      "const": "DIAG"
+     }
+    }
+   },
+   "then": {
+    "properties": {
+     "jev_call": {
+      "const": false
+     }
+    }
+   },
+   "else": {
+    "properties": {
+     "jev_call": {
+      "const": true
+     },
+     "call_id": {
+      "type": "string"
+     }
+    }
+   }
+  }
+ ],
+ "$defs": {
+  "question": {
+   "type": "object",
+   "description": "Jev wire-format question, verbatim (DESIGN 1.1 field rules 1-3).",
+   "required": [
+    "type",
+    "instructions",
+    "criteria"
+   ],
+   "additionalProperties": false,
+   "properties": {
+    "type": {
+     "enum": [
+      "noul",
+      "choice",
+      "score"
+     ]
+    },
+    "instructions": {
+     "type": "string",
+     "minLength": 1
+    },
+    "criteria": {}
+   },
+   "allOf": [
+    {
+     "if": {
+      "properties": {
+       "type": {
+        "const": "noul"
+       }
+      }
+     },
+     "then": {
+      "properties": {
+       "criteria": {
+        "oneOf": [
+         {
+          "type": "null"
+         },
+         {
+          "type": "object",
+          "required": [
+           "true",
+           "false"
+          ],
+          "additionalProperties": false,
+          "properties": {
+           "true": {
+            "type": "string",
+            "minLength": 1
+           },
+           "false": {
+            "type": "string",
+            "minLength": 1
+           }
+          }
+         }
+        ]
+       }
+      }
+     }
+    },
+    {
+     "if": {
+      "properties": {
+       "type": {
+        "const": "choice"
+       }
+      }
+     },
+     "then": {
+      "properties": {
+       "criteria": {
+        "type": "object",
+        "minProperties": 2,
+        "maxProperties": 72,
+        "propertyNames": {
+         "minLength": 1
+        },
+        "additionalProperties": {
+         "type": [
+          "string",
+          "null"
+         ]
+        }
+       }
+      }
+     }
+    },
+    {
+     "if": {
+      "properties": {
+       "type": {
+        "const": "score"
+       }
+      }
+     },
+     "then": {
+      "properties": {
+       "criteria": {
+        "type": "array",
+        "minItems": 2,
+        "maxItems": 10,
+        "items": {
+         "type": "string",
+         "minLength": 1
+        }
+       }
+      }
+     }
+    }
+   ]
+  }
+ }
+}

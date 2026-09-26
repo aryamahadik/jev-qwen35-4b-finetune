@@ -1,0 +1,396 @@
+✓ Initialized. View run at 
+https://modal.com/apps/mahadikarya3/main/ap-bFviHLoHOnnBNQITxiVwXH
+✓ Created objects.
+├── 🔨 Created mount 
+│   /Users/aryamahadik/Documents/jev/opendecide-data/lean/modal_od.py
+├── 🔨 Created mount 
+│   /Users/aryamahadik/Documents/jev/opendecide-data/lean/train.py
+├── 🔨 Created mount /Users/aryamahadik/Documents/jev/bench/splits
+├── 🔨 Created mount 
+│   /Users/aryamahadik/Documents/jev/bench/jevbench/datasets/public
+├── 🔨 Created mount /Users/aryamahadik/Documents/jev/opendecide-data/lean/data
+├── 🔨 Created mount PythonPackage:decoder_io, PythonPackage:train_decoder, 
+│   PythonPackage:hc, PythonPackage:jevbench_od
+├── 🔨 Created mount PythonPackage:decoder_io, PythonPackage:gliclass_io, 
+│   PythonPackage:train_decoder, PythonPackage:hc, PythonPackage:jevbench_od
+├── 🔨 Created mount /Users/aryamahadik/Documents/jev/bench/jevbench/jevbench
+├── 🔨 Created function zeroshot.
+├── 🔨 Created function train_remote.
+├── 🔨 Created function train_gliclass_remote.
+├── 🔨 Created function eval_remote.
+├── 🔨 Created function latency_l4.
+├── 🔨 Created function hc_recall_remote.
+├── 🔨 Created function hc_shortlist_remote.
+├── 🔨 Created function hc_remote.
+├── 🔨 Created function jevbench_remote.
+├── 🔨 Created function zeroshot35.
+├── 🔨 Created function train_remote35.
+├── 🔨 Created function eval_remote35.
+├── 🔨 Created function latency35.
+├── 🔨 Created function hc_remote35.
+└── 🔨 Created function jevbench_remote35.
+/usr/local/lib/python3.12/site-packages/huggingface_hub/constants.py:302: FutureWarning: The `HF_HUB_ENABLE_HF_TRANSFER` environment variable is deprecated as 'hf_transfer' is not used anymore. Please use `HF_XET_HIGH_PERFORMANCE` instead to enable high performance transfer with Xet. Visit https://huggingface.co/docs/huggingface_hub/package_reference/environment_variables#hfxethighperformance for more details.
+  warnings.warn(
+
+[1ALoading weights:   0%|          | 0/677 [00:00<?, ?it/s]
+[1ALoading weights:   3%|▎         | 20/677 [00:00<00:03, 199.72it/s]
+[1ALoading weights:   6%|▌         | 40/677 [00:00<00:03, 197.36it/s]
+[1ALoading weights:   9%|▉         | 60/677 [00:00<00:03, 166.37it/s]
+[1ALoading weights:  12%|█▏        | 82/677 [00:00<00:03, 183.51it/s]
+[1ALoading weights:  15%|█▍        | 101/677 [00:00<00:03, 176.74it/s]
+[1ALoading weights:  18%|█▊        | 120/677 [00:00<00:03, 179.28it/s]
+[1ALoading weights:  21%|██        | 139/677 [00:00<00:03, 169.26it/s]
+[1ALoading weights:  24%|██▍       | 164/677 [00:00<00:02, 184.83it/s]
+[1ALoading weights:  27%|██▋       | 185/677 [00:01<00:02, 189.03it/s]
+[1ALoading weights:  31%|███▏      | 212/677 [00:01<00:02, 208.28it/s]
+[1ALoading weights:  35%|███▌      | 239/677 [00:01<00:02, 216.57it/s]
+[1ALoading weights:  39%|███▊      | 261/677 [00:01<00:02, 200.54it/s]
+[1ALoading weights:  42%|████▏     | 282/677 [00:01<00:02, 193.85it/s]
+[1ALoading weights:  45%|████▍     | 303/677 [00:01<00:01, 195.90it/s]
+[1ALoading weights:  48%|████▊     | 323/677 [00:01<00:01, 195.23it/s]
+[1ALoading weights:  51%|█████     | 345/677 [00:01<00:01, 200.41it/s]
+[1ALoading weights:  54%|█████▍    | 368/677 [00:01<00:01, 206.79it/s]
+[1ALoading weights:  57%|█████▋    | 389/677 [00:02<00:01, 204.55it/s]
+[1ALoading weights:  61%|██████    | 410/677 [00:02<00:01, 191.94it/s]
+[1ALoading weights:  64%|██████▎   | 430/677 [00:02<00:01, 192.65it/s]
+[1ALoading weights:  66%|██████▋   | 450/677 [00:02<00:01, 194.13it/s]
+[1ALoading weights:  70%|██████▉   | 471/677 [00:02<00:01, 197.74it/s]
+[1ALoading weights: 100%|██████████| 677/677 [00:02<00:00, 274.97it/s]
+trainable params: 65,568,768 || all params: 12,025,298,944 || trainable%: 0.5453
+[transformers] `use_cache=True` is incompatible with gradient checkpointing. Setting `use_cache=False`.
+{"step": 0, "of": 946, "loss": 2.1406, "task": 2.1406, "cons": 0.0, "kl": 0.0, "lr": 2.1276595744680853e-06, "min": 0.18}
+{"step": 25, "of": 946, "loss": 1.1875, "task": 0.9414, "cons": null, "kl": 0.2441, "lr": 2.8723404255319154e-05, "min": 1.61}
+{"step": 50, "of": 946, "loss": 0.2461, "task": 0.2041, "cons": 0.0147, "kl": 0.0398, "lr": 4.999755767594917e-05, "min": 3.07}
+{"step": 75, "of": 946, "loss": 0.625, "task": 0.373, "cons": 0.0488, "kl": 0.2402, "lr": 4.987173308479738e-05, "min": 4.39}
+{"step": 100, "of": 946, "loss": 0.5312, "task": 0.4492, "cons": 0.252, "kl": 0.0162, "lr": 4.95561985108045e-05, "min": 5.66}
+{"step": 125, "of": 946, "loss": 0.9141, "task": 0.7422, "cons": 0.0649, "kl": 0.1465, "lr": 4.905336070457426e-05, "min": 7.13}
+{"step": 150, "of": 946, "loss": 0.7148, "task": 0.459, "cons": 0.0574, "kl": 0.2324, "lr": 4.8367055078430626e-05, "min": 8.25}
+{"step": 175, "of": 946, "loss": 0.5977, "task": 0.5625, "cons": 0.0005, "kl": 0.0359, "lr": 4.750251645168095e-05, "min": 9.6}
+{"step": 200, "of": 946, "loss": 0.332, "task": 0.2695, "cons": 0.0044, "kl": 0.0598, "lr": 4.6466339121855155e-05, "min": 10.83}
+{"step": 225, "of": 946, "loss": 1.2031, "task": 1.0391, "cons": 0.0347, "kl": 0.1494, "lr": 4.526642656647898e-05, "min": 11.95}
+{"step": 250, "of": 946, "loss": 0.9062, "task": 0.6055, "cons": 0.0008, "kl": 0.2988, "lr": 4.391193115903259e-05, "min": 13.13}
+{"step": 275, "of": 946, "loss": 0.5391, "task": 0.4727, "cons": 0.0, "kl": 0.0669, "lr": 4.2413184358913235e-05, "min": 14.51}
+{"step": 300, "of": 946, "loss": 0.3613, "task": 0.3477, "cons": 0.0002, "kl": 0.014, "lr": 4.0781617907880314e-05, "min": 15.8}
+{"step": 325, "of": 946, "loss": 0.8594, "task": 0.3223, "cons": 0.0033, "kl": 0.5352, "lr": 3.902967663405956e-05, "min": 17.38}
+{"step": 350, "of": 946, "loss": 0.332, "task": 0.3203, "cons": 0.0003, "kl": 0.0121, "lr": 3.7170723528596877e-05, "min": 18.53}
+{"step": 375, "of": 946, "loss": 0.8711, "task": 0.7695, "cons": 0.0008, "kl": 0.1021, "lr": 3.5218937818992684e-05, "min": 19.69}
+{"step": 400, "of": 946, "loss": 0.4082, "task": 0.4062, "cons": 0.0039, "kl": null, "lr": 3.318920681656609e-05, "min": 20.89}
+{"step": 425, "of": 946, "loss": 0.9844, "task": 0.8984, "cons": 0.0688, "kl": 0.0525, "lr": 3.109701236298569e-05, "min": 22.04}
+{"step": 450, "of": 946, "loss": 0.6484, "task": 0.5547, "cons": 0.0021, "kl": 0.0938, "lr": 2.8958312742000153e-05, "min": 23.29}
+{"step": 475, "of": 946, "loss": 0.6758, "task": 0.6367, "cons": 0.0034, "kl": 0.0376, "lr": 2.6789420957090844e-05, "min": 24.48}
+{"step": 500, "of": 946, "loss": 0.3066, "task": 0.3066, "cons": 0.0011, "kl": null, "lr": 2.4606880303487604e-05, "min": 25.72}
+{"step": 525, "of": 946, "loss": 0.9102, "task": 0.7578, "cons": 0.0957, "kl": 0.1055, "lr": 2.242733818362648e-05, "min": 27.08}
+{"step": 550, "of": 946, "loss": 1.3359, "task": 1.2344, "cons": 0.1309, "kl": 0.0391, "lr": 2.0267419128526307e-05, "min": 28.44}
+{"step": 575, "of": 946, "loss": 0.3184, "task": 0.2891, "cons": 0.0104, "kl": 0.0233, "lr": 1.8143597993617727e-05, "min": 29.75}
+{"step": 600, "of": 946, "loss": 0.5273, "task": 0.3184, "cons": 0.0002, "kl": 0.21, "lr": 1.6072074296227778e-05, "min": 31.22}
+{"step": 625, "of": 946, "loss": 0.2656, "task": 0.2373, "cons": 0.0004, "kl": 0.028, "lr": 1.4068648653215255e-05, "min": 32.54}
+{"step": 650, "of": 946, "loss": 1.1094, "task": 0.4102, "cons": null, "kl": 0.6992, "lr": 1.2148602261232733e-05, "min": 33.75}
+{"step": 675, "of": 946, "loss": 0.9492, "task": 0.8867, "cons": 0.0058, "kl": 0.0598, "lr": 1.0326580338883812e-05, "min": 35.17}
+{"step": 700, "of": 946, "loss": 0.418, "task": 0.249, "cons": 0.0039, "kl": 0.168, "lr": 8.616480419824313e-06, "min": 36.58}
+{"step": 725, "of": 946, "loss": 0.3516, "task": 0.2773, "cons": 0.0381, "kl": 0.0544, "lr": 7.031346348855713e-06, "min": 37.78}
+{"step": 750, "of": 946, "loss": 0.2383, "task": 0.2197, "cons": 0.0011, "kl": 0.0179, "lr": 5.583268789558985e-06, "min": 39.1}
+{"step": 775, "of": 946, "loss": 0.8086, "task": 0.75, "cons": 0.006, "kl": 0.053, "lr": 4.283293002350447e-06, "min": 40.33}
+{"step": 800, "of": 946, "loss": 0.4473, "task": 0.3711, "cons": 0.0004, "kl": 0.0767, "lr": 3.141334596385448e-06, "min": 41.48}
+{"step": 825, "of": 946, "loss": 0.4258, "task": 0.4121, "cons": 0.002, "kl": 0.0123, "lr": 2.166103897915181e-06, "min": 42.77}
+{"step": 850, "of": 946, "loss": 1.2891, "task": 0.9961, "cons": 0.0042, "kl": 0.2891, "lr": 1.3650395119794296e-06, "min": 44.08}
+{"step": 875, "of": 946, "loss": 0.6055, "task": 0.4219, "cons": 0.0006, "kl": 0.1826, "lr": 7.442515841958098e-07, "min": 45.4}
+{"step": 900, "of": 946, "loss": 0.8281, "task": 0.5312, "cons": 0.0515, "kl": 0.2676, "lr": 3.084751954180037e-07, "min": 46.89}
+{"step": 925, "of": 946, "loss": 0.4258, "task": 0.2754, "cons": 0.0413, "kl": 0.1289, "lr": 6.103424474688258e-08, "min": 48.28}
+{"step": 945, "of": 946, "loss": 0.5742, "task": 0.4902, "cons": 0.0006, "kl": 0.0835, "lr": 0.0, "min": 49.17}
+[W926 04:54:13.648648582 CUDACachingAllocator.cpp:3934] memory allocation failed with OOM on device 0 while trying to allocate 3013607424 bytes (free: 2802122752, total: 85017624576).
+[W926 04:54:23.475738290 CUDACachingAllocator.cpp:3934] memory allocation failed with OOM on device 0 while trying to allocate 6027214848 bytes (free: 329580544, total: 85017624576).
+[W926 04:54:23.482890414 CUDACachingAllocator.cpp:3934] memory allocation failed with OOM on device 0 while trying to allocate 6027214848 bytes (free: 329580544, total: 85017624576).
+Traceback (most recent call last):
+  File "/pkg/modal/_runtime/container_io_manager.py", line 987, in handle_input_exception
+    yield
+  File "/pkg/modal/_container_entrypoint.py", line 189, in run_input_sync
+    values = io_context.call_function_sync()
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/pkg/modal/_runtime/container_io_manager.py", line 266, in call_function_sync
+    expected_value_or_values = self.finalized_function.callable(*args, **kwargs)
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/modal_od.py", line 137, in train_remote35
+    return _train_impl(name, cfg, splits, tta)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/modal_od.py", line 126, in _train_impl
+    preds = {s: _predict("decoder", model, tok, _rows(s), tta=tta) for s in splits}
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/modal_od.py", line 81, in _predict
+    return decoder_io.predict(model, tok, rows, dev="cuda", tta=tta)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/torch/utils/_contextlib.py", line 124, in decorate_context
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/root/decoder_io.py", line 122, in predict
+    lg = cand_logits(model, ro, batch, dev)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/decoder_io.py", line 92, in cand_logits
+    hs = body(input_ids=enc["input_ids"], attention_mask=enc["attention_mask"]).last_hidden_state
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1783, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1794, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/transformers/utils/generic.py", line 1068, in wrapper
+    output = func(self, *args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/transformers/utils/generic.py", line 939, in wrapper
+    output = func(self, *args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/transformers/models/gemma4_unified/modeling_gemma4_unified.py", line 1109, in forward
+    outputs = self.language_model(
+              ^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1783, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1794, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/transformers/utils/generic.py", line 1068, in wrapper
+    output = func(self, *args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/transformers/utils/output_capturing.py", line 286, in wrapper
+    outputs = func(self, *args, **kwargs)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/transformers/models/gemma4_unified/modeling_gemma4_unified.py", line 660, in forward
+    hidden_states = decoder_layer(
+                    ^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/transformers/modeling_layers.py", line 109, in __call__
+    return super().__call__(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1783, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1794, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/transformers/models/gemma4_unified/modeling_gemma4_unified.py", line 520, in forward
+    hidden_states = self.mlp(hidden_states)
+                    ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1783, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1794, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/transformers/models/gemma4_unified/modeling_gemma4_unified.py", line 473, in forward
+    down_proj = self.down_proj(self.act_fn(self.gate_proj(x)) * self.up_proj(x))
+                                                                ^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1783, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1794, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/peft/tuners/lora/layer.py", line 1102, in forward
+    result = result + lora_B(lora_A(dropout(x))) * scaling
+                      ~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 5.61 GiB. GPU 0 has a total capacity of 79.18 GiB of which 314.31 MiB is free. Process 1 has 78.86 GiB memory in use. Of the allocated memory 67.72 GiB is allocated by PyTorch, and 9.94 GiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://docs.pytorch.org/docs/stable/notes/cuda.html#optimizing-memory-usage-with-pytorch-cuda-alloc-conf)
+Stopping app - uncaught exception raised locally: OutOfMemoryError('CUDA out of memory. Tried to allocate 5.61 GiB. GPU 0 has a total capacity of 79.18 GiB of which 314.31 MiB is free. Process 1 has 78.86 GiB memory in use. Of the allocated memory 67.72 GiB is allocated by PyTorch, and 9.94 GiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://docs.pytorch.org/docs/stable/notes/cuda.html#optimizing-memory-usage-with-pytorch-cuda-alloc-conf)').
+Runner terminated.
+╭───────────────────── Traceback (most recent call last) ──────────────────────╮
+│ /Users/aryamahadik/Documents/jev/opendecide-data/lean/modal_od.py:329 in     │
+│ train                                                                        │
+│                                                                              │
+│   328 │   fn = train_remote35 if is35(base) else train_remote                │
+│ ❱ 329 │   res = fn.with_options(gpu=gpu).remote(name, cfg, splits.split(",") │
+│   330 │   _save(name + ("_tta" if tta else ""), res["preds"], {"base": base, │
+│                                                                              │
+│ /Users/aryamahadik/Documents/jev/opendecide-data/.venv/lib/python3.12/site-p │
+│ ackages/modal/_object.py:46 in wrapped                                       │
+│                                                                              │
+│    45 │   │   await self.hydrate()                                           │
+│ ❱  46 │   │   return await method(self, *args, **kwargs)                     │
+│    47                                                                        │
+│                                                                              │
+│ /Users/aryamahadik/Documents/jev/opendecide-data/.venv/lib/python3.12/site-p │
+│ ackages/modal/_functions.py:1893 in remote                                   │
+│                                                                              │
+│   1892 │   │                                                                 │
+│ ❱ 1893 │   │   return await self._call_function(args, kwargs)                │
+│   1894                                                                       │
+│                                                                              │
+│ /Users/aryamahadik/Documents/jev/opendecide-data/.venv/lib/python3.12/site-p │
+│ ackages/modal/_functions.py:1830 in _call_function                           │
+│                                                                              │
+│   1829 │   │                                                                 │
+│ ❱ 1830 │   │   return await invocation.run_function()                        │
+│   1831                                                                       │
+│                                                                              │
+│ /Users/aryamahadik/Documents/jev/opendecide-data/.venv/lib/python3.12/site-p │
+│ ackages/modal/_functions.py:503 in run_function                              │
+│                                                                              │
+│    502 │   │   │   # No more retries left.                                   │
+│ ❱  503 │   │   │   return await _process_result(                             │
+│    504 │   │   │   │   await_response.output.result, await_response.output.d │
+│                                                                              │
+│ /Users/aryamahadik/Documents/jev/opendecide-data/.venv/lib/python3.12/site-p │
+│ ackages/modal/_utils/function_utils.py:572 in _process_result                │
+│                                                                              │
+│   571 │   │   │                                                              │
+│ ❱ 572 │   │   │   raise exc_with_hints(exc)                                  │
+│   573                                                                        │
+│                                                                              │
+│     ...Remote call to Modal Function (ta-01M3DXX8NRFXD4E04ZKN1M2CSR)...      │
+│                                                                              │
+│ /root/modal_od.py:137 in train_remote35                                      │
+│                                                                              │
+│ ❱ 137 return _train_impl(name, cfg, splits, tta)                             │
+│                                                                              │
+│                                                                              │
+│ /root/modal_od.py:126 in _train_impl                                         │
+│                                                                              │
+│ ❱ 126 preds = {s: _predict("decoder", model, tok, _rows(s), tta=tta) for s i │
+│                                                                              │
+│                                                                              │
+│ /root/modal_od.py:81 in _predict                                             │
+│                                                                              │
+│ ❱ 81 return decoder_io.predict(model, tok, rows, dev="cuda", tta=tta)        │
+│                                                                              │
+│                                                                              │
+│ /usr/local/lib/python3.12/site-packages/torch/utils/_contextlib.py:124 in    │
+│ decorate_context                                                             │
+│                                                                              │
+│ ❱ 124 return func(*args, **kwargs)                                           │
+│                                                                              │
+│                                                                              │
+│ /root/decoder_io.py:122 in predict                                           │
+│                                                                              │
+│ ❱ 122 lg = cand_logits(model, ro, batch, dev)                                │
+│                                                                              │
+│                                                                              │
+│ /root/decoder_io.py:92 in cand_logits                                        │
+│                                                                              │
+│ ❱ 92 hs = body(input_ids=enc["input_ids"], attention_mask=enc["attention_mas │
+│                                                                              │
+│                                                                              │
+│ /usr/local/lib/python3.12/site-packages/torch/nn/modules/module.py:1783 in   │
+│ _wrapped_call_impl                                                           │
+│                                                                              │
+│ ❱ 1783 return self._call_impl(*args, **kwargs)                               │
+│                                                                              │
+│                                                                              │
+│ /usr/local/lib/python3.12/site-packages/torch/nn/modules/module.py:1794 in   │
+│ _call_impl                                                                   │
+│                                                                              │
+│ ❱ 1794 return forward_call(*args, **kwargs)                                  │
+│                                                                              │
+│                                                                              │
+│ /usr/local/lib/python3.12/site-packages/transformers/utils/generic.py:1068   │
+│ in wrapper                                                                   │
+│                                                                              │
+│ ❱ 1068 output = func(self, *args, **kwargs)                                  │
+│                                                                              │
+│                                                                              │
+│ /usr/local/lib/python3.12/site-packages/transformers/utils/generic.py:939 in │
+│ wrapper                                                                      │
+│                                                                              │
+│ ❱ 939 output = func(self, *args, **kwargs)                                   │
+│                                                                              │
+│                                                                              │
+│ /usr/local/lib/python3.12/site-packages/transformers/models/gemma4_unified/m │
+│ odeling_gemma4_unified.py:1109 in forward                                    │
+│                                                                              │
+│ ❱ 1109 outputs = self.language_model(                                        │
+│                                                                              │
+│                                                                              │
+│ /usr/local/lib/python3.12/site-packages/torch/nn/modules/module.py:1783 in   │
+│ _wrapped_call_impl                                                           │
+│                                                                              │
+│ ❱ 1783 return self._call_impl(*args, **kwargs)                               │
+│                                                                              │
+│                                                                              │
+│ /usr/local/lib/python3.12/site-packages/torch/nn/modules/module.py:1794 in   │
+│ _call_impl                                                                   │
+│                                                                              │
+│ ❱ 1794 return forward_call(*args, **kwargs)                                  │
+│                                                                              │
+│                                                                              │
+│ /usr/local/lib/python3.12/site-packages/transformers/utils/generic.py:1068   │
+│ in wrapper                                                                   │
+│                                                                              │
+│ ❱ 1068 output = func(self, *args, **kwargs)                                  │
+│                                                                              │
+│                                                                              │
+│ /usr/local/lib/python3.12/site-packages/transformers/utils/output_capturing. │
+│ py:286 in wrapper                                                            │
+│                                                                              │
+│ ❱ 286 outputs = func(self, *args, **kwargs)                                  │
+│                                                                              │
+│                                                                              │
+│ /usr/local/lib/python3.12/site-packages/transformers/models/gemma4_unified/m │
+│ odeling_gemma4_unified.py:660 in forward                                     │
+│                                                                              │
+│ ❱ 660 hidden_states = decoder_layer(                                         │
+│                                                                              │
+│                                                                              │
+│ /usr/local/lib/python3.12/site-packages/transformers/modeling_layers.py:109  │
+│ in __call__                                                                  │
+│                                                                              │
+│ ❱ 109 return super().__call__(*args, **kwargs)                               │
+│                                                                              │
+│                                                                              │
+│ /usr/local/lib/python3.12/site-packages/torch/nn/modules/module.py:1783 in   │
+│ _wrapped_call_impl                                                           │
+│                                                                              │
+│ ❱ 1783 return self._call_impl(*args, **kwargs)                               │
+│                                                                              │
+│                                                                              │
+│ /usr/local/lib/python3.12/site-packages/torch/nn/modules/module.py:1794 in   │
+│ _call_impl                                                                   │
+│                                                                              │
+│ ❱ 1794 return forward_call(*args, **kwargs)                                  │
+│                                                                              │
+│                                                                              │
+│ /usr/local/lib/python3.12/site-packages/transformers/models/gemma4_unified/m │
+│ odeling_gemma4_unified.py:520 in forward                                     │
+│                                                                              │
+│ ❱ 520 hidden_states = self.mlp(hidden_states)                                │
+│                                                                              │
+│                                                                              │
+│ /usr/local/lib/python3.12/site-packages/torch/nn/modules/module.py:1783 in   │
+│ _wrapped_call_impl                                                           │
+│                                                                              │
+│ ❱ 1783 return self._call_impl(*args, **kwargs)                               │
+│                                                                              │
+│                                                                              │
+│ /usr/local/lib/python3.12/site-packages/torch/nn/modules/module.py:1794 in   │
+│ _call_impl                                                                   │
+│                                                                              │
+│ ❱ 1794 return forward_call(*args, **kwargs)                                  │
+│                                                                              │
+│                                                                              │
+│ /usr/local/lib/python3.12/site-packages/transformers/models/gemma4_unified/m │
+│ odeling_gemma4_unified.py:473 in forward                                     │
+│                                                                              │
+│ ❱ 473 down_proj = self.down_proj(self.act_fn(self.gate_proj(x)) * self.up_pr │
+│                                                                              │
+│                                                                              │
+│ /usr/local/lib/python3.12/site-packages/torch/nn/modules/module.py:1783 in   │
+│ _wrapped_call_impl                                                           │
+│                                                                              │
+│ ❱ 1783 return self._call_impl(*args, **kwargs)                               │
+│                                                                              │
+│                                                                              │
+│ /usr/local/lib/python3.12/site-packages/torch/nn/modules/module.py:1794 in   │
+│ _call_impl                                                                   │
+│                                                                              │
+│ ❱ 1794 return forward_call(*args, **kwargs)                                  │
+│                                                                              │
+│                                                                              │
+│ /usr/local/lib/python3.12/site-packages/peft/tuners/lora/layer.py:1102 in    │
+│ forward                                                                      │
+│                                                                              │
+│ ❱ 1102 result = result + lora_B(lora_A(dropout(x))) * scaling                │
+│                                                                              │
+╰──────────────────────────────────────────────────────────────────────────────╯
+OutOfMemoryError: CUDA out of memory. Tried to allocate 5.61 GiB. GPU 0 has a 
+total capacity of 79.18 GiB of which 314.31 MiB is free. Process 1 has 78.86 GiB
+memory in use. Of the allocated memory 67.72 GiB is allocated by PyTorch, and 
+9.94 GiB is reserved by PyTorch but unallocated. If reserved but unallocated 
+memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to 
+avoid fragmentation.  See documentation for Memory Management  
+(https://docs.pytorch.org/docs/stable/notes/cuda.html#optimizing-memory-usage-wi
+th-pytorch-cuda-alloc-conf)

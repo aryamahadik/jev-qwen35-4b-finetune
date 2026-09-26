@@ -1,0 +1,24 @@
+{
+ "args": {
+  "lofo": null,
+  "no_fetch": false,
+  "only": null,
+  "rehydrate": false,
+  "workers": 6
+ },
+ "config_sha256": "c6226ae2edd4063069e6e8f836de597de8af18c1d6627ca4a107fc1ee956faca",
+ "info": {
+  "n_resolved": 64,
+  "unresolved": []
+ },
+ "inputs": {
+  "build/common.py": "08dffe207736c348193ceac3fda1ec039bcce733770b4226a4ab72974203a354"
+ },
+ "outputs": {
+  "build/sources.lock.json": "f78aae42e60d3fd950e5a3b7e0b88f23487b44dbddb92845252847a432a2d229"
+ },
+ "seed": 20260925,
+ "status": "done",
+ "step": "s01_lock",
+ "step_sha256": "1cb364ca7deb3c6fb5136bb3e99799a17a944a155f9c481c30adb071d21d175b"
+}

@@ -1,0 +1,24 @@
+{
+ "args": {
+  "deep": false,
+  "lofo": null,
+  "rehydrate": false
+ },
+ "config_sha256": "c6226ae2edd4063069e6e8f836de597de8af18c1d6627ca4a107fc1ee956faca",
+ "info": {
+  "n_checks": 115,
+  "warnings": []
+ },
+ "inputs": {
+  "build/common.py": "08dffe207736c348193ceac3fda1ec039bcce733770b4226a4ab72974203a354",
+  "build/requirements.lock.txt": "add277f96ebc74eaf3b9cf09c7b5b38a489e84fe0002d9db01d630fa27f93ddd",
+  "design/design_plan.py": "2e139e447c6eceb86046b6b47050de6c8e366ef31a41222388982c07744bb117"
+ },
+ "outputs": {
+  "data/reports/env.json": "3638c266d0a433d7048101f8166e2ec503fe88286da6ed659d53bed94f0773fb"
+ },
+ "seed": 20260925,
+ "status": "done",
+ "step": "s00_env",
+ "step_sha256": "2bda4c611891e3ee54c0cf342df2a1fc258d097ebfcbf57170ee9cdb8536858f"
+}
