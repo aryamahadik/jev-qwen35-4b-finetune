@@ -26,9 +26,11 @@ Rows the loss cannot score (gold not an option, gold_probs with no mass, >255 op
 """
 from __future__ import annotations
 
+import hashlib
 import json
 import math
 import random
+import shutil
 import time
 from collections import Counter, defaultdict
 from pathlib import Path
@@ -334,6 +336,35 @@ def compute_loss(c, batch, perms, lg, rel_by_row, step, n_steps, dev, kl=None, t
 
 # ---------------------------------------------------------------- training
 
+def _fingerprint(c: dict, rows: list, n_steps: int) -> str:
+    """Identifies a run for resume: the config (minus resume knobs), the step count and the training rows."""
+    cfg = {k: v for k, v in c.items() if k not in ("resume", "ckpt_every_min")}
+    h = hashlib.sha256(json.dumps(cfg, sort_keys=True, default=str).encode())
+    h.update(str(n_steps).encode())
+    for r in rows:
+        h.update(r["id"].encode())
+    return h.hexdigest()
+
+
+def _save_ckpt(ckpt: Path, model, opt, sched, next_step: int, log: list, minutes: float, fp: str):
+    """Atomic checkpoint: write to _ckpt.tmp, then swap it in, so a VM stopped mid-write leaves the old one intact."""
+    tmp = ckpt.with_name(ckpt.name + ".tmp")
+    if tmp.exists():
+        shutil.rmtree(tmp)
+    tmp.mkdir(parents=True)
+    model.save_pretrained(tmp / "adapter")
+    torch.save({"step": next_step, "opt": opt.state_dict(), "sched": sched.state_dict(), "log": log, "minutes": minutes,
+                "fingerprint": fp, "torch_rng": torch.get_rng_state(),
+                "cuda_rng": torch.cuda.get_rng_state_all() if torch.cuda.is_available() else None}, tmp / "state.pt")
+    old = ckpt.with_name(ckpt.name + ".old")
+    if ckpt.exists():
+        ckpt.rename(old)
+    tmp.rename(ckpt)
+    if old.exists():
+        shutil.rmtree(old)
+    print(json.dumps({"checkpoint": str(ckpt), "next_step": next_step}), flush=True)
+
+
 def train(cfg: dict, data_dir: Path, out_dir: Path, dev="cuda") -> dict:
     c = {"recipe": "A3", "epochs": 1.0, "lr": 1e-4, "batch": 16, "lam": 0.5, "r": 16, "alpha": 32, "dropout": 0.05, "beta": 0.0,
          "seed": 20260925, "train_file": "train.jsonl", "rel_file": "train_relations.jsonl", "grad_ckpt": True,
@@ -387,7 +418,40 @@ def train(cfg: dict, data_dir: Path, out_dir: Path, dev="cuda") -> dict:
         opt, lambda s: (s + 1) / max(1, warm) if s < warm else 0.5 * (1 + math.cos(math.pi * (s - warm) / max(1, n_steps - warm))))
 
     log, t0, gen = [], time.time(), batches(units, c["batch"])
-    for step in range(n_steps):
+    # Save-and-resume (Spot VMs, auto-stop timers): every ckpt_every_min minutes the adapter, optimizer, scheduler,
+    # step, log and RNG states go to out_dir/_ckpt. A rerun of the same config resumes exactly: the finished steps'
+    # random-number use (batch order, option permutations, twin picks) is replayed without GPU work, then the torch
+    # RNG states are restored.
+    ckpt, start, every = out_dir / "_ckpt", 0, float(c.get("ckpt_every_min", 15))
+    fp = _fingerprint(c, rows, n_steps)
+    old = ckpt.with_name(ckpt.name + ".old")
+    if not (ckpt / "state.pt").exists() and (old / "state.pt").exists():  # stopped between the two renames
+        if ckpt.exists():
+            shutil.rmtree(ckpt)
+        old.rename(ckpt)
+    if c.get("resume", True) and (ckpt / "state.pt").exists():
+        st = torch.load(ckpt / "state.pt", map_location="cpu", weights_only=False)
+        if st.get("fingerprint") == fp:
+            from peft import set_peft_model_state_dict
+            from safetensors.torch import load_file
+            set_peft_model_state_dict(model, load_file(str(ckpt / "adapter" / "adapter_model.safetensors")))
+            opt.load_state_dict(st["opt"])
+            sched.load_state_dict(st["sched"])
+            cyg0 = decoder_io.STYLE == "cygnet"
+            for _ in range(st["step"]):
+                b = next(gen)
+                ps = [random.sample(range(len(r["options"])), len(r["options"])) if r["qtype"] == "choice"
+                      else (random.sample([0, 1], 2) if cyg0 else None) for r in b]
+                pick_twins(b, ps, c["perm_twin"], twin_rng)
+            torch.set_rng_state(st["torch_rng"])
+            if torch.cuda.is_available() and st.get("cuda_rng") is not None:
+                torch.cuda.set_rng_state_all(st["cuda_rng"])
+            start, log, t0 = st["step"], st["log"], time.time() - 60 * st["minutes"]
+            print(json.dumps({"resumed_at_step": start, "of": n_steps}), flush=True)
+        else:
+            print("checkpoint in", ckpt, "is for a different run; starting fresh", flush=True)
+    last_ckpt = time.time()
+    for step in range(start, n_steps):
         batch = next(gen)
         cyg = decoder_io.STYLE == "cygnet"
         perms = [random.sample(range(len(r["options"])), len(r["options"])) if r["qtype"] == "choice"
@@ -418,10 +482,15 @@ def train(cfg: dict, data_dir: Path, out_dir: Path, dev="cuda") -> dict:
                    "lr": sched.get_last_lr()[0], "min": round((time.time() - t0) / 60, 2)}
             log.append(rec)
             print(json.dumps(rec), flush=True)
+        if every > 0 and step < n_steps - 1 and time.time() - last_ckpt >= 60 * every:
+            _save_ckpt(ckpt, model, opt, sched, step + 1, log, (time.time() - t0) / 60, fp)
+            last_ckpt = time.time()
 
     out_dir.mkdir(parents=True, exist_ok=True)
     model.save_pretrained(out_dir)
     tok.save_pretrained(out_dir)
+    if ckpt.exists():  # the finished adapter supersedes the checkpoint
+        shutil.rmtree(ckpt)
     meta = {"cfg": c, "rows": len(rows), "relations": len(rels), "relation_types": rel_types, "inv_merged": inv_merged,
             "steps": n_steps, "minutes": round((time.time() - t0) / 60, 2), "log": log}
     (out_dir / "train_meta.json").write_text(json.dumps(meta, indent=2))
