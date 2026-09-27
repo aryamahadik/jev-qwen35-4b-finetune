@@ -621,6 +621,214 @@ def writeblock_probe(base: str = "Qwen/Qwen3.5-0.8B", splits: str = "devp_card",
         _save(f"{tag}_wb_off", {s: d["off"]}, {"base": base})
 
 
+def dev_half(group_id: str) -> str:
+    """PRISM plan dev split: 'select' (tune and choose) or 'confirm' (gate shipping), by group."""
+    import hashlib
+    return "select" if int(hashlib.sha256(f"devsel:{group_id}".encode()).hexdigest(), 16) % 2 == 0 else "confirm"
+
+
+@app.function(image=image35, gpu="H100", volumes={"/vol": vol}, secrets=SECRETS, timeout=3600)
+def p0_remote(base: str, adapter: str, splits: list[str], frac: float = 0.25, n_mech: int = 200, n_beta: int = 96,
+              mech_only: bool = False, fp32: bool = False) -> dict:
+    """PRISM-2B plan step P0, forward passes only (no training):
+    T0a  mechanism: with the block on (beta = g = 0 on policy heads for evidence tokens), the policy heads' recurrent
+         state after trusted prefix T + evidence E equals the state after T alone, and after T + E' (different evidence);
+         the trusted-position hidden states of T + E and T + E' are equal (causality). Also erank of S_m.
+    T0b  the wrapper fires on the kernel path this image uses: calls and applied blocks per forward = #DeltaNet layers.
+    Acc  clean accuracy on the dev-select half with the untrained block at p = frac, head rules first / random /
+         low-write (lowest mean evidence write strength), and beta-only / g-only for the best rule."""
+    import importlib.util
+    import random
+    import sys
+    import time
+    import torch
+    import decoder_io
+    import writeblock as wb
+    decoder_io.STYLE = "cygnet"
+    t0 = time.time()
+    model, tok = decoder_io.load(base, "cuda", adapter=adapter or None, **({"dtype": torch.float32} if fp32 else {}))
+    if adapter:
+        model = model.merge_and_unload()
+    model.eval()
+    gdn = [m for m in model.modules() if type(m).__name__.endswith("GatedDeltaNet")]
+    mod = sys.modules[type(gdn[0]).__module__]
+    info = {"module": mod.__name__, "chunk_fn_before_install": repr(getattr(mod, "torch_chunk_gated_delta_rule")),
+            "fla_installed": importlib.util.find_spec("fla") is not None, "n_deltanet_layers": len(gdn),
+            "v_heads": int(gdn[0].num_v_heads), "k_heads": int(gdn[0].num_k_heads)}
+    wb.install(mod, frac)
+    L, H = len(gdn), int(gdn[0].num_v_heads)
+    hp = max(1, round(H * frac))
+    wb.STATE["n_layers"] = L
+    info["policy_heads_per_layer"] = hp
+    ro = decoder_io.Readout(tok)
+    body, head = decoder_io._parts(model)
+    first = [torch.arange(H) < hp for _ in range(L)]
+
+    def encode_text(texts, spans):
+        enc = tok(texts, add_special_tokens=False, padding="longest", return_tensors="pt", return_offsets_mapping=True)
+        off = enc.pop("offset_mapping")
+        mask = torch.zeros(off.shape[:2], dtype=torch.bool)
+        for i, (s, e) in enumerate(spans):
+            mask[i] = (off[i, :, 0] >= s) & (off[i, :, 1] <= e) & (off[i, :, 1] > off[i, :, 0])
+        return enc.to("cuda"), mask.cuda()
+
+    def forward(input_ids, attention_mask, mask):
+        wb.STATE["mask"] = mask
+        wb.reset()
+        hs = body(input_ids=input_ids, attention_mask=attention_mask).last_hidden_state
+        return hs, wb.STATE["calls"], wb.STATE["applied"]
+
+    # ---------------- T0a / T0b: mechanism on the PRISM layout (trusted schema T, then evidence E)
+    pool = [r for s in splits for r in _rows(s) if dev_half(r["group_id"]) == "select"]
+    rng = random.Random(0)
+    sysmsg = decoder_io.CYGNET_SYSTEM
+    tmpl = tok.apply_chat_template([{"role": "system", "content": sysmsg}, {"role": "user", "content": "@@EVID@@"}],
+                                   tokenize=False, add_generation_prompt=True,
+                                   **({"enable_thinking": False} if "enable_thinking" in (tok.chat_template or "") else {}))
+    pre = tmpl.split("@@EVID@@")[0]
+
+    def schema(r):
+        r2 = decoder_io.as_letter_row(r)
+        msg = decoder_io.cygnet_msg({**r2, "state": ""})
+        return msg.strip() + "\n\nText:\n"
+
+    def ids(t):
+        return tok(t, add_special_tokens=False, return_tensors="pt")["input_ids"][0]
+
+    def states(x, mask_from):
+        m = torch.zeros(1, len(x), dtype=torch.bool)
+        m[0, mask_from:] = True
+        wb.STATE["capture_state"] = []
+        hs, calls, applied = forward(x[None].cuda(), torch.ones(1, len(x), dtype=torch.long, device="cuda"), m.cuda())
+        st = wb.STATE["capture_state"]
+        wb.STATE["capture_state"] = None
+        return [s[0] for s in st], hs[0].float(), calls, applied
+
+    def erank(S):  # S [dk, dv]
+        sv = torch.linalg.svdvals(S.float())
+        p = sv / sv.sum().clamp_min(1e-12)
+        return float(torch.exp(-(p * (p + 1e-12).log()).sum()))
+
+    wb.STATE["heads"], wb.STATE["mode"], wb.STATE["enabled"] = first, "both", True
+    mech = {"pol_T_vs_TE": [], "pol_TE_vs_TE2": [], "data_TE_vs_TE2": [], "trusted_hidden": [], "erank_pol": [],
+            "erank_data": [], "calls": set(), "applied": set()}
+    with torch.no_grad():
+        for _ in range(n_mech):
+            r, e1, e2 = rng.sample(pool, 3)
+            T = ids(pre + schema(r))
+            E1, E2 = ids(e1["state"][:3000]), ids(e2["state"][:3000])
+            sT, hT, c0, a0 = states(T, len(T))
+            s1, h1, c1, a1 = states(torch.cat([T, E1]), len(T))
+            s2, h2, c2, a2 = states(torch.cat([T, E2]), len(T))
+            mech["calls"] |= {c0, c1, c2}
+            mech["applied"] |= {a1, a2}
+            rel = lambda a, b, sl: float((a[sl] - b[sl]).abs().max() / b[sl].abs().max().clamp_min(1e-12))
+            pol, dat = slice(0, hp), slice(hp, H)
+            mech["pol_T_vs_TE"].append(max(rel(x, y, pol) for x, y in zip(s1, sT)))
+            mech["pol_TE_vs_TE2"].append(max(rel(x, y, pol) for x, y in zip(s1, s2)))
+            mech["data_TE_vs_TE2"].append(min(rel(x, y, dat) for x, y in zip(s1, s2)))
+            n = len(T)
+            mech["trusted_hidden"].append(float((h1[:n] - h2[:n]).abs().max() / h2[:n].abs().max()))
+            mech["erank_pol"].append(sum(erank(S[h]) for S in sT for h in range(hp)) / (L * hp))
+            mech["erank_data"].append(sum(erank(S[h]) for S in sT for h in range(hp, H)) / (L * (H - hp)))
+    q = lambda v: {"max": max(v), "median": sorted(v)[len(v) // 2], "min": min(v)}
+    out = {"info": info, "T0a": {k: q(v) for k, v in mech.items() if k not in ("calls", "applied")},
+           "T0b": {"calls_per_forward": sorted(mech["calls"]), "applied_blocks_per_forward": sorted(mech["applied"]),
+                   "expected": L}, "sec_mech": round(time.time() - t0)}
+    if mech_only:
+        return out
+
+    # ---------------- accuracy on dev-select, cygnet layout (the model's trained layout), block on the evidence span
+    def predict(rows, cfg):
+        wb.STATE["enabled"] = cfg is not None
+        if cfg is not None:
+            wb.STATE["heads"], wb.STATE["mode"] = cfg
+        preds, applied_ok = [None] * len(rows), 0
+        order = sorted(range(len(rows)), key=lambda i: len(rows[i]["state"]))
+        with torch.no_grad():
+            for s0 in range(0, len(order), 16):
+                idx = order[s0:s0 + 16]
+                batch = [rows[i] for i in idx]
+                texts = [ro.prompt(r) for r in batch]
+                spans = []
+                for t, r in zip(texts, batch):
+                    st = r["state"].rstrip()
+                    s = t.find(st)
+                    assert s >= 0, f"state not found in prompt: {r['id']}"
+                    spans.append((s, s + len(st)))
+                enc, mask = encode_text(texts, spans)
+                hs, calls, applied = forward(enc["input_ids"], enc["attention_mask"], mask)
+                applied_ok += applied == (L if cfg is not None else 0)
+                last = enc["attention_mask"].sum(1) - 1
+                h = hs[torch.arange(len(batch), device="cuda"), last]
+                for j, i in enumerate(idx):
+                    groups = ro.cand(rows[i])
+                    flat = [t for g in groups for t in g]
+                    lg = h[j].float() @ head.weight[flat].float().T
+                    parts, k = [], 0
+                    for g in groups:
+                        parts.append(torch.logsumexp(lg[k:k + len(g)], 0))
+                        k += len(g)
+                    preds[i] = decoder_io.to_probs(rows[i], torch.stack(parts))
+        return preds, applied_ok
+
+    def acc(rows, preds):
+        ok = 0
+        for r, p in zip(rows, preds):
+            g = ("yes" if r["gold"] == 1 else "no") if r["qtype"] == "noul" else r["gold"]
+            ok += max(p, key=p.get) == g
+        return round(100 * ok / len(rows), 2)
+
+    rows_by = {s: [r for r in _rows(s) if dev_half(r["group_id"]) == "select"] for s in splits}
+    # low-write rule: mean evidence write strength per (layer, head) on a separate calibration set (devzs, unlabeled use)
+    calib = [r for r in _rows("devzs")][:n_beta]
+    wb.STATE["enabled"], wb.STATE["capture_beta"] = False, []
+    with torch.no_grad():
+        for s0 in range(0, len(calib), 16):
+            batch = calib[s0:s0 + 16]
+            texts = [ro.prompt(r) for r in batch]
+            spans = [(t.find(r["state"].rstrip()), t.find(r["state"].rstrip()) + len(r["state"].rstrip())) for t, r in zip(texts, batch)]
+            assert all(a >= 0 for a, _ in spans), "state not found in a calibration prompt"
+            enc, mask = encode_text(texts, spans)
+            forward(enc["input_ids"], enc["attention_mask"], mask)
+    bl = torch.stack(wb.STATE["capture_beta"]).view(-1, L, H).mean(0)  # [L, H]
+    wb.STATE["capture_beta"] = None
+    low = [torch.zeros(H, dtype=torch.bool).index_fill_(0, bl[l].argsort()[:hp], True) for l in range(L)]
+    rnd = []
+    for l in range(L):
+        perm = torch.randperm(H, generator=torch.Generator().manual_seed(l))
+        rnd.append(torch.zeros(H, dtype=torch.bool).index_fill_(0, perm[:hp], True))
+    cfgs = {"off": None, "first_both": (first, "both"), "random_both": (rnd, "both"), "lowwrite_both": (low, "both")}
+    res = {}
+    for name, cfg in cfgs.items():
+        res[name] = {}
+        for s, rows in rows_by.items():
+            p, ok = predict(rows, cfg)
+            res[name][s] = {"acc": acc(rows, p), "n": len(rows), "batches_block_applied": ok}
+    pooled = lambda d: round(sum(v["acc"] * v["n"] for v in d.values()) / sum(v["n"] for v in d.values()), 2)
+    best = max(["first_both", "random_both", "lowwrite_both"], key=lambda k: pooled(res[k]))
+    rule = best.split("_")[0]
+    for mode in ("beta", "g"):
+        res[f"{rule}_{mode}"] = {}
+        for s, rows in rows_by.items():
+            p, ok = predict(rows, (cfgs[best][0], mode))
+            res[f"{rule}_{mode}"][s] = {"acc": acc(rows, p), "n": len(rows), "batches_block_applied": ok}
+    out["acc"] = res
+    out["pooled"] = {k: pooled(v) for k, v in res.items()}
+    out["best_rule"] = best
+    out["mean_evidence_beta_by_layer"] = [round(float(x), 4) for x in bl.mean(1)]
+    out["sec_total"] = round(time.time() - t0)
+    return out
+
+
+@app.local_entrypoint()
+def p0(base: str = "Qwen/Qwen3.5-2B", adapter: str = "/vol/models/q35_2b_v11r", splits: str = "dev_nc,hard_dev,pg_dev",
+       frac: float = 0.25, tag: str = "q35_2b_v11r", mech_only: bool = False, fp32: bool = False, gpu: str = "H100"):
+    res = p0_remote.with_options(gpu=gpu).remote(base, adapter, splits.split(","), frac, mech_only=mech_only, fp32=fp32)
+    (HERE / f"logs/p0_{tag}.json").write_text(json.dumps(res, indent=1))
+    print(json.dumps({k: v for k, v in res.items() if k != "acc"}, indent=1))
+
+
 def _eval_system_impl(name, base, splits, style, sym, lbd, tau, meta_min, temps, two_stage=False):
     """Plain predictions AND full-system predictions (symmetric views + leverage-bounded decoding) for each split.
     temps = per-type temperatures applied to the returned probabilities (fitted on dev only)."""

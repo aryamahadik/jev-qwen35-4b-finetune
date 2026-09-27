@@ -2,6 +2,38 @@
 
 Where everything is, what the best models are, what we measured, and how to rerun it.
 
+## START HERE for the $30 top-up (end of the atmosphor account, 26 Sep 2026 night)
+
+**Status.** Account `atmosphor` (Modal workspace admin-22544) stopped at **$23.00 billed** (hard stop $28, keep a $5 buffer).
+Plan of record: `PRISM_2B_MASTER_PLAN.md` (math, red-team corrections, go/no-go gates, top-up budget). Ledger:
+`opendecide-data/lean/logs/budget_ledger.md` (section "Account atmosphor", rows A1-A17).
+
+**Best models (Modal volume `opendecide`, `/models/...`; local copies in `backups/modal_models/` need refreshing for v11r)**
+
+| Model | What | Key results |
+|---|---|---|
+| `q35_4b_v11c` (4B) | v0.11 recipe + v11b fix-up + v11c std stage | **OHS-2 (fresh, pre-registered) 79.9 vs Jev 81.5: -1.6 [-3.3, +0.1], not significant (tie)**; yes/no Brier 0.083 vs 0.038 (Jev better); JevBench A 107/118, score 74.80; jagged attack success 1.1% vs Jev 100%; eval_card 89.8 vs 86.3 |
+| `q35_2b_v11r` (2B) | Qwen3.5-2B, distilled from v11c (kd 0.5) on 59.7k rows: A12 (0.4 epoch) + A13 (the other 35k rows) | **JevBench A score 76.85 (best of all; Jev 72.51)**, 101/118 vs 103; 9 ms p50; jagged 3.9%; eval_card 86.5 (tie); **dev_nc gate failed** (68.2, needs 71.3), so not run on OHS-2 |
+
+**What is ready (all committed or listed below)**
+- `v0.12 data`: 978 Claude-written hard items (policy, NLI, procedural reasoning, speaker intent, codebook coding, emotion in context), blind-solved and reviewed, families chosen from the 2B's DEV gaps, OHS-2 families excluded. Files: `data/v12_parts/hard12_{train,dev}.jsonl`, builder `build_v12_hard.py`, sources `hard_src_v12/`, mixer for the 2B `build_train_2b_v12.py` (not run). Blind agreement 99-100% (same-model passes are correlated, so the plan's 100-item human audit is required before use).
+- `OHS-3`: a new ~2,000-item held-out test (14 tasks, 9 with text published after June 2026). Builders in `ohs3/`, parts in `data/ohs3_parts/`, freeze script `build_ohs3.py`, draft `PREREG_OHS3.md`. Commit it before any model sees it. Check the section below for its state.
+- `P0` (separation, forward passes only) = **GO**: the write-block fires on all 18 DeltaNet layers on the fla kernel path; the protected state is invariant to evidence up to kernel precision (bf16 max 1.8e-2, TF32 2.3e-3, vs a 5-24% change on unprotected heads); untrained block at p = 0.25 costs -6.8 pp clean dev-select accuracy (limit 10). `writeblock.py` (per-layer heads, beta/g modes, counters), `modal_od.py::p0`, results `logs/p0_*.json`.
+- `dev_half()` in `modal_od.py`: dev-select / dev-confirm split by group (plan §6).
+
+**Must-know before training again**
+1. **Legacy Qwen3-235B data.** About 9k of the 59.7k 2B-mix rows came from rounds v0.6-v0.8, which used Qwen3-235B: `lah_*` (1,518 items + golds), `meta_*` (1,500 planted messages) and about 5,960 v0.7-core rows with `compile_cards.py` definitions. The user's rule is now "no bigger teachers". Drop these rows from every new mix and replace them with Claude-written equivalents; disclose the lineage of v0.8-v0.11c and the 2B.
+2. **JevBench half B is not a clean test** (seen 4 times in earlier rounds). The clean final tests are OHS-3 (once) and, with the user's OK, an official JevBench leaderboard submission.
+3. The OHS-2 comparison is spent for the 4B. OHS-2 for a 2B needs a new pre-registration amendment first.
+4. Rotate the OpenRouter key (pasted in chat earlier). An HF upload or a JevBench submission needs the user's OK.
+
+**Top-up order (from the plan, about $17 + 25% contingency + $5 buffer):**
+- G-0 leftovers (free): commit OHS-3; human audit of 100 v0.12 items; fp64 pure-torch T0a exactness check; K0 (causal_conv1d install, fork and cache equivalence, about $0.6).
+- T: v0.12-4B teacher round (about $2.6), then R: relabel (about $1.5).
+- A: 2B warm-start arms R1-R4 (layout, datamarking, write-block; about $6).
+- F: final PRISM-2B run (about $3.9), then C: calibration (about $0.3) and S: serving check (about $1.5).
+- O: OHS-3 once, for the 4B, the 2B and Jev x2 (about $1.5).
+
 ## Where things live
 
 | What | Where |

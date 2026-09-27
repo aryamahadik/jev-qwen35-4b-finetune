@@ -1,0 +1,53 @@
+{
+ "info": {
+  "module": "transformers.models.qwen3_5.modeling_qwen3_5",
+  "chunk_fn_before_install": "<function torch_chunk_gated_delta_rule at 0x2b5f97d2f2e0>",
+  "fla_installed": true,
+  "n_deltanet_layers": 18,
+  "v_heads": 16,
+  "k_heads": 16,
+  "policy_heads_per_layer": 4
+ },
+ "T0a": {
+  "pol_T_vs_TE": {
+   "max": 0.002260591136291623,
+   "median": 0.0006296352948993444,
+   "min": 0.0
+  },
+  "pol_TE_vs_TE2": {
+   "max": 0.002768574981018901,
+   "median": 0.0006278545479290187,
+   "min": 0.0
+  },
+  "data_TE_vs_TE2": {
+   "max": 0.2396261990070343,
+   "median": 0.09741612523794174,
+   "min": 0.04864124953746796
+  },
+  "trusted_hidden": {
+   "max": 0.0004961247905157506,
+   "median": 0.000169501276104711,
+   "min": 0.0
+  },
+  "erank_pol": {
+   "max": 11.01166932284832,
+   "median": 8.275843006041315,
+   "min": 7.085906445980072
+  },
+  "erank_data": {
+   "max": 13.387214219680539,
+   "median": 9.615633638368713,
+   "min": 8.22893629471461
+  }
+ },
+ "T0b": {
+  "calls_per_forward": [
+   18
+  ],
+  "applied_blocks_per_forward": [
+   18
+  ],
+  "expected": 18
+ },
+ "sec_mech": 351
+}

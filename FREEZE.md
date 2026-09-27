@@ -1,5 +1,7 @@
 # OpenDecide: frozen architecture and plan for the $30 account (26 Sep 2026)
 
+> **Superseded (26 Sep 2026 night):** the top-up plan of record is `PRISM_2B_MASTER_PLAN.md`; status in the "START HERE" section of `HANDOFF.md`.
+
 This file closes the $10 round. What is frozen (keep it as is), what the round found, and the exact plan for the next
 Modal account. Details: `HANDOFF.md`, `opendecide-data/lean/logs/budget_ledger.md`, the published report
 (https://claude.ai/artifact/32Jd6eZEaSqdUgLxqduFwc) and the audit and plan outputs summarised below.
