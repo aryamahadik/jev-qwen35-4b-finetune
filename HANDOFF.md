@@ -29,6 +29,15 @@ Plan of record: `PRISM_2B_MASTER_PLAN.md` (math, red-team corrections, go/no-go 
 - **Clean replacements (committed da70785):** 1,625 procedural items (`data/v12_parts/proc12_*`, replacing `lah_*`), 1,509 planted-message detector items (`planted12_*`, replacing `meta_*`), and Claude-written definitions for the 13 carded label sets (`assets/cards_claude/`, swap map `data/v12_parts/card_swap.json`, `build_v12_cards.py`). Blind agreement 95-100%.
 - **Human audit page (plan §5.3):** https://claude.ai/artifact/1T8Pt1c7qL19GEAsgH9XQz. It holds 100 stratified items: 35 hard12, 40 proc12 and 25 planted12 (ids in `data/v12_parts/audit100_ids.json`). The founder answers blind, and the answers go to the page db, collection `answers`, one doc per item id: `{choice, flagged, at}`. Read them with ArtifactData `list`. The data may be used only if agreement is at least 95%.
 
+- **Teacher round T already run (A18, $2): FAILED its gate.**
+  - `q35_4b_v12t` vs v11c on dev-confirm: -0.69 pp [-1.54, +0.15], where the gate needs +1.3 pp.
+  - In-family it improved: hard12 81.4 -> 88.7, proc12 70.4 -> 77.4, planted12 80.3 -> 98.5.
+  - Keep v11c as the teacher.
+  - Lesson: narrow hard items do not transfer to broad accuracy, and the ~48% replay allowed slight forgetting.
+  - The next accuracy lever is BREADTH: Claude-labelled broad decision inputs ("Claude as teacher", pending the user's yes) with more replay.
+  - Mix builder: `build_train_4b_v12t.py`; gate script: `gate_dev.py CAND REF` (dev-confirm, group bootstrap).
+- **Billing: $24.65 after A19** (atmosphor). About $3.35 remains before the $28 stop.
+
 **Must-know before training again**
 1. **Legacy Qwen3-235B data.** About 9k of the 59.7k 2B-mix rows came from rounds v0.6-v0.8, which used Qwen3-235B: `lah_*` (1,518 items + golds), `meta_*` (1,500 planted messages) and about 5,960 v0.7-core rows with `compile_cards.py` definitions. The user's rule is now "no bigger teachers". Drop these rows from every new mix and replace them with Claude-written equivalents; disclose the lineage of v0.8-v0.11c and the 2B.
 2. **JevBench half B is not a clean test** (seen 4 times in earlier rounds). The clean final tests are OHS-3 (once) and, with the user's OK, an official JevBench leaderboard submission.
