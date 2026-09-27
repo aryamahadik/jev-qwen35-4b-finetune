@@ -58,6 +58,11 @@ Plan of record: `PRISM_2B_MASTER_PLAN.md` (math, red-team corrections, go/no-go 
     - A full 2B run (about 3,700 steps) takes about 11 h, about $9 on-demand or about $3.5 spot.
     - Speed-up TODO: build causal_conv1d for torch 2.14/cu130 (it currently falls back to the PyTorch reference).
 
+- **Mixtral legacy (found 27 Sep):** 16,502 of 17,991 task-bank rows use Mixtral-written texts (MoritzLaurer/synthetic_zeroshot_mixtral_v0.1). Together with the Qwen3-235B rows, that is about a third of the 2B mix. The replacement is the **v0.13 breadth corpus**:
+  - public, human-written, human-labelled TRAIN splits, commercial-safe licences, none of the 111 already-used datasets;
+  - Claude-written label definitions; annotator distributions kept as soft labels;
+  - workflow `v13-breadth-corpus`; outputs in `data/v13_parts/`, builders in `breadth_src/`.
+
 **Must-know before training again**
 1. **Legacy Qwen3-235B data.** About 9k of the 59.7k 2B-mix rows came from rounds v0.6-v0.8, which used Qwen3-235B: `lah_*` (1,518 items + golds), `meta_*` (1,500 planted messages) and about 5,960 v0.7-core rows with `compile_cards.py` definitions. The user's rule is now "no bigger teachers". Drop these rows from every new mix and replace them with Claude-written equivalents; disclose the lineage of v0.8-v0.11c and the 2B.
 2. **JevBench half B is not a clean test** (seen 4 times in earlier rounds). The clean final tests are OHS-3 (once) and, with the user's OK, an official JevBench leaderboard submission.
