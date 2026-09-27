@@ -1,0 +1,199 @@
+{
+ "rows": 17410,
+ "train": 15695,
+ "dev": 1715,
+ "relations": 2440,
+ "soft_rows": 3795,
+ "qtype": {
+  "choice": 9747,
+  "noul": 7663
+ },
+ "dropped_overlap": {},
+ "datasets": {
+  "abcd": {
+   "choice": 650,
+   "renamed": 72,
+   "bundles": 166,
+   "raw": 650,
+   "dropped": 0,
+   "no_def": 0
+  },
+  "casino": {
+   "choice": 400,
+   "renamed": 129,
+   "bundles": 100,
+   "noul": 100,
+   "raw": 500,
+   "dropped": 0,
+   "no_def": 0
+  },
+  "cfpb": {
+   "choice": 650,
+   "renamed": 189,
+   "bundles": 146,
+   "raw": 650,
+   "dropped": 0,
+   "no_def": 0
+  },
+  "claimbuster": {
+   "choice": 450,
+   "renamed": 124,
+   "bundles": 106,
+   "raw": 450,
+   "dropped": 0,
+   "no_def": 0
+  },
+  "congress_policy": {
+   "choice": 600,
+   "renamed": 200,
+   "bundles": 158,
+   "raw": 600,
+   "dropped": 0,
+   "no_def": 0
+  },
+  "convabuse": {
+   "choice": 287,
+   "renamed": 90,
+   "noul": 144,
+   "bundles": 75,
+   "raw": 431,
+   "dropped": 0,
+   "no_def": 0
+  },
+  "edos": {
+   "noul": 280,
+   "choice": 420,
+   "renamed": 119,
+   "bundles": 114,
+   "raw": 700,
+   "dropped": 0,
+   "no_def": 0
+  },
+  "emobank": {
+   "choice": 600,
+   "renamed": 0,
+   "bundles": 156,
+   "raw": 600,
+   "dropped": 0,
+   "no_def": 0
+  },
+  "fm2": {
+   "noul": 600,
+   "raw": 600,
+   "dropped": 0,
+   "no_def": 0
+  },
+  "ghc": {
+   "noul": 480,
+   "choice": 170,
+   "renamed": 58,
+   "bundles": 39,
+   "raw": 650,
+   "dropped": 0,
+   "no_def": 0
+  },
+  "hatemoji_build": {
+   "choice": 195,
+   "renamed": 52,
+   "bundles": 60,
+   "noul": 204,
+   "raw": 399,
+   "dropped": 0,
+   "no_def": 0
+  },
+  "infotabs": {
+   "choice": 600,
+   "renamed": 178,
+   "bundles": 157,
+   "raw": 600,
+   "dropped": 0,
+   "no_def": 0
+  },
+  "mams_acsa": {
+   "choice": 225,
+   "renamed": 57,
+   "noul": 225,
+   "bundles": 49,
+   "raw": 450,
+   "dropped": 0,
+   "no_def": 0
+  },
+  "mnds": {
+   "choice": 650,
+   "renamed": 193,
+   "bundles": 154,
+   "raw": 650,
+   "dropped": 0,
+   "no_def": 0
+  },
+  "newsgroups20": {
+   "choice": 550,
+   "renamed": 141,
+   "bundles": 128,
+   "raw": 550,
+   "dropped": 0,
+   "no_def": 0
+  },
+  "newsmtsc": {
+   "choice": 550,
+   "renamed": 159,
+   "bundles": 136,
+   "raw": 550,
+   "dropped": 0,
+   "no_def": 0
+  },
+  "politeness_wiki": {
+   "choice": 450,
+   "renamed": 137,
+   "bundles": 100,
+   "raw": 450,
+   "dropped": 0,
+   "no_def": 0
+  },
+  "sarcasm_headlines": {
+   "noul": 300,
+   "raw": 300,
+   "dropped": 0,
+   "no_def": 0
+  },
+  "star": {
+   "choice": 550,
+   "renamed": 168,
+   "bundles": 150,
+   "raw": 550,
+   "dropped": 0,
+   "no_def": 0
+  },
+  "steam_aspect": {
+   "noul": 350,
+   "raw": 350,
+   "dropped": 0,
+   "no_def": 0
+  },
+  "topv2": {
+   "choice": 700,
+   "renamed": 208,
+   "bundles": 173,
+   "raw": 700,
+   "dropped": 0,
+   "no_def": 0
+  },
+  "wos46985": {
+   "choice": 650,
+   "renamed": 213,
+   "bundles": 181,
+   "raw": 650,
+   "dropped": 0,
+   "no_def": 0
+  },
+  "xed_en": {
+   "choice": 400,
+   "renamed": 121,
+   "bundles": 92,
+   "noul": 100,
+   "raw": 500,
+   "dropped": 0,
+   "no_def": 0
+  }
+ }
+}
