@@ -1,0 +1,82 @@
+{"rows": 38660, "relations": {"complement": 4048, "equiv": 1061, "inv": 1322}, "units": 29496, "kd_targets": 4330, "lam_inv": 1.0, "sym_cons": true, "perm_twin": 0.3, "lam_p": 0.5}
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Fetching 2 files:   0%|          | 0/2 [00:00<?, ?it/s]Fetching 2 files: 100%|██████████| 2/2 [00:00<00:00, 1254.09it/s]
+Loading weights:   0%|          | 0/426 [00:00<?, ?it/s]Loading weights:  86%|████████▋ | 368/426 [00:00<00:00, 3673.21it/s]Loading weights: 100%|██████████| 426/426 [00:00<00:00, 4000.20it/s]
+[transformers] `use_cache=True` is incompatible with gradient checkpointing. Setting `use_cache=False`.
+[transformers] `causal_conv1d_fn` is falling back to its reference PyTorch implementation because `causal_conv1d` is not installed. This is correct but much slower; install `causal_conv1d` for the optimized kernel.
+trainable params: 64,929,792 || all params: 4,270,681,088 || trainable%: 1.5204
+{"step": 0, "of": 1201, "loss": 0.8351, "task": 0.8351, "cons": 0.0091, "cons_comp": 0.0132, "cons_equiv": 0.0005, "inv": null, "perm": 0.0014, "kl": null, "n_cons": 3, "n_inv": 0, "n_twin": 5, "n_rel_skipped": 0, "lr": 1.3333333333333334e-06, "min": 0.34}
+{"checkpoint": "/home/aryamahadik/lean/models/q35_4b_v13t/_ckpt", "next_step": 30}
+{"step": 50, "of": 1201, "loss": 0.2458, "task": 0.2447, "cons": 0.001, "cons_comp": 0.001, "cons_equiv": null, "inv": 0.0063, "perm": 0.0014, "kl": null, "n_cons": 1, "n_inv": 2, "n_twin": 1, "n_rel_skipped": 0, "lr": 3.466666666666667e-05, "min": 17.14}
+{"checkpoint": "/home/aryamahadik/lean/models/q35_4b_v13t/_ckpt", "next_step": 62}
+{"checkpoint": "/home/aryamahadik/lean/models/q35_4b_v13t/_ckpt", "next_step": 94}
+{"step": 100, "of": 1201, "loss": 0.4696, "task": 0.467, "cons": 0.0001, "cons_comp": 0.0, "cons_equiv": 0.0001, "inv": null, "perm": 0.002, "kl": 0.0075, "n_cons": 2, "n_inv": 0, "n_twin": 2, "n_rel_skipped": 0, "lr": 3.9872698092719665e-05, "min": 32.83}
+{"checkpoint": "/home/aryamahadik/lean/models/q35_4b_v13t/_ckpt", "next_step": 126}
+{"step": 150, "of": 1201, "loss": 0.4661, "task": 0.4647, "cons": 0.003, "cons_comp": 0.003, "cons_equiv": null, "inv": null, "perm": 0.0002, "kl": null, "n_cons": 3, "n_inv": 0, "n_twin": 2, "n_rel_skipped": 0, "lr": 3.9375491979855646e-05, "min": 48.4}
+{"checkpoint": "/home/aryamahadik/lean/models/q35_4b_v13t/_ckpt", "next_step": 158}
+{"checkpoint": "/home/aryamahadik/lean/models/q35_4b_v13t/_ckpt", "next_step": 189}
+{"step": 200, "of": 1201, "loss": 0.4383, "task": 0.4378, "cons": null, "cons_comp": null, "cons_equiv": null, "inv": 0.0004, "perm": 0.0009, "kl": null, "n_cons": 0, "n_inv": 2, "n_twin": 3, "n_rel_skipped": 0, "lr": 3.8511649805640805e-05, "min": 65.2}
+{"checkpoint": "/home/aryamahadik/lean/models/q35_4b_v13t/_ckpt", "next_step": 220}
+{"step": 250, "of": 1201, "loss": 0.68, "task": 0.6776, "cons": 0.0034, "cons_comp": 0.0034, "cons_equiv": null, "inv": null, "perm": 0.005, "kl": null, "n_cons": 1, "n_inv": 0, "n_twin": 2, "n_rel_skipped": 0, "lr": 3.729751777138514e-05, "min": 81.38}
+{"checkpoint": "/home/aryamahadik/lean/models/q35_4b_v13t/_ckpt", "next_step": 252}
+{"checkpoint": "/home/aryamahadik/lean/models/q35_4b_v13t/_ckpt", "next_step": 284}
+{"step": 300, "of": 1201, "loss": 0.6143, "task": 0.5374, "cons": 0.0149, "cons_comp": 0.0149, "cons_equiv": null, "inv": 0.0085, "perm": 0.0392, "kl": 0.0517, "n_cons": 1, "n_inv": 4, "n_twin": 4, "n_rel_skipped": 0, "lr": 3.575607049819566e-05, "min": 97.88}
+{"checkpoint": "/home/aryamahadik/lean/models/q35_4b_v13t/_ckpt", "next_step": 315}
+{"checkpoint": "/home/aryamahadik/lean/models/q35_4b_v13t/_ckpt", "next_step": 350}
+{"step": 350, "of": 1201, "loss": 0.7735, "task": 0.7603, "cons": 0.0175, "cons_comp": 0.0175, "cons_equiv": null, "inv": null, "perm": 0.028, "kl": null, "n_cons": 3, "n_inv": 0, "n_twin": 1, "n_rel_skipped": 0, "lr": 3.3916476285778515e-05, "min": 113.14}
+{"checkpoint": "/home/aryamahadik/lean/models/q35_4b_v13t/_ckpt", "next_step": 381}
+{"step": 400, "of": 1201, "loss": 0.7777, "task": 0.7653, "cons": null, "cons_comp": null, "cons_equiv": null, "inv": 0.005, "perm": 0.0007, "kl": 0.0437, "n_cons": 0, "n_inv": 1, "n_twin": 3, "n_rel_skipped": 0, "lr": 3.181354517029822e-05, "min": 129.16}
+{"checkpoint": "/home/aryamahadik/lean/models/q35_4b_v13t/_ckpt", "next_step": 415}
+{"checkpoint": "/home/aryamahadik/lean/models/q35_4b_v13t/_ckpt", "next_step": 446}
+{"step": 450, "of": 1201, "loss": 0.8069, "task": 0.8025, "cons": null, "cons_comp": null, "cons_equiv": null, "inv": 0.0032, "perm": 0.0086, "kl": null, "n_cons": 0, "n_inv": 2, "n_twin": 4, "n_rel_skipped": 0, "lr": 2.9487070225513817e-05, "min": 144.76}
+{"checkpoint": "/home/aryamahadik/lean/models/q35_4b_v13t/_ckpt", "next_step": 478}
+{"step": 500, "of": 1201, "loss": 0.2759, "task": 0.2675, "cons": 0.0022, "cons_comp": 0.0028, "cons_equiv": 0.0011, "inv": null, "perm": 0.0051, "kl": 0.0068, "n_cons": 3, "n_inv": 0, "n_twin": 5, "n_rel_skipped": 0, "lr": 2.6981074571533618e-05, "min": 160.97}
+{"checkpoint": "/home/aryamahadik/lean/models/q35_4b_v13t/_ckpt", "next_step": 509}
+{"checkpoint": "/home/aryamahadik/lean/models/q35_4b_v13t/_ckpt", "next_step": 540}
+{"step": 550, "of": 1201, "loss": 0.5133, "task": 0.5084, "cons": 0.0006, "cons_comp": 0.0006, "cons_equiv": null, "inv": null, "perm": 0.0166, "kl": null, "n_cons": 1, "n_inv": 0, "n_twin": 5, "n_rel_skipped": 0, "lr": 2.4342978339794433e-05, "min": 177.87}
+{"checkpoint": "/home/aryamahadik/lean/models/q35_4b_v13t/_ckpt", "next_step": 571}
+{"step": 600, "of": 1201, "loss": 0.3571, "task": 0.3444, "cons": 0.0041, "cons_comp": 0.0078, "cons_equiv": 0.0002, "inv": null, "perm": 0.001, "kl": 0.0221, "n_cons": 3, "n_inv": 0, "n_twin": 3, "n_rel_skipped": 0, "lr": 2.1622701357512785e-05, "min": 193.56}
+{"checkpoint": "/home/aryamahadik/lean/models/q35_4b_v13t/_ckpt", "next_step": 603}
+{"checkpoint": "/home/aryamahadik/lean/models/q35_4b_v13t/_ckpt", "next_step": 634}
+{"step": 650, "of": 1201, "loss": 0.4141, "task": 0.4052, "cons": 0.0018, "cons_comp": 0.0018, "cons_equiv": null, "inv": 0.003, "perm": 0.0164, "kl": null, "n_cons": 1, "n_inv": 4, "n_twin": 2, "n_rel_skipped": 0, "lr": 1.887171853121511e-05, "min": 209.71}
+{"checkpoint": "/home/aryamahadik/lean/models/q35_4b_v13t/_ckpt", "next_step": 665}
+{"checkpoint": "/home/aryamahadik/lean/models/q35_4b_v13t/_ckpt", "next_step": 697}
+{"step": 700, "of": 1201, "loss": 0.6085, "task": 0.6049, "cons": null, "cons_comp": null, "cons_equiv": null, "inv": 0.0024, "perm": 0.0046, "kl": null, "n_cons": 0, "n_inv": 1, "n_twin": 2, "n_rel_skipped": 0, "lr": 1.614208580401379e-05, "min": 225.4}
+{"checkpoint": "/home/aryamahadik/lean/models/q35_4b_v13t/_ckpt", "next_step": 729}
+{"step": 750, "of": 1201, "loss": 0.5138, "task": 0.5127, "cons": 0.0009, "cons_comp": 0.0017, "cons_equiv": 0.0003, "inv": null, "perm": 0.0039, "kl": null, "n_cons": 5, "n_inv": 0, "n_twin": 2, "n_rel_skipped": 0, "lr": 1.348545511811889e-05, "min": 241.68}
+{"checkpoint": "/home/aryamahadik/lean/models/q35_4b_v13t/_ckpt", "next_step": 759}
+{"checkpoint": "/home/aryamahadik/lean/models/q35_4b_v13t/_ckpt", "next_step": 790}
+{"step": 800, "of": 1201, "loss": 0.4941, "task": 0.4795, "cons": 0.0127, "cons_comp": 0.0103, "cons_equiv": 0.0293, "inv": null, "perm": 0.0055, "kl": null, "n_cons": 4, "n_inv": 0, "n_twin": 4, "n_rel_skipped": 0, "lr": 1.0952097022126191e-05, "min": 258.83}
+{"checkpoint": "/home/aryamahadik/lean/models/q35_4b_v13t/_ckpt", "next_step": 820}
+{"step": 850, "of": 1201, "loss": 0.5685, "task": 0.5644, "cons": 0.0, "cons_comp": 0.0, "cons_equiv": null, "inv": null, "perm": 0.0162, "kl": null, "n_cons": 1, "n_inv": 0, "n_twin": 4, "n_rel_skipped": 0, "lr": 8.589949417962082e-06, "min": 275.44}
+{"checkpoint": "/home/aryamahadik/lean/models/q35_4b_v13t/_ckpt", "next_step": 851}
+{"checkpoint": "/home/aryamahadik/lean/models/q35_4b_v13t/_ckpt", "next_step": 882}
+{"step": 900, "of": 1201, "loss": 0.5095, "task": 0.5095, "cons": 0.0, "cons_comp": 0.0, "cons_equiv": 0.0, "inv": null, "perm": 0.0002, "kl": null, "n_cons": 2, "n_inv": 0, "n_twin": 1, "n_rel_skipped": 0, "lr": 6.443710447734152e-06, "min": 292.25}
+{"checkpoint": "/home/aryamahadik/lean/models/q35_4b_v13t/_ckpt", "next_step": 914}
+{"checkpoint": "/home/aryamahadik/lean/models/q35_4b_v13t/_ckpt", "next_step": 947}
+{"step": 950, "of": 1201, "loss": 0.7657, "task": 0.747, "cons": 0.0022, "cons_comp": 0.0022, "cons_equiv": null, "inv": null, "perm": 0.0407, "kl": null, "n_cons": 2, "n_inv": 0, "n_twin": 3, "n_rel_skipped": 0, "lr": 4.553992685491111e-06, "min": 307.17}
+{"checkpoint": "/home/aryamahadik/lean/models/q35_4b_v13t/_ckpt", "next_step": 978}
+{"step": 1000, "of": 1201, "loss": 0.5939, "task": 0.593, "cons": null, "cons_comp": null, "cons_equiv": null, "inv": null, "perm": 0.0026, "kl": null, "n_cons": 0, "n_inv": 0, "n_twin": 1, "n_rel_skipped": 0, "lr": 2.9565546388431766e-06, "min": 323.19}
+{"checkpoint": "/home/aryamahadik/lean/models/q35_4b_v13t/_ckpt", "next_step": 1010}
+{"checkpoint": "/home/aryamahadik/lean/models/q35_4b_v13t/_ckpt", "next_step": 1044}
+{"step": 1050, "of": 1201, "loss": 0.5655, "task": 0.5365, "cons": 0.0115, "cons_comp": 0.0118, "cons_equiv": 0.0009, "inv": null, "perm": 0.0071, "kl": 0.0532, "n_cons": 3, "n_inv": 0, "n_twin": 3, "n_rel_skipped": 0, "lr": 1.681624102485e-06, "min": 338.98}
+{"checkpoint": "/home/aryamahadik/lean/models/q35_4b_v13t/_ckpt", "next_step": 1075}
+{"step": 1100, "of": 1201, "loss": 1.3745, "task": 0.893, "cons": 0.0934, "cons_comp": 0.0934, "cons_equiv": null, "inv": null, "perm": 0.0312, "kl": 0.5857, "n_cons": 1, "n_inv": 0, "n_twin": 3, "n_rel_skipped": 0, "lr": 7.533261675798064e-07, "min": 355.31}
+{"checkpoint": "/home/aryamahadik/lean/models/q35_4b_v13t/_ckpt", "next_step": 1107}
+{"checkpoint": "/home/aryamahadik/lean/models/q35_4b_v13t/_ckpt", "next_step": 1140}
+{"step": 1150, "of": 1201, "loss": 0.3724, "task": 0.3678, "cons": 0.0053, "cons_comp": 0.0102, "cons_equiv": 0.0004, "inv": 0.0021, "perm": 0.0055, "kl": null, "n_cons": 4, "n_inv": 4, "n_twin": 2, "n_rel_skipped": 0, "lr": 1.892267105950163e-07, "min": 370.78}
+{"checkpoint": "/home/aryamahadik/lean/models/q35_4b_v13t/_ckpt", "next_step": 1171}
+{"step": 1200, "of": 1201, "loss": 0.6151, "task": 0.6089, "cons": 0.0088, "cons_comp": 0.0088, "cons_equiv": null, "inv": null, "perm": 0.007, "kl": null, "n_cons": 1, "n_inv": 0, "n_twin": 3, "n_rel_skipped": 0, "lr": 0.0, "min": 386.99}
+wrote preds_dev_nc/q35_4b_v13t.jsonl (1008 rows)
+wrote preds_taskbank_dev/q35_4b_v13t.jsonl (1200 rows)
+wrote preds_hard_dev/q35_4b_v13t.jsonl (208 rows)
+wrote preds_dev_negwords/q35_4b_v13t.jsonl (800 rows)
+wrote preds_dev_claims/q35_4b_v13t.jsonl (750 rows)
+wrote preds_pg_dev/q35_4b_v13t.jsonl (1049 rows)
+wrote preds_devzs/q35_4b_v13t.jsonl (800 rows)
+wrote preds_devp_card/q35_4b_v13t.jsonl (1728 rows)
+wrote preds_dev/q35_4b_v13t.jsonl (600 rows)
+wrote preds_hard12_dev/q35_4b_v13t.jsonl (97 rows)
+wrote preds_proc12_dev/q35_4b_v13t.jsonl (159 rows)
+wrote preds_planted12_dev/q35_4b_v13t.jsonl (137 rows)
+wrote preds_breadth_dev/q35_4b_v13t.jsonl (1715 rows)

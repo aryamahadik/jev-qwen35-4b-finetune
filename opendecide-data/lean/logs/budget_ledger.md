@@ -100,3 +100,10 @@ planned; the next steps are in FREEZE.md for the $30 account.
 | A18 | TRAIN q35_4b_v12t = teacher round T: from q35_4b_v11c, 400 steps (0.727 epoch) on train_4b_v12t (8,800 rows: hard12 x2, proc12, planted12, clean replay 4,200 with the legacy 235B rows removed and Claude cards swapped in), lr 4e-5, gold labels, v0.11 loss | H100 | ~2.0 | gate T: dev-confirm micro >= v11c + 1.3 pp (LB > 0), Brier not worse by > 0.005, ASR not worse by > 2 pp |
 | – | RESULT A18 gate T FAILED: q35_4b_v12t vs v11c on dev-confirm -0.69 pp [-1.54, +0.15] (needed +1.3, LB > 0), yes/no Brier +0.002; dev-select -0.44. In-family v12 devs improved: hard12 81.4 -> 88.7, proc12 70.4 -> 77.4, planted12 80.3 -> 98.5 (2B v11r: 64.9 / 60.4 / 80.3). Lesson: narrow hard items teach in-family and do not transfer to broad dev; slight forgetting on classification (dev_nc -2.2, devzs -1.8). Keep v11c as teacher. Top-up: breadth (Claude-labelled broad decisions) plus more replay. | | | |
 | A19 | multi_eval v11c + 2B v11r on the new v12 dev splits (baselines) | H100 | ~0.15 | |
+
+## Google Cloud (project system-one-509903, $300 trial credit on billing account 01DE8E-AEC6DB-5712C5)
+| # | What | GPU | Est. $ | Note |
+|---|---|---|---|---|
+| G1 | L4 VM od-l4 (us-central1-a) setup, parity vs Modal (4B v11c dev 99.5% same answers), OOM fix and save-and-resume test (killed and resumed within GPU noise) | L4 | ~1 | |
+| G2 | TRAIN q35_4b_v13t = v11c + 1,200 steps (0.497 epoch) on train_v13t (38,660 rows: breadth 15,640 + Claude items 3,719 + clean replay 19,301; 4,330 soft labels), lr 4e-5, kd 0.5, micro_tokens 10240, then 13 dev splits | L4 | ~6.5 | about 19 s/step |
+| – | RESULT: dev-confirm +0.64 pp [-0.15, +1.46] vs v11c: gate FAILED (needs +1.3, LB > 0). Yes/no Brier improved (-0.0051 confirm, -0.0068 select); dev-select +0.73. In-family: breadth_dev 76.8 -> 80.5, proc12 69.8 -> 77.4, hard12 81.4 -> 84.5, planted12 80.3 -> 96.4. Losses: dev_nc -2.6 (confirm), hard_dev -1.8, dev -1.0. Keep v11c as teacher; q35_4b_v13t saved as candidate (backups/modal_models/q35_4b_v13t). Next idea: blend v11c + v13t. | | | |
