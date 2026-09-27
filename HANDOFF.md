@@ -38,6 +38,16 @@ Plan of record: `PRISM_2B_MASTER_PLAN.md` (math, red-team corrections, go/no-go 
   - Mix builder: `build_train_4b_v12t.py`; gate script: `gate_dev.py CAND REF` (dev-confirm, group bootstrap).
 - **Billing: $24.65 after A19** (atmosphor). About $3.35 remains before the $28 stop.
 
+- **Google Cloud (project `atmosphor`, billing account 01DE8E-AEC6DB-5712C5, $300 trial credit upgraded to paid, expires ~26 Dec 2026):**
+  - The gcloud CLI is logged in as the user; the Compute API is enabled.
+  - GPU quota: GPUS_ALL_REGIONS = 0 until the user's request is approved (L4 = 1, T4 = 1, V100 = 1, A100 = 0 in us-central1).
+  - **Kill switch, live and tested:**
+    - budget `atmosphor-killswitch` ($285, custom period 27 Sep to 26 Dec 2026, credits EXCLUDED so gross usage counts);
+    - Pub/Sub topic `budget-killswitch` feeds the Cloud Run function `budget-killswitch` (code in `gcp/killswitch/`, runs as SA killswitch-sa);
+    - at $250 or more it deletes all VMs and unattached disks; at $285 or more it disables billing;
+    - verified with a dry run at $300 and a real soft kill at $260, which deleted a test e2-micro.
+  - Every GPU VM must use `--max-run-duration` with `--instance-termination-action=DELETE`.
+
 **Must-know before training again**
 1. **Legacy Qwen3-235B data.** About 9k of the 59.7k 2B-mix rows came from rounds v0.6-v0.8, which used Qwen3-235B: `lah_*` (1,518 items + golds), `meta_*` (1,500 planted messages) and about 5,960 v0.7-core rows with `compile_cards.py` definitions. The user's rule is now "no bigger teachers". Drop these rows from every new mix and replace them with Claude-written equivalents; disclose the lineage of v0.8-v0.11c and the 2B.
 2. **JevBench half B is not a clean test** (seen 4 times in earlier rounds). The clean final tests are OHS-3 (once) and, with the user's OK, an official JevBench leaderboard submission.
