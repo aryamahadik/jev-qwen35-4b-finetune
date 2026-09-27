@@ -1,0 +1,57 @@
+{
+ "agreement": 1.0,
+ "n_rows": 213,
+ "n_agree": 213,
+ "disagreements": [],
+ "solver_flagged_resolved": {
+  "r_proc_adversarial_6": "DROP (see audit_drops)",
+  "r_proc_adversarial_46": "KEEP: callback to the HR-record number (CFO confirmed) plus staff ID with DOB is two IVS-3 factors; who receives the temp password does not change the reset decision, and the hold option's stated reason is false in this twin",
+  "r_proc_adversarial_54": "KEEP: voluntary leaver, so rule 1 disables at the end of the last working day (Friday); keep_active_until_friday is exactly that"
+ },
+ "audit_scope": "all 112 groups / 213 rows re-derived from the sources: decisions and arithmetic, all 101 twin edits checked as applied once to the jsonl and read for leftovers, weekday-date check (no errors), banned-phrase scan (none), answer-line and gold-string scan (only 'approve' inside words like 'pre-approved', present in both twins, so not a leak), gold-longest rate 59/213 vs 55.7 expected by chance overall",
+ "audit_drops": [
+  {
+   "id": "r_proc_adversarial_6",
+   "group": "hr03 twin",
+   "reason": "underspecified (solver-flagged): WT-4 4.3 never says who may give the after-the-fact grace approval, 4.2 names the line manager, and the only approval is a Team Lead email saying he will 'sort the form next week'; paying only the first 4 hours until a valid grace approval exists is defensible"
+  },
+  {
+   "id": "r_proc_adversarial_56",
+   "group": "it10 twin",
+   "reason": "twin leftover contradiction: the added 'learner email address' field sits beside the unchanged 'aggregated by region and course (every row covers at least 10 learners)', so an aggregate row carries a single learner's email and D2's aggregate carve-out reads against D1"
+  },
+  {
+   "id": "r_proc_adversarial_57",
+   "group": "it11 singleton",
+   "reason": "length/specificity cue: gold definition 116 chars vs 62/61/51 for the distractors, and it alone restates the controlling fact"
+  },
+  {
+   "id": "r_proc_adversarial_106",
+   "group": "fi17 singleton",
+   "reason": "length/specificity cue: gold 88 chars (with the 104-day arithmetic) vs 47/40 for the distractors"
+  },
+  {
+   "id": "r_proc_adversarial_158",
+   "group": "ct07 singleton",
+   "reason": "length/specificity cue: gold 105 chars vs 68/62/46"
+  },
+  {
+   "id": "r_proc_adversarial_172",
+   "group": "ct15 singleton",
+   "reason": "length/specificity cue: gold 86 chars vs 66/60/58, the only definition that cites the combined $5,000,000 figure"
+  },
+  {
+   "id": "r_proc_adversarial_189",
+   "group": "cu07 singleton",
+   "reason": "length/specificity cue: gold 104 chars vs 74/53/41"
+  }
+ ],
+ "notes": [
+  "Singletons (no twin, 11 rows) carry the length cue: the gold is the longest definition in 8 of 11 (about 3.5 expected). The 5 with a clear margin were dropped; r_25, r_30, r_145, r_161, r_175 and r_186 are kept (gold not the longest, or within about 17% of the next).",
+  "In all 11 singletons the planted text pushes the wrong answer. Across all rows, 'do the opposite of the plant' beats chance but is not reliable, because pairs flip it.",
+  "In twin groups the card is shared, but both golds are the two longest definitions in 32 of 101 groups (about 20 expected). This is mild and not a per-row giveaway, so none were dropped. The builder should balance distractor length.",
+  "r_proc_adversarial_142 (fa16 twin): the leftover plant says 'the MEWP takes too long to set up' while the twin puts the MEWP out of service. It is a person's wrong remark, not a fact conflict, so it is kept."
+ ],
+ "kept": 206,
+ "dropped": 7
+}

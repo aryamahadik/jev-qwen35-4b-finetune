@@ -1,0 +1,547 @@
+{
+ "seed": 20261001,
+ "dev_frac": 0.1,
+ "near_dup_threshold": 0.8,
+ "family_link_threshold": 0.5,
+ "ngram": 12,
+ "refs": [
+  "/Users/aryamahadik/Documents/jev/opendecide-data/lean/data/train_v07.jsonl",
+  "/Users/aryamahadik/Documents/jev/opendecide-data/lean/data/eval_card.jsonl",
+  "/Users/aryamahadik/Documents/jev/opendecide-data/lean/data/eval_jagged.jsonl",
+  "/Users/aryamahadik/Documents/jev/opendecide-data/lean/data/train_2b_kd.jsonl",
+  "/Users/aryamahadik/Documents/jev/opendecide-data/lean/data/dev.jsonl",
+  "/Users/aryamahadik/Documents/jev/opendecide-data/lean/data/devzs.jsonl",
+  "/Users/aryamahadik/Documents/jev/opendecide-data/lean/data/devp_card.jsonl",
+  "/Users/aryamahadik/Documents/jev/opendecide-data/lean/data/pg_dev.jsonl",
+  "/Users/aryamahadik/Documents/jev/opendecide-data/lean/data/dev_nc.jsonl",
+  "/Users/aryamahadik/Documents/jev/opendecide-data/lean/data/taskbank_dev.jsonl",
+  "/Users/aryamahadik/Documents/jev/opendecide-data/lean/data/hard_dev.jsonl",
+  "/Users/aryamahadik/Documents/jev/opendecide-data/lean/data/dev_negwords.jsonl",
+  "/Users/aryamahadik/Documents/jev/opendecide-data/lean/data/dev_claims.jsonl",
+  "/Users/aryamahadik/Documents/jev/opendecide-data/lean/data/v11_parts/hard_train.jsonl",
+  "/Users/aryamahadik/Documents/jev/opendecide-data/lean/data/v11_parts/hard_dev.jsonl",
+  "/Users/aryamahadik/Documents/jev/opendecide-data/lean/data/v11_parts/std_train.jsonl",
+  "/Users/aryamahadik/Documents/jev/opendecide-data/lean/data/v11_parts/binj_train.jsonl"
+ ],
+ "totals": {
+  "input": 1572,
+  "kept": 1509,
+  "train": 1372,
+  "dev": 137,
+  "dropped": 63,
+  "relations_train": {},
+  "relations_dev": {},
+  "relation_errors": [],
+  "near_duplicates_over_threshold": [],
+  "ngram12_hits": {
+   "r_planted_a_433": [
+    "train_2b_kd.jsonl:meta:instructions",
+    "train_v07.jsonl:meta:instructions"
+   ],
+   "r_planted_a_670": [
+    "train_2b_kd.jsonl:meta:instructions",
+    "train_v07.jsonl:meta:instructions"
+   ],
+   "r_planted_a_531": [
+    "train_2b_kd.jsonl:meta:instructions",
+    "train_v07.jsonl:meta:instructions"
+   ],
+   "r_planted_a_280": [
+    "train_2b_kd.jsonl:meta:instructions",
+    "train_v07.jsonl:meta:instructions"
+   ],
+   "r_planted_a_360": [
+    "train_2b_kd.jsonl:meta:instructions",
+    "train_v07.jsonl:meta:instructions"
+   ],
+   "r_planted_a_11": [
+    "train_2b_kd.jsonl:meta:instructions",
+    "train_v07.jsonl:meta:instructions"
+   ],
+   "r_planted_a_432": [
+    "train_2b_kd.jsonl:meta:instructions",
+    "train_v07.jsonl:meta:instructions"
+   ],
+   "r_planted_a_458": [
+    "train_2b_kd.jsonl:meta:instructions",
+    "train_v07.jsonl:meta:instructions"
+   ],
+   "r_planted_a_201": [
+    "train_2b_kd.jsonl:meta:instructions",
+    "train_v07.jsonl:meta:instructions"
+   ],
+   "r_planted_a_457": [
+    "train_2b_kd.jsonl:meta:instructions",
+    "train_v07.jsonl:meta:instructions"
+   ],
+   "r_planted_a_247": [
+    "train_2b_kd.jsonl:meta:instructions",
+    "train_v07.jsonl:meta:instructions"
+   ],
+   "r_planted_a_788": [
+    "train_2b_kd.jsonl:meta:instructions",
+    "train_v07.jsonl:meta:instructions"
+   ],
+   "r_planted_a_801": [
+    "train_2b_kd.jsonl:meta:instructions",
+    "train_v07.jsonl:meta:instructions"
+   ],
+   "r_planted_a_780": [
+    "train_2b_kd.jsonl:meta:instructions",
+    "train_v07.jsonl:meta:instructions"
+   ],
+   "r_planted_a_812": [
+    "train_2b_kd.jsonl:meta:instructions",
+    "train_v07.jsonl:meta:instructions"
+   ],
+   "r_planted_a_167": [
+    "train_2b_kd.jsonl:meta:instructions",
+    "train_v07.jsonl:meta:instructions"
+   ],
+   "r_planted_a_821": [
+    "train_2b_kd.jsonl:meta:instructions",
+    "train_v07.jsonl:meta:instructions"
+   ],
+   "r_planted_a_311": [
+    "train_2b_kd.jsonl:meta:instructions",
+    "train_v07.jsonl:meta:instructions"
+   ],
+   "r_planted_a_677": [
+    "train_2b_kd.jsonl:meta:instructions",
+    "train_v07.jsonl:meta:instructions"
+   ],
+   "r_planted_a_810": [
+    "train_2b_kd.jsonl:meta:instructions",
+    "train_v07.jsonl:meta:instructions"
+   ],
+   "r_planted_a_588": [
+    "train_2b_kd.jsonl:meta:instructions",
+    "train_v07.jsonl:meta:instructions"
+   ],
+   "r_planted_a_385": [
+    "train_2b_kd.jsonl:meta:instructions",
+    "train_v07.jsonl:meta:instructions"
+   ],
+   "r_planted_a_237": [
+    "train_2b_kd.jsonl:meta:instructions",
+    "train_v07.jsonl:meta:instructions"
+   ],
+   "r_planted_a_796": [
+    "train_2b_kd.jsonl:meta:instructions",
+    "train_v07.jsonl:meta:instructions"
+   ],
+   "r_planted_a_611": [
+    "train_2b_kd.jsonl:meta:instructions",
+    "train_v07.jsonl:meta:instructions"
+   ],
+   "r_planted_a_530": [
+    "train_2b_kd.jsonl:meta:instructions",
+    "train_v07.jsonl:meta:instructions"
+   ],
+   "r_planted_a_341": [
+    "train_2b_kd.jsonl:meta:instructions",
+    "train_v07.jsonl:meta:instructions"
+   ],
+   "r_planted_a_386": [
+    "train_2b_kd.jsonl:meta:instructions",
+    "train_v07.jsonl:meta:instructions"
+   ],
+   "r_planted_a_720": [
+    "train_2b_kd.jsonl:meta:instructions",
+    "train_v07.jsonl:meta:instructions"
+   ],
+   "r_planted_a_176": [
+    "train_2b_kd.jsonl:meta:instructions",
+    "train_v07.jsonl:meta:instructions"
+   ],
+   "r_planted_a_520": [
+    "train_2b_kd.jsonl:meta:instructions",
+    "train_v07.jsonl:meta:instructions"
+   ],
+   "r_planted_a_58": [
+    "train_2b_kd.jsonl:meta:instructions",
+    "train_v07.jsonl:meta:instructions"
+   ],
+   "r_planted_a_719": [
+    "train_2b_kd.jsonl:meta:instructions",
+    "train_v07.jsonl:meta:instructions"
+   ],
+   "r_planted_a_811": [
+    "train_2b_kd.jsonl:meta:instructions",
+    "train_v07.jsonl:meta:instructions"
+   ],
+   "r_planted_a_453": [
+    "train_2b_kd.jsonl:meta:instructions",
+    "train_v07.jsonl:meta:instructions"
+   ],
+   "r_planted_a_168": [
+    "train_2b_kd.jsonl:meta:instructions",
+    "train_v07.jsonl:meta:instructions"
+   ],
+   "r_planted_a_59": [
+    "train_2b_kd.jsonl:meta:instructions",
+    "train_v07.jsonl:meta:instructions"
+   ],
+   "r_planted_a_365": [
+    "train_2b_kd.jsonl:meta:instructions",
+    "train_v07.jsonl:meta:instructions"
+   ],
+   "r_planted_a_793": [
+    "train_2b_kd.jsonl:meta:instructions",
+    "train_v07.jsonl:meta:instructions"
+   ],
+   "r_planted_a_261": [
+    "train_2b_kd.jsonl:meta:instructions",
+    "train_v07.jsonl:meta:instructions"
+   ],
+   "r_planted_a_16": [
+    "train_2b_kd.jsonl:meta:instructions",
+    "train_v07.jsonl:meta:instructions"
+   ],
+   "r_planted_a_248": [
+    "train_2b_kd.jsonl:meta:instructions",
+    "train_v07.jsonl:meta:instructions"
+   ],
+   "r_planted_a_281": [
+    "train_2b_kd.jsonl:meta:instructions",
+    "train_v07.jsonl:meta:instructions"
+   ],
+   "r_planted_a_312": [
+    "train_2b_kd.jsonl:meta:instructions",
+    "train_v07.jsonl:meta:instructions"
+   ],
+   "r_planted_a_519": [
+    "train_2b_kd.jsonl:meta:instructions",
+    "train_v07.jsonl:meta:instructions"
+   ],
+   "r_planted_a_102": [
+    "train_2b_kd.jsonl:meta:instructions",
+    "train_v07.jsonl:meta:instructions"
+   ],
+   "r_planted_a_364": [
+    "train_2b_kd.jsonl:meta:instructions",
+    "train_v07.jsonl:meta:instructions"
+   ],
+   "r_planted_a_157": [
+    "train_2b_kd.jsonl:meta:instructions",
+    "train_v07.jsonl:meta:instructions"
+   ],
+   "r_planted_a_283": [
+    "train_2b_kd.jsonl:meta:instructions",
+    "train_v07.jsonl:meta:instructions"
+   ],
+   "r_planted_a_361": [
+    "train_2b_kd.jsonl:meta:instructions",
+    "train_v07.jsonl:meta:instructions"
+   ],
+   "r_planted_a_39": [
+    "train_2b_kd.jsonl:meta:instructions",
+    "train_v07.jsonl:meta:instructions"
+   ],
+   "r_planted_a_238": [
+    "train_2b_kd.jsonl:meta:instructions",
+    "train_v07.jsonl:meta:instructions"
+   ],
+   "r_planted_a_158": [
+    "train_2b_kd.jsonl:meta:instructions",
+    "train_v07.jsonl:meta:instructions"
+   ],
+   "r_planted_a_246": [
+    "train_2b_kd.jsonl:meta:instructions",
+    "train_v07.jsonl:meta:instructions"
+   ],
+   "r_planted_a_818": [
+    "train_2b_kd.jsonl:meta:instructions",
+    "train_v07.jsonl:meta:instructions"
+   ],
+   "r_planted_a_807": [
+    "train_2b_kd.jsonl:meta:instructions",
+    "train_v07.jsonl:meta:instructions"
+   ],
+   "r_planted_a_461": [
+    "hard_train.jsonl:hard_nli_a:state",
+    "train_2b_kd.jsonl:hard_nli_a:state"
+   ],
+   "r_planted_a_462": [
+    "hard_train.jsonl:hard_nli_a:state",
+    "train_2b_kd.jsonl:hard_nli_a:state"
+   ]
+  },
+  "max_train_dev_overlap": 0.278
+ },
+ "leak_review": [],
+ "domains": {
+  "planted_a": {
+   "n_items": 822,
+   "agreement_before_review": "822/822 (1.000)",
+   "n_agreed_after_review": 820,
+   "kept": 763,
+   "kept_train": 696,
+   "kept_dev": 67,
+   "dropped": {
+    "r_planted_a_102": [
+     "ngram12:train_2b_kd.jsonl:meta:instructions,train_v07.jsonl:meta:instructions"
+    ],
+    "r_planted_a_11": [
+     "ngram12:train_2b_kd.jsonl:meta:instructions,train_v07.jsonl:meta:instructions"
+    ],
+    "r_planted_a_157": [
+     "ngram12:train_2b_kd.jsonl:meta:instructions,train_v07.jsonl:meta:instructions"
+    ],
+    "r_planted_a_158": [
+     "ngram12:train_2b_kd.jsonl:meta:instructions,train_v07.jsonl:meta:instructions"
+    ],
+    "r_planted_a_16": [
+     "ngram12:train_2b_kd.jsonl:meta:instructions,train_v07.jsonl:meta:instructions"
+    ],
+    "r_planted_a_167": [
+     "ngram12:train_2b_kd.jsonl:meta:instructions,train_v07.jsonl:meta:instructions"
+    ],
+    "r_planted_a_168": [
+     "ngram12:train_2b_kd.jsonl:meta:instructions,train_v07.jsonl:meta:instructions"
+    ],
+    "r_planted_a_176": [
+     "ngram12:train_2b_kd.jsonl:meta:instructions,train_v07.jsonl:meta:instructions"
+    ],
+    "r_planted_a_201": [
+     "ngram12:train_2b_kd.jsonl:meta:instructions,train_v07.jsonl:meta:instructions"
+    ],
+    "r_planted_a_237": [
+     "ngram12:train_2b_kd.jsonl:meta:instructions,train_v07.jsonl:meta:instructions"
+    ],
+    "r_planted_a_238": [
+     "ngram12:train_2b_kd.jsonl:meta:instructions,train_v07.jsonl:meta:instructions"
+    ],
+    "r_planted_a_246": [
+     "ngram12:train_2b_kd.jsonl:meta:instructions,train_v07.jsonl:meta:instructions"
+    ],
+    "r_planted_a_247": [
+     "ngram12:train_2b_kd.jsonl:meta:instructions,train_v07.jsonl:meta:instructions"
+    ],
+    "r_planted_a_248": [
+     "ngram12:train_2b_kd.jsonl:meta:instructions,train_v07.jsonl:meta:instructions"
+    ],
+    "r_planted_a_261": [
+     "ngram12:train_2b_kd.jsonl:meta:instructions,train_v07.jsonl:meta:instructions"
+    ],
+    "r_planted_a_280": [
+     "ngram12:train_2b_kd.jsonl:meta:instructions,train_v07.jsonl:meta:instructions"
+    ],
+    "r_planted_a_281": [
+     "ngram12:train_2b_kd.jsonl:meta:instructions,train_v07.jsonl:meta:instructions"
+    ],
+    "r_planted_a_283": [
+     "ngram12:train_2b_kd.jsonl:meta:instructions,train_v07.jsonl:meta:instructions"
+    ],
+    "r_planted_a_311": [
+     "ngram12:train_2b_kd.jsonl:meta:instructions,train_v07.jsonl:meta:instructions"
+    ],
+    "r_planted_a_312": [
+     "ngram12:train_2b_kd.jsonl:meta:instructions,train_v07.jsonl:meta:instructions"
+    ],
+    "r_planted_a_341": [
+     "ngram12:train_2b_kd.jsonl:meta:instructions,train_v07.jsonl:meta:instructions"
+    ],
+    "r_planted_a_360": [
+     "ngram12:train_2b_kd.jsonl:meta:instructions,train_v07.jsonl:meta:instructions"
+    ],
+    "r_planted_a_361": [
+     "ngram12:train_2b_kd.jsonl:meta:instructions,train_v07.jsonl:meta:instructions"
+    ],
+    "r_planted_a_364": [
+     "ngram12:train_2b_kd.jsonl:meta:instructions,train_v07.jsonl:meta:instructions"
+    ],
+    "r_planted_a_365": [
+     "ngram12:train_2b_kd.jsonl:meta:instructions,train_v07.jsonl:meta:instructions"
+    ],
+    "r_planted_a_385": [
+     "ngram12:train_2b_kd.jsonl:meta:instructions,train_v07.jsonl:meta:instructions"
+    ],
+    "r_planted_a_386": [
+     "ngram12:train_2b_kd.jsonl:meta:instructions,train_v07.jsonl:meta:instructions"
+    ],
+    "r_planted_a_39": [
+     "ngram12:train_2b_kd.jsonl:meta:instructions,train_v07.jsonl:meta:instructions"
+    ],
+    "r_planted_a_432": [
+     "ngram12:train_2b_kd.jsonl:meta:instructions,train_v07.jsonl:meta:instructions"
+    ],
+    "r_planted_a_433": [
+     "ngram12:train_2b_kd.jsonl:meta:instructions,train_v07.jsonl:meta:instructions"
+    ],
+    "r_planted_a_453": [
+     "ngram12:train_2b_kd.jsonl:meta:instructions,train_v07.jsonl:meta:instructions"
+    ],
+    "r_planted_a_457": [
+     "ngram12:train_2b_kd.jsonl:meta:instructions,train_v07.jsonl:meta:instructions"
+    ],
+    "r_planted_a_458": [
+     "ngram12:train_2b_kd.jsonl:meta:instructions,train_v07.jsonl:meta:instructions"
+    ],
+    "r_planted_a_461": [
+     "ngram12:hard_train.jsonl:hard_nli_a:state,train_2b_kd.jsonl:hard_nli_a:state"
+    ],
+    "r_planted_a_462": [
+     "ngram12:hard_train.jsonl:hard_nli_a:state,train_2b_kd.jsonl:hard_nli_a:state"
+    ],
+    "r_planted_a_519": [
+     "ngram12:train_2b_kd.jsonl:meta:instructions,train_v07.jsonl:meta:instructions"
+    ],
+    "r_planted_a_520": [
+     "ngram12:train_2b_kd.jsonl:meta:instructions,train_v07.jsonl:meta:instructions"
+    ],
+    "r_planted_a_530": [
+     "ngram12:train_2b_kd.jsonl:meta:instructions,train_v07.jsonl:meta:instructions"
+    ],
+    "r_planted_a_531": [
+     "ngram12:train_2b_kd.jsonl:meta:instructions,train_v07.jsonl:meta:instructions"
+    ],
+    "r_planted_a_58": [
+     "ngram12:train_2b_kd.jsonl:meta:instructions,train_v07.jsonl:meta:instructions"
+    ],
+    "r_planted_a_588": [
+     "ngram12:train_2b_kd.jsonl:meta:instructions,train_v07.jsonl:meta:instructions"
+    ],
+    "r_planted_a_59": [
+     "ngram12:train_2b_kd.jsonl:meta:instructions,train_v07.jsonl:meta:instructions"
+    ],
+    "r_planted_a_611": [
+     "not_agreed",
+     "ngram12:train_2b_kd.jsonl:meta:instructions,train_v07.jsonl:meta:instructions"
+    ],
+    "r_planted_a_670": [
+     "ngram12:train_2b_kd.jsonl:meta:instructions,train_v07.jsonl:meta:instructions"
+    ],
+    "r_planted_a_677": [
+     "ngram12:train_2b_kd.jsonl:meta:instructions,train_v07.jsonl:meta:instructions"
+    ],
+    "r_planted_a_719": [
+     "ngram12:train_2b_kd.jsonl:meta:instructions,train_v07.jsonl:meta:instructions"
+    ],
+    "r_planted_a_720": [
+     "ngram12:train_2b_kd.jsonl:meta:instructions,train_v07.jsonl:meta:instructions"
+    ],
+    "r_planted_a_780": [
+     "ngram12:train_2b_kd.jsonl:meta:instructions,train_v07.jsonl:meta:instructions"
+    ],
+    "r_planted_a_788": [
+     "ngram12:train_2b_kd.jsonl:meta:instructions,train_v07.jsonl:meta:instructions"
+    ],
+    "r_planted_a_793": [
+     "ngram12:train_2b_kd.jsonl:meta:instructions,train_v07.jsonl:meta:instructions"
+    ],
+    "r_planted_a_796": [
+     "ngram12:train_2b_kd.jsonl:meta:instructions,train_v07.jsonl:meta:instructions"
+    ],
+    "r_planted_a_801": [
+     "ngram12:train_2b_kd.jsonl:meta:instructions,train_v07.jsonl:meta:instructions"
+    ],
+    "r_planted_a_807": [
+     "ngram12:train_2b_kd.jsonl:meta:instructions,train_v07.jsonl:meta:instructions"
+    ],
+    "r_planted_a_810": [
+     "ngram12:train_2b_kd.jsonl:meta:instructions,train_v07.jsonl:meta:instructions"
+    ],
+    "r_planted_a_811": [
+     "ngram12:train_2b_kd.jsonl:meta:instructions,train_v07.jsonl:meta:instructions"
+    ],
+    "r_planted_a_812": [
+     "ngram12:train_2b_kd.jsonl:meta:instructions,train_v07.jsonl:meta:instructions"
+    ],
+    "r_planted_a_818": [
+     "ngram12:train_2b_kd.jsonl:meta:instructions,train_v07.jsonl:meta:instructions"
+    ],
+    "r_planted_a_821": [
+     "ngram12:train_2b_kd.jsonl:meta:instructions,train_v07.jsonl:meta:instructions"
+    ],
+    "r_planted_a_822": [
+     "not_agreed"
+    ]
+   },
+   "balance": {
+    "n": 763,
+    "choice": 0,
+    "noul": 763,
+    "yes_rate": 0.495,
+    "neg_items": 0,
+    "neg_yes": 0,
+    "none_gold_rate": 0.0,
+    "gold_position": {},
+    "options_min_max": [
+     0,
+     0
+    ],
+    "gold_is_unique_longest": "0 vs 0.0 expected",
+    "option_set_majority_guess": "no repeated option sets",
+    "difficulty": {
+     "1": 467,
+     "2": 268,
+     "3": 28
+    },
+    "twins": 291
+   },
+   "split_families": {
+    "groups": 472,
+    "families": 9,
+    "largest_family": 60,
+    "dev_groups": 43,
+    "dev_target": 47
+   },
+   "claims_in_state": {},
+   "max_cross_group_overlap": 0.75
+  },
+  "planted_b": {
+   "n_items": 750,
+   "agreement_before_review": "714/750 (0.952)",
+   "n_agreed_after_review": 748,
+   "kept": 746,
+   "kept_train": 676,
+   "kept_dev": 70,
+   "dropped": {
+    "r_planted_b_309": [
+     "twin_partner_dropped:r_planted_b_310"
+    ],
+    "r_planted_b_310": [
+     "not_agreed"
+    ],
+    "r_planted_b_427": [
+     "twin_partner_dropped:r_planted_b_428"
+    ],
+    "r_planted_b_428": [
+     "not_agreed"
+    ]
+   },
+   "balance": {
+    "n": 746,
+    "choice": 0,
+    "noul": 746,
+    "yes_rate": 0.5,
+    "neg_items": 0,
+    "neg_yes": 0,
+    "none_gold_rate": 0.0,
+    "gold_position": {},
+    "options_min_max": [
+     0,
+     0
+    ],
+    "gold_is_unique_longest": "0 vs 0.0 expected",
+    "option_set_majority_guess": "no repeated option sets",
+    "difficulty": {
+     "1": 510,
+     "2": 212,
+     "3": 24
+    },
+    "twins": 373
+   },
+   "split_families": {
+    "groups": 373,
+    "families": 10,
+    "largest_family": 48,
+    "dev_groups": 35,
+    "dev_target": 37
+   },
+   "claims_in_state": {},
+   "max_cross_group_overlap": 0.724
+  }
+ }
+}

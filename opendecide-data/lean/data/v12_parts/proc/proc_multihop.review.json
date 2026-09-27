@@ -1,0 +1,29 @@
+{
+ "agreement": 1.0,
+ "n_rows": 174,
+ "n_agree": 174,
+ "disagreements": [],
+ "audit_scope": "all 108 groups / 174 rows re-derived from sources (decision and arithmetic, twin edits applied and checked against jsonl); weekday-date checks; banned-phrase scan (none); gold-code-in-state scan (only r_proc_multihop_9 waitlist, rule text, not a leak); gold-longest-justification rate on untwinned rows 10/42 vs 13.4 expected by chance (no length leak); twins share an identical card, so length cannot leak",
+ "solver_flagged_resolved": {
+  "r_proc_multihop_82": "DROP (see audit_drops)",
+  "r_proc_multihop_71": "KEEP: at least 11 hours includes exactly 11",
+  "r_proc_multihop_140": "KEEP: 10 business days from Mon 2 Mar ends Mon 16 Mar and the 13 Mar email names no AC",
+  "r_proc_multihop_2": "KEEP: ticket raised 14 May inside the 13-16 May impairment; postponement is the 3.4 remedy"
+ },
+ "audit_drops": [
+  {
+   "id": "r_proc_multihop_82",
+   "group": "hr11",
+   "reason": "underspecified: rule 1 says employees with 5 years service \"may take\" a sabbatical but never says when service is measured; 4y10m on the 1 Nov 2024 application date vs over 5 years by the Feb 2025 sabbatical start, so approve is defensible (solver also flagged it)"
+  },
+  {
+   "id": "r_proc_multihop_154",
+   "group": "cv02",
+   "reason": "twin leftover contradiction: DOB edited to 15 Aug 2014 (season age 11 last season = U12) but the parent note still says he was in U11 last season, which R4 forbids"
+  }
+ ],
+ "notes": [
+  "quoted third-party notes (contractor, customer, driver, requester) point to a distractor in most rows; a set-level cue worth mixing with rows where the note is right (it happens in hr07 twin, hr11 twin and cv06)",
+  "some why comments disagree with the code in small ways (fa15 twin 13 vs 12 days, hr10 twin 1 Mar vs 27 Feb, fa17/cv10 describe twins that do not exist); the rows themselves are right"
+ ]
+}

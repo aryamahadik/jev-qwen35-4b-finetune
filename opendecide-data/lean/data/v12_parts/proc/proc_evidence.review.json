@@ -1,0 +1,82 @@
+{
+ "agreement": {
+  "agreed": 199,
+  "total": 200,
+  "rate": 0.995
+ },
+ "disagreements": [
+  {
+   "id": "r_proc_evidence_60",
+   "group": "cl03",
+   "gold": "decline_late_notice",
+   "solver": "accept_claim",
+   "decision": "DROP",
+   "reason": "6.2 counts only evidence lost 'because of the delay'. The plumber discarded the failed section on 3 June, the day after discovery and well inside the 30-day notice window, so timely notice would not have preserved it; a literal reading shows no prejudice and accept_claim is defensible. Twin r_proc_evidence_59 (accept_claim) is sound and kept as a singleton. Fix: move the discard date past day 30, e.g. 10 July."
+  }
+ ],
+ "audit_drops": [
+  {
+   "id": "r_proc_evidence_48",
+   "group": "hr24",
+   "reason": "Twin edit sets 'last act: 5 July 2025' but leaves a listed act in November 2025, which is later and within 12 months of the 1 Sep 2026 complaint; the true last act is then in time, so gold reject_out_of_time contradicts the state."
+  },
+  {
+   "id": "r_proc_evidence_20",
+   "group": "hr10",
+   "reason": "Twin changes the DLP recipient to the shared company mailbox pricing-desk@, but Ms Brandt's statement still says 'I sent it to myself to work on at home'; leftover from the base contradicts the edited record."
+  },
+  {
+   "id": "r_proc_evidence_22",
+   "group": "hr11",
+   "reason": "Twin says she moved to Stavely Cross under a different head chef in May 2026, but the intake header still lists her as 'commis chef, Harwick Grand kitchen' (Varga's kitchen) at complaint time; contradicting leftover on the decisive fact."
+  },
+  {
+   "id": "r_proc_evidence_163",
+   "group": "iv01",
+   "reason": "Singleton (no twin). Correct justification is the longest card line by >=20% and the most specific (rule cites, exact figures) while distractors are short generic lines; across the 16 singleton rows gold is the longest line in 12, so length alone finds the answer."
+  },
+  {
+   "id": "r_proc_evidence_168",
+   "group": "iv04",
+   "reason": "Singleton (no twin). Correct justification is the longest card line by >=20% and the most specific (rule cites, exact figures) while distractors are short generic lines; across the 16 singleton rows gold is the longest line in 12, so length alone finds the answer."
+  },
+  {
+   "id": "r_proc_evidence_169",
+   "group": "iv05",
+   "reason": "Singleton (no twin). Correct justification is the longest card line by >=20% and the most specific (rule cites, exact figures) while distractors are short generic lines; across the 16 singleton rows gold is the longest line in 12, so length alone finds the answer."
+  },
+  {
+   "id": "r_proc_evidence_183",
+   "group": "iv15",
+   "reason": "Singleton (no twin). Correct justification is the longest card line by >=20% and the most specific (rule cites, exact figures) while distractors are short generic lines; across the 16 singleton rows gold is the longest line in 12, so length alone finds the answer."
+  },
+  {
+   "id": "r_proc_evidence_186",
+   "group": "iv17",
+   "reason": "Singleton (no twin). Correct justification is the longest card line by >=20% and the most specific (rule cites, exact figures) while distractors are short generic lines; across the 16 singleton rows gold is the longest line in 12, so length alone finds the answer."
+  },
+  {
+   "id": "r_proc_evidence_189",
+   "group": "iv19",
+   "reason": "Singleton (no twin). Correct justification is the longest card line by >=20% and the most specific (rule cites, exact figures) while distractors are short generic lines; across the 16 singleton rows gold is the longest line in 12, so length alone finds the answer."
+  },
+  {
+   "id": "r_proc_evidence_192",
+   "group": "iv22",
+   "reason": "Singleton (no twin). Correct justification is the longest card line by >=20% and the most specific (rule cites, exact figures) while distractors are short generic lines; across the 16 singleton rows gold is the longest line in 12, so length alone finds the answer."
+  },
+  {
+   "id": "r_proc_evidence_193",
+   "group": "iv23",
+   "reason": "Singleton (no twin). Correct justification is the longest card line by >=20% and the most specific (rule cites, exact figures) while distractors are short generic lines; across the 16 singleton rows gold is the longest line in 12, so length alone finds the answer."
+  }
+ ],
+ "audit_scope": "All 199 agreed rows re-derived against the source rules (all 27 hr, 27 cl, 27 cs, 27 iv groups incl. every twin; all arithmetic and date windows recomputed, e.g. cl08 75/49 days, cl17 7/9 acts, hr08 windows, hr16 5.75/7.5, hr21 23/22, hr25 6x180, hr26 weekday runs 6+5, cs06 74h/26h, iv06 2.67%/1.5%, iv11 36 miles). No banned phrases; option names in the state come only from rule text; planted notes point to gold in some twins (cl03b, cl05b, cs22b), so they do not always match the gold answer.",
+ "notes": [
+  "Singleton rows kept (iv07, iv09, iv10, iv11, iv13, iv20, iv21, iv26) have gold lines within 15% of the longest distractor or not longest.",
+  "In twin pairs the card is shared, so a length cue cannot pick both golds; not treated as a leak.",
+  "Minor, kept: cl01 twin gives no loss date for the 'before the loss' valuation check (police ref /26 and Jan 2026 cert make it clear); cs02 twin uses 'she' for cardholder Ravi Shastri Kumaran; hr20 twin keeps 'phone being repaired' excuse against a Read status (reads as a disputed statement, R-5 decides)."
+ ],
+ "kept": 188,
+ "dropped": 12
+}

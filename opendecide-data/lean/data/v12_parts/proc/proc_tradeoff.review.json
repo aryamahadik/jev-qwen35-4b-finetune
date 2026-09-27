@@ -1,0 +1,30 @@
+{
+ "agreement": 1.0,
+ "n_rows": 174,
+ "n_agree": 174,
+ "disagreements": [],
+ "audit_drops": [
+  {
+   "id": "r_proc_tradeoff_10",
+   "group_id": "g:proc_tradeoff:vd06",
+   "reason": "Twin of vd06 (Dunmore $12,100, saving 15.97%). Gold buy_dunmore is the right decision, but its card line says Dunmore is \"more than 10% cheaper ... which meets the off-framework test in section 3.1\". That quotes the pre-Amendment-2 10% test, which is the same ignored-amendment mistake the distractors are meant to show. Since no card line gives a correct justification, this row is ambiguous. The solver flagged it too, at confidence 0.85."
+  }
+ ],
+ "audit_scope": "Re-derived every row (174/174: all 105 base items and all 69 twins) from the card and state, checking the arithmetic against the source # why comments. For each twin, also checked that the unchanged card line of the twin gold is still true in the edited state.",
+ "audit_checks": {
+  "banned_phrases": 0,
+  "answer_lines": 0,
+  "gold_code_leak": "5 rows have the gold code in the state, but every sibling option code appears there too (rk04 plan table; words like business/recycle/repair in the policy text), so this is benign",
+  "gold_longest_justification": "44/174 (25%), below chance of about 29%",
+  "gold_position": {
+   "0": 47,
+   "1": 54,
+   "2": 54,
+   "3": 18,
+   "4": 1
+  },
+  "twin_leftovers": "1 (r_proc_tradeoff_10)"
+ },
+ "kept": 173,
+ "dropped": 1
+}

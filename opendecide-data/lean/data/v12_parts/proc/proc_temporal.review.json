@@ -1,0 +1,54 @@
+{
+ "agreement": 0.9954,
+ "agreed_rows": 216,
+ "total_rows": 217,
+ "kept": 212,
+ "dropped": 5,
+ "disagreements": [
+  {
+   "id": "r_proc_temporal_106",
+   "gold": "place_standard_order",
+   "solver": "place_expedited_order",
+   "decision": "DROP",
+   "reason": "R4 says expedite only if stock on hand alone would run out before the lead time ends; 220 boxes at 40/day last 5.5 days < 6-day lead time, so the expedite condition is met and place_expedited_order is defensible (and 'only if' could also be read as a necessary-not-sufficient condition). The source why-comment ignores R4, and the expedite card gives the wrong reason ('on hand under 300'). Two readings defensible."
+  }
+ ],
+ "audit_drops": [
+  {
+   "id": "r_proc_temporal_52",
+   "reason": "Clause 3.4 credits the 500 deposit against the charge, so charge_340 (840 - 500) is a defensible reading of 'what cancellation charge applies'; gold charge_840 is the gross charge. Two readings are defensible, and the blind solver flagged it at 0.8. Twin r_proc_temporal_53 is kept: there the 50% band is unambiguous and no deposit-net 3,700 option exists."
+  },
+  {
+   "id": "r_proc_temporal_21",
+   "reason": "Singleton (dl11). The gold justification is the longest card line (118 chars vs 95/94/65) and the only one with the exact date reasoning, so a length or specificity cue gives the answer away. With no twin to balance it, the cue is unmitigated."
+  },
+  {
+   "id": "r_proc_temporal_22",
+   "reason": "Singleton (dl12). The gold card line is the longest (114 vs 93/78/77) and the most specific; the distractors are short one-clause appeals. Length cue leak."
+  },
+  {
+   "id": "r_proc_temporal_41",
+   "reason": "Singleton (dl22). The gold card line is much longer (152 vs 105/94/71) and the only one that walks through the full rule, so it is trivially the most specific."
+  }
+ ],
+ "audit_scope": "All 217 rows read (107 twin pairs + 3 singletons across dl/fe/th/ct/sh). Every decision and all arithmetic re-derived: business-day and calendar-day counts, weekday checks (scripted over all dated weekdays), time-zone and DST conversions, rounding, marginal tiers, prorations, rolling windows. No arithmetic or weekday errors in any kept row.",
+ "audit_checks": {
+  "banned_phrases": 0,
+  "answer_lines": 0,
+  "card_option_mismatch": 0,
+  "gold_longest_card_line": "94/217 (43%, chance 25%). Twins share card and options (107/107) and in 91/107 pairs exactly one of the two golds is the longest line, so length only gets 50% within a pair; all 3 singletons had gold = longest line (dropped).",
+  "gold_position": {
+   "0": 51,
+   "1": 53,
+   "2": 50,
+   "3": 63
+  },
+  "twins_share_card_and_options": "107/107, gold flips in every pair",
+  "twin_leftovers": "Notes and totals were updated in the edited twins (fe06, fe14, fe17, fe19, fe21, th05, th10, th18, th19, ct03, ct04, ct16, ct20, dl19, sh02). No contradicting leftovers that affect gold."
+ },
+ "notes": [
+  "Right-outcome/wrong-rule distractors appear in several twins (e.g. 63 rate_38_00_actual_only, 97 no_report_different_days, 144 renews_by_reply, 209 apac_night_by_utc, 94 fine_120_measured). The gold is unambiguous from the card rationale, consistent with how other proc parts were reviewed.",
+  "Minor realism issue, kept: ct22 states Vienna as UTC+2 in November (really UTC+1); the outcome is the same under either offset.",
+  "sh02 (176): the parenthetical 'last visit ends 22:40' is slightly confusing, but the rostered end of 23:00 governs, and 10:00 is the only compliant option offered."
+ ]
+}

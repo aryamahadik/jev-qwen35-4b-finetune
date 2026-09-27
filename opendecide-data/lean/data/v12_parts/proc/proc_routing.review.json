@@ -1,0 +1,53 @@
+{
+ "agreement": 1.0,
+ "n_rows": 181,
+ "n_agree": 181,
+ "disagreements": [],
+ "audit_drops": [
+  {
+   "id": "r_proc_routing_74",
+   "group_id": "g:proc_routing:rt_su01",
+   "gold": "route_billing",
+   "verdict": "DROP",
+   "reason": "su01 twin: plug 'stopped responding' plus refund request; R3 gives refunds to Billing and faults to Tech Tier 1 with no order between general queues, so Billing and Tier 1 are both defensible (solver flagged 0.75)."
+  },
+  {
+   "id": "r_proc_routing_80",
+   "group_id": "g:proc_routing:rt_su05",
+   "gold": "route_legal_liaison",
+   "verdict": "DROP",
+   "reason": "su05: Ombudsman mention (R2 Legal Liaison) vs damage during engineer visit (R6 local addendum Field Service). The rules set no precedence between R2 and R6 (unlike R7/R8, which state theirs); gold card asserts 'specialist queues come ahead of the local addendum', which the card never says. Underspecified."
+  },
+  {
+   "id": "r_proc_routing_105",
+   "group_id": "g:proc_routing:rt_hr07",
+   "gold": "record_only",
+   "verdict": "DROP",
+   "reason": "hr07 twin: gold record_only is wrong. AT2 counts absences in ANY rolling six months; 23 January, 14 April and 20 July all fall within 23 Jan-22 Jul (under six months), so an attendance review is triggered. The twin also leaves the contradicting header 'window starts 1 February' above a 23 January absence."
+  },
+  {
+   "id": "r_proc_routing_120",
+   "group_id": "g:proc_routing:rt_so04",
+   "gold": "route_soc_l2",
+   "verdict": "DROP",
+   "reason": "so04 base: an encoded PowerShell command 'blocked by application control' with no confirmed compromise can be read as Sev4 'blocked attempts' (the card's own close_with_note_sev4 line) or as Sev3 'suspicious activity'. Two readings are defensible (solver 0.70)."
+  },
+  {
+   "id": "r_proc_routing_121",
+   "group_id": "g:proc_routing:rt_so04",
+   "gold": "hold_for_morning_l1",
+   "verdict": "DROP",
+   "reason": "so04 twin: the same Sev3/Sev4 ambiguity as r_120 (hold_for_morning_l1 vs close_with_note_sev4)."
+  },
+  {
+   "id": "r_proc_routing_142",
+   "group_id": "g:proc_routing:rt_co04",
+   "gold": "route_information_governance_foi",
+   "verdict": "DROP",
+   "reason": "co04: 'Your tender process stinks' is an expression of dissatisfaction (IR3 complaint), and IR4 says that when a request is both, both processes run; a single-team answer is underspecified (FOI vs Stage 1)."
+  }
+ ],
+ "kept": 175,
+ "dropped": 6,
+ "audit_notes": "All 111 items / 181 rows re-derived from sources (it_desk, claims, logistics, procurement, support, secops, council, hr_cases), including all twin arithmetic (date windows, VAT, FX, thresholds, percentages, UTC offsets). No banned phrases. Gold card line is the longest in 53/181 rows (chance is about 27%), so it is not a length leak. Solver-flagged ids 1, 24, 40, 113, 147 and 153 were checked and KEPT: each is resolved by an explicit rule (degraded WMS is P2; 2.3 'only'; no discrimination alleged; B2 catch-all; FC1 covers all food complaints)."
+}

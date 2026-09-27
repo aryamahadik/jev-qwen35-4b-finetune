@@ -1,0 +1,32 @@
+{
+ "agreement": 1.0,
+ "n_rows": 166,
+ "n_agree": 166,
+ "disagreements": [],
+ "audit_drops": [
+  {
+   "id": "r_proc_rubric_8",
+   "key": "gr04 twin (Local List)",
+   "reason": "underspecified: gold 1 needs Amendment A's 15% rate, which applies only 'from 1 April 2026' under a '2026 edition' rulebook; no application or decision date is given (only a scaffold date '2 May' with no year). At 25% the answer flips. Solver flagged it (conf 0.85). Base row r_proc_rubric_7 (Register, 25% either way) kept."
+  },
+  {
+   "id": "r_proc_rubric_124",
+   "key": "in06 twin (repeat major NC)",
+   "reason": "two readings defensible: current major is missing seed purchase records for spring barley, previous one was for winter wheat; whether that 'repeats a major non-conformity' (SR-4.1b) depends on whether the crop matters. Solver flagged it (conf 0.85). Base row r_proc_rubric_123 (buffer zone vs seed records, clearly not a repeat) kept."
+  },
+  {
+   "id": "r_proc_rubric_156",
+   "key": "co10 twin (DOB 19 Oct 1986)",
+   "reason": "contradicting twin leftover: the edit changes date of birth so the runner is 39 on race day, but the result slip still states 'Placing among male finishers aged 40-44 on race day: 2nd' as fact and the 35-39 placing as hypothetical ('would be 4th'). The organiser's slip then contradicts the DOB rule; gold 0 is derivable but the row is internally inconsistent. Base row r_proc_rubric_155 kept."
+  }
+ ],
+ "audited_rows": "all 166 rows re-derived from sources (every base item and every twin, all arithmetic and date checks across grants, tenders, academic, hr, audits, contests)",
+ "audit_notes": [
+  "No banned phrases found in any state, card or instructions.",
+  "No answer-line or gold-word leaks; 'answer' hits are benign (e.g. 'Social value answer is thin').",
+  "Gold justification is the longest card line in 23/109 choice rows (below chance), so no length leak.",
+  "Choice gold position 0/1/2/3 = 39/36/22/12; position 3 exists only for 4-5 option items; mild skew, not a per-row flaw.",
+  "Planted claims (applicant notes, 'pre-approved' texts, self-assessment requests) are repeated across twins with opposite gold (e.g. co04, gr17, hr17, te14, ac16), so they do not always match gold.",
+  "Kept but noted: co04 twin (r_proc_rubric_148) leaves the entrant's 'camera clock was wrong, I took it in January' note beside a 3 January metadata date; odd but E2 makes metadata conclusive so gold 1 holds. te16 twin (r_proc_rubric_53) keeps 'data access 1' points while the supplier now hosts a customer list; the Medium floor decides regardless. gr15 (r_proc_rubric_25) has an amendment effective 1 Jan 2026 with no application date, but it starts at the start of the programme year (ref VSP-26) and no competing date exists, unlike gr04."
+ ]
+}

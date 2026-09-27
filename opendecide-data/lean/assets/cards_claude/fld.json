@@ -1,0 +1,5 @@
+{
+ "proved": "A valid chain of deductions starting only from the listed facts reaches the hypothesis itself.",
+ "disproved": "A valid chain of deductions starting only from the listed facts reaches the negation of the hypothesis.",
+ "unknown": "No valid deduction from the listed facts reaches either the hypothesis or its negation, so it stays undecided."
+}

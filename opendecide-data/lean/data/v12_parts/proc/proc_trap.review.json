@@ -1,0 +1,31 @@
+{
+ "agreement": 1.0,
+ "agreed_rows": 192,
+ "total_rows": 192,
+ "disagreements": [],
+ "audit_drops": [
+  {
+   "id": "r_proc_trap_189",
+   "reason": "Twin of 188 (bleach stain). Two options give the same $1,040 outcome: deduct_1040 ('carpet and wall worse than at check-in, so recover $900 + $140') is true on its premises in this twin and reaches the same deduction as gold deduct_carpet_stain_and_wall. Also underspecified: D2 says the carpet's age at check-in (~8 years, ~11 at check-out) matters, yet gold charges the full $900 replacement quote. The source why-comment says 'deduct carpet cleaning/repair', not replacement. The blind solver flagged it too."
+  }
+ ],
+ "audit_scope": "All 192 rows read (77 twin pairs + 38 singletons across it/sp/hf/op/cv/lg). Every decision and all arithmetic re-derived: dates and weekdays, business-day counts, uptime %, Wh, discount %, tolerance, time zones, diameters, 12-month windows. No arithmetic or weekday errors.",
+ "audit_checks": {
+  "banned_phrases": 0,
+  "answer_lines": 0,
+  "card_option_mismatch": 0,
+  "gold_longest_card_line": "60/192 (31%, chance ~26%); singletons 7/38",
+  "gold_position": {
+   "0": 47,
+   "1": 46,
+   "2": 56,
+   "3": 43
+  },
+  "twins_share_card_and_options": "77/77, gold flips in every pair"
+ },
+ "notes": [
+  "Right-outcome/wrong-rule distractors are common in twins (e.g. 2 keep_classifier_sev1, 8 page_due_to_critical, 17 apac_per_rota, 42 post_combined_17_minutes, 44, 54, 56, 67, 83, 106, 110, 126, 136, 150, 159, 163, 173). They are kept because each distractor's rationale is contradicted by an explicit rule or a false premise in that twin. Only 189's distractor is fully valid.",
+  "In singletons the pressure or stakeholder demand is always wrong (a trap by design). The twins counterbalance this.",
+  "Minor leftovers kept: 33 (Triage P1 alongside the note 'no data loss, crash after session ended'); 184 (escort assigned 23:28 after the SOC 23:26 note said 20-30 min wait). Neither contradicts the rule outcome."
+ ]
+}
