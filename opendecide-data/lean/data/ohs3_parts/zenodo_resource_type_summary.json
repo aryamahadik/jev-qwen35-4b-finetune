@@ -1,0 +1,285 @@
+{
+ "task": "zenodo_resource_type",
+ "rows": 144,
+ "qtype": "noul",
+ "form": "label-verification yes/no (Amendment 1)",
+ "track": "F",
+ "gold_balance": {
+  "yes(1)": 72,
+  "no(0)": 72
+ },
+ "gold_label_counts": {
+  "Book": 7,
+  "Book chapter": 8,
+  "Conference paper": 7,
+  "Conference proceeding": 7,
+  "Dataset": 7,
+  "Figure": 7,
+  "Journal": 7,
+  "Journal article": 7,
+  "Model": 8,
+  "Other": 7,
+  "Other (publication)": 7,
+  "Poster": 7,
+  "Preprint": 7,
+  "Presentation": 7,
+  "Publication": 7,
+  "Report": 7,
+  "Software": 8,
+  "Taxonomic treatment": 7,
+  "Thesis": 8,
+  "Working paper": 7
+ },
+ "asked_label_counts": {
+  "Book": 8,
+  "Book chapter": 7,
+  "Conference paper": 7,
+  "Conference proceeding": 7,
+  "Dataset": 7,
+  "Figure": 7,
+  "Journal": 7,
+  "Journal article": 7,
+  "Model": 7,
+  "Other": 8,
+  "Other (publication)": 8,
+  "Poster": 7,
+  "Preprint": 7,
+  "Presentation": 7,
+  "Publication": 7,
+  "Report": 7,
+  "Software": 7,
+  "Taxonomic treatment": 7,
+  "Thesis": 7,
+  "Working paper": 8
+ },
+ "asked_label_counts_no_rows": {
+  "Book": 4,
+  "Book chapter": 3,
+  "Conference paper": 4,
+  "Conference proceeding": 3,
+  "Dataset": 4,
+  "Figure": 3,
+  "Journal": 4,
+  "Journal article": 4,
+  "Model": 3,
+  "Other": 5,
+  "Other (publication)": 4,
+  "Poster": 3,
+  "Preprint": 4,
+  "Presentation": 4,
+  "Publication": 3,
+  "Report": 3,
+  "Software": 3,
+  "Taxonomic treatment": 4,
+  "Thesis": 3,
+  "Working paper": 4
+ },
+ "label_set": {
+  "Journal article": {
+   "resource_type_id": "publication-article",
+   "definition": "A written composition on a topic of interest, which forms a separate part of a journal.",
+   "datacite_general": "JournalArticle"
+  },
+  "Dataset": {
+   "resource_type_id": "dataset",
+   "definition": "Data encoded in a defined structure.",
+   "datacite_general": "Dataset"
+  },
+  "Software": {
+   "resource_type_id": "software",
+   "definition": "A computer program other than a computational notebook, in either source code (text) or compiled form. Use this type for general software components supporting scholarly research. Use the “ComputationalNotebook” value for virtual notebooks.",
+   "datacite_general": "Software"
+  },
+  "Publication": {
+   "resource_type_id": "publication",
+   "definition": "A resource consisting primarily of words for reading that is not covered by any other textual resource type in this list. (DataCite resourceTypeGeneral Text)",
+   "datacite_general": "Text"
+  },
+  "Preprint": {
+   "resource_type_id": "publication-preprint",
+   "definition": "A version of a scholarly or scientific paper that precedes formal peer review and publication in a peer-reviewed scholarly or scientific journal.",
+   "datacite_general": "Preprint"
+  },
+  "Conference paper": {
+   "resource_type_id": "publication-conferencepaper",
+   "definition": "Article that is written with the goal of being accepted to a conference.",
+   "datacite_general": "ConferencePaper"
+  },
+  "Presentation": {
+   "resource_type_id": "presentation",
+   "definition": "A set of slides containing text, tables or figures, designed to communicate ideas or research results, for viewing by an audience at a conference, symposium, seminar, lecture, workshop or other event.",
+   "datacite_general": "Presentation"
+  },
+  "Report": {
+   "resource_type_id": "publication-report",
+   "definition": "A document that presents information in an organized format for a specific audience and purpose.",
+   "datacite_general": "Report"
+  },
+  "Book": {
+   "resource_type_id": "publication-book",
+   "definition": "A medium for recording information in the form of writing or images, typically composed of many pages bound together and protected by a cover.",
+   "datacite_general": "Book"
+  },
+  "Other (publication)": {
+   "resource_type_id": "publication-other",
+   "definition": "A publication (textual resource) that is not covered by any other publication subtype.",
+   "datacite_general": "author-written"
+  },
+  "Book chapter": {
+   "resource_type_id": "publication-section",
+   "definition": "One of the main divisions of a book.",
+   "datacite_general": "BookChapter"
+  },
+  "Taxonomic treatment": {
+   "resource_type_id": "publication-taxonomictreatment",
+   "definition": "A resource consisting primarily of words for reading that is not covered by any other textual resource type in this list. (DataCite resourceTypeGeneral Text; resourceType \"Taxonomic treatment\")",
+   "datacite_general": "Text"
+  },
+  "Figure": {
+   "resource_type_id": "image-figure",
+   "definition": "A visual representation other than text. (DataCite resourceTypeGeneral Image; resourceType \"Figure\")",
+   "datacite_general": "Image"
+  },
+  "Journal": {
+   "resource_type_id": "publication-journal",
+   "definition": "A scholarly publication consisting of articles that is published regularly throughout the year.",
+   "datacite_general": "Journal"
+  },
+  "Other": {
+   "resource_type_id": "other",
+   "definition": "A resource that is not covered by any other resource type in the vocabulary.",
+   "datacite_general": "author-written"
+  },
+  "Poster": {
+   "resource_type_id": "poster",
+   "definition": "A display poster, typically containing text with illustrative figures and/or tables, usually reporting research results or proposing hypotheses, submitted for acceptance to and/or presented at a conference, seminar, symposium, workshop or similar event.",
+   "datacite_general": "Poster"
+  },
+  "Conference proceeding": {
+   "resource_type_id": "publication-conferenceproceeding",
+   "definition": "Collection of academic papers published in the context of an academic conference.",
+   "datacite_general": "ConferenceProceeding"
+  },
+  "Thesis": {
+   "resource_type_id": "publication-dissertation",
+   "definition": "A written essay, treatise, or thesis, especially one written by a candidate for the degree of Doctor of Philosophy. (DataCite resourceTypeGeneral Dissertation)",
+   "datacite_general": "Dissertation"
+  },
+  "Model": {
+   "resource_type_id": "model",
+   "definition": "An abstract, conceptual, graphical, mathematical or visualization model that represents empirical objects, phenomena, or physical processes.",
+   "datacite_general": "Model"
+  },
+  "Working paper": {
+   "resource_type_id": "publication-workingpaper",
+   "definition": "A resource consisting primarily of words for reading that is not covered by any other textual resource type in this list. (DataCite resourceTypeGeneral Text; resourceType \"Working paper\")",
+   "datacite_general": "Text"
+  }
+ },
+ "created_range": [
+  "2026-06-02T18:27:16.597450+00:00",
+  "2026-09-26T18:12:10.934773+00:00"
+ ],
+ "publication_date_range": [
+  "2026-06-01",
+  "2026-09-26"
+ ],
+ "state_chars": {
+  "min": 70,
+  "max": 5985,
+  "mean": 1431
+ },
+ "licence": "CC0-1.0 (Zenodo record metadata: \"Metadata is licensed under CC0, except for email addresses\", https://about.zenodo.org/policies/)",
+ "record_content_licences_in_rows": {
+  "cc-by-4.0": 123,
+  "cc-zero": 7,
+  "notspecified": 5,
+  "cc-by-nc-4.0": 3,
+  "mit-license": 3,
+  "null": 2,
+  "cc-by-sa-4.0": 1
+ },
+ "source": {
+  "api": "https://zenodo.org/api/records",
+  "query": "created:[D+6h*k TO D+6h*(k+1)} AND publication_date:[2026-06-01 TO 2026-09-26], sort=oldest, size=25, page=1, four 6h slots per day, 2026-06-01..2026-09-26",
+  "snapshot_utc": "2026-09-26T23:51:18+00:00 .. 2026-09-27T00:08:31+00:00",
+  "pages": 472,
+  "manifest": "/Users/aryamahadik/Documents/jev/opendecide-data/lean/ohs3/cache/zenodo_resource_type/manifest.json",
+  "vocabulary": "https://zenodo.org/api/vocabularies/resourcetypes?size=100",
+  "definitions": "https://datacite-metadata-schema.readthedocs.io/en/4.7/appendices/appendix-1/resourceTypeGeneral/"
+ },
+ "labels_source": "official: Zenodo/InvenioRDM resource-type vocabulary titles (live API vocabulary); definitions from DataCite Metadata Schema 4.7 resourceTypeGeneral descriptions",
+ "author_written_definitions": {
+  "Other (publication)": "A publication (textual resource) that is not covered by any other publication subtype.",
+  "Other": "A resource that is not covered by any other resource type in the vocabulary."
+ },
+ "seed": 20261026,
+ "cleaning": {
+  "raw_unique_records": 11800,
+  "in_range_known_type": 11800,
+  "dropped": {
+   "empty_or_short_description": 1592,
+   "not_first_version_of_concept": 1902,
+   "duplicate_description": 113,
+   "duplicate_title": 28,
+   "state_length": 1
+  },
+  "clean_pool": 8164,
+  "clean_pool_label_freq": {
+   "Journal article": 2279,
+   "Dataset": 1748,
+   "Software": 778,
+   "Publication": 718,
+   "Preprint": 467,
+   "Conference paper": 372,
+   "Presentation": 149,
+   "Report": 137,
+   "Book": 122,
+   "Other (publication)": 114,
+   "Book chapter": 113,
+   "Taxonomic treatment": 112,
+   "Figure": 108,
+   "Journal": 101,
+   "Other": 98,
+   "Poster": 96,
+   "Conference proceeding": 94,
+   "Thesis": 66,
+   "Model": 60,
+   "Working paper": 58,
+   "Project deliverable": 50,
+   "Video/Audio": 40,
+   "Computational notebook": 37,
+   "Lesson": 37,
+   "Peer review": 36,
+   "Data paper": 30,
+   "Technical note": 27,
+   "Standard": 22,
+   "Image": 18,
+   "Software documentation": 11,
+   "Diagram": 11,
+   "Event": 10,
+   "Workflow": 10,
+   "Physical object": 8,
+   "Patent": 5,
+   "Other (image)": 4,
+   "Proposal": 4,
+   "Drawing": 4,
+   "Photo": 4,
+   "Project milestone": 3,
+   "Output management plan": 2,
+   "Annotation collection": 1
+  }
+ },
+ "notes": [
+  "Duplicate vocabulary title 'Other' is disambiguated by parent type, e.g. 'Other (publication)'.",
+  "Where DataCite 4.7 has a general type matching the Zenodo title (e.g. Poster, Presentation), its definition is used; otherwise the definition of Zenodo's mapped datacite_general, with the mapping noted in the card.",
+  "Wrong asked labels are never a parent/child of the gold in the vocabulary (e.g. 'Publication' vs 'Journal article') nor another image subtype when the gold is an image type, since both could apply.",
+  "States: 'Title: ...\\n\\nDescription: ...', HTML stripped, source text only; trimmed at a sentence boundary with ' ...' only if above 6,000 chars.",
+  "Labels are uploader-chosen on Zenodo, so some gold labels are noisy (e.g. Preprint vs Journal article, a paper filed as Poster).",
+  "Only record metadata (title, description) is used; Zenodo licenses all metadata CC0. The record's own content licence (files) varies and is kept in meta.record_content_licence; a few are NC/ND, which does not apply to the metadata text.",
+  "Snapshot: unauthenticated API caps page size at 25, so the pool is 25 records x 4 six-hour created slots x 118 days (11,800 records), the oldest in each slot; not a uniform random sample of Zenodo.",
+  "Extra cleaning beyond the spec: exact/normalised duplicate descriptions dropped (section 8 dedup).",
+  "Track F: only first versions of a Zenodo concept (metadata.relations.version index 0) are kept. Later versions can carry text first published before 2026-06-01 (verification found 10 such rows in the first build, concepts dating back to 2024-2026-05), so they are dropped.",
+  "Instructions are one fixed template with the asked label filled in."
+ ]
+}

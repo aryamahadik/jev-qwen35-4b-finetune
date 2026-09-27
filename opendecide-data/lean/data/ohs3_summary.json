@@ -1,0 +1,1063 @@
+{
+ "benchmark": "OHS-3",
+ "split": "ohs3",
+ "parts_passed": [
+  "bias_in_bios_profession",
+  "causal_news_corpus",
+  "ct_study_type",
+  "few_nerd_fine",
+  "fewrel_relation",
+  "fr_agency",
+  "medrxiv_category",
+  "nvd_attack_vector",
+  "openfda_recall_class",
+  "rosetta_code_language",
+  "se_site",
+  "uk_wq_answering_body",
+  "zenodo_resource_type"
+ ],
+ "parts_not_passed": [
+  "sec_8k_item"
+ ],
+ "rows_in": 1856,
+ "rows": 2456,
+ "base_rows": 1852,
+ "variant_rows": 604,
+ "relations": {
+  "equiv": 304,
+  "complement": 300
+ },
+ "calls": 2456,
+ "base_calls": 1852,
+ "groups": 1806,
+ "tasks": 13,
+ "dropped_for_overlap": [
+  {
+   "group_id": "g:ohs3:ct_study_type:NCT07761559",
+   "reason": "shared 13-word run",
+   "first_file": "lean/data/train_2b.jsonl",
+   "rows": [
+    "r_724a489307c4"
+   ]
+  },
+  {
+   "group_id": "g:ohs3:ct_study_type:NCT07806760",
+   "reason": "shared 13-word run",
+   "first_file": "lean/data/train_2b.jsonl",
+   "rows": [
+    "r_a6a20807d60a"
+   ]
+  }
+ ],
+ "dropped_to_rebalance_yes_no": [
+  "r_7b32f8893d35",
+  "r_776684dcc88b"
+ ],
+ "by_part_base": {
+  "bias_in_bios_profession": 142,
+  "causal_news_corpus": 144,
+  "ct_study_type": 140,
+  "few_nerd_fine": 142,
+  "fewrel_relation": 142,
+  "fr_agency": 142,
+  "medrxiv_category": 142,
+  "nvd_attack_vector": 144,
+  "openfda_recall_class": 144,
+  "rosetta_code_language": 142,
+  "se_site": 142,
+  "uk_wq_answering_body": 142,
+  "zenodo_resource_type": 144
+ },
+ "by_track_base": {
+  "F": 1087,
+  "U": 765
+ },
+ "by_qtype_base": {
+  "choice": 1136,
+  "noul": 716
+ },
+ "yes_no_base_rows": 716,
+ "choice_base_rows_over_26_options": 284,
+ "halves": {
+  "base_rows": {
+   "A": 957,
+   "S": 895
+  },
+  "all_rows": {
+   "A": 1283,
+   "S": 1173
+  },
+  "groups": {
+   "A": 930,
+   "S": 876
+  }
+ },
+ "max_options": 40,
+ "state_chars": {
+  "min": 28,
+  "max": 5985
+ },
+ "consistency_layer": {
+  "seed": 20261003,
+  "picked_per_task": {
+   "bias_in_bios_profession": 38,
+   "causal_news_corpus": 60,
+   "ct_study_type": 60,
+   "few_nerd_fine": 38,
+   "fewrel_relation": 38,
+   "fr_agency": 38,
+   "medrxiv_category": 38,
+   "nvd_attack_vector": 60,
+   "openfda_recall_class": 60,
+   "rosetta_code_language": 38,
+   "se_site": 38,
+   "uk_wq_answering_body": 38,
+   "zenodo_resource_type": 60
+  },
+  "neg_kinds": {
+   "clause_neg": 136,
+   "template_neg": 164
+  },
+  "neg_templates": {
+   "C0": 136,
+   "T1": 25,
+   "T2": 22,
+   "T3": 28,
+   "T4": 27,
+   "T5": 32,
+   "T6": 30
+  },
+  "perm_kinds": {
+   "reverse": 149,
+   "rotate": 155
+  },
+  "neg_frames": {
+   "T1": "Would it be an error to maintain that {p}?",
+   "T2": "Is it incorrect to hold that {p}?",
+   "T3": "Should one reject the suggestion that {p}?",
+   "T4": "Is it wrong to assert that {p}?",
+   "T5": "Would one be mistaken in believing that {p}?",
+   "T6": "Answer no if {p}, and yes otherwise."
+  },
+  "props": [
+   [
+    "Is this sentence causal\\?",
+    "this sentence is causal",
+    "Is this sentence not causal?"
+   ],
+   [
+    "Is this study interventional\\?",
+    "this study is interventional",
+    "Is this study not interventional?"
+   ],
+   [
+    "Does the CVSS v3\\.1 Attack Vector value in the card apply to this vulnerability\\?",
+    "the CVSS v3.1 Attack Vector value in the card applies to this vulnerability",
+    "Does the CVSS v3.1 Attack Vector value in the card not apply to this vulnerability?"
+   ],
+   [
+    "Is this FDA recall classified as Class I\\?",
+    "this FDA recall is classified as Class I",
+    "Is this FDA recall not classified as Class I?"
+   ],
+   [
+    "Does the resource type \"([^\"]+)\" apply to this Zenodo record\\?",
+    "the resource type \"{0}\" applies to this Zenodo record",
+    "Does the resource type \"{0}\" not apply to this Zenodo record?"
+   ]
+  ],
+  "novelty_check": {
+   "existing_strings": 21878,
+   "instruction_strings": 52003,
+   "k": 6,
+   "overlaps": 0,
+   "source_files": 118
+  },
+  "twin_call_rule": "each twin is its own call (<base call_id>_v); twins share their base row's group_id"
+ },
+ "decontamination": {
+  "files_scanned": 194,
+  "unique_texts_scanned": 420785,
+  "rule": "normalised exact state or shared 13-word run (whole state if under 13 words) with any string in data/**/*.jsonl minus held-out files (data/ohs*, ohs_parts, ohs2_parts, ohs3_parts), and ../data/**/*.jsonl",
+  "cross_group_13gram_pairs_inside_ohs3": [
+   [
+    "g:fr_agency:2026-10825",
+    "g:fr_agency:2026-11108",
+    1
+   ],
+   [
+    "g:fr_agency:2026-11108",
+    "g:fr_agency:2026-13506",
+    4
+   ],
+   [
+    "g:fr_agency:2026-11108",
+    "g:fr_agency:2026-14899",
+    3
+   ],
+   [
+    "g:fr_agency:2026-11204",
+    "g:fr_agency:2026-15669",
+    3
+   ],
+   [
+    "g:fr_agency:2026-11204",
+    "g:fr_agency:2026-16747",
+    3
+   ],
+   [
+    "g:fr_agency:2026-11204",
+    "g:fr_agency:2026-18554",
+    3
+   ],
+   [
+    "g:fr_agency:2026-11320",
+    "g:fr_agency:2026-16211",
+    20
+   ],
+   [
+    "g:fr_agency:2026-11467",
+    "g:fr_agency:2026-14508",
+    3
+   ],
+   [
+    "g:fr_agency:2026-11612",
+    "g:fr_agency:2026-14603",
+    7
+   ],
+   [
+    "g:fr_agency:2026-11619",
+    "g:fr_agency:2026-11660",
+    21
+   ],
+   [
+    "g:fr_agency:2026-11619",
+    "g:fr_agency:2026-12715",
+    21
+   ],
+   [
+    "g:fr_agency:2026-11619",
+    "g:fr_agency:2026-14569",
+    28
+   ],
+   [
+    "g:fr_agency:2026-11660",
+    "g:fr_agency:2026-12715",
+    25
+   ],
+   [
+    "g:fr_agency:2026-11660",
+    "g:fr_agency:2026-14569",
+    21
+   ],
+   [
+    "g:fr_agency:2026-11695",
+    "g:fr_agency:2026-14875",
+    9
+   ],
+   [
+    "g:fr_agency:2026-11695",
+    "g:fr_agency:2026-17471",
+    2
+   ],
+   [
+    "g:fr_agency:2026-11695",
+    "g:fr_agency:2026-18471",
+    2
+   ],
+   [
+    "g:fr_agency:2026-11887",
+    "g:fr_agency:2026-12804",
+    6
+   ],
+   [
+    "g:fr_agency:2026-11887",
+    "g:fr_agency:2026-14536",
+    11
+   ],
+   [
+    "g:fr_agency:2026-11894",
+    "g:fr_agency:2026-11912",
+    4
+   ],
+   [
+    "g:fr_agency:2026-11894",
+    "g:fr_agency:2026-12770",
+    4
+   ],
+   [
+    "g:fr_agency:2026-11912",
+    "g:fr_agency:2026-12770",
+    43
+   ],
+   [
+    "g:fr_agency:2026-12715",
+    "g:fr_agency:2026-14569",
+    21
+   ],
+   [
+    "g:fr_agency:2026-12804",
+    "g:fr_agency:2026-14536",
+    6
+   ],
+   [
+    "g:fr_agency:2026-13506",
+    "g:fr_agency:2026-14899",
+    16
+   ],
+   [
+    "g:fr_agency:2026-13857",
+    "g:fr_agency:2026-13858",
+    13
+   ],
+   [
+    "g:fr_agency:2026-14875",
+    "g:fr_agency:2026-17471",
+    2
+   ],
+   [
+    "g:fr_agency:2026-14875",
+    "g:fr_agency:2026-18471",
+    2
+   ],
+   [
+    "g:fr_agency:2026-15669",
+    "g:fr_agency:2026-16747",
+    5
+   ],
+   [
+    "g:fr_agency:2026-15669",
+    "g:fr_agency:2026-18554",
+    5
+   ],
+   [
+    "g:fr_agency:2026-15778",
+    "g:fr_agency:2026-16584",
+    2
+   ],
+   [
+    "g:fr_agency:2026-16048",
+    "g:fr_agency:2026-19338",
+    49
+   ],
+   [
+    "g:fr_agency:2026-16149",
+    "g:fr_agency:2026-18603",
+    2
+   ],
+   [
+    "g:fr_agency:2026-16450",
+    "g:fr_agency:2026-17444",
+    5
+   ],
+   [
+    "g:fr_agency:2026-16450",
+    "g:fr_agency:2026-18118",
+    2
+   ],
+   [
+    "g:fr_agency:2026-16747",
+    "g:fr_agency:2026-18554",
+    15
+   ],
+   [
+    "g:fr_agency:2026-17444",
+    "g:fr_agency:2026-18118",
+    2
+   ],
+   [
+    "g:fr_agency:2026-17471",
+    "g:fr_agency:2026-18471",
+    15
+   ],
+   [
+    "g:ohs3:bias_in_bios_profession:test:29775",
+    "g:ohs3:bias_in_bios_profession:test:62933",
+    1
+   ],
+   [
+    "g:ohs3:nvd_attack_vector:CVE-2026-13215",
+    "g:ohs3:nvd_attack_vector:CVE-2026-7007",
+    1
+   ],
+   [
+    "g:ohs3:nvd_attack_vector:CVE-2026-13808",
+    "g:ohs3:nvd_attack_vector:CVE-2026-14063",
+    7
+   ],
+   [
+    "g:ohs3:nvd_attack_vector:CVE-2026-20471",
+    "g:ohs3:nvd_attack_vector:CVE-2026-20485",
+    7
+   ],
+   [
+    "g:ohs3:nvd_attack_vector:CVE-2026-20471",
+    "g:ohs3:nvd_attack_vector:CVE-2026-28578",
+    1
+   ],
+   [
+    "g:ohs3:nvd_attack_vector:CVE-2026-43688",
+    "g:ohs3:nvd_attack_vector:CVE-2026-84533",
+    2
+   ],
+   [
+    "g:ohs3:nvd_attack_vector:CVE-2026-47906",
+    "g:ohs3:nvd_attack_vector:CVE-2026-47929",
+    3
+   ],
+   [
+    "g:ohs3:nvd_attack_vector:CVE-2026-47906",
+    "g:ohs3:nvd_attack_vector:CVE-2026-80159",
+    4
+   ],
+   [
+    "g:ohs3:nvd_attack_vector:CVE-2026-51651",
+    "g:ohs3:nvd_attack_vector:CVE-2026-51706",
+    1
+   ],
+   [
+    "g:ohs3:openfda_recall_class:device:99337",
+    "g:ohs3:openfda_recall_class:device:99339",
+    3
+   ],
+   [
+    "g:ohs3:openfda_recall_class:device:99379",
+    "g:ohs3:openfda_recall_class:device:99381",
+    39
+   ],
+   [
+    "g:ohs3:openfda_recall_class:drug:99024",
+    "g:ohs3:openfda_recall_class:drug:99408",
+    6
+   ],
+   [
+    "g:ohs3:openfda_recall_class:drug:99114",
+    "g:ohs3:openfda_recall_class:drug:99217",
+    1
+   ],
+   [
+    "g:ohs3:openfda_recall_class:drug:99375",
+    "g:ohs3:openfda_recall_class:drug:99767",
+    12
+   ],
+   [
+    "g:ohs3:openfda_recall_class:drug:99509",
+    "g:ohs3:openfda_recall_class:drug:99662",
+    5
+   ],
+   [
+    "g:ohs3:openfda_recall_class:food:98928",
+    "g:ohs3:openfda_recall_class:food:98973",
+    3
+   ],
+   [
+    "g:uk_wq_answering_body:1915082",
+    "g:uk_wq_answering_body:1918407",
+    1
+   ],
+   [
+    "g:uk_wq_answering_body:1915082",
+    "g:uk_wq_answering_body:1929054",
+    1
+   ],
+   [
+    "g:uk_wq_answering_body:1915082",
+    "g:uk_wq_answering_body:1929687",
+    1
+   ],
+   [
+    "g:uk_wq_answering_body:1918407",
+    "g:uk_wq_answering_body:1929054",
+    1
+   ],
+   [
+    "g:uk_wq_answering_body:1918407",
+    "g:uk_wq_answering_body:1929687",
+    1
+   ],
+   [
+    "g:uk_wq_answering_body:1929054",
+    "g:uk_wq_answering_body:1929687",
+    1
+   ],
+   [
+    "g:zenodo_resource_type:21067605",
+    "g:zenodo_resource_type:21067993",
+    6
+   ],
+   [
+    "g:zenodo_resource_type:21239285",
+    "g:zenodo_resource_type:21239295",
+    13
+   ]
+  ],
+  "merged_groups": {
+   "g:fr_agency:2026-10825": [
+    "g:fr_agency:2026-10825",
+    "g:fr_agency:2026-11108",
+    "g:fr_agency:2026-13506",
+    "g:fr_agency:2026-14899"
+   ],
+   "g:fr_agency:2026-11204": [
+    "g:fr_agency:2026-11204",
+    "g:fr_agency:2026-15669",
+    "g:fr_agency:2026-16747",
+    "g:fr_agency:2026-18554"
+   ],
+   "g:fr_agency:2026-11320": [
+    "g:fr_agency:2026-11320",
+    "g:fr_agency:2026-16211"
+   ],
+   "g:fr_agency:2026-11467": [
+    "g:fr_agency:2026-11467",
+    "g:fr_agency:2026-14508"
+   ],
+   "g:fr_agency:2026-11612": [
+    "g:fr_agency:2026-11612",
+    "g:fr_agency:2026-14603"
+   ],
+   "g:fr_agency:2026-11619": [
+    "g:fr_agency:2026-11619",
+    "g:fr_agency:2026-11660",
+    "g:fr_agency:2026-12715",
+    "g:fr_agency:2026-14569"
+   ],
+   "g:fr_agency:2026-11695": [
+    "g:fr_agency:2026-11695",
+    "g:fr_agency:2026-14875",
+    "g:fr_agency:2026-17471",
+    "g:fr_agency:2026-18471"
+   ],
+   "g:fr_agency:2026-11887": [
+    "g:fr_agency:2026-11887",
+    "g:fr_agency:2026-12804",
+    "g:fr_agency:2026-14536"
+   ],
+   "g:fr_agency:2026-11894": [
+    "g:fr_agency:2026-11894",
+    "g:fr_agency:2026-11912",
+    "g:fr_agency:2026-12770"
+   ],
+   "g:fr_agency:2026-13857": [
+    "g:fr_agency:2026-13857",
+    "g:fr_agency:2026-13858"
+   ],
+   "g:fr_agency:2026-15778": [
+    "g:fr_agency:2026-15778",
+    "g:fr_agency:2026-16584"
+   ],
+   "g:fr_agency:2026-16048": [
+    "g:fr_agency:2026-16048",
+    "g:fr_agency:2026-19338"
+   ],
+   "g:fr_agency:2026-16149": [
+    "g:fr_agency:2026-16149",
+    "g:fr_agency:2026-18603"
+   ],
+   "g:fr_agency:2026-16450": [
+    "g:fr_agency:2026-16450",
+    "g:fr_agency:2026-17444",
+    "g:fr_agency:2026-18118"
+   ],
+   "g:ohs3:bias_in_bios_profession:test:29775": [
+    "g:ohs3:bias_in_bios_profession:test:29775",
+    "g:ohs3:bias_in_bios_profession:test:62933"
+   ],
+   "g:ohs3:nvd_attack_vector:CVE-2026-13215": [
+    "g:ohs3:nvd_attack_vector:CVE-2026-13215",
+    "g:ohs3:nvd_attack_vector:CVE-2026-7007"
+   ],
+   "g:ohs3:nvd_attack_vector:CVE-2026-13808": [
+    "g:ohs3:nvd_attack_vector:CVE-2026-13808",
+    "g:ohs3:nvd_attack_vector:CVE-2026-14063"
+   ],
+   "g:ohs3:nvd_attack_vector:CVE-2026-20471": [
+    "g:ohs3:nvd_attack_vector:CVE-2026-20471",
+    "g:ohs3:nvd_attack_vector:CVE-2026-20485",
+    "g:ohs3:nvd_attack_vector:CVE-2026-28578"
+   ],
+   "g:ohs3:nvd_attack_vector:CVE-2026-43688": [
+    "g:ohs3:nvd_attack_vector:CVE-2026-43688",
+    "g:ohs3:nvd_attack_vector:CVE-2026-84533"
+   ],
+   "g:ohs3:nvd_attack_vector:CVE-2026-47906": [
+    "g:ohs3:nvd_attack_vector:CVE-2026-47906",
+    "g:ohs3:nvd_attack_vector:CVE-2026-47929",
+    "g:ohs3:nvd_attack_vector:CVE-2026-80159"
+   ],
+   "g:ohs3:nvd_attack_vector:CVE-2026-51651": [
+    "g:ohs3:nvd_attack_vector:CVE-2026-51651",
+    "g:ohs3:nvd_attack_vector:CVE-2026-51706"
+   ],
+   "g:ohs3:openfda_recall_class:device:99337": [
+    "g:ohs3:openfda_recall_class:device:99337",
+    "g:ohs3:openfda_recall_class:device:99339"
+   ],
+   "g:ohs3:openfda_recall_class:device:99379": [
+    "g:ohs3:openfda_recall_class:device:99379",
+    "g:ohs3:openfda_recall_class:device:99381"
+   ],
+   "g:ohs3:openfda_recall_class:drug:99024": [
+    "g:ohs3:openfda_recall_class:drug:99024",
+    "g:ohs3:openfda_recall_class:drug:99408"
+   ],
+   "g:ohs3:openfda_recall_class:drug:99114": [
+    "g:ohs3:openfda_recall_class:drug:99114",
+    "g:ohs3:openfda_recall_class:drug:99217"
+   ],
+   "g:ohs3:openfda_recall_class:drug:99375": [
+    "g:ohs3:openfda_recall_class:drug:99375",
+    "g:ohs3:openfda_recall_class:drug:99767"
+   ],
+   "g:ohs3:openfda_recall_class:drug:99509": [
+    "g:ohs3:openfda_recall_class:drug:99509",
+    "g:ohs3:openfda_recall_class:drug:99662"
+   ],
+   "g:ohs3:openfda_recall_class:food:98928": [
+    "g:ohs3:openfda_recall_class:food:98928",
+    "g:ohs3:openfda_recall_class:food:98973"
+   ],
+   "g:uk_wq_answering_body:1915082": [
+    "g:uk_wq_answering_body:1915082",
+    "g:uk_wq_answering_body:1918407",
+    "g:uk_wq_answering_body:1929054",
+    "g:uk_wq_answering_body:1929687"
+   ],
+   "g:zenodo_resource_type:21067605": [
+    "g:zenodo_resource_type:21067605",
+    "g:zenodo_resource_type:21067993"
+   ],
+   "g:zenodo_resource_type:21239285": [
+    "g:zenodo_resource_type:21239285",
+    "g:zenodo_resource_type:21239295"
+   ]
+  },
+  "merge_rule": "part groups sharing any 13-word run are merged into one group (union-find; group_id = smallest member; meta.part_group_id keeps the original)"
+ },
+ "per_task": {
+  "bias_in_bios_profession": {
+   "part": "bias_in_bios_profession",
+   "source": "bias_in_bios_profession",
+   "qtype": "choice",
+   "track": {
+    "U": 142
+   },
+   "n": 142,
+   "groups": 141,
+   "n_options": [
+    20
+   ],
+   "balance_n_classes": 20,
+   "max_class_share": 0.056,
+   "licence": "MIT (dataset card of LabHC/bias_in_bios at the pinned revision; original release https://github.com/microsoft/biosbias, MIT)",
+   "author_written_definitions": [
+    "Accountant",
+    "Architect",
+    "Attorney",
+    "Comedian",
+    "Composer",
+    "Dentist",
+    "Dietitian",
+    "Filmmaker",
+    "Journalist",
+    "Model",
+    "Nurse",
+    "Painter",
+    "Photographer",
+    "Physician",
+    "Poet",
+    "Professor",
+    "Psychologist",
+    "Software engineer",
+    "Surgeon",
+    "Teacher"
+   ],
+   "label_definitions_source": "author-written: one short neutral definition per label, written once on 2026-09-26 and frozen (O*NET-style paraphrase); no official definitions exist",
+   "rows_with_card": 142,
+   "variant_rows": 38,
+   "halves_rows": {
+    "A": 70,
+    "S": 72
+   }
+  },
+  "causal_news_corpus": {
+   "part": "causal_news_corpus",
+   "source": "causal_news_corpus",
+   "qtype": "noul",
+   "track": {
+    "U": 144
+   },
+   "n": 144,
+   "groups": 144,
+   "n_options": [
+    2
+   ],
+   "balance_n_classes": 2,
+   "max_class_share": 0.5,
+   "licence": "CC0-1.0 (repository LICENSE: Creative Commons CC0 1.0 Universal)",
+   "author_written_definitions": [],
+   "label_definitions_source": "official: CNC annotation manual 'Event Causality in Socio-Political News - Annotation Manual' (https://github.com/tanfiona/CausalNewsCorpus/blob/4796c7e89d9b346f8e1280dac441dacde2be6b86/documentation/Event_Causality_Manual_for_CASE_2022_Public.pdf), section 3.1.1 General Definition (PDTB-3 CONTINGENCY and its CAUSE / PURPOSE / CONDITION / NEGATIVE-CONDITION senses) and the +SPEECH-ACT/+BELIEF exclusion; quoted near-verbatim (the CONTINGENCY definition and the four sense definitions are verbatim; the 'Example connectives are X and Y' sentences are condensed into parentheses and the exclusion sentence is lightly shortened), with a short lead-in sentence paraphrasing the Subtask 1 description ('identifies if a given event sentence contains any cause-effect meaning').",
+   "rows_with_card": 144,
+   "variant_rows": 60,
+   "halves_rows": {
+    "A": 76,
+    "S": 68
+   }
+  },
+  "ct_study_type": {
+   "part": "ct_study_type",
+   "source": "ct_study_type",
+   "qtype": "noul",
+   "track": {
+    "F": 140
+   },
+   "n": 140,
+   "groups": 140,
+   "n_options": [
+    2
+   ],
+   "balance_n_classes": 2,
+   "max_class_share": 0.5,
+   "licence": "ClinicalTrials.gov data: NLM terms and conditions (https://clinicaltrials.gov/about-site/terms-conditions); freely usable with attribution to ClinicalTrials.gov / U.S. National Library of Medicine; the record may be changed by its sponsor, so the snapshot time is recorded.",
+   "author_written_definitions": [],
+   "label_definitions_source": "official: ClinicalTrials.gov protocol data element definitions, Study Type (https://clinicaltrials.gov/policy/protocol-definitions#StudyType)",
+   "rows_with_card": 140,
+   "variant_rows": 60,
+   "halves_rows": {
+    "A": 66,
+    "S": 74
+   }
+  },
+  "few_nerd_fine": {
+   "part": "few_nerd_fine",
+   "source": "few_nerd_fine",
+   "qtype": "choice",
+   "track": {
+    "U": 142
+   },
+   "n": 142,
+   "groups": 142,
+   "n_options": [
+    20
+   ],
+   "balance_n_classes": 20,
+   "max_class_share": 0.056,
+   "licence": "CC BY-SA 4.0 (Few-NERD; text derived from English Wikipedia)",
+   "author_written_definitions": [
+    "building-other",
+    "event-attack/battle/war/militaryconflict",
+    "event-sportsevent",
+    "location-GPE",
+    "location-bodiesofwater",
+    "location-other",
+    "location-road/railway/highway/transit",
+    "organization-company",
+    "organization-education",
+    "organization-government/governmentagency",
+    "organization-media/newspaper",
+    "organization-other",
+    "organization-sportsteam",
+    "other-biologything",
+    "person-actor",
+    "person-artist/author",
+    "person-athlete",
+    "person-other",
+    "person-politician",
+    "product-other"
+   ],
+   "label_definitions_source": "author-written (label names are the official Few-NERD fine-type names from the dataset card / paper); one neutral definition per label, written once and frozen",
+   "rows_with_card": 142,
+   "variant_rows": 38,
+   "halves_rows": {
+    "A": 72,
+    "S": 70
+   }
+  },
+  "fewrel_relation": {
+   "part": "fewrel_relation",
+   "source": "fewrel_relation",
+   "qtype": "choice",
+   "track": {
+    "U": 142
+   },
+   "n": 142,
+   "groups": 142,
+   "n_options": [
+    20
+   ],
+   "balance_n_classes": 20,
+   "max_class_share": 0.056,
+   "licence": "MIT (Copyright (c) 2018 THUNLP), github.com/thunlp/FewRel/blob/278a2315d2138810a379cd8d5718914dc56e2582/LICENSE",
+   "author_written_definitions": [],
+   "label_definitions_source": "official: Wikidata property label + description as shipped in FewRel data/pid2name.json (verbatim)",
+   "rows_with_card": 142,
+   "variant_rows": 38,
+   "halves_rows": {
+    "A": 67,
+    "S": 75
+   }
+  },
+  "fr_agency": {
+   "part": "fr_agency",
+   "source": "fr_agency",
+   "qtype": "choice",
+   "track": {
+    "F": 142
+   },
+   "n": 142,
+   "groups": 117,
+   "n_options": [
+    40
+   ],
+   "balance_n_classes": 40,
+   "max_class_share": 0.028,
+   "licence": "Public domain (US government work, 17 U.S.C. 105); Federal Register API v1",
+   "author_written_definitions": [],
+   "label_definitions_source": "official: 'description' field of each top-level agency from /api/v1/agencies (whitespace normalised only); no author-written definitions",
+   "rows_with_card": 142,
+   "variant_rows": 38,
+   "halves_rows": {
+    "A": 75,
+    "S": 67
+   }
+  },
+  "medrxiv_category": {
+   "part": "medrxiv_category",
+   "source": "medrxiv_category",
+   "qtype": "choice",
+   "track": {
+    "F": 142
+   },
+   "n": 142,
+   "groups": 142,
+   "n_options": [
+    20
+   ],
+   "balance_n_classes": 20,
+   "max_class_share": 0.056,
+   "licence": {
+    "cc_by": 127,
+    "cc_by_nd": 12,
+    "cc0": 3
+   },
+   "author_written_definitions": [
+    "Cardiovascular Medicine",
+    "Endocrinology",
+    "Epidemiology",
+    "Genetic and Genomic Medicine",
+    "Geriatric Medicine",
+    "HIV/AIDS",
+    "Health Economics",
+    "Health Informatics",
+    "Health Policy",
+    "Health Systems and Quality Improvement",
+    "Infectious Diseases (except HIV/AIDS)",
+    "Neurology",
+    "Nutrition",
+    "Obstetrics and Gynecology",
+    "Oncology",
+    "Pediatrics",
+    "Psychiatry and Clinical Psychology",
+    "Public and Global Health",
+    "Radiology and Imaging",
+    "Sexual and Reproductive Health"
+   ],
+   "label_definitions_source": "author-written: medRxiv publishes subject names only; one neutral definition per category written once and frozen in this script (DEFINITIONS).",
+   "rows_with_card": 142,
+   "variant_rows": 38,
+   "halves_rows": {
+    "A": 82,
+    "S": 60
+   }
+  },
+  "nvd_attack_vector": {
+   "part": "nvd_attack_vector",
+   "source": "nvd_attack_vector",
+   "qtype": "noul",
+   "track": {
+    "F": 144
+   },
+   "n": 144,
+   "groups": 136,
+   "n_options": [
+    2
+   ],
+   "balance_n_classes": 2,
+   "max_class_share": 0.5,
+   "licence": "NVD data: US government work, public domain (https://nvd.nist.gov/developers/terms-of-use); CVE descriptions: CVE Terms of Use, copyright The MITRE Corporation, free to use with attribution (https://www.cve.org/Legal/TermsOfUse). This product uses data from the NVD API but is not endorsed or certified by the NVD.",
+   "author_written_definitions": [],
+   "label_definitions_source": "Official: FIRST, Common Vulnerability Scoring System v3.1: Specification Document, Section 2.1.1 Attack Vector, Table 1 (https://www.first.org/cvss/v3.1/specification-document); verbatim, footnote marker after 'evil maid attack' removed.",
+   "rows_with_card": 144,
+   "variant_rows": 60,
+   "halves_rows": {
+    "A": 77,
+    "S": 67
+   }
+  },
+  "openfda_recall_class": {
+   "part": "openfda_recall_class",
+   "source": "openfda_recall_class",
+   "qtype": "noul",
+   "track": {
+    "F": 91,
+    "U": 53
+   },
+   "n": 144,
+   "groups": 137,
+   "n_options": [
+    2
+   ],
+   "balance_n_classes": 2,
+   "max_class_share": 0.5,
+   "licence": "CC0 1.0 (openFDA data, https://open.fda.gov/license/)",
+   "author_written_definitions": [],
+   "label_definitions_source": "Official: 21 CFR 7.3(m)(1) (eCFR, https://www.ecfr.gov/current/title-21/chapter-I/subchapter-A/part-7/subpart-A/section-7.3); same wording on fda.gov 'Recalls Background and Definitions' (https://www.fda.gov/safety/industry-guidance-recalls/recalls-background-and-definitions)",
+   "rows_with_card": 144,
+   "variant_rows": 60,
+   "halves_rows": {
+    "A": 86,
+    "S": 58
+   }
+  },
+  "rosetta_code_language": {
+   "part": "rosetta_code_language",
+   "source": "rosetta_code_language",
+   "qtype": "choice",
+   "track": {
+    "U": 142
+   },
+   "n": 142,
+   "groups": 142,
+   "n_options": [
+    20
+   ],
+   "balance_n_classes": 20,
+   "max_class_share": 0.056,
+   "licence": "GFDL-1.3 (GNU Free Documentation License 1.3; Rosetta Code content)",
+   "author_written_definitions": [
+    "C",
+    "C++",
+    "D",
+    "Go",
+    "Haskell",
+    "J",
+    "Java",
+    "Julia",
+    "Kotlin",
+    "Nim",
+    "Perl",
+    "Phix",
+    "Python",
+    "REXX",
+    "Racket",
+    "Raku",
+    "Ruby",
+    "Tcl",
+    "Wren",
+    "zkl"
+   ],
+   "label_definitions_source": "author-written: one neutral sentence per language, written once and frozen before sampling (loosely following the first sentence of each Rosetta Code language page; no syntax hints)",
+   "rows_with_card": 142,
+   "variant_rows": 38,
+   "halves_rows": {
+    "A": 73,
+    "S": 69
+   }
+  },
+  "se_site": {
+   "part": "se_site",
+   "source": "se_site",
+   "qtype": "choice",
+   "track": {
+    "F": 142
+   },
+   "n": 142,
+   "groups": 142,
+   "n_options": [
+    40
+   ],
+   "balance_n_classes": 40,
+   "max_class_share": 0.028,
+   "licence": "CC BY-SA (per post content_license; CC BY-SA 4.0: 142)",
+   "author_written_definitions": [],
+   "label_definitions_source": "official: site name and 'audience' string from /2.3/sites (no author-written definitions)",
+   "rows_with_card": 142,
+   "variant_rows": 38,
+   "halves_rows": {
+    "A": 60,
+    "S": 82
+   }
+  },
+  "uk_wq_answering_body": {
+   "part": "uk_wq_answering_body",
+   "source": "uk_wq_answering_body",
+   "qtype": "choice",
+   "track": {
+    "F": 142
+   },
+   "n": 142,
+   "groups": 139,
+   "n_options": [
+    20
+   ],
+   "balance_n_classes": 20,
+   "max_class_share": 0.056,
+   "licence": "Open Parliament Licence v3.0 (https://www.parliament.uk/site-information/copyright-parliament/open-parliament-licence/)",
+   "author_written_definitions": [],
+   "label_definitions_source": "per-label sources: see the part summary",
+   "rows_with_card": 142,
+   "variant_rows": 38,
+   "halves_rows": {
+    "A": 71,
+    "S": 71
+   }
+  },
+  "zenodo_resource_type": {
+   "part": "zenodo_resource_type",
+   "source": "zenodo_resource_type",
+   "qtype": "noul",
+   "track": {
+    "F": 144
+   },
+   "n": 144,
+   "groups": 142,
+   "n_options": [
+    2
+   ],
+   "balance_n_classes": 2,
+   "max_class_share": 0.5,
+   "licence": "CC0-1.0 (Zenodo record metadata: \"Metadata is licensed under CC0, except for email addresses\", https://about.zenodo.org/policies/)",
+   "author_written_definitions": [
+    "Other",
+    "Other (publication)"
+   ],
+   "label_definitions_source": "official: Zenodo/InvenioRDM resource-type vocabulary titles (live API vocabulary); definitions from DataCite Metadata Schema 4.7 resourceTypeGeneral descriptions",
+   "rows_with_card": 144,
+   "variant_rows": 60,
+   "halves_rows": {
+    "A": 82,
+    "S": 62
+   }
+  }
+ },
+ "part_files_sha256": {
+  "bias_in_bios_profession.jsonl": "a40d6e7023653c890dc14ceac175421b7a32dbbe72f10c8a6609e3ed221f96a7",
+  "causal_news_corpus.jsonl": "ab87865affe4d9916724b265199c30411579011ab8d3c450849ba0eed89f5fb3",
+  "ct_study_type.jsonl": "56b81c9cca9e1d7f994decfa94c138d93a7c7aa895ce25ae6e553d0aeb11cb8d",
+  "few_nerd_fine.jsonl": "6261e71c26d8d80ee6f72bf6ef62226f3acf8149f6a444f11faff6da919750d6",
+  "fewrel_relation.jsonl": "9f4e27d3d9687829a8593043d932ed3e94b2a75f5e2d2d8c98c545552156c403",
+  "fr_agency.jsonl": "0338325fabe1eace9e5afc1efacccf0a993a8814977a7baa14dde724aa193eb9",
+  "medrxiv_category.jsonl": "05f87939bc4099524b56d74cc89c05dbe59ce379351555a96baaa3ba33d50304",
+  "nvd_attack_vector.jsonl": "c1596c6bd67c86825257195d5a57105e73013b6dbf7bc394703fbdc4e1eeb05f",
+  "openfda_recall_class.jsonl": "902245ac5f69f60e5344f7aca54a1dfad528c7519ab1c0666da4da4a68669b6e",
+  "rosetta_code_language.jsonl": "e5d76de92641000a0ac0bd72ae69f701de408ee0c6d3013f51c5d9a59848e1d8",
+  "se_site.jsonl": "2a4e2991040d8ed9f06e6354506471edf7c31b3b5c8069de99394dc9cc953ad7",
+  "uk_wq_answering_body.jsonl": "beb0508b12ea1a7906618ca40dc5f20f7b0688a18b1f34cbc89f173e33cfefdd",
+  "zenodo_resource_type.jsonl": "1317fc4c8af0a48279c51f32f5201cac37b489a1070b7fd1d6ad937052c9c5bd"
+ },
+ "sha256": {
+  "ohs3.jsonl": "68cb27da139010a9d9b00bfedc32e3ba8f1b963bf68c6cca85fd5e491868fd66",
+  "ohs3_relations.jsonl": "c2e1dcee9ba40faea316140d423d5acf85644a6aa9af953ac5b0d95b3f5a04dc",
+  "ohs3_calls.jsonl": "ed6fb8af24c3ca51a044953d487959315c879c418c0a64bb12c61875f72c80b0"
+ }
+}

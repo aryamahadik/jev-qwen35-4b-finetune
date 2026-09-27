@@ -1,0 +1,142 @@
+[
+ {
+  "task": "se_site",
+  "source": "Stack Exchange API 2.3 (questions on the site's main pages, created 2026-06-01..2026-09-26), CC BY-SA 4.0 per post",
+  "access": "api.stackexchange.com/2.3/questions?site=<site>&fromdate=1780272000&todate=<snapshot>&filter=withbody (unauth, ~290 requests left today: cache everything); site list + audience + launch_date from /2.3/sites",
+  "qtype": "choice",
+  "n_items": 142,
+  "labels_source": "official: each site's 'audience' string from /2.3/sites",
+  "track": "F",
+  "builder_notes": "WIDE task, 40 options. Label universe: main sites (no meta.*) with >=40 questions created since 2026-06-01. Overlap groups count as one site, keeping the oldest launch_date: {superuser, askubuntu, unix}, {math, mathoverflow}, {stats, datascience, ai}, {stackoverflow, softwareengineering, codereview}, {english, ell}, {travel, expatriates}. Keep the 40 largest by question count. State: question title + body, HTML stripped. Do not include tags, site name, or links/URLs that name the site; redact the site name if the body states it. Keep only posts whose content_license is CC BY-SA (drop None). Stratified: 3-4 per site. Option label = site name. meta: question_id, site, link, content_license, creation_date."
+ },
+ {
+  "task": "fr_agency",
+  "source": "Federal Register API v1 documents published 2026-06-01..2026-09-26 (US government work, public domain)",
+  "access": "www.federalregister.gov/api/v1/documents.json?conditions[publication_date][gte]=2026-06-01&fields[]=document_number,title,abstract,agencies,type,publication_date,html_url&per_page=1000; agency metadata from /api/v1/agencies",
+  "qtype": "choice",
+  "n_items": 142,
+  "labels_source": "official: agency 'description' field from /api/v1/agencies",
+  "track": "F",
+  "builder_notes": "WIDE task, 40 options. Map every listed agency to its top-level parent via parent_id. Drop documents whose agencies map to more than one top-level parent, and documents with a null or short abstract. Keep the 40 most frequent top-level parents that have >=5 docs; if fewer than 40 have >=5, use all with >=5 (must be >=27). State: title + abstract. Redact the name, short_name, and slug-derived acronym of every agency in /api/v1/agencies (parents and sub-agencies), and 'this agency'-style self-names that contain them, with '[AGENCY]'. Log every redaction in meta.redactions. Stratified: 3-4 per label. meta: document_number, html_url, publication_date, original agencies list."
+ },
+ {
+  "task": "uk_wq_answering_body",
+  "source": "UK Parliament Written Questions API, questions tabled 2026-06-01..2026-09-26 (Open Parliament Licence v3.0)",
+  "access": "questions-statements-api.parliament.uk/api/writtenquestions/questions?tabledWhenFrom=2026-06-01&tabledWhenTo=2026-09-26&take=100&skip=N",
+  "qtype": "choice",
+  "n_items": 142,
+  "labels_source": "official: department 'what we do' descriptions from GOV.UK organisation pages (www.gov.uk/api/organisations); author-written only if a body has none (freeze and list)",
+  "track": "F",
+  "builder_notes": "Cap at the 20 most frequent answeringBodyName values (seeded tie-break random.Random(3)). State: questionText only. Strip the leading 'To ask the Secretary of State for X,' / 'To ask the Minister for X,' / 'To ask the Chancellor of the Exchequer,' / 'To ask the <office>,' clause. Also redact any department name or minister title that equals or contains the answering body name with '[DEPARTMENT]'. Keep 'To ask His Majesty's Government' Lords questions (no label cue). Dedupe near-identical multi-part questions by the same member. Stratified: 7-8 per body. meta: question id, uin, dateTabled, answeringBodyName, house."
+ },
+ {
+  "task": "sec_8k_item",
+  "source": "SEC EDGAR Form 8-K filings filed 2026-06-01..2026-09-26 (public domain)",
+  "access": "efts.sec.gov/LATEST/search-index?forms=8-K&dateRange=custom&startdt=2026-06-01&enddt=2026-09-26 (items field) + primary document from sec.gov/Archives; SEC requires a User-Agent with a contact address (ask the user which contact to use; <=10 req/s)",
+  "qtype": "choice",
+  "n_items": 142,
+  "labels_source": "official: SEC Form 8-K General Instructions, item titles and descriptions",
+  "track": "F",
+  "builder_notes": "Keep filings whose items list has exactly one substantive item (ignore 9.01 Financial Statements and Exhibits). Label = that item. Options: the items present with >=5 filings, capped at the 20 most frequent (and at least 3). State: primary 8-K document text after removing the cover page, every 'Item N.NN <title>' heading, item titles quoted anywhere, the signature block, and the exhibit index. Truncate to 6,000 chars at a sentence boundary. One filing per company (dedupe CIK). Stratified per item. meta: accession number, CIK, filing date, original items list, url."
+ },
+ {
+  "task": "medrxiv_category",
+  "source": "medRxiv details API, version-1 preprints posted 2026-06-01..2026-09-26",
+  "access": "api.medrxiv.org/details/medrxiv/2026-06-01/2026-09-26/<cursor>/json",
+  "qtype": "choice",
+  "n_items": 142,
+  "labels_source": "author-written: medRxiv publishes subject names only; one neutral definition per category, written once and frozen (list in summary)",
+  "track": "F",
+  "builder_notes": "Keep version==1 only, with DOI 10.1101/2026.* and date >= 2026-06-01. Licence filter: keep cc_by, cc0, cc_by_nd (verbatim, no redaction); drop cc_by_nc, cc_by_nc_nd, cc_no. Cap at the 20 most frequent categories among kept preprints (seeded tie-break). State: title + abstract, verbatim. Stratified: 7-8 per category. meta: doi, version, date, license, category."
+ },
+ {
+  "task": "ct_study_type",
+  "source": "ClinicalTrials.gov API v2, studies first posted 2026-06-01..2026-09-26 (NLM terms; attribution)",
+  "access": "clinicaltrials.gov/api/v2/studies?query.term=AREA[StudyFirstPostDate]RANGE[2026-06-01,2026-09-26]&fields=NCTId,BriefTitle,BriefSummary,StudyType,StudyFirstPostDate&pageSize=1000",
+  "qtype": "noul",
+  "n_items": 144,
+  "labels_source": "official: ClinicalTrials.gov data element definitions (Study Type: Interventional / Observational)",
+  "track": "F",
+  "builder_notes": "Natural yes/no. Asked label = 'Interventional' (card: official definition). Gold 1 = INTERVENTIONAL, 0 = OBSERVATIONAL; 72/72. Drop EXPANDED_ACCESS and missing. State: BriefTitle + BriefSummary. Redact the words interventional/observational (any case) and phrases like 'this observational study' / 'randomized controlled trial' naming the design type with '[STUDY]'. Log the redactions. meta: NCTId, StudyFirstPostDate, StudyType."
+ },
+ {
+  "task": "openfda_recall_class",
+  "source": "openFDA enforcement reports (food, drug, device), report_date 2026-06-01..2026-09-26 (CC0)",
+  "access": "api.fda.gov/{food,drug,device}/enforcement.json?search=report_date:[20260601+TO+20260926]&limit=1000&skip=N",
+  "qtype": "noul",
+  "n_items": 144,
+  "labels_source": "official: FDA recall classification definitions (21 CFR 7.3(m); fda.gov 'Recalls Background and Definitions')",
+  "track": "F",
+  "builder_notes": "Natural yes/no. Asked label = 'Class I' (card: official definition). Gold 1 = Class I, 0 = Class II or III; 72/72, with the 0 side split evenly between II and III where possible. Dedupe by event_id (one product row per recall event). Spread the sample evenly over food/drug/device. State: product_type + product_description + reason_for_recall. Drop any field containing the classification or 'Class I/II/III' (redact if it occurs in text). meta: recall_number, event_id, report_date, classification, product_type."
+ },
+ {
+  "task": "zenodo_resource_type",
+  "source": "Zenodo REST API records published 2026-06-01..2026-09-26 (metadata CC0)",
+  "access": "zenodo.org/api/records?q=publication_date:[2026-06-01 TO 2026-09-26]&sort=newest&size=100&page=N (and created >= 2026-06-01)",
+  "qtype": "noul",
+  "n_items": 144,
+  "labels_source": "official: Zenodo/InvenioRDM resource-type vocabulary, with DataCite resourceTypeGeneral definitions",
+  "track": "F",
+  "builder_notes": "Label-verification yes/no form (Amendment 1). Label set: resource_type.title values (publication subtypes kept as their own labels), capped at the 20 most frequent after cleaning. For each item, the asked label is the gold label (gold 1) or a seeded different label from the set (gold 0); 72/72, with asked labels spread evenly. Card: the asked label and its definition. Cleaning: drop records with an empty or <20-char description, duplicate titles (keep the earliest), and version duplicates (same conceptrecid). State: title + description, HTML stripped. meta: record id, conceptrecid, doi, publication_date, resource_type id."
+ },
+ {
+  "task": "nvd_attack_vector",
+  "source": "NVD CVE API 2.0, CVEs published 2026-06-01..2026-09-26 (NVD public domain; CVE descriptions under CVE Terms of Use, attribution)",
+  "access": "services.nvd.nist.gov/rest/json/cves/2.0?pubStartDate=2026-06-01T00:00:00.000&pubEndDate=2026-09-26T23:59:59.999&startIndex=N (5 req/30 s without key)",
+  "qtype": "noul",
+  "n_items": 144,
+  "labels_source": "official: FIRST CVSS v3.1 specification, Attack Vector metric definitions (Network, Adjacent, Local, Physical)",
+  "track": "F",
+  "builder_notes": "Label-verification yes/no form (Amendment 1), over the 4 labels. Label = attackVector of the NVD 'Primary' cvssMetricV31 entry (fall back to the only v3.1 entry if there is exactly one). Drop CVEs with no v3.1 score or with conflicting Primary/Secondary vectors. Asked label is the gold label (gold 1) or a seeded different one of the other 3 (gold 0); 72/72, with asked labels spread evenly over the 4 (18 each). State: English description only. Do not include the CVSS vector string or metrics. meta: cve id, published, attackVector, vectorString source."
+ },
+ {
+  "task": "few_nerd_fine",
+  "source": "Few-NERD (Ding et al. 2021), HF DFKI-SLT/few-nerd config supervised split test, rev 205f3e9c9f3577ea2561d43f2f62dc249ab92d5b (CC BY-SA 4.0)",
+  "access": "HF parquet: DFKI-SLT/few-nerd supervised/test at the pinned revision",
+  "qtype": "choice",
+  "n_items": 142,
+  "labels_source": "author-written: official fine-type names from the Few-NERD paper/card; one neutral definition per label, written once and frozen ('X-other' = an X entity not in the other X subtypes)",
+  "track": "U",
+  "builder_notes": "Span typing. Cap at the 20 most frequent fine types in the test split (seeded tie-break). Item = one sentence and one seeded entity span with a label in the capped set; at most 1 item per sentence. Sentence detokenised; span marked with [[ ]] and quoted in the instructions ('What type of entity is [[span]]?'). Stratified: 7-8 per type. meta: dataset id, revision, split, sentence id, span token offsets, fine and coarse tags."
+ },
+ {
+  "task": "fewrel_relation",
+  "source": "FewRel 1.0 (Han et al. 2018), official thunlp/FewRel GitHub data/train_wiki.json + data/val_wiki.json + pid2name.json (MIT)",
+  "access": "github.com/thunlp/FewRel raw data files at a pinned commit (record the sha); do not use the HF tasksource copy",
+  "qtype": "choice",
+  "n_items": 142,
+  "labels_source": "official: Wikidata property label and description from pid2name.json",
+  "track": "U",
+  "builder_notes": "All 80 relations have 700 instances, so pick 20 with a seeded shuffle (random.Random(3)) over the sorted P-ids. Option label = the Wikidata property name. State: detokenised sentence with head marked [[H: ...]] and tail marked [[T: ...]]; the question asks for the relation of head to tail. Stratified: 7-8 per relation. Dedupe identical sentences. meta: file, index, P-id, head/tail ids."
+ },
+ {
+  "task": "bias_in_bios_profession",
+  "source": "Bias in Bios, HF LabHC/bias_in_bios split test, rev 052f01de644dba841176e0449528b41f27d94a61 (MIT)",
+  "access": "HF parquet LabHC/bias_in_bios data/test-* at the pinned revision (fields hard_text, profession only)",
+  "qtype": "choice",
+  "n_items": 142,
+  "labels_source": "author-written: official profession names from the card; one neutral definition per label, written once and frozen (may paraphrase O*NET titles)",
+  "track": "U",
+  "builder_notes": "Cap at the 20 most frequent professions in test (seeded tie-break). Stratified: 7-8 per profession, so professor is not dominant. State: hard_text (the first sentence with the title is already removed). Do not load or store the gender column in rows or meta. Redact any remaining exact profession name that equals the label. meta: dataset id, revision, split, row index, profession id."
+ },
+ {
+  "task": "rosetta_code_language",
+  "source": "Rosetta Code snapshot, HF christopher/rosetta-code (train, only split), rev 11d8b38cbd90b0ae5bde304ae2d4ba5ace10af05 (GFDL 1.3)",
+  "access": "HF parquet christopher/rosetta-code data/train-* at the pinned revision",
+  "qtype": "choice",
+  "n_items": 142,
+  "labels_source": "author-written: one neutral definition per language, written once and frozen (may follow the first sentence of the Rosetta Code language page)",
+  "track": "U",
+  "builder_notes": "Cap at the 20 languages with the most samples (seeded tie-break). Code only: no task name and no task description. Remove comments and strings that name any of the 20 languages (or their file extensions/shebang lines), and drop samples that are still under 20 chars. At most 1 sample per (task, language); 20-6,000 chars. Stratified: 7-8 per language. meta: revision, row index, task_name, language, and a GFDL 1.3 notice (ship the licence text with the release)."
+ },
+ {
+  "task": "causal_news_corpus",
+  "source": "Causal News Corpus V2 (Tan et al. 2022), official GitHub tanfiona/CausalNewsCorpus data/V2 dev_subtask1.csv (CC0 1.0)",
+  "access": "raw.githubusercontent.com/tanfiona/CausalNewsCorpus/<pinned sha>/data/V2/dev_subtask1.csv (record the sha); NOT the HF thagen conversion",
+  "qtype": "noul",
+  "n_items": 144,
+  "labels_source": "official: CNC annotation guidelines, definition of a causal sentence (Tan et al. 2022, CASE@EMNLP)",
+  "track": "U",
+  "builder_notes": "Natural yes/no. Asked label = 'Causal' (card: official guideline definition). Gold 1 = label 1, gold 0 = label 0; 72/72 from dev (185/155 available). If short, top up from train_subtask1.csv. Dedupe identical sentences. State: sentence text. meta: file, sha, index, original label."
+ }
+]

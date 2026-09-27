@@ -1,0 +1,579 @@
+{
+ "task": "fr_agency",
+ "rows": 142,
+ "qtype": "choice",
+ "n_options": 40,
+ "track": "F",
+ "split": "ohs3",
+ "seed": 20261026,
+ "instructions": "Which federal department or independent agency issued this Federal Register document?",
+ "source": "Federal Register API v1, documents published 2026-06-01..2026-09-26",
+ "licence": "Public domain (US government work, 17 U.S.C. 105); Federal Register API v1",
+ "snapshot": {
+  "snapshot_utc": "2026-09-26T23:49:11.172701+00:00",
+  "agencies_url": "https://www.federalregister.gov/api/v1/agencies",
+  "documents_first_url": "https://www.federalregister.gov/api/v1/documents.json?conditions%5Bpublication_date%5D%5Bgte%5D=2026-06-01&conditions%5Bpublication_date%5D%5Blte%5D=2026-09-26&fields%5B%5D=document_number&fields%5B%5D=title&fields%5B%5D=abstract&fields%5B%5D=agencies&fields%5B%5D=type&fields%5B%5D=publication_date&fields%5B%5D=html_url&per_page=1000&order=oldest",
+  "api_count": 8623,
+  "n_docs": 8623,
+  "n_agencies": 473
+ },
+ "cache_files": {
+  "agencies.json": "fb4e942200be98ee2629cfe69659650c70c45869df95b1cfbf1022fcdbf025ec",
+  "documents.json": "563c4a5263ee3c01f066c58a419651bce0b09b8024e888a195c62add3b497796",
+  "snapshot_meta.json": "09c337993d23527249160874532684b040318d7095e43cb8df95fdb4104cda1b"
+ },
+ "publication_date_range_rows": [
+  "2026-06-01",
+  "2026-09-24"
+ ],
+ "label_definitions": "official: 'description' field of each top-level agency from /api/v1/agencies (whitespace normalised only); no author-written definitions",
+ "class_balance": {
+  "Civil Rights Commission": 4,
+  "Commerce Department": 4,
+  "Committee for Purchase From People Who Are Blind or Severely Disabled": 4,
+  "Commodity Futures Trading Commission": 4,
+  "Energy Department": 4,
+  "Federal Deposit Insurance Corporation": 4,
+  "Federal Reserve System": 4,
+  "Health and Human Services Department": 4,
+  "Homeland Security Department": 4,
+  "Justice Department": 4,
+  "Labor Department": 4,
+  "National Aeronautics and Space Administration": 4,
+  "National Archives and Records Administration": 4,
+  "National Science Foundation": 4,
+  "Nuclear Regulatory Commission": 4,
+  "Postal Regulatory Commission": 4,
+  "Postal Service": 4,
+  "Small Business Administration": 4,
+  "State Department": 4,
+  "Trade Representative, Office of United States": 4,
+  "Treasury Department": 4,
+  "Veterans Affairs Department": 4,
+  "Agriculture Department": 3,
+  "Consumer Product Safety Commission": 3,
+  "Corporation for National and Community Service": 3,
+  "Defense Department": 3,
+  "Education Department": 3,
+  "Environmental Protection Agency": 3,
+  "Federal Communications Commission": 3,
+  "Federal Trade Commission": 3,
+  "General Services Administration": 3,
+  "Housing and Urban Development Department": 3,
+  "Interior Department": 3,
+  "International Trade Commission": 3,
+  "National Credit Union Administration": 3,
+  "Personnel Management Office": 3,
+  "Securities and Exchange Commission": 3,
+  "Surface Transportation Board": 3,
+  "Susquehanna River Basin Commission": 3,
+  "Transportation Department": 3
+ },
+ "max_class_share": 0.0282,
+ "labels": [
+  {
+   "name": "Transportation Department",
+   "agency_id": 492,
+   "slug": "transportation-department",
+   "pool_docs": 790,
+   "after_dedupe": 682,
+   "rows": 3
+  },
+  {
+   "name": "Commerce Department",
+   "agency_id": 54,
+   "slug": "commerce-department",
+   "pool_docs": 722,
+   "after_dedupe": 680,
+   "rows": 4
+  },
+  {
+   "name": "Health and Human Services Department",
+   "agency_id": 221,
+   "slug": "health-and-human-services-department",
+   "pool_docs": 617,
+   "after_dedupe": 527,
+   "rows": 4
+  },
+  {
+   "name": "Interior Department",
+   "agency_id": 253,
+   "slug": "interior-department",
+   "pool_docs": 564,
+   "after_dedupe": 468,
+   "rows": 3
+  },
+  {
+   "name": "Homeland Security Department",
+   "agency_id": 227,
+   "slug": "homeland-security-department",
+   "pool_docs": 461,
+   "after_dedupe": 367,
+   "rows": 4
+  },
+  {
+   "name": "Environmental Protection Agency",
+   "agency_id": 145,
+   "slug": "environmental-protection-agency",
+   "pool_docs": 296,
+   "after_dedupe": 290,
+   "rows": 3
+  },
+  {
+   "name": "Treasury Department",
+   "agency_id": 497,
+   "slug": "treasury-department",
+   "pool_docs": 215,
+   "after_dedupe": 135,
+   "rows": 4
+  },
+  {
+   "name": "Agriculture Department",
+   "agency_id": 12,
+   "slug": "agriculture-department",
+   "pool_docs": 203,
+   "after_dedupe": 201,
+   "rows": 3
+  },
+  {
+   "name": "Labor Department",
+   "agency_id": 271,
+   "slug": "labor-department",
+   "pool_docs": 167,
+   "after_dedupe": 131,
+   "rows": 4
+  },
+  {
+   "name": "International Trade Commission",
+   "agency_id": 262,
+   "slug": "international-trade-commission",
+   "pool_docs": 165,
+   "after_dedupe": 162,
+   "rows": 3
+  },
+  {
+   "name": "Justice Department",
+   "agency_id": 268,
+   "slug": "justice-department",
+   "pool_docs": 164,
+   "after_dedupe": 130,
+   "rows": 4
+  },
+  {
+   "name": "Small Business Administration",
+   "agency_id": 468,
+   "slug": "small-business-administration",
+   "pool_docs": 133,
+   "after_dedupe": 120,
+   "rows": 4
+  },
+  {
+   "name": "Federal Communications Commission",
+   "agency_id": 161,
+   "slug": "federal-communications-commission",
+   "pool_docs": 133,
+   "after_dedupe": 81,
+   "rows": 3
+  },
+  {
+   "name": "Nuclear Regulatory Commission",
+   "agency_id": 383,
+   "slug": "nuclear-regulatory-commission",
+   "pool_docs": 128,
+   "after_dedupe": 118,
+   "rows": 4
+  },
+  {
+   "name": "Education Department",
+   "agency_id": 126,
+   "slug": "education-department",
+   "pool_docs": 124,
+   "after_dedupe": 51,
+   "rows": 3
+  },
+  {
+   "name": "Energy Department",
+   "agency_id": 136,
+   "slug": "energy-department",
+   "pool_docs": 102,
+   "after_dedupe": 98,
+   "rows": 4
+  },
+  {
+   "name": "State Department",
+   "agency_id": 476,
+   "slug": "state-department",
+   "pool_docs": 88,
+   "after_dedupe": 70,
+   "rows": 4
+  },
+  {
+   "name": "Postal Regulatory Commission",
+   "agency_id": 409,
+   "slug": "postal-regulatory-commission",
+   "pool_docs": 81,
+   "after_dedupe": 15,
+   "rows": 4
+  },
+  {
+   "name": "Veterans Affairs Department",
+   "agency_id": 520,
+   "slug": "veterans-affairs-department",
+   "pool_docs": 78,
+   "after_dedupe": 36,
+   "rows": 4
+  },
+  {
+   "name": "Housing and Urban Development Department",
+   "agency_id": 228,
+   "slug": "housing-and-urban-development-department",
+   "pool_docs": 76,
+   "after_dedupe": 45,
+   "rows": 3
+  },
+  {
+   "name": "Defense Department",
+   "agency_id": 103,
+   "slug": "defense-department",
+   "pool_docs": 69,
+   "after_dedupe": 51,
+   "rows": 3
+  },
+  {
+   "name": "Personnel Management Office",
+   "agency_id": 406,
+   "slug": "personnel-management-office",
+   "pool_docs": 58,
+   "after_dedupe": 58,
+   "rows": 3
+  },
+  {
+   "name": "Postal Service",
+   "agency_id": 410,
+   "slug": "postal-service",
+   "pool_docs": 41,
+   "after_dedupe": 20,
+   "rows": 4
+  },
+  {
+   "name": "Commodity Futures Trading Commission",
+   "agency_id": 77,
+   "slug": "commodity-futures-trading-commission",
+   "pool_docs": 36,
+   "after_dedupe": 34,
+   "rows": 4
+  },
+  {
+   "name": "Civil Rights Commission",
+   "agency_id": 52,
+   "slug": "civil-rights-commission",
+   "pool_docs": 34,
+   "after_dedupe": 32,
+   "rows": 4
+  },
+  {
+   "name": "Committee for Purchase From People Who Are Blind or Severely Disabled",
+   "agency_id": 74,
+   "slug": "committee-for-purchase-from-people-who-are-blind-or-severely-disabled",
+   "pool_docs": 32,
+   "after_dedupe": 19,
+   "rows": 4
+  },
+  {
+   "name": "National Aeronautics and Space Administration",
+   "agency_id": 301,
+   "slug": "national-aeronautics-and-space-administration",
+   "pool_docs": 27,
+   "after_dedupe": 12,
+   "rows": 4
+  },
+  {
+   "name": "Surface Transportation Board",
+   "agency_id": 481,
+   "slug": "surface-transportation-board",
+   "pool_docs": 27,
+   "after_dedupe": 21,
+   "rows": 3
+  },
+  {
+   "name": "Federal Trade Commission",
+   "agency_id": 192,
+   "slug": "federal-trade-commission",
+   "pool_docs": 25,
+   "after_dedupe": 24,
+   "rows": 3
+  },
+  {
+   "name": "Federal Deposit Insurance Corporation",
+   "agency_id": 164,
+   "slug": "federal-deposit-insurance-corporation",
+   "pool_docs": 25,
+   "after_dedupe": 23,
+   "rows": 4
+  },
+  {
+   "name": "National Archives and Records Administration",
+   "agency_id": 304,
+   "slug": "national-archives-and-records-administration",
+   "pool_docs": 24,
+   "after_dedupe": 20,
+   "rows": 4
+  },
+  {
+   "name": "Securities and Exchange Commission",
+   "agency_id": 466,
+   "slug": "securities-and-exchange-commission",
+   "pool_docs": 22,
+   "after_dedupe": 22,
+   "rows": 3
+  },
+  {
+   "name": "National Credit Union Administration",
+   "agency_id": 335,
+   "slug": "national-credit-union-administration",
+   "pool_docs": 19,
+   "after_dedupe": 17,
+   "rows": 3
+  },
+  {
+   "name": "General Services Administration",
+   "agency_id": 210,
+   "slug": "general-services-administration",
+   "pool_docs": 18,
+   "after_dedupe": 17,
+   "rows": 3
+  },
+  {
+   "name": "National Science Foundation",
+   "agency_id": 366,
+   "slug": "national-science-foundation",
+   "pool_docs": 18,
+   "after_dedupe": 14,
+   "rows": 4
+  },
+  {
+   "name": "Consumer Product Safety Commission",
+   "agency_id": 84,
+   "slug": "consumer-product-safety-commission",
+   "pool_docs": 16,
+   "after_dedupe": 16,
+   "rows": 3
+  },
+  {
+   "name": "Trade Representative, Office of United States",
+   "agency_id": 491,
+   "slug": "trade-representative-office-of-united-states",
+   "pool_docs": 16,
+   "after_dedupe": 16,
+   "rows": 4
+  },
+  {
+   "name": "Federal Reserve System",
+   "agency_id": 188,
+   "slug": "federal-reserve-system",
+   "pool_docs": 13,
+   "after_dedupe": 13,
+   "rows": 4
+  },
+  {
+   "name": "Susquehanna River Basin Commission",
+   "agency_id": 482,
+   "slug": "susquehanna-river-basin-commission",
+   "pool_docs": 13,
+   "after_dedupe": 8,
+   "rows": 3
+  },
+  {
+   "name": "Corporation for National and Community Service",
+   "agency_id": 91,
+   "slug": "corporation-for-national-and-community-service",
+   "pool_docs": 11,
+   "after_dedupe": 11,
+   "rows": 3
+  }
+ ],
+ "eligible_labels_ge5": 52,
+ "labels_tied_at_boundary_left_out": [
+  "Federal Housing Finance Agency",
+  "National Foundation on the Arts and the Humanities"
+ ],
+ "boundary_count": 11,
+ "eligible_without_description": [
+  "Civil Rights Cold Case Records Review Board"
+ ],
+ "filters": {
+  "pool_after_filters": 6017,
+  "drops": {
+   "null_or_short_abstract": 2355,
+   "agency_without_api_id": 212,
+   "multiple_top_level_parents": 39,
+   "duplicate_state_or_abstract": 996
+  },
+  "min_abstract_chars": 100
+ },
+ "state_chars": {
+  "min": 136,
+  "max": 1733
+ },
+ "card_chars": {
+  "min": 36350,
+  "max": 36350
+ },
+ "redactions": {
+  "rows_with_redaction": 124,
+  "total": 443,
+  "by_rule": {
+   "short_name": 195,
+   "raw_name": 64,
+   "generic_self_reference": 23,
+   "name": 85,
+   "defined_self_name": 58,
+   "name_natural_order": 2,
+   "own_acronym_variant": 7,
+   "alias": 7,
+   "secretary_of_department": 2
+  },
+  "by_matched_text": {
+   "OMB": 40,
+   "Commission": 40,
+   "Office of Management and Budget": 26,
+   "NASA": 17,
+   "Board": 16,
+   "Postal Service": 12,
+   "VA": 12,
+   "FDIC": 12,
+   "Commission on Civil Rights": 10,
+   "NSF": 10,
+   "NRC": 8,
+   "HUD": 8,
+   "AmeriCorps": 7,
+   "Department": 6,
+   "General Services Administration": 6,
+   "DOJ": 6,
+   "OCC": 5,
+   "FTC": 5,
+   "EPA": 5,
+   "USTR": 5,
+   "FDA": 5,
+   "National Science Foundation": 5,
+   "Department of Justice": 5,
+   "Coast Guard": 4,
+   "Nuclear Regulatory Commission": 4,
+   "Securities and Exchange Commission": 4,
+   "USPS": 4,
+   "Food and Drug Administration": 4,
+   "EIA": 4,
+   "Commodity Futures Trading Commission": 4,
+   "CFTC": 4,
+   "GSA": 4,
+   "National Aeronautics and Space Administration": 3,
+   "Environmental Protection Agency": 3,
+   "International Trade Commission": 3,
+   "NCUA Board": 3,
+   "Corporation for National and Community Service": 3,
+   "NARA": 3,
+   "Susquehanna River Basin Commission": 3,
+   "FAA": 3,
+   "Department of Commerce": 3,
+   "Board of Governors of the Federal Reserve System": 3,
+   "Department of Veterans Affairs": 3,
+   "FRA": 3,
+   "DOL": 3,
+   "United States Mint": 3,
+   "GSAR": 3,
+   "USITC": 2,
+   "HUDCAPS": 2,
+   "Consumer Product Safety Commission": 2,
+   "CPSC": 2,
+   "Federal Trade Commission Bureau": 2,
+   "Federal Trade Commission": 2,
+   "Office of Personnel Management": 2,
+   "OPM": 2,
+   "Commerce": 2,
+   "Federal Deposit Insurance Corporation": 2,
+   "National Credit Union Administration": 2,
+   "NCUA": 2,
+   "Department of State": 2,
+   "Federal Communications Commission": 2,
+   "FCC": 2,
+   "Department of Labor": 2,
+   "FEMA": 2,
+   "Commissioner": 2,
+   "DHS": 2,
+   "FERC": 2,
+   "Fish and Wildlife Service": 1,
+   "Service": 1,
+   "Office of the United States Trade Representative": 1,
+   "Department of the Housing and Urban Development": 1,
+   "Office of the Chief Financial Officer": 1,
+   "OCFO": 1,
+   "Surface Transportation Board": 1,
+   "STB": 1,
+   "66VA53": 1,
+   "Office of Surface Mining Reclamation and Enforcement": 1,
+   "OSM": 1,
+   "Office of Workers' Compensation Programs": 1,
+   "OWCP": 1,
+   "United States Trade Representative": 1,
+   "U.S. Trade Representative": 1,
+   "Mine Safety and Health Administration": 1,
+   "MSHA": 1,
+   "Department of the Army": 1,
+   "Secretary of Energy": 1,
+   "Financial Crimes Enforcement Network": 1,
+   "Office of the Comptroller of the Currency": 1,
+   "FinCEN": 1,
+   "National Park Service": 1,
+   "Department of Interior": 1,
+   "Secretary of Veterans Affairs": 1,
+   "SEC": 1,
+   "USN": 1,
+   "DoN": 1,
+   "USDA": 1,
+   "Forest Service": 1,
+   "Drug Enforcement Administration": 1,
+   "DEA": 1,
+   "OSHA": 1,
+   "Foundation": 1,
+   "PHMSA": 1,
+   "National Archives and Records Administration": 1,
+   "Department of Energy": 1,
+   "Department of the Treasury": 1,
+   "Treasury": 1,
+   "Education Department": 1,
+   "Commissioner of Food and Drugs": 1,
+   "Department of Homeland Security": 1,
+   "DOS": 1,
+   "Postal Regulatory Commission": 1,
+   "Foreign Agricultural Service": 1,
+   "FAS": 1,
+   "Department of the Air Force": 1,
+   "DAF": 1,
+   "Ferc": 1,
+   "Federal Energy Regulatory Commission": 1,
+   "Department of Housing and Urban Development": 1
+  }
+ },
+ "redaction_rules": [
+  "Lexicon from all /api/v1/agencies entries (parents and sub-agencies): FR 'name' (case-insensitive if multi-word, must start capitalised in text), its natural word order for inverted FR names ('X Department' -> 'Department of X' / 'Department of the X'; same for Office, Bureau, Service, etc.), short_name (split on '/'), slug-derived acronym (initials of slug words minus stop words, >=3 letters).",
+  "Printed agency names (raw_name) from the snapshot documents' own agency lists (entries with an API id, or id-less entries shaped like 'Department/Office of ...' or ending in Commission/Board/etc.).",
+  "Short names the text defines right after an agency name in parentheses, e.g. '(DOT)', '(the \"Commission\")', are redacted everywhere in that document ('defined_self_name').",
+  "Generic self-references (Commission, Board, Bureau, Service, Department, Agency, ...) standing alone, e.g. 'The Commission hereby', 'further Board order', are redacted to [AGENCY] when the noun is a word in the name of one of the document's own listed agencies or a capitalised word in that agency's official description ('Administration' only from names). Not redacted when part of a longer proper name (capitalised word before or after, or followed by 'of/on/for X'). A self-noun right after a full agency name ('... Administration Board') is folded into that [AGENCY]. Parenthetical 'operating as X' names count as defined self-names.",
+  "'Secretary of (the) X' where 'Department of X' is an agency name -> 'Secretary of [AGENCY]'.",
+  "Exception: an agency short_name/slug acronym is kept in a document whose text defines it, in parentheses, for a phrase that is not an agency name (e.g. 'Emergency Alert System (EAS)'); logged in meta.not_redacted_acronyms. 'USA'/'US' (Army Department short_name) are never redacted.",
+  "Exception: a 2-letter short_name preceded by ', ' (address postal code such as 'Washington, DC') is kept.",
+  "Verification fix: a frozen alias list (EXTRA_ALIASES) adds official self-names missing from the FR agency list: 'United States Trade Representative' / 'U.S. Trade Representative' / 'Trade Representative' (USTR), 'Board of Governors of the Federal Reserve System' / 'Federal Reserve Board' / 'Federal Reserve' (Fed), 'DoN' (Navy), 'Commissioner of Food and Drugs' (FDA); 'Board' is a generic self-noun for the Fed.",
+  "Verification fix: an acronym (short_name or slug acronym) of the document's own listed agencies inside a longer code token ('HUDCAPS', 'GSAR', '66VA53') or in another case before a form number ('Ferc-555') is replaced by [AGENCY] ('own_acronym_variant').",
+  "All matches replaced by '[AGENCY]'; every replacement logged in meta.redactions."
+ ],
+ "uncertain": [
+  "Interpretation choices (not fixed by the spec): 'short abstract' = under 100 characters; documents with any agency entry lacking an API id are dropped (212 docs, e.g. id-less 'Office of the Secretary'); the 40th-place tie at 11 docs is broken by random.Random(3) (selection_criteria s.5), leaving out the tied labels listed in labels_tied_at_boundary_left_out.",
+  "Redaction is lexicon-based (FR agency list plus the frozen alias list), so sub-unit names/acronyms that are not FR agencies stay visible, e.g. NMFS, NEFSC, VHA, BJS, NCSES, OIRA, 'Enforcement Bureau'; statute and program names (Federal Deposit Insurance Act, National Credit Union Share Insurance Fund) and topic words (Veterans, Postal, marine mammals) are content and are kept. 'a Commission Determination' (ITC title formula) is kept because the noun is followed by a capitalised word.",
+  "Generic self-reference redaction depends on the document's own agency names/descriptions (i.e. on the label); it removes the cue noun, but whether a noun was redacted is itself weakly label-dependent.",
+  "Some short_names used for redaction are also ordinary abbreviations; those defined in the same text for a non-agency phrase are kept (meta.not_redacted_acronyms: EAC, EAS, NSC, FAR in 4 rows); 'USA'/'US' (Army short_name) are never redacted.",
+  "Card is long (~36k chars): 40 official FR agency descriptions in full (whitespace normalised).",
+  "Many states are generic Paperwork Reduction Act / meeting notices whose agency is hard to infer after redaction; this is kept as sampled (no filtering on difficulty).",
+  "FR 'abstract' for 2026-09-24..26 documents may still be revised by the FR after the snapshot; the cached snapshot is the frozen version."
+ ],
+ "out": "/Users/aryamahadik/Documents/jev/opendecide-data/lean/data/ohs3_parts/fr_agency.jsonl"
+}

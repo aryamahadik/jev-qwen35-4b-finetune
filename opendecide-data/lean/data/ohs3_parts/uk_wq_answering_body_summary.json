@@ -1,0 +1,391 @@
+{
+ "task": "uk_wq_answering_body",
+ "rows": 142,
+ "qtype": "choice",
+ "role": "choice",
+ "n_options": 20,
+ "options": [
+  "Attorney General's Office",
+  "Cabinet Office",
+  "Department for Business, Innovation, Science and Trade",
+  "Department for Digital, Culture, Media and Sport",
+  "Department for Education",
+  "Department for Energy Security and Net Zero",
+  "Department for Environment, Food and Rural Affairs",
+  "Department for Transport",
+  "Department for Work and Pensions",
+  "Department of Health and Social Care",
+  "Foreign, Commonwealth and Development Office",
+  "Home Office",
+  "Ministry of Defence",
+  "Ministry of Housing, Communities and Local Government",
+  "Ministry of Justice",
+  "Northern Ireland Office",
+  "Scotland Office",
+  "Treasury",
+  "Wales Office",
+  "Women and Equalities"
+ ],
+ "track": "F",
+ "split": "ohs3",
+ "seed": 20261026,
+ "instructions": "Which government department answers this parliamentary written question?",
+ "class_balance": {
+  "Attorney General's Office": 8,
+  "Cabinet Office": 7,
+  "Department for Business, Innovation, Science and Trade": 8,
+  "Department for Digital, Culture, Media and Sport": 7,
+  "Department for Education": 7,
+  "Department for Energy Security and Net Zero": 7,
+  "Department for Environment, Food and Rural Affairs": 7,
+  "Department for Transport": 7,
+  "Department for Work and Pensions": 7,
+  "Department of Health and Social Care": 7,
+  "Foreign, Commonwealth and Development Office": 7,
+  "Home Office": 7,
+  "Ministry of Defence": 7,
+  "Ministry of Housing, Communities and Local Government": 7,
+  "Ministry of Justice": 7,
+  "Northern Ireland Office": 7,
+  "Scotland Office": 7,
+  "Treasury": 7,
+  "Wales Office": 7,
+  "Women and Equalities": 7
+ },
+ "max_class_share": 0.0563,
+ "house_counts": {
+  "Commons": 123,
+  "Lords": 19
+ },
+ "date_range_items": [
+  "2026-06-01",
+  "2026-09-17"
+ ],
+ "source_window_requested": [
+  "2026-06-01",
+  "2026-09-26"
+ ],
+ "source": "UK Parliament Written Questions API",
+ "access": "https://questions-statements-api.parliament.uk/api/writtenquestions/questions?tabledWhenFrom=2026-06-01&tabledWhenTo=2026-09-26&take=1000&skip=N",
+ "snapshot": {
+  "api": "https://questions-statements-api.parliament.uk/api/writtenquestions/questions",
+  "params": {
+   "tabledWhenFrom": "2026-06-01",
+   "tabledWhenTo": "2026-09-26",
+   "take": 1000
+  },
+  "snapshot_started_utc": "2026-09-26T23:49:44+00:00",
+  "snapshot_finished_utc": "2026-09-26T23:52:20+00:00",
+  "total_results_reported": 28500,
+  "unique_records": 28500,
+  "sha256_questions_jsonl_gz_payload": "fde2937a5f9dfd9c16b38338c9fe66616005b99b4ba87b2db4c3744c92ffc795",
+  "licence": "Open Parliament Licence v3.0 (https://www.parliament.uk/site-information/copyright-parliament/open-parliament-licence/)"
+ },
+ "full_text_fetched_for_picked": 142,
+ "picked_truncated_in_list_api": 48,
+ "snapshot_files": [
+  "ohs3/cache/uk_wq_answering_body/questions.jsonl.gz",
+  "ohs3/cache/uk_wq_answering_body/full_questions.json",
+  "ohs3/cache/uk_wq_answering_body/govuk_organisations.json"
+ ],
+ "licence": "Open Parliament Licence v3.0 (https://www.parliament.uk/site-information/copyright-parliament/open-parliament-licence/)",
+ "card_licence": "Open Government Licence v3.0 (GOV.UK content)",
+ "eligible_records_before_superseded_drop": 28500,
+ "dropped_superseded_bodies": {
+  "Department for Science, Innovation and Technology": 521,
+  "Department for Business and Trade": 677,
+  "Department for Culture, Media and Sport": 372
+ },
+ "merged_same_id_renames": {
+  "Attorney General's Office": {
+   "Attorney General": 49,
+   "Attorney General's Office": 48
+  }
+ },
+ "label_frequency_top20": {
+  "Department of Health and Social Care": 3768,
+  "Ministry of Defence": 2728,
+  "Ministry of Housing, Communities and Local Government": 2644,
+  "Department for Transport": 2255,
+  "Home Office": 2043,
+  "Department for Environment, Food and Rural Affairs": 1815,
+  "Treasury": 1718,
+  "Cabinet Office": 1713,
+  "Department for Education": 1677,
+  "Foreign, Commonwealth and Development Office": 1512,
+  "Ministry of Justice": 1168,
+  "Department for Work and Pensions": 1096,
+  "Department for Energy Security and Net Zero": 930,
+  "Department for Business, Innovation, Science and Trade": 692,
+  "Department for Digital, Culture, Media and Sport": 438,
+  "Women and Equalities": 195,
+  "Northern Ireland Office": 150,
+  "Attorney General's Office": 97,
+  "Wales Office": 63,
+  "Scotland Office": 57
+ },
+ "cutoff_frequency": 57,
+ "next_bodies_below_cutoff": {
+  "Speaker's Committee on the Electoral Commission": 53,
+  "House of Commons Commission": 30,
+  "Church Commissioners": 24
+ },
+ "pool_after_filters_dedupe": {
+  "Department of Health and Social Care": 3517,
+  "Ministry of Defence": 2161,
+  "Ministry of Housing, Communities and Local Government": 2376,
+  "Department for Transport": 2065,
+  "Home Office": 1829,
+  "Department for Environment, Food and Rural Affairs": 1648,
+  "Treasury": 1513,
+  "Cabinet Office": 1524,
+  "Department for Education": 1491,
+  "Foreign, Commonwealth and Development Office": 1303,
+  "Ministry of Justice": 951,
+  "Department for Work and Pensions": 950,
+  "Department for Energy Security and Net Zero": 804,
+  "Department for Business, Innovation, Science and Trade": 596,
+  "Department for Digital, Culture, Media and Sport": 387,
+  "Women and Equalities": 150,
+  "Northern Ireland Office": 111,
+  "Attorney General's Office": 62,
+  "Wales Office": 25,
+  "Scotland Office": 22
+ },
+ "lead_clause_unmatched_skipped": {
+  "Cabinet Office": 5,
+  "Home Office": 5,
+  "Ministry of Housing, Communities and Local Government": 5,
+  "Department for Work and Pensions": 1,
+  "Department for Business, Innovation, Science and Trade": 1,
+  "Foreign, Commonwealth and Development Office": 1,
+  "Treasury": 1
+ },
+ "round_robin_dropped": {
+  "Department for Environment, Food and Rural Affairs": 82,
+  "Department for Transport": 88,
+  "Department for Energy Security and Net Zero": 76,
+  "Women and Equalities": 25,
+  "Home Office": 118,
+  "Department of Health and Social Care": 101,
+  "Department for Work and Pensions": 71,
+  "Foreign, Commonwealth and Development Office": 81,
+  "Treasury": 98,
+  "Ministry of Defence": 127,
+  "Ministry of Justice": 73,
+  "Cabinet Office": 116,
+  "Department for Education": 90,
+  "Ministry of Housing, Communities and Local Government": 75,
+  "Wales Office": 35,
+  "Northern Ireland Office": 35,
+  "Scotland Office": 35,
+  "Attorney General's Office": 31,
+  "Department for Business, Innovation, Science and Trade": 51,
+  "Department for Digital, Culture, Media and Sport": 42
+ },
+ "label_definitions": {
+  "Department of Health and Social Care": {
+   "source": "official: GOV.UK organisation page 'what we do' (content API details.body)",
+   "govuk_title": "Department of Health and Social Care",
+   "slug": "department-of-health-and-social-care",
+   "url": "https://www.gov.uk/government/organisations/department-of-health-and-social-care",
+   "content_api": "https://www.gov.uk/api/content/government/organisations/department-of-health-and-social-care",
+   "fetched_utc": "2026-09-26T23:52:21+00:00",
+   "public_updated_at": "2023-08-03T08:33:01+01:00"
+  },
+  "Ministry of Defence": {
+   "source": "official: GOV.UK organisation page 'what we do' (content API details.body)",
+   "govuk_title": "Ministry of Defence",
+   "slug": "ministry-of-defence",
+   "url": "https://www.gov.uk/government/organisations/ministry-of-defence",
+   "content_api": "https://www.gov.uk/api/content/government/organisations/ministry-of-defence",
+   "fetched_utc": "2026-09-26T23:52:22+00:00",
+   "public_updated_at": "2025-09-10T14:29:24+01:00"
+  },
+  "Ministry of Housing, Communities and Local Government": {
+   "source": "official: GOV.UK organisation page 'what we do' (content API details.body)",
+   "govuk_title": "Ministry of Housing, Communities and Local Government",
+   "slug": "ministry-of-housing-communities-local-government",
+   "url": "https://www.gov.uk/government/organisations/ministry-of-housing-communities-local-government",
+   "content_api": "https://www.gov.uk/api/content/government/organisations/ministry-of-housing-communities-local-government",
+   "fetched_utc": "2026-09-26T23:52:23+00:00",
+   "public_updated_at": "2026-05-21T15:34:38+01:00"
+  },
+  "Department for Transport": {
+   "source": "official: GOV.UK organisation page 'what we do' (content API details.body)",
+   "govuk_title": "Department for Transport",
+   "slug": "department-for-transport",
+   "url": "https://www.gov.uk/government/organisations/department-for-transport",
+   "content_api": "https://www.gov.uk/api/content/government/organisations/department-for-transport",
+   "fetched_utc": "2026-09-26T23:52:24+00:00",
+   "public_updated_at": "2025-11-27T13:58:13+00:00"
+  },
+  "Home Office": {
+   "source": "official: GOV.UK organisation page 'what we do' (content API details.body)",
+   "govuk_title": "Home Office",
+   "slug": "home-office",
+   "url": "https://www.gov.uk/government/organisations/home-office",
+   "content_api": "https://www.gov.uk/api/content/government/organisations/home-office",
+   "fetched_utc": "2026-09-26T23:52:25+00:00",
+   "public_updated_at": "2024-07-23T13:54:13+01:00"
+  },
+  "Department for Environment, Food and Rural Affairs": {
+   "source": "official: GOV.UK organisation page 'what we do' (content API details.body)",
+   "govuk_title": "Department for Environment, Food & Rural Affairs",
+   "slug": "department-for-environment-food-rural-affairs",
+   "url": "https://www.gov.uk/government/organisations/department-for-environment-food-rural-affairs",
+   "content_api": "https://www.gov.uk/api/content/government/organisations/department-for-environment-food-rural-affairs",
+   "fetched_utc": "2026-09-26T23:52:26+00:00",
+   "public_updated_at": "2026-08-03T17:02:01+01:00"
+  },
+  "Treasury": {
+   "source": "official: GOV.UK organisation page 'what we do' (content API details.body)",
+   "govuk_title": "HM Treasury",
+   "slug": "hm-treasury",
+   "url": "https://www.gov.uk/government/organisations/hm-treasury",
+   "content_api": "https://www.gov.uk/api/content/government/organisations/hm-treasury",
+   "fetched_utc": "2026-09-26T23:55:20+00:00",
+   "public_updated_at": "2025-11-26T14:37:58+00:00"
+  },
+  "Cabinet Office": {
+   "source": "official: GOV.UK organisation page 'what we do' (content API details.body)",
+   "govuk_title": "Cabinet Office",
+   "slug": "cabinet-office",
+   "url": "https://www.gov.uk/government/organisations/cabinet-office",
+   "content_api": "https://www.gov.uk/api/content/government/organisations/cabinet-office",
+   "fetched_utc": "2026-09-26T23:52:27+00:00",
+   "public_updated_at": "2026-07-20T20:56:05+01:00"
+  },
+  "Department for Education": {
+   "source": "official: GOV.UK organisation page 'what we do' (content API details.body)",
+   "govuk_title": "Department for Education",
+   "slug": "department-for-education",
+   "url": "https://www.gov.uk/government/organisations/department-for-education",
+   "content_api": "https://www.gov.uk/api/content/government/organisations/department-for-education",
+   "fetched_utc": "2026-09-26T23:52:29+00:00",
+   "public_updated_at": "2026-04-14T12:23:39+01:00"
+  },
+  "Foreign, Commonwealth and Development Office": {
+   "source": "official: GOV.UK organisation page 'what we do' (content API details.body)",
+   "govuk_title": "Foreign, Commonwealth & Development Office",
+   "slug": "foreign-commonwealth-development-office",
+   "url": "https://www.gov.uk/government/organisations/foreign-commonwealth-development-office",
+   "content_api": "https://www.gov.uk/api/content/government/organisations/foreign-commonwealth-development-office",
+   "fetched_utc": "2026-09-26T23:52:29+00:00",
+   "public_updated_at": "2026-06-18T13:25:20+01:00"
+  },
+  "Ministry of Justice": {
+   "source": "official: GOV.UK organisation page 'what we do' (content API details.body)",
+   "govuk_title": "Ministry of Justice",
+   "slug": "ministry-of-justice",
+   "url": "https://www.gov.uk/government/organisations/ministry-of-justice",
+   "content_api": "https://www.gov.uk/api/content/government/organisations/ministry-of-justice",
+   "fetched_utc": "2026-09-26T23:52:30+00:00",
+   "public_updated_at": "2026-07-31T10:12:00+01:00"
+  },
+  "Department for Work and Pensions": {
+   "source": "official: GOV.UK organisation page 'what we do' (content API details.body)",
+   "govuk_title": "Department for Work and Pensions",
+   "slug": "department-for-work-pensions",
+   "url": "https://www.gov.uk/government/organisations/department-for-work-pensions",
+   "content_api": "https://www.gov.uk/api/content/government/organisations/department-for-work-pensions",
+   "fetched_utc": "2026-09-26T23:52:32+00:00",
+   "public_updated_at": "2026-05-20T10:02:43+01:00"
+  },
+  "Department for Energy Security and Net Zero": {
+   "source": "official: GOV.UK organisation page 'what we do' (content API details.body)",
+   "govuk_title": "Department for Energy Security and Net Zero",
+   "slug": "department-for-energy-security-and-net-zero",
+   "url": "https://www.gov.uk/government/organisations/department-for-energy-security-and-net-zero",
+   "content_api": "https://www.gov.uk/api/content/government/organisations/department-for-energy-security-and-net-zero",
+   "fetched_utc": "2026-09-26T23:52:33+00:00",
+   "public_updated_at": "2026-09-16T12:39:53+01:00"
+  },
+  "Department for Business, Innovation, Science and Trade": {
+   "source": "official: GOV.UK organisation page 'what we do' (content API details.body)",
+   "govuk_title": "Department for Business, Innovation, Science and Trade",
+   "slug": "department-for-business-innovation-science-and-trade",
+   "url": "https://www.gov.uk/government/organisations/department-for-business-innovation-science-and-trade",
+   "content_api": "https://www.gov.uk/api/content/government/organisations/department-for-business-innovation-science-and-trade",
+   "fetched_utc": "2026-09-26T23:55:22+00:00",
+   "public_updated_at": "2026-08-20T16:54:23+01:00"
+  },
+  "Department for Digital, Culture, Media and Sport": {
+   "source": "official: GOV.UK organisation page 'what we do' (content API details.body)",
+   "govuk_title": "Department for Digital, Culture, Media and Sport",
+   "slug": "department-for-digital-culture-media-and-sport",
+   "url": "https://www.gov.uk/government/organisations/department-for-digital-culture-media-and-sport",
+   "content_api": "https://www.gov.uk/api/content/government/organisations/department-for-digital-culture-media-and-sport",
+   "fetched_utc": "2026-09-26T23:55:23+00:00",
+   "public_updated_at": "2026-09-22T11:12:03+01:00"
+  },
+  "Women and Equalities": {
+   "source": "official: GOV.UK organisation page 'what we do' (content API details.body)",
+   "govuk_title": "Office for Equality and Opportunity",
+   "slug": "office-for-equality-and-opportunity",
+   "url": "https://www.gov.uk/government/organisations/office-for-equality-and-opportunity",
+   "content_api": "https://www.gov.uk/api/content/government/organisations/office-for-equality-and-opportunity",
+   "fetched_utc": "2026-09-26T23:55:24+00:00",
+   "public_updated_at": "2026-07-23T11:10:40+01:00"
+  },
+  "Northern Ireland Office": {
+   "source": "official: GOV.UK organisation page 'what we do' (content API details.body)",
+   "govuk_title": "Northern Ireland Office",
+   "slug": "northern-ireland-office",
+   "url": "https://www.gov.uk/government/organisations/northern-ireland-office",
+   "content_api": "https://www.gov.uk/api/content/government/organisations/northern-ireland-office",
+   "fetched_utc": "2026-09-26T23:52:36+00:00",
+   "public_updated_at": "2024-10-11T11:17:00+01:00"
+  },
+  "Attorney General's Office": {
+   "source": "official: GOV.UK organisation page 'what we do' (content API details.body)",
+   "govuk_title": "Attorney General's Office",
+   "slug": "attorney-generals-office",
+   "url": "https://www.gov.uk/government/organisations/attorney-generals-office",
+   "content_api": "https://www.gov.uk/api/content/government/organisations/attorney-generals-office",
+   "fetched_utc": "2026-09-26T23:55:24+00:00",
+   "public_updated_at": "2024-08-15T13:26:16+01:00"
+  },
+  "Wales Office": {
+   "source": "official: GOV.UK organisation page 'what we do' (content API details.body)",
+   "govuk_title": "Wales Office",
+   "slug": "wales-office",
+   "url": "https://www.gov.uk/government/organisations/wales-office",
+   "content_api": "https://www.gov.uk/api/content/government/organisations/wales-office",
+   "fetched_utc": "2026-09-26T23:55:25+00:00",
+   "public_updated_at": "2025-10-14T14:52:56+01:00"
+  },
+  "Scotland Office": {
+   "source": "official: GOV.UK organisation page 'what we do' (content API details.body)",
+   "govuk_title": "Scotland Office",
+   "slug": "scotland-office",
+   "url": "https://www.gov.uk/government/organisations/scotland-office",
+   "content_api": "https://www.gov.uk/api/content/government/organisations/scotland-office",
+   "fetched_utc": "2026-09-26T23:55:26+00:00",
+   "public_updated_at": "2024-09-26T09:46:22+01:00"
+  }
+ },
+ "author_written_definitions": {},
+ "redacted_rows": 9,
+ "redaction_counts": {
+  "Foreign, Commonwealth and Development Office": 2,
+  "Foreign Secretary": 1,
+  "Attorney General": 1,
+  "Department for Energy Security and Net Zero": 1,
+  "Office for Equality and Opportunity": 1,
+  "Treasury": 1,
+  "Department for Science, Innovation and Technology": 1,
+  "Ministry of Defence": 1,
+  "DSIT": 1,
+  "DBT": 1
+ },
+ "builder_notes": [
+  "State = full questionText (from /questions/{id}; the list endpoint truncates at 255 chars), HTML stripped, leading 'To ask the <office>,' clause removed (fixed office list; records with an unknown leading form are skipped). 'To ask His Majesty's Government ...' (Lords) kept verbatim.",
+  "Department names, minister titles and standard short names/acronyms of ALL 20 label bodies (not only the gold), and of the superseded DBT/DSIT/DCMS(217), replaced by '[DEPARTMENT]' (logged in meta.redactions), so a name never marks a non-gold option or points to a successor.",
+  "Labels = answeringBodyId. Same-id renames merged under the latest name. Bodies superseded by the July 2026 machinery-of-government change (DBT 214, DSIT 216, DCMS 217; no question after 2026-07-14) dropped with their questions, because their successors (DBIST 220, DDCMS 10) are in the option set.",
+  "Top 20 answering bodies by frequency in the frozen snapshot (tie-break random.Random(3)); stratified 7-8 per body, remainder by seeded order; one item per asking member per body where possible.",
+  "Round-robin filter: a question is dropped if the same member tabled a near-identical question (token Jaccard >= 0.6 or same normalised text) to a different answering body, since the body cannot be told from the text.",
+  "Dedupe: exact normalised text across the task; near-identical (token Jaccard >= 0.6 or containment) questions by the same member within a body.",
+  "Card definitions: GOV.UK organisation page body paragraphs minus the 'is a ministerial department, supported by N agencies' boilerplate. 'Women and Equalities' uses the GOV.UK Office for Equality and Opportunity page (the office that supports the Minister for Women and Equalities)."
+ ]
+}

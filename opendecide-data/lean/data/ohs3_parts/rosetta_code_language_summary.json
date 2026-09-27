@@ -1,0 +1,395 @@
+{
+ "task": "rosetta_code_language",
+ "rows": 142,
+ "qtype": "choice",
+ "track": "U",
+ "n_options": 20,
+ "class_balance": {
+  "Perl": 8,
+  "Ruby": 8,
+  "C": 7,
+  "C++": 7,
+  "D": 7,
+  "Go": 7,
+  "Haskell": 7,
+  "J": 7,
+  "Java": 7,
+  "Julia": 7,
+  "Kotlin": 7,
+  "Nim": 7,
+  "Phix": 7,
+  "Python": 7,
+  "REXX": 7,
+  "Racket": 7,
+  "Raku": 7,
+  "Tcl": 7,
+  "Wren": 7,
+  "zkl": 7
+ },
+ "max_class_share": 0.0563,
+ "languages_with_8_items": [
+  "Perl",
+  "Ruby"
+ ],
+ "label_set": [
+  {
+   "label": "Phix",
+   "rows_in_split": 1181
+  },
+  {
+   "label": "Julia",
+   "rows_in_split": 1179
+  },
+  {
+   "label": "Wren",
+   "rows_in_split": 1177
+  },
+  {
+   "label": "Go",
+   "rows_in_split": 1172
+  },
+  {
+   "label": "Raku",
+   "rows_in_split": 1168
+  },
+  {
+   "label": "Perl",
+   "rows_in_split": 1147
+  },
+  {
+   "label": "Python",
+   "rows_in_split": 1139
+  },
+  {
+   "label": "Nim",
+   "rows_in_split": 1137
+  },
+  {
+   "label": "J",
+   "rows_in_split": 1038
+  },
+  {
+   "label": "C",
+   "rows_in_split": 1024
+  },
+  {
+   "label": "Haskell",
+   "rows_in_split": 1021
+  },
+  {
+   "label": "Kotlin",
+   "rows_in_split": 1017
+  },
+  {
+   "label": "Java",
+   "rows_in_split": 1004
+  },
+  {
+   "label": "Ruby",
+   "rows_in_split": 990
+  },
+  {
+   "label": "Racket",
+   "rows_in_split": 981
+  },
+  {
+   "label": "C++",
+   "rows_in_split": 964
+  },
+  {
+   "label": "REXX",
+   "rows_in_split": 953
+  },
+  {
+   "label": "zkl",
+   "rows_in_split": 920
+  },
+  {
+   "label": "D",
+   "rows_in_split": 901
+  },
+  {
+   "label": "Tcl",
+   "rows_in_split": 897
+  }
+ ],
+ "next_excluded_languages": [
+  {
+   "label": "Sidef",
+   "rows_in_split": 858
+  },
+  {
+   "label": "Scala",
+   "rows_in_split": 833
+  },
+  {
+   "label": "C#",
+   "rows_in_split": 832
+  }
+ ],
+ "boundary_tie_at_rank_20": false,
+ "instructions": "Which programming language is this code written in?",
+ "card": "- Phix: An open-source, self-hosted hybrid interpreter/compiler programming language derived from Euphoria, developed by Pete Lomax.\n- Julia: A high-level, high-performance, dynamically typed programming language designed for technical and numerical computing.\n- Wren: A small, fast, class-based concurrent scripting language designed to be embedded in host applications.\n- Go: A statically typed, compiled, garbage-collected programming language with built-in concurrency, designed at Google.\n- Raku: A multi-paradigm, gradually typed programming language in the Perl family, formerly known as Perl 6.\n- Perl: A high-level, general-purpose, interpreted dynamic programming language originally developed for text processing.\n- Python: A high-level, general-purpose, interpreted programming language that emphasises code readability.\n- Nim: A statically typed, compiled, general-purpose systems programming language that compiles via C, C++ or JavaScript.\n- J: An array programming language in the APL family, written with the ASCII character set, developed by Kenneth Iverson and Roger Hui.\n- C: A general-purpose, procedural, statically typed systems programming language created by Dennis Ritchie at Bell Labs.\n- Haskell: A purely functional, statically typed programming language with lazy evaluation and type inference.\n- Kotlin: A statically typed, general-purpose programming language developed by JetBrains that runs mainly on the Java Virtual Machine.\n- Java: A class-based, object-oriented, statically typed programming language that compiles to bytecode for the Java Virtual Machine.\n- Ruby: A dynamic, interpreted, object-oriented general-purpose programming language created by Yukihiro Matsumoto.\n- Racket: A general-purpose, multi-paradigm programming language in the Lisp/Scheme family, designed as a platform for creating languages.\n- C++: A general-purpose, statically typed, compiled programming language created by Bjarne Stroustrup as an extension of C.\n- REXX: A structured, high-level, interpreted programming language (Restructured Extended Executor) developed at IBM by Mike Cowlishaw.\n- zkl: A small, general-purpose, object-oriented, dynamically typed programming language that borrows concepts from functional and prototype-based programming.\n- D: A general-purpose, statically typed, compiled systems programming language originally created by Walter Bright at Digital Mars.\n- Tcl: A high-level, general-purpose, interpreted dynamic scripting language (Tool Command Language) created by John Ousterhout.",
+ "label_definitions_source": "author-written: one neutral sentence per language, written once and frozen before sampling (loosely following the first sentence of each Rosetta Code language page; no syntax hints)",
+ "author_written_definitions": {
+  "Phix": "An open-source, self-hosted hybrid interpreter/compiler programming language derived from Euphoria, developed by Pete Lomax.",
+  "Julia": "A high-level, high-performance, dynamically typed programming language designed for technical and numerical computing.",
+  "Wren": "A small, fast, class-based concurrent scripting language designed to be embedded in host applications.",
+  "Go": "A statically typed, compiled, garbage-collected programming language with built-in concurrency, designed at Google.",
+  "Raku": "A multi-paradigm, gradually typed programming language in the Perl family, formerly known as Perl 6.",
+  "Perl": "A high-level, general-purpose, interpreted dynamic programming language originally developed for text processing.",
+  "Python": "A high-level, general-purpose, interpreted programming language that emphasises code readability.",
+  "Nim": "A statically typed, compiled, general-purpose systems programming language that compiles via C, C++ or JavaScript.",
+  "J": "An array programming language in the APL family, written with the ASCII character set, developed by Kenneth Iverson and Roger Hui.",
+  "C": "A general-purpose, procedural, statically typed systems programming language created by Dennis Ritchie at Bell Labs.",
+  "Haskell": "A purely functional, statically typed programming language with lazy evaluation and type inference.",
+  "Kotlin": "A statically typed, general-purpose programming language developed by JetBrains that runs mainly on the Java Virtual Machine.",
+  "Java": "A class-based, object-oriented, statically typed programming language that compiles to bytecode for the Java Virtual Machine.",
+  "Ruby": "A dynamic, interpreted, object-oriented general-purpose programming language created by Yukihiro Matsumoto.",
+  "Racket": "A general-purpose, multi-paradigm programming language in the Lisp/Scheme family, designed as a platform for creating languages.",
+  "C++": "A general-purpose, statically typed, compiled programming language created by Bjarne Stroustrup as an extension of C.",
+  "REXX": "A structured, high-level, interpreted programming language (Restructured Extended Executor) developed at IBM by Mike Cowlishaw.",
+  "zkl": "A small, general-purpose, object-oriented, dynamically typed programming language that borrows concepts from functional and prototype-based programming.",
+  "D": "A general-purpose, statically typed, compiled systems programming language originally created by Walter Bright at Digital Mars.",
+  "Tcl": "A high-level, general-purpose, interpreted dynamic scripting language (Tool Command Language) created by John Ousterhout."
+ },
+ "source": "Rosetta Code via HF christopher/rosetta-code (train, only split)",
+ "revision": "11d8b38cbd90b0ae5bde304ae2d4ba5ace10af05",
+ "snapshot": {
+  "cache_dir": "ohs3/cache/rosetta_code_language/11d8b38cbd90b0ae5bde304ae2d4ba5ace10af05",
+  "parquet": "data/train-00000-of-00001-8b4da49264116bbf.parquet",
+  "parquet_sha256": "6e0d28701ca7c24b56feda4601313d04ee3c743a674f2a97e0fcf0fcb0499835",
+  "readme_sha256": "33249c5d4f50b767de979dae727f71a20b63a4144bbe9b716444cd6bd1614d59",
+  "rows_in_split": 79013,
+  "gfdl_text": "ohs3/cache/rosetta_code_language/fdl-1.3.txt",
+  "gfdl_sha256": "110535522396708cea37c72a802c5e7e81391139f5f7985631c93ef242b206a4",
+  "pygments_version": "2.21.0"
+ },
+ "licence": "GFDL-1.3 (GNU Free Documentation License 1.3; Rosetta Code content)",
+ "licence_notice": "Code from Rosetta Code (https://rosettacode.org), contributed by Rosetta Code users and available under the GNU Free Documentation License 1.3 (https://www.gnu.org/licenses/fdl-1.3.html); obtained via the Hugging Face dataset christopher/rosetta-code at revision 11d8b38cbd90b0ae5bde304ae2d4ba5ace10af05. Modified for OHS-3: shebang/#lang lines and comments naming a programming language removed, whitespace normalised. The full licence text is shipped as rosetta_code_language_GFDL-1.3.txt.",
+ "licence_evidence": [
+  "https://rosettacode.org/wiki/Rosetta_Code:Copyrights (site licence: GFDL 1.3)",
+  "https://huggingface.co/datasets/christopher/rosetta-code/blob/11d8b38cbd90b0ae5bde304ae2d4ba5ace10af05/README.md (card metadata: license: gfdl)"
+ ],
+ "licence_text_shipped": "data/ohs3_parts/rosetta_code_language_GFDL-1.3.txt",
+ "attribution": "Rosetta Code, https://rosettacode.org (crawl of mid-2022, HF dataset christopher/rosetta-code by Christopher Akiki).",
+ "date_range": "Rosetta Code pages as crawled around June 2022 (parquet uploaded 2022-07-01; card cites access 2022-12-08); solutions written 2007-2022; no per-item dates; track U",
+ "pool": {
+  "candidates_per_language": {
+   "Phix": 1095,
+   "Julia": 1050,
+   "Wren": 1115,
+   "Go": 1010,
+   "Raku": 1047,
+   "Perl": 1006,
+   "Python": 1040,
+   "Nim": 1070,
+   "J": 928,
+   "C": 941,
+   "Haskell": 960,
+   "Kotlin": 919,
+   "Java": 355,
+   "Ruby": 920,
+   "Racket": 784,
+   "C++": 866,
+   "REXX": 844,
+   "zkl": 853,
+   "D": 845,
+   "Tcl": 535
+  },
+  "dropped": {
+   "same_code_under_another_language": 672,
+   "length_after_cleaning": 439,
+   "crawl_artefact": 19,
+   "string_names_language": 430,
+   "code_names_own_language": 1261,
+   "duplicate_task_language": 3,
+   "raw_empty_or_huge": 2,
+   "empty": 1
+  },
+  "cleaning_counts_in_pool": {
+   "shebang_removed": 261,
+   "lang_line_removed": 721,
+   "samples_with_comment_removed": 2402
+  },
+  "sampling_skips": {
+   "task_already_used": 11
+  }
+ },
+ "sampled_cleaning": {
+  "shebang_removed": 1,
+  "lang_line_removed": 6,
+  "rows_with_comment_removed": 20
+ },
+ "residual_code_mentions_in_sampled_rows": {
+  "Kotlin: C++": 1,
+  "Kotlin: JAVA": 1,
+  "Kotlin: java": 1
+ },
+ "sampling": "top 20 language_name values by row count (seeded tie-break); every row of them cleaned; per language candidates in row order then random.Random(20261026).shuffle; round-robin over languages in frequency order taking the next clean candidate whose task_name is unused (one sample per task in the whole part); quota 7 per language, +1 for 2 seeded languages; rows shuffled; options shuffled per row with the same RNG",
+ "state_format": "the solution's code only (no task name/description, no language header); NBSP->space, CRLF->LF, blank edge lines trimmed; shebang and #lang lines removed; comments naming a language/tool/extension removed",
+ "state_length": {
+  "min": 28,
+  "median": 536,
+  "max": 5820
+ },
+ "row_indices": [
+  1364,
+  3201,
+  3386,
+  3606,
+  3753,
+  3828,
+  3870,
+  3899,
+  4300,
+  4525,
+  4545,
+  6067,
+  6696,
+  6743,
+  7213,
+  7960,
+  8833,
+  9247,
+  11600,
+  11613,
+  12436,
+  12635,
+  12972,
+  14122,
+  15763,
+  16710,
+  16911,
+  17114,
+  17370,
+  17461,
+  18560,
+  18816,
+  19144,
+  19282,
+  19587,
+  19891,
+  20877,
+  22893,
+  23247,
+  24150,
+  24241,
+  24537,
+  24555,
+  25114,
+  25487,
+  25581,
+  25774,
+  27310,
+  27314,
+  27441,
+  27735,
+  28058,
+  28136,
+  28692,
+  28985,
+  29011,
+  29417,
+  29650,
+  29886,
+  30344,
+  31085,
+  32174,
+  32717,
+  33845,
+  34390,
+  34738,
+  34920,
+  35430,
+  36089,
+  36092,
+  38683,
+  39313,
+  39444,
+  40616,
+  40963,
+  41095,
+  41677,
+  41712,
+  41878,
+  41891,
+  42829,
+  43504,
+  43827,
+  44115,
+  45460,
+  47409,
+  47478,
+  48181,
+  48233,
+  49538,
+  50236,
+  51074,
+  51659,
+  51955,
+  51983,
+  52861,
+  54022,
+  54299,
+  55520,
+  56340,
+  56513,
+  57309,
+  57345,
+  58301,
+  58956,
+  59169,
+  59233,
+  60996,
+  61990,
+  62074,
+  62467,
+  62640,
+  62942,
+  63142,
+  63493,
+  64580,
+  65242,
+  65936,
+  66288,
+  66617,
+  66865,
+  67157,
+  67828,
+  68386,
+  68443,
+  68854,
+  69290,
+  69385,
+  69701,
+  70520,
+  70556,
+  71395,
+  71840,
+  72534,
+  72778,
+  73184,
+  73756,
+  74831,
+  75289,
+  76092,
+  76844,
+  77656
+ ],
+ "output_sha256": "e5d76de92641000a0ac0bd72ae69f701de408ee0c6d3013f51c5d9a59848e1d8",
+ "uncertain": [
+  "Code that names its OWN language/tool outside comments and strings (e.g. `import java.util.*` in Java, `package require Tcl`, `import kotlin.*`, `(require racket/...)`) is dropped (verifier fix); names of OTHER listed languages in code (e.g. `import java.*` in Kotlin) are kept; counts in residual_code_mentions_in_sampled_rows.",
+  "Comments with a version-numbered language name (j6, c99, go1.x, tcl8.x ...) or consisting only of a version stamp (Rosetta Code Kotlin convention `// version 1.1.2`) are removed (verifier fix).",
+  "Comment/string detection uses Pygments lexers (version pinned) and a small regex lexer for zkl; lexers can mis-tokenise unusual code, so a rare cue in an unrecognised comment may survive.",
+  "Comment removal is deliberately broad (any standalone C/D/J/go word or file extension such as 'i.e' counts), so some harmless comments are also removed; code is never edited and samples whose strings name a language are dropped, which slightly shifts the pool away from programs that print language names.",
+  "Racket '#lang' lines were removed as the shebang equivalent (judgement call beyond the literal spec); without them a Racket module would not run as-is.",
+  "Crawl misattribution: rows whose code also appears under another language were dropped (label-agnostic rule), but a misattributed block that is unique in the split cannot be detected this way; no per-item manual relabelling was done.",
+  "Rosetta Code language headers are sometimes wrong or the code belongs to a closely related dialect (e.g. Perl 6 era code under Raku, C code under C++); gold is kept as the source label.",
+  "Some languages here are very close (C vs C++, Perl vs Raku, Java vs Kotlin), and short snippets can be valid in more than one; no manual filtering was done.",
+  "Some sampled snippets are very short (min 20 chars, e.g. a one-line Perl swap) and may be valid in more than one listed language; kept because the spec only sets a 20-char floor.",
+  "Blank lines in the crawl were U+00A0; after NBSP->space they appear as single-space lines (layout only).",
+  "Rosetta Code is public since 2007 and widely crawled; contamination is very likely (track U).",
+  "Licence: GFDL 1.3 is Rosetta Code's own site licence; the HF card only states 'gfdl'. GFDL requires the licence text and modification notice to travel with the data (shipped + meta.licence_notice)."
+ ]
+}

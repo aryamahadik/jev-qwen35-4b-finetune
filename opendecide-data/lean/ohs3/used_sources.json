@@ -1,0 +1,1033 @@
+{
+ "generated": "2026-09-26",
+ "method": "streamed every data/**/*.jsonl and ../data/**/*.jsonl (source + meta dataset fields; 134 distinct source values), taskbank_inventory.json, PREREG_OHS*.md, builder docstrings/load calls, bench/jevbench manifest + THIRD-PARTY.md, build/config.yaml; no preds/results/logs opened",
+ "datasets": [
+  {
+   "name": "Banking77",
+   "hf_id_or_url": "PolyAI/banking77 (loaded as legacy-datasets/banking77)",
+   "where_used": [
+    "train",
+    "dev/selection",
+    "eval (v0.1 eval / weakness / opi / jagged)"
+   ],
+   "source_keys": [
+    "banking77"
+   ]
+  },
+  {
+   "name": "CLINC150 (OOS plus)",
+   "hf_id_or_url": "clinc/clinc_oos",
+   "where_used": [
+    "train",
+    "dev/selection",
+    "eval (v0.1 eval / weakness / opi / jagged)"
+   ],
+   "source_keys": [
+    "clinc150"
+   ]
+  },
+  {
+   "name": "MASSIVE (en intents)",
+   "hf_id_or_url": "mteb/amazon_massive_intent (AmazonScience/massive)",
+   "where_used": [
+    "train"
+   ],
+   "source_keys": [
+    "massive"
+   ]
+  },
+  {
+   "name": "DBpedia-14",
+   "hf_id_or_url": "fancyzhx/dbpedia_14",
+   "where_used": [
+    "train"
+   ],
+   "source_keys": [
+    "dbpedia"
+   ]
+  },
+  {
+   "name": "Yahoo Answers Topics",
+   "hf_id_or_url": "community-datasets/yahoo_answers_topics",
+   "where_used": [
+    "train"
+   ],
+   "source_keys": [
+    "yahoo"
+   ]
+  },
+  {
+   "name": "Women's Clothing E-commerce Reviews",
+   "hf_id_or_url": "saattrupdan/womens-clothing-ecommerce-reviews",
+   "where_used": [
+    "train"
+   ],
+   "source_keys": [
+    "clothing"
+   ]
+  },
+  {
+   "name": "Yelp polarity",
+   "hf_id_or_url": "fancyzhx/yelp_polarity",
+   "where_used": [
+    "train"
+   ],
+   "source_keys": [
+    "yelp"
+   ]
+  },
+  {
+   "name": "Yelp review full (1-5 stars)",
+   "hf_id_or_url": "Yelp/yelp_review_full",
+   "where_used": [
+    "train"
+   ],
+   "source_keys": [
+    "yelp5"
+   ]
+  },
+  {
+   "name": "Amazon polarity",
+   "hf_id_or_url": "fancyzhx/amazon_polarity",
+   "where_used": [
+    "train"
+   ],
+   "source_keys": [
+    "amazon_polarity"
+   ]
+  },
+  {
+   "name": "Civil Comments",
+   "hf_id_or_url": "google/civil_comments",
+   "where_used": [
+    "train"
+   ],
+   "source_keys": [
+    "civil_comments"
+   ]
+  },
+  {
+   "name": "Toxic Conversations 50k",
+   "hf_id_or_url": "SetFit/toxic_conversations_50k",
+   "where_used": [
+    "train"
+   ],
+   "source_keys": [
+    "toxic_conv"
+   ]
+  },
+  {
+   "name": "MultiNLI",
+   "hf_id_or_url": "nyu-mll/multi_nli",
+   "where_used": [
+    "train",
+    "dev/selection",
+    "eval (v0.1 eval / weakness / opi / jagged)"
+   ],
+   "source_keys": [
+    "mnli",
+    "mnli3",
+    "mnli_neutral"
+   ]
+  },
+  {
+   "name": "GLUE RTE / QNLI / MRPC",
+   "hf_id_or_url": "nyu-mll/glue (rte, qnli, mrpc)",
+   "where_used": [
+    "train"
+   ],
+   "source_keys": [
+    "rte",
+    "qnli",
+    "mrpc"
+   ]
+  },
+  {
+   "name": "GLUE SST-2",
+   "hf_id_or_url": "nyu-mll/glue (sst2) / stanfordnlp/sst2",
+   "where_used": [
+    "eval (v0.1 eval / weakness / opi / jagged)"
+   ],
+   "source_keys": [
+    "sst2"
+   ]
+  },
+  {
+   "name": "BoolQ",
+   "hf_id_or_url": "google/boolq",
+   "where_used": [
+    "train"
+   ],
+   "source_keys": [
+    "boolq"
+   ]
+  },
+  {
+   "name": "CondaQA",
+   "hf_id_or_url": "lasha-nlp/CONDAQA",
+   "where_used": [
+    "train"
+   ],
+   "source_keys": [
+    "condaqa"
+   ]
+  },
+  {
+   "name": "ARC-Challenge",
+   "hf_id_or_url": "allenai/ai2_arc",
+   "where_used": [
+    "train"
+   ],
+   "source_keys": [
+    "arc"
+   ]
+  },
+  {
+   "name": "CommonsenseQA",
+   "hf_id_or_url": "tau/commonsense_qa",
+   "where_used": [
+    "train"
+   ],
+   "source_keys": [
+    "csqa"
+   ]
+  },
+  {
+   "name": "SuperGLUE COPA",
+   "hf_id_or_url": "aps/super_glue (copa)",
+   "where_used": [
+    "train"
+   ],
+   "source_keys": [
+    "copa"
+   ]
+  },
+  {
+   "name": "SuperGLUE CB",
+   "hf_id_or_url": "aps/super_glue (cb)",
+   "where_used": [
+    "dev/selection"
+   ],
+   "source_keys": [
+    "cb"
+   ]
+  },
+  {
+   "name": "ProofWriter",
+   "hf_id_or_url": "tasksource/proofwriter",
+   "where_used": [
+    "train"
+   ],
+   "source_keys": [
+    "proofwriter"
+   ]
+  },
+  {
+   "name": "FLD v2",
+   "hf_id_or_url": "hitachi-nlp/FLD.v2",
+   "where_used": [
+    "train"
+   ],
+   "source_keys": [
+    "fld"
+   ]
+  },
+  {
+   "name": "LogiQA 2.0",
+   "hf_id_or_url": "datatune/LogiQA2.0",
+   "where_used": [
+    "train"
+   ],
+   "source_keys": [
+    "logiqa2"
+   ]
+  },
+  {
+   "name": "MuSR",
+   "hf_id_or_url": "TAUR-Lab/MuSR",
+   "where_used": [
+    "train"
+   ],
+   "source_keys": [
+    "musr_murder_mysteries",
+    "musr_object_placements",
+    "musr_team_allocation"
+   ]
+  },
+  {
+   "name": "PRM800K",
+   "hf_id_or_url": "tasksource/PRM800K (openai/prm800k)",
+   "where_used": [
+    "train"
+   ],
+   "source_keys": [
+    "judge_prm800k"
+   ]
+  },
+  {
+   "name": "HelpSteer2",
+   "hf_id_or_url": "nvidia/HelpSteer2",
+   "where_used": [
+    "train"
+   ],
+   "source_keys": [
+    "judge_helpsteer2"
+   ]
+  },
+  {
+   "name": "Wiki-stance (Wikipedia AfD comments)",
+   "hf_id_or_url": "research-dump/wiki-stance-en",
+   "where_used": [
+    "train"
+   ],
+   "source_keys": [
+    "wiki_stance_afd"
+   ]
+  },
+  {
+   "name": "jagged (Wikipedia Articles-for-Deletion audit)",
+   "hf_id_or_url": "zkousama/jagged (github/HF) ; bench/jagged",
+   "where_used": [
+    "eval (v0.1 eval / weakness / opi / jagged)"
+   ],
+   "source_keys": [
+    "afd"
+   ]
+  },
+  {
+   "name": "WikiText-103 (filler paragraphs inside states)",
+   "hf_id_or_url": "Salesforce/wikitext (wikitext-103-raw-v1; train/validation/test)",
+   "where_used": [
+    "train",
+    "dev/selection",
+    "eval (v0.1 eval / weakness / opi / jagged)"
+   ]
+  },
+  {
+   "name": "Google product taxonomy (distractor option labels)",
+   "hf_id_or_url": "https://www.google.com/basepages/producttype/taxonomy.en-US.txt (assets/weak/google_product_taxonomy.txt)",
+   "where_used": [
+    "eval (v0.1 eval / weakness / opi / jagged)"
+   ]
+  },
+  {
+   "name": "SMS Spam Collection",
+   "hf_id_or_url": "ucirvine/sms_spam",
+   "where_used": [
+    "eval (v0.1 eval / weakness / opi / jagged)"
+   ],
+   "source_keys": [
+    "sms_spam"
+   ]
+  },
+  {
+   "name": "Twitter Financial News Sentiment",
+   "hf_id_or_url": "zeroshot/twitter-financial-news-sentiment",
+   "where_used": [
+    "eval (v0.1 eval / weakness / opi / jagged)"
+   ],
+   "source_keys": [
+    "tfns"
+   ]
+  },
+  {
+   "name": "AG News",
+   "hf_id_or_url": "fancyzhx/ag_news",
+   "where_used": [
+    "dev/selection"
+   ],
+   "source_keys": [
+    "ag_news"
+   ]
+  },
+  {
+   "name": "Emotion (dair-ai)",
+   "hf_id_or_url": "dair-ai/emotion",
+   "where_used": [
+    "dev/selection"
+   ],
+   "source_keys": [
+    "emotion"
+   ]
+  },
+  {
+   "name": "Enron spam",
+   "hf_id_or_url": "SetFit/enron_spam",
+   "where_used": [
+    "dev/selection"
+   ],
+   "source_keys": [
+    "enron_spam"
+   ]
+  },
+  {
+   "name": "TweetEval (sentiment, irony, hate, offensive; stance/emoji/emotion subsets loaded then dropped)",
+   "hf_id_or_url": "cardiffnlp/tweet_eval",
+   "where_used": [
+    "dev/selection",
+    "eval (v0.1 eval / weakness / opi / jagged)"
+   ],
+   "source_keys": [
+    "tweet_sentiment",
+    "irony",
+    "hate",
+    "offensive"
+   ]
+  },
+  {
+   "name": "Rotten Tomatoes",
+   "hf_id_or_url": "cornell-movie-review-data/rotten_tomatoes",
+   "where_used": [
+    "dev/selection"
+   ],
+   "source_keys": [
+    "rotten_tomatoes"
+   ]
+  },
+  {
+   "name": "BBC News",
+   "hf_id_or_url": "SetFit/bbc-news",
+   "where_used": [
+    "dev/selection"
+   ],
+   "source_keys": [
+    "bbc"
+   ]
+  },
+  {
+   "name": "ClimateBERT climate sentiment",
+   "hf_id_or_url": "climatebert/climate_sentiment",
+   "where_used": [
+    "dev/selection"
+   ],
+   "source_keys": [
+    "climate"
+   ]
+  },
+  {
+   "name": "Deysi spam detection",
+   "hf_id_or_url": "Deysi/spam-detection-dataset",
+   "where_used": [
+    "dev/selection"
+   ],
+   "source_keys": [
+    "spam"
+   ]
+  },
+  {
+   "name": "IMDB",
+   "hf_id_or_url": "stanfordnlp/imdb",
+   "where_used": [
+    "eval (v0.1 eval / weakness / opi / jagged)"
+   ],
+   "source_keys": [
+    "imdb"
+   ]
+  },
+  {
+   "name": "BTZSC benchmark (used subsets: capsotu, manifesto, empathetic, appreviews, trueteacher, biasframes_offensive/_intent/_sex, financialphrasebank)",
+   "hf_id_or_url": "btzsc/btzsc",
+   "where_used": [
+    "dev/selection (dev_nc v0.11 gate)"
+   ],
+   "source_keys": [
+    "btzsc_*"
+   ],
+   "note": "underlying corpora: CAP State-of-the-Union, MARPOR Manifesto, EmpatheticDialogues, app reviews, TrueTeacher, Social Bias Frames, Financial PhraseBank; other BTZSC subsets were loaded but not used"
+  },
+  {
+   "name": "Comparative Agendas Project (CAP) State of the Union",
+   "hf_id_or_url": "via btzsc/btzsc capsotu",
+   "where_used": [
+    "dev/selection"
+   ],
+   "source_keys": [
+    "btzsc_capsotu"
+   ]
+  },
+  {
+   "name": "Manifesto Project (MARPOR)",
+   "hf_id_or_url": "via btzsc/btzsc manifesto",
+   "where_used": [
+    "dev/selection"
+   ],
+   "source_keys": [
+    "btzsc_manifesto"
+   ]
+  },
+  {
+   "name": "EmpatheticDialogues",
+   "hf_id_or_url": "facebook/empathetic_dialogues",
+   "where_used": [
+    "dev/selection"
+   ],
+   "source_keys": [
+    "btzsc_empathetic"
+   ]
+  },
+  {
+   "name": "App reviews",
+   "hf_id_or_url": "sealuzh/app_reviews",
+   "where_used": [
+    "dev/selection"
+   ],
+   "source_keys": [
+    "btzsc_appreviews"
+   ]
+  },
+  {
+   "name": "TrueTeacher",
+   "hf_id_or_url": "google/trueteacher",
+   "where_used": [
+    "dev/selection"
+   ],
+   "source_keys": [
+    "btzsc_trueteacher"
+   ]
+  },
+  {
+   "name": "Social Bias Frames",
+   "hf_id_or_url": "allenai/social_bias_frames",
+   "where_used": [
+    "dev/selection"
+   ],
+   "source_keys": [
+    "btzsc_biasframes_offensive",
+    "btzsc_biasframes_intent",
+    "btzsc_biasframes_sex"
+   ]
+  },
+  {
+   "name": "Financial PhraseBank",
+   "hf_id_or_url": "takala/financial_phrasebank",
+   "where_used": [
+    "dev/selection"
+   ],
+   "source_keys": [
+    "btzsc_financialphrasebank"
+   ]
+  },
+  {
+   "name": "Synthetic zero-shot Mixtral (510 invented tasks, mixtral_written_texts_for_tasks v1-v4)",
+   "hf_id_or_url": "MoritzLaurer/synthetic_zeroshot_mixtral_v0.1",
+   "where_used": [
+    "train",
+    "dev/selection (taskbank_dev)"
+   ],
+   "source_keys": [
+    "tb_mixtral"
+   ]
+  },
+  {
+   "name": "tasksource zero-shot-label-nli (47 tasks kept; whole set loaded and treated as forbidden)",
+   "hf_id_or_url": "tasksource/zero-shot-label-nli",
+   "where_used": [
+    "train",
+    "dev/selection (taskbank_dev: airline-sentiment, health_fact, open_question_type, emergent, gum, dyda_da, dyda_e, trec)",
+    "OHS-2 contamination check"
+   ],
+   "source_keys": [
+    "tb_label_nli"
+   ],
+   "note": "underlying tasks kept: circa; citation_intent; crowdflower/corporate-messaging; crowdflower/political-media-message; crowdflower/airline-sentiment; dynasent r1/r2; EffectiveFeedbackStudentWriting; emo/emo2019; folio; humicroedit/subtask-2; implicit-hate-stg1; language-identification; lexical_relation_classification (BLESS, CogALexV, EVALution, K&H+N, ROOT09); logical-fallacy; numer_sense; poem_sentiment; pragmeval (mrda, pdtb, stac, switchboard, verifiability, emergent, gum); rumoureval_2019; scicite; scientific-exaggeration-detection; sciie; sem_eval_2010_task_8; silicone (iemocap, maptask, meld_e, meld_s, oasis, sem, dyda_da, dyda_e); snips_built_in_intents; spartqa-yn; CLUTRR v1/gen_train234_test2to10; health_fact; open_question_type; trec"
+  },
+  {
+   "name": "arXiv Aug-Sep 2026 papers (q-bio, cond-mat, econ+q-fin, physics archives gr-qc/hep-*/math-ph/nucl-*/quant-ph)",
+   "hf_id_or_url": "arXiv API export.arxiv.org/api/query + https://arxiv.org/category_taxonomy",
+   "where_used": [
+    "OHS-1"
+   ],
+   "source_keys": [
+    "arxiv2026_qbio",
+    "arxiv2026_condmat",
+    "arxiv2026_econqfin",
+    "arxiv2026_physics"
+   ]
+  },
+  {
+   "name": "LegalBench (abercrombie, hearsay, overruling, unfair_tos, 8 cuad_* tasks)",
+   "hf_id_or_url": "nguha/legalbench",
+   "where_used": [
+    "OHS-1"
+   ],
+   "source_keys": [
+    "legalbench_abercrombie",
+    "legalbench_cuad",
+    "legalbench_hearsay",
+    "legalbench_overruling",
+    "legalbench_unfair_tos"
+   ]
+  },
+  {
+   "name": "LexGLUE LEDGAR (and SCOTUS dropped as forbidden)",
+   "hf_id_or_url": "coastalcph/lex_glue",
+   "where_used": [
+    "OHS-1"
+   ],
+   "source_keys": [
+    "lexglue_ledgar"
+   ]
+  },
+  {
+   "name": "CUAD (via LegalBench cuad_* tasks)",
+   "hf_id_or_url": "nguha/legalbench / theatticusproject/cuad",
+   "where_used": [
+    "OHS-1"
+   ]
+  },
+  {
+   "name": "ScoNe",
+   "hf_id_or_url": "selenashe/ScoNe ; tasksource/scone",
+   "where_used": [
+    "OHS-1"
+   ],
+   "source_keys": [
+    "scone"
+   ]
+  },
+  {
+   "name": "This-is-not-a-dataset",
+   "hf_id_or_url": "HiTZ/This-is-not-a-dataset",
+   "where_used": [
+    "OHS-1"
+   ],
+   "source_keys": [
+    "this_is_not_a_dataset"
+   ]
+  },
+  {
+   "name": "HateCheck",
+   "hf_id_or_url": "Paul/hatecheck",
+   "where_used": [
+    "OHS-1"
+   ],
+   "source_keys": [
+    "hatecheck"
+   ]
+  },
+  {
+   "name": "PubMedQA (pqa_labeled)",
+   "hf_id_or_url": "qiaojin/PubMedQA",
+   "where_used": [
+    "OHS-1",
+    "OHS-2 contamination check"
+   ],
+   "source_keys": [
+    "pubmedqa"
+   ]
+  },
+  {
+   "name": "VitaminC",
+   "hf_id_or_url": "tals/vitaminc",
+   "where_used": [
+    "OHS-1"
+   ],
+   "source_keys": [
+    "vitaminc"
+   ]
+  },
+  {
+   "name": "GoEmotions",
+   "hf_id_or_url": "google-research-datasets/go_emotions",
+   "where_used": [
+    "OHS-1"
+   ],
+   "source_keys": [
+    "go_emotions"
+   ]
+  },
+  {
+   "name": "Schema-Guided Dialogue (DSTC8) intents",
+   "hf_id_or_url": "google-research-datasets/schema_guided_dstc8",
+   "where_used": [
+    "OHS-1"
+   ],
+   "source_keys": [
+    "sgd"
+   ]
+  },
+  {
+   "name": "arXiv papers submitted >= 2026-09-21 (cs, math, stat+eess, astro-ph)",
+   "hf_id_or_url": "arXiv API export.arxiv.org/api/query (snapshot 2026-09-26)",
+   "where_used": [
+    "OHS-2"
+   ],
+   "source_keys": [
+    "arxiv_fresh_cs",
+    "arxiv_fresh_math",
+    "arxiv_fresh_stat_eess",
+    "arxiv_fresh_astro"
+   ]
+  },
+  {
+   "name": "Moral Stories",
+   "hf_id_or_url": "demelin/moral_stories",
+   "where_used": [
+    "OHS-2"
+   ],
+   "source_keys": [
+    "moral_stories"
+   ]
+  },
+  {
+   "name": "IBM Argument Quality 30k (stance)",
+   "hf_id_or_url": "ibm-research/argument_quality_ranking_30k",
+   "where_used": [
+    "OHS-2"
+   ],
+   "source_keys": [
+    "ibm_argq30k_stance"
+   ]
+  },
+  {
+   "name": "TabFact",
+   "hf_id_or_url": "wenhuchen/Table-Fact-Checking (github)",
+   "where_used": [
+    "OHS-2"
+   ],
+   "source_keys": [
+    "tabfact"
+   ]
+  },
+  {
+   "name": "BigPatent (CPC sections)",
+   "hf_id_or_url": "NortheasternUniversity/big_patent",
+   "where_used": [
+    "OHS-2"
+   ],
+   "source_keys": [
+    "big_patent_cpc"
+   ]
+  },
+  {
+   "name": "Medical Abstracts TC corpus",
+   "hf_id_or_url": "TimSchopf/medical_abstracts",
+   "where_used": [
+    "OHS-2"
+   ],
+   "source_keys": [
+    "medical_abstracts"
+   ]
+  },
+  {
+   "name": "PubMed 20k RCT",
+   "hf_id_or_url": "https://github.com/Franck-Dernoncourt/pubmed-rct",
+   "where_used": [
+    "OHS-2"
+   ],
+   "source_keys": [
+    "pubmed_rct20k"
+   ]
+  },
+  {
+   "name": "SciFact",
+   "hf_id_or_url": "https://scifact.s3-us-west-2.amazonaws.com/release/latest/data.tar.gz (allenai/scifact)",
+   "where_used": [
+    "OHS-2"
+   ],
+   "source_keys": [
+    "scifact"
+   ]
+  },
+  {
+   "name": "Evidence Inference",
+   "hf_id_or_url": "https://github.com/jayded/evidence-inference",
+   "where_used": [
+    "OHS-2"
+   ],
+   "source_keys": [
+    "evidence_inference"
+   ]
+  },
+  {
+   "name": "DDI corpus 2013 (DrugBank + MedLine)",
+   "hf_id_or_url": "https://github.com/isegura/DDICorpus",
+   "where_used": [
+    "OHS-2"
+   ],
+   "source_keys": [
+    "ddi2013"
+   ]
+  },
+  {
+   "name": "JevBench public splits (original 72, easy 48, hard 111 public; held-out parts unseen)",
+   "hf_id_or_url": "bench/jevbench/datasets/public/*.jsonl (repo JevBench v1.2)",
+   "where_used": [
+    "JevBench",
+    "A/B split used for dev and selection"
+   ],
+   "note": "authored decisions (Claude Opus 5 / GPT-5.6 written hard tier)"
+  },
+  {
+   "name": "auto-model-router tasks (78 routing + 68 answer-adequacy imports in JevBench)",
+   "hf_id_or_url": "https://github.com/fstandhartinger/auto-model-router",
+   "where_used": [
+    "JevBench"
+   ],
+   "note": "upstream task text not redistributed; includes HumanEval-graded coding and math tasks"
+  },
+  {
+   "name": "GLiClass training corpus (GLIClass-v1.0)",
+   "hf_id_or_url": "knowledgator/GLIClass-v1.0",
+   "where_used": [
+    "contamination check only (Jev-side training data); avoid"
+   ]
+  },
+  {
+   "name": "GLiClass training corpus (gliclass-v2.0)",
+   "hf_id_or_url": "knowledgator/gliclass-v2.0",
+   "where_used": [
+    "contamination check only (Jev-side training data); avoid"
+   ]
+  },
+  {
+   "name": "GLiClass training corpus (gliclass-v3-logic-dataset)",
+   "hf_id_or_url": "knowledgator/gliclass-v3-logic-dataset",
+   "where_used": [
+    "contamination check only (Jev-side training data); avoid"
+   ]
+  },
+  {
+   "name": "Claude-authored hard/std/binj items (hard_affect, hard_clinical, hard_contracts, hard_evidence_a/b, hard_evidence_claims_a/b, hard_nli_a/b/c, hard_policy_a/b/c, hard_scales, hard_codebook_c, hard_intent_c, hard_reason_c, std_evidence/hate/hearsay/trademark, binj_adult/consistency/intent/offensive)",
+   "hf_id_or_url": "none (authored in hard_src/, hard_src_v12/, std_src/, binj_src/)",
+   "where_used": [
+    "train",
+    "dev/selection (hard_dev)"
+   ],
+   "note": "no dataset text; covers policy application, NLI, evidence/claims, contracts, clinical triage, affect, codebook coding, intent, US hearsay, trademark spectrum, hate-speech contrasts"
+  },
+  {
+   "name": "Procedural generators (pg_conflict/evidence/multihop/numeric/policy/routing/temporal) + judge_ifcheck/judge_mathderiv",
+   "hf_id_or_url": "none (pg/, build_judge.py)",
+   "where_used": [
+    "train",
+    "dev/selection (pg_dev)"
+   ]
+  },
+  {
+   "name": "Qwen3-235B-authored items (lah_*, meta claims, task cards, inj_v2 claims)",
+   "hf_id_or_url": "none (gen_lah.py, gen_meta.py, compile_cards.py)",
+   "where_used": [
+    "train"
+   ]
+  },
+  {
+   "name": "clinc/oos-eval",
+   "hf_id_or_url": "clinc/oos-eval",
+   "where_used": [
+    "locked in original v0 design (build/config.yaml, sources.lock.json); possibly downloaded, not in any row file; avoid to be safe"
+   ]
+  },
+  {
+   "name": "lewtun/drug-reviews",
+   "hf_id_or_url": "lewtun/drug-reviews",
+   "where_used": [
+    "locked in original v0 design (build/config.yaml, sources.lock.json); possibly downloaded, not in any row file; avoid to be safe"
+   ]
+  },
+  {
+   "name": "alisawuffles/WANLI",
+   "hf_id_or_url": "alisawuffles/WANLI",
+   "where_used": [
+    "locked in original v0 design (build/config.yaml, sources.lock.json); possibly downloaded, not in any row file; avoid to be safe"
+   ]
+  },
+  {
+   "name": "sedthh/gutenberg_english",
+   "hf_id_or_url": "sedthh/gutenberg_english",
+   "where_used": [
+    "locked in original v0 design (build/config.yaml, sources.lock.json); possibly downloaded, not in any row file; avoid to be safe"
+   ]
+  },
+  {
+   "name": "PolyAI/minds14",
+   "hf_id_or_url": "PolyAI/minds14",
+   "where_used": [
+    "locked in original v0 design (build/config.yaml, sources.lock.json); possibly downloaded, not in any row file; avoid to be safe"
+   ]
+  },
+  {
+   "name": "benayas/snips",
+   "hf_id_or_url": "benayas/snips",
+   "where_used": [
+    "locked in original v0 design (build/config.yaml, sources.lock.json); possibly downloaded, not in any row file; avoid to be safe"
+   ]
+  },
+  {
+   "name": "jhu-cogsci/hans",
+   "hf_id_or_url": "jhu-cogsci/hans",
+   "where_used": [
+    "locked in original v0 design (build/config.yaml, sources.lock.json); possibly downloaded, not in any row file; avoid to be safe"
+   ]
+  },
+  {
+   "name": "MJ-Jang/BECEL",
+   "hf_id_or_url": "MJ-Jang/BECEL",
+   "where_used": [
+    "locked in original v0 design (build/config.yaml, sources.lock.json); possibly downloaded, not in any row file; avoid to be safe"
+   ]
+  },
+  {
+   "name": "tasksource/boolq-natural-perturbations",
+   "hf_id_or_url": "tasksource/boolq-natural-perturbations",
+   "where_used": [
+    "locked in original v0 design (build/config.yaml, sources.lock.json); possibly downloaded, not in any row file; avoid to be safe"
+   ]
+  },
+  {
+   "name": "PolyAI-LDN/task-specific-datasets (NLU++)",
+   "hf_id_or_url": "PolyAI-LDN/task-specific-datasets (NLU++)",
+   "where_used": [
+    "locked in original v0 design (build/config.yaml, sources.lock.json); possibly downloaded, not in any row file; avoid to be safe"
+   ]
+  },
+  {
+   "name": "hellohaptik/HINT3",
+   "hf_id_or_url": "hellohaptik/HINT3",
+   "where_used": [
+    "locked in original v0 design (build/config.yaml, sources.lock.json); possibly downloaded, not in any row file; avoid to be safe"
+   ]
+  },
+  {
+   "name": "stanfordnlp/sst",
+   "hf_id_or_url": "stanfordnlp/sst",
+   "where_used": [
+    "locked in original v0 design (build/config.yaml, sources.lock.json); possibly downloaded, not in any row file; avoid to be safe"
+   ]
+  },
+  {
+   "name": "cardiffnlp/super_tweeteval",
+   "hf_id_or_url": "cardiffnlp/super_tweeteval",
+   "where_used": [
+    "locked in original v0 design (build/config.yaml, sources.lock.json); possibly downloaded, not in any row file; avoid to be safe"
+   ]
+  },
+  {
+   "name": "joey234/nan-nli",
+   "hf_id_or_url": "joey234/nan-nli",
+   "where_used": [
+    "locked in original v0 design (build/config.yaml, sources.lock.json); possibly downloaded, not in any row file; avoid to be safe"
+   ]
+  },
+  {
+   "name": "ucberkeley-dlab/measuring-hate-speech",
+   "hf_id_or_url": "ucberkeley-dlab/measuring-hate-speech",
+   "where_used": [
+    "locked in original v0 design (build/config.yaml, sources.lock.json); possibly downloaded, not in any row file; avoid to be safe"
+   ]
+  },
+  {
+   "name": "AbdelStark/jev-benchmarks",
+   "hf_id_or_url": "AbdelStark/jev-benchmarks",
+   "where_used": [
+    "locked in original v0 design (build/config.yaml, sources.lock.json); possibly downloaded, not in any row file; avoid to be safe"
+   ]
+  },
+  {
+   "name": "colinmcnamara/jev-first-look",
+   "hf_id_or_url": "colinmcnamara/jev-first-look",
+   "where_used": [
+    "locked in original v0 design (build/config.yaml, sources.lock.json); possibly downloaded, not in any row file; avoid to be safe"
+   ]
+  },
+  {
+   "name": "cwhy/decision-injection-bench",
+   "hf_id_or_url": "cwhy/decision-injection-bench",
+   "where_used": [
+    "locked in original v0 design (build/config.yaml, sources.lock.json); possibly downloaded, not in any row file; avoid to be safe"
+   ]
+  },
+  {
+   "name": "Lakera/gandalf_ignore_instructions",
+   "hf_id_or_url": "Lakera/gandalf_ignore_instructions",
+   "where_used": [
+    "locked in original v0 design (build/config.yaml, sources.lock.json); possibly downloaded, not in any row file; avoid to be safe"
+   ]
+  },
+  {
+   "name": "Lakera/mosscap_prompt_injection",
+   "hf_id_or_url": "Lakera/mosscap_prompt_injection",
+   "where_used": [
+    "locked in original v0 design (build/config.yaml, sources.lock.json); possibly downloaded, not in any row file; avoid to be safe"
+   ]
+  },
+  {
+   "name": "ethz-spylab/agentdojo",
+   "hf_id_or_url": "ethz-spylab/agentdojo",
+   "where_used": [
+    "locked in original v0 design (build/config.yaml, sources.lock.json); possibly downloaded, not in any row file; avoid to be safe"
+   ]
+  },
+  {
+   "name": "jackhhao/jailbreak-classification",
+   "hf_id_or_url": "jackhhao/jailbreak-classification",
+   "where_used": [
+    "locked in original v0 design (build/config.yaml, sources.lock.json); possibly downloaded, not in any row file; avoid to be safe"
+   ]
+  },
+  {
+   "name": "microsoft/BIPIA",
+   "hf_id_or_url": "microsoft/BIPIA",
+   "where_used": [
+    "locked in original v0 design (build/config.yaml, sources.lock.json); possibly downloaded, not in any row file; avoid to be safe"
+   ]
+  },
+  {
+   "name": "yanismiraoui/prompt_injections",
+   "hf_id_or_url": "yanismiraoui/prompt_injections",
+   "where_used": [
+    "locked in original v0 design (build/config.yaml, sources.lock.json); possibly downloaded, not in any row file; avoid to be safe"
+   ]
+  },
+  {
+   "name": "uiuc-kang-lab/InjecAgent",
+   "hf_id_or_url": "uiuc-kang-lab/InjecAgent",
+   "where_used": [
+    "locked in original v0 design (build/config.yaml, sources.lock.json); possibly downloaded, not in any row file; avoid to be safe"
+   ]
+  },
+  {
+   "name": "microsoft/llmail-inject-challenge",
+   "hf_id_or_url": "microsoft/llmail-inject-challenge",
+   "where_used": [
+    "locked in original v0 design (build/config.yaml, sources.lock.json); possibly downloaded, not in any row file; avoid to be safe"
+   ]
+  },
+  {
+   "name": "wikimedia/wikipedia (simplewiki)",
+   "hf_id_or_url": "wikimedia/wikipedia (simplewiki)",
+   "where_used": [
+    "locked in original v0 design (build/config.yaml, sources.lock.json); possibly downloaded, not in any row file; avoid to be safe"
+   ]
+  },
+  {
+   "name": "emozilla/pg19",
+   "hf_id_or_url": "emozilla/pg19",
+   "where_used": [
+    "locked in original v0 design (build/config.yaml, sources.lock.json); possibly downloaded, not in any row file; avoid to be safe"
+   ]
+  },
+  {
+   "name": "stanfordnlp/snli",
+   "hf_id_or_url": "stanfordnlp/snli",
+   "where_used": [
+    "locked in original v0 design (build/config.yaml, sources.lock.json); possibly downloaded, not in any row file; avoid to be safe"
+   ]
+  },
+  {
+   "name": "DeepPavlov/hwu64",
+   "hf_id_or_url": "DeepPavlov/hwu64",
+   "where_used": [
+    "locked in original v0 design (build/config.yaml, sources.lock.json); possibly downloaded, not in any row file; avoid to be safe"
+   ]
+  },
+  {
+   "name": "TrustAIRLab/in-the-wild-jailbreak-prompts",
+   "hf_id_or_url": "TrustAIRLab/in-the-wild-jailbreak-prompts",
+   "where_used": [
+    "locked in original v0 design (build/config.yaml, sources.lock.json); possibly downloaded, not in any row file; avoid to be safe"
+   ]
+  }
+ ],
+ "families_note": "Heavily covered task FAMILIES (avoid or treat as not new): intent classification (Banking77, CLINC, MASSIVE, SNIPS, SGD); general topic classification (DBpedia, Yahoo, AG News, BBC, arXiv categories in 8 archive groups, medical abstracts, patents CPC); review/tweet sentiment and polarity (Amazon, Yelp 2/5, IMDB, SST-2, Rotten Tomatoes, clothing, TweetEval, airline, DynaSent, financial news/phrasebank, app reviews, poems, MELD); emotion (GoEmotions, dair emotion, EmpatheticDialogues, emo2019, IEMOCAP, MELD, DailyDialog, Claude affect items); toxicity/hate/offensive (Civil Comments, toxic conversations, TweetEval hate/offensive, HateCheck, Social Bias Frames, implicit hate, authored hate/offensive items); spam (SMS, Enron, Deysi); NLI/entailment and paraphrase (MNLI, RTE, QNLI, CB, MRPC, label-NLI, authored NLI); yes/no reading comprehension and negation (BoolQ, CondaQA, PubMedQA, ScoNe, This-is-not-a-dataset, ~300 negation templates); fact verification / claim-evidence (VitaminC, SciFact, health_fact, TabFact, Evidence Inference, TrueTeacher, authored evidence items); legal (LegalBench incl. CUAD, hearsay, abercrombie/trademark, overruling, unfair ToS; LEDGAR; authored contracts/hearsay/trademark); biomedical (PubMed RCT roles, DDI, PubMedQA, medical abstracts, authored clinical triage); logical/multi-step reasoning (ProofWriter, FLD, LogiQA2, MuSR, FOLIO, CLUTRR, SpartQA, procedural pg generators); commonsense MCQ (ARC, CommonsenseQA, COPA, numer_sense); stance/argument/debate (IBM ArgQ, wiki-stance AfD, jagged AfD, RumourEval, Emergent, tweet stance); dialogue acts and discourse relations (pragmeval, silicone); lexical/semantic relations (BLESS etc., SemEval-2010 T8, SciIE); citation intent (SciCite, ACL citation_intent); response judging (PRM800K, HelpSteer2, ifcheck, math derivations); prompt-injection robustness; moral judgment (Moral Stories); political/policy codebooks (CAP, Manifesto, political media messages); routing/tool-selection (JevBench router, pg_routing); and ~510 Mixtral-invented business/marketing/customer text-classification tasks. Also avoid all of tasksource/zero-shot-label-nli and the GLiClass (Jev-side) corpora. arXiv archives already used: q-bio, cond-mat, econ, q-fin, gr-qc, hep-*, math-ph, nucl-*, quant-ph (OHS-1); cs, math, stat, eess, astro-ph (OHS-2), papers up to 2026-09-26."
+}

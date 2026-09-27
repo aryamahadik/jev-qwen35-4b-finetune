@@ -1,0 +1,372 @@
+{
+ "task": "few_nerd_fine",
+ "rows": 142,
+ "qtype": "choice",
+ "track": "U",
+ "n_options": 20,
+ "class_balance": {
+  "event-sportsevent": 8,
+  "other-biologything": 8,
+  "building-other": 7,
+  "event-attack/battle/war/militaryconflict": 7,
+  "location-GPE": 7,
+  "location-bodiesofwater": 7,
+  "location-other": 7,
+  "location-road/railway/highway/transit": 7,
+  "organization-company": 7,
+  "organization-education": 7,
+  "organization-government/governmentagency": 7,
+  "organization-media/newspaper": 7,
+  "organization-other": 7,
+  "organization-sportsteam": 7,
+  "person-actor": 7,
+  "person-artist/author": 7,
+  "person-athlete": 7,
+  "person-other": 7,
+  "person-politician": 7,
+  "product-other": 7
+ },
+ "max_class_share": 0.0563,
+ "coarse_balance": {
+  "organization": 42,
+  "person": 35,
+  "location": 28,
+  "event": 15,
+  "other": 8,
+  "product": 7,
+  "building": 7
+ },
+ "types_with_8_items": [
+  "event-sportsevent",
+  "other-biologything"
+ ],
+ "label_set": [
+  {
+   "label": "location-GPE",
+   "test_span_count": 20409
+  },
+  {
+   "label": "person-other",
+   "test_span_count": 8767
+  },
+  {
+   "label": "organization-other",
+   "test_span_count": 4476
+  },
+  {
+   "label": "organization-company",
+   "test_span_count": 3903
+  },
+  {
+   "label": "person-artist/author",
+   "test_span_count": 3464
+  },
+  {
+   "label": "person-athlete",
+   "test_span_count": 2907
+  },
+  {
+   "label": "person-politician",
+   "test_span_count": 2859
+  },
+  {
+   "label": "building-other",
+   "test_span_count": 2549
+  },
+  {
+   "label": "organization-sportsteam",
+   "test_span_count": 2477
+  },
+  {
+   "label": "location-other",
+   "test_span_count": 2194
+  },
+  {
+   "label": "organization-education",
+   "test_span_count": 2082
+  },
+  {
+   "label": "other-biologything",
+   "test_span_count": 1875
+  },
+  {
+   "label": "location-road/railway/highway/transit",
+   "test_span_count": 1702
+  },
+  {
+   "label": "person-actor",
+   "test_span_count": 1638
+  },
+  {
+   "label": "product-other",
+   "test_span_count": 1614
+  },
+  {
+   "label": "event-sportsevent",
+   "test_span_count": 1572
+  },
+  {
+   "label": "organization-government/governmentagency",
+   "test_span_count": 1535
+  },
+  {
+   "label": "organization-media/newspaper",
+   "test_span_count": 1234
+  },
+  {
+   "label": "location-bodiesofwater",
+   "test_span_count": 1169
+  },
+  {
+   "label": "event-attack/battle/war/militaryconflict",
+   "test_span_count": 1099
+  }
+ ],
+ "next_excluded_types": [
+  {
+   "label": "organization-politicalparty",
+   "test_span_count": 1057
+  },
+  {
+   "label": "art-music",
+   "test_span_count": 1041
+  },
+  {
+   "label": "art-writtenart",
+   "test_span_count": 1032
+  }
+ ],
+ "boundary_tie_at_rank_20": false,
+ "instructions_template": "What type of entity is [[{span}]]?",
+ "card": "- location-GPE: A geopolitical entity: a country, state, province, region, city, town or other politically defined place.\n- person-other: A person who does not belong to the Few-NERD person subtypes actor, artist/author, athlete, director, politician, scholar or soldier.\n- organization-other: An organization that does not belong to the Few-NERD organization subtypes company, education, government/governmentagency, media/newspaper, politicalparty, religion, showorganization, sportsleague or sportsteam.\n- organization-company: A business or commercial company.\n- person-artist/author: A person known as a creator of artistic or written works, such as a musician, singer, painter or writer.\n- person-athlete: A person known as a sports player or athlete.\n- person-politician: A person known as a politician, head of state or government official.\n- building-other: A building or man-made structure that does not belong to the Few-NERD building subtypes airport, hospital, hotel, library, restaurant, sportsfacility or theater.\n- organization-sportsteam: A sports team or club.\n- location-other: A location that does not belong to the Few-NERD location subtypes GPE, bodiesofwater, island, mountain, park or road/railway/highway/transit.\n- organization-education: An educational institution, such as a school, college or university.\n- other-biologything: A biological entity or term, such as a gene, protein, cell, tissue or other biological substance or structure.\n- location-road/railway/highway/transit: A road, street, highway, railway line, route or other transit line.\n- person-actor: A person known as an actor or actress.\n- product-other: A product or man-made object that does not belong to the Few-NERD product subtypes airplane, car, food, game, ship, software, train or weapon.\n- event-sportsevent: A sports event, such as a match, race, tournament, championship or season.\n- organization-government/governmentagency: A government, government body or government agency.\n- organization-media/newspaper: A media organization, such as a newspaper, magazine, broadcaster or publisher.\n- location-bodiesofwater: A body of water, such as a sea, ocean, lake, river or bay.\n- event-attack/battle/war/militaryconflict: An attack, battle, war or other military conflict.",
+ "label_definitions_source": "author-written (label names are the official Few-NERD fine-type names from the dataset card / paper); one neutral definition per label, written once and frozen",
+ "author_written_definitions": {
+  "location-GPE": "A geopolitical entity: a country, state, province, region, city, town or other politically defined place.",
+  "person-other": "A person who does not belong to the Few-NERD person subtypes actor, artist/author, athlete, director, politician, scholar or soldier.",
+  "organization-other": "An organization that does not belong to the Few-NERD organization subtypes company, education, government/governmentagency, media/newspaper, politicalparty, religion, showorganization, sportsleague or sportsteam.",
+  "organization-company": "A business or commercial company.",
+  "person-artist/author": "A person known as a creator of artistic or written works, such as a musician, singer, painter or writer.",
+  "person-athlete": "A person known as a sports player or athlete.",
+  "person-politician": "A person known as a politician, head of state or government official.",
+  "building-other": "A building or man-made structure that does not belong to the Few-NERD building subtypes airport, hospital, hotel, library, restaurant, sportsfacility or theater.",
+  "organization-sportsteam": "A sports team or club.",
+  "location-other": "A location that does not belong to the Few-NERD location subtypes GPE, bodiesofwater, island, mountain, park or road/railway/highway/transit.",
+  "organization-education": "An educational institution, such as a school, college or university.",
+  "other-biologything": "A biological entity or term, such as a gene, protein, cell, tissue or other biological substance or structure.",
+  "location-road/railway/highway/transit": "A road, street, highway, railway line, route or other transit line.",
+  "person-actor": "A person known as an actor or actress.",
+  "product-other": "A product or man-made object that does not belong to the Few-NERD product subtypes airplane, car, food, game, ship, software, train or weapon.",
+  "event-sportsevent": "A sports event, such as a match, race, tournament, championship or season.",
+  "organization-government/governmentagency": "A government, government body or government agency.",
+  "organization-media/newspaper": "A media organization, such as a newspaper, magazine, broadcaster or publisher.",
+  "location-bodiesofwater": "A body of water, such as a sea, ocean, lake, river or bay.",
+  "event-attack/battle/war/militaryconflict": "An attack, battle, war or other military conflict."
+ },
+ "source": "Few-NERD (Ding et al. 2021), HF DFKI-SLT/few-nerd config=supervised split=test",
+ "revision": "205f3e9c9f3577ea2561d43f2f62dc249ab92d5b",
+ "snapshot": {
+  "cache_dir": "ohs3/cache/few_nerd_fine/205f3e9c9f3577ea2561d43f2f62dc249ab92d5b",
+  "parquet": "supervised/test-00000-of-00001.parquet",
+  "parquet_sha256": "b7ad746fcbeb68fcc235ba7142d7c3723ea2dc39930089e947284defecf300c6",
+  "readme_sha256": "beab6f6b7887bc882b88ca7691f6e83316edde29d07fea5491a35a6ffb0cad74",
+  "sentences_in_split": 37648
+ },
+ "licence": "CC BY-SA 4.0 (Few-NERD; text derived from English Wikipedia)",
+ "attribution": "Few-NERD: A Few-shot Named Entity Recognition Dataset. Ding, Xu, Chen, Wang, Hu, Xie, Zheng, Liu. ACL-IJCNLP 2021. https://aclanthology.org/2021.acl-long.248/ ; HF mirror DFKI-SLT/few-nerd.",
+ "date_range": "Few-NERD released 2021 (text from English Wikipedia, pre-2021); no per-item dates; track U",
+ "pool": {
+  "candidate_spans_per_type": {
+   "location-GPE": 19829,
+   "person-other": 8291,
+   "organization-other": 4303,
+   "organization-company": 3627,
+   "person-artist/author": 3137,
+   "person-athlete": 2800,
+   "person-politician": 2757,
+   "building-other": 2451,
+   "organization-sportsteam": 2398,
+   "location-other": 2152,
+   "organization-education": 2003,
+   "other-biologything": 1853,
+   "location-road/railway/highway/transit": 1643,
+   "person-actor": 1533,
+   "product-other": 1547,
+   "event-sportsevent": 1539,
+   "organization-government/governmentagency": 1493,
+   "organization-media/newspaper": 1155,
+   "location-bodiesofwater": 1156,
+   "event-attack/battle/war/militaryconflict": 1080
+  },
+  "dropped": {
+   "unbalanced_double_quotes": 353,
+   "html_entity_artifact": 392,
+   "duplicate_sentence": 609,
+   "state_length": 18,
+   "contains_marker": 20,
+   "sentence_under_5_tokens": 11
+  },
+  "sampling_skips": {
+   "sentence_already_used": 1
+  }
+ },
+ "sampling": "type freq = span count in test split; top 20 (seeded tie-break); candidates per type sorted by (sentence id, span start) then random.Random(20261026).shuffle; round-robin over types in sorted-id order taking the next candidate whose sentence and normalised span string are unused; quota 7 per type, +1 for 2 seeded types; rows shuffled; options shuffled per row with the same RNG",
+ "state_format": "detokenised sentence (tokens joined; spacing fixed around punctuation/clitics; `` and '' shown as \"), target span wrapped in [[ ]]",
+ "state_length": {
+  "min": 49,
+  "median": 152,
+  "max": 1075
+ },
+ "sentence_ids": [
+  "123",
+  "400",
+  "481",
+  "697",
+  "745",
+  "766",
+  "795",
+  "874",
+  "1195",
+  "1243",
+  "1432",
+  "1622",
+  "1815",
+  "2386",
+  "3578",
+  "3966",
+  "4417",
+  "4641",
+  "4954",
+  "5154",
+  "5438",
+  "5764",
+  "5881",
+  "5956",
+  "6067",
+  "6140",
+  "6492",
+  "6853",
+  "7294",
+  "7329",
+  "7332",
+  "7587",
+  "8013",
+  "8059",
+  "8135",
+  "8260",
+  "8303",
+  "8391",
+  "8603",
+  "9231",
+  "9726",
+  "9799",
+  "10057",
+  "10058",
+  "10861",
+  "11197",
+  "11553",
+  "11620",
+  "11805",
+  "12047",
+  "12856",
+  "13206",
+  "13215",
+  "14225",
+  "14534",
+  "14779",
+  "15025",
+  "16304",
+  "16735",
+  "16747",
+  "16771",
+  "17015",
+  "17689",
+  "17806",
+  "17844",
+  "18429",
+  "18639",
+  "18831",
+  "19016",
+  "19094",
+  "19162",
+  "19265",
+  "19910",
+  "20621",
+  "20646",
+  "20778",
+  "21065",
+  "21086",
+  "21527",
+  "21543",
+  "21666",
+  "22031",
+  "22388",
+  "22537",
+  "22606",
+  "22668",
+  "22724",
+  "22993",
+  "23520",
+  "23543",
+  "24455",
+  "24615",
+  "24621",
+  "24859",
+  "24893",
+  "24950",
+  "24967",
+  "25044",
+  "25131",
+  "25235",
+  "25408",
+  "25956",
+  "26172",
+  "26184",
+  "26207",
+  "26420",
+  "26471",
+  "26808",
+  "27468",
+  "27568",
+  "28211",
+  "28414",
+  "28577",
+  "28714",
+  "29058",
+  "29190",
+  "29243",
+  "29264",
+  "29474",
+  "30140",
+  "30402",
+  "31059",
+  "31198",
+  "31323",
+  "31350",
+  "31418",
+  "31847",
+  "32362",
+  "32550",
+  "33869",
+  "33973",
+  "34389",
+  "34813",
+  "35122",
+  "35292",
+  "35347",
+  "35502",
+  "35535",
+  "35703",
+  "37047",
+  "37166",
+  "37549"
+ ],
+ "output_sha256": "6261e71c26d8d80ee6f72bf6ef62226f3acf8149f6a444f11faff6da919750d6",
+ "uncertain": [
+  "Few-NERD uses IO tagging, so two adjacent entities with the same fine tag merge into one span; a marked span may occasionally cover two entities of the same type (gold type still correct).",
+  "Few-NERD gold labels are crowd/expert annotated and have known noise, especially person-other vs person-artist/author/athlete and building-other vs location-other; gold is kept as the source label.",
+  "Definitions are author-written; the '-other' definitions name all official sibling subtypes, including ones not among the 20 options (e.g. person-scholar), matching the source taxonomy.",
+  "Detokenisation is heuristic (layout only); Few-NERD writes both opening and closing double quotes as ``, which are rendered as \" by alternation; sentences with an odd number of double-quote tokens are dropped. Source tokenisation artefacts such as `` s for a possessive after a quoted title (shown as \"Alicia\" s) and a lone ' for plural possessives are kept as-is.",
+  "Few-NERD text is from Wikipedia and the dataset has been public since 2021, so contamination of pretraining data is likely (track U).",
+  "Instructions differ per row only by the quoted span (as the spec asks)."
+ ]
+}

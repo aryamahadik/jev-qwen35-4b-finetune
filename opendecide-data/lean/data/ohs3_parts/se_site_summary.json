@@ -1,0 +1,711 @@
+{
+ "task": "se_site",
+ "split": "ohs3",
+ "track": "F",
+ "qtype": "choice",
+ "n": 142,
+ "n_options": 40,
+ "instructions": "Which Stack Exchange site was this question posted on?",
+ "source": "Stack Exchange API 2.3, /questions?site=<site>&fromdate=1780272000&todate=<snapshot>&sort=creation&order=desc (unauthenticated), /sites for names, audience, launch_date",
+ "snapshot": {
+  "fromdate": "2026-06-01T00:00:00Z",
+  "todate": "2026-09-26T23:00:00Z",
+  "snapshot_todate": 1790463600,
+  "fetch_started": "2026-09-26T23:50:50.138263+00:00",
+  "fetch_finished": "2026-09-26T23:52:56.372390+00:00",
+  "filter": "!2vHqlW)1idY*y*4O4HFN67xU99.eV7pg.wr..vHD)i",
+  "quota_remaining_after": 70,
+  "n_requests_cached": 220
+ },
+ "licence": "CC BY-SA (per post content_license; CC BY-SA 4.0: 142)",
+ "labels_source": "official: site name and 'audience' string from /2.3/sites (no author-written definitions)",
+ "options": {
+  "Academia": {
+   "site": "academia",
+   "audience": "academics and those enrolled in higher education",
+   "launch_date": 1398277239,
+   "questions_in_window": 172
+  },
+  "Ask Different": {
+   "site": "apple",
+   "audience": "power users of Apple hardware and software",
+   "launch_date": 1296250821,
+   "questions_in_window": 187
+  },
+  "Bicycles": {
+   "site": "bicycles",
+   "audience": "people who build and repair bicycles, people who train cycling, or commute on bicycles",
+   "launch_date": 1312311600,
+   "questions_in_window": 116
+  },
+  "Blender": {
+   "site": "blender",
+   "audience": "people who use Blender to create 3D graphics, animations, or games",
+   "launch_date": 1434461820,
+   "questions_in_window": 650
+  },
+  "Chemistry": {
+   "site": "chemistry",
+   "audience": "scientists, academics, teachers, and students in the field of chemistry",
+   "launch_date": 1431546723,
+   "questions_in_window": 128
+  },
+  "Christianity": {
+   "site": "christianity",
+   "audience": "committed Christians, experts in Christianity and those interested in learning more",
+   "launch_date": 1369832400,
+   "questions_in_window": 167
+  },
+  "Cryptography": {
+   "site": "crypto",
+   "audience": "software developers, mathematicians and others interested in cryptography",
+   "launch_date": 1435671420,
+   "questions_in_window": 103
+  },
+  "Database Administrators": {
+   "site": "dba",
+   "audience": "database professionals who wish to improve their database skills and learn from others in the community",
+   "launch_date": 1313521200,
+   "questions_in_window": 208
+  },
+  "Home Improvement": {
+   "site": "diy",
+   "audience": "contractors and serious DIYers",
+   "launch_date": 1299184860,
+   "questions_in_window": 391
+  },
+  "Electrical Engineering": {
+   "site": "electronics",
+   "audience": "electronics and electrical engineering professionals, students, and enthusiasts",
+   "launch_date": 1300734875,
+   "questions_in_window": 774
+  },
+  "Engineering": {
+   "site": "engineering",
+   "audience": "professionals and students of engineering",
+   "launch_date": 1639665691,
+   "questions_in_window": 109
+  },
+  "English Language & Usage": {
+   "site": "english",
+   "audience": "linguists, etymologists, and serious English language enthusiasts",
+   "launch_date": 1290463924,
+   "questions_in_window": 160
+  },
+  "Arqade": {
+   "site": "gaming",
+   "audience": "passionate videogamers on all platforms",
+   "launch_date": 1286391600,
+   "questions_in_window": 232
+  },
+  "Geographic Information Systems": {
+   "site": "gis",
+   "audience": "cartographers, geographers and GIS professionals",
+   "launch_date": 1299486043,
+   "questions_in_window": 199
+  },
+  "Biblical Hermeneutics": {
+   "site": "hermeneutics",
+   "audience": "professors, theologians, and those interested in exegetical analysis of biblical texts",
+   "launch_date": 1564693434,
+   "questions_in_window": 333
+  },
+  "Hinduism": {
+   "site": "hinduism",
+   "audience": "followers of the Hindu religion and those interested in learning more about Hinduism",
+   "launch_date": 1639665691,
+   "questions_in_window": 180
+  },
+  "Islam": {
+   "site": "islam",
+   "audience": "Muslims, experts in Islam, and those interested in learning more about Islam",
+   "launch_date": 1564693434,
+   "questions_in_window": 121
+  },
+  "Japanese Language": {
+   "site": "japanese",
+   "audience": "students, teachers, and linguists wanting to discuss the finer points of the Japanese language",
+   "launch_date": 1441805820,
+   "questions_in_window": 221
+  },
+  "Mi Yodeya": {
+   "site": "judaism",
+   "audience": "those who base their lives on Jewish law and tradition and anyone interested in learning more",
+   "launch_date": 1336500000,
+   "questions_in_window": 345
+  },
+  "Law": {
+   "site": "law",
+   "audience": "legal professionals, students, and others with experience or interest in law",
+   "launch_date": 1467819836,
+   "questions_in_window": 218
+  },
+  "Literature": {
+   "site": "literature",
+   "audience": "scholars and enthusiasts of literature",
+   "launch_date": 1639665691,
+   "questions_in_window": 105
+  },
+  "Mathematica": {
+   "site": "mathematica",
+   "audience": "users of Wolfram Mathematica",
+   "launch_date": 1342483200,
+   "questions_in_window": 171
+  },
+  "MathOverflow": {
+   "site": "mathoverflow.net",
+   "audience": "professional mathematicians",
+   "launch_date": 1254154260,
+   "questions_in_window": 1187
+  },
+  "Movies & TV": {
+   "site": "movies",
+   "audience": "movie and TV enthusiasts",
+   "launch_date": 1422480963,
+   "questions_in_window": 140
+  },
+  "Music: Practice & Theory": {
+   "site": "music",
+   "audience": "musicians, students, and enthusiasts",
+   "launch_date": 1441805820,
+   "questions_in_window": 143
+  },
+  "Philosophy": {
+   "site": "philosophy",
+   "audience": "those interested in the study of the fundamental nature of knowledge, reality, and existence",
+   "launch_date": 1467819836,
+   "questions_in_window": 464
+  },
+  "Physics": {
+   "site": "physics",
+   "audience": "active researchers, academics and students of physics",
+   "launch_date": 1298586551,
+   "questions_in_window": 869
+  },
+  "Puzzling": {
+   "site": "puzzling",
+   "audience": "those who create, solve, and study puzzles",
+   "launch_date": 1462373480,
+   "questions_in_window": 508
+  },
+  "Role-playing Games": {
+   "site": "rpg",
+   "audience": "gamemasters and players of tabletop, paper-and-pencil role-playing games",
+   "launch_date": 1334176200,
+   "questions_in_window": 150
+  },
+  "Stack Overflow на русском": {
+   "site": "ru.stackoverflow",
+   "audience": "программистов",
+   "launch_date": 1449851367,
+   "questions_in_window": 230
+  },
+  "Russian Language": {
+   "site": "russian",
+   "audience": "students, teachers, and linguists wanting to discuss the finer points of the Russian language",
+   "launch_date": 1564693434,
+   "questions_in_window": 176
+  },
+  "Salesforce": {
+   "site": "salesforce",
+   "audience": "Salesforce administrators, implementation experts, developers and anybody in-between",
+   "launch_date": 1410383915,
+   "questions_in_window": 155
+  },
+  "Science Fiction & Fantasy": {
+   "site": "scifi",
+   "audience": "science fiction and fantasy enthusiasts",
+   "launch_date": 1323802800,
+   "questions_in_window": 414
+  },
+  "Server Fault": {
+   "site": "serverfault",
+   "audience": "system and network administrators",
+   "launch_date": 1243296000,
+   "questions_in_window": 208
+  },
+  "Stack Overflow": {
+   "site": "stackoverflow",
+   "audience": "professional and enthusiast programmers",
+   "launch_date": 1221436800,
+   "questions_in_window": 4968
+  },
+  "Cross Validated": {
+   "site": "stats",
+   "audience": "people interested in statistics, machine learning, data analysis, data mining, and data visualization",
+   "launch_date": 1288900046,
+   "questions_in_window": 396
+  },
+  "Super User": {
+   "site": "superuser",
+   "audience": "computer enthusiasts and power users",
+   "launch_date": 1250553600,
+   "questions_in_window": 524
+  },
+  "TeX - LaTeX": {
+   "site": "tex",
+   "audience": "users of TeX, LaTeX, ConTeXt, and related typesetting systems",
+   "launch_date": 1289510398,
+   "questions_in_window": 877
+  },
+  "Travel": {
+   "site": "travel",
+   "audience": "road warriors and seasoned travelers",
+   "launch_date": 1358885491,
+   "questions_in_window": 105
+  },
+  "Worldbuilding": {
+   "site": "worldbuilding",
+   "audience": "writers/artists using science, geography and culture to construct imaginary worlds and settings",
+   "launch_date": 1447708127,
+   "questions_in_window": 161
+  }
+ },
+ "per_class": {
+  "Academia": 3,
+  "Ask Different": 4,
+  "Bicycles": 4,
+  "Blender": 4,
+  "Chemistry": 4,
+  "Christianity": 3,
+  "Cryptography": 3,
+  "Database Administrators": 3,
+  "Home Improvement": 3,
+  "Electrical Engineering": 4,
+  "Engineering": 3,
+  "English Language & Usage": 3,
+  "Arqade": 4,
+  "Geographic Information Systems": 4,
+  "Biblical Hermeneutics": 3,
+  "Hinduism": 3,
+  "Islam": 4,
+  "Japanese Language": 4,
+  "Mi Yodeya": 3,
+  "Law": 3,
+  "Literature": 3,
+  "Mathematica": 4,
+  "MathOverflow": 4,
+  "Movies & TV": 4,
+  "Music: Practice & Theory": 4,
+  "Philosophy": 3,
+  "Physics": 4,
+  "Puzzling": 4,
+  "Role-playing Games": 3,
+  "Stack Overflow на русском": 4,
+  "Russian Language": 4,
+  "Salesforce": 3,
+  "Science Fiction & Fantasy": 4,
+  "Server Fault": 4,
+  "Stack Overflow": 3,
+  "Cross Validated": 3,
+  "Super User": 4,
+  "TeX - LaTeX": 3,
+  "Travel": 4,
+  "Worldbuilding": 4
+ },
+ "max_class_share": 0.028,
+ "item_creation_date_range": [
+  "2026-06-03T05:47:33Z",
+  "2026-09-26T21:51:25Z"
+ ],
+ "eligible_per_site": {
+  "Academia": 86,
+  "Ask Different": 136,
+  "Bicycles": 107,
+  "Blender": 163,
+  "Chemistry": 105,
+  "Christianity": 75,
+  "Cryptography": 86,
+  "Database Administrators": 88,
+  "Home Improvement": 166,
+  "Electrical Engineering": 173,
+  "Engineering": 92,
+  "English Language & Usage": 117,
+  "Arqade": 106,
+  "Geographic Information Systems": 101,
+  "Biblical Hermeneutics": 122,
+  "Hinduism": 132,
+  "Islam": 88,
+  "Japanese Language": 167,
+  "Mi Yodeya": 153,
+  "Law": 135,
+  "Literature": 98,
+  "Mathematica": 152,
+  "MathOverflow": 108,
+  "Movies & TV": 132,
+  "Music: Practice & Theory": 99,
+  "Philosophy": 109,
+  "Physics": 117,
+  "Puzzling": 177,
+  "Role-playing Games": 133,
+  "Stack Overflow на русском": 135,
+  "Russian Language": 113,
+  "Salesforce": 96,
+  "Science Fiction & Fantasy": 120,
+  "Server Fault": 89,
+  "Stack Overflow": 98,
+  "Cross Validated": 95,
+  "Super User": 147,
+  "TeX - LaTeX": 164,
+  "Travel": 90,
+  "Worldbuilding": 84
+ },
+ "pool_per_site": {
+  "Academia": 116,
+  "Ask Different": 163,
+  "Bicycles": 116,
+  "Blender": 200,
+  "Chemistry": 126,
+  "Christianity": 108,
+  "Cryptography": 103,
+  "Database Administrators": 108,
+  "Home Improvement": 200,
+  "Electrical Engineering": 200,
+  "Engineering": 102,
+  "English Language & Usage": 147,
+  "Arqade": 111,
+  "Geographic Information Systems": 105,
+  "Biblical Hermeneutics": 159,
+  "Hinduism": 135,
+  "Islam": 117,
+  "Japanese Language": 178,
+  "Mi Yodeya": 175,
+  "Law": 178,
+  "Literature": 105,
+  "Mathematica": 171,
+  "MathOverflow": 126,
+  "Movies & TV": 140,
+  "Music: Practice & Theory": 114,
+  "Philosophy": 200,
+  "Physics": 200,
+  "Puzzling": 190,
+  "Role-playing Games": 150,
+  "Stack Overflow на русском": 161,
+  "Russian Language": 115,
+  "Salesforce": 100,
+  "Science Fiction & Fantasy": 137,
+  "Server Fault": 114,
+  "Stack Overflow": 200,
+  "Cross Validated": 111,
+  "Super User": 200,
+  "TeX - LaTeX": 200,
+  "Travel": 105,
+  "Worldbuilding": 112
+ },
+ "extra_page_todate": {
+  "academia": "2026-09-13T19:02:53+00:00",
+  "apple": "2026-07-09T07:20:28+00:00",
+  "bicycles": "2026-08-24T11:57:37+00:00",
+  "blender": "2026-06-27T12:55:25+00:00",
+  "chemistry": "2026-06-22T03:48:12+00:00",
+  "christianity": "2026-06-03T09:26:39+00:00",
+  "crypto": "2026-06-20T22:39:10+00:00",
+  "dba": "2026-09-23T17:18:49+00:00",
+  "diy": "2026-08-25T19:19:23+00:00",
+  "electronics": "2026-08-04T16:19:09+00:00",
+  "engineering": "2026-09-24T04:06:12+00:00",
+  "english": "2026-08-21T08:12:18+00:00",
+  "gaming": "2026-06-06T09:09:15+00:00",
+  "gis": "2026-09-19T23:27:12+00:00",
+  "hermeneutics": "2026-06-21T13:39:42+00:00",
+  "hinduism": "2026-09-12T23:55:34+00:00",
+  "islam": "2026-06-22T23:14:15+00:00",
+  "japanese": "2026-08-16T17:02:19+00:00",
+  "judaism": "2026-08-30T18:36:56+00:00",
+  "law": "2026-07-20T22:32:46+00:00",
+  "literature": "2026-08-29T01:30:01+00:00",
+  "mathematica": "2026-07-14T04:36:12+00:00",
+  "mathoverflow.net": "2026-09-23T23:30:39+00:00",
+  "movies": "2026-07-10T05:33:55+00:00",
+  "music": "2026-09-12T13:35:03+00:00",
+  "philosophy": "2026-08-01T05:27:13+00:00",
+  "physics": "2026-09-01T11:06:16+00:00",
+  "puzzling": "2026-09-04T21:36:59+00:00",
+  "rpg": "2026-07-10T17:20:20+00:00",
+  "ru.stackoverflow": "2026-08-14T19:00:01+00:00",
+  "russian": "2026-06-07T07:00:44+00:00",
+  "salesforce": "2026-09-26T22:44:05+00:00",
+  "scifi": "2026-09-15T17:15:06+00:00",
+  "serverfault": "2026-06-09T17:03:31+00:00",
+  "stackoverflow": "2026-09-16T21:04:36+00:00",
+  "stats": "2026-09-23T15:18:26+00:00",
+  "superuser": "2026-08-19T12:44:08+00:00",
+  "tex": "2026-07-28T07:51:06+00:00",
+  "travel": "2026-08-13T11:49:37+00:00",
+  "worldbuilding": "2026-06-07T23:21:39+00:00"
+ },
+ "skipped": {
+  "licence_not_cc_by_sa": 737,
+  "length": 70,
+  "negative_score": 229,
+  "cross_posted_title": 8
+ },
+ "redactions": {
+  "site_name": 1,
+  "site_abbrev": 5
+ },
+ "rows_with_redaction": 5,
+ "universe": {
+  "main_sites": 182,
+  "overlap_dropped": [
+   "ai",
+   "askubuntu",
+   "codereview",
+   "datascience",
+   "ell",
+   "expatriates",
+   "math",
+   "softwareengineering",
+   "unix"
+  ],
+  "sites_counted": 173,
+  "sites_with_ge_40": 86,
+  "next_below_cut": [
+   [
+    "emacs",
+    102
+   ],
+   [
+    "android",
+    100
+   ],
+   [
+    "civicrm",
+    100
+   ],
+   [
+    "aviation",
+    87
+   ],
+   [
+    "cs",
+    82
+   ]
+  ]
+ },
+ "question_ids": {
+  "Academia": [
+   227397,
+   227465,
+   227594
+  ],
+  "Ask Different": [
+   486535,
+   486640,
+   486856,
+   487110
+  ],
+  "Bicycles": [
+   100378,
+   100407,
+   100671,
+   100735
+  ],
+  "Blender": [
+   347160,
+   347222,
+   348438,
+   348460
+  ],
+  "Chemistry": [
+   195600,
+   195631,
+   195755,
+   195812
+  ],
+  "Christianity": [
+   114292,
+   114610,
+   114719
+  ],
+  "Cryptography": [
+   119750,
+   119764,
+   119937
+  ],
+  "Database Administrators": [
+   350704,
+   350755,
+   350795
+  ],
+  "Home Improvement": [
+   331551,
+   332020,
+   332123
+  ],
+  "Electrical Engineering": [
+   771121,
+   771937,
+   771985,
+   772129
+  ],
+  "Engineering": [
+   65850,
+   65882,
+   65896
+  ],
+  "English Language & Usage": [
+   639998,
+   640015,
+   640246
+  ],
+  "Arqade": [
+   419346,
+   419395,
+   419438,
+   419484
+  ],
+  "Geographic Information Systems": [
+   501148,
+   501286,
+   501318,
+   501402
+  ],
+  "Biblical Hermeneutics": [
+   117029,
+   118195,
+   118410
+  ],
+  "Hinduism": [
+   70311,
+   70350,
+   70395
+  ],
+  "Islam": [
+   91473,
+   91543,
+   91651,
+   91663
+  ],
+  "Japanese Language": [
+   112315,
+   112327,
+   112510,
+   112688
+  ],
+  "Mi Yodeya": [
+   156792,
+   156798,
+   157254
+  ],
+  "Law": [
+   114992,
+   115077,
+   115295
+  ],
+  "Literature": [
+   32160,
+   32169,
+   32336
+  ],
+  "Mathematica": [
+   319644,
+   319722,
+   319816,
+   319918
+  ],
+  "MathOverflow": [
+   515361,
+   515498,
+   515546,
+   515551
+  ],
+  "Movies & TV": [
+   132103,
+   132106,
+   132264,
+   132371
+  ],
+  "Music: Practice & Theory": [
+   143976,
+   143998,
+   144088,
+   144163
+  ],
+  "Philosophy": [
+   139650,
+   139803,
+   139927
+  ],
+  "Physics": [
+   875152,
+   875252,
+   875262,
+   876335
+  ],
+  "Puzzling": [
+   139274,
+   139465,
+   139574,
+   139579
+  ],
+  "Role-playing Games": [
+   219537,
+   219626,
+   219947
+  ],
+  "Stack Overflow на русском": [
+   1625890,
+   1625945,
+   1626154,
+   1626191
+  ],
+  "Russian Language": [
+   30439,
+   30457,
+   30489,
+   30526
+  ],
+  "Salesforce": [
+   439712,
+   439713,
+   439869
+  ],
+  "Science Fiction & Fantasy": [
+   305781,
+   305864,
+   305876,
+   305983
+  ],
+  "Server Fault": [
+   1199587,
+   1199611,
+   1199696,
+   1199849
+  ],
+  "Stack Overflow": [
+   80003067,
+   80005942,
+   80006124
+  ],
+  "Cross Validated": [
+   677168,
+   677183,
+   677269
+  ],
+  "Super User": [
+   1939315,
+   1939327,
+   1940294,
+   1940542
+  ],
+  "TeX - LaTeX": [
+   764653,
+   766371,
+   766738
+  ],
+  "Travel": [
+   203875,
+   203880,
+   203982,
+   204223
+  ],
+  "Worldbuilding": [
+   273623,
+   274123,
+   274495,
+   274642
+  ]
+ },
+ "seed": 20261026
+}

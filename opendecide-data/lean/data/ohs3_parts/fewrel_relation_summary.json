@@ -1,0 +1,360 @@
+{
+ "task": "fewrel_relation",
+ "rows": 142,
+ "qtype": "choice",
+ "track": "U",
+ "n_options": 20,
+ "class_balance": {
+  "crosses (P177)": 7,
+  "director (P57)": 7,
+  "headquarters location (P159)": 7,
+  "league (P118)": 7,
+  "military rank (P410)": 7,
+  "mother (P25)": 8,
+  "operating system (P306)": 7,
+  "operator (P137)": 8,
+  "original language of film or TV show (P364)": 7,
+  "owned by (P127)": 7,
+  "part of (P361)": 7,
+  "position held (P39)": 7,
+  "religion (P140)": 7,
+  "said to be the same as (P460)": 7,
+  "screenwriter (P58)": 7,
+  "sibling (P3373)": 7,
+  "sport (P641)": 7,
+  "spouse (P26)": 7,
+  "taxon rank (P105)": 7,
+  "voice type (P412)": 7
+ },
+ "max_class_share": 0.0563,
+ "instructions": "What is the relation of the head entity [[H: ...]] to the tail entity [[T: ...]] in this sentence?",
+ "labels": {
+  "P105": {
+   "name": "taxon rank",
+   "definition": "level in a taxonomic hierarchy",
+   "file": "train_wiki.json"
+  },
+  "P118": {
+   "name": "league",
+   "definition": "league in which team or player plays or has played in",
+   "file": "train_wiki.json"
+  },
+  "P127": {
+   "name": "owned by",
+   "definition": "owner of the subject",
+   "file": "train_wiki.json"
+  },
+  "P137": {
+   "name": "operator",
+   "definition": "person, profession, or organization that operates the equipment, facility, or service; use country for diplomatic missions",
+   "file": "train_wiki.json"
+  },
+  "P140": {
+   "name": "religion",
+   "definition": "religion of a person, organization or religious building, or associated with this subject",
+   "file": "train_wiki.json"
+  },
+  "P159": {
+   "name": "headquarters location",
+   "definition": "specific location where an organization's headquarters is or has been situated. Inverse property of \"occupant\" (P466).",
+   "file": "train_wiki.json"
+  },
+  "P177": {
+   "name": "crosses",
+   "definition": "obstacle (body of water, road, ...) which this bridge crosses over or this tunnel goes under",
+   "file": "val_wiki.json"
+  },
+  "P25": {
+   "name": "mother",
+   "definition": "female parent of the subject. For stepmother, use \"stepparent\" (P3448)",
+   "file": "val_wiki.json"
+  },
+  "P26": {
+   "name": "spouse",
+   "definition": "the subject has the object as their spouse (husband, wife, partner, etc.). Use \"partner\" (P451) for non-married companions",
+   "file": "val_wiki.json"
+  },
+  "P306": {
+   "name": "operating system",
+   "definition": "operating system (OS) on which a software works or the OS installed on hardware",
+   "file": "train_wiki.json"
+  },
+  "P3373": {
+   "name": "sibling",
+   "definition": "the subject has the object as their sibling (brother, sister, etc.). Use \"relative\" (P1038) for siblings-in-law (brother-in-law, sister-in-law, etc.) and step-siblings (step-brothers, step-sisters, etc.)",
+   "file": "train_wiki.json"
+  },
+  "P361": {
+   "name": "part of",
+   "definition": "object of which the subject is a part (it's not useful to link objects which are themselves parts of other objects already listed as parts of the subject). Inverse property of \"has part\" (P527, see also \"has parts of the class\" (P2670)).",
+   "file": "val_wiki.json"
+  },
+  "P364": {
+   "name": "original language of film or TV show",
+   "definition": "language in which a film or a performance work was originally created. Deprecated for written works; use P407 (\"language of work or name\") instead.",
+   "file": "val_wiki.json"
+  },
+  "P39": {
+   "name": "position held",
+   "definition": "subject currently or formerly holds the object position or public office",
+   "file": "train_wiki.json"
+  },
+  "P410": {
+   "name": "military rank",
+   "definition": "military rank achieved by a person (should usually have a \"start time\" qualifier), or military rank associated with a position",
+   "file": "val_wiki.json"
+  },
+  "P412": {
+   "name": "voice type",
+   "definition": "person's voice type. expected values: soprano, mezzo-soprano, contralto, countertenor, tenor, baritone, bass (and derivatives)",
+   "file": "val_wiki.json"
+  },
+  "P460": {
+   "name": "said to be the same as",
+   "definition": "this item is said to be the same as that item, but the statement is disputed",
+   "file": "train_wiki.json"
+  },
+  "P57": {
+   "name": "director",
+   "definition": "director(s) of film, TV-series, stageplay, video game or similar",
+   "file": "train_wiki.json"
+  },
+  "P58": {
+   "name": "screenwriter",
+   "definition": "person(s) who wrote the script for subject item",
+   "file": "train_wiki.json"
+  },
+  "P641": {
+   "name": "sport",
+   "definition": "sport in which the subject participates or belongs to",
+   "file": "val_wiki.json"
+  }
+ },
+ "label_definitions_source": "official: Wikidata property label + description as shipped in FewRel data/pid2name.json (verbatim)",
+ "author_written_definitions": [],
+ "source": "FewRel 1.0 (Han et al. 2018), official GitHub raw files; HF tasksource copy not used",
+ "citation": "Han, Zhu, Yu, Wang, Yao, Liu, Sun (2018). FewRel: A Large-Scale Supervised Few-Shot Relation Classification Dataset with State-of-the-Art Evaluation. EMNLP 2018.",
+ "provenance": {
+  "repo": "https://github.com/thunlp/FewRel",
+  "commit": "278a2315d2138810a379cd8d5718914dc56e2582",
+  "commit_date": "2022-05-04T14:41:14Z",
+  "files": {
+   "train_wiki.json": {
+    "url": "https://raw.githubusercontent.com/thunlp/FewRel/278a2315d2138810a379cd8d5718914dc56e2582/data/train_wiki.json",
+    "bytes": 14298985,
+    "sha256": "8e9e58a05d559be773cbe18a8d4a16ba17e6d397663f9f05a056f894a94b92c1"
+   },
+   "val_wiki.json": {
+    "url": "https://raw.githubusercontent.com/thunlp/FewRel/278a2315d2138810a379cd8d5718914dc56e2582/data/val_wiki.json",
+    "bytes": 3534147,
+    "sha256": "76bb44c2485b6faed358a3ce040eadafcc8a8835245cd7e6afc1bef672d4a0bf"
+   },
+   "pid2name.json": {
+    "url": "https://raw.githubusercontent.com/thunlp/FewRel/278a2315d2138810a379cd8d5718914dc56e2582/data/pid2name.json",
+    "bytes": 80278,
+    "sha256": "eeedd25512a8e4c2bc06b78009836d27de81807bcba6ed929debd5cd713c07ea"
+   },
+   "LICENSE": {
+    "url": "https://raw.githubusercontent.com/thunlp/FewRel/278a2315d2138810a379cd8d5718914dc56e2582/LICENSE",
+    "bytes": 1062,
+    "sha256": "101669c6396d156750c0169a32e27b3b68eba95802aa9a1aa2aa3db5143bee76"
+   }
+  },
+  "fetched_at_utc": "2026-09-26T23:55:31+00:00",
+  "cache_dir": "ohs3/cache/fewrel_relation"
+ },
+ "licence": "MIT (Copyright (c) 2018 THUNLP), github.com/thunlp/FewRel/blob/278a2315d2138810a379cd8d5718914dc56e2582/LICENSE",
+ "date_range": "text from English Wikipedia as collected for FewRel (dataset released 2018; repo commit 2022-05-04); no per-item dates",
+ "relation_selection": "sorted() over the 80 P-id strings, random.Random(3).shuffle, first 20",
+ "sampling": "random.Random(20261026): sample 2 relations (sorted P-ids) to get 8 items, rest get 7; per relation (sorted P-id order) shuffle eligible instances (file order) and take first n; then shuffle rows; options per row: names sorted alphabetically then shuffled with the same RNG; card lines follow option order",
+ "plus_one_relations": [
+  "P137",
+  "P25"
+ ],
+ "pool": {
+  "eligible_per_relation": {
+   "P105": 687,
+   "P118": 678,
+   "P127": 675,
+   "P137": 685,
+   "P140": 678,
+   "P159": 679,
+   "P177": 663,
+   "P25": 588,
+   "P26": 640,
+   "P306": 608,
+   "P3373": 570,
+   "P361": 645,
+   "P364": 674,
+   "P39": 685,
+   "P410": 667,
+   "P412": 682,
+   "P460": 342,
+   "P57": 681,
+   "P58": 672,
+   "P641": 669
+  },
+  "dropped": {
+   "duplicate_sentence": 1132
+  },
+  "dedupe": "a sentence (detokenised, lowercased, whitespace-normalised) occurring >1 time anywhere in train_wiki+val_wiki is dropped (all copies)"
+ },
+ "state_format": "FewRel tokens joined with rule-based spacing (no space before , . : ; ! ? ) ] % 's n't; none after ( [ $ # ; '-' and '/' joined to both neighbours; balanced double quotes attached inward; whitespace-only tokens dropped). Every head mention wrapped as [[H: ...]] and every tail mention as [[T: ...]] using the sentence's own tokens.",
+ "state_length": {
+  "min": 48,
+  "median": 140,
+  "max": 218
+ },
+ "record_ids": [
+  "train_wiki.json:P105:183",
+  "train_wiki.json:P105:256",
+  "train_wiki.json:P105:257",
+  "train_wiki.json:P105:35",
+  "train_wiki.json:P105:396",
+  "train_wiki.json:P105:522",
+  "train_wiki.json:P105:646",
+  "train_wiki.json:P118:200",
+  "train_wiki.json:P118:204",
+  "train_wiki.json:P118:397",
+  "train_wiki.json:P118:517",
+  "train_wiki.json:P118:660",
+  "train_wiki.json:P118:677",
+  "train_wiki.json:P118:82",
+  "train_wiki.json:P127:112",
+  "train_wiki.json:P127:257",
+  "train_wiki.json:P127:542",
+  "train_wiki.json:P127:572",
+  "train_wiki.json:P127:594",
+  "train_wiki.json:P127:671",
+  "train_wiki.json:P127:675",
+  "train_wiki.json:P137:170",
+  "train_wiki.json:P137:220",
+  "train_wiki.json:P137:262",
+  "train_wiki.json:P137:442",
+  "train_wiki.json:P137:552",
+  "train_wiki.json:P137:580",
+  "train_wiki.json:P137:600",
+  "train_wiki.json:P137:98",
+  "train_wiki.json:P140:102",
+  "train_wiki.json:P140:259",
+  "train_wiki.json:P140:299",
+  "train_wiki.json:P140:339",
+  "train_wiki.json:P140:447",
+  "train_wiki.json:P140:499",
+  "train_wiki.json:P140:578",
+  "train_wiki.json:P159:111",
+  "train_wiki.json:P159:185",
+  "train_wiki.json:P159:217",
+  "train_wiki.json:P159:408",
+  "train_wiki.json:P159:48",
+  "train_wiki.json:P159:635",
+  "train_wiki.json:P159:657",
+  "train_wiki.json:P306:102",
+  "train_wiki.json:P306:320",
+  "train_wiki.json:P306:468",
+  "train_wiki.json:P306:481",
+  "train_wiki.json:P306:54",
+  "train_wiki.json:P306:635",
+  "train_wiki.json:P306:65",
+  "train_wiki.json:P3373:13",
+  "train_wiki.json:P3373:22",
+  "train_wiki.json:P3373:505",
+  "train_wiki.json:P3373:630",
+  "train_wiki.json:P3373:637",
+  "train_wiki.json:P3373:67",
+  "train_wiki.json:P3373:671",
+  "train_wiki.json:P39:155",
+  "train_wiki.json:P39:237",
+  "train_wiki.json:P39:428",
+  "train_wiki.json:P39:487",
+  "train_wiki.json:P39:554",
+  "train_wiki.json:P39:577",
+  "train_wiki.json:P39:62",
+  "train_wiki.json:P460:118",
+  "train_wiki.json:P460:127",
+  "train_wiki.json:P460:199",
+  "train_wiki.json:P460:490",
+  "train_wiki.json:P460:547",
+  "train_wiki.json:P460:665",
+  "train_wiki.json:P460:694",
+  "train_wiki.json:P57:101",
+  "train_wiki.json:P57:17",
+  "train_wiki.json:P57:332",
+  "train_wiki.json:P57:4",
+  "train_wiki.json:P57:519",
+  "train_wiki.json:P57:656",
+  "train_wiki.json:P57:682",
+  "train_wiki.json:P58:193",
+  "train_wiki.json:P58:213",
+  "train_wiki.json:P58:223",
+  "train_wiki.json:P58:235",
+  "train_wiki.json:P58:318",
+  "train_wiki.json:P58:547",
+  "train_wiki.json:P58:641",
+  "val_wiki.json:P177:153",
+  "val_wiki.json:P177:246",
+  "val_wiki.json:P177:447",
+  "val_wiki.json:P177:485",
+  "val_wiki.json:P177:597",
+  "val_wiki.json:P177:598",
+  "val_wiki.json:P177:671",
+  "val_wiki.json:P25:205",
+  "val_wiki.json:P25:31",
+  "val_wiki.json:P25:458",
+  "val_wiki.json:P25:514",
+  "val_wiki.json:P25:560",
+  "val_wiki.json:P25:604",
+  "val_wiki.json:P25:620",
+  "val_wiki.json:P25:680",
+  "val_wiki.json:P26:108",
+  "val_wiki.json:P26:135",
+  "val_wiki.json:P26:18",
+  "val_wiki.json:P26:306",
+  "val_wiki.json:P26:404",
+  "val_wiki.json:P26:65",
+  "val_wiki.json:P26:699",
+  "val_wiki.json:P361:140",
+  "val_wiki.json:P361:24",
+  "val_wiki.json:P361:309",
+  "val_wiki.json:P361:429",
+  "val_wiki.json:P361:467",
+  "val_wiki.json:P361:538",
+  "val_wiki.json:P361:63",
+  "val_wiki.json:P364:240",
+  "val_wiki.json:P364:288",
+  "val_wiki.json:P364:305",
+  "val_wiki.json:P364:311",
+  "val_wiki.json:P364:46",
+  "val_wiki.json:P364:517",
+  "val_wiki.json:P364:70",
+  "val_wiki.json:P410:157",
+  "val_wiki.json:P410:249",
+  "val_wiki.json:P410:334",
+  "val_wiki.json:P410:403",
+  "val_wiki.json:P410:579",
+  "val_wiki.json:P410:636",
+  "val_wiki.json:P410:645",
+  "val_wiki.json:P412:14",
+  "val_wiki.json:P412:155",
+  "val_wiki.json:P412:202",
+  "val_wiki.json:P412:287",
+  "val_wiki.json:P412:610",
+  "val_wiki.json:P412:647",
+  "val_wiki.json:P412:690",
+  "val_wiki.json:P641:113",
+  "val_wiki.json:P641:197",
+  "val_wiki.json:P641:208",
+  "val_wiki.json:P641:216",
+  "val_wiki.json:P641:283",
+  "val_wiki.json:P641:384",
+  "val_wiki.json:P641:621"
+ ],
+ "output_sha256": "9f4e27d3d9687829a8593043d932ed3e94b2a75f5e2d2d8c98c545552156c403",
+ "uncertain": [
+  "Track U: FewRel is public since 2018 and widely used in training corpora (and on HF via tasksource), so contamination is likely.",
+  "Detokenisation is heuristic: spaced hyphens ('four - level') are joined to 'four-level'; en/em dashes and single quotes keep spaces. Only spacing changes, never tokens.",
+  "FewRel labels come from distant supervision against Wikidata and were human-filtered; a few sentences may express the relation only weakly, and some relation pairs are close (e.g. director vs screenwriter, part of vs owned by, operator vs owned by, spouse/sibling/mother).",
+  "Some official descriptions reference other Wikidata property ids (e.g. 'Inverse property of \"occupant\" (P466)'); kept verbatim.",
+  "Relations were sorted as P-id strings (plain sorted()), not numerically, before the Random(3) shuffle."
+ ]
+}
