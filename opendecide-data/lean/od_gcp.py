@@ -99,6 +99,29 @@ def cmd_smoke(a):
                       "peak_mem_gb": round(torch.cuda.max_memory_allocated() / 2**30, 2), **gpu_info()}), flush=True)
 
 
+def cmd_blend(a):
+    """Exact weighted blend of LoRA adapters (PEFT add_weighted_adapter, combination 'cat'), merged, then predictions."""
+    import decoder_io
+    from peft import PeftModel
+    decoder_io.STYLE = a.style
+    names, ws = a.adapters.split(","), [float(x) for x in a.weights.split(",")]
+    t0 = time.time()
+    base, tok = decoder_io.load(a.base, "cuda")
+    model = PeftModel.from_pretrained(base, str(MODELS / names[0]), adapter_name="a0")
+    for i, n in enumerate(names[1:], 1):
+        model.load_adapter(str(MODELS / n), adapter_name=f"a{i}")
+    model.add_weighted_adapter([f"a{i}" for i in range(len(names))], ws, adapter_name="blend", combination_type="cat")
+    model.set_adapter("blend")
+    model = model.merge_and_unload(adapter_names=["blend"])
+    model.eval()
+    out = {}
+    for s in a.splits.split(","):
+        t = time.time()
+        out[s] = decoder_io.predict(model, tok, rows(s), dev="cuda")
+        print(f"{s}: {len(out[s])} rows in {time.time() - t:.0f}s", flush=True)
+    save(a.name + a.tag, out, {"base": a.base, "blend": dict(zip(names, ws)), "host": "gcp", **gpu_info(), "sec": round(time.time() - t0)})
+
+
 def cmd_latency(a):
     import decoder_io
     decoder_io.STYLE = a.style
@@ -137,10 +160,18 @@ for nm in ("train", "smoke"):
     t.add_argument("--extra", default='{"lam_inv": 1.0, "sym_cons": true, "perm_twin": 0.3, "lam_p": 0.5}')
     t.add_argument("--log-every", dest="log_every", type=int, default=50)
     t.add_argument("--steps", type=int, default=20)
+b = sub.add_parser("blend")
+b.add_argument("--name", required=True)
+b.add_argument("--base", required=True)
+b.add_argument("--adapters", required=True)
+b.add_argument("--weights", required=True)
+b.add_argument("--splits", required=True)
+b.add_argument("--style", default="cygnet")
+b.add_argument("--tag", default="")
 l = sub.add_parser("latency")
 l.add_argument("--name", required=True)
 l.add_argument("--base", required=True)
 l.add_argument("--split", default="dev")
 l.add_argument("--style", default="cygnet")
 a = ap.parse_args()
-{"predict": cmd_predict, "train": cmd_train, "smoke": cmd_smoke, "latency": cmd_latency}[a.cmd](a)
+{"predict": cmd_predict, "train": cmd_train, "smoke": cmd_smoke, "latency": cmd_latency, "blend": cmd_blend}[a.cmd](a)
