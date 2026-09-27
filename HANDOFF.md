@@ -46,7 +46,17 @@ Plan of record: `PRISM_2B_MASTER_PLAN.md` (math, red-team corrections, go/no-go 
     - Pub/Sub topic `budget-killswitch` feeds the Cloud Run function `budget-killswitch` (code in `gcp/killswitch/`, runs as SA killswitch-sa);
     - at $250 or more it deletes all VMs and unattached disks; at $285 or more it disables billing;
     - verified with a dry run at $300 and a real soft kill at $260, which deleted a test e2-micro.
-  - Every GPU VM must use `--max-run-duration` with `--instance-termination-action=DELETE`.
+  - Every GPU VM must use `--max-run-duration` with a termination action (STOP for the persistent VM, DELETE for throwaway ones).
+  - **GPU VM `od-l4` (us-central1-a, g2-standard-8, 1x L4 23 GB, 100 GB pd-balanced).** Kept STOPPED between jobs; only its disk costs money (about $0.33/day). It holds a Python 3.12 venv `~/od` with torch 2.14+cu130, transformers 5.17, fla 0.5.2 and peft 0.21, code in `~/lean`, and HF cache in `~/hf`.
+    - Runner `od_gcp.py` (predict / train / smoke / latency) uses the same code paths as modal_od.
+    - Start the VM with `gcloud compute instances start od-l4 --zone us-central1-a` and stop it the same way; set `--max-run-duration` again if needed.
+  - **Verified (27 Sep):**
+    - parity with Modal on 1,816 dev rows: same argmax on 100% / 100% / 99.1% (dev / hard_dev / dev_nc), mean |dp| of about 0.001;
+    - 2B train about 10.7 s/step at batch 16, 11.8 GB peak (H100: 1.6 s);
+    - 4B train about 18 s/step, 20.9 GB peak (tight);
+    - predict about 10 rows/s for the 2B.
+    - A full 2B run (about 3,700 steps) takes about 11 h, about $9 on-demand or about $3.5 spot.
+    - Speed-up TODO: build causal_conv1d for torch 2.14/cu130 (it currently falls back to the PyTorch reference).
 
 **Must-know before training again**
 1. **Legacy Qwen3-235B data.** About 9k of the 59.7k 2B-mix rows came from rounds v0.6-v0.8, which used Qwen3-235B: `lah_*` (1,518 items + golds), `meta_*` (1,500 planted messages) and about 5,960 v0.7-core rows with `compile_cards.py` definitions. The user's rule is now "no bigger teachers". Drop these rows from every new mix and replace them with Claude-written equivalents; disclose the lineage of v0.8-v0.11c and the 2B.
