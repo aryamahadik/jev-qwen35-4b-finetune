@@ -108,3 +108,11 @@ planned; the next steps are in FREEZE.md for the $30 account.
 | G2 | TRAIN q35_4b_v13t = v11c + 1,200 steps (0.497 epoch) on train_v13t (38,660 rows: breadth 15,640 + Claude items 3,719 + clean replay 19,301; 4,330 soft labels), lr 4e-5, kd 0.5, micro_tokens 10240, then 13 dev splits | L4 | ~6.5 | about 19 s/step |
 | – | RESULT: dev-confirm +0.64 pp [-0.15, +1.46] vs v11c: gate FAILED (needs +1.3, LB > 0). Yes/no Brier improved (-0.0051 confirm, -0.0068 select); dev-select +0.73. In-family: breadth_dev 76.8 -> 80.5, proc12 69.8 -> 77.4, hard12 81.4 -> 84.5, planted12 80.3 -> 96.4. Losses: dev_nc -2.6 (confirm), hard_dev -1.8, dev -1.0. Keep v11c as teacher; q35_4b_v13t saved as candidate (backups/modal_models/q35_4b_v13t). Next idea: blend v11c + v13t. | | | |
 | G3 | L4 chain: blend q35_4b_blend50 (0.5 v11c + 0.5 v13t) on 13 dev splits; 2B v11r baselines on the new devs; blend teacher labels for teacher_pool (59,617 clean rows) | L4 | ~4.5 | RESULT blend: dev-confirm +0.57 [+0.00, +1.13], gate FAIL; Brier -0.0034; dev_nc drop cut to -1.1; breadth_dev 78.6. Teacher labels: preds_teacher_pool/q35_4b_blend50_teacher.jsonl |
+
+## Modal extra accounts (mahadikarya2 / mahadikarya3 / mahadikarya44): PRISM layout test, 2B from base, 800 steps, blend-teacher kd 0.5, H100
+| # | Arm | dev-confirm micro | jagged ASR | OPI ASR | breadth_dev |
+|---|---|---|---|---|---|
+| M1 | A text_first (current) | 72.38 | 4.7% | 5.8% | 74.9 |
+| M2 | B schema_first (untrusted text last) | 70.48 (-1.91 [-3.37, -0.42]) | 64.8% | 2.6% | 76.7 |
+| M3 | C schema_first + trust markers | 68.72 | 34.2% | 2.8% | 75.6 |
+| – | RESULT: gate L FAILED. Untrusted text placed last before the answer is much easier to hijack (recency). Markers halve that but do not fix it. Fix, as in the master plan: schema -> text -> question repeated (trusted branch) -> answer. Clean 2B at 800 steps is -2.9/-3.9 pp vs v11r (under-trained). | | | | |

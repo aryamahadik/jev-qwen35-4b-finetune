@@ -408,6 +408,7 @@ def train(cfg: dict, data_dir: Path, out_dir: Path, dev="cuda") -> dict:
          **LOSS_DEFAULTS, **cfg}
     if not (c["lam_inv"] >= 0 and 0 <= c["perm_twin"] <= 1 and c["lam_p"] >= 0):
         raise ValueError(f"bad v0.11 loss cfg: lam_inv={c['lam_inv']} perm_twin={c['perm_twin']} lam_p={c['lam_p']}")
+    decoder_io.LAYOUT = c.get("layout", "text_first")  # PRISM layout test (prompt order); predictions after training reuse it
     random.seed(c["seed"])
     torch.manual_seed(c["seed"])
     twin_rng = random.Random(c["seed"] + 1)  # own stream: perm_twin never changes batches or first permutations
