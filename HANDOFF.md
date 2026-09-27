@@ -63,6 +63,18 @@ Plan of record: `PRISM_2B_MASTER_PLAN.md` (math, red-team corrections, go/no-go 
   - Claude-written label definitions; annotator distributions kept as soft labels;
   - workflow `v13-breadth-corpus`; outputs in `data/v13_parts/`, builders in `breadth_src/`.
 
+- **v0.13 breadth corpus DONE (commits 22098cd and 837f6c7):**
+  - 23 public, human-labelled datasets, all PASSed independent verification;
+  - `data/v13_parts/breadth_{train,dev}.jsonl` = 15,695 / 1,715 rows, including 2,440 complement bundles and 3,795 rows with annotator soft labels in meta.teacher;
+  - assembler `build_v13_breadth.py`; raw rows, defs and builders in `data/v13_parts/raw|defs` and `breadth_src/`.
+- **Claude-teacher relabel (stopped by the user, usage limits):**
+  - 1,770 of 8,634 rows labelled (pass A only) in `data/v13_parts/relabel/passA/`; chunks for the rest are in `chunks_A/`, `chunks_B/`;
+  - workflow script `claude-teacher-relabel`.
+- **Other GPU credit:**
+  - **Vultr $300** (API key in .env; the user should regenerate it because it was pasted in chat). Only tiny A16/A40 slices are unlocked; L40S and GH200 ($1.99/h) need a support ticket or unlock. GH200 is ARM, so test compatibility first.
+  - **Azure $200** (az CLI logged in; Compute provider registered). Still a Free Trial with 0 GPU quota: the user must upgrade to Pay-As-You-Go and request NCADS_A100_v4 = 24 plus Total Regional vCPUs = 24 (East US).
+  - HashiCorp HCP credit has no compute.
+
 **Must-know before training again**
 1. **Legacy Qwen3-235B data.** About 9k of the 59.7k 2B-mix rows came from rounds v0.6-v0.8, which used Qwen3-235B: `lah_*` (1,518 items + golds), `meta_*` (1,500 planted messages) and about 5,960 v0.7-core rows with `compile_cards.py` definitions. The user's rule is now "no bigger teachers". Drop these rows from every new mix and replace them with Claude-written equivalents; disclose the lineage of v0.8-v0.11c and the 2B.
 2. **JevBench half B is not a clean test** (seen 4 times in earlier rounds). The clean final tests are OHS-3 (once) and, with the user's OK, an official JevBench leaderboard submission.
