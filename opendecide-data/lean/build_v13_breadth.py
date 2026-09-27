@@ -31,7 +31,8 @@ CODES = ([f"Class {c}" for c in "ABCDEFGHJKLMNPQRSTUVWXYZ"] + [f"Code {i}" for i
          + [f"Option {c}" for c in "ABCDEFGHJKLMNPQRSTUVWXYZ"])
 words = lambda t: re.sub(r"[^\w]+", " ", (t or "").lower()).split()
 h = lambda *p: int(hashlib.sha256(":".join(map(str, (SEED, *p))).encode()).hexdigest(), 16)
-cid = lambda ins, st, opts: "c_" + hashlib.sha1(json.dumps([ins, st, opts], ensure_ascii=False).encode()).hexdigest()[:12]
+cid = lambda gid: "c_" + hashlib.sha1(gid.encode()).hexdigest()[:12]  # one call per source record: every question about
+# the same text shares the call_id, so a unit (and a batch) always holds a record's related rows (as in the v0.11 data)
 
 
 def grams(text):
@@ -104,7 +105,7 @@ def main():
                 if soft:
                     meta["teacher"] = {"yes": float({k.lower(): v for k, v in soft.items()}.get("yes", g))}
                 n += 1
-                out.append({"id": f"r_br_{key}_{n}", "group_id": gid, "call_id": cid(ins, st, None), "split": split,
+                out.append({"id": f"r_br_{key}_{n}", "group_id": gid, "call_id": cid(gid), "split": split,
                             "track": "BR", "source": f"br_{key}", "state": st, "qtype": "noul", "instructions": ins,
                             "options": None, "gold": g, "role": "aff", "card": c, "meta": meta})
                 rep["noul"] += 1
@@ -126,7 +127,7 @@ def main():
                 meta["teacher"] = {mp[o]: float(soft.get(o, 0.0)) / tot for o in opts}
             n += 1
             base_id = f"r_br_{key}_{n}"
-            out.append({"id": base_id, "group_id": gid, "call_id": cid(ins, st, show), "split": split, "track": "BR",
+            out.append({"id": base_id, "group_id": gid, "call_id": cid(gid), "split": split, "track": "BR",
                         "source": f"br_{key}", "state": st, "qtype": "choice", "instructions": ins, "options": show,
                         "gold": mp[gold], "role": "choice", "card": card([(mp[o], defs[o]) for o in opts]), "meta": meta})
             rep["choice"] += 1
@@ -144,7 +145,7 @@ def main():
                 for suf, q, g_, role, p in (("ya", q_aff, g_aff, "aff", p_x),
                                             ("yn", q_neg, 1 - g_aff, "neg", None if p_x is None else 1 - p_x)):
                     m2 = dict(base_meta, asked_label=x, **({"teacher": {"yes": p}} if p is not None else {}))
-                    out.append({"id": f"{base_id}_{suf}", "group_id": gid, "call_id": cid(q, st, None), "split": split,
+                    out.append({"id": f"{base_id}_{suf}", "group_id": gid, "call_id": cid(gid), "split": split,
                                 "track": "BR", "source": f"br_{key}", "state": st, "qtype": "noul", "instructions": q,
                                 "options": None, "gold": g_, "role": role, "card": c2, "meta": m2})
                 rels.append({"type": "complement", "a": f"{base_id}_ya", "b": f"{base_id}_yn", "track": split})

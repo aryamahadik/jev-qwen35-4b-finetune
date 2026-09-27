@@ -336,6 +336,43 @@ def compute_loss(c, batch, perms, lg, rel_by_row, step, n_steps, dev, kl=None, t
 
 # ---------------------------------------------------------------- training
 
+def _est_tokens(r: dict) -> int:
+    """Rough prompt length in tokens (system prompt + text + question + options + card), for micro-batch packing."""
+    n = len(r.get("state") or "") + len(r.get("card") or "") + len(r.get("instructions") or "")
+    n += sum(len(o) + 4 for o in (r.get("options") or []))
+    return int((n + 600) / 3.2)
+
+
+def _micro_groups(batch: list, uid: dict, tw: list, budget: int) -> list:
+    """Split a batch into micro-batches of whole units (a unit holds a record's related rows, so relation terms stay
+    inside one micro-batch). Cost of a micro-batch = sequences x padded max length (twins count as extra sequences).
+    Units are packed longest first; a unit over the budget on its own becomes its own micro-batch."""
+    pad = max(1, decoder_io.PAD_MULTIPLE)
+    padded = lambda n: -(-n // pad) * pad
+    twin_n = Counter(i for i, _ in tw)
+    order, members = [], defaultdict(list)
+    for i, r in enumerate(batch):
+        u = uid.get(r["id"], ("row", i))
+        if u not in members:
+            order.append(u)
+        members[u].append(i)
+    info = []
+    for u in order:
+        idx = members[u]
+        info.append((max(_est_tokens(batch[i]) for i in idx), sum(1 + twin_n[i] for i in idx), idx))
+    info.sort(key=lambda x: -x[0])
+    groups, cur, cur_len, cur_seq = [], [], 0, 0
+    for ln, nseq, idx in info:
+        if cur and (cur_seq + nseq) * padded(max(cur_len, ln)) > budget:
+            groups.append(sorted(cur))
+            cur, cur_len, cur_seq = [], 0, 0
+        cur += idx
+        cur_len, cur_seq = max(cur_len, ln), cur_seq + nseq
+    if cur:
+        groups.append(sorted(cur))
+    return groups
+
+
 def _fingerprint(c: dict, rows: list, n_steps: int) -> str:
     """Identifies a run for resume: the config (minus resume knobs), the step count and the training rows."""
     cfg = {k: v for k, v in c.items() if k not in ("resume", "ckpt_every_min")}
@@ -451,26 +488,44 @@ def train(cfg: dict, data_dir: Path, out_dir: Path, dev="cuda") -> dict:
         else:
             print("checkpoint in", ckpt, "is for a different run; starting fresh", flush=True)
     last_ckpt = time.time()
+    uid = {r["id"]: k for k, u in enumerate(units) for r in u}
+    micro_tok = int(c.get("micro_tokens", 0) or 0)
     for step in range(start, n_steps):
         batch = next(gen)
         cyg = decoder_io.STYLE == "cygnet"
         perms = [random.sample(range(len(r["options"])), len(r["options"])) if r["qtype"] == "choice"
                  else (random.sample([0, 1], 2) if cyg else None) for r in batch]
         tw = pick_twins(batch, perms, c["perm_twin"], twin_rng)  # second views ride in the same forward call
-        with torch.autocast("cuda", dtype=torch.bfloat16):
-            lg_all = cand_logits(model, ro, batch + [batch[i] for i, _ in tw], dev, perms=perms + [p for _, p in tw])
-        lg = lg_all[:len(batch)]
-        twins = [(i, p2, l2) for (i, p2), l2 in zip(tw, lg_all[len(batch):])]
-        anc = [i for i, r in enumerate(batch) if c["beta"] > 0 and (r.get("meta") or {}).get("anchor")]
-        kl = None
-        if anc:
-            with torch.no_grad(), model.disable_adapter(), torch.autocast("cuda", dtype=torch.bfloat16):
-                blg = cand_logits(model, ro, [batch[i] for i in anc], dev, perms=[perms[i] for i in anc])
-            kl = torch.stack([F.kl_div(F.log_softmax(lg[i], -1), F.log_softmax(b, -1), log_target=True, reduction="sum")
-                              for i, b in zip(anc, blg)]).mean()
-        loss, terms, counts = compute_loss(c, batch, perms, lg, rel_by_row, step, n_steps, dev, kl=kl, twins=twins, cyg=cyg)
+        # Gradient accumulation (cfg micro_tokens > 0, for small GPUs): the batch is split into micro-batches of whole
+        # units under a padded-token budget; each micro-batch's loss is weighted by its share of the batch's rows. The
+        # random draws above are made for the whole batch, so data order and resume are unchanged.
+        groups = _micro_groups(batch, uid, tw, micro_tok) if micro_tok > 0 else [list(range(len(batch)))]
         opt.zero_grad(set_to_none=True)
-        loss.backward()
+        agg, wsum, counts = defaultdict(float), defaultdict(float), Counter()
+        for idx in groups:
+            mb, mp = [batch[i] for i in idx], [perms[i] for i in idx]
+            local = {i: j for j, i in enumerate(idx)}
+            mtw = [(local[i], p2) for i, p2 in tw if i in local]
+            with torch.autocast("cuda", dtype=torch.bfloat16):
+                lg_all = cand_logits(model, ro, mb + [mb[i] for i, _ in mtw], dev, perms=mp + [p for _, p in mtw])
+            lg = lg_all[:len(mb)]
+            twins = [(i, p2, l2) for (i, p2), l2 in zip(mtw, lg_all[len(mb):])]
+            anc = [i for i, r in enumerate(mb) if c["beta"] > 0 and (r.get("meta") or {}).get("anchor")]
+            kl = None
+            if anc:
+                with torch.no_grad(), model.disable_adapter(), torch.autocast("cuda", dtype=torch.bfloat16):
+                    blg = cand_logits(model, ro, [mb[i] for i in anc], dev, perms=[mp[i] for i in anc])
+                kl = torch.stack([F.kl_div(F.log_softmax(lg[i], -1), F.log_softmax(b, -1), log_target=True, reduction="sum")
+                                  for i, b in zip(anc, blg)]).mean()
+            loss, mterms, mcounts = compute_loss(c, mb, mp, lg, rel_by_row, step, n_steps, dev, kl=kl, twins=twins, cyg=cyg)
+            w = len(mb) / len(batch)
+            (loss * w if len(groups) > 1 else loss).backward()
+            for k, v in mterms.items():
+                if v is not None:
+                    agg[k] += w * float(v.detach())
+                    wsum[k] += w
+            counts.update(mcounts)
+        terms = {k: (torch.tensor(agg[k] / wsum[k]) if wsum[k] > 0 else None) for k in TERMS}
         torch.nn.utils.clip_grad_norm_(params, 1.0)
         opt.step()
         sched.step()
