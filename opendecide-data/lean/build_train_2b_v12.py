@@ -56,7 +56,7 @@ def main():
         w = words(t)
         return {" ".join(w[i:i + 12]) for i in range(max(0, len(w) - 11))}
     held = set()  # held-out tests (any shared 12-word run) and dev sets (exact text) must not appear in training
-    for f in ["ohs", "ohs2", "eval", "eval_card", "eval_jagged", "eval_opi", "eval_long", "eval_multi"]:
+    for f in ["ohs", "ohs2", "ohs3", "eval", "eval_card", "eval_jagged", "eval_opi", "eval_long", "eval_multi"]:
         for x in rj(D / f"{f}.jsonl"):
             held |= grams(x["state"])
     dev_exact = {" ".join(words(x["state"])) for f in ["dev", "devzs", "devzs2", "devp_card", "pg_dev", "debate_dev", "dev_nc",

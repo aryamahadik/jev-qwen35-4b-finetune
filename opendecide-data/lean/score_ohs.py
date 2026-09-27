@@ -18,16 +18,18 @@ ap.add_argument("models", nargs="+")
 ap.add_argument("--jev", default="jev_guard,jev_r2_guard")
 ap.add_argument("--half", default="all")
 ap.add_argument("--boot", type=int, default=10000)
+ap.add_argument("--split", default="ohs", help="ohs (OHS-1), ohs2 (OHS-2) or ohs3 (OHS-3)")
 a = ap.parse_args()
 
-rows = {json.loads(l)["id"]: json.loads(l) for l in open(HERE / "data/ohs.jsonl")}
-rels = [json.loads(l) for l in open(HERE / "data/ohs_relations.jsonl")]
+rows = {json.loads(l)["id"]: json.loads(l) for l in open(HERE / f"data/{a.split}.jsonl")}
+_rp = HERE / f"data/{a.split}_relations.jsonl"
+rels = [json.loads(l) for l in open(_rp)] if _rp.exists() else []
 if a.half != "all":
     rows = {i: r for i, r in rows.items() if r["meta"]["half"] == a.half}
-base = [i for i, r in rows.items() if r["role"] in ("aff", "choice") and not any(i.endswith(s) for s in ("_neg", "_dneg", "_para", "_yn"))]
-jevs = [x for x in a.jev.split(",") if (HERE / f"preds_ohs/{x}.jsonl").exists()]
+base = [i for i, r in rows.items() if r["role"] in ("aff", "choice") and not any(i.endswith(s) for s in ("_neg", "_dneg", "_para", "_yn", "_perm"))]
+jevs = [x for x in a.jev.split(",") if (HERE / f"preds_{a.split}/{x}.jsonl").exists()]
 names = a.models + jevs
-P = {n: {json.loads(l)["id"]: json.loads(l)["probs"] for l in open(HERE / f"preds_ohs/{n}.jsonl")} for n in names}
+P = {n: {json.loads(l)["id"]: json.loads(l)["probs"] for l in open(HERE / f"preds_{a.split}/{n}.jsonl")} for n in names}
 
 
 def probs(n, i):
@@ -127,10 +129,17 @@ def brier_stat(n, ids):
 
 
 def consistency(n):
-    comp, dneg, para, flips = [], [], [], []
+    comp, dneg, para, flips, order, oflips = [], [], [], [], [], []
     for x in rels:
         a_, b_ = x["a"], x["b"]
         if a_ not in rows or b_ not in rows:
+            continue
+        if rows[a_]["qtype"] == "choice":  # OHS-3 option-order twins (_perm, relation "equiv"): same question, options reordered
+            qa, qb = probs(n, a_), probs(n, b_)
+            if qa is None or qb is None:
+                continue
+            order.append(0.5 * sum(abs(qa[k] - qb.get(k, 0.0)) for k in qa))  # total variation between the two answers
+            oflips.append(float(max(qa, key=qa.get) != max(qb, key=qb.get)))
             continue
         pa, pb = p_yes(n, a_), p_yes(n, b_)
         if pa is None or pb is None:
@@ -143,7 +152,10 @@ def consistency(n):
             para.append(abs(pa - pb))
             flips.append(float((pa > 0.5) != (pb > 0.5)))
     m = lambda v: round(float(np.mean(v)), 4) if v else None
-    return {"complement_violation": m(comp), "double_negation_drift": m(dneg), "paraphrase_drift": m(para), "paraphrase_flip_rate": m(flips)}
+    out = {"complement_violation": m(comp), "double_negation_drift": m(dneg), "paraphrase_drift": m(para), "paraphrase_flip_rate": m(flips)}
+    if order:
+        out.update({"option_order_drift_tv": m(order), "option_order_flip_rate": m(oflips)})
+    return out
 
 
 out = {"n_base": len(base), "n_groups": len(groups), "tasks": len(by_task), "jev_runs": jevs, "half": a.half, "models": {}}
@@ -172,8 +184,8 @@ for n in a.models + (["JEV"] if jevs else []):
     else:
         m["consistency"] = {j: consistency(j) for j in jevs}
     out["models"][n] = m
-(HERE / "results_ohs").mkdir(exist_ok=True)
-(HERE / f"results_ohs/results_{a.half}.json").write_text(json.dumps(out, indent=1))
+(HERE / f"results_{a.split}").mkdir(exist_ok=True)
+(HERE / f"results_{a.split}/results_{a.half}.json").write_text(json.dumps(out, indent=1))
 print(json.dumps({k: v for k, v in out.items() if k != "models"}, indent=1))
 print(f"{'model':22s} {'micro':>6s} {'macro':>6s} {'brier':>6s}  tracks                        >26   vs Jev micro [CI] p_holm")
 for n, m in out["models"].items():

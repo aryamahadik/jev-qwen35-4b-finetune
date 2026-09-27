@@ -17,7 +17,12 @@ Plan of record: `PRISM_2B_MASTER_PLAN.md` (math, red-team corrections, go/no-go 
 
 **What is ready (all committed or listed below)**
 - `v0.12 data`: 978 Claude-written hard items (policy, NLI, procedural reasoning, speaker intent, codebook coding, emotion in context), blind-solved and reviewed, families chosen from the 2B's DEV gaps, OHS-2 families excluded. Files: `data/v12_parts/hard12_{train,dev}.jsonl`, builder `build_v12_hard.py`, sources `hard_src_v12/`, mixer for the 2B `build_train_2b_v12.py` (not run). Blind agreement 99-100% (same-model passes are correlated, so the plan's 100-item human audit is required before use).
-- `OHS-3`: a new ~2,000-item held-out test (14 tasks, 9 with text published after June 2026). Builders in `ohs3/`, parts in `data/ohs3_parts/`, freeze script `build_ohs3.py`, draft `PREREG_OHS3.md`. Commit it before any model sees it. Check the section below for its state.
+- `OHS-3` **frozen and committed (7e523da)** before any model or Jev run: 1,852 base rows (716 yes/no, all 50/50), 13 tasks (9 with text from after June 2026; `sec_8k_item` dropped, disclosed), plus 604 consistency twins (300 negated-question, 304 option-order), halves A 957 / S 895 base rows. Files: `data/ohs3*.jsonl`, `data/ohs3.sha256` (verify with `cd data && shasum -a 256 -c ohs3.sha256`), `PREREG_OHS3.md`, builders in `ohs3/` (raw caches git-ignored, local only).
+  Before the run:
+  - name the models in an amendment;
+  - update `score_ohs.py` for OHS-3 (base rows only for the primary endpoints; complement and option-order metrics from `data/ohs3_relations.jsonl`);
+  - set `JEV_MODEL=typesafe/jev-1.13-20260917` and check the served model id;
+  - every new training mix must include `ohs3` in its 12-gram held-out list (done in `build_train_2b_v12.py`).
 - `P0` (separation, forward passes only) = **GO**: the write-block fires on all 18 DeltaNet layers on the fla kernel path; the protected state is invariant to evidence up to kernel precision (bf16 max 1.8e-2, TF32 2.3e-3, vs a 5-24% change on unprotected heads); untrained block at p = 0.25 costs -6.8 pp clean dev-select accuracy (limit 10). `writeblock.py` (per-layer heads, beta/g modes, counters), `modal_od.py::p0`, results `logs/p0_*.json`.
 - `dev_half()` in `modal_od.py`: dev-select / dev-confirm split by group (plan §6).
 
@@ -25,7 +30,15 @@ Plan of record: `PRISM_2B_MASTER_PLAN.md` (math, red-team corrections, go/no-go 
 1. **Legacy Qwen3-235B data.** About 9k of the 59.7k 2B-mix rows came from rounds v0.6-v0.8, which used Qwen3-235B: `lah_*` (1,518 items + golds), `meta_*` (1,500 planted messages) and about 5,960 v0.7-core rows with `compile_cards.py` definitions. The user's rule is now "no bigger teachers". Drop these rows from every new mix and replace them with Claude-written equivalents; disclose the lineage of v0.8-v0.11c and the 2B.
 2. **JevBench half B is not a clean test** (seen 4 times in earlier rounds). The clean final tests are OHS-3 (once) and, with the user's OK, an official JevBench leaderboard submission.
 3. The OHS-2 comparison is spent for the 4B. OHS-2 for a 2B needs a new pre-registration amendment first.
-4. Rotate the OpenRouter key (pasted in chat earlier). An HF upload or a JevBench submission needs the user's OK.
+4. Rotate the OpenRouter key (pasted in chat earlier). An HF upload needs the user's OK. **Do NOT submit to the JevBench leaderboard** (user decision, 26 Sep 2026) until the user says so.
+5. **Decision (26 Sep 2026): clean final 2B.** No separate from-scratch retrain.
+   - The experiment arms (plan step A) warm-start from `q35_2b_v11r`.
+   - The shipped model (step F) is trained **from base Qwen3.5-2B** on a clean mix, costing about $5.8 instead of $3.9 (take the difference from contingency or drop arm R3 if needed). The clean mix is:
+     - the 2B mix minus `lah_*`, `meta_*` and the `compile_cards.py` card text;
+     - plus v0.12 data and Claude-written replacements: about 1,500 procedural items, about 1,000 planted-message items, and re-written cards for the carded task sets;
+     - plus soft labels from the v0.12-4B teacher.
+   - Ship the clean model if dev-confirm accuracy >= the warm-start alternative - 0.5 pp. Otherwise ship the warm-start model and disclose the legacy data.
+   - The 4B teacher keeps its lineage (a clean 4B costs about $14, which is not worth it), and it is disclosed.
 
 **Top-up order (from the plan, about $17 + 25% contingency + $5 buffer):**
 - G-0 leftovers (free): commit OHS-3; human audit of 100 v0.12 items; fp64 pure-torch T0a exactness check; K0 (causal_conv1d install, fork and cache equivalence, about $0.6).

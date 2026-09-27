@@ -55,7 +55,9 @@ SEED = 20261001
 HERE = Path(__file__).resolve().parent
 DATA = HERE / "data"
 PARTS = DATA / "v12_parts"
-HARD = PARTS / "hard"
+import sys as _sys
+PART = _sys.argv[1] if len(_sys.argv) > 1 else "hard"  # hard | proc | planted (data/v12_parts/<PART>/ -> <PART>12_*)
+HARD = PARTS / PART
 V11 = DATA / "v11_parts"
 REFS = [DATA / f for f in ("train_v07.jsonl", "eval_card.jsonl", "eval_jagged.jsonl", "train_2b_kd.jsonl", "dev.jsonl", "devzs.jsonl",
         "devp_card.jsonl", "pg_dev.jsonl", "dev_nc.jsonl", "taskbank_dev.jsonl", "hard_dev.jsonl", "dev_negwords.jsonl",
@@ -528,11 +530,11 @@ def main():
             for r in rows:
                 f.write(json.dumps(r, ensure_ascii=False) + "\n")
 
-    dump("hard12_train.jsonl", train)
-    dump("hard12_dev.jsonl", dev)
-    dump("hard12_relations.jsonl", rels["train"])
-    dump("hard12_dev_relations.jsonl", rels["dev"])
-    dump("hard12_dropped.jsonl", [dict(id=i, domain=dom_of.get(i), reasons=v) for i, v in sorted(drop.items()) if v])
+    dump(f"{PART}12_train.jsonl", train)
+    dump(f"{PART}12_dev.jsonl", dev)
+    dump(f"{PART}12_relations.jsonl", rels["train"])
+    dump(f"{PART}12_dev_relations.jsonl", rels["dev"])
+    dump(f"{PART}12_dropped.jsonl", [dict(id=i, domain=dom_of.get(i), reasons=v) for i, v in sorted(drop.items()) if v])
 
     summary = dict(
         seed=SEED, dev_frac=DEV_FRAC, near_dup_threshold=NEAR_DUP, family_link_threshold=FAMILY_LINK, ngram=NGRAM,
@@ -548,7 +550,7 @@ def main():
         leak_review=leak_log,
         domains=report,
     )
-    (PARTS / "hard12_summary.json").write_text(json.dumps(summary, indent=1, ensure_ascii=False))
+    (PARTS / f"{PART}12_summary.json").write_text(json.dumps(summary, indent=1, ensure_ascii=False))
 
     print(f"input {len(all_rows)}  kept {len(out_rows)}  train {len(train)}  dev {len(dev)}  "
           f"relations train {len(rels['train'])} dev {len(rels['dev'])}")
