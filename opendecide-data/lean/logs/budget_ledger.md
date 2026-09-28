@@ -116,3 +116,6 @@ planned; the next steps are in FREEZE.md for the $30 account.
 | M2 | B schema_first (untrusted text last) | 70.48 (-1.91 [-3.37, -0.42]) | 64.8% | 2.6% | 76.7 |
 | M3 | C schema_first + trust markers | 68.72 | 34.2% | 2.8% | 75.6 |
 | – | RESULT: gate L FAILED. Untrusted text placed last before the answer is much easier to hijack (recency). Markers halve that but do not fix it. Fix, as in the master plan: schema -> text -> question repeated (trusted branch) -> answer. Clean 2B at 800 steps is -2.9/-3.9 pp vs v11r (under-trained). | | | | |
+| M4 | D schema_branch (question repeated after the text) | 72.66 (vs A +0.27 [-1.09, +1.65]) | 42.7% | 2.9% | 74.8 |
+| M5 | E schema_branch + trust markers | 72.58 (vs A +0.20) | 5.8% | 2.3% | 75.6 |
+| – | RESULT: PRISM v2 layout = schema -> marked text -> trusted question branch -> answer (arm E) PASSES gate L: accuracy equal to text_first within noise, jagged ASR 5.8% vs 4.7% (within +3 pp), OPI better (2.3% vs 5.8%). The branch alone (D) or the markers alone (C) do not fix the jagged attack; both are needed. Next: F = E + protected memory (write-block on policy heads after the trusted prefix). | | | | |
