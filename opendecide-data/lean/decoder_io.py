@@ -249,6 +249,46 @@ class GraphRunner:
         return res
 
 
+WRITEBLOCK = False  # PRISM test F: set by install_writeblock(); cand_logits then write-blocks the policy heads
+
+
+def install_writeblock(model, frac=0.25):
+    """Protected recurrent memory: on the first `frac` of each Gated DeltaNet layer's value heads (the policy heads),
+    every token AFTER the trusted prefix gets write strength beta = 0 and log-decay g = 0, so the untrusted text, the
+    repeated question and the answer slot can read that memory but never write, overwrite or decay it (write-once).
+    The trusted prefix ends where the untrusted text begins (the UNTRUSTED start marker, else the 'Text:' line)."""
+    import sys
+    import writeblock as wb
+    gdn = [m for m in model.modules() if type(m).__name__.endswith("GatedDeltaNet")]
+    assert gdn, "install_writeblock: no Gated DeltaNet layers in this model"
+    wb.install(sys.modules[type(gdn[0]).__module__], frac)
+    wb.STATE.update(n_layers=len(gdn), heads=None, mode="both", enabled=True, mask=None)
+    global WRITEBLOCK
+    WRITEBLOCK = True
+    return len(gdn)
+
+
+def _trusted_end(text: str) -> int:
+    for key in (UNTRUSTED[0], "\nText:\n"):
+        k = text.find(key)
+        if k >= 0:
+            return k
+    return len(text)  # no untrusted segment: nothing is blocked
+
+
+def _set_block_mask(offsets, texts):
+    import writeblock as wb
+    mask = torch.zeros(offsets.shape[:2], dtype=torch.bool)
+    for i, t in enumerate(texts):
+        end = _trusted_end(t)
+        after = (offsets[i, :, 0] >= end) | ((offsets[i, :, 0] == 0) & (offsets[i, :, 1] == 0) & (torch.arange(offsets.shape[1]) > 0))
+        idx = torch.nonzero(after)
+        if len(idx):
+            mask[i, int(idx[0]):] = True  # from the first untrusted token to the end (repeated question, answer, pads)
+    wb.STATE["mask"] = mask
+    wb.reset()
+
+
 def cand_logits(model, ro, rows, dev, perms=None):
     """Returns a list of 1-D float tensors: logits over each row's candidate tokens."""
     if GRAPHS is not None and GRAPHS.model is model:
@@ -258,7 +298,10 @@ def cand_logits(model, ro, rows, dev, perms=None):
     perms = perms or [None] * len(rows)
     texts = [r.get("_prompt") or ro.prompt(r, p) for r, p in zip(rows, perms)]  # _prompt: caller-built chat text
     enc = ro.tok(texts, add_special_tokens=False, truncation=True, max_length=MAX_LEN, padding="longest",
-                 pad_to_multiple_of=PAD_MULTIPLE, return_tensors="pt").to(dev)
+                 pad_to_multiple_of=PAD_MULTIPLE, return_tensors="pt", return_offsets_mapping=WRITEBLOCK)
+    if WRITEBLOCK:  # PRISM protected memory: policy heads write only during the trusted prefix
+        _set_block_mask(enc.pop("offset_mapping"), texts)
+    enc = enc.to(dev)
     body, head = _parts(model)
     hs = body(input_ids=enc["input_ids"], attention_mask=enc["attention_mask"]).last_hidden_state
     last = enc["attention_mask"].sum(1) - 1

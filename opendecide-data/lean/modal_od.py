@@ -129,7 +129,12 @@ def _train_impl(name, cfg, splits, tta):
     vol.commit()
     model, tok = res["model"], res["tok"]
     preds = {s: _predict("decoder", model, tok, _rows(s), tta=tta) for s in splits}
-    return {"preds": preds, "meta": res["meta"]}
+    out = {"preds": preds, "meta": res["meta"]}
+    if decoder_io.WRITEBLOCK and cfg.get("ablate_splits"):  # PRISM test F reliance check: same weights, protection off
+        import writeblock as wb
+        decoder_io.WRITEBLOCK, wb.STATE["enabled"] = False, False
+        out["preds_nowb"] = {s: _predict("decoder", model, tok, _rows(s), tta=tta) for s in cfg["ablate_splits"]}
+    return out
 
 
 @app.function(image=image, gpu="L40S", volumes={"/vol": vol}, secrets=SECRETS, timeout=4 * 3600)
@@ -369,6 +374,8 @@ def train(name: str, base: str, recipe: str = "A3", splits: str = "dev,devzs", e
     fn = train_remote35 if is35(base) else train_remote
     res = fn.with_options(gpu=gpu).remote(name, cfg, splits.split(","), tta)
     _save(name + ("_tta" if tta else ""), res["preds"], {"base": base, "train": {k: v for k, v in res["meta"].items() if k != "log"}})
+    if res.get("preds_nowb"):
+        _save(name + "_nowb", res["preds_nowb"], {"base": base, "ablation": "write-block off at inference"})
     (HERE / "logs").mkdir(exist_ok=True)
     (HERE / f"logs/{name}.json").write_text(json.dumps(res["meta"], indent=2))
 
@@ -972,13 +979,14 @@ def sweep(name: str = "q35_4b_v10", base: str = "Qwen/Qwen3.5-4B", splits: str =
 
 
 @app.function(image=image35, gpu="H100", volumes={"/vol": vol}, secrets=SECRETS, timeout=3 * 3600)
-def multi_eval_remote(specs: list[dict], splits: list[str], style: str = "cygnet") -> dict:
+def multi_eval_remote(specs: list[dict], splits: list[str], style: str = "cygnet", layout: str = "text_first") -> dict:
     """Plain predictions of several models (each {label, base, adapter}) on the same splits, one container."""
     import gc
     import time
     import torch
     import decoder_io
     decoder_io.STYLE = style
+    decoder_io.LAYOUT = layout
     out = {}
     for sp_ in specs:
         t = time.time()
@@ -995,14 +1003,14 @@ def multi_eval_remote(specs: list[dict], splits: list[str], style: str = "cygnet
 
 
 @app.local_entrypoint()
-def multi_eval(specs: str, splits: str = "ohs", gpu: str = "H100"):
+def multi_eval(specs: str, splits: str = "ohs", gpu: str = "H100", layout: str = "text_first"):
     """specs: 'label=base[:adapter],...' e.g. 'q35_4b_v10=Qwen/Qwen3.5-4B:/vol/models/q35_4b_v10,qwen3.5-4b_cyg=Qwen/Qwen3.5-4B'"""
     sp = []
     for s in specs.split(","):
         label, rest = s.split("=", 1)
         base, _, adapter = rest.partition(":")
         sp.append({"label": label, "base": base, "adapter": adapter})
-    res = multi_eval_remote.with_options(gpu=gpu).remote(sp, splits.split(","))
+    res = multi_eval_remote.with_options(gpu=gpu).remote(sp, splits.split(","), layout=layout)
     for label, d in res.items():
         sec = d.pop("_sec")
         _save(label, d, {"base": [x["base"] for x in sp if x["label"] == label][0], "sec": sec})

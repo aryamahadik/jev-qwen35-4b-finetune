@@ -444,6 +444,8 @@ def train(cfg: dict, data_dir: Path, out_dir: Path, dev="cuda") -> dict:
         model = get_peft_model(model, LoraConfig(r=c["r"], lora_alpha=c["alpha"], lora_dropout=c["dropout"],
                                                  task_type="CAUSAL_LM", target_modules=targets))
     model.print_trainable_parameters()
+    if float(c.get("writeblock_frac", 0) or 0) > 0:  # PRISM test F: protected recurrent memory, trained end to end
+        print(json.dumps({"writeblock": {"frac": c["writeblock_frac"], "deltanet_layers": decoder_io.install_writeblock(model, float(c["writeblock_frac"]))}}), flush=True)
     model.train()
     ro = Readout(tok)
     n_max = max((len(r["options"]) for r in rows if r["qtype"] == "choice"), default=0)
@@ -507,15 +509,30 @@ def train(cfg: dict, data_dir: Path, out_dir: Path, dev="cuda") -> dict:
             mb, mp = [batch[i] for i in idx], [perms[i] for i in idx]
             local = {i: j for j, i in enumerate(idx)}
             mtw = [(local[i], p2) for i, p2 in tw if i in local]
-            with torch.autocast("cuda", dtype=torch.bfloat16):
-                lg_all = cand_logits(model, ro, mb + [mb[i] for i, _ in mtw], dev, perms=mp + [p for _, p in mtw])
-            lg = lg_all[:len(mb)]
-            twins = [(i, p2, l2) for (i, p2), l2 in zip(mtw, lg_all[len(mb):])]
             anc = [i for i, r in enumerate(mb) if c["beta"] > 0 and (r.get("meta") or {}).get("anchor")]
-            kl = None
-            if anc:
+            blg = None
+            if anc:  # base-model anchor targets first, without write protection (the base never learned it); the
+                # training forward then comes last, so checkpoint recomputation in backward sees its own block mask
+                wb_on = decoder_io.WRITEBLOCK
+                decoder_io.WRITEBLOCK = False
+                if wb_on:
+                    import writeblock as _wb
+                    _wb.STATE["enabled"] = False
                 with torch.no_grad(), model.disable_adapter(), torch.autocast("cuda", dtype=torch.bfloat16):
                     blg = cand_logits(model, ro, [mb[i] for i in anc], dev, perms=[mp[i] for i in anc])
+                if wb_on:
+                    decoder_io.WRITEBLOCK = True
+                    _wb.STATE["enabled"] = True
+            with torch.autocast("cuda", dtype=torch.bfloat16):
+                lg_all = cand_logits(model, ro, mb + [mb[i] for i, _ in mtw], dev, perms=mp + [p for _, p in mtw])
+            if decoder_io.WRITEBLOCK and step == start:
+                import writeblock as _wb
+                if _wb.STATE["applied"] < (_wb.STATE["n_layers"] or 1):
+                    raise RuntimeError(f"write-block did not fire: applied {_wb.STATE['applied']} of {_wb.STATE['n_layers']} layers")
+            lg = lg_all[:len(mb)]
+            twins = [(i, p2, l2) for (i, p2), l2 in zip(mtw, lg_all[len(mb):])]
+            kl = None
+            if anc:
                 kl = torch.stack([F.kl_div(F.log_softmax(lg[i], -1), F.log_softmax(b, -1), log_target=True, reduction="sum")
                                   for i, b in zip(anc, blg)]).mean()
             loss, mterms, mcounts = compute_loss(c, mb, mp, lg, rel_by_row, step, n_steps, dev, kl=kl, twins=twins, cyg=cyg)
