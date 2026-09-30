@@ -1187,6 +1187,32 @@ def test_build_2b_kd_rules():
     assert not any(m.get("teacher_src") == "blend50" for m in by.values())
 
 
+def test_build_2b_kd_kd_full_rows_get_no_4b_teacher():
+    """train_decoder uses a kd_full_src teacher ALONE as the target, so a 4B guess there would replace the gold:
+    kd_full rows without an exact probability must train on gold only (the audit's 94-row bug)."""
+    rows = [
+        noul("p_exact", 1, source="gd_gen2_probability", meta={"teacher": {"yes": 0.37}}),
+        noul("p_plain", 0, source="gd_gen2_probability"),  # no exact probability; 4B-E labelled it
+        noul("p_src", 1, source="gd_x"), noul("p_src_atk", 1, source="gd_gen2_probability", role="attacked"),
+        noul("other", 1),
+    ]
+    rels = [{"type": "inv", "a": "p_src", "b": "p_src_atk"}]
+    keep, _, _ = sg.select_rows(rows, rels, set())
+    eligible = {r["id"] for r in keep}
+    labels = {i: {"yes": 0.8, "no": 0.2} for i in eligible}
+    assert "p_plain" in labels
+    new, n = build_2b_kd.build(rows, rels, labels, eligible)
+    by = {r["id"]: r["meta"] for r in new}
+    assert by["p_exact"] == {"teacher": {"yes": 0.37}}  # the exact probability is kept
+    assert "teacher" not in by["p_plain"] and "teacher4b" not in by["p_plain"]  # gold only
+    assert by["p_src"]["teacher_src"] == "q35_4b_E"  # an ordinary source still gets 4B-E
+    assert "teacher" not in by["p_src_atk"]  # a fresh teacher is not copied onto a kd_full twin
+    assert by["other"]["teacher"] == {"yes": 0.8}
+    assert n["kd_full_no_fresh_teacher"] == 1 and n["twin_kd_full_fresh_deleted"] == 1
+    new2, _ = build_2b_kd.build(rows, rels, labels, eligible, kd_full=())  # the old behaviour, for contrast
+    assert {r["id"]: r["meta"] for r in new2}["p_plain"]["teacher"] == {"yes": 0.8}
+
+
 def test_build_2b_kd_refuses_bad_labels():
     rows, rels, labels = kd_fixture()
     elig = set(labels)
