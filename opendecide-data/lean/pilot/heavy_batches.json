@@ -1,0 +1,14385 @@
+{
+ "config": "runs/q35_4b_main.json",
+ "train_file": "v14_parts/golden_train.jsonl",
+ "rel_file": "v14_parts/golden_relations.jsonl",
+ "seed": 20260925,
+ "batch": 16,
+ "style": "cygnet",
+ "layout": "schema_branch_mark",
+ "perm_twin": 0.3,
+ "tokenizer": {
+  "id": "Qwen/Qwen3.5-4B",
+  "revision": "851bf6e806efd8d0a36b00ddf55e13ccb7b8cd0a",
+  "transformers": "4.57.6",
+  "tokenizers": "0.22.2"
+ },
+ "pad_multiple": 256,
+ "max_len": 16384,
+ "micro_tokens": [
+  0,
+  8192,
+  10240,
+  12288,
+  16384,
+  24576
+ ],
+ "limit_steps": 0,
+ "sample": 0,
+ "rows": 501732,
+ "units": 351122,
+ "pass_steps_replayed": 30457,
+ "steps_measured": 30457,
+ "ordinary_steps": [
+  0,
+  1,
+  2,
+  3,
+  4,
+  5,
+  6,
+  7,
+  8,
+  9,
+  10,
+  11,
+  12,
+  13,
+  14,
+  15,
+  16,
+  17,
+  18,
+  19
+ ],
+ "settings": {
+  "0": {
+   "groups": 30457,
+   "max_groups_per_step": 1,
+   "over_budget": 0,
+   "over_1.5x": 0,
+   "top": [
+    {
+     "step": 4887,
+     "tokens": 123904,
+     "n_seq": 22,
+     "padded_len": 5632,
+     "est_tokens": 56320,
+     "n_anchor": 0,
+     "n_table": 1,
+     "rows": [
+      "r_debate_68",
+      "r_gd_edgar_10k_item_2233",
+      "r_gd_edgar_10k_item_2233_ya",
+      "r_gd_edgar_10k_item_2233_yn",
+      "r_gd_druglabel_section_2354",
+      "r_gd_feverous_1928",
+      "r_gd_feverous_1928_atk",
+      "r_gd_taskmaster1_1934",
+      "r_gd_wtq_1482",
+      "r_gd_slur_usage_1944",
+      "r_br_emobank_474",
+      "r_gd_helpsteer3_pref_2355",
+      "r_gd_megaveridicality_1512",
+      "r_gd_gen_msn_fault_3416",
+      "r_gd_gen_msn_fault_3417",
+      "r_gd_gen_numeric_dates_1158",
+      "r_gd_gen_numeric_dates_1159",
+      "r_gd_gen_numeric_dates_1159_ds",
+      "r_gd_gen_numeric_dates_1158_atk"
+     ],
+     "sources": {
+      "gd_gen_numeric_dates": 4,
+      "gd_edgar_10k_item": 3,
+      "gd_feverous": 2
+     }
+    },
+    {
+     "step": 25306,
+     "tokens": 118272,
+     "n_seq": 21,
+     "padded_len": 5632,
+     "est_tokens": 145152,
+     "n_anchor": 2,
+     "n_table": 2,
+     "rows": [
+      "r_ohr_logiqa2_3526",
+      "r_gd_helpsteer2_attr_693",
+      "r_d012a5c06c42",
+      "r_ab2378da607b",
+      "r_8beeb39a20d2",
+      "r_gd_infotabs_nli_2813",
+      "r_gd_ghc_hate_1255",
+      "r_gd_answer_equiv_3060",
+      "r_gd_wtq_2059",
+      "r_gd_conditionalqa_514",
+      "r_gd_conditionalqa_514_atk",
+      "r_gd_drugprot_1592",
+      "r_gd_drugprot_1592_atk",
+      "r_gd_edgar_10k_item_4527",
+      "r_gd_mfrc_74",
+      "r_gd_druglabel_section_2729"
+     ],
+     "sources": {
+      "amazon_polarity": 3,
+      "gd_conditionalqa": 2,
+      "gd_drugprot": 2
+     }
+    },
+    {
+     "step": 7344,
+     "tokens": 112896,
+     "n_seq": 21,
+     "padded_len": 5376,
+     "est_tokens": 129024,
+     "n_anchor": 0,
+     "n_table": 2,
+     "rows": [
+      "r_gd_sc101_5225",
+      "r_gd_naics_subsector_1116",
+      "r_gd_naics_subsector_1116_ya",
+      "r_gd_naics_subsector_1116_yn",
+      "r_gd_msha_injury_3155",
+      "r_gd_feverous_6954",
+      "r_gd_cards_2882",
+      "r_gd_aegis_prompts_1368",
+      "r_gd_casehold_yn_4475",
+      "r_proc_rubric_153",
+      "r_gd_wtq_3612",
+      "r_gd_storm_ef_1264",
+      "r_gd_medqa_yn_1896",
+      "r_gd_helpsteer2_attr_3782",
+      "r_gd_semtabfacts_sci_2165",
+      "r_gd_conditionalqa_1097",
+      "r_gd_conditionalqa_1097_ya",
+      "r_gd_conditionalqa_1097_yn"
+     ],
+     "sources": {
+      "gd_naics_subsector": 3,
+      "gd_conditionalqa": 3,
+      "gd_sc101": 1
+     }
+    },
+    {
+     "step": 8490,
+     "tokens": 107520,
+     "n_seq": 21,
+     "padded_len": 5120,
+     "est_tokens": 134400,
+     "n_anchor": 0,
+     "n_table": 1,
+     "rows": [
+      "r_gd_oiics_event_3751",
+      "r_gd_oiics_event_3751_ya",
+      "r_gd_oiics_event_3751_yn",
+      "r_br_newsmtsc_349",
+      "r_gd_winogrande_2726",
+      "r_gd_oiics_event_4899",
+      "r_gd_oiics_event_4899_ya",
+      "r_gd_oiics_event_4899_yn",
+      "r_gd_wtq_4863",
+      "r_gd_medquad_qtype_4192",
+      "r_gd_conditionalqa_741",
+      "r_gd_prm800k_steps_1641",
+      "r_pg_policy_train_469",
+      "r_gd_prm800k_steps_7623",
+      "r_gd_totto_claims_2699",
+      "r_gd_gen_routing_646",
+      "r_gd_gen_routing_647"
+     ],
+     "sources": {
+      "gd_oiics_event": 6,
+      "gd_prm800k_steps": 2,
+      "gd_gen_routing": 2
+     }
+    },
+    {
+     "step": 4446,
+     "tokens": 102400,
+     "n_seq": 20,
+     "padded_len": 5120,
+     "est_tokens": 56320,
+     "n_anchor": 0,
+     "n_table": 1,
+     "rows": [
+      "r_gd_smcalflow_action_1785",
+      "r_gd_dstc9_track1_6869",
+      "r_planted_a_216",
+      "r_gd_wiki_help_routing_4081",
+      "r_gd_wiki_help_routing_4081_atk",
+      "r_gd_spiced_662",
+      "r_gd_qasc_1881",
+      "r_gd_wtq_2268",
+      "r_gd_saferproducts_severity_507",
+      "r_gd_saferproducts_severity_507_ya",
+      "r_gd_saferproducts_severity_507_yn",
+      "r_gd_logicinference_568",
+      "r_gd_logicinference_568_ya",
+      "r_gd_logicinference_568_yn",
+      "r_gd_star_next_action_337",
+      "r_gd_logicinference_2153",
+      "r_gd_logicinference_2153_ds"
+     ],
+     "sources": {
+      "gd_logicinference": 5,
+      "gd_saferproducts_severity": 3,
+      "gd_wiki_help_routing": 2
+     }
+    },
+    {
+     "step": 24590,
+     "tokens": 102144,
+     "n_seq": 21,
+     "padded_len": 4864,
+     "est_tokens": 107520,
+     "n_anchor": 0,
+     "n_table": 1,
+     "rows": [
+      "r_gd_smcalflow_action_1563",
+      "r_gd_drugprot_831",
+      "r_gd_gen_policy_exceptions_5990",
+      "r_gd_gen_policy_exceptions_5991",
+      "r_gd_conditionalqa_576",
+      "r_gd_wtq_4419",
+      "r_gd_winogrande_6632",
+      "r_gd_gen_evidence_conflict_15294",
+      "r_gd_gen_evidence_conflict_15295",
+      "r_hard_policy_b_24_x2",
+      "r_gd_ncbi_disease_916",
+      "r_gd_ncbi_disease_916_ya",
+      "r_gd_ncbi_disease_916_yn",
+      "r_br_wos46985_444",
+      "r_gd_edgar_10k_item_1660",
+      "r_gd_edgar_10k_item_1660_ya",
+      "r_gd_edgar_10k_item_1660_yn",
+      "r_gd_edgar_10k_item_1660_atk"
+     ],
+     "sources": {
+      "gd_edgar_10k_item": 4,
+      "gd_ncbi_disease": 3,
+      "gd_gen_policy_exceptions": 2
+     }
+    },
+    {
+     "step": 12005,
+     "tokens": 102144,
+     "n_seq": 21,
+     "padded_len": 4864,
+     "est_tokens": 134400,
+     "n_anchor": 0,
+     "n_table": 0,
+     "rows": [
+      "r_gd_medmcqa_subject_1918",
+      "r_br_newsgroups20_171",
+      "r_proc_temporal_139",
+      "r_gd_slur_usage_2449",
+      "r_gd_wands_product_931",
+      "r_gd_gen_logic_negation_2750",
+      "r_gd_slur_usage_535",
+      "r_gd_smcalflow_action_89",
+      "r_gd_star_next_action_800",
+      "r_gd_mfrc_4951",
+      "r_gd_oiics_event_1943",
+      "r_gd_smcalflow_action_2927",
+      "r_gd_gen_numeric_dates_8434",
+      "r_gd_gen_numeric_dates_8435",
+      "r_gd_cards_3900",
+      "r_gd_conditionalqa_716"
+     ],
+     "sources": {
+      "gd_slur_usage": 2,
+      "gd_smcalflow_action": 2,
+      "gd_gen_numeric_dates": 2
+     }
+    },
+    {
+     "step": 10908,
+     "tokens": 101376,
+     "n_seq": 18,
+     "padded_len": 5632,
+     "est_tokens": 50688,
+     "n_anchor": 0,
+     "n_table": 2,
+     "rows": [
+      "r_gd_wiki_help_routing_3665",
+      "r_gd_star_next_action_1422",
+      "r_gd_tathqa_3985",
+      "r_gd_gen_policy_exceptions_5702",
+      "r_gd_gen_policy_exceptions_5703",
+      "r_gd_gen_policy_exceptions_5702_atk",
+      "r_gd_bbh_mistake_1115",
+      "r_gd_oiics_event_1198",
+      "r_gd_semtabfacts_sci_1852",
+      "r_gd_wtq_1148",
+      "r_gd_babi_logic_2059",
+      "r_br_steam_aspect_318",
+      "r_gd_finqa_1169",
+      "r_gd_finqa_1169_atk",
+      "r_gd_msha_injury_842",
+      "r_gd_prm800k_steps_7696"
+     ],
+     "sources": {
+      "gd_gen_policy_exceptions": 3,
+      "gd_finqa": 2,
+      "gd_wiki_help_routing": 1
+     }
+    },
+    {
+     "step": 10854,
+     "tokens": 101376,
+     "n_seq": 18,
+     "padded_len": 5632,
+     "est_tokens": 46080,
+     "n_anchor": 0,
+     "n_table": 1,
+     "rows": [
+      "r_gd_boardgameqa_2136",
+      "r_gd_answer_equiv_2307",
+      "r_br_edos_243",
+      "r_v11i_b0c19f4f6b7e",
+      "r_gd_boardgameqa_6059",
+      "r_gd_gen_routing_10804",
+      "r_gd_gen_routing_10804_ya",
+      "r_gd_gen_routing_10804_yn",
+      "r_gd_gen_routing_10805",
+      "r_gd_tatqa_3814",
+      "r_gd_wtq_486",
+      "r_gd_uscg_mariner_5575",
+      "r_gd_gen_numeric_dates_19858",
+      "r_gd_gen_numeric_dates_19859",
+      "r_gd_gen_numeric_dates_10044",
+      "r_gd_gen_numeric_dates_10045"
+     ],
+     "sources": {
+      "gd_gen_routing": 4,
+      "gd_gen_numeric_dates": 4,
+      "gd_boardgameqa": 2
+     }
+    },
+    {
+     "step": 27253,
+     "tokens": 97280,
+     "n_seq": 20,
+     "padded_len": 4864,
+     "est_tokens": 138240,
+     "n_anchor": 0,
+     "n_table": 0,
+     "rows": [
+      "r_gd_finqa_4498",
+      "r_br_wos46985_498",
+      "r_gd_vader_intensity_1790",
+      "r_gd_vader_intensity_1790_ya",
+      "r_gd_vader_intensity_1790_yn",
+      "r_hard_affect_24",
+      "r_gd_medmcqa_subject_1772",
+      "r_v11i_126559f4c60d",
+      "r_pg_multihop_train_1060",
+      "r_gd_saferproducts_severity_2591",
+      "r_gd_saferproducts_severity_2591_atk",
+      "r_gd_winogrande_4697",
+      "r_gd_conditionalqa_404",
+      "r_gd_conditionalqa_404_ya",
+      "r_gd_conditionalqa_404_yn",
+      "r_gd_conditionalqa_404_atk"
+     ],
+     "sources": {
+      "gd_conditionalqa": 4,
+      "gd_vader_intensity": 3,
+      "gd_saferproducts_severity": 2
+     }
+    }
+   ],
+   "heaviest_anchor": {
+    "step": 25306,
+    "tokens": 118272,
+    "n_seq": 21,
+    "padded_len": 5632,
+    "est_tokens": 145152,
+    "n_anchor": 2,
+    "n_table": 2,
+    "rows": [
+     "r_ohr_logiqa2_3526",
+     "r_gd_helpsteer2_attr_693",
+     "r_d012a5c06c42",
+     "r_ab2378da607b",
+     "r_8beeb39a20d2",
+     "r_gd_infotabs_nli_2813",
+     "r_gd_ghc_hate_1255",
+     "r_gd_answer_equiv_3060",
+     "r_gd_wtq_2059",
+     "r_gd_conditionalqa_514",
+     "r_gd_conditionalqa_514_atk",
+     "r_gd_drugprot_1592",
+     "r_gd_drugprot_1592_atk",
+     "r_gd_edgar_10k_item_4527",
+     "r_gd_mfrc_74",
+     "r_gd_druglabel_section_2729"
+    ],
+    "sources": {
+     "amazon_polarity": 3,
+     "gd_conditionalqa": 2,
+     "gd_drugprot": 2
+    }
+   },
+   "heaviest_table": {
+    "step": 4887,
+    "tokens": 123904,
+    "n_seq": 22,
+    "padded_len": 5632,
+    "est_tokens": 56320,
+    "n_anchor": 0,
+    "n_table": 1,
+    "rows": [
+     "r_debate_68",
+     "r_gd_edgar_10k_item_2233",
+     "r_gd_edgar_10k_item_2233_ya",
+     "r_gd_edgar_10k_item_2233_yn",
+     "r_gd_druglabel_section_2354",
+     "r_gd_feverous_1928",
+     "r_gd_feverous_1928_atk",
+     "r_gd_taskmaster1_1934",
+     "r_gd_wtq_1482",
+     "r_gd_slur_usage_1944",
+     "r_br_emobank_474",
+     "r_gd_helpsteer3_pref_2355",
+     "r_gd_megaveridicality_1512",
+     "r_gd_gen_msn_fault_3416",
+     "r_gd_gen_msn_fault_3417",
+     "r_gd_gen_numeric_dates_1158",
+     "r_gd_gen_numeric_dates_1159",
+     "r_gd_gen_numeric_dates_1159_ds",
+     "r_gd_gen_numeric_dates_1158_atk"
+    ],
+    "sources": {
+     "gd_gen_numeric_dates": 4,
+     "gd_edgar_10k_item": 3,
+     "gd_feverous": 2
+    }
+   }
+  },
+  "8192": {
+   "groups": 99895,
+   "max_groups_per_step": 6,
+   "over_budget": 3261,
+   "over_1.5x": 179,
+   "top": [
+    {
+     "step": 15878,
+     "tokens": 23296,
+     "n_seq": 7,
+     "padded_len": 3328,
+     "est_tokens": 32256,
+     "n_anchor": 0,
+     "n_table": 0,
+     "rows": [
+      "r_gd_conditionalqa_323",
+      "r_gd_conditionalqa_323_ya",
+      "r_gd_conditionalqa_323_yn",
+      "r_gd_conditionalqa_323_atk",
+      "r_gd_conditionalqa_323_ya_atk"
+     ],
+     "sources": {
+      "gd_conditionalqa": 5
+     }
+    },
+    {
+     "step": 9089,
+     "tokens": 21760,
+     "n_seq": 5,
+     "padded_len": 4352,
+     "est_tokens": 28160,
+     "n_anchor": 0,
+     "n_table": 0,
+     "rows": [
+      "r_gd_conditionalqa_182",
+      "r_gd_conditionalqa_182_ya",
+      "r_gd_conditionalqa_182_yn",
+      "r_gd_conditionalqa_182_ya_atk"
+     ],
+     "sources": {
+      "gd_conditionalqa": 4
+     }
+    },
+    {
+     "step": 7344,
+     "tokens": 21504,
+     "n_seq": 4,
+     "padded_len": 5376,
+     "est_tokens": 24576,
+     "n_anchor": 0,
+     "n_table": 0,
+     "rows": [
+      "r_gd_conditionalqa_1097",
+      "r_gd_conditionalqa_1097_ya",
+      "r_gd_conditionalqa_1097_yn"
+     ],
+     "sources": {
+      "gd_conditionalqa": 3
+     }
+    },
+    {
+     "step": 22153,
+     "tokens": 19968,
+     "n_seq": 6,
+     "padded_len": 3328,
+     "est_tokens": 29184,
+     "n_anchor": 0,
+     "n_table": 0,
+     "rows": [
+      "r_gd_conditionalqa_1110",
+      "r_gd_conditionalqa_1110_ya",
+      "r_gd_conditionalqa_1110_yn",
+      "r_gd_conditionalqa_1110_atk"
+     ],
+     "sources": {
+      "gd_conditionalqa": 4
+     }
+    },
+    {
+     "step": 27253,
+     "tokens": 19456,
+     "n_seq": 4,
+     "padded_len": 4864,
+     "est_tokens": 27648,
+     "n_anchor": 0,
+     "n_table": 0,
+     "rows": [
+      "r_gd_conditionalqa_404",
+      "r_gd_conditionalqa_404_ya",
+      "r_gd_conditionalqa_404_yn",
+      "r_gd_conditionalqa_404_atk"
+     ],
+     "sources": {
+      "gd_conditionalqa": 4
+     }
+    },
+    {
+     "step": 21252,
+     "tokens": 19456,
+     "n_seq": 4,
+     "padded_len": 4864,
+     "est_tokens": 20480,
+     "n_anchor": 0,
+     "n_table": 0,
+     "rows": [
+      "r_gd_conditionalqa_700",
+      "r_gd_conditionalqa_700_ya",
+      "r_gd_conditionalqa_700_yn"
+     ],
+     "sources": {
+      "gd_conditionalqa": 3
+     }
+    },
+    {
+     "step": 5353,
+     "tokens": 19456,
+     "n_seq": 4,
+     "padded_len": 4864,
+     "est_tokens": 27648,
+     "n_anchor": 0,
+     "n_table": 0,
+     "rows": [
+      "r_gd_conditionalqa_739",
+      "r_gd_conditionalqa_739_ya",
+      "r_gd_conditionalqa_739_yn"
+     ],
+     "sources": {
+      "gd_conditionalqa": 3
+     }
+    },
+    {
+     "step": 29726,
+     "tokens": 18432,
+     "n_seq": 9,
+     "padded_len": 2048,
+     "est_tokens": 18432,
+     "n_anchor": 0,
+     "n_table": 0,
+     "rows": [
+      "r_gd_gen_constraints_7316",
+      "r_gd_gen_constraints_7316_ya",
+      "r_gd_gen_constraints_7316_yn",
+      "r_gd_gen_constraints_7317",
+      "r_gd_gen_constraints_7317_ya",
+      "r_gd_gen_constraints_7317_yn",
+      "r_gd_gen_constraints_7316_ya_atk",
+      "r_gd_gen_constraints_7317_atk"
+     ],
+     "sources": {
+      "gd_gen_constraints": 8
+     }
+    },
+    {
+     "step": 22522,
+     "tokens": 18432,
+     "n_seq": 4,
+     "padded_len": 4608,
+     "est_tokens": 8192,
+     "n_anchor": 0,
+     "n_table": 1,
+     "rows": [
+      "r_gd_star_next_action_1272",
+      "r_gd_drugprot_1529",
+      "r_gd_wtq_3800",
+      "r_gd_edgar_10k_item_1474"
+     ],
+     "sources": {
+      "gd_star_next_action": 1,
+      "gd_drugprot": 1,
+      "gd_wtq": 1
+     }
+    },
+    {
+     "step": 17783,
+     "tokens": 18432,
+     "n_seq": 4,
+     "padded_len": 4608,
+     "est_tokens": 25600,
+     "n_anchor": 0,
+     "n_table": 0,
+     "rows": [
+      "r_gd_conditionalqa_1156",
+      "r_gd_conditionalqa_1156_ds",
+      "r_gd_conditionalqa_1156_atk"
+     ],
+     "sources": {
+      "gd_conditionalqa": 3
+     }
+    }
+   ],
+   "heaviest_anchor": {
+    "step": 14820,
+    "tokens": 12800,
+    "n_seq": 10,
+    "padded_len": 1280,
+    "est_tokens": 7680,
+    "n_anchor": 1,
+    "n_table": 2,
+    "rows": [
+     "r_2064e1cc60d8",
+     "r_br_mams_acsa_163",
+     "r_gd_gen_logic_negation_16774",
+     "r_gd_aegis_prompts_1907",
+     "r_v11i_84d65c4dd209",
+     "r_gd_gen_tables_13998",
+     "r_gd_gen_tables_13999",
+     "r_gd_gen_numeric_dates_15426",
+     "r_gd_gen_numeric_dates_15427"
+    ],
+    "sources": {
+     "gd_gen_tables": 2,
+     "gd_gen_numeric_dates": 2,
+     "arc": 1
+    }
+   },
+   "heaviest_table": {
+    "step": 22522,
+    "tokens": 18432,
+    "n_seq": 4,
+    "padded_len": 4608,
+    "est_tokens": 8192,
+    "n_anchor": 0,
+    "n_table": 1,
+    "rows": [
+     "r_gd_star_next_action_1272",
+     "r_gd_drugprot_1529",
+     "r_gd_wtq_3800",
+     "r_gd_edgar_10k_item_1474"
+    ],
+    "sources": {
+     "gd_star_next_action": 1,
+     "gd_drugprot": 1,
+     "gd_wtq": 1
+    }
+   }
+  },
+  "10240": {
+   "groups": 83740,
+   "max_groups_per_step": 6,
+   "over_budget": 2148,
+   "over_1.5x": 112,
+   "top": [
+    {
+     "step": 15878,
+     "tokens": 23296,
+     "n_seq": 7,
+     "padded_len": 3328,
+     "est_tokens": 32256,
+     "n_anchor": 0,
+     "n_table": 0,
+     "rows": [
+      "r_gd_conditionalqa_323",
+      "r_gd_conditionalqa_323_ya",
+      "r_gd_conditionalqa_323_yn",
+      "r_gd_conditionalqa_323_atk",
+      "r_gd_conditionalqa_323_ya_atk"
+     ],
+     "sources": {
+      "gd_conditionalqa": 5
+     }
+    },
+    {
+     "step": 15994,
+     "tokens": 22528,
+     "n_seq": 4,
+     "padded_len": 5632,
+     "est_tokens": 10240,
+     "n_anchor": 0,
+     "n_table": 1,
+     "rows": [
+      "r_gd_edgar_10k_item_3391",
+      "r_gd_edgar_10k_item_3391_ya",
+      "r_gd_edgar_10k_item_3391_yn",
+      "r_gd_wtq_1100"
+     ],
+     "sources": {
+      "gd_edgar_10k_item": 3,
+      "gd_wtq": 1
+     }
+    },
+    {
+     "step": 4887,
+     "tokens": 22528,
+     "n_seq": 4,
+     "padded_len": 5632,
+     "est_tokens": 10240,
+     "n_anchor": 0,
+     "n_table": 1,
+     "rows": [
+      "r_gd_edgar_10k_item_2233",
+      "r_gd_edgar_10k_item_2233_ya",
+      "r_gd_edgar_10k_item_2233_yn",
+      "r_gd_wtq_1482"
+     ],
+     "sources": {
+      "gd_edgar_10k_item": 3,
+      "gd_wtq": 1
+     }
+    },
+    {
+     "step": 9089,
+     "tokens": 21760,
+     "n_seq": 5,
+     "padded_len": 4352,
+     "est_tokens": 28160,
+     "n_anchor": 0,
+     "n_table": 0,
+     "rows": [
+      "r_gd_conditionalqa_182",
+      "r_gd_conditionalqa_182_ya",
+      "r_gd_conditionalqa_182_yn",
+      "r_gd_conditionalqa_182_ya_atk"
+     ],
+     "sources": {
+      "gd_conditionalqa": 4
+     }
+    },
+    {
+     "step": 7344,
+     "tokens": 21504,
+     "n_seq": 4,
+     "padded_len": 5376,
+     "est_tokens": 24576,
+     "n_anchor": 0,
+     "n_table": 0,
+     "rows": [
+      "r_gd_conditionalqa_1097",
+      "r_gd_conditionalqa_1097_ya",
+      "r_gd_conditionalqa_1097_yn"
+     ],
+     "sources": {
+      "gd_conditionalqa": 3
+     }
+    },
+    {
+     "step": 27756,
+     "tokens": 20480,
+     "n_seq": 10,
+     "padded_len": 2048,
+     "est_tokens": 10240,
+     "n_anchor": 0,
+     "n_table": 3,
+     "rows": [
+      "r_gd_finqa_4173",
+      "r_gd_semtabfacts_sci_2513",
+      "r_gd_wtq_2574",
+      "r_gd_spiced_352",
+      "r_gd_spiced_352_atk",
+      "r_gd_wtq_529",
+      "r_gd_totto_claims_353",
+      "r_gd_sd311_routing_657",
+      "r_ohr_fld_557"
+     ],
+     "sources": {
+      "gd_wtq": 2,
+      "gd_spiced": 2,
+      "gd_finqa": 1
+     }
+    },
+    {
+     "step": 24850,
+     "tokens": 20480,
+     "n_seq": 4,
+     "padded_len": 5120,
+     "est_tokens": 9216,
+     "n_anchor": 0,
+     "n_table": 1,
+     "rows": [
+      "r_gd_mtbench_human_759",
+      "r_gd_wtq_4971",
+      "r_std_hearsay_23_x2",
+      "r_hard_evidence_claims_b_18_x2"
+     ],
+     "sources": {
+      "gd_mtbench_human": 1,
+      "gd_wtq": 1,
+      "std_hearsay": 1
+     }
+    },
+    {
+     "step": 14671,
+     "tokens": 20480,
+     "n_seq": 5,
+     "padded_len": 4096,
+     "est_tokens": 10240,
+     "n_anchor": 0,
+     "n_table": 1,
+     "rows": [
+      "r_gd_tatqa_423",
+      "r_gd_wtq_1864",
+      "r_gd_druglabel_section_2594",
+      "r_gd_druglabel_section_2594_ya",
+      "r_gd_druglabel_section_2594_yn"
+     ],
+     "sources": {
+      "gd_druglabel_section": 3,
+      "gd_tatqa": 1,
+      "gd_wtq": 1
+     }
+    },
+    {
+     "step": 8806,
+     "tokens": 20480,
+     "n_seq": 10,
+     "padded_len": 2048,
+     "est_tokens": 10240,
+     "n_anchor": 0,
+     "n_table": 1,
+     "rows": [
+      "r_gd_semtabfacts_sci_208",
+      "r_gd_boardgameqa_7543",
+      "r_gd_ncvec_ham_400",
+      "r_gd_spiced_357",
+      "r_gd_totto_claims_2312",
+      "r_gd_opentdb_3649",
+      "r_gd_gen_msn_rules_3048",
+      "r_gd_gen_msn_rules_3049",
+      "r_pg_evidence_train_417",
+      "r_gd_prm800k_steps_1238"
+     ],
+     "sources": {
+      "gd_gen_msn_rules": 2,
+      "gd_semtabfacts_sci": 1,
+      "gd_boardgameqa": 1
+     }
+    },
+    {
+     "step": 7653,
+     "tokens": 20480,
+     "n_seq": 8,
+     "padded_len": 2560,
+     "est_tokens": 10240,
+     "n_anchor": 0,
+     "n_table": 1,
+     "rows": [
+      "r_br_wos46985_339",
+      "r_gd_feverous_3404",
+      "r_gd_wtq_3393",
+      "r_gd_msha_injury_829",
+      "r_gd_gen_policy_exceptions_21994",
+      "r_gd_gen_policy_exceptions_21995",
+      "r_gd_ncvec_ham_239"
+     ],
+     "sources": {
+      "gd_gen_policy_exceptions": 2,
+      "br_wos46985": 1,
+      "gd_feverous": 1
+     }
+    }
+   ],
+   "heaviest_anchor": {
+    "step": 25279,
+    "tokens": 16640,
+    "n_seq": 13,
+    "padded_len": 1280,
+    "est_tokens": 9984,
+    "n_anchor": 2,
+    "n_table": 0,
+    "rows": [
+     "r_gd_totto_claims_623",
+     "r_gd_codah_125",
+     "r_std_evidence_34",
+     "r_gd_multiwoz21_sysacts_1779",
+     "r_9488aecc213a",
+     "r_2c9cd7445057",
+     "r_27505b4fa55a",
+     "r_gd_dstc9_track1_5389",
+     "r_gd_helpsteer2_attr_1210",
+     "r_gd_politeness_votes_1377",
+     "r_v11i_0fe1b9cc2156"
+    ],
+    "sources": {
+     "mnli3": 3,
+     "gd_totto_claims": 1,
+     "gd_codah": 1
+    }
+   },
+   "heaviest_table": {
+    "step": 15994,
+    "tokens": 22528,
+    "n_seq": 4,
+    "padded_len": 5632,
+    "est_tokens": 10240,
+    "n_anchor": 0,
+    "n_table": 1,
+    "rows": [
+     "r_gd_edgar_10k_item_3391",
+     "r_gd_edgar_10k_item_3391_ya",
+     "r_gd_edgar_10k_item_3391_yn",
+     "r_gd_wtq_1100"
+    ],
+    "sources": {
+     "gd_edgar_10k_item": 3,
+     "gd_wtq": 1
+    }
+   }
+  },
+  "12288": {
+   "groups": 73632,
+   "max_groups_per_step": 5,
+   "over_budget": 1451,
+   "over_1.5x": 55,
+   "top": [
+    {
+     "step": 7052,
+     "tokens": 27648,
+     "n_seq": 6,
+     "padded_len": 4608,
+     "est_tokens": 12288,
+     "n_anchor": 0,
+     "n_table": 2,
+     "rows": [
+      "r_gd_medmcqa_subject_2207",
+      "r_gd_wtq_4363",
+      "r_gd_wtq_4363_atk",
+      "r_gd_edgar_10k_item_4553"
+     ],
+     "sources": {
+      "gd_wtq": 2,
+      "gd_medmcqa_subject": 1,
+      "gd_edgar_10k_item": 1
+     }
+    },
+    {
+     "step": 3266,
+     "tokens": 27648,
+     "n_seq": 6,
+     "padded_len": 4608,
+     "est_tokens": 12288,
+     "n_anchor": 0,
+     "n_table": 1,
+     "rows": [
+      "r_gd_wtq_4041",
+      "r_gd_gen_evidence_conflict_18704",
+      "r_gd_gen_evidence_conflict_18705",
+      "r_gd_gen_evidence_conflict_18704_atk",
+      "r_gd_medqa_yn_3296",
+      "r_gd_medqa_yn_3296_atk"
+     ],
+     "sources": {
+      "gd_gen_evidence_conflict": 3,
+      "gd_medqa_yn": 2,
+      "gd_wtq": 1
+     }
+    },
+    {
+     "step": 29987,
+     "tokens": 24576,
+     "n_seq": 6,
+     "padded_len": 4096,
+     "est_tokens": 12288,
+     "n_anchor": 0,
+     "n_table": 1,
+     "rows": [
+      "r_gd_edgar_10k_item_3876",
+      "r_gd_edgar_10k_item_3876_ya",
+      "r_gd_edgar_10k_item_3876_yn",
+      "r_gd_tatqa_3415",
+      "r_gd_wtq_1065"
+     ],
+     "sources": {
+      "gd_edgar_10k_item": 3,
+      "gd_tatqa": 1,
+      "gd_wtq": 1
+     }
+    },
+    {
+     "step": 27756,
+     "tokens": 24576,
+     "n_seq": 12,
+     "padded_len": 2048,
+     "est_tokens": 12288,
+     "n_anchor": 0,
+     "n_table": 3,
+     "rows": [
+      "r_gd_finqa_4173",
+      "r_gd_semtabfacts_sci_2513",
+      "r_gd_wtq_2574",
+      "r_gd_spiced_352",
+      "r_gd_spiced_352_atk",
+      "r_gd_wtq_529",
+      "r_gd_gen_msn_consent_4640",
+      "r_gd_gen_msn_consent_4641",
+      "r_gd_totto_claims_353",
+      "r_gd_sd311_routing_657",
+      "r_ohr_fld_557"
+     ],
+     "sources": {
+      "gd_wtq": 2,
+      "gd_spiced": 2,
+      "gd_gen_msn_consent": 2
+     }
+    },
+    {
+     "step": 24797,
+     "tokens": 24576,
+     "n_seq": 6,
+     "padded_len": 4096,
+     "est_tokens": 12288,
+     "n_anchor": 0,
+     "n_table": 2,
+     "rows": [
+      "r_gd_finqa_3582",
+      "r_gd_saferproducts_severity_3322",
+      "r_gd_gen_numeric_dates_11960",
+      "r_gd_gen_numeric_dates_11961",
+      "r_gd_wtq_4756",
+      "r_gd_wtq_4756_atk"
+     ],
+     "sources": {
+      "gd_gen_numeric_dates": 2,
+      "gd_wtq": 2,
+      "gd_finqa": 1
+     }
+    },
+    {
+     "step": 14671,
+     "tokens": 24576,
+     "n_seq": 6,
+     "padded_len": 4096,
+     "est_tokens": 12288,
+     "n_anchor": 0,
+     "n_table": 1,
+     "rows": [
+      "r_gd_tatqa_423",
+      "r_gd_feverous_2657",
+      "r_gd_wtq_1864",
+      "r_gd_druglabel_section_2594",
+      "r_gd_druglabel_section_2594_ya",
+      "r_gd_druglabel_section_2594_yn"
+     ],
+     "sources": {
+      "gd_druglabel_section": 3,
+      "gd_tatqa": 1,
+      "gd_feverous": 1
+     }
+    },
+    {
+     "step": 14306,
+     "tokens": 24576,
+     "n_seq": 8,
+     "padded_len": 3072,
+     "est_tokens": 12288,
+     "n_anchor": 0,
+     "n_table": 1,
+     "rows": [
+      "r_gd_medquad_qtype_1419",
+      "r_gd_medquad_qtype_1419_ya",
+      "r_gd_medquad_qtype_1419_yn",
+      "r_gd_medquad_qtype_1419_atk",
+      "r_gd_wtq_2017",
+      "r_gd_saferproducts_severity_177",
+      "r_gd_saferproducts_severity_177_atk"
+     ],
+     "sources": {
+      "gd_medquad_qtype": 4,
+      "gd_saferproducts_severity": 2,
+      "gd_wtq": 1
+     }
+    },
+    {
+     "step": 8806,
+     "tokens": 24576,
+     "n_seq": 12,
+     "padded_len": 2048,
+     "est_tokens": 12288,
+     "n_anchor": 0,
+     "n_table": 1,
+     "rows": [
+      "r_gd_semtabfacts_sci_208",
+      "r_gd_boardgameqa_7543",
+      "r_gd_ncvec_ham_400",
+      "r_gd_spiced_357",
+      "r_gd_totto_claims_2312",
+      "r_gd_opentdb_3649",
+      "r_gd_gen_msn_rules_3048",
+      "r_gd_gen_msn_rules_3049",
+      "r_pg_evidence_train_417",
+      "r_gd_prm800k_steps_1238",
+      "r_gd_taskmaster2_367",
+      "r_gd_taskmaster2_367_atk"
+     ],
+     "sources": {
+      "gd_gen_msn_rules": 2,
+      "gd_taskmaster2": 2,
+      "gd_semtabfacts_sci": 1
+     }
+    },
+    {
+     "step": 5785,
+     "tokens": 24576,
+     "n_seq": 8,
+     "padded_len": 3072,
+     "est_tokens": 12288,
+     "n_anchor": 0,
+     "n_table": 1,
+     "rows": [
+      "r_br_star_461",
+      "r_gd_gen_ranking_7776",
+      "r_gd_gen_ranking_7776_ya",
+      "r_gd_gen_ranking_7776_yn",
+      "r_gd_gen_ranking_7777",
+      "r_gd_wtq_2315"
+     ],
+     "sources": {
+      "gd_gen_ranking": 4,
+      "br_star": 1,
+      "gd_wtq": 1
+     }
+    },
+    {
+     "step": 2501,
+     "tokens": 24576,
+     "n_seq": 8,
+     "padded_len": 3072,
+     "est_tokens": 12288,
+     "n_anchor": 0,
+     "n_table": 1,
+     "rows": [
+      "r_gd_wiki_help_routing_2612",
+      "r_gd_boardgameqa_2079",
+      "r_gd_boardgameqa_2079_atk",
+      "r_gd_cards_1277",
+      "r_gd_uscg_mariner_4902",
+      "r_gd_boardgameqa_147",
+      "r_gd_wtq_1810"
+     ],
+     "sources": {
+      "gd_boardgameqa": 3,
+      "gd_wiki_help_routing": 1,
+      "gd_cards": 1
+     }
+    }
+   ],
+   "heaviest_anchor": {
+    "step": 14473,
+    "tokens": 20480,
+    "n_seq": 16,
+    "padded_len": 1280,
+    "est_tokens": 12288,
+    "n_anchor": 2,
+    "n_table": 0,
+    "rows": [
+     "r_gd_ncbi_disease_702",
+     "r_gd_ncbi_disease_702_ya",
+     "r_gd_ncbi_disease_702_yn",
+     "r_gd_feverous_3120",
+     "r_gd_boardgameqa_6711",
+     "r_gd_boardgameqa_6711_ya",
+     "r_gd_boardgameqa_6711_yn",
+     "r_gd_gen_msn_fault_2372",
+     "r_gd_gen_msn_fault_2373",
+     "r_v11i_915283bb86cb",
+     "r_fdeb25f9c8ad",
+     "r_v11n_8ca634d4285a",
+     "r_v11n_f63299df5c5c",
+     "r_16ff5c204348",
+     "r_37f71393b403"
+    ],
+    "sources": {
+     "rte": 5,
+     "gd_ncbi_disease": 3,
+     "gd_boardgameqa": 3
+    }
+   },
+   "heaviest_table": {
+    "step": 7052,
+    "tokens": 27648,
+    "n_seq": 6,
+    "padded_len": 4608,
+    "est_tokens": 12288,
+    "n_anchor": 0,
+    "n_table": 2,
+    "rows": [
+     "r_gd_medmcqa_subject_2207",
+     "r_gd_wtq_4363",
+     "r_gd_wtq_4363_atk",
+     "r_gd_edgar_10k_item_4553"
+    ],
+    "sources": {
+     "gd_wtq": 2,
+     "gd_medmcqa_subject": 1,
+     "gd_edgar_10k_item": 1
+    }
+   }
+  },
+  "16384": {
+   "groups": 63935,
+   "max_groups_per_step": 4,
+   "over_budget": 1026,
+   "over_1.5x": 71,
+   "top": [
+    {
+     "step": 7052,
+     "tokens": 36864,
+     "n_seq": 8,
+     "padded_len": 4608,
+     "est_tokens": 16384,
+     "n_anchor": 0,
+     "n_table": 2,
+     "rows": [
+      "r_gd_medmcqa_subject_2207",
+      "r_gd_wtq_4363",
+      "r_gd_wtq_4363_atk",
+      "r_gd_edgar_10k_item_4553",
+      "r_gd_redocred_5518"
+     ],
+     "sources": {
+      "gd_wtq": 2,
+      "gd_medmcqa_subject": 1,
+      "gd_edgar_10k_item": 1
+     }
+    },
+    {
+     "step": 3266,
+     "tokens": 36864,
+     "n_seq": 8,
+     "padded_len": 4608,
+     "est_tokens": 16384,
+     "n_anchor": 0,
+     "n_table": 1,
+     "rows": [
+      "r_gd_slur_usage_3452",
+      "r_gd_vader_intensity_685",
+      "r_gd_wtq_4041",
+      "r_gd_gen_evidence_conflict_18704",
+      "r_gd_gen_evidence_conflict_18705",
+      "r_gd_gen_evidence_conflict_18704_atk",
+      "r_gd_medqa_yn_3296",
+      "r_gd_medqa_yn_3296_atk"
+     ],
+     "sources": {
+      "gd_gen_evidence_conflict": 3,
+      "gd_medqa_yn": 2,
+      "gd_slur_usage": 1
+     }
+    },
+    {
+     "step": 24850,
+     "tokens": 35840,
+     "n_seq": 7,
+     "padded_len": 5120,
+     "est_tokens": 16128,
+     "n_anchor": 0,
+     "n_table": 1,
+     "rows": [
+      "r_gd_mtbench_human_759",
+      "r_gd_wtq_4971",
+      "r_gd_gen_msn_fault_3940",
+      "r_gd_gen_msn_fault_3941",
+      "r_std_hearsay_23_x2",
+      "r_hard_evidence_claims_b_18_x2",
+      "r_gd_mfrc_1361"
+     ],
+     "sources": {
+      "gd_gen_msn_fault": 2,
+      "gd_mtbench_human": 1,
+      "gd_wtq": 1
+     }
+    },
+    {
+     "step": 15994,
+     "tokens": 33792,
+     "n_seq": 6,
+     "padded_len": 5632,
+     "est_tokens": 15360,
+     "n_anchor": 0,
+     "n_table": 1,
+     "rows": [
+      "r_gd_edgar_10k_item_3391",
+      "r_gd_edgar_10k_item_3391_ya",
+      "r_gd_edgar_10k_item_3391_yn",
+      "r_gd_totto_claims_2432",
+      "r_gd_wtq_1100",
+      "r_gd_wiki_help_routing_1923"
+     ],
+     "sources": {
+      "gd_edgar_10k_item": 3,
+      "gd_totto_claims": 1,
+      "gd_wtq": 1
+     }
+    },
+    {
+     "step": 4887,
+     "tokens": 33792,
+     "n_seq": 6,
+     "padded_len": 5632,
+     "est_tokens": 15360,
+     "n_anchor": 0,
+     "n_table": 1,
+     "rows": [
+      "r_gd_edgar_10k_item_2233",
+      "r_gd_edgar_10k_item_2233_ya",
+      "r_gd_edgar_10k_item_2233_yn",
+      "r_gd_druglabel_section_2354",
+      "r_gd_wtq_1482",
+      "r_gd_helpsteer3_pref_2355"
+     ],
+     "sources": {
+      "gd_edgar_10k_item": 3,
+      "gd_druglabel_section": 1,
+      "gd_wtq": 1
+     }
+    },
+    {
+     "step": 29987,
+     "tokens": 32768,
+     "n_seq": 8,
+     "padded_len": 4096,
+     "est_tokens": 16384,
+     "n_anchor": 0,
+     "n_table": 1,
+     "rows": [
+      "r_gd_medmcqa_subject_3031",
+      "r_gd_edgar_10k_item_3876",
+      "r_gd_edgar_10k_item_3876_ya",
+      "r_gd_edgar_10k_item_3876_yn",
+      "r_gd_tatqa_3415",
+      "r_gd_medqa_yn_4472",
+      "r_gd_wtq_1065"
+     ],
+     "sources": {
+      "gd_edgar_10k_item": 3,
+      "gd_medmcqa_subject": 1,
+      "gd_tatqa": 1
+     }
+    },
+    {
+     "step": 24797,
+     "tokens": 32768,
+     "n_seq": 8,
+     "padded_len": 4096,
+     "est_tokens": 16384,
+     "n_anchor": 0,
+     "n_table": 3,
+     "rows": [
+      "r_gd_finqa_3582",
+      "r_gd_saferproducts_severity_3322",
+      "r_gd_semtabfacts_sci_1736",
+      "r_gd_cards_4424",
+      "r_gd_gen_numeric_dates_11960",
+      "r_gd_gen_numeric_dates_11961",
+      "r_gd_wtq_4756",
+      "r_gd_wtq_4756_atk"
+     ],
+     "sources": {
+      "gd_gen_numeric_dates": 2,
+      "gd_wtq": 2,
+      "gd_finqa": 1
+     }
+    },
+    {
+     "step": 8806,
+     "tokens": 32768,
+     "n_seq": 16,
+     "padded_len": 2048,
+     "est_tokens": 16384,
+     "n_anchor": 0,
+     "n_table": 1,
+     "rows": [
+      "r_gd_semtabfacts_sci_208",
+      "r_gd_winogrande_3577",
+      "r_gd_boardgameqa_7543",
+      "r_gd_ncvec_ham_400",
+      "r_gd_spiced_357",
+      "r_gd_totto_claims_2312",
+      "r_gd_opentdb_3649",
+      "r_gd_gen_msn_rules_3048",
+      "r_gd_gen_msn_rules_3049",
+      "r_br_sarcasm_headlines_261",
+      "r_pg_evidence_train_417",
+      "r_gd_prm800k_steps_1238",
+      "r_gd_taskmaster2_367",
+      "r_gd_taskmaster2_367_atk",
+      "r_gd_comve_2953",
+      "r_gd_comve_2953_atk"
+     ],
+     "sources": {
+      "gd_gen_msn_rules": 2,
+      "gd_taskmaster2": 2,
+      "gd_comve": 2
+     }
+    },
+    {
+     "step": 23346,
+     "tokens": 32256,
+     "n_seq": 9,
+     "padded_len": 3584,
+     "est_tokens": 16128,
+     "n_anchor": 0,
+     "n_table": 1,
+     "rows": [
+      "r_gd_drugprot_177",
+      "r_hard_affect_53",
+      "r_gd_drugprot_549",
+      "r_gd_vader_intensity_2503",
+      "r_gd_drugprot_4863",
+      "r_gd_drugprot_4863_ya",
+      "r_gd_drugprot_4863_yn",
+      "r_gd_wtq_4765"
+     ],
+     "sources": {
+      "gd_drugprot": 5,
+      "hard_affect": 1,
+      "gd_vader_intensity": 1
+     }
+    },
+    {
+     "step": 22522,
+     "tokens": 32256,
+     "n_seq": 7,
+     "padded_len": 4608,
+     "est_tokens": 14336,
+     "n_anchor": 0,
+     "n_table": 1,
+     "rows": [
+      "r_gd_star_next_action_1272",
+      "r_gd_drugprot_1529",
+      "r_gd_wtq_3800",
+      "r_gd_boardgameqa_1230",
+      "r_gd_boardgameqa_1230_ya",
+      "r_gd_boardgameqa_1230_yn",
+      "r_gd_edgar_10k_item_1474"
+     ],
+     "sources": {
+      "gd_boardgameqa": 3,
+      "gd_star_next_action": 1,
+      "gd_drugprot": 1
+     }
+    }
+   ],
+   "heaviest_anchor": {
+    "step": 26126,
+    "tokens": 28672,
+    "n_seq": 16,
+    "padded_len": 1792,
+    "est_tokens": 16384,
+    "n_anchor": 1,
+    "n_table": 2,
+    "rows": [
+     "r_v11i_b2a7778ffd07",
+     "r_gd_aegis_prompts_1159",
+     "r_gd_mfrc_1480",
+     "r_gd_answer_equiv_4099",
+     "r_gd_boardgameqa_5963",
+     "r_gd_gen_tables_20020",
+     "r_gd_gen_tables_20021",
+     "r_ohr_proofwriter_17",
+     "r_gd_totto_claims_1932",
+     "r_94990a40449a",
+     "r_efe7a649ef4e",
+     "r_v11c_c1093833715a",
+     "r_v11c_31f047c95ed1"
+    ],
+    "sources": {
+     "csqa": 3,
+     "gd_gen_tables": 2,
+     "banking77": 1
+    }
+   },
+   "heaviest_table": {
+    "step": 7052,
+    "tokens": 36864,
+    "n_seq": 8,
+    "padded_len": 4608,
+    "est_tokens": 16384,
+    "n_anchor": 0,
+    "n_table": 2,
+    "rows": [
+     "r_gd_medmcqa_subject_2207",
+     "r_gd_wtq_4363",
+     "r_gd_wtq_4363_atk",
+     "r_gd_edgar_10k_item_4553",
+     "r_gd_redocred_5518"
+    ],
+    "sources": {
+     "gd_wtq": 2,
+     "gd_medmcqa_subject": 1,
+     "gd_edgar_10k_item": 1
+    }
+   }
+  },
+  "24576": {
+   "groups": 54437,
+   "max_groups_per_step": 3,
+   "over_budget": 784,
+   "over_1.5x": 54,
+   "top": [
+    {
+     "step": 22522,
+     "tokens": 55296,
+     "n_seq": 12,
+     "padded_len": 4608,
+     "est_tokens": 24576,
+     "n_anchor": 0,
+     "n_table": 1,
+     "rows": [
+      "r_gd_star_next_action_1272",
+      "r_gd_drugprot_1529",
+      "r_gd_wtq_3800",
+      "r_gd_boardgameqa_1230",
+      "r_gd_boardgameqa_1230_ya",
+      "r_gd_boardgameqa_1230_yn",
+      "r_gd_saferproducts_severity_1015",
+      "r_gd_edos_sexism_102",
+      "r_gd_redocred_1464",
+      "r_gd_edgar_10k_item_1474"
+     ],
+     "sources": {
+      "gd_boardgameqa": 3,
+      "gd_star_next_action": 1,
+      "gd_drugprot": 1
+     }
+    },
+    {
+     "step": 7052,
+     "tokens": 55296,
+     "n_seq": 12,
+     "padded_len": 4608,
+     "est_tokens": 24576,
+     "n_anchor": 0,
+     "n_table": 2,
+     "rows": [
+      "r_gd_prm800k_steps_1550",
+      "r_gd_gen_numeric_dates_5882",
+      "r_gd_gen_numeric_dates_5883",
+      "r_gd_medmcqa_subject_2207",
+      "r_gd_wtq_4363",
+      "r_gd_wtq_4363_atk",
+      "r_gd_edgar_10k_item_4553",
+      "r_gd_redocred_5518"
+     ],
+     "sources": {
+      "gd_gen_numeric_dates": 2,
+      "gd_wtq": 2,
+      "gd_prm800k_steps": 1
+     }
+    },
+    {
+     "step": 3266,
+     "tokens": 55296,
+     "n_seq": 12,
+     "padded_len": 4608,
+     "est_tokens": 24576,
+     "n_anchor": 0,
+     "n_table": 1,
+     "rows": [
+      "r_gd_wiki_help_routing_1422",
+      "r_gd_slur_usage_3452",
+      "r_gd_vader_intensity_685",
+      "r_gd_wtq_4041",
+      "r_gd_gen_evidence_conflict_18704",
+      "r_gd_gen_evidence_conflict_18705",
+      "r_gd_gen_evidence_conflict_18704_atk",
+      "r_gd_opentdb_2447",
+      "r_gd_medqa_yn_3296",
+      "r_gd_medqa_yn_3296_atk"
+     ],
+     "sources": {
+      "gd_gen_evidence_conflict": 3,
+      "gd_medqa_yn": 2,
+      "gd_wiki_help_routing": 1
+     }
+    },
+    {
+     "step": 15994,
+     "tokens": 50688,
+     "n_seq": 9,
+     "padded_len": 5632,
+     "est_tokens": 23040,
+     "n_anchor": 0,
+     "n_table": 3,
+     "rows": [
+      "r_gd_edgar_10k_item_3391",
+      "r_gd_edgar_10k_item_3391_ya",
+      "r_gd_edgar_10k_item_3391_yn",
+      "r_gd_totto_claims_2432",
+      "r_gd_gen_tables_5800",
+      "r_gd_gen_tables_5801",
+      "r_gd_faithdial_2875",
+      "r_gd_wtq_1100",
+      "r_gd_wiki_help_routing_1923"
+     ],
+     "sources": {
+      "gd_edgar_10k_item": 3,
+      "gd_gen_tables": 2,
+      "gd_totto_claims": 1
+     }
+    },
+    {
+     "step": 10854,
+     "tokens": 50688,
+     "n_seq": 9,
+     "padded_len": 5632,
+     "est_tokens": 23040,
+     "n_anchor": 0,
+     "n_table": 1,
+     "rows": [
+      "r_gd_boardgameqa_2136",
+      "r_gd_gen_routing_10804",
+      "r_gd_gen_routing_10804_ya",
+      "r_gd_gen_routing_10804_yn",
+      "r_gd_gen_routing_10805",
+      "r_gd_tatqa_3814",
+      "r_gd_wtq_486"
+     ],
+     "sources": {
+      "gd_gen_routing": 4,
+      "gd_boardgameqa": 1,
+      "gd_tatqa": 1
+     }
+    },
+    {
+     "step": 29987,
+     "tokens": 49152,
+     "n_seq": 12,
+     "padded_len": 4096,
+     "est_tokens": 24576,
+     "n_anchor": 0,
+     "n_table": 1,
+     "rows": [
+      "r_gd_medmcqa_subject_3031",
+      "r_gd_edgar_10k_item_3876",
+      "r_gd_edgar_10k_item_3876_ya",
+      "r_gd_edgar_10k_item_3876_yn",
+      "r_gd_tatqa_3415",
+      "r_gd_prontoqa_222",
+      "r_gd_prontoqa_222_atk",
+      "r_gd_opentdb_2880",
+      "r_gd_medqa_yn_4472",
+      "r_gd_wtq_1065"
+     ],
+     "sources": {
+      "gd_edgar_10k_item": 3,
+      "gd_prontoqa": 2,
+      "gd_medmcqa_subject": 1
+     }
+    },
+    {
+     "step": 24797,
+     "tokens": 49152,
+     "n_seq": 12,
+     "padded_len": 4096,
+     "est_tokens": 24576,
+     "n_anchor": 0,
+     "n_table": 3,
+     "rows": [
+      "r_gd_finqa_3582",
+      "r_planted_a_171",
+      "r_gd_saferproducts_severity_3322",
+      "r_gd_edos_sexism_3081",
+      "r_gd_semtabfacts_sci_1736",
+      "r_gd_cards_4424",
+      "r_gd_aegis_prompts_784",
+      "r_gd_gen_numeric_dates_11960",
+      "r_gd_gen_numeric_dates_11961",
+      "r_gd_wtq_4756",
+      "r_gd_wtq_4756_atk",
+      "r_gd_mfrc_5401"
+     ],
+     "sources": {
+      "gd_gen_numeric_dates": 2,
+      "gd_wtq": 2,
+      "gd_finqa": 1
+     }
+    },
+    {
+     "step": 14306,
+     "tokens": 49152,
+     "n_seq": 16,
+     "padded_len": 3072,
+     "est_tokens": 24576,
+     "n_anchor": 0,
+     "n_table": 1,
+     "rows": [
+      "r_gd_medquad_qtype_1419",
+      "r_gd_medquad_qtype_1419_ya",
+      "r_gd_medquad_qtype_1419_yn",
+      "r_gd_medquad_qtype_1419_atk",
+      "r_gd_usb_factuality_1771",
+      "r_gd_feverous_1943",
+      "r_gd_crowdtruth_mre_898",
+      "r_gd_prm800k_steps_1378",
+      "r_gd_webred_1058",
+      "r_gd_csc_sarcasm_1975",
+      "r_gd_casehold_yn_681",
+      "r_gd_wtq_2017",
+      "r_gd_saferproducts_severity_177",
+      "r_gd_saferproducts_severity_177_atk",
+      "r_gd_msha_injury_2138"
+     ],
+     "sources": {
+      "gd_medquad_qtype": 4,
+      "gd_saferproducts_severity": 2,
+      "gd_usb_factuality": 1
+     }
+    },
+    {
+     "step": 5785,
+     "tokens": 49152,
+     "n_seq": 16,
+     "padded_len": 3072,
+     "est_tokens": 24576,
+     "n_anchor": 0,
+     "n_table": 1,
+     "rows": [
+      "r_gd_gen_constraints_7206",
+      "r_gd_gen_constraints_7207",
+      "r_br_star_461",
+      "r_gd_redocred_2335",
+      "r_gd_gen_ranking_7776",
+      "r_gd_gen_ranking_7776_ya",
+      "r_gd_gen_ranking_7776_yn",
+      "r_gd_gen_ranking_7777",
+      "r_gd_wtq_2315",
+      "r_gd_gen_routing_4978",
+      "r_gd_gen_routing_4978_ya",
+      "r_gd_gen_routing_4978_yn",
+      "r_gd_gen_routing_4979"
+     ],
+     "sources": {
+      "gd_gen_ranking": 4,
+      "gd_gen_routing": 4,
+      "gd_gen_constraints": 2
+     }
+    },
+    {
+     "step": 24850,
+     "tokens": 46080,
+     "n_seq": 9,
+     "padded_len": 5120,
+     "est_tokens": 20736,
+     "n_anchor": 0,
+     "n_table": 1,
+     "rows": [
+      "r_gd_qasc_598",
+      "r_gd_mtbench_human_759",
+      "r_gd_wtq_4971",
+      "r_gd_gen_msn_fault_3940",
+      "r_gd_gen_msn_fault_3941",
+      "r_std_hearsay_23_x2",
+      "r_gd_qasc_4396",
+      "r_hard_evidence_claims_b_18_x2",
+      "r_gd_mfrc_1361"
+     ],
+     "sources": {
+      "gd_qasc": 2,
+      "gd_gen_msn_fault": 2,
+      "gd_mtbench_human": 1
+     }
+    }
+   ],
+   "heaviest_anchor": {
+    "step": 25308,
+    "tokens": 40960,
+    "n_seq": 16,
+    "padded_len": 2560,
+    "est_tokens": 24576,
+    "n_anchor": 1,
+    "n_table": 1,
+    "rows": [
+     "r_gd_semtabfacts_sci_2539",
+     "r_gd_medqa_yn_609",
+     "r_gd_wands_product_130",
+     "r_gd_storm_ef_2693",
+     "r_gd_gen_policy_exceptions_6480",
+     "r_gd_gen_policy_exceptions_6481",
+     "r_gd_uscg_mariner_4127",
+     "r_gd_redocred_5576",
+     "r_gd_redocred_5576_atk",
+     "r_f13fbde080aa",
+     "r_v11c_0bd84fa7e023",
+     "r_v11c_cfb05ca1f908",
+     "r_9cc7b26c39e9",
+     "r_v11n_2633267f8eae",
+     "r_v11n_504f9cae611a"
+    ],
+    "sources": {
+     "toxic_conv": 6,
+     "gd_gen_policy_exceptions": 2,
+     "gd_redocred": 2
+    }
+   },
+   "heaviest_table": {
+    "step": 22522,
+    "tokens": 55296,
+    "n_seq": 12,
+    "padded_len": 4608,
+    "est_tokens": 24576,
+    "n_anchor": 0,
+    "n_table": 1,
+    "rows": [
+     "r_gd_star_next_action_1272",
+     "r_gd_drugprot_1529",
+     "r_gd_wtq_3800",
+     "r_gd_boardgameqa_1230",
+     "r_gd_boardgameqa_1230_ya",
+     "r_gd_boardgameqa_1230_yn",
+     "r_gd_saferproducts_severity_1015",
+     "r_gd_edos_sexism_102",
+     "r_gd_redocred_1464",
+     "r_gd_edgar_10k_item_1474"
+    ],
+    "sources": {
+     "gd_boardgameqa": 3,
+     "gd_star_next_action": 1,
+     "gd_drugprot": 1
+    }
+   }
+  }
+ },
+ "heaviest_unit": {
+  "step": 15878,
+  "tokens": 23296,
+  "n_seq": 7,
+  "padded_len": 3328,
+  "rows": [
+   "r_gd_conditionalqa_323",
+   "r_gd_conditionalqa_323_ya",
+   "r_gd_conditionalqa_323_yn",
+   "r_gd_conditionalqa_323_atk",
+   "r_gd_conditionalqa_323_ya_atk"
+  ],
+  "sources": {
+   "gd_conditionalqa": 5
+  }
+ },
+ "top_units": [
+  {
+   "step": 15878,
+   "tokens": 23296,
+   "n_seq": 7,
+   "padded_len": 3328,
+   "rows": [
+    "r_gd_conditionalqa_323",
+    "r_gd_conditionalqa_323_ya",
+    "r_gd_conditionalqa_323_yn",
+    "r_gd_conditionalqa_323_atk",
+    "r_gd_conditionalqa_323_ya_atk"
+   ],
+   "sources": {
+    "gd_conditionalqa": 5
+   }
+  },
+  {
+   "step": 9089,
+   "tokens": 21760,
+   "n_seq": 5,
+   "padded_len": 4352,
+   "rows": [
+    "r_gd_conditionalqa_182",
+    "r_gd_conditionalqa_182_ya",
+    "r_gd_conditionalqa_182_yn",
+    "r_gd_conditionalqa_182_ya_atk"
+   ],
+   "sources": {
+    "gd_conditionalqa": 4
+   }
+  },
+  {
+   "step": 7344,
+   "tokens": 21504,
+   "n_seq": 4,
+   "padded_len": 5376,
+   "rows": [
+    "r_gd_conditionalqa_1097",
+    "r_gd_conditionalqa_1097_ya",
+    "r_gd_conditionalqa_1097_yn"
+   ],
+   "sources": {
+    "gd_conditionalqa": 3
+   }
+  },
+  {
+   "step": 22153,
+   "tokens": 19968,
+   "n_seq": 6,
+   "padded_len": 3328,
+   "rows": [
+    "r_gd_conditionalqa_1110",
+    "r_gd_conditionalqa_1110_ya",
+    "r_gd_conditionalqa_1110_yn",
+    "r_gd_conditionalqa_1110_atk"
+   ],
+   "sources": {
+    "gd_conditionalqa": 4
+   }
+  },
+  {
+   "step": 27253,
+   "tokens": 19456,
+   "n_seq": 4,
+   "padded_len": 4864,
+   "rows": [
+    "r_gd_conditionalqa_404",
+    "r_gd_conditionalqa_404_ya",
+    "r_gd_conditionalqa_404_yn",
+    "r_gd_conditionalqa_404_atk"
+   ],
+   "sources": {
+    "gd_conditionalqa": 4
+   }
+  }
+ ],
+ "batches": {
+  "0": {
+   "ids": [
+    "r_gd_edos_sexism_1468",
+    "r_gd_east_asian_prejudice_1776",
+    "r_gd_wtq_2830",
+    "r_gd_hatemoji_build_v14_2059",
+    "r_gd_gen_constraints_11124",
+    "r_gd_gen_constraints_11125",
+    "r_gd_sc101_6607",
+    "r_gd_edgar_10k_item_1472",
+    "r_gd_usb_factuality_1113",
+    "r_gd_mfrc_7195",
+    "r_gd_clickbait17_3821",
+    "r_gd_wiki_help_routing_3540",
+    "r_gd_logicinference_3052",
+    "r_gd_logicinference_4436",
+    "r_gd_logicinference_4436_ya",
+    "r_gd_logicinference_4436_yn"
+   ],
+   "twins": [
+    4,
+    5,
+    13
+   ],
+   "tokens": [
+    304,
+    407,
+    1093,
+    293,
+    1545,
+    1546,
+    325,
+    432,
+    468,
+    397,
+    349,
+    445,
+    420,
+    413,
+    432,
+    434
+   ],
+   "twin_tokens": [
+    1545,
+    1546,
+    413
+   ],
+   "groups": {
+    "0": [
+     [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15
+     ]
+    ],
+    "8192": [
+     [
+      4,
+      5
+     ],
+     [
+      2,
+      7,
+      8,
+      9,
+      11
+     ],
+     [
+      0,
+      1,
+      3,
+      6,
+      10,
+      12,
+      13,
+      14,
+      15
+     ]
+    ],
+    "10240": [
+     [
+      2,
+      4,
+      5
+     ],
+     [
+      0,
+      1,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15
+     ],
+     [
+      3
+     ]
+    ],
+    "12288": [
+     [
+      2,
+      4,
+      5,
+      11
+     ],
+     [
+      0,
+      1,
+      3,
+      6,
+      7,
+      8,
+      9,
+      10,
+      12,
+      13,
+      14,
+      15
+     ]
+    ],
+    "16384": [
+     [
+      2,
+      4,
+      5,
+      8,
+      9,
+      11
+     ],
+     [
+      0,
+      1,
+      3,
+      6,
+      7,
+      10,
+      12,
+      13,
+      14,
+      15
+     ]
+    ],
+    "24576": [
+     [
+      2,
+      4,
+      5,
+      7,
+      8,
+      9,
+      11
+     ],
+     [
+      0,
+      1,
+      3,
+      6,
+      10,
+      12,
+      13,
+      14,
+      15
+     ]
+    ]
+   },
+   "group_tokens": {
+    "0": [
+     34048
+    ],
+    "8192": [
+     7168,
+     6400,
+     5120
+    ],
+    "10240": [
+     8960,
+     6656,
+     512
+    ],
+    "12288": [
+     10752,
+     6656
+    ],
+    "16384": [
+     14336,
+     5632
+    ],
+    "24576": [
+     16128,
+     5120
+    ]
+   }
+  },
+  "1": {
+   "ids": [
+    "r_gd_gen_constraints_7350",
+    "r_gd_gen_constraints_7351",
+    "r_gd_politeness_votes_1083",
+    "r_gd_feverous_1739",
+    "r_gd_wtq_3534",
+    "r_gd_uscg_mariner_39",
+    "r_gd_aegis_prompts_933",
+    "r_gd_prm800k_steps_1683",
+    "r_c541209dca75",
+    "r_gd_edos_sexism_2311",
+    "r_gd_sc101_5167",
+    "r_gd_prm800k_steps_861",
+    "r_gd_ghc_hate_1097",
+    "r_gd_msha_injury_735",
+    "r_gd_gen_evidence_conflict_7800",
+    "r_gd_gen_evidence_conflict_7801"
+   ],
+   "twins": [
+    5
+   ],
+   "tokens": [
+    1994,
+    2014,
+    322,
+    343,
+    991,
+    429,
+    333,
+    539,
+    211,
+    302,
+    331,
+    577,
+    333,
+    1099,
+    670,
+    669
+   ],
+   "twin_tokens": [
+    429
+   ],
+   "groups": {
+    "0": [
+     [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15
+     ]
+    ],
+    "8192": [
+     [
+      0,
+      1,
+      13
+     ],
+     [
+      4,
+      7,
+      11,
+      14,
+      15
+     ],
+     [
+      2,
+      3,
+      5,
+      6,
+      8,
+      9,
+      10,
+      12
+     ]
+    ],
+    "10240": [
+     [
+      0,
+      1,
+      4,
+      13
+     ],
+     [
+      2,
+      3,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      14,
+      15
+     ]
+    ],
+    "12288": [
+     [
+      0,
+      1,
+      4,
+      13
+     ],
+     [
+      2,
+      3,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      14,
+      15
+     ]
+    ],
+    "16384": [
+     [
+      0,
+      1,
+      4,
+      11,
+      13,
+      14,
+      15
+     ],
+     [
+      2,
+      3,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      12
+     ]
+    ],
+    "24576": [
+     [
+      0,
+      1,
+      4,
+      5,
+      7,
+      11,
+      13,
+      14,
+      15
+     ],
+     [
+      2,
+      3,
+      6,
+      8,
+      9,
+      10,
+      12
+     ]
+    ]
+   },
+   "group_tokens": {
+    "0": [
+     34816
+    ],
+    "8192": [
+     6144,
+     5120,
+     4608
+    ],
+    "10240": [
+     8192,
+     9984
+    ],
+    "12288": [
+     8192,
+     9984
+    ],
+    "16384": [
+     14336,
+     7680
+    ],
+    "24576": [
+     20480,
+     3584
+    ]
+   }
+  },
+  "2": {
+   "ids": [
+    "r_hard_nli_b_46",
+    "r_gd_semtabfacts_sci_1255",
+    "r_gd_clickbait17_3290",
+    "r_gd_tathqa_2879",
+    "r_gd_medqa_yn_5554",
+    "r_gd_taskmaster2_1012",
+    "r_gd_totto_claims_1103",
+    "r_gd_totto_claims_1103_atk",
+    "r_gd_feverous_1839",
+    "r_661ad16f86f3",
+    "r_gd_feverous_1544",
+    "r_65b7c3306def",
+    "r_gd_logicinference_1824",
+    "r_gd_edos_sexism_4351",
+    "r_gd_edos_sexism_4351_atk",
+    "r_gd_edos_sexism_4054"
+   ],
+   "twins": [],
+   "tokens": [
+    423,
+    609,
+    352,
+    960,
+    504,
+    354,
+    701,
+    717,
+    460,
+    225,
+    371,
+    281,
+    360,
+    288,
+    309,
+    309
+   ],
+   "twin_tokens": [],
+   "groups": {
+    "0": [
+     [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15
+     ]
+    ],
+    "8192": [
+     [
+      1,
+      3,
+      4,
+      6,
+      7,
+      8
+     ],
+     [
+      0,
+      2,
+      5,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15
+     ]
+    ],
+    "10240": [
+     [
+      0,
+      1,
+      3,
+      4,
+      6,
+      7,
+      8,
+      10
+     ],
+     [
+      2,
+      5,
+      9,
+      11,
+      12,
+      13,
+      14,
+      15
+     ]
+    ],
+    "12288": [
+     [
+      0,
+      1,
+      3,
+      4,
+      6,
+      7,
+      8,
+      10,
+      12
+     ],
+     [
+      2,
+      5,
+      9,
+      11,
+      13,
+      14,
+      15
+     ]
+    ],
+    "16384": [
+     [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      10,
+      12,
+      15
+     ],
+     [
+      9,
+      11,
+      13,
+      14
+     ]
+    ],
+    "24576": [
+     [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15
+     ]
+    ]
+   },
+   "group_tokens": {
+    "0": [
+     16384
+    ],
+    "8192": [
+     6144,
+     5120
+    ],
+    "10240": [
+     8192,
+     4096
+    ],
+    "12288": [
+     9216,
+     3584
+    ],
+    "16384": [
+     12288,
+     2048
+    ],
+    "24576": [
+     16384
+    ]
+   }
+  },
+  "3": {
+   "ids": [
+    "r_gd_helpsteer2_attr_793",
+    "r_gd_infotabs_nli_4571",
+    "r_gd_wtq_3071",
+    "r_gd_ragtruth_summary_979",
+    "r_gd_redocred_743",
+    "r_gd_redocred_743_ya",
+    "r_gd_redocred_743_yn",
+    "r_gd_boardgameqa_2440",
+    "r_gd_tatqa_4308",
+    "r_gd_usb_factuality_1817",
+    "r_gd_edgar_10k_item_1948",
+    "r_gd_helpsteer3_pref_4446",
+    "r_gd_cards_6537",
+    "r_gd_mediqa_qa_374",
+    "r_gd_sc101_7100",
+    "r_gd_aegis_prompts_2259"
+   ],
+   "twins": [
+    4
+   ],
+   "tokens": [
+    830,
+    459,
+    612,
+    815,
+    759,
+    541,
+    543,
+    527,
+    726,
+    385,
+    517,
+    1191,
+    426,
+    1444,
+    332,
+    352
+   ],
+   "twin_tokens": [
+    759
+   ],
+   "groups": {
+    "0": [
+     [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15
+     ]
+    ],
+    "8192": [
+     [
+      3,
+      11,
+      13
+     ],
+     [
+      0,
+      4,
+      5,
+      6,
+      7,
+      8,
+      10
+     ],
+     [
+      1,
+      2,
+      9,
+      12,
+      14,
+      15
+     ]
+    ],
+    "10240": [
+     [
+      0,
+      3,
+      11,
+      13
+     ],
+     [
+      1,
+      2,
+      4,
+      5,
+      6,
+      7,
+      8,
+      10,
+      12
+     ],
+     [
+      9,
+      14,
+      15
+     ]
+    ],
+    "12288": [
+     [
+      0,
+      3,
+      8,
+      11,
+      13
+     ],
+     [
+      1,
+      2,
+      4,
+      5,
+      6,
+      7,
+      9,
+      10,
+      12,
+      14,
+      15
+     ]
+    ],
+    "16384": [
+     [
+      0,
+      3,
+      8,
+      11,
+      13
+     ],
+     [
+      1,
+      2,
+      4,
+      5,
+      6,
+      7,
+      9,
+      10,
+      12,
+      14,
+      15
+     ]
+    ],
+    "24576": [
+     [
+      0,
+      3,
+      4,
+      5,
+      6,
+      8,
+      10,
+      11,
+      13
+     ],
+     [
+      1,
+      2,
+      7,
+      9,
+      12,
+      14,
+      15
+     ]
+    ]
+   },
+   "group_tokens": {
+    "0": [
+     26112
+    ],
+    "8192": [
+     4608,
+     8192,
+     4608
+    ],
+    "10240": [
+     6144,
+     7680,
+     1536
+    ],
+    "12288": [
+     7680,
+     9216
+    ],
+    "16384": [
+     7680,
+     9216
+    ],
+    "24576": [
+     15360,
+     5376
+    ]
+   }
+  },
+  "4": {
+   "ids": [
+    "r_gd_drugprot_6153",
+    "r_gd_ragtruth_summary_1367",
+    "r_gd_climate_targets_406",
+    "r_gd_quartz_1007",
+    "r_gd_boardgameqa_6390",
+    "r_gd_boardgameqa_6390_ya",
+    "r_gd_boardgameqa_6390_yn",
+    "r_gd_comve_5633",
+    "r_br_topv2_266",
+    "r_gd_sc101_7750",
+    "r_gd_gen_nlr_heuristics_1323",
+    "r_gd_hotpotqa_yesno_3108",
+    "r_gd_prm800k_steps_851",
+    "r_gd_totto_claims_1333",
+    "r_gd_edgar_10k_item_1639",
+    "r_gd_politeness_votes_62"
+   ],
+   "twins": [
+    4,
+    14
+   ],
+   "tokens": [
+    885,
+    824,
+    508,
+    339,
+    539,
+    558,
+    560,
+    291,
+    682,
+    336,
+    322,
+    695,
+    676,
+    450,
+    925,
+    343
+   ],
+   "twin_tokens": [
+    539,
+    925
+   ],
+   "groups": {
+    "0": [
+     [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15
+     ]
+    ],
+    "8192": [
+     [
+      0,
+      1,
+      8,
+      11,
+      14
+     ],
+     [
+      2,
+      3,
+      4,
+      5,
+      6,
+      9,
+      12,
+      13,
+      15
+     ],
+     [
+      7,
+      10
+     ]
+    ],
+    "10240": [
+     [
+      0,
+      1,
+      2,
+      8,
+      11,
+      14
+     ],
+     [
+      3,
+      4,
+      5,
+      6,
+      7,
+      9,
+      10,
+      12,
+      13,
+      15
+     ]
+    ],
+    "12288": [
+     [
+      0,
+      1,
+      2,
+      8,
+      11,
+      14
+     ],
+     [
+      3,
+      4,
+      5,
+      6,
+      7,
+      9,
+      10,
+      12,
+      13,
+      15
+     ]
+    ],
+    "16384": [
+     [
+      0,
+      1,
+      2,
+      4,
+      5,
+      6,
+      8,
+      11,
+      12,
+      14
+     ],
+     [
+      3,
+      7,
+      9,
+      10,
+      13,
+      15
+     ]
+    ],
+    "24576": [
+     [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15
+     ]
+    ]
+   },
+   "group_tokens": {
+    "0": [
+     18432
+    ],
+    "8192": [
+     6144,
+     7680,
+     1024
+    ],
+    "10240": [
+     7168,
+     8448
+    ],
+    "12288": [
+     7168,
+     8448
+    ],
+    "16384": [
+     12288,
+     3072
+    ],
+    "24576": [
+     18432
+    ]
+   }
+  },
+  "5": {
+   "ids": [
+    "r_gd_answer_equiv_2949",
+    "r_gd_gen_msn_fault_4518",
+    "r_gd_gen_msn_fault_4519",
+    "r_gd_redocred_4942",
+    "r_gd_cards_2232",
+    "r_gd_cards_2232_atk",
+    "r_gd_star_next_action_1723",
+    "r_gd_gen_routing_5280",
+    "r_gd_gen_routing_5281",
+    "r_gd_gen_routing_5281_ya",
+    "r_gd_gen_routing_5281_yn",
+    "r_gd_medquad_qtype_2290",
+    "r_gd_medquad_qtype_2290_ya",
+    "r_gd_medquad_qtype_2290_yn",
+    "r_gd_gen_logic_negation_21270",
+    "r_gd_casehold_yn_1238"
+   ],
+   "twins": [],
+   "tokens": [
+    547,
+    430,
+    430,
+    720,
+    415,
+    427,
+    575,
+    905,
+    859,
+    597,
+    599,
+    1018,
+    767,
+    769,
+    301,
+    548
+   ],
+   "twin_tokens": [],
+   "groups": {
+    "0": [
+     [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15
+     ]
+    ],
+    "8192": [
+     [
+      11,
+      12,
+      13
+     ],
+     [
+      3,
+      6,
+      7,
+      8,
+      9,
+      10
+     ],
+     [
+      0,
+      1,
+      2,
+      4,
+      5,
+      14,
+      15
+     ]
+    ],
+    "10240": [
+     [
+      11,
+      12,
+      13
+     ],
+     [
+      0,
+      3,
+      6,
+      7,
+      8,
+      9,
+      10,
+      15
+     ],
+     [
+      1,
+      2,
+      4,
+      5,
+      14
+     ]
+    ],
+    "12288": [
+     [
+      3,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13
+     ],
+     [
+      0,
+      1,
+      2,
+      4,
+      5,
+      6,
+      14,
+      15
+     ]
+    ],
+    "16384": [
+     [
+      0,
+      3,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13
+     ],
+     [
+      1,
+      2,
+      4,
+      5,
+      14,
+      15
+     ]
+    ],
+    "24576": [
+     [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15
+     ]
+    ]
+   },
+   "group_tokens": {
+    "0": [
+     16384
+    ],
+    "8192": [
+     3072,
+     6144,
+     5376
+    ],
+    "10240": [
+     3072,
+     8192,
+     2560
+    ],
+    "12288": [
+     8192,
+     6144
+    ],
+    "16384": [
+     10240,
+     4608
+    ],
+    "24576": [
+     16384
+    ]
+   }
+  },
+  "6": {
+   "ids": [
+    "r_gd_gen_msn_fault_778",
+    "r_gd_gen_msn_fault_779",
+    "r_gd_msha_injury_3108",
+    "r_gd_msha_injury_3108_atk",
+    "r_gd_hatemoji_build_v14_243",
+    "r_gd_taskmaster2_1867",
+    "r_br_mams_acsa_417",
+    "r_gd_semtabfacts_sci_3234",
+    "r_gd_gen_msn_consent_4600",
+    "r_gd_gen_msn_consent_4601",
+    "r_gd_edos_sexism_1032",
+    "r_gd_codah_1164",
+    "r_gd_gen_logic_negation_22605",
+    "r_gd_tathqa_1641",
+    "r_gd_gen_policy_exceptions_11962",
+    "r_gd_gen_policy_exceptions_11963"
+   ],
+   "twins": [
+    3
+   ],
+   "tokens": [
+    379,
+    378,
+    606,
+    617,
+    294,
+    389,
+    270,
+    437,
+    395,
+    395,
+    744,
+    349,
+    295,
+    1096,
+    578,
+    578
+   ],
+   "twin_tokens": [
+    617
+   ],
+   "groups": {
+    "0": [
+     [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15
+     ]
+    ],
+    "8192": [
+     [
+      2,
+      3,
+      10,
+      13
+     ],
+     [
+      0,
+      1,
+      4,
+      5,
+      7,
+      8,
+      9,
+      11,
+      14,
+      15
+     ],
+     [
+      6,
+      12
+     ]
+    ],
+    "10240": [
+     [
+      2,
+      3,
+      10,
+      13,
+      14,
+      15
+     ],
+     [
+      0,
+      1,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      11,
+      12
+     ]
+    ],
+    "12288": [
+     [
+      2,
+      3,
+      8,
+      9,
+      10,
+      13,
+      14,
+      15
+     ],
+     [
+      0,
+      1,
+      4,
+      5,
+      6,
+      7,
+      11,
+      12
+     ]
+    ],
+    "16384": [
+     [
+      0,
+      1,
+      2,
+      3,
+      7,
+      8,
+      9,
+      10,
+      13,
+      14,
+      15
+     ],
+     [
+      4,
+      5,
+      6,
+      11,
+      12
+     ]
+    ],
+    "24576": [
+     [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15
+     ]
+    ]
+   },
+   "group_tokens": {
+    "0": [
+     21760
+    ],
+    "8192": [
+     6400,
+     7680,
+     1024
+    ],
+    "10240": [
+     8960,
+     5120
+    ],
+    "12288": [
+     11520,
+     4096
+    ],
+    "16384": [
+     15360,
+     2560
+    ],
+    "24576": [
+     21760
+    ]
+   }
+  },
+  "7": {
+   "ids": [
+    "r_gd_taskmaster1_1433",
+    "r_gd_csc_sarcasm_1016",
+    "r_gd_wiki_help_routing_4267",
+    "r_gd_cards_6581",
+    "r_gd_edos_sexism_664",
+    "r_gd_check_covid_555",
+    "r_gd_gen_msn_rules_296",
+    "r_gd_gen_msn_rules_297",
+    "r_gd_east_asian_prejudice_2776",
+    "r_gd_east_asian_prejudice_2165",
+    "r_gd_webred_1276",
+    "r_gd_webred_1276_ya",
+    "r_gd_webred_1276_yn",
+    "r_gd_webred_1276_atk",
+    "r_gd_mfrc_2981",
+    "r_gd_gen_logic_negation_13882"
+   ],
+   "twins": [
+    10,
+    13
+   ],
+   "tokens": [
+    332,
+    415,
+    435,
+    390,
+    314,
+    357,
+    355,
+    359,
+    530,
+    390,
+    445,
+    464,
+    466,
+    462,
+    455,
+    290
+   ],
+   "twin_tokens": [
+    445,
+    462
+   ],
+   "groups": {
+    "0": [
+     [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15
+     ]
+    ],
+    "8192": [
+     [
+      2,
+      3,
+      8,
+      10,
+      11,
+      12,
+      13,
+      14
+     ],
+     [
+      0,
+      1,
+      4,
+      5,
+      6,
+      7,
+      9,
+      15
+     ]
+    ],
+    "10240": [
+     [
+      1,
+      2,
+      3,
+      5,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14
+     ],
+     [
+      0,
+      4,
+      6,
+      7,
+      15
+     ]
+    ],
+    "12288": [
+     [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14
+     ],
+     [
+      0,
+      15
+     ]
+    ],
+    "16384": [
+     [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15
+     ]
+    ],
+    "24576": [
+     [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15
+     ]
+    ]
+   },
+   "group_tokens": {
+    "0": [
+     13824
+    ],
+    "8192": [
+     7680,
+     4096
+    ],
+    "10240": [
+     9984,
+     2560
+    ],
+    "12288": [
+     12288,
+     1024
+    ],
+    "16384": [
+     13824
+    ],
+    "24576": [
+     13824
+    ]
+   }
+  },
+  "8": {
+   "ids": [
+    "r_gd_storm_ef_2873",
+    "r_gd_storm_ef_2873_ya",
+    "r_gd_storm_ef_2873_yn",
+    "r_gd_cards_6791",
+    "r_gd_redocred_3958",
+    "r_gd_edgar_10k_item_4739",
+    "r_gd_edgar_10k_item_4739_ya",
+    "r_gd_edgar_10k_item_4739_yn",
+    "r_gd_druglabel_section_398",
+    "r_gd_uds_ordinal_206",
+    "r_std_hearsay_15",
+    "r_gd_winogrande_6504",
+    "r_gd_totto_claims_2061",
+    "r_gd_spiced_189",
+    "r_gd_sc101_5280",
+    "r_gd_gen_logic_negation_5344"
+   ],
+   "twins": [
+    4,
+    5,
+    8
+   ],
+   "tokens": [
+    641,
+    584,
+    586,
+    407,
+    665,
+    978,
+    608,
+    610,
+    1445,
+    584,
+    433,
+    315,
+    362,
+    364,
+    321,
+    334
+   ],
+   "twin_tokens": [
+    665,
+    978,
+    1445
+   ],
+   "groups": {
+    "0": [
+     [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15
+     ]
+    ],
+    "8192": [
+     [
+      8
+     ],
+     [
+      5,
+      6,
+      7
+     ],
+     [
+      0,
+      1,
+      2,
+      3,
+      4,
+      9,
+      10
+     ],
+     [
+      11,
+      12,
+      13,
+      14,
+      15
+     ]
+    ],
+    "10240": [
+     [
+      8
+     ],
+     [
+      0,
+      1,
+      2,
+      5,
+      6,
+      7
+     ],
+     [
+      3,
+      4,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15
+     ]
+    ],
+    "12288": [
+     [
+      5,
+      6,
+      7,
+      8
+     ],
+     [
+      0,
+      1,
+      2,
+      3,
+      4,
+      9,
+      10,
+      12,
+      13,
+      14,
+      15
+     ],
+     [
+      11
+     ]
+    ],
+    "16384": [
+     [
+      5,
+      6,
+      7,
+      8
+     ],
+     [
+      0,
+      1,
+      2,
+      3,
+      4,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15
+     ]
+    ],
+    "24576": [
+     [
+      0,
+      1,
+      2,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     [
+      3,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15
+     ]
+    ]
+   },
+   "group_tokens": {
+    "0": [
+     29184
+    ],
+    "8192": [
+     3072,
+     4096,
+     6144,
+     2560
+    ],
+    "10240": [
+     3072,
+     7168,
+     7680
+    ],
+    "12288": [
+     9216,
+     9216,
+     512
+    ],
+    "16384": [
+     9216,
+     9984
+    ],
+    "24576": [
+     18432,
+     3584
+    ]
+   }
+  },
+  "9": {
+   "ids": [
+    "r_gd_multiwoz21_sysacts_3706",
+    "r_gd_wnut17_610",
+    "r_gd_onestop_level_430",
+    "r_gd_gen_ranking_4030",
+    "r_gd_gen_ranking_4031",
+    "r_gd_gen_ranking_4031_ya",
+    "r_gd_gen_ranking_4031_yn",
+    "r_gd_gen_ranking_4946",
+    "r_gd_gen_ranking_4947",
+    "r_gd_gen_ranking_4947_ya",
+    "r_gd_gen_ranking_4947_yn",
+    "r_gd_gen_ranking_4947_atk",
+    "r_gd_gen_constraints_5772",
+    "r_gd_gen_constraints_5773",
+    "r_gd_gen_constraints_5773_atk",
+    "r_gd_gen_numeric_dates_19396",
+    "r_gd_gen_numeric_dates_19397"
+   ],
+   "twins": [
+    1,
+    3,
+    4,
+    12
+   ],
+   "tokens": [
+    325,
+    564,
+    452,
+    1015,
+    1015,
+    895,
+    897,
+    932,
+    952,
+    898,
+    900,
+    974,
+    1401,
+    1401,
+    1414,
+    444,
+    444
+   ],
+   "twin_tokens": [
+    564,
+    1015,
+    1015,
+    1401
+   ],
+   "groups": {
+    "0": [
+     [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16
+     ]
+    ],
+    "8192": [
+     [
+      12,
+      13,
+      14
+     ],
+     [
+      3,
+      4,
+      5,
+      6
+     ],
+     [
+      7,
+      8,
+      9,
+      10,
+      11
+     ],
+     [
+      0,
+      1,
+      2,
+      15,
+      16
+     ]
+    ],
+    "10240": [
+     [
+      12,
+      13,
+      14
+     ],
+     [
+      3,
+      4,
+      5,
+      6
+     ],
+     [
+      1,
+      2,
+      7,
+      8,
+      9,
+      10,
+      11
+     ],
+     [
+      0,
+      15,
+      16
+     ]
+    ],
+    "12288": [
+     [
+      12,
+      13,
+      14
+     ],
+     [
+      3,
+      4,
+      5,
+      6
+     ],
+     [
+      1,
+      2,
+      7,
+      8,
+      9,
+      10,
+      11
+     ],
+     [
+      0,
+      15,
+      16
+     ]
+    ],
+    "16384": [
+     [
+      12,
+      13,
+      14
+     ],
+     [
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11
+     ],
+     [
+      0,
+      1,
+      2,
+      15,
+      16
+     ]
+    ],
+    "24576": [
+     [
+      3,
+      4,
+      5,
+      6,
+      12,
+      13,
+      14
+     ],
+     [
+      0,
+      1,
+      2,
+      7,
+      8,
+      9,
+      10,
+      11,
+      15,
+      16
+     ]
+    ]
+   },
+   "group_tokens": {
+    "0": [
+     32256
+    ],
+    "8192": [
+     6144,
+     6144,
+     5120,
+     4608
+    ],
+    "10240": [
+     6144,
+     6144,
+     8192,
+     1536
+    ],
+    "12288": [
+     6144,
+     6144,
+     8192,
+     1536
+    ],
+    "16384": [
+     6144,
+     11264,
+     4608
+    ],
+    "24576": [
+     15360,
+     11264
+    ]
+   }
+  },
+  "10": {
+   "ids": [
+    "r_gd_uscg_mariner_3879",
+    "r_gd_prm800k_steps_7325",
+    "r_gd_logicinference_1113",
+    "r_gd_logicinference_1113_atk",
+    "r_gd_gen_nlr_heuristics_550",
+    "r_gd_gen_nlr_heuristics_550_atk",
+    "r_gd_gen_evidence_conflict_3972",
+    "r_gd_gen_evidence_conflict_3973",
+    "r_273707655e32",
+    "r_bfe1add26f12",
+    "r_gd_mtbench_human_1292",
+    "r_gd_wands_product_239",
+    "r_gd_wands_product_239_ya",
+    "r_gd_wands_product_239_yn",
+    "r_gd_oiics_event_1452",
+    "r_gd_oiics_event_1452_ya",
+    "r_gd_oiics_event_1452_yn"
+   ],
+   "twins": [],
+   "tokens": [
+    494,
+    390,
+    373,
+    393,
+    322,
+    339,
+    528,
+    528,
+    269,
+    329,
+    1605,
+    1119,
+    380,
+    382,
+    1579,
+    471,
+    473
+   ],
+   "twin_tokens": [],
+   "groups": {
+    "0": [
+     [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16
+     ]
+    ],
+    "8192": [
+     [
+      10
+     ],
+     [
+      14,
+      15,
+      16
+     ],
+     [
+      0,
+      11,
+      12,
+      13
+     ],
+     [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ]
+    ],
+    "10240": [
+     [
+      10,
+      14,
+      15,
+      16
+     ],
+     [
+      0,
+      6,
+      7,
+      11,
+      12,
+      13
+     ],
+     [
+      1,
+      2,
+      3,
+      4,
+      5,
+      8,
+      9
+     ]
+    ],
+    "12288": [
+     [
+      10,
+      14,
+      15,
+      16
+     ],
+     [
+      0,
+      2,
+      3,
+      6,
+      7,
+      11,
+      12,
+      13
+     ],
+     [
+      1,
+      4,
+      5,
+      8,
+      9
+     ]
+    ],
+    "16384": [
+     [
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16
+     ],
+     [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ]
+    ],
+    "24576": [
+     [
+      0,
+      6,
+      7,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16
+     ],
+     [
+      1,
+      2,
+      3,
+      4,
+      5,
+      8,
+      9
+     ]
+    ]
+   },
+   "group_tokens": {
+    "0": [
+     30464
+    ],
+    "8192": [
+     1792,
+     5376,
+     5120,
+     6912
+    ],
+    "10240": [
+     7168,
+     7680,
+     3584
+    ],
+    "12288": [
+     7168,
+     10240,
+     2560
+    ],
+    "16384": [
+     12544,
+     7680
+    ],
+    "24576": [
+     17920,
+     3584
+    ]
+   }
+  },
+  "11": {
+   "ids": [
+    "r_gd_msha_injury_4694",
+    "r_gd_semtabfacts_sci_1589",
+    "r_gd_opentdb_600",
+    "r_gd_cards_5282",
+    "r_gd_cards_5282_atk",
+    "r_gd_gen_nlr_heuristics_527",
+    "r_gd_nhtsa_complaints_3586",
+    "r_gd_msha_injury_682",
+    "r_gd_ncbi_disease_1907",
+    "r_gd_ncbi_disease_1907_ya",
+    "r_gd_ncbi_disease_1907_yn",
+    "r_gd_babi_logic_1349",
+    "r_v11i_44f945b9066c",
+    "r_gd_cards_5529",
+    "r_gd_dstc9_track1_6784",
+    "r_gd_redocred_5032",
+    "r_gd_redocred_5032_ya",
+    "r_gd_redocred_5032_yn",
+    "r_gd_redocred_5032_ya_atk"
+   ],
+   "twins": [
+    0,
+    8,
+    12
+   ],
+   "tokens": [
+    1226,
+    787,
+    418,
+    428,
+    444,
+    320,
+    420,
+    1079,
+    465,
+    481,
+    483,
+    346,
+    314,
+    476,
+    344,
+    723,
+    526,
+    528,
+    543
+   ],
+   "twin_tokens": [
+    1225,
+    465,
+    314
+   ],
+   "groups": {
+    "0": [
+     [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18
+     ]
+    ],
+    "8192": [
+     [
+      0,
+      7
+     ],
+     [
+      1,
+      3,
+      4,
+      13,
+      15,
+      16,
+      17,
+      18
+     ],
+     [
+      2,
+      5,
+      6,
+      8,
+      9,
+      10,
+      11,
+      14
+     ],
+     [
+      12
+     ]
+    ],
+    "10240": [
+     [
+      0,
+      7
+     ],
+     [
+      1,
+      2,
+      3,
+      4,
+      8,
+      9,
+      10,
+      13,
+      15,
+      16,
+      17,
+      18
+     ],
+     [
+      5,
+      6,
+      11,
+      12,
+      14
+     ]
+    ],
+    "12288": [
+     [
+      0,
+      7,
+      13,
+      15,
+      16,
+      17,
+      18
+     ],
+     [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      8,
+      9,
+      10,
+      11,
+      12,
+      14
+     ]
+    ],
+    "16384": [
+     [
+      0,
+      1,
+      7,
+      13,
+      15,
+      16,
+      17,
+      18
+     ],
+     [
+      2,
+      3,
+      4,
+      5,
+      6,
+      8,
+      9,
+      10,
+      11,
+      12,
+      14
+     ]
+    ],
+    "24576": [
+     [
+      0,
+      1,
+      2,
+      3,
+      4,
+      7,
+      8,
+      9,
+      10,
+      13,
+      15,
+      16,
+      17,
+      18
+     ],
+     [
+      5,
+      6,
+      11,
+      12,
+      14
+     ]
+    ]
+   },
+   "group_tokens": {
+    "0": [
+     28160
+    ],
+    "8192": [
+     3840,
+     8192,
+     4608,
+     1024
+    ],
+    "10240": [
+     3840,
+     13312,
+     3072
+    ],
+    "12288": [
+     10240,
+     14336
+    ],
+    "16384": [
+     11520,
+     6656
+    ],
+    "24576": [
+     20480,
+     3072
+    ]
+   }
+  },
+  "12": {
+   "ids": [
+    "r_gd_sd311_routing_4120",
+    "r_gd_boardgameqa_7912",
+    "r_gd_drugprot_2767",
+    "r_gd_gen_routing_11518",
+    "r_gd_gen_routing_11519",
+    "r_br_star_385",
+    "r_gd_bbh_mistake_1543",
+    "r_gd_gen_constraints_3876",
+    "r_gd_gen_constraints_3876_ya",
+    "r_gd_gen_constraints_3876_yn",
+    "r_gd_gen_constraints_3877",
+    "r_gd_gen_constraints_3877_ya",
+    "r_gd_gen_constraints_3877_yn",
+    "r_br_topv2_307",
+    "r_br_topv2_307_ya",
+    "r_br_topv2_307_yn"
+   ],
+   "twins": [
+    3,
+    4,
+    5,
+    10
+   ],
+   "tokens": [
+    558,
+    722,
+    882,
+    780,
+    780,
+    1139,
+    871,
+    965,
+    895,
+    897,
+    965,
+    963,
+    965,
+    687,
+    425,
+    427
+   ],
+   "twin_tokens": [
+    780,
+    780,
+    1139,
+    965
+   ],
+   "groups": {
+    "0": [
+     [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15
+     ]
+    ],
+    "8192": [
+     [
+      5
+     ],
+     [
+      7,
+      8,
+      9,
+      10,
+      11,
+      12
+     ],
+     [
+      1,
+      2,
+      3,
+      4
+     ],
+     [
+      0,
+      6,
+      13,
+      14,
+      15
+     ]
+    ],
+    "10240": [
+     [
+      5
+     ],
+     [
+      2,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12
+     ],
+     [
+      0,
+      1,
+      3,
+      4,
+      6,
+      13,
+      14,
+      15
+     ]
+    ],
+    "12288": [
+     [
+      5
+     ],
+     [
+      2,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12
+     ],
+     [
+      0,
+      1,
+      3,
+      4,
+      6,
+      13,
+      14,
+      15
+     ]
+    ],
+    "16384": [
+     [
+      5,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12
+     ],
+     [
+      0,
+      1,
+      2,
+      3,
+      4,
+      6,
+      13,
+      14,
+      15
+     ]
+    ],
+    "24576": [
+     [
+      2,
+      5,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12
+     ],
+     [
+      0,
+      1,
+      3,
+      4,
+      6,
+      13,
+      14,
+      15
+     ]
+    ]
+   },
+   "group_tokens": {
+    "0": [
+     25600
+    ],
+    "8192": [
+     2560,
+     7168,
+     6144,
+     5120
+    ],
+    "10240": [
+     2560,
+     8192,
+     10240
+    ],
+    "12288": [
+     2560,
+     8192,
+     10240
+    ],
+    "16384": [
+     11520,
+     11264
+    ],
+    "24576": [
+     12800,
+     10240
+    ]
+   }
+  },
+  "13": {
+   "ids": [
+    "r_gd_edos_sexism_4330",
+    "r_gd_logicinference_1207",
+    "r_gd_logicinference_1207_atk",
+    "r_gd_dstc9_track1_3235",
+    "r_gd_babi_logic_2460",
+    "r_gd_gen_constraints_8474",
+    "r_gd_gen_constraints_8475",
+    "r_gd_taskmaster2_2006",
+    "r_gd_gen_msn_consent_898",
+    "r_gd_gen_msn_consent_899",
+    "r_gd_medmcqa_subject_1324",
+    "r_gd_clickbait17_2675",
+    "r_gd_clickbait17_2675_atk",
+    "r_gd_edgar_10k_item_2505",
+    "r_gd_star_next_action_1555",
+    "r_gd_medmcqa_subject_3112"
+   ],
+   "twins": [
+    13
+   ],
+   "tokens": [
+    321,
+    355,
+    370,
+    539,
+    341,
+    2144,
+    2144,
+    392,
+    395,
+    391,
+    1025,
+    356,
+    376,
+    1014,
+    1293,
+    1042
+   ],
+   "twin_tokens": [
+    1014
+   ],
+   "groups": {
+    "0": [
+     [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15
+     ]
+    ],
+    "8192": [
+     [
+      5,
+      6,
+      14
+     ],
+     [
+      3,
+      10,
+      13,
+      15
+     ],
+     [
+      0,
+      1,
+      2,
+      4,
+      7,
+      8,
+      9,
+      11,
+      12
+     ]
+    ],
+    "10240": [
+     [
+      5,
+      6,
+      14,
+      15
+     ],
+     [
+      3,
+      8,
+      9,
+      10,
+      13
+     ],
+     [
+      0,
+      1,
+      2,
+      4,
+      7,
+      11,
+      12
+     ]
+    ],
+    "12288": [
+     [
+      5,
+      6,
+      14,
+      15
+     ],
+     [
+      3,
+      7,
+      8,
+      9,
+      10,
+      13
+     ],
+     [
+      0,
+      1,
+      2,
+      4,
+      11,
+      12
+     ]
+    ],
+    "16384": [
+     [
+      5,
+      6,
+      10,
+      14,
+      15
+     ],
+     [
+      1,
+      2,
+      3,
+      7,
+      8,
+      9,
+      11,
+      12,
+      13
+     ],
+     [
+      0,
+      4
+     ]
+    ],
+    "24576": [
+     [
+      3,
+      5,
+      6,
+      10,
+      13,
+      14,
+      15
+     ],
+     [
+      0,
+      1,
+      2,
+      4,
+      7,
+      8,
+      9,
+      11,
+      12
+     ]
+    ]
+   },
+   "group_tokens": {
+    "0": [
+     39168
+    ],
+    "8192": [
+     6912,
+     6400,
+     4608
+    ],
+    "10240": [
+     9216,
+     7680,
+     3584
+    ],
+    "12288": [
+     9216,
+     8960,
+     3072
+    ],
+    "16384": [
+     11520,
+     10240,
+     1024
+    ],
+    "24576": [
+     18432,
+     4608
+    ]
+   }
+  },
+  "14": {
+   "ids": [
+    "r_gd_semtabfacts_sci_1108",
+    "r_gd_semtabfacts_sci_1108_atk",
+    "r_gd_medquad_qtype_161",
+    "r_gd_clickbait16_444",
+    "r_gd_qasc_1945",
+    "r_gd_naics_subsector_1041",
+    "r_gd_naics_subsector_1041_ya",
+    "r_gd_naics_subsector_1041_yn",
+    "r_gd_edos_sexism_4063",
+    "r_gd_totto_claims_3670",
+    "r_gd_edgar_10k_item_4122",
+    "r_gd_taskmaster3_305",
+    "r_gd_boardgameqa_7006",
+    "r_gd_uscg_mariner_1545",
+    "r_gd_spiced_497",
+    "r_gd_medqa_yn_6304"
+   ],
+   "twins": [
+    5,
+    12
+   ],
+   "tokens": [
+    675,
+    682,
+    834,
+    367,
+    378,
+    1543,
+    447,
+    449,
+    315,
+    1094,
+    871,
+    645,
+    675,
+    504,
+    336,
+    540
+   ],
+   "twin_tokens": [
+    1543,
+    675
+   ],
+   "groups": {
+    "0": [
+     [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15
+     ]
+    ],
+    "8192": [
+     [
+      5,
+      6,
+      7
+     ],
+     [
+      2,
+      9,
+      10,
+      11,
+      12
+     ],
+     [
+      0,
+      1,
+      3,
+      4,
+      8,
+      13,
+      14,
+      15
+     ]
+    ],
+    "10240": [
+     [
+      5,
+      6,
+      7,
+      10
+     ],
+     [
+      0,
+      1,
+      2,
+      9,
+      11,
+      12,
+      15
+     ],
+     [
+      3,
+      4,
+      8,
+      13,
+      14
+     ]
+    ],
+    "12288": [
+     [
+      5,
+      6,
+      7,
+      9,
+      10
+     ],
+     [
+      0,
+      1,
+      2,
+      11,
+      12,
+      13,
+      14,
+      15
+     ],
+     [
+      3,
+      4,
+      8
+     ]
+    ],
+    "16384": [
+     [
+      2,
+      5,
+      6,
+      7,
+      9,
+      10
+     ],
+     [
+      0,
+      1,
+      3,
+      4,
+      8,
+      11,
+      12,
+      13,
+      14,
+      15
+     ]
+    ],
+    "24576": [
+     [
+      0,
+      1,
+      2,
+      5,
+      6,
+      7,
+      9,
+      10,
+      11,
+      12
+     ],
+     [
+      3,
+      4,
+      8,
+      13,
+      14,
+      15
+     ]
+    ]
+   },
+   "group_tokens": {
+    "0": [
+     32256
+    ],
+    "8192": [
+     7168,
+     7680,
+     6144
+    ],
+    "10240": [
+     8960,
+     10240,
+     2560
+    ],
+    "12288": [
+     10752,
+     9216,
+     1536
+    ],
+    "16384": [
+     12544,
+     8448
+    ],
+    "24576": [
+     21504,
+     4608
+    ]
+   }
+  },
+  "15": {
+   "ids": [
+    "r_gd_tatqa_1882",
+    "r_gd_csc_sarcasm_1964",
+    "r_gd_druglabel_section_1292",
+    "r_gd_crossner_603",
+    "r_gd_feverous_1869",
+    "r_gd_feverous_1200",
+    "r_gd_taskmaster1_173",
+    "r_gd_answer_equiv_2763",
+    "r_gd_redocred_1360",
+    "r_gd_uscg_mariner_428",
+    "r_gd_uscg_mariner_428_ya",
+    "r_gd_uscg_mariner_428_yn",
+    "r_gd_comve_6752",
+    "r_gd_gen_msn_rules_4834",
+    "r_gd_gen_msn_rules_4835",
+    "r_judge_mathderiv_693"
+   ],
+   "twins": [
+    2
+   ],
+   "tokens": [
+    1068,
+    418,
+    1048,
+    751,
+    455,
+    356,
+    373,
+    513,
+    674,
+    439,
+    440,
+    442,
+    289,
+    378,
+    373,
+    277
+   ],
+   "twin_tokens": [
+    1048
+   ],
+   "groups": {
+    "0": [
+     [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15
+     ]
+    ],
+    "8192": [
+     [
+      0,
+      2,
+      3,
+      8
+     ],
+     [
+      1,
+      4,
+      5,
+      6,
+      7,
+      9,
+      10,
+      11,
+      13,
+      14
+     ],
+     [
+      12,
+      15
+     ]
+    ],
+    "10240": [
+     [
+      0,
+      2,
+      3,
+      7,
+      8
+     ],
+     [
+      1,
+      4,
+      5,
+      6,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15
+     ]
+    ],
+    "12288": [
+     [
+      0,
+      2,
+      3,
+      7,
+      8
+     ],
+     [
+      1,
+      4,
+      5,
+      6,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15
+     ]
+    ],
+    "16384": [
+     [
+      0,
+      2,
+      3,
+      4,
+      7,
+      8,
+      9,
+      10,
+      11
+     ],
+     [
+      1,
+      5,
+      6,
+      12,
+      13,
+      14,
+      15
+     ]
+    ],
+    "24576": [
+     [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14
+     ],
+     [
+      15
+     ]
+    ]
+   },
+   "group_tokens": {
+    "0": [
+     21760
+    ],
+    "8192": [
+     6400,
+     7680,
+     1024
+    ],
+    "10240": [
+     7680,
+     5632
+    ],
+    "12288": [
+     7680,
+     5632
+    ],
+    "16384": [
+     12800,
+     3584
+    ],
+    "24576": [
+     20480,
+     512
+    ]
+   }
+  },
+  "16": {
+   "ids": [
+    "r_gd_cards_1213",
+    "r_gd_hatemoji_build_v14_3078",
+    "r_gd_gen_tables_7818",
+    "r_gd_gen_tables_7819",
+    "r_gd_casehold_yn_3762",
+    "r_gd_climate_targets_260",
+    "r_gd_quartz_1673",
+    "r_gd_boardgameqa_2566",
+    "r_gd_gen_routing_5244",
+    "r_gd_gen_routing_5245",
+    "r_judge_helpsteer2_380",
+    "r_judge_helpsteer2_380_neg",
+    "r_gd_mfrc_2816",
+    "r_gd_logicinference_4009",
+    "r_gd_gen_evidence_conflict_14500",
+    "r_gd_gen_evidence_conflict_14501"
+   ],
+   "twins": [
+    9
+   ],
+   "tokens": [
+    453,
+    291,
+    524,
+    524,
+    523,
+    448,
+    334,
+    625,
+    961,
+    975,
+    610,
+    608,
+    310,
+    363,
+    722,
+    715
+   ],
+   "twin_tokens": [
+    975
+   ],
+   "groups": {
+    "0": [
+     [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15
+     ]
+    ],
+    "8192": [
+     [
+      7,
+      8,
+      9,
+      10,
+      11
+     ],
+     [
+      0,
+      2,
+      3,
+      4,
+      5,
+      6,
+      12,
+      13,
+      14,
+      15
+     ],
+     [
+      1
+     ]
+    ],
+    "10240": [
+     [
+      7,
+      8,
+      9,
+      10,
+      11,
+      14,
+      15
+     ],
+     [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      12,
+      13
+     ]
+    ],
+    "12288": [
+     [
+      4,
+      7,
+      8,
+      9,
+      10,
+      11,
+      14,
+      15
+     ],
+     [
+      0,
+      1,
+      2,
+      3,
+      5,
+      6,
+      12,
+      13
+     ]
+    ],
+    "16384": [
+     [
+      0,
+      4,
+      5,
+      7,
+      8,
+      9,
+      10,
+      11,
+      14,
+      15
+     ],
+     [
+      1,
+      2,
+      3,
+      6,
+      12,
+      13
+     ]
+    ],
+    "24576": [
+     [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15
+     ]
+    ]
+   },
+   "group_tokens": {
+    "0": [
+     17408
+    ],
+    "8192": [
+     6144,
+     7680,
+     512
+    ],
+    "10240": [
+     8192,
+     6912
+    ],
+    "12288": [
+     9216,
+     6144
+    ],
+    "16384": [
+     11264,
+     4608
+    ],
+    "24576": [
+     17408
+    ]
+   }
+  },
+  "17": {
+   "ids": [
+    "r_gd_redocred_4125",
+    "r_gd_gen_msn_rules_7878",
+    "r_gd_gen_msn_rules_7879",
+    "r_gd_feverous_3954",
+    "r_gd_uds_ordinal_833",
+    "r_hard_scales_97_x2",
+    "r_gd_winogrande_2846",
+    "r_gd_finqa_94",
+    "r_gd_nrc_gfe_863",
+    "r_gd_semtabfacts_sci_911",
+    "r_gd_comve_5772",
+    "r_gd_wtq_3007",
+    "r_gd_nhtsa_complaints_25",
+    "r_gd_druglabel_section_849",
+    "r_gd_gen_policy_exceptions_19554",
+    "r_gd_gen_policy_exceptions_19555"
+   ],
+   "twins": [],
+   "tokens": [
+    501,
+    376,
+    375,
+    398,
+    412,
+    514,
+    315,
+    1444,
+    522,
+    1014,
+    297,
+    3241,
+    501,
+    980,
+    564,
+    564
+   ],
+   "twin_tokens": [],
+   "groups": {
+    "0": [
+     [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15
+     ]
+    ],
+    "8192": [
+     [
+      7,
+      9,
+      11,
+      13
+     ],
+     [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      8,
+      12,
+      14,
+      15
+     ],
+     [
+      6,
+      10
+     ]
+    ],
+    "10240": [
+     [
+      7,
+      8,
+      9,
+      11,
+      13
+     ],
+     [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      10,
+      12,
+      14,
+      15
+     ]
+    ],
+    "12288": [
+     [
+      7,
+      8,
+      9,
+      11,
+      13
+     ],
+     [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      10,
+      12,
+      14,
+      15
+     ]
+    ],
+    "16384": [
+     [
+      5,
+      7,
+      8,
+      9,
+      11,
+      12,
+      13,
+      14,
+      15
+     ],
+     [
+      0,
+      1,
+      2,
+      3,
+      4,
+      6,
+      10
+     ]
+    ],
+    "24576": [
+     [
+      0,
+      3,
+      4,
+      5,
+      7,
+      8,
+      9,
+      11,
+      12,
+      13,
+      14,
+      15
+     ],
+     [
+      1,
+      2,
+      6,
+      10
+     ]
+    ]
+   },
+   "group_tokens": {
+    "0": [
+     53248
+    ],
+    "8192": [
+     13312,
+     7680,
+     1024
+    ],
+    "10240": [
+     16640,
+     8448
+    ],
+    "12288": [
+     16640,
+     8448
+    ],
+    "16384": [
+     29952,
+     3584
+    ],
+    "24576": [
+     39936,
+     2048
+    ]
+   }
+  },
+  "18": {
+   "ids": [
+    "r_gd_gen_nlr_heuristics_4521",
+    "r_gd_opentdb_850",
+    "r_br_topv2_20",
+    "r_br_topv2_20_ya",
+    "r_br_topv2_20_yn",
+    "r_gd_gen_logic_negation_3846",
+    "r_gd_edgar_10k_item_54",
+    "r_gd_gen_ranking_676",
+    "r_gd_gen_ranking_677",
+    "r_gd_gen_logic_negation_6233",
+    "r_gd_conditionalqa_487",
+    "r_gd_conditionalqa_487_ya",
+    "r_gd_conditionalqa_487_yn",
+    "r_gd_conditionalqa_487_ya_atk",
+    "r_gd_gen_logic_negation_1271",
+    "r_gd_tathqa_2265"
+   ],
+   "twins": [],
+   "tokens": [
+    321,
+    400,
+    683,
+    362,
+    364,
+    288,
+    415,
+    972,
+    980,
+    284,
+    1167,
+    1180,
+    1182,
+    1187,
+    304,
+    652
+   ],
+   "twin_tokens": [],
+   "groups": {
+    "0": [
+     [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15
+     ]
+    ],
+    "8192": [
+     [
+      10,
+      11,
+      12,
+      13
+     ],
+     [
+      2,
+      3,
+      4,
+      7,
+      8,
+      15
+     ],
+     [
+      0,
+      1,
+      5,
+      6,
+      9,
+      14
+     ]
+    ],
+    "10240": [
+     [
+      10,
+      11,
+      12,
+      13
+     ],
+     [
+      1,
+      2,
+      3,
+      4,
+      6,
+      7,
+      8,
+      15
+     ],
+     [
+      0,
+      5,
+      9,
+      14
+     ]
+    ],
+    "12288": [
+     [
+      7,
+      8,
+      10,
+      11,
+      12,
+      13
+     ],
+     [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      9,
+      14,
+      15
+     ]
+    ],
+    "16384": [
+     [
+      2,
+      3,
+      4,
+      7,
+      8,
+      10,
+      11,
+      12,
+      13
+     ],
+     [
+      0,
+      1,
+      5,
+      6,
+      9,
+      14,
+      15
+     ]
+    ],
+    "24576": [
+     [
+      0,
+      1,
+      2,
+      3,
+      4,
+      6,
+      7,
+      8,
+      10,
+      11,
+      12,
+      13,
+      15
+     ],
+     [
+      5,
+      9,
+      14
+     ]
+    ]
+   },
+   "group_tokens": {
+    "0": [
+     20480
+    ],
+    "8192": [
+     5120,
+     6144,
+     3072
+    ],
+    "10240": [
+     5120,
+     8192,
+     2048
+    ],
+    "12288": [
+     7680,
+     7680
+    ],
+    "16384": [
+     11520,
+     5376
+    ],
+    "24576": [
+     16640,
+     1536
+    ]
+   }
+  },
+  "19": {
+   "ids": [
+    "r_gd_prm800k_steps_7162",
+    "r_gd_gen_msn_consent_1240",
+    "r_gd_gen_msn_consent_1241",
+    "r_gd_tathqa_54",
+    "r_v11i_6b720fce754f",
+    "r_gd_gen_msn_consent_1798",
+    "r_gd_gen_msn_consent_1799",
+    "r_gd_biored_280",
+    "r_gd_biored_280_ya",
+    "r_gd_biored_280_yn",
+    "r_gd_biored_280_atk",
+    "r_gd_gen_tables_22100",
+    "r_gd_gen_tables_22101",
+    "r_gd_taskmaster1_4133",
+    "r_br_newsmtsc_269",
+    "r_br_infotabs_65"
+   ],
+   "twins": [],
+   "tokens": [
+    501,
+    382,
+    383,
+    821,
+    655,
+    398,
+    401,
+    1012,
+    930,
+    932,
+    1031,
+    678,
+    678,
+    352,
+    383,
+    579
+   ],
+   "twin_tokens": [],
+   "groups": {
+    "0": [
+     [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15
+     ]
+    ],
+    "8192": [
+     [
+      3,
+      7,
+      8,
+      9,
+      10,
+      15
+     ],
+     [
+      0,
+      1,
+      2,
+      4,
+      5,
+      6,
+      11,
+      12,
+      13,
+      14
+     ]
+    ],
+    "10240": [
+     [
+      3,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      15
+     ],
+     [
+      0,
+      1,
+      2,
+      4,
+      5,
+      6,
+      13,
+      14
+     ]
+    ],
+    "12288": [
+     [
+      0,
+      3,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      15
+     ],
+     [
+      1,
+      2,
+      4,
+      5,
+      6,
+      13,
+      14
+     ]
+    ],
+    "16384": [
+     [
+      0,
+      3,
+      4,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      14,
+      15
+     ],
+     [
+      1,
+      2,
+      5,
+      6,
+      13
+     ]
+    ],
+    "24576": [
+     [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15
+     ]
+    ]
+   },
+   "group_tokens": {
+    "0": [
+     20480
+    ],
+    "8192": [
+     7680,
+     7680
+    ],
+    "10240": [
+     10240,
+     6144
+    ],
+    "12288": [
+     11520,
+     5376
+    ],
+    "16384": [
+     14080,
+     2560
+    ],
+    "24576": [
+     20480
+    ]
+   }
+  },
+  "2501": {
+   "ids": [
+    "r_gd_wiki_help_routing_2612",
+    "r_gd_boardgameqa_2079",
+    "r_gd_boardgameqa_2079_atk",
+    "r_gd_cards_1277",
+    "r_pg_conflict_train_434",
+    "r_gd_slur_usage_3525",
+    "r_gd_uscg_mariner_4342",
+    "r_gd_cards_3312",
+    "r_gd_uscg_mariner_4902",
+    "r_gd_boardgameqa_147",
+    "r_gd_nhtsa_complaints_1841",
+    "r_gd_medqa_yn_1026",
+    "r_gd_taskmaster2_1063",
+    "r_v11i_dc2110a4a3a4",
+    "r_gd_wtq_1810",
+    "r_gd_gen_msn_rules_4006",
+    "r_gd_gen_msn_rules_4007",
+    "r_gd_gen_msn_rules_4007_atk"
+   ],
+   "twins": [
+    0,
+    5
+   ],
+   "tokens": [
+    424,
+    681,
+    695,
+    489,
+    382,
+    385,
+    441,
+    414,
+    450,
+    533,
+    441,
+    409,
+    341,
+    280,
+    3002,
+    366,
+    362,
+    383
+   ],
+   "twin_tokens": [
+    424,
+    385
+   ],
+   "groups": {
+    "0": [
+     [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17
+     ]
+    ],
+    "8192": [
+     [
+      1,
+      2,
+      3,
+      9,
+      14
+     ],
+     [
+      0,
+      5,
+      6,
+      7,
+      8,
+      10,
+      11
+     ],
+     [
+      4,
+      12,
+      13,
+      15,
+      16,
+      17
+     ]
+    ],
+    "10240": [
+     [
+      1,
+      2,
+      3,
+      9,
+      14
+     ],
+     [
+      0,
+      5,
+      6,
+      7,
+      8,
+      10,
+      11,
+      12,
+      15,
+      16,
+      17
+     ],
+     [
+      4,
+      13
+     ]
+    ],
+    "12288": [
+     [
+      0,
+      1,
+      2,
+      3,
+      8,
+      9,
+      14
+     ],
+     [
+      4,
+      5,
+      6,
+      7,
+      10,
+      11,
+      12,
+      13,
+      15,
+      16,
+      17
+     ]
+    ],
+    "16384": [
+     [
+      0,
+      1,
+      2,
+      3,
+      6,
+      7,
+      8,
+      9,
+      14
+     ],
+     [
+      4,
+      5,
+      10,
+      11,
+      12,
+      13,
+      15,
+      16,
+      17
+     ]
+    ],
+    "24576": [
+     [
+      0,
+      1,
+      2,
+      3,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      14
+     ],
+     [
+      4,
+      12,
+      13,
+      15,
+      16,
+      17
+     ]
+    ]
+   },
+   "group_tokens": {
+    "0": [
+     61440
+    ],
+    "8192": [
+     15360,
+     4608,
+     3072
+    ],
+    "10240": [
+     15360,
+     6656,
+     1024
+    ],
+    "12288": [
+     24576,
+     6144
+    ],
+    "16384": [
+     30720,
+     5120
+    ],
+    "24576": [
+     43008,
+     3072
+    ]
+   }
+  },
+  "3266": {
+   "ids": [
+    "r_gd_wiki_help_routing_1422",
+    "r_gd_mfrc_5007",
+    "r_gd_slur_usage_3452",
+    "r_gd_vader_intensity_685",
+    "r_gd_wtq_4041",
+    "r_gd_gen_evidence_conflict_18704",
+    "r_gd_gen_evidence_conflict_18705",
+    "r_gd_gen_evidence_conflict_18704_atk",
+    "r_gd_babi_logic_3882",
+    "r_gd_feverous_2755",
+    "r_gd_opentdb_2447",
+    "r_gd_medqa_yn_3296",
+    "r_gd_medqa_yn_3296_atk",
+    "r_gd_taskmaster2_3069",
+    "r_gd_gen_logic_negation_16365",
+    "r_gd_feverous_5201"
+   ],
+   "twins": [
+    0,
+    8,
+    10
+   ],
+   "tokens": [
+    413,
+    377,
+    469,
+    491,
+    4453,
+    585,
+    586,
+    598,
+    355,
+    334,
+    400,
+    686,
+    704,
+    383,
+    296,
+    390
+   ],
+   "twin_tokens": [
+    413,
+    355,
+    400
+   ],
+   "groups": {
+    "0": [
+     [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15
+     ]
+    ],
+    "8192": [
+     [
+      4,
+      11,
+      12
+     ],
+     [
+      0,
+      2,
+      3,
+      5,
+      6,
+      7,
+      10,
+      15
+     ],
+     [
+      1,
+      8,
+      9,
+      13,
+      14
+     ]
+    ],
+    "10240": [
+     [
+      4,
+      11,
+      12
+     ],
+     [
+      0,
+      1,
+      2,
+      3,
+      5,
+      6,
+      7,
+      8,
+      10,
+      15
+     ],
+     [
+      9,
+      13,
+      14
+     ]
+    ],
+    "12288": [
+     [
+      4,
+      5,
+      6,
+      7,
+      11,
+      12
+     ],
+     [
+      0,
+      1,
+      2,
+      3,
+      8,
+      9,
+      10,
+      13,
+      14,
+      15
+     ]
+    ],
+    "16384": [
+     [
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      11,
+      12
+     ],
+     [
+      0,
+      1,
+      8,
+      9,
+      10,
+      13,
+      14,
+      15
+     ]
+    ],
+    "24576": [
+     [
+      0,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      10,
+      11,
+      12
+     ],
+     [
+      1,
+      8,
+      9,
+      13,
+      14,
+      15
+     ]
+    ]
+   },
+   "group_tokens": {
+    "0": [
+     87552
+    ],
+    "8192": [
+     13824,
+     7680,
+     3072
+    ],
+    "10240": [
+     13824,
+     9984,
+     1536
+    ],
+    "12288": [
+     27648,
+     6656
+    ],
+    "16384": [
+     36864,
+     5632
+    ],
+    "24576": [
+     55296,
+     3584
+    ]
+   }
+  },
+  "4446": {
+   "ids": [
+    "r_gd_smcalflow_action_1785",
+    "r_gd_dstc9_track1_6869",
+    "r_planted_a_216",
+    "r_gd_wiki_help_routing_4081",
+    "r_gd_wiki_help_routing_4081_atk",
+    "r_gd_spiced_662",
+    "r_gd_qasc_1881",
+    "r_gd_wtq_2268",
+    "r_gd_saferproducts_severity_507",
+    "r_gd_saferproducts_severity_507_ya",
+    "r_gd_saferproducts_severity_507_yn",
+    "r_gd_logicinference_568",
+    "r_gd_logicinference_568_ya",
+    "r_gd_logicinference_568_yn",
+    "r_gd_star_next_action_337",
+    "r_gd_logicinference_2153",
+    "r_gd_logicinference_2153_ds"
+   ],
+   "twins": [
+    0,
+    3,
+    14
+   ],
+   "tokens": [
+    1373,
+    556,
+    346,
+    911,
+    931,
+    358,
+    396,
+    5004,
+    660,
+    498,
+    500,
+    412,
+    431,
+    433,
+    767,
+    394,
+    394
+   ],
+   "twin_tokens": [
+    1373,
+    911,
+    767
+   ],
+   "groups": {
+    "0": [
+     [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16
+     ]
+    ],
+    "8192": [
+     [
+      0
+     ],
+     [
+      7
+     ],
+     [
+      3,
+      4,
+      14
+     ],
+     [
+      1,
+      5,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13
+     ],
+     [
+      2,
+      6,
+      15,
+      16
+     ]
+    ],
+    "10240": [
+     [
+      0,
+      7
+     ],
+     [
+      3,
+      4,
+      8,
+      9,
+      10,
+      14
+     ],
+     [
+      1,
+      2,
+      5,
+      6,
+      11,
+      12,
+      13,
+      15,
+      16
+     ]
+    ],
+    "12288": [
+     [
+      0,
+      7
+     ],
+     [
+      1,
+      3,
+      4,
+      8,
+      9,
+      10,
+      14
+     ],
+     [
+      2,
+      5,
+      6,
+      11,
+      12,
+      13,
+      15,
+      16
+     ]
+    ],
+    "16384": [
+     [
+      0,
+      7
+     ],
+     [
+      1,
+      3,
+      4,
+      5,
+      8,
+      9,
+      10,
+      14
+     ],
+     [
+      2,
+      6,
+      11,
+      12,
+      13,
+      15,
+      16
+     ]
+    ],
+    "24576": [
+     [
+      0,
+      3,
+      4,
+      7,
+      14
+     ],
+     [
+      1,
+      2,
+      5,
+      6,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      15,
+      16
+     ]
+    ]
+   },
+   "group_tokens": {
+    "0": [
+     102400
+    ],
+    "8192": [
+     3072,
+     5120,
+     5120,
+     6144,
+     2048
+    ],
+    "10240": [
+     15360,
+     8192,
+     6912
+    ],
+    "12288": [
+     15360,
+     9216,
+     4096
+    ],
+    "16384": [
+     15360,
+     10240,
+     3584
+    ],
+    "24576": [
+     40960,
+     9216
+    ]
+   }
+  },
+  "4887": {
+   "ids": [
+    "r_debate_68",
+    "r_gd_edgar_10k_item_2233",
+    "r_gd_edgar_10k_item_2233_ya",
+    "r_gd_edgar_10k_item_2233_yn",
+    "r_gd_druglabel_section_2354",
+    "r_gd_feverous_1928",
+    "r_gd_feverous_1928_atk",
+    "r_gd_taskmaster1_1934",
+    "r_gd_wtq_1482",
+    "r_gd_slur_usage_1944",
+    "r_br_emobank_474",
+    "r_gd_helpsteer3_pref_2355",
+    "r_gd_megaveridicality_1512",
+    "r_gd_gen_msn_fault_3416",
+    "r_gd_gen_msn_fault_3417",
+    "r_gd_gen_numeric_dates_1158",
+    "r_gd_gen_numeric_dates_1159",
+    "r_gd_gen_numeric_dates_1159_ds",
+    "r_gd_gen_numeric_dates_1158_atk"
+   ],
+   "twins": [
+    10,
+    15,
+    18
+   ],
+   "tokens": [
+    522,
+    964,
+    621,
+    623,
+    888,
+    861,
+    882,
+    344,
+    5402,
+    334,
+    303,
+    1225,
+    333,
+    449,
+    444,
+    573,
+    573,
+    573,
+    593
+   ],
+   "twin_tokens": [
+    303,
+    573,
+    593
+   ],
+   "groups": {
+    "0": [
+     [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18
+     ]
+    ],
+    "8192": [
+     [
+      8
+     ],
+     [
+      1,
+      2,
+      3,
+      4,
+      11
+     ],
+     [
+      5,
+      6,
+      15,
+      16,
+      17,
+      18
+     ],
+     [
+      0,
+      7,
+      9,
+      10,
+      12,
+      13,
+      14
+     ]
+    ],
+    "10240": [
+     [
+      1,
+      2,
+      3,
+      8
+     ],
+     [
+      4,
+      5,
+      6,
+      11
+     ],
+     [
+      0,
+      7,
+      9,
+      10,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18
+     ],
+     [
+      12
+     ]
+    ],
+    "12288": [
+     [
+      1,
+      2,
+      3,
+      8
+     ],
+     [
+      4,
+      5,
+      6,
+      11
+     ],
+     [
+      0,
+      7,
+      9,
+      10,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18
+     ]
+    ],
+    "16384": [
+     [
+      1,
+      2,
+      3,
+      4,
+      8,
+      11
+     ],
+     [
+      0,
+      5,
+      6,
+      7,
+      9,
+      10,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18
+     ]
+    ],
+    "24576": [
+     [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      8,
+      11
+     ],
+     [
+      0,
+      7,
+      9,
+      10,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18
+     ]
+    ]
+   },
+   "group_tokens": {
+    "0": [
+     123904
+    ],
+    "8192": [
+     5632,
+     6400,
+     8192,
+     6144
+    ],
+    "10240": [
+     22528,
+     5120,
+     9984,
+     512
+    ],
+    "12288": [
+     22528,
+     5120,
+     10752
+    ],
+    "16384": [
+     33792,
+     16384
+    ],
+    "24576": [
+     45056,
+     10752
+    ]
+   }
+  },
+  "5353": {
+   "ids": [
+    "r_gd_finqa_2916",
+    "r_gd_medquad_qtype_210",
+    "r_gd_gen_numeric_dates_22698",
+    "r_gd_gen_numeric_dates_22699",
+    "r_gd_conditionalqa_739",
+    "r_gd_conditionalqa_739_ya",
+    "r_gd_conditionalqa_739_yn",
+    "r_gd_tatqa_1142",
+    "r_gd_smcalflow_action_1977",
+    "r_gd_smcalflow_action_1977_ya",
+    "r_gd_smcalflow_action_1977_yn",
+    "r_br_cfpb_500",
+    "r_gd_boardgameqa_5675",
+    "r_gd_boardgameqa_5675_ya",
+    "r_gd_boardgameqa_5675_yn",
+    "r_gd_helpsteer3_pref_2201"
+   ],
+   "twins": [
+    4,
+    8,
+    11
+   ],
+   "tokens": [
+    1113,
+    868,
+    457,
+    457,
+    4741,
+    4750,
+    4752,
+    737,
+    1298,
+    516,
+    518,
+    789,
+    510,
+    530,
+    532,
+    743
+   ],
+   "twin_tokens": [
+    4741,
+    1298,
+    789
+   ],
+   "groups": {
+    "0": [
+     [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15
+     ]
+    ],
+    "8192": [
+     [
+      4,
+      5,
+      6
+     ],
+     [
+      8,
+      9,
+      10
+     ],
+     [
+      0,
+      1,
+      11
+     ],
+     [
+      2,
+      3,
+      7,
+      12,
+      13,
+      14,
+      15
+     ]
+    ],
+    "10240": [
+     [
+      4,
+      5,
+      6
+     ],
+     [
+      8,
+      9,
+      10
+     ],
+     [
+      0,
+      1,
+      11,
+      15
+     ],
+     [
+      2,
+      3,
+      7,
+      12,
+      13,
+      14
+     ]
+    ],
+    "12288": [
+     [
+      4,
+      5,
+      6
+     ],
+     [
+      8,
+      9,
+      10
+     ],
+     [
+      0,
+      1,
+      7,
+      11,
+      15
+     ],
+     [
+      2,
+      3,
+      12,
+      13,
+      14
+     ]
+    ],
+    "16384": [
+     [
+      4,
+      5,
+      6
+     ],
+     [
+      0,
+      1,
+      8,
+      9,
+      10
+     ],
+     [
+      2,
+      3,
+      7,
+      11,
+      12,
+      13,
+      14,
+      15
+     ]
+    ],
+    "24576": [
+     [
+      4,
+      5,
+      6
+     ],
+     [
+      0,
+      1,
+      8,
+      9,
+      10,
+      11,
+      15
+     ],
+     [
+      2,
+      3,
+      7,
+      12,
+      13,
+      14
+     ]
+    ]
+   },
+   "group_tokens": {
+    "0": [
+     92416
+    ],
+    "8192": [
+     19456,
+     6144,
+     5120,
+     5376
+    ],
+    "10240": [
+     19456,
+     6144,
+     6400,
+     4608
+    ],
+    "12288": [
+     19456,
+     6144,
+     7680,
+     3840
+    ],
+    "16384": [
+     19456,
+     9216,
+     9216
+    ],
+    "24576": [
+     19456,
+     13824,
+     4608
+    ]
+   }
+  },
+  "5785": {
+   "ids": [
+    "r_gd_redocred_3348",
+    "r_gd_dstc9_track1_1852",
+    "r_gd_totto_claims_3772",
+    "r_binj_intent_108",
+    "r_gd_gen_constraints_7206",
+    "r_gd_gen_constraints_7207",
+    "r_br_star_461",
+    "r_gd_redocred_2335",
+    "r_gd_gen_ranking_7776",
+    "r_gd_gen_ranking_7776_ya",
+    "r_gd_gen_ranking_7776_yn",
+    "r_gd_gen_ranking_7777",
+    "r_gd_wtq_2315",
+    "r_gd_gen_routing_4978",
+    "r_gd_gen_routing_4978_ya",
+    "r_gd_gen_routing_4978_yn",
+    "r_gd_gen_routing_4979"
+   ],
+   "twins": [
+    4,
+    8,
+    11
+   ],
+   "tokens": [
+    568,
+    540,
+    652,
+    504,
+    1031,
+    1030,
+    1201,
+    683,
+    1170,
+    1107,
+    1109,
+    1168,
+    2995,
+    854,
+    509,
+    511,
+    864
+   ],
+   "twin_tokens": [
+    1031,
+    1170,
+    1168
+   ],
+   "groups": {
+    "0": [
+     [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16
+     ]
+    ],
+    "8192": [
+     [
+      6,
+      12
+     ],
+     [
+      8,
+      9,
+      10,
+      11
+     ],
+     [
+      4,
+      5
+     ],
+     [
+      1,
+      7,
+      13,
+      14,
+      15,
+      16
+     ],
+     [
+      0,
+      2,
+      3
+     ]
+    ],
+    "10240": [
+     [
+      6,
+      12
+     ],
+     [
+      8,
+      9,
+      10,
+      11
+     ],
+     [
+      4,
+      5,
+      7,
+      13,
+      14,
+      15,
+      16
+     ],
+     [
+      0,
+      1,
+      2,
+      3
+     ]
+    ],
+    "12288": [
+     [
+      6,
+      8,
+      9,
+      10,
+      11,
+      12
+     ],
+     [
+      1,
+      4,
+      5,
+      7,
+      13,
+      14,
+      15,
+      16
+     ],
+     [
+      0,
+      2,
+      3
+     ]
+    ],
+    "16384": [
+     [
+      6,
+      8,
+      9,
+      10,
+      11,
+      12
+     ],
+     [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      7,
+      13,
+      14,
+      15,
+      16
+     ]
+    ],
+    "24576": [
+     [
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16
+     ],
+     [
+      0,
+      1,
+      2,
+      3
+     ]
+    ]
+   },
+   "group_tokens": {
+    "0": [
+     61440
+    ],
+    "8192": [
+     6144,
+     7680,
+     3840,
+     6144,
+     2304
+    ],
+    "10240": [
+     6144,
+     7680,
+     10240,
+     3072
+    ],
+    "12288": [
+     24576,
+     11520,
+     2304
+    ],
+    "16384": [
+     24576,
+     15360
+    ],
+    "24576": [
+     49152,
+     3072
+    ]
+   }
+  },
+  "7052": {
+   "ids": [
+    "r_gd_prm800k_steps_1550",
+    "r_gd_gen_logic_negation_17332",
+    "r_gd_gen_numeric_dates_5882",
+    "r_gd_gen_numeric_dates_5883",
+    "r_gd_edos_sexism_3834",
+    "r_gd_spiced_195",
+    "r_gd_faithdial_2762",
+    "r_gd_medmcqa_subject_2207",
+    "r_gd_wtq_4363",
+    "r_gd_wtq_4363_atk",
+    "r_gd_clickbait17_2697",
+    "r_gd_mfrc_7348",
+    "r_gd_edgar_10k_item_4553",
+    "r_gd_babi_logic_4296",
+    "r_gd_sc101_4778",
+    "r_gd_redocred_5518"
+   ],
+   "twins": [
+    3,
+    7,
+    12,
+    15
+   ],
+   "tokens": [
+    577,
+    316,
+    593,
+    593,
+    326,
+    370,
+    417,
+    1031,
+    4458,
+    4468,
+    364,
+    367,
+    986,
+    357,
+    341,
+    680
+   ],
+   "twin_tokens": [
+    593,
+    1031,
+    986,
+    680
+   ],
+   "groups": {
+    "0": [
+     [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15
+     ]
+    ],
+    "8192": [
+     [
+      7,
+      8,
+      9
+     ],
+     [
+      12,
+      15
+     ],
+     [
+      0,
+      2,
+      3,
+      4,
+      5,
+      6,
+      11,
+      13,
+      14
+     ],
+     [
+      1,
+      10
+     ]
+    ],
+    "10240": [
+     [
+      7,
+      8,
+      9
+     ],
+     [
+      12,
+      15
+     ],
+     [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      10,
+      11,
+      13,
+      14
+     ]
+    ],
+    "12288": [
+     [
+      7,
+      8,
+      9,
+      12
+     ],
+     [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      10,
+      11,
+      13,
+      14,
+      15
+     ]
+    ],
+    "16384": [
+     [
+      7,
+      8,
+      9,
+      12,
+      15
+     ],
+     [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      10,
+      11,
+      13,
+      14
+     ]
+    ],
+    "24576": [
+     [
+      0,
+      2,
+      3,
+      7,
+      8,
+      9,
+      12,
+      15
+     ],
+     [
+      1,
+      4,
+      5,
+      6,
+      10,
+      11,
+      13,
+      14
+     ]
+    ]
+   },
+   "group_tokens": {
+    "0": [
+     92160
+    ],
+    "8192": [
+     18432,
+     4096,
+     7680,
+     1024
+    ],
+    "10240": [
+     18432,
+     4096,
+     9216
+    ],
+    "12288": [
+     27648,
+     10752
+    ],
+    "16384": [
+     36864,
+     9216
+    ],
+    "24576": [
+     55296,
+     4096
+    ]
+   }
+  },
+  "7344": {
+   "ids": [
+    "r_gd_sc101_5225",
+    "r_gd_naics_subsector_1116",
+    "r_gd_naics_subsector_1116_ya",
+    "r_gd_naics_subsector_1116_yn",
+    "r_gd_msha_injury_3155",
+    "r_gd_feverous_6954",
+    "r_gd_cards_2882",
+    "r_gd_aegis_prompts_1368",
+    "r_gd_casehold_yn_4475",
+    "r_proc_rubric_153",
+    "r_gd_wtq_3612",
+    "r_gd_storm_ef_1264",
+    "r_gd_medqa_yn_1896",
+    "r_gd_helpsteer2_attr_3782",
+    "r_gd_semtabfacts_sci_2165",
+    "r_gd_conditionalqa_1097",
+    "r_gd_conditionalqa_1097_ya",
+    "r_gd_conditionalqa_1097_yn"
+   ],
+   "twins": [
+    1,
+    4,
+    15
+   ],
+   "tokens": [
+    323,
+    1492,
+    486,
+    488,
+    648,
+    534,
+    398,
+    325,
+    527,
+    484,
+    843,
+    681,
+    514,
+    664,
+    452,
+    5147,
+    5160,
+    5162
+   ],
+   "twin_tokens": [
+    1492,
+    648,
+    5147
+   ],
+   "groups": {
+    "0": [
+     [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17
+     ]
+    ],
+    "8192": [
+     [
+      15,
+      16,
+      17
+     ],
+     [
+      1,
+      2,
+      3
+     ],
+     [
+      4,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13
+     ],
+     [
+      0,
+      5,
+      6,
+      7,
+      14
+     ]
+    ],
+    "10240": [
+     [
+      15,
+      16,
+      17
+     ],
+     [
+      1,
+      2,
+      3
+     ],
+     [
+      4,
+      5,
+      6,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13
+     ],
+     [
+      0,
+      7,
+      14
+     ]
+    ],
+    "12288": [
+     [
+      15,
+      16,
+      17
+     ],
+     [
+      1,
+      2,
+      3,
+      13
+     ],
+     [
+      0,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      14
+     ]
+    ],
+    "16384": [
+     [
+      15,
+      16,
+      17
+     ],
+     [
+      1,
+      2,
+      3,
+      10,
+      11,
+      13
+     ],
+     [
+      0,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      12,
+      14
+     ]
+    ],
+    "24576": [
+     [
+      15,
+      16,
+      17
+     ],
+     [
+      1,
+      2,
+      3,
+      4,
+      10,
+      11,
+      12,
+      13
+     ],
+     [
+      0,
+      5,
+      6,
+      7,
+      8,
+      9,
+      14
+     ]
+    ]
+   },
+   "group_tokens": {
+    "0": [
+     112896
+    ],
+    "8192": [
+     21504,
+     6144,
+     8192,
+     3840
+    ],
+    "10240": [
+     21504,
+     6144,
+     10240,
+     1536
+    ],
+    "12288": [
+     21504,
+     7680,
+     12288
+    ],
+    "16384": [
+     21504,
+     10752,
+     7680
+    ],
+    "24576": [
+     21504,
+     15360,
+     5376
+    ]
+   }
+  },
+  "7653": {
+   "ids": [
+    "r_gd_slur_usage_1607",
+    "r_br_wos46985_339",
+    "r_gd_feverous_3404",
+    "r_gd_wtq_3393",
+    "r_gd_msha_injury_829",
+    "r_gd_finqa_4424",
+    "r_gd_gen_policy_exceptions_21994",
+    "r_gd_gen_policy_exceptions_21995",
+    "r_gd_gen_tables_20352",
+    "r_gd_gen_tables_20353",
+    "r_gd_ncvec_ham_239",
+    "r_gd_gen_constraints_4158",
+    "r_gd_gen_constraints_4158_ya",
+    "r_gd_gen_constraints_4158_yn",
+    "r_gd_gen_constraints_4159",
+    "r_gd_gen_constraints_4159_ya",
+    "r_gd_gen_constraints_4159_yn"
+   ],
+   "twins": [
+    1
+   ],
+   "tokens": [
+    335,
+    536,
+    405,
+    2431,
+    999,
+    1648,
+    717,
+    716,
+    538,
+    532,
+    567,
+    1416,
+    1269,
+    1271,
+    1416,
+    1267,
+    1269
+   ],
+   "twin_tokens": [
+    536
+   ],
+   "groups": {
+    "0": [
+     [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16
+     ]
+    ],
+    "8192": [
+     [
+      5
+     ],
+     [
+      11,
+      12,
+      13,
+      14,
+      15,
+      16
+     ],
+     [
+      1,
+      3,
+      4,
+      6,
+      7
+     ],
+     [
+      0,
+      2,
+      8,
+      9,
+      10
+     ]
+    ],
+    "10240": [
+     [
+      5
+     ],
+     [
+      11,
+      12,
+      13,
+      14,
+      15,
+      16
+     ],
+     [
+      1,
+      2,
+      3,
+      4,
+      6,
+      7,
+      10
+     ],
+     [
+      0,
+      8,
+      9
+     ]
+    ],
+    "12288": [
+     [
+      5
+     ],
+     [
+      3,
+      4,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16
+     ],
+     [
+      0,
+      1,
+      2,
+      6,
+      7,
+      8,
+      9,
+      10
+     ]
+    ],
+    "16384": [
+     [
+      3,
+      4,
+      5,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16
+     ],
+     [
+      0,
+      1,
+      2,
+      6,
+      7,
+      8,
+      9,
+      10
+     ]
+    ],
+    "24576": [
+     [
+      1,
+      3,
+      4,
+      5,
+      6,
+      7,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16
+     ],
+     [
+      0,
+      2,
+      8,
+      9,
+      10
+     ]
+    ]
+   },
+   "group_tokens": {
+    "0": [
+     46080
+    ],
+    "8192": [
+     1792,
+     9216,
+     15360,
+     3840
+    ],
+    "10240": [
+     1792,
+     9216,
+     20480,
+     2304
+    ],
+    "12288": [
+     1792,
+     20480,
+     6912
+    ],
+    "16384": [
+     23040,
+     6912
+    ],
+    "24576": [
+     33280,
+     3840
+    ]
+   }
+  },
+  "8490": {
+   "ids": [
+    "r_gd_oiics_event_3751",
+    "r_gd_oiics_event_3751_ya",
+    "r_gd_oiics_event_3751_yn",
+    "r_br_newsmtsc_349",
+    "r_gd_winogrande_2726",
+    "r_gd_oiics_event_4899",
+    "r_gd_oiics_event_4899_ya",
+    "r_gd_oiics_event_4899_yn",
+    "r_gd_wtq_4863",
+    "r_gd_medquad_qtype_4192",
+    "r_gd_conditionalqa_741",
+    "r_gd_prm800k_steps_1641",
+    "r_pg_policy_train_469",
+    "r_gd_prm800k_steps_7623",
+    "r_gd_totto_claims_2699",
+    "r_gd_gen_routing_646",
+    "r_gd_gen_routing_647"
+   ],
+   "twins": [
+    5,
+    9,
+    10,
+    12
+   ],
+   "tokens": [
+    990,
+    499,
+    501,
+    384,
+    313,
+    1057,
+    553,
+    555,
+    1283,
+    1024,
+    4868,
+    938,
+    382,
+    699,
+    453,
+    1132,
+    1128
+   ],
+   "twin_tokens": [
+    1057,
+    1024,
+    4868,
+    382
+   ],
+   "groups": {
+    "0": [
+     [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16
+     ]
+    ],
+    "8192": [
+     [
+      10
+     ],
+     [
+      15,
+      16
+     ],
+     [
+      5,
+      6,
+      7
+     ],
+     [
+      8,
+      9
+     ],
+     [
+      0,
+      1,
+      2,
+      3,
+      11,
+      13
+     ],
+     [
+      4,
+      12,
+      14
+     ]
+    ],
+    "10240": [
+     [
+      10
+     ],
+     [
+      5,
+      6,
+      7,
+      15,
+      16
+     ],
+     [
+      0,
+      1,
+      2,
+      8,
+      9
+     ],
+     [
+      3,
+      4,
+      11,
+      12,
+      13,
+      14
+     ]
+    ],
+    "12288": [
+     [
+      10
+     ],
+     [
+      5,
+      6,
+      7,
+      9,
+      15,
+      16
+     ],
+     [
+      0,
+      1,
+      2,
+      3,
+      8,
+      11,
+      13,
+      14
+     ],
+     [
+      4,
+      12
+     ]
+    ],
+    "16384": [
+     [
+      10
+     ],
+     [
+      5,
+      6,
+      7,
+      8,
+      9,
+      15,
+      16
+     ],
+     [
+      0,
+      1,
+      2,
+      3,
+      4,
+      11,
+      12,
+      13,
+      14
+     ]
+    ],
+    "24576": [
+     [
+      10
+     ],
+     [
+      0,
+      1,
+      2,
+      3,
+      5,
+      6,
+      7,
+      8,
+      9,
+      11,
+      13,
+      14,
+      15,
+      16
+     ],
+     [
+      4,
+      12
+     ]
+    ]
+   },
+   "group_tokens": {
+    "0": [
+     107520
+    ],
+    "8192": [
+     10240,
+     2560,
+     5120,
+     4608,
+     6144,
+     2048
+    ],
+    "10240": [
+     10240,
+     7680,
+     9216,
+     7168
+    ],
+    "12288": [
+     10240,
+     10240,
+     12288,
+     1536
+    ],
+    "16384": [
+     10240,
+     13824,
+     10240
+    ],
+    "24576": [
+     10240,
+     24576,
+     1536
+    ]
+   }
+  },
+  "8806": {
+   "ids": [
+    "r_gd_semtabfacts_sci_208",
+    "r_gd_winogrande_3577",
+    "r_gd_boardgameqa_7543",
+    "r_gd_ncvec_ham_400",
+    "r_gd_spiced_357",
+    "r_gd_totto_claims_2312",
+    "r_gd_opentdb_3649",
+    "r_gd_gen_msn_rules_3048",
+    "r_gd_gen_msn_rules_3049",
+    "r_br_sarcasm_headlines_261",
+    "r_pg_evidence_train_417",
+    "r_gd_prm800k_steps_1238",
+    "r_gd_taskmaster2_367",
+    "r_gd_taskmaster2_367_atk",
+    "r_gd_comve_2953",
+    "r_gd_comve_2953_atk"
+   ],
+   "twins": [],
+   "tokens": [
+    1924,
+    322,
+    689,
+    488,
+    376,
+    568,
+    459,
+    364,
+    373,
+    307,
+    698,
+    930,
+    343,
+    353,
+    292,
+    304
+   ],
+   "twin_tokens": [],
+   "groups": {
+    "0": [
+     [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15
+     ]
+    ],
+    "8192": [
+     [
+      0,
+      2,
+      3,
+      4,
+      5,
+      6,
+      10,
+      11
+     ],
+     [
+      1,
+      7,
+      8,
+      9,
+      12,
+      13,
+      14,
+      15
+     ]
+    ],
+    "10240": [
+     [
+      0,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      10,
+      11
+     ],
+     [
+      1,
+      9,
+      12,
+      13,
+      14,
+      15
+     ]
+    ],
+    "12288": [
+     [
+      0,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      10,
+      11,
+      12,
+      13
+     ],
+     [
+      1,
+      9,
+      14,
+      15
+     ]
+    ],
+    "16384": [
+     [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15
+     ]
+    ],
+    "24576": [
+     [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15
+     ]
+    ]
+   },
+   "group_tokens": {
+    "0": [
+     32768
+    ],
+    "8192": [
+     16384,
+     4096
+    ],
+    "10240": [
+     20480,
+     3072
+    ],
+    "12288": [
+     24576,
+     2048
+    ],
+    "16384": [
+     32768
+    ],
+    "24576": [
+     32768
+    ]
+   }
+  },
+  "9089": {
+   "ids": [
+    "r_gd_winogrande_6745",
+    "r_gd_webred_907",
+    "r_gd_medqa_yn_2840",
+    "r_hard_nli_a_99",
+    "r_gd_edgar_10k_item_3359",
+    "r_5d01715c37d8",
+    "r_gd_gen_tables_2186",
+    "r_gd_gen_tables_2187",
+    "r_gd_east_asian_prejudice_3502",
+    "r_gd_uscg_mariner_6363",
+    "r_gd_totto_claims_1627",
+    "r_gd_sc101_2622",
+    "r_gd_conditionalqa_1218",
+    "r_gd_conditionalqa_182",
+    "r_gd_conditionalqa_182_ya",
+    "r_gd_conditionalqa_182_yn",
+    "r_gd_conditionalqa_182_ya_atk"
+   ],
+   "twins": [
+    1,
+    5,
+    6,
+    13
+   ],
+   "tokens": [
+    320,
+    582,
+    449,
+    569,
+    1041,
+    382,
+    590,
+    590,
+    417,
+    541,
+    500,
+    325,
+    1604,
+    4221,
+    4230,
+    4232,
+    4243
+   ],
+   "twin_tokens": [
+    582,
+    382,
+    590,
+    4221
+   ],
+   "groups": {
+    "0": [
+     [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16
+     ]
+    ],
+    "8192": [
+     [
+      13,
+      14,
+      15,
+      16
+     ],
+     [
+      4,
+      9,
+      12
+     ],
+     [
+      1,
+      2,
+      3,
+      5,
+      6,
+      7,
+      8
+     ],
+     [
+      0,
+      10,
+      11
+     ]
+    ],
+    "10240": [
+     [
+      13,
+      14,
+      15,
+      16
+     ],
+     [
+      3,
+      4,
+      9,
+      12
+     ],
+     [
+      0,
+      1,
+      2,
+      5,
+      6,
+      7,
+      8,
+      10,
+      11
+     ]
+    ],
+    "12288": [
+     [
+      13,
+      14,
+      15,
+      16
+     ],
+     [
+      3,
+      4,
+      9,
+      12
+     ],
+     [
+      0,
+      1,
+      2,
+      5,
+      6,
+      7,
+      8,
+      10,
+      11
+     ]
+    ],
+    "16384": [
+     [
+      13,
+      14,
+      15,
+      16
+     ],
+     [
+      3,
+      4,
+      6,
+      7,
+      9,
+      12
+     ],
+     [
+      0,
+      1,
+      2,
+      5,
+      8,
+      10,
+      11
+     ]
+    ],
+    "24576": [
+     [
+      13,
+      14,
+      15,
+      16
+     ],
+     [
+      1,
+      2,
+      3,
+      4,
+      6,
+      7,
+      9,
+      12
+     ],
+     [
+      0,
+      5,
+      8,
+      10,
+      11
+     ]
+    ]
+   },
+   "group_tokens": {
+    "0": [
+     91392
+    ],
+    "8192": [
+     21760,
+     5376,
+     7680,
+     1536
+    ],
+    "10240": [
+     21760,
+     7168,
+     9216
+    ],
+    "12288": [
+     21760,
+     7168,
+     9216
+    ],
+    "16384": [
+     21760,
+     12544,
+     6912
+    ],
+    "24576": [
+     21760,
+     17920,
+     3072
+    ]
+   }
+  },
+  "10854": {
+   "ids": [
+    "r_gd_boardgameqa_2136",
+    "r_gd_answer_equiv_2307",
+    "r_br_edos_243",
+    "r_v11i_b0c19f4f6b7e",
+    "r_gd_boardgameqa_6059",
+    "r_gd_gen_routing_10804",
+    "r_gd_gen_routing_10804_ya",
+    "r_gd_gen_routing_10804_yn",
+    "r_gd_gen_routing_10805",
+    "r_gd_tatqa_3814",
+    "r_gd_wtq_486",
+    "r_gd_uscg_mariner_5575",
+    "r_gd_gen_numeric_dates_19858",
+    "r_gd_gen_numeric_dates_19859",
+    "r_gd_gen_numeric_dates_10044",
+    "r_gd_gen_numeric_dates_10045"
+   ],
+   "twins": [
+    5,
+    8
+   ],
+   "tokens": [
+    578,
+    577,
+    296,
+    452,
+    563,
+    758,
+    490,
+    492,
+    766,
+    1849,
+    5389,
+    461,
+    432,
+    432,
+    467,
+    467
+   ],
+   "twin_tokens": [
+    758,
+    766
+   ],
+   "groups": {
+    "0": [
+     [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15
+     ]
+    ],
+    "8192": [
+     [
+      9,
+      10
+     ],
+     [
+      0,
+      4,
+      5,
+      6,
+      7,
+      8
+     ],
+     [
+      1,
+      2,
+      3,
+      11,
+      12,
+      13,
+      14,
+      15
+     ]
+    ],
+    "10240": [
+     [
+      9,
+      10
+     ],
+     [
+      0,
+      1,
+      4,
+      5,
+      6,
+      7,
+      8,
+      11
+     ],
+     [
+      2,
+      3,
+      12,
+      13,
+      14,
+      15
+     ]
+    ],
+    "12288": [
+     [
+      9,
+      10
+     ],
+     [
+      0,
+      1,
+      4,
+      5,
+      6,
+      7,
+      8,
+      11,
+      14,
+      15
+     ],
+     [
+      2,
+      3,
+      12,
+      13
+     ]
+    ],
+    "16384": [
+     [
+      9,
+      10
+     ],
+     [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      11,
+      12,
+      13,
+      14,
+      15
+     ]
+    ],
+    "24576": [
+     [
+      0,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+     ],
+     [
+      1,
+      2,
+      3,
+      4,
+      11,
+      12,
+      13,
+      14,
+      15
+     ]
+    ]
+   },
+   "group_tokens": {
+    "0": [
+     101376
+    ],
+    "8192": [
+     11264,
+     6144,
+     6144
+    ],
+    "10240": [
+     11264,
+     7680,
+     3072
+    ],
+    "12288": [
+     11264,
+     9216,
+     2048
+    ],
+    "16384": [
+     11264,
+     12288
+    ],
+    "24576": [
+     50688,
+     6912
+    ]
+   }
+  },
+  "10908": {
+   "ids": [
+    "r_gd_wiki_help_routing_3665",
+    "r_gd_star_next_action_1422",
+    "r_gd_tathqa_3985",
+    "r_gd_gen_policy_exceptions_5702",
+    "r_gd_gen_policy_exceptions_5703",
+    "r_gd_gen_policy_exceptions_5702_atk",
+    "r_gd_bbh_mistake_1115",
+    "r_gd_oiics_event_1198",
+    "r_gd_semtabfacts_sci_1852",
+    "r_gd_wtq_1148",
+    "r_gd_babi_logic_2059",
+    "r_br_steam_aspect_318",
+    "r_gd_finqa_1169",
+    "r_gd_finqa_1169_atk",
+    "r_gd_msha_injury_842",
+    "r_gd_prm800k_steps_7696"
+   ],
+   "twins": [
+    1,
+    7
+   ],
+   "tokens": [
+    674,
+    1054,
+    754,
+    606,
+    606,
+    623,
+    1406,
+    1943,
+    864,
+    5396,
+    336,
+    422,
+    1597,
+    1609,
+    579,
+    664
+   ],
+   "twin_tokens": [
+    1054,
+    1943
+   ],
+   "groups": {
+    "0": [
+     [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15
+     ]
+    ],
+    "8192": [
+     [
+      7
+     ],
+     [
+      9,
+      12,
+      13
+     ],
+     [
+      0,
+      1,
+      6,
+      15
+     ],
+     [
+      2,
+      3,
+      4,
+      5,
+      8,
+      10,
+      11,
+      14
+     ]
+    ],
+    "10240": [
+     [
+      7,
+      9
+     ],
+     [
+      1,
+      12,
+      13
+     ],
+     [
+      0,
+      2,
+      3,
+      4,
+      5,
+      6,
+      14,
+      15
+     ],
+     [
+      8,
+      10,
+      11
+     ]
+    ],
+    "12288": [
+     [
+      7,
+      9
+     ],
+     [
+      1,
+      6,
+      12,
+      13
+     ],
+     [
+      0,
+      2,
+      3,
+      4,
+      5,
+      8,
+      10,
+      11,
+      14,
+      15
+     ]
+    ],
+    "16384": [
+     [
+      7,
+      9,
+      12,
+      13
+     ],
+     [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      14,
+      15
+     ],
+     [
+      8,
+      10,
+      11
+     ]
+    ],
+    "24576": [
+     [
+      1,
+      6,
+      7,
+      9,
+      12,
+      13
+     ],
+     [
+      0,
+      2,
+      3,
+      4,
+      5,
+      8,
+      10,
+      11,
+      14,
+      15
+     ]
+    ]
+   },
+   "group_tokens": {
+    "0": [
+     101376
+    ],
+    "8192": [
+     4096,
+     16896,
+     7680,
+     8192
+    ],
+    "10240": [
+     16896,
+     7168,
+     12288,
+     3072
+    ],
+    "12288": [
+     16896,
+     8960,
+     10240
+    ],
+    "16384": [
+     28160,
+     15360,
+     3072
+    ],
+    "24576": [
+     45056,
+     10240
+    ]
+   }
+  },
+  "12005": {
+   "ids": [
+    "r_gd_medmcqa_subject_1918",
+    "r_br_newsgroups20_171",
+    "r_proc_temporal_139",
+    "r_gd_slur_usage_2449",
+    "r_gd_wands_product_931",
+    "r_gd_gen_logic_negation_2750",
+    "r_gd_slur_usage_535",
+    "r_gd_smcalflow_action_89",
+    "r_gd_star_next_action_800",
+    "r_gd_mfrc_4951",
+    "r_gd_oiics_event_1943",
+    "r_gd_smcalflow_action_2927",
+    "r_gd_gen_numeric_dates_8434",
+    "r_gd_gen_numeric_dates_8435",
+    "r_gd_cards_3900",
+    "r_gd_conditionalqa_716"
+   ],
+   "twins": [
+    0,
+    1,
+    3,
+    11,
+    15
+   ],
+   "tokens": [
+    1027,
+    1390,
+    612,
+    425,
+    744,
+    327,
+    439,
+    1296,
+    1266,
+    389,
+    1303,
+    1322,
+    396,
+    396,
+    532,
+    4667
+   ],
+   "twin_tokens": [
+    1027,
+    1390,
+    425,
+    1322,
+    4667
+   ],
+   "groups": {
+    "0": [
+     [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15
+     ]
+    ],
+    "8192": [
+     [
+      15
+     ],
+     [
+      11
+     ],
+     [
+      1,
+      7
+     ],
+     [
+      0,
+      8,
+      10
+     ],
+     [
+      2,
+      3,
+      4,
+      6,
+      9,
+      14
+     ],
+     [
+      5,
+      12,
+      13
+     ]
+    ],
+    "10240": [
+     [
+      15
+     ],
+     [
+      7,
+      11
+     ],
+     [
+      1,
+      8,
+      10
+     ],
+     [
+      0,
+      2,
+      4,
+      6,
+      14
+     ],
+     [
+      3,
+      5,
+      9,
+      12,
+      13
+     ]
+    ],
+    "12288": [
+     [
+      15
+     ],
+     [
+      7,
+      11
+     ],
+     [
+      0,
+      1,
+      8,
+      10
+     ],
+     [
+      2,
+      3,
+      4,
+      5,
+      6,
+      9,
+      12,
+      13,
+      14
+     ]
+    ],
+    "16384": [
+     [
+      15
+     ],
+     [
+      1,
+      7,
+      11
+     ],
+     [
+      0,
+      2,
+      4,
+      6,
+      8,
+      10,
+      14
+     ],
+     [
+      3,
+      5,
+      9,
+      12,
+      13
+     ]
+    ],
+    "24576": [
+     [
+      15
+     ],
+     [
+      1,
+      7,
+      8,
+      10,
+      11
+     ],
+     [
+      0,
+      2,
+      3,
+      4,
+      5,
+      6,
+      9,
+      12,
+      13,
+      14
+     ]
+    ]
+   },
+   "group_tokens": {
+    "0": [
+     102144
+    ],
+    "8192": [
+     9728,
+     3072,
+     4608,
+     6144,
+     5376,
+     1536
+    ],
+    "10240": [
+     9728,
+     4608,
+     6144,
+     7680,
+     3072
+    ],
+    "12288": [
+     9728,
+     4608,
+     9216,
+     7680
+    ],
+    "16384": [
+     9728,
+     7680,
+     12288,
+     3072
+    ],
+    "24576": [
+     9728,
+     10752,
+     15360
+    ]
+   }
+  },
+  "14306": {
+   "ids": [
+    "r_gd_medquad_qtype_1419",
+    "r_gd_medquad_qtype_1419_ya",
+    "r_gd_medquad_qtype_1419_yn",
+    "r_gd_medquad_qtype_1419_atk",
+    "r_gd_usb_factuality_1771",
+    "r_gd_feverous_1943",
+    "r_gd_gen_logic_negation_21198",
+    "r_gd_crowdtruth_mre_898",
+    "r_gd_prm800k_steps_1378",
+    "r_gd_webred_1058",
+    "r_gd_csc_sarcasm_1975",
+    "r_gd_casehold_yn_681",
+    "r_gd_wtq_2017",
+    "r_gd_saferproducts_severity_177",
+    "r_gd_saferproducts_severity_177_atk",
+    "r_gd_msha_injury_2138"
+   ],
+   "twins": [
+    13
+   ],
+   "tokens": [
+    842,
+    574,
+    576,
+    850,
+    406,
+    618,
+    317,
+    486,
+    812,
+    427,
+    421,
+    561,
+    2990,
+    801,
+    824,
+    769
+   ],
+   "twin_tokens": [
+    801
+   ],
+   "groups": {
+    "0": [
+     [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15
+     ]
+    ],
+    "8192": [
+     [
+      0,
+      1,
+      2,
+      3,
+      12
+     ],
+     [
+      8,
+      11,
+      13,
+      14,
+      15
+     ],
+     [
+      4,
+      5,
+      6,
+      7,
+      9,
+      10
+     ]
+    ],
+    "10240": [
+     [
+      0,
+      1,
+      2,
+      3,
+      12
+     ],
+     [
+      5,
+      7,
+      8,
+      11,
+      13,
+      14,
+      15
+     ],
+     [
+      4,
+      6,
+      9,
+      10
+     ]
+    ],
+    "12288": [
+     [
+      0,
+      1,
+      2,
+      3,
+      12,
+      13,
+      14
+     ],
+     [
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      15
+     ]
+    ],
+    "16384": [
+     [
+      0,
+      1,
+      2,
+      3,
+      8,
+      12,
+      13,
+      14,
+      15
+     ],
+     [
+      4,
+      5,
+      6,
+      7,
+      9,
+      10,
+      11
+     ]
+    ],
+    "24576": [
+     [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15
+     ],
+     [
+      6
+     ]
+    ]
+   },
+   "group_tokens": {
+    "0": [
+     52224
+    ],
+    "8192": [
+     15360,
+     6144,
+     4608
+    ],
+    "10240": [
+     15360,
+     8192,
+     2048
+    ],
+    "12288": [
+     24576,
+     9216
+    ],
+    "16384": [
+     30720,
+     5376
+    ],
+    "24576": [
+     49152,
+     512
+    ]
+   }
+  },
+  "14473": {
+   "ids": [
+    "r_gd_ncbi_disease_702",
+    "r_gd_ncbi_disease_702_ya",
+    "r_gd_ncbi_disease_702_yn",
+    "r_pg_routing_train_552",
+    "r_gd_feverous_3120",
+    "r_gd_boardgameqa_6711",
+    "r_gd_boardgameqa_6711_ya",
+    "r_gd_boardgameqa_6711_yn",
+    "r_gd_gen_msn_fault_2372",
+    "r_gd_gen_msn_fault_2373",
+    "r_v11i_915283bb86cb",
+    "r_gd_qasc_3515",
+    "r_fdeb25f9c8ad",
+    "r_v11n_8ca634d4285a",
+    "r_v11n_f63299df5c5c",
+    "r_16ff5c204348",
+    "r_37f71393b403"
+   ],
+   "twins": [
+    3,
+    15
+   ],
+   "tokens": [
+    452,
+    466,
+    468,
+    406,
+    421,
+    570,
+    590,
+    592,
+    477,
+    474,
+    1048,
+    372,
+    363,
+    367,
+    373,
+    361,
+    431
+   ],
+   "twin_tokens": [
+    406,
+    361
+   ],
+   "groups": {
+    "0": [
+     [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16
+     ]
+    ],
+    "8192": [
+     [
+      5,
+      6,
+      7,
+      10,
+      12,
+      13,
+      14,
+      15,
+      16
+     ],
+     [
+      0,
+      1,
+      2,
+      3,
+      4,
+      8,
+      9,
+      11
+     ]
+    ],
+    "10240": [
+     [
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      12,
+      13,
+      14,
+      15,
+      16
+     ],
+     [
+      0,
+      1,
+      2,
+      3,
+      4,
+      11
+     ]
+    ],
+    "12288": [
+     [
+      0,
+      1,
+      2,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      12,
+      13,
+      14,
+      15,
+      16
+     ],
+     [
+      3,
+      11
+     ]
+    ],
+    "16384": [
+     [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16
+     ]
+    ],
+    "24576": [
+     [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16
+     ]
+    ]
+   },
+   "group_tokens": {
+    "0": [
+     24320
+    ],
+    "8192": [
+     12800,
+     4608
+    ],
+    "10240": [
+     15360,
+     3584
+    ],
+    "12288": [
+     20480,
+     1536
+    ],
+    "16384": [
+     24320
+    ],
+    "24576": [
+     24320
+    ]
+   }
+  },
+  "14671": {
+   "ids": [
+    "r_gd_climate_targets_987",
+    "r_gd_tatqa_423",
+    "r_gd_gen_logic_negation_12477",
+    "r_gd_feverous_2657",
+    "r_gd_feverous_3926",
+    "r_gd_wtq_1864",
+    "r_gd_redocred_390",
+    "r_gd_redocred_390_ya",
+    "r_gd_redocred_390_yn",
+    "r_gd_clickbait17_3780",
+    "r_gd_druglabel_section_2594",
+    "r_gd_druglabel_section_2594_ya",
+    "r_gd_druglabel_section_2594_yn",
+    "r_v11i_a21e7044703a",
+    "r_gd_gen_msn_rules_7686",
+    "r_gd_gen_msn_rules_7687"
+   ],
+   "twins": [],
+   "tokens": [
+    495,
+    1404,
+    310,
+    473,
+    529,
+    4001,
+    556,
+    549,
+    551,
+    349,
+    1140,
+    479,
+    481,
+    251,
+    366,
+    367
+   ],
+   "twin_tokens": [],
+   "groups": {
+    "0": [
+     [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15
+     ]
+    ],
+    "8192": [
+     [
+      1,
+      5
+     ],
+     [
+      0,
+      3,
+      10,
+      11,
+      12
+     ],
+     [
+      2,
+      4,
+      6,
+      7,
+      8,
+      9,
+      13,
+      14,
+      15
+     ]
+    ],
+    "10240": [
+     [
+      1,
+      5,
+      10,
+      11,
+      12
+     ],
+     [
+      0,
+      2,
+      3,
+      4,
+      6,
+      7,
+      8,
+      9,
+      13,
+      14,
+      15
+     ]
+    ],
+    "12288": [
+     [
+      1,
+      3,
+      5,
+      10,
+      11,
+      12
+     ],
+     [
+      0,
+      2,
+      4,
+      6,
+      7,
+      8,
+      9,
+      13,
+      14,
+      15
+     ]
+    ],
+    "16384": [
+     [
+      0,
+      1,
+      3,
+      5,
+      10,
+      11,
+      12
+     ],
+     [
+      2,
+      4,
+      6,
+      7,
+      8,
+      9,
+      13,
+      14,
+      15
+     ]
+    ],
+    "24576": [
+     [
+      0,
+      1,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      10,
+      11,
+      12
+     ],
+     [
+      2,
+      9,
+      13,
+      14,
+      15
+     ]
+    ]
+   },
+   "group_tokens": {
+    "0": [
+     65536
+    ],
+    "8192": [
+     8192,
+     6400,
+     6912
+    ],
+    "10240": [
+     20480,
+     8448
+    ],
+    "12288": [
+     24576,
+     7680
+    ],
+    "16384": [
+     28672,
+     6912
+    ],
+    "24576": [
+     45056,
+     2560
+    ]
+   }
+  },
+  "14820": {
+   "ids": [
+    "r_gd_redocred_4430",
+    "r_2064e1cc60d8",
+    "r_br_mams_acsa_163",
+    "r_gd_wands_product_346",
+    "r_gd_wiki_help_routing_1459",
+    "r_gd_answer_equiv_3736",
+    "r_gd_gen_logic_negation_16774",
+    "r_gd_aegis_prompts_1907",
+    "r_v11i_84d65c4dd209",
+    "r_gd_gen_tables_13998",
+    "r_gd_gen_tables_13999",
+    "r_gd_oiics_event_4208",
+    "r_gd_gen_numeric_dates_15426",
+    "r_gd_gen_numeric_dates_15427",
+    "r_gd_finqa_417",
+    "r_v11i_5dbf7c9bc197"
+   ],
+   "twins": [
+    0,
+    1,
+    4,
+    11
+   ],
+   "tokens": [
+    670,
+    235,
+    283,
+    931,
+    680,
+    740,
+    317,
+    324,
+    1038,
+    561,
+    566,
+    1690,
+    504,
+    509,
+    1197,
+    269
+   ],
+   "twin_tokens": [
+    670,
+    235,
+    679,
+    1690
+   ],
+   "groups": {
+    "0": [
+     [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15
+     ]
+    ],
+    "8192": [
+     [
+      11,
+      14
+     ],
+     [
+      0,
+      3,
+      4,
+      5
+     ],
+     [
+      1,
+      2,
+      6,
+      7,
+      8,
+      9,
+      10,
+      12,
+      13
+     ],
+     [
+      15
+     ]
+    ],
+    "10240": [
+     [
+      3,
+      11,
+      14
+     ],
+     [
+      0,
+      4,
+      5,
+      8,
+      12,
+      13
+     ],
+     [
+      1,
+      2,
+      6,
+      7,
+      9,
+      10,
+      15
+     ]
+    ],
+    "12288": [
+     [
+      3,
+      5,
+      11,
+      14
+     ],
+     [
+      0,
+      2,
+      4,
+      6,
+      7,
+      8,
+      9,
+      10,
+      12,
+      13
+     ],
+     [
+      1,
+      15
+     ]
+    ],
+    "16384": [
+     [
+      3,
+      4,
+      5,
+      11,
+      14
+     ],
+     [
+      0,
+      1,
+      2,
+      6,
+      7,
+      8,
+      9,
+      10,
+      12,
+      13,
+      15
+     ]
+    ],
+    "24576": [
+     [
+      0,
+      3,
+      4,
+      5,
+      8,
+      11,
+      14
+     ],
+     [
+      1,
+      2,
+      6,
+      7,
+      9,
+      10,
+      12,
+      13,
+      15
+     ]
+    ]
+   },
+   "group_tokens": {
+    "0": [
+     35840
+    ],
+    "8192": [
+     5376,
+     6144,
+     12800,
+     512
+    ],
+    "10240": [
+     7168,
+     10240,
+     6144
+    ],
+    "12288": [
+     8960,
+     15360,
+     1536
+    ],
+    "16384": [
+     12544,
+     16640
+    ],
+    "24576": [
+     17920,
+     7680
+    ]
+   }
+  },
+  "15878": {
+   "ids": [
+    "r_gd_conditionalqa_323",
+    "r_gd_conditionalqa_323_ya",
+    "r_gd_conditionalqa_323_yn",
+    "r_gd_conditionalqa_323_atk",
+    "r_gd_conditionalqa_323_ya_atk",
+    "r_gd_helpsteer2_attr_1443",
+    "r_gd_gen_tables_12172",
+    "r_gd_gen_tables_12173",
+    "r_gd_quartz_2261",
+    "r_hard_policy_b_138",
+    "r_gd_totto_claims_2248",
+    "r_gd_sd311_routing_2999",
+    "r_gd_sd311_routing_2999_ya",
+    "r_gd_sd311_routing_2999_yn",
+    "r_gd_msha_injury_2032",
+    "r_gd_msha_injury_2032_ya",
+    "r_gd_msha_injury_2032_yn"
+   ],
+   "twins": [
+    0,
+    3,
+    14
+   ],
+   "tokens": [
+    3201,
+    3210,
+    3212,
+    3217,
+    3226,
+    513,
+    559,
+    555,
+    358,
+    593,
+    374,
+    1392,
+    509,
+    511,
+    1293,
+    396,
+    398
+   ],
+   "twin_tokens": [
+    3201,
+    3217,
+    1293
+   ],
+   "groups": {
+    "0": [
+     [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16
+     ]
+    ],
+    "8192": [
+     [
+      0,
+      1,
+      2,
+      3,
+      4
+     ],
+     [
+      11,
+      12,
+      13
+     ],
+     [
+      14,
+      15,
+      16
+     ],
+     [
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+     ]
+    ],
+    "10240": [
+     [
+      0,
+      1,
+      2,
+      3,
+      4
+     ],
+     [
+      11,
+      12,
+      13
+     ],
+     [
+      9,
+      14,
+      15,
+      16
+     ],
+     [
+      5,
+      6,
+      7,
+      8,
+      10
+     ]
+    ],
+    "12288": [
+     [
+      0,
+      1,
+      2,
+      3,
+      4
+     ],
+     [
+      11,
+      12,
+      13
+     ],
+     [
+      5,
+      9,
+      14,
+      15,
+      16
+     ],
+     [
+      6,
+      7,
+      8,
+      10
+     ]
+    ],
+    "16384": [
+     [
+      0,
+      1,
+      2,
+      3,
+      4
+     ],
+     [
+      9,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16
+     ],
+     [
+      5,
+      6,
+      7,
+      8,
+      10
+     ]
+    ],
+    "24576": [
+     [
+      0,
+      1,
+      2,
+      3,
+      4
+     ],
+     [
+      5,
+      6,
+      7,
+      8,
+      9,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16
+     ],
+     [
+      10
+     ]
+    ]
+   },
+   "group_tokens": {
+    "0": [
+     66560
+    ],
+    "8192": [
+     23296,
+     4608,
+     6144,
+     4608
+    ],
+    "10240": [
+     23296,
+     4608,
+     7680,
+     3840
+    ],
+    "12288": [
+     23296,
+     4608,
+     9216,
+     3072
+    ],
+    "16384": [
+     23296,
+     12288,
+     3840
+    ],
+    "24576": [
+     23296,
+     18432,
+     512
+    ]
+   }
+  },
+  "15994": {
+   "ids": [
+    "r_gd_edgar_10k_item_3391",
+    "r_gd_edgar_10k_item_3391_ya",
+    "r_gd_edgar_10k_item_3391_yn",
+    "r_gd_gen_logic_negation_4721",
+    "r_gd_cards_1144",
+    "r_gd_prontoqa_1272",
+    "r_gd_totto_claims_2432",
+    "r_gd_gen_tables_5800",
+    "r_gd_gen_tables_5801",
+    "r_gd_faithdial_2875",
+    "r_gd_wtq_1100",
+    "r_gd_gen_msn_rules_3542",
+    "r_gd_gen_msn_rules_3543",
+    "r_gd_gen_numeric_dates_12050",
+    "r_gd_gen_numeric_dates_12051",
+    "r_gd_wiki_help_routing_1923"
+   ],
+   "twins": [],
+   "tokens": [
+    1023,
+    582,
+    584,
+    317,
+    411,
+    467,
+    733,
+    500,
+    500,
+    442,
+    5393,
+    389,
+    385,
+    465,
+    467,
+    446
+   ],
+   "twin_tokens": [],
+   "groups": {
+    "0": [
+     [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15
+     ]
+    ],
+    "8192": [
+     [
+      10
+     ],
+     [
+      0,
+      1,
+      2,
+      6,
+      15
+     ],
+     [
+      3,
+      4,
+      5,
+      7,
+      8,
+      9,
+      11,
+      12,
+      13,
+      14
+     ]
+    ],
+    "10240": [
+     [
+      0,
+      1,
+      2,
+      10
+     ],
+     [
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      13,
+      14,
+      15
+     ],
+     [
+      3,
+      11,
+      12
+     ]
+    ],
+    "12288": [
+     [
+      0,
+      1,
+      2,
+      10
+     ],
+     [
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      11,
+      12,
+      13,
+      14,
+      15
+     ]
+    ],
+    "16384": [
+     [
+      0,
+      1,
+      2,
+      6,
+      10,
+      15
+     ],
+     [
+      3,
+      4,
+      5,
+      7,
+      8,
+      9,
+      11,
+      12,
+      13,
+      14
+     ]
+    ],
+    "24576": [
+     [
+      0,
+      1,
+      2,
+      6,
+      7,
+      8,
+      9,
+      10,
+      15
+     ],
+     [
+      3,
+      4,
+      5,
+      11,
+      12,
+      13,
+      14
+     ]
+    ]
+   },
+   "group_tokens": {
+    "0": [
+     90112
+    ],
+    "8192": [
+     5632,
+     5120,
+     5120
+    ],
+    "10240": [
+     22528,
+     6912,
+     1536
+    ],
+    "12288": [
+     22528,
+     9216
+    ],
+    "16384": [
+     33792,
+     5120
+    ],
+    "24576": [
+     50688,
+     3584
+    ]
+   }
+  },
+  "17783": {
+   "ids": [
+    "r_gd_msha_injury_1876",
+    "r_gd_conditionalqa_1156",
+    "r_gd_conditionalqa_1156_ds",
+    "r_gd_conditionalqa_1156_atk",
+    "r_gd_gen_policy_exceptions_7500",
+    "r_gd_gen_policy_exceptions_7500_ya",
+    "r_gd_gen_policy_exceptions_7500_yn",
+    "r_gd_gen_policy_exceptions_7501",
+    "r_gd_gen_policy_exceptions_7501_ya",
+    "r_gd_gen_policy_exceptions_7501_yn",
+    "r_gd_codah_2035",
+    "r_gd_medqa_yn_5892",
+    "r_gd_edos_sexism_1316",
+    "r_gd_sd311_routing_4090",
+    "r_planted_b_68",
+    "r_gd_crossner_329"
+   ],
+   "twins": [
+    1,
+    13
+   ],
+   "tokens": [
+    678,
+    4579,
+    4579,
+    4595,
+    527,
+    547,
+    549,
+    524,
+    544,
+    546,
+    358,
+    398,
+    283,
+    1407,
+    350,
+    799
+   ],
+   "twin_tokens": [
+    4579,
+    1407
+   ],
+   "groups": {
+    "0": [
+     [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15
+     ]
+    ],
+    "8192": [
+     [
+      1,
+      2,
+      3
+     ],
+     [
+      0,
+      13,
+      15
+     ],
+     [
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      14
+     ]
+    ],
+    "10240": [
+     [
+      1,
+      2,
+      3
+     ],
+     [
+      0,
+      13,
+      15
+     ],
+     [
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      14
+     ]
+    ],
+    "12288": [
+     [
+      1,
+      2,
+      3
+     ],
+     [
+      0,
+      13,
+      15
+     ],
+     [
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      14
+     ]
+    ],
+    "16384": [
+     [
+      1,
+      2,
+      3
+     ],
+     [
+      0,
+      13,
+      15
+     ],
+     [
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      14
+     ]
+    ],
+    "24576": [
+     [
+      1,
+      2,
+      3
+     ],
+     [
+      0,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      11,
+      13,
+      14,
+      15
+     ],
+     [
+      10,
+      12
+     ]
+    ]
+   },
+   "group_tokens": {
+    "0": [
+     82944
+    ],
+    "8192": [
+     18432,
+     6144,
+     7680
+    ],
+    "10240": [
+     18432,
+     6144,
+     7680
+    ],
+    "12288": [
+     18432,
+     6144,
+     7680
+    ],
+    "16384": [
+     18432,
+     6144,
+     7680
+    ],
+    "24576": [
+     18432,
+     18432,
+     1024
+    ]
+   }
+  },
+  "21252": {
+   "ids": [
+    "r_gd_msha_injury_5905",
+    "r_gd_conditionalqa_700",
+    "r_gd_conditionalqa_700_ya",
+    "r_gd_conditionalqa_700_yn",
+    "r_gd_megaveridicality_449",
+    "r_gd_wtq_949",
+    "r_gd_gen_logic_negation_20526",
+    "r_gd_gen_logic_negation_20526_atk",
+    "r_br_infotabs_119",
+    "r_br_newsmtsc_258",
+    "r_gd_redocred_3281",
+    "r_hard_evidence_claims_b_80_x2",
+    "r_gd_hotpotqa_yesno_896",
+    "r_gd_medqa_yn_188",
+    "r_gd_feverous_7198",
+    "r_gd_climate_targets_253"
+   ],
+   "twins": [
+    0,
+    1,
+    8
+   ],
+   "tokens": [
+    1394,
+    4655,
+    4664,
+    4666,
+    331,
+    682,
+    322,
+    332,
+    445,
+    369,
+    608,
+    596,
+    618,
+    540,
+    507,
+    447
+   ],
+   "twin_tokens": [
+    1395,
+    4655,
+    445
+   ],
+   "groups": {
+    "0": [
+     [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15
+     ]
+    ],
+    "8192": [
+     [
+      1,
+      2,
+      3
+     ],
+     [
+      0,
+      12,
+      13
+     ],
+     [
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      14,
+      15
+     ],
+     [
+      4
+     ]
+    ],
+    "10240": [
+     [
+      1,
+      2,
+      3
+     ],
+     [
+      0,
+      10,
+      12,
+      13
+     ],
+     [
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      11,
+      14,
+      15
+     ]
+    ],
+    "12288": [
+     [
+      1,
+      2,
+      3
+     ],
+     [
+      0,
+      5,
+      10,
+      12,
+      13
+     ],
+     [
+      4,
+      6,
+      7,
+      8,
+      9,
+      11,
+      14,
+      15
+     ]
+    ],
+    "16384": [
+     [
+      1,
+      2,
+      3
+     ],
+     [
+      0,
+      5,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15
+     ],
+     [
+      4,
+      6,
+      7,
+      8,
+      9
+     ]
+    ],
+    "24576": [
+     [
+      1,
+      2,
+      3
+     ],
+     [
+      0,
+      5,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15
+     ],
+     [
+      4,
+      6,
+      7
+     ]
+    ]
+   },
+   "group_tokens": {
+    "0": [
+     92416
+    ],
+    "8192": [
+     19456,
+     6144,
+     7680,
+     512
+    ],
+    "10240": [
+     19456,
+     7680,
+     7680
+    ],
+    "12288": [
+     19456,
+     9216,
+     6912
+    ],
+    "16384": [
+     19456,
+     13824,
+     3072
+    ],
+    "24576": [
+     19456,
+     18432,
+     1536
+    ]
+   }
+  },
+  "22153": {
+   "ids": [
+    "r_std_evidence_204",
+    "r_gd_conditionalqa_1110",
+    "r_gd_conditionalqa_1110_ya",
+    "r_gd_conditionalqa_1110_yn",
+    "r_gd_conditionalqa_1110_atk",
+    "r_gd_drugprot_2104",
+    "r_gd_wiki_help_routing_2158",
+    "r_gd_gen_logic_negation_23373",
+    "r_gd_totto_claims_5480",
+    "r_br_edos_616",
+    "r_gd_gen_numeric_dates_1914",
+    "r_gd_gen_numeric_dates_1915",
+    "r_gd_wtq_1811",
+    "r_gd_gen_nlr_heuristics_3618",
+    "r_gd_hotpotqa_yesno_1879",
+    "r_gd_mtbench_human_1270",
+    "r_gd_mtbench_human_1270_atk"
+   ],
+   "twins": [
+    1,
+    4,
+    6
+   ],
+   "tokens": [
+    457,
+    3099,
+    3112,
+    3114,
+    3121,
+    907,
+    420,
+    332,
+    549,
+    313,
+    430,
+    430,
+    869,
+    322,
+    1077,
+    1349,
+    1366
+   ],
+   "twin_tokens": [
+    3099,
+    3121,
+    420
+   ],
+   "groups": {
+    "0": [
+     [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16
+     ]
+    ],
+    "8192": [
+     [
+      1,
+      2,
+      3,
+      4
+     ],
+     [
+      14,
+      15,
+      16
+     ],
+     [
+      0,
+      5,
+      6,
+      8,
+      12
+     ],
+     [
+      7,
+      9,
+      10,
+      11,
+      13
+     ]
+    ],
+    "10240": [
+     [
+      1,
+      2,
+      3,
+      4
+     ],
+     [
+      5,
+      14,
+      15,
+      16
+     ],
+     [
+      0,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13
+     ]
+    ],
+    "12288": [
+     [
+      1,
+      2,
+      3,
+      4
+     ],
+     [
+      5,
+      12,
+      14,
+      15,
+      16
+     ],
+     [
+      0,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      13
+     ]
+    ],
+    "16384": [
+     [
+      1,
+      2,
+      3,
+      4
+     ],
+     [
+      5,
+      6,
+      12,
+      14,
+      15,
+      16
+     ],
+     [
+      0,
+      7,
+      8,
+      9,
+      10,
+      11,
+      13
+     ]
+    ],
+    "24576": [
+     [
+      1,
+      2,
+      3,
+      4
+     ],
+     [
+      0,
+      5,
+      6,
+      8,
+      12,
+      14,
+      15,
+      16
+     ],
+     [
+      7,
+      9,
+      10,
+      11,
+      13
+     ]
+    ]
+   },
+   "group_tokens": {
+    "0": [
+     66560
+    ],
+    "8192": [
+     19968,
+     4608,
+     6144,
+     2560
+    ],
+    "10240": [
+     19968,
+     6144,
+     10240
+    ],
+    "12288": [
+     19968,
+     7680,
+     6912
+    ],
+    "16384": [
+     19968,
+     10752,
+     5376
+    ],
+    "24576": [
+     19968,
+     13824,
+     2560
+    ]
+   }
+  },
+  "22522": {
+   "ids": [
+    "r_gd_boardgameqa_6717",
+    "r_gd_faithdial_3425",
+    "r_gd_star_next_action_1272",
+    "r_gd_drugprot_1529",
+    "r_gd_wtq_3800",
+    "r_gd_prontoqa_48",
+    "r_gd_boardgameqa_1230",
+    "r_gd_boardgameqa_1230_ya",
+    "r_gd_boardgameqa_1230_yn",
+    "r_gd_mfrc_5420",
+    "r_gd_saferproducts_severity_1015",
+    "r_gd_edos_sexism_102",
+    "r_gd_usb_factuality_1095",
+    "r_ohr_logiqa2_5458",
+    "r_gd_redocred_1464",
+    "r_gd_edgar_10k_item_1474"
+   ],
+   "twins": [
+    10,
+    14
+   ],
+   "tokens": [
+    457,
+    381,
+    935,
+    886,
+    4472,
+    493,
+    841,
+    861,
+    863,
+    325,
+    812,
+    640,
+    462,
+    452,
+    617,
+    1180
+   ],
+   "twin_tokens": [
+    812,
+    617
+   ],
+   "groups": {
+    "0": [
+     [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15
+     ]
+    ],
+    "8192": [
+     [
+      2,
+      3,
+      4,
+      15
+     ],
+     [
+      6,
+      7,
+      8,
+      10,
+      11
+     ],
+     [
+      0,
+      1,
+      5,
+      9,
+      12,
+      13,
+      14
+     ]
+    ],
+    "10240": [
+     [
+      2,
+      3,
+      4,
+      15
+     ],
+     [
+      6,
+      7,
+      8,
+      10,
+      11,
+      14
+     ],
+     [
+      0,
+      1,
+      5,
+      9,
+      12,
+      13
+     ]
+    ],
+    "12288": [
+     [
+      2,
+      3,
+      4,
+      15
+     ],
+     [
+      0,
+      6,
+      7,
+      8,
+      10,
+      11,
+      14
+     ],
+     [
+      1,
+      5,
+      9,
+      12,
+      13
+     ]
+    ],
+    "16384": [
+     [
+      2,
+      3,
+      4,
+      6,
+      7,
+      8,
+      15
+     ],
+     [
+      0,
+      1,
+      5,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14
+     ]
+    ],
+    "24576": [
+     [
+      2,
+      3,
+      4,
+      6,
+      7,
+      8,
+      10,
+      11,
+      14,
+      15
+     ],
+     [
+      0,
+      1,
+      5,
+      9,
+      12,
+      13
+     ]
+    ]
+   },
+   "group_tokens": {
+    "0": [
+     82944
+    ],
+    "8192": [
+     18432,
+     6144,
+     6144
+    ],
+    "10240": [
+     18432,
+     8192,
+     3072
+    ],
+    "12288": [
+     18432,
+     9216,
+     2560
+    ],
+    "16384": [
+     32256,
+     11264
+    ],
+    "24576": [
+     55296,
+     3072
+    ]
+   }
+  },
+  "23346": {
+   "ids": [
+    "r_gd_mfrc_3697",
+    "r_gd_drugprot_177",
+    "r_gd_megaveridicality_434",
+    "r_hard_affect_53",
+    "r_gd_ncbi_disease_2481",
+    "r_gd_gen_logic_negation_19720",
+    "r_gd_taskmaster1_4061",
+    "r_29380ba63d70",
+    "r_v11c_44e68661456a",
+    "r_v11c_1703b13a7241",
+    "r_gd_drugprot_549",
+    "r_gd_vader_intensity_2503",
+    "r_gd_drugprot_4863",
+    "r_gd_drugprot_4863_ya",
+    "r_gd_drugprot_4863_yn",
+    "r_gd_wtq_4765"
+   ],
+   "twins": [
+    9,
+    11
+   ],
+   "tokens": [
+    423,
+    890,
+    333,
+    1108,
+    471,
+    286,
+    342,
+    386,
+    409,
+    407,
+    907,
+    479,
+    974,
+    615,
+    617,
+    3562
+   ],
+   "twin_tokens": [
+    407,
+    479
+   ],
+   "groups": {
+    "0": [
+     [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15
+     ]
+    ],
+    "8192": [
+     [
+      3,
+      15
+     ],
+     [
+      1,
+      10,
+      12,
+      13,
+      14
+     ],
+     [
+      0,
+      2,
+      4,
+      6,
+      7,
+      8,
+      9,
+      11
+     ],
+     [
+      5
+     ]
+    ],
+    "10240": [
+     [
+      3,
+      12,
+      13,
+      14,
+      15
+     ],
+     [
+      0,
+      1,
+      4,
+      10,
+      11
+     ],
+     [
+      2,
+      5,
+      6,
+      7,
+      8,
+      9
+     ]
+    ],
+    "12288": [
+     [
+      3,
+      10,
+      12,
+      13,
+      14,
+      15
+     ],
+     [
+      0,
+      1,
+      4,
+      7,
+      8,
+      9,
+      11
+     ],
+     [
+      2,
+      5,
+      6
+     ]
+    ],
+    "16384": [
+     [
+      1,
+      3,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15
+     ],
+     [
+      0,
+      2,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ]
+    ],
+    "24576": [
+     [
+      0,
+      1,
+      3,
+      4,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15
+     ],
+     [
+      2,
+      5,
+      6,
+      7,
+      8,
+      9
+     ]
+    ]
+   },
+   "group_tokens": {
+    "0": [
+     64512
+    ],
+    "8192": [
+     7168,
+     5120,
+     5120,
+     512
+    ],
+    "10240": [
+     17920,
+     6144,
+     3584
+    ],
+    "12288": [
+     21504,
+     9216,
+     1536
+    ],
+    "16384": [
+     32256,
+     4608
+    ],
+    "24576": [
+     39424,
+     3584
+    ]
+   }
+  },
+  "24590": {
+   "ids": [
+    "r_gd_smcalflow_action_1563",
+    "r_gd_drugprot_831",
+    "r_gd_gen_policy_exceptions_5990",
+    "r_gd_gen_policy_exceptions_5991",
+    "r_gd_conditionalqa_576",
+    "r_gd_wtq_4419",
+    "r_gd_winogrande_6632",
+    "r_gd_gen_evidence_conflict_15294",
+    "r_gd_gen_evidence_conflict_15295",
+    "r_hard_policy_b_24_x2",
+    "r_gd_ncbi_disease_916",
+    "r_gd_ncbi_disease_916_ya",
+    "r_gd_ncbi_disease_916_yn",
+    "r_br_wos46985_444",
+    "r_gd_edgar_10k_item_1660",
+    "r_gd_edgar_10k_item_1660_ya",
+    "r_gd_edgar_10k_item_1660_yn",
+    "r_gd_edgar_10k_item_1660_atk"
+   ],
+   "twins": [
+    0,
+    4,
+    10
+   ],
+   "tokens": [
+    1349,
+    893,
+    463,
+    462,
+    4639,
+    1439,
+    316,
+    697,
+    699,
+    481,
+    474,
+    490,
+    492,
+    963,
+    1187,
+    729,
+    731,
+    1205
+   ],
+   "twin_tokens": [
+    1349,
+    4639,
+    474
+   ],
+   "groups": {
+    "0": [
+     [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17
+     ]
+    ],
+    "8192": [
+     [
+      4
+     ],
+     [
+      0
+     ],
+     [
+      14,
+      15,
+      16,
+      17
+     ],
+     [
+      1,
+      5,
+      7,
+      8,
+      13
+     ],
+     [
+      2,
+      3,
+      6,
+      9,
+      10,
+      11,
+      12
+     ]
+    ],
+    "10240": [
+     [
+      4
+     ],
+     [
+      0
+     ],
+     [
+      13,
+      14,
+      15,
+      16,
+      17
+     ],
+     [
+      1,
+      2,
+      3,
+      5,
+      7,
+      8,
+      9
+     ],
+     [
+      6,
+      10,
+      11,
+      12
+     ]
+    ],
+    "12288": [
+     [
+      4
+     ],
+     [
+      0
+     ],
+     [
+      1,
+      13,
+      14,
+      15,
+      16,
+      17
+     ],
+     [
+      2,
+      3,
+      5,
+      7,
+      8,
+      9
+     ],
+     [
+      6,
+      10,
+      11,
+      12
+     ]
+    ],
+    "16384": [
+     [
+      4
+     ],
+     [
+      0
+     ],
+     [
+      1,
+      5,
+      7,
+      8,
+      13,
+      14,
+      15,
+      16,
+      17
+     ],
+     [
+      2,
+      3,
+      6,
+      9,
+      10,
+      11,
+      12
+     ]
+    ],
+    "24576": [
+     [
+      0,
+      4
+     ],
+     [
+      1,
+      2,
+      3,
+      5,
+      7,
+      8,
+      9,
+      13,
+      14,
+      15,
+      16,
+      17
+     ],
+     [
+      6,
+      10,
+      11,
+      12
+     ]
+    ]
+   },
+   "group_tokens": {
+    "0": [
+     102144
+    ],
+    "8192": [
+     9728,
+     3072,
+     5120,
+     7680,
+     4096
+    ],
+    "10240": [
+     9728,
+     3072,
+     6400,
+     10752,
+     2560
+    ],
+    "12288": [
+     9728,
+     3072,
+     7680,
+     9216,
+     2560
+    ],
+    "16384": [
+     9728,
+     3072,
+     13824,
+     4096
+    ],
+    "24576": [
+     19456,
+     18432,
+     2560
+    ]
+   }
+  },
+  "24797": {
+   "ids": [
+    "r_0a54a2552dd7",
+    "r_v11n_419951d746a0",
+    "r_v11n_6ecc5a92a85a",
+    "r_gd_finqa_3582",
+    "r_planted_a_171",
+    "r_gd_saferproducts_severity_3322",
+    "r_gd_edos_sexism_3081",
+    "r_gd_semtabfacts_sci_1736",
+    "r_gd_politeness_votes_420",
+    "r_gd_cards_4424",
+    "r_gd_aegis_prompts_784",
+    "r_gd_gen_numeric_dates_11960",
+    "r_gd_gen_numeric_dates_11961",
+    "r_gd_wtq_4756",
+    "r_gd_wtq_4756_atk",
+    "r_gd_mfrc_5401"
+   ],
+   "twins": [],
+   "tokens": [
+    283,
+    299,
+    303,
+    1240,
+    335,
+    748,
+    322,
+    496,
+    303,
+    378,
+    362,
+    553,
+    553,
+    3996,
+    4008,
+    365
+   ],
+   "twin_tokens": [],
+   "groups": {
+    "0": [
+     [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15
+     ]
+    ],
+    "8192": [
+     [
+      3,
+      5,
+      13,
+      14
+     ],
+     [
+      4,
+      6,
+      7,
+      9,
+      10,
+      11,
+      12,
+      15
+     ],
+     [
+      0,
+      1,
+      2,
+      8
+     ]
+    ],
+    "10240": [
+     [
+      3,
+      5,
+      13,
+      14
+     ],
+     [
+      0,
+      1,
+      2,
+      4,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      15
+     ]
+    ],
+    "12288": [
+     [
+      3,
+      5,
+      11,
+      12,
+      13,
+      14
+     ],
+     [
+      0,
+      1,
+      2,
+      4,
+      6,
+      7,
+      8,
+      9,
+      10,
+      15
+     ]
+    ],
+    "16384": [
+     [
+      3,
+      5,
+      7,
+      9,
+      11,
+      12,
+      13,
+      14
+     ],
+     [
+      0,
+      1,
+      2,
+      4,
+      6,
+      8,
+      10,
+      15
+     ]
+    ],
+    "24576": [
+     [
+      3,
+      4,
+      5,
+      6,
+      7,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15
+     ],
+     [
+      0,
+      1,
+      2,
+      8
+     ]
+    ]
+   },
+   "group_tokens": {
+    "0": [
+     65536
+    ],
+    "8192": [
+     16384,
+     6144,
+     2048
+    ],
+    "10240": [
+     16384,
+     9216
+    ],
+    "12288": [
+     24576,
+     5120
+    ],
+    "16384": [
+     32768,
+     4096
+    ],
+    "24576": [
+     49152,
+     2048
+    ]
+   }
+  },
+  "24850": {
+   "ids": [
+    "r_gd_qasc_598",
+    "r_gd_mtbench_human_759",
+    "r_gd_wtq_4971",
+    "r_gd_gen_msn_fault_3940",
+    "r_gd_gen_msn_fault_3941",
+    "r_0dcc764fe2ba",
+    "r_v11n_c79e8f10668a",
+    "r_v11n_b41b7807e5aa",
+    "r_163f98f85366",
+    "r_656e1c1fec8d",
+    "r_73b33e1568da",
+    "r_67fdf1e1817f",
+    "r_std_hearsay_23_x2",
+    "r_gd_qasc_4396",
+    "r_hard_evidence_claims_b_18_x2",
+    "r_gd_mfrc_1361"
+   ],
+   "twins": [],
+   "tokens": [
+    387,
+    910,
+    4998,
+    394,
+    396,
+    211,
+    223,
+    217,
+    213,
+    221,
+    211,
+    215,
+    433,
+    380,
+    514,
+    351
+   ],
+   "twin_tokens": [],
+   "groups": {
+    "0": [
+     [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15
+     ]
+    ],
+    "8192": [
+     [
+      1,
+      2,
+      12
+     ],
+     [
+      0,
+      3,
+      4,
+      13,
+      14,
+      15
+     ],
+     [
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11
+     ]
+    ],
+    "10240": [
+     [
+      1,
+      2,
+      12,
+      14
+     ],
+     [
+      0,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      13,
+      15
+     ]
+    ],
+    "12288": [
+     [
+      1,
+      2,
+      12,
+      14
+     ],
+     [
+      0,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      13,
+      15
+     ]
+    ],
+    "16384": [
+     [
+      1,
+      2,
+      3,
+      4,
+      12,
+      14,
+      15
+     ],
+     [
+      0,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      13
+     ]
+    ],
+    "24576": [
+     [
+      0,
+      1,
+      2,
+      3,
+      4,
+      12,
+      13,
+      14,
+      15
+     ],
+     [
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11
+     ]
+    ]
+   },
+   "group_tokens": {
+    "0": [
+     81920
+    ],
+    "8192": [
+     15360,
+     4608,
+     1792
+    ],
+    "10240": [
+     20480,
+     6144
+    ],
+    "12288": [
+     20480,
+     6144
+    ],
+    "16384": [
+     35840,
+     4608
+    ],
+    "24576": [
+     46080,
+     1792
+    ]
+   }
+  },
+  "25279": {
+   "ids": [
+    "r_gd_totto_claims_623",
+    "r_gd_codah_125",
+    "r_gd_saferproducts_severity_2968",
+    "r_std_evidence_34",
+    "r_gd_multiwoz21_sysacts_1779",
+    "r_9488aecc213a",
+    "r_2c9cd7445057",
+    "r_27505b4fa55a",
+    "r_gd_dstc9_track1_5389",
+    "r_gd_helpsteer2_attr_1210",
+    "r_gd_politeness_votes_1377",
+    "r_gd_comve_6126",
+    "r_v11i_0fe1b9cc2156",
+    "r_gd_gen_routing_2648",
+    "r_gd_gen_routing_2649",
+    "r_gd_gen_routing_2649_ya",
+    "r_gd_gen_routing_2649_yn",
+    "r_gd_gen_routing_2649_atk",
+    "r_gd_gen_routing_2649_ya_atk"
+   ],
+   "twins": [
+    3,
+    12,
+    14
+   ],
+   "tokens": [
+    476,
+    378,
+    796,
+    483,
+    349,
+    340,
+    229,
+    237,
+    539,
+    472,
+    348,
+    297,
+    1077,
+    859,
+    831,
+    514,
+    516,
+    846,
+    531
+   ],
+   "twin_tokens": [
+    483,
+    1077,
+    831
+   ],
+   "groups": {
+    "0": [
+     [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18
+     ]
+    ],
+    "8192": [
+     [
+      13,
+      14,
+      15,
+      16,
+      17,
+      18
+     ],
+     [
+      2,
+      3,
+      8,
+      12
+     ],
+     [
+      0,
+      1,
+      4,
+      5,
+      6,
+      7,
+      9,
+      10,
+      11
+     ]
+    ],
+    "10240": [
+     [
+      2,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18
+     ],
+     [
+      0,
+      1,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      12
+     ],
+     [
+      11
+     ]
+    ],
+    "12288": [
+     [
+      2,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18
+     ],
+     [
+      0,
+      1,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12
+     ]
+    ],
+    "16384": [
+     [
+      2,
+      8,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18
+     ],
+     [
+      0,
+      1,
+      3,
+      4,
+      5,
+      6,
+      7,
+      9,
+      10,
+      11
+     ]
+    ],
+    "24576": [
+     [
+      0,
+      1,
+      2,
+      3,
+      5,
+      6,
+      7,
+      8,
+      9,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18
+     ],
+     [
+      4,
+      10,
+      11
+     ]
+    ]
+   },
+   "group_tokens": {
+    "0": [
+     28160
+    ],
+    "8192": [
+     7168,
+     7680,
+     4608
+    ],
+    "10240": [
+     8192,
+     16640,
+     512
+    ],
+    "12288": [
+     8192,
+     17920
+    ],
+    "16384": [
+     14080,
+     5632
+    ],
+    "24576": [
+     24320,
+     1536
+    ]
+   }
+  },
+  "25306": {
+   "ids": [
+    "r_ohr_logiqa2_3526",
+    "r_gd_helpsteer2_attr_693",
+    "r_d012a5c06c42",
+    "r_ab2378da607b",
+    "r_8beeb39a20d2",
+    "r_gd_infotabs_nli_2813",
+    "r_gd_ghc_hate_1255",
+    "r_gd_answer_equiv_3060",
+    "r_gd_wtq_2059",
+    "r_gd_conditionalqa_514",
+    "r_gd_conditionalqa_514_atk",
+    "r_gd_drugprot_1592",
+    "r_gd_drugprot_1592_atk",
+    "r_gd_edgar_10k_item_4527",
+    "r_gd_mfrc_74",
+    "r_gd_druglabel_section_2729"
+   ],
+   "twins": [
+    2,
+    5,
+    6,
+    10,
+    11
+   ],
+   "tokens": [
+    382,
+    705,
+    345,
+    293,
+    293,
+    441,
+    567,
+    505,
+    1313,
+    5439,
+    5450,
+    913,
+    927,
+    388,
+    325,
+    1619
+   ],
+   "twin_tokens": [
+    345,
+    441,
+    567,
+    5450,
+    913
+   ],
+   "groups": {
+    "0": [
+     [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15
+     ]
+    ],
+    "8192": [
+     [
+      9,
+      10
+     ],
+     [
+      11,
+      12,
+      15
+     ],
+     [
+      1,
+      6,
+      7,
+      8
+     ],
+     [
+      0,
+      2,
+      3,
+      4,
+      5,
+      13,
+      14
+     ]
+    ],
+    "10240": [
+     [
+      9,
+      10
+     ],
+     [
+      8,
+      11,
+      12,
+      15
+     ],
+     [
+      1,
+      5,
+      6,
+      7,
+      13
+     ],
+     [
+      0,
+      2,
+      3,
+      4,
+      14
+     ]
+    ],
+    "12288": [
+     [
+      9,
+      10
+     ],
+     [
+      1,
+      8,
+      11,
+      12,
+      15
+     ],
+     [
+      0,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      13,
+      14
+     ]
+    ],
+    "16384": [
+     [
+      9,
+      10
+     ],
+     [
+      1,
+      6,
+      8,
+      11,
+      12,
+      15
+     ],
+     [
+      0,
+      2,
+      3,
+      4,
+      5,
+      7,
+      13,
+      14
+     ]
+    ],
+    "24576": [
+     [
+      9,
+      10
+     ],
+     [
+      1,
+      5,
+      6,
+      7,
+      8,
+      11,
+      12,
+      13,
+      15
+     ],
+     [
+      0,
+      2,
+      3,
+      4,
+      14
+     ]
+    ]
+   },
+   "group_tokens": {
+    "0": [
+     118272
+    ],
+    "8192": [
+     16896,
+     7168,
+     7680,
+     4608
+    ],
+    "10240": [
+     16896,
+     8960,
+     5376,
+     3072
+    ],
+    "12288": [
+     16896,
+     10752,
+     9216
+    ],
+    "16384": [
+     16896,
+     14336,
+     5120
+    ],
+    "24576": [
+     16896,
+     21504,
+     3072
+    ]
+   }
+  },
+  "25308": {
+   "ids": [
+    "r_gd_semtabfacts_sci_2539",
+    "r_gd_medqa_yn_609",
+    "r_gd_wands_product_130",
+    "r_gd_storm_ef_2693",
+    "r_gd_gen_policy_exceptions_6480",
+    "r_gd_gen_policy_exceptions_6481",
+    "r_gd_uscg_mariner_4127",
+    "r_gd_redocred_5576",
+    "r_gd_redocred_5576_atk",
+    "r_gd_comve_574",
+    "r_f13fbde080aa",
+    "r_v11c_0bd84fa7e023",
+    "r_v11c_cfb05ca1f908",
+    "r_9cc7b26c39e9",
+    "r_v11n_2633267f8eae",
+    "r_v11n_504f9cae611a"
+   ],
+   "twins": [
+    3
+   ],
+   "tokens": [
+    2523,
+    451,
+    1145,
+    770,
+    552,
+    552,
+    458,
+    840,
+    857,
+    291,
+    293,
+    324,
+    324,
+    216,
+    226,
+    226
+   ],
+   "twin_tokens": [
+    770
+   ],
+   "groups": {
+    "0": [
+     [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15
+     ]
+    ],
+    "8192": [
+     [
+      0,
+      2,
+      7,
+      8
+     ],
+     [
+      1,
+      3,
+      4,
+      5,
+      6
+     ],
+     [
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15
+     ]
+    ],
+    "10240": [
+     [
+      0,
+      2,
+      3,
+      7,
+      8
+     ],
+     [
+      1,
+      4,
+      5,
+      6,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15
+     ]
+    ],
+    "12288": [
+     [
+      0,
+      2,
+      3,
+      4,
+      5,
+      7,
+      8
+     ],
+     [
+      1,
+      6,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15
+     ]
+    ],
+    "16384": [
+     [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+     ],
+     [
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15
+     ]
+    ],
+    "24576": [
+     [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15
+     ],
+     [
+      9
+     ]
+    ]
+   },
+   "group_tokens": {
+    "0": [
+     43520
+    ],
+    "8192": [
+     10240,
+     6144,
+     3584
+    ],
+    "10240": [
+     15360,
+     8448
+    ],
+    "12288": [
+     20480,
+     4608
+    ],
+    "16384": [
+     25600,
+     3584
+    ],
+    "24576": [
+     40960,
+     512
+    ]
+   }
+  },
+  "26126": {
+   "ids": [
+    "r_gd_star_next_action_418",
+    "r_v11i_b2a7778ffd07",
+    "r_gd_aegis_prompts_1159",
+    "r_gd_mfrc_1480",
+    "r_br_wos46985_21",
+    "r_gd_answer_equiv_4099",
+    "r_gd_boardgameqa_5963",
+    "r_gd_oiics_event_3486",
+    "r_gd_gen_tables_20020",
+    "r_gd_gen_tables_20021",
+    "r_ohr_proofwriter_17",
+    "r_gd_totto_claims_1932",
+    "r_gd_medmcqa_subject_2937",
+    "r_gd_medmcqa_subject_684",
+    "r_94990a40449a",
+    "r_efe7a649ef4e",
+    "r_v11c_c1093833715a",
+    "r_v11c_31f047c95ed1"
+   ],
+   "twins": [
+    1,
+    4,
+    6,
+    16
+   ],
+   "tokens": [
+    1139,
+    229,
+    330,
+    383,
+    947,
+    635,
+    612,
+    1728,
+    782,
+    773,
+    379,
+    1553,
+    1102,
+    1084,
+    282,
+    222,
+    250,
+    250
+   ],
+   "twin_tokens": [
+    229,
+    947,
+    612,
+    250
+   ],
+   "groups": {
+    "0": [
+     [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17
+     ]
+    ],
+    "8192": [
+     [
+      0,
+      7
+     ],
+     [
+      4,
+      11,
+      12,
+      13
+     ],
+     [
+      2,
+      3,
+      5,
+      6,
+      8,
+      9,
+      10
+     ],
+     [
+      1,
+      14,
+      15,
+      16,
+      17
+     ]
+    ],
+    "10240": [
+     [
+      0,
+      4,
+      7
+     ],
+     [
+      5,
+      8,
+      9,
+      11,
+      12,
+      13
+     ],
+     [
+      1,
+      2,
+      3,
+      6,
+      10,
+      14,
+      15,
+      16,
+      17
+     ]
+    ],
+    "12288": [
+     [
+      0,
+      4,
+      7
+     ],
+     [
+      5,
+      6,
+      8,
+      9,
+      11,
+      12,
+      13
+     ],
+     [
+      1,
+      2,
+      3,
+      10,
+      14,
+      15,
+      16,
+      17
+     ]
+    ],
+    "16384": [
+     [
+      0,
+      4,
+      7,
+      12,
+      13
+     ],
+     [
+      1,
+      2,
+      3,
+      5,
+      6,
+      8,
+      9,
+      10,
+      11,
+      14,
+      15,
+      16,
+      17
+     ]
+    ],
+    "24576": [
+     [
+      0,
+      4,
+      5,
+      7,
+      11,
+      12,
+      13
+     ],
+     [
+      1,
+      2,
+      3,
+      6,
+      8,
+      9,
+      10,
+      14,
+      15,
+      16,
+      17
+     ]
+    ]
+   },
+   "group_tokens": {
+    "0": [
+     39424
+    ],
+    "8192": [
+     3584,
+     8960,
+     8192,
+     3584
+    ],
+    "10240": [
+     7168,
+     10752,
+     9216
+    ],
+    "12288": [
+     7168,
+     14336,
+     5120
+    ],
+    "16384": [
+     10752,
+     28672
+    ],
+    "24576": [
+     14336,
+     14336
+    ]
+   }
+  },
+  "27253": {
+   "ids": [
+    "r_gd_finqa_4498",
+    "r_br_wos46985_498",
+    "r_gd_vader_intensity_1790",
+    "r_gd_vader_intensity_1790_ya",
+    "r_gd_vader_intensity_1790_yn",
+    "r_hard_affect_24",
+    "r_gd_medmcqa_subject_1772",
+    "r_v11i_126559f4c60d",
+    "r_pg_multihop_train_1060",
+    "r_gd_saferproducts_severity_2591",
+    "r_gd_saferproducts_severity_2591_atk",
+    "r_gd_winogrande_4697",
+    "r_gd_conditionalqa_404",
+    "r_gd_conditionalqa_404_ya",
+    "r_gd_conditionalqa_404_yn",
+    "r_gd_conditionalqa_404_atk"
+   ],
+   "twins": [
+    5,
+    6,
+    7,
+    9
+   ],
+   "tokens": [
+    1173,
+    719,
+    466,
+    474,
+    476,
+    1062,
+    996,
+    268,
+    1004,
+    740,
+    764,
+    317,
+    4818,
+    4827,
+    4829,
+    4833
+   ],
+   "twin_tokens": [
+    1062,
+    996,
+    268,
+    740
+   ],
+   "groups": {
+    "0": [
+     [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15
+     ]
+    ],
+    "8192": [
+     [
+      12,
+      13,
+      14,
+      15
+     ],
+     [
+      0,
+      5
+     ],
+     [
+      1,
+      6
+     ],
+     [
+      2,
+      3,
+      4,
+      8,
+      9,
+      10,
+      11
+     ],
+     [
+      7
+     ]
+    ],
+    "10240": [
+     [
+      12,
+      13,
+      14,
+      15
+     ],
+     [
+      0,
+      5,
+      6
+     ],
+     [
+      1,
+      2,
+      3,
+      4,
+      8,
+      9,
+      10
+     ],
+     [
+      7,
+      11
+     ]
+    ],
+    "12288": [
+     [
+      12,
+      13,
+      14,
+      15
+     ],
+     [
+      0,
+      1,
+      5,
+      6
+     ],
+     [
+      2,
+      3,
+      4,
+      7,
+      8,
+      9,
+      10,
+      11
+     ]
+    ],
+    "16384": [
+     [
+      12,
+      13,
+      14,
+      15
+     ],
+     [
+      0,
+      1,
+      5,
+      6,
+      9,
+      10
+     ],
+     [
+      2,
+      3,
+      4,
+      7,
+      8,
+      11
+     ]
+    ],
+    "24576": [
+     [
+      12,
+      13,
+      14,
+      15
+     ],
+     [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      8,
+      9,
+      10
+     ],
+     [
+      7,
+      11
+     ]
+    ]
+   },
+   "group_tokens": {
+    "0": [
+     97280
+    ],
+    "8192": [
+     19456,
+     3840,
+     3072,
+     8192,
+     1024
+    ],
+    "10240": [
+     19456,
+     6400,
+     8192,
+     1536
+    ],
+    "12288": [
+     19456,
+     7680,
+     10240
+    ],
+    "16384": [
+     19456,
+     11520,
+     7168
+    ],
+    "24576": [
+     19456,
+     16640,
+     1536
+    ]
+   }
+  },
+  "27756": {
+   "ids": [
+    "r_gd_finqa_4173",
+    "r_gd_semtabfacts_sci_2513",
+    "r_gd_wtq_2574",
+    "r_gd_spiced_352",
+    "r_gd_spiced_352_atk",
+    "r_gd_wtq_529",
+    "r_gd_gen_msn_consent_4640",
+    "r_gd_gen_msn_consent_4641",
+    "r_gd_totto_claims_353",
+    "r_gd_check_covid_295",
+    "r_gd_sd311_routing_657",
+    "r_ohr_fld_557",
+    "r_2a546f4aa01d",
+    "r_77053e5e9a5d",
+    "r_ca4ede4eceb4",
+    "r_f0ee7e7107e7"
+   ],
+   "twins": [
+    11
+   ],
+   "tokens": [
+    636,
+    1930,
+    1001,
+    385,
+    392,
+    885,
+    394,
+    394,
+    584,
+    342,
+    594,
+    841,
+    277,
+    267,
+    267,
+    269
+   ],
+   "twin_tokens": [
+    841
+   ],
+   "groups": {
+    "0": [
+     [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15
+     ]
+    ],
+    "8192": [
+     [
+      0,
+      1,
+      2,
+      5,
+      8,
+      10,
+      11
+     ],
+     [
+      3,
+      4,
+      6,
+      7,
+      9,
+      12,
+      13,
+      14,
+      15
+     ]
+    ],
+    "10240": [
+     [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      8,
+      10,
+      11
+     ],
+     [
+      6,
+      7,
+      9,
+      12,
+      13,
+      14,
+      15
+     ]
+    ],
+    "12288": [
+     [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      10,
+      11
+     ],
+     [
+      9,
+      12,
+      13,
+      14,
+      15
+     ]
+    ],
+    "16384": [
+     [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11
+     ],
+     [
+      12,
+      13,
+      14,
+      15
+     ]
+    ],
+    "24576": [
+     [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15
+     ]
+    ]
+   },
+   "group_tokens": {
+    "0": [
+     34816
+    ],
+    "8192": [
+     16384,
+     4608
+    ],
+    "10240": [
+     20480,
+     3584
+    ],
+    "12288": [
+     24576,
+     2560
+    ],
+    "16384": [
+     26624,
+     2048
+    ],
+    "24576": [
+     34816
+    ]
+   }
+  },
+  "29726": {
+   "ids": [
+    "r_gd_naics_subsector_431",
+    "r_gd_naics_subsector_431_atk",
+    "r_gd_drugprot_4147",
+    "r_gd_feverous_6258",
+    "r_gd_prm800k_steps_1069",
+    "r_gd_webred_1203",
+    "r_gd_gen_routing_11510",
+    "r_gd_gen_routing_11510_ya",
+    "r_gd_gen_routing_11510_yn",
+    "r_gd_gen_routing_11511",
+    "r_gd_smcalflow_action_1438",
+    "r_gd_feverous_3231",
+    "r_gd_gen_constraints_7316",
+    "r_gd_gen_constraints_7316_ya",
+    "r_gd_gen_constraints_7316_yn",
+    "r_gd_gen_constraints_7317",
+    "r_gd_gen_constraints_7317_ya",
+    "r_gd_gen_constraints_7317_yn",
+    "r_gd_gen_constraints_7316_ya_atk",
+    "r_gd_gen_constraints_7317_atk"
+   ],
+   "twins": [
+    1,
+    6,
+    9,
+    19
+   ],
+   "tokens": [
+    1349,
+    1375,
+    910,
+    352,
+    704,
+    408,
+    817,
+    618,
+    620,
+    816,
+    1304,
+    394,
+    1853,
+    1324,
+    1326,
+    1878,
+    1369,
+    1371,
+    1340,
+    1898
+   ],
+   "twin_tokens": [
+    1375,
+    817,
+    816,
+    1898
+   ],
+   "groups": {
+    "0": [
+     [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19
+     ]
+    ],
+    "8192": [
+     [
+      10
+     ],
+     [
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19
+     ],
+     [
+      0,
+      1,
+      2
+     ],
+     [
+      4,
+      6,
+      7,
+      8,
+      9,
+      11
+     ],
+     [
+      3,
+      5
+     ]
+    ],
+    "10240": [
+     [
+      10
+     ],
+     [
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19
+     ],
+     [
+      0,
+      1,
+      2
+     ],
+     [
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      11
+     ]
+    ],
+    "12288": [
+     [
+      10
+     ],
+     [
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19
+     ],
+     [
+      0,
+      1,
+      2
+     ],
+     [
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      11
+     ]
+    ],
+    "16384": [
+     [
+      10
+     ],
+     [
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19
+     ],
+     [
+      0,
+      1,
+      2
+     ],
+     [
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      11
+     ]
+    ],
+    "24576": [
+     [
+      10
+     ],
+     [
+      0,
+      1,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19
+     ],
+     [
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      11
+     ]
+    ]
+   },
+   "group_tokens": {
+    "0": [
+     49152
+    ],
+    "8192": [
+     1536,
+     18432,
+     6144,
+     8192,
+     1024
+    ],
+    "10240": [
+     1536,
+     18432,
+     6144,
+     10240
+    ],
+    "12288": [
+     1536,
+     18432,
+     6144,
+     10240
+    ],
+    "16384": [
+     1536,
+     18432,
+     6144,
+     10240
+    ],
+    "24576": [
+     1536,
+     24576,
+     11264
+    ]
+   }
+  },
+  "29987": {
+   "ids": [
+    "r_gd_medmcqa_subject_3031",
+    "r_gd_sc101_7419",
+    "r_gd_dstc9_track1_834",
+    "r_gd_gen_nlr_heuristics_3524",
+    "r_gd_aegis_prompts_1578",
+    "r_gd_edgar_10k_item_3876",
+    "r_gd_edgar_10k_item_3876_ya",
+    "r_gd_edgar_10k_item_3876_yn",
+    "r_gd_tatqa_3415",
+    "r_gd_gen_logic_negation_13114",
+    "r_gd_prontoqa_222",
+    "r_gd_prontoqa_222_atk",
+    "r_gd_aegis_prompts_1956",
+    "r_gd_opentdb_2880",
+    "r_gd_medqa_yn_4472",
+    "r_gd_wtq_1065"
+   ],
+   "twins": [
+    5,
+    13
+   ],
+   "tokens": [
+    998,
+    282,
+    334,
+    323,
+    320,
+    1104,
+    614,
+    616,
+    1757,
+    323,
+    379,
+    400,
+    326,
+    443,
+    608,
+    3982
+   ],
+   "twin_tokens": [
+    1104,
+    443
+   ],
+   "groups": {
+    "0": [
+     [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15
+     ]
+    ],
+    "8192": [
+     [
+      8,
+      15
+     ],
+     [
+      0,
+      5,
+      6,
+      7
+     ],
+     [
+      2,
+      3,
+      4,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14
+     ],
+     [
+      1
+     ]
+    ],
+    "10240": [
+     [
+      8,
+      15
+     ],
+     [
+      0,
+      5,
+      6,
+      7,
+      14
+     ],
+     [
+      1,
+      2,
+      3,
+      4,
+      9,
+      10,
+      11,
+      12,
+      13
+     ]
+    ],
+    "12288": [
+     [
+      5,
+      6,
+      7,
+      8,
+      15
+     ],
+     [
+      0,
+      4,
+      10,
+      11,
+      12,
+      13,
+      14
+     ],
+     [
+      1,
+      2,
+      3,
+      9
+     ]
+    ],
+    "16384": [
+     [
+      0,
+      5,
+      6,
+      7,
+      8,
+      14,
+      15
+     ],
+     [
+      1,
+      2,
+      3,
+      4,
+      9,
+      10,
+      11,
+      12,
+      13
+     ]
+    ],
+    "24576": [
+     [
+      0,
+      5,
+      6,
+      7,
+      8,
+      10,
+      11,
+      13,
+      14,
+      15
+     ],
+     [
+      1,
+      2,
+      3,
+      4,
+      9,
+      12
+     ]
+    ]
+   },
+   "group_tokens": {
+    "0": [
+     73728
+    ],
+    "8192": [
+     8192,
+     6400,
+     7680,
+     512
+    ],
+    "10240": [
+     8192,
+     7680,
+     5120
+    ],
+    "12288": [
+     24576,
+     8192,
+     2048
+    ],
+    "16384": [
+     32768,
+     5120
+    ],
+    "24576": [
+     49152,
+     3072
+    ]
+   }
+  }
+ },
+ "seconds_measure": 172.9,
+ "seconds": {
+  "load": 10.6,
+  "total": 185.6
+ }
+}

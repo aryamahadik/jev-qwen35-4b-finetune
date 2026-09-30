@@ -12,7 +12,7 @@ from pathlib import Path
 HERE = Path(__file__).resolve().parent
 import os
 FIT_SPLITS = os.environ.get("CAL_FIT", "dev,devzs").split(",")
-APPLY_DIRS = ["preds", "preds_dev", "preds_devzs", "preds_devzs2", "preds_devp", "preds_devp_card", "preds_eval_card", "preds_eval_long", "preds_eval_multi", "preds_eval_hc", "preds_dev_hc", "preds_eval_jagged", "preds_eval_opi", "preds_pg_dev", "preds_ohs"]
+APPLY_DIRS = ["preds", "preds_dev", "preds_devzs", "preds_devzs2", "preds_devp", "preds_devp_card", "preds_eval_card", "preds_eval_long", "preds_eval_multi", "preds_eval_hc", "preds_dev_hc", "preds_eval_jagged", "preds_eval_opi", "preds_pg_dev", "preds_ohs", "preds_ohs2"]
 GRID = [round(0.25 + 0.05 * i, 2) for i in range(196)]  # 0.25 .. 10.0
 
 
@@ -67,6 +67,6 @@ for name in sys.argv[1:]:
         meta = HERE / d / f"{name}.meta.json"
         if meta.exists():
             m = json.loads(meta.read_text())
-            (HERE / d / f"{name}_cal.meta.json").write_text(json.dumps({**m, "temperature": T}, indent=2))
+            (HERE / d / f"{name}_cal.meta.json").write_text(json.dumps({**m, "temperature": T, "path": "calibrate"}, indent=2))
     (HERE / "logs").mkdir(exist_ok=True)
     (HERE / f"logs/calib_{name}.json").write_text(json.dumps({"T": T, "nll_before": before, "nll_after": after}, indent=2))

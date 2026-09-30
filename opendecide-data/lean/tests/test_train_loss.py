@@ -725,3 +725,19 @@ def test_train_kd_with_lah_rows(fake_env, tmp_path):
            "train_file": "train.jsonl", "rel_file": "rels.jsonl", "lam_inv": 1.0, "sym_cons": True, "perm_twin": 0.5}
     res = td.train(cfg, tmp_path, tmp_path / "out", dev="cpu")
     assert all(math.isfinite(rec["loss"]) for rec in res["meta"]["log"])
+
+
+def test_label_smooth_and_teacher_T_default_off_and_sharpen():
+    import train_decoder as td
+    p = torch.tensor([0.7, 0.2, 0.1])
+    assert torch.equal(td.sharpen(p, None), p) and torch.equal(td.sharpen(p, 1), p)
+    q = td.sharpen(p, 0.5)
+    assert abs(float(q.sum()) - 1) < 1e-6 and float(q[0]) > 0.7  # sharper
+    r = {"id": "a", "qtype": "noul", "source": "x", "gold": 1, "meta": {"teacher": {"yes": 0.8}}}
+    lg = [torch.tensor([0.4, -0.4])]
+    base = {"recipe": "A3", "kd": 0.5, "lam": 1.0, "beta": 0.0}
+    l0, _, _ = td.compute_loss(dict(base), [r], [[0, 1]], lg, {}, 0, 10, "cpu", cyg=True)
+    l1, _, _ = td.compute_loss(dict(base, label_smooth=None, teacher_T={}), [r], [[0, 1]], lg, {}, 0, 10, "cpu", cyg=True)
+    assert torch.equal(l0, l1)  # unset knobs = old loss exactly
+    l2, _, _ = td.compute_loss(dict(base, label_smooth=0.0, teacher_T={"noul": 0.6}), [r], [[0, 1]], lg, {}, 0, 10, "cpu", cyg=True)
+    assert float(l2) != float(l0)

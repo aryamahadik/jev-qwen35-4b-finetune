@@ -1,0 +1,141 @@
+{
+  "rule": "a dev source is unseen when no source name in the training files equals it or extends it by a '_' part (k == s, k.startswith(s + '_'), k.endswith('_' + s), s.startswith(k + '_'))",
+  "text_guard": "no unseen-source dev row may have >= 50% of its word 5-grams (lower case, white-space split of 'state') in the 'state' of a training row",
+  "splits": [
+    "dev_nc",
+    "taskbank_dev",
+    "hard_dev",
+    "dev_negwords",
+    "dev_claims",
+    "pg_dev",
+    "devzs",
+    "devp_card",
+    "dev"
+  ],
+  "train_files": [
+    "data/v14_parts/golden_train.jsonl",
+    "data/train_v07.jsonl",
+    "data/train_v08s2.jsonl",
+    "data/train_v09s3.jsonl",
+    "data/train_v10s4.jsonl",
+    "data/train_v11.jsonl",
+    "data/train_v11b.jsonl",
+    "data/train_v11c.jsonl",
+    "data/train_v13t.jsonl",
+    "data/train_prism_arms.jsonl",
+    "data/train_2b_kd.jsonl",
+    "data/train_2b_rest.jsonl"
+  ],
+  "sources": [
+    "ag_news",
+    "bbc",
+    "btzsc_appreviews",
+    "btzsc_biasframes_intent",
+    "btzsc_biasframes_offensive",
+    "btzsc_biasframes_sex",
+    "btzsc_capsotu",
+    "btzsc_empathetic",
+    "btzsc_financialphrasebank",
+    "btzsc_manifesto",
+    "btzsc_trueteacher",
+    "cb",
+    "climate",
+    "emotion",
+    "irony",
+    "rotten_tomatoes",
+    "spam"
+  ],
+  "rows": {
+    "ag_news": 400,
+    "bbc": 183,
+    "btzsc_appreviews": 112,
+    "btzsc_biasframes_intent": 112,
+    "btzsc_biasframes_offensive": 112,
+    "btzsc_biasframes_sex": 112,
+    "btzsc_capsotu": 112,
+    "btzsc_empathetic": 112,
+    "btzsc_financialphrasebank": 112,
+    "btzsc_manifesto": 112,
+    "btzsc_trueteacher": 112,
+    "cb": 291,
+    "climate": 390,
+    "emotion": 400,
+    "irony": 391,
+    "rotten_tomatoes": 394,
+    "spam": 390
+  },
+  "n_rows": 3847,
+  "units": 1519,
+  "by_split": {
+    "ag_news": {
+      "devzs": 400
+    },
+    "bbc": {
+      "dev_negwords": 36,
+      "dev_claims": 39,
+      "devp_card": 108
+    },
+    "btzsc_appreviews": {
+      "dev_nc": 112
+    },
+    "btzsc_biasframes_intent": {
+      "dev_nc": 112
+    },
+    "btzsc_biasframes_offensive": {
+      "dev_nc": 112
+    },
+    "btzsc_biasframes_sex": {
+      "dev_nc": 112
+    },
+    "btzsc_capsotu": {
+      "dev_nc": 112
+    },
+    "btzsc_empathetic": {
+      "dev_nc": 112
+    },
+    "btzsc_financialphrasebank": {
+      "dev_nc": 112
+    },
+    "btzsc_manifesto": {
+      "dev_nc": 112
+    },
+    "btzsc_trueteacher": {
+      "dev_nc": 112
+    },
+    "cb": {
+      "dev_negwords": 54,
+      "dev_claims": 57,
+      "devp_card": 180
+    },
+    "climate": {
+      "dev_negwords": 90,
+      "dev_claims": 60,
+      "devp_card": 240
+    },
+    "emotion": {
+      "devzs": 400
+    },
+    "irony": {
+      "dev_negwords": 82,
+      "dev_claims": 69,
+      "devp_card": 240
+    },
+    "rotten_tomatoes": {
+      "dev_negwords": 70,
+      "dev_claims": 84,
+      "devp_card": 240
+    },
+    "spam": {
+      "dev_negwords": 90,
+      "dev_claims": 60,
+      "devp_card": 240
+    }
+  },
+  "text_guard_result": {
+    "rows_checked": 3847,
+    "rows_too_short": 0,
+    "rows_flagged": 0,
+    "max_share_of_ngrams_found": 0.2
+  },
+  "written": "2026-09-30T12:16:42+00:00"
+}

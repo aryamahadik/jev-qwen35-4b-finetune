@@ -13,6 +13,7 @@ import time
 
 import torch
 
+import decoder_io
 from decoder_io import Readout, cand_logits, robust_probs, think_logits
 
 
@@ -49,8 +50,9 @@ LET = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 
 def letter_row(task, tok, fmt):
     """Rows for the lettered formats. 'cygnet': Cygnet's system prompt + state/instructions/options(description) layout,
-    yes/no as lettered true/false options. 'inline': our system prompt and layout, options shown as 'key: description'.
-    Returns (row, keys, yes_index) where yes_index is the option index meaning P(yes) for noul (else None)."""
+    yes/no as lettered true/false options; the message follows decoder_io.LAYOUT (text_first = Cygnet's published
+    layout, byte-identical to the old hard-coded one). 'inline': our system prompt and layout, options shown as
+    'key: description'. Returns (row, keys, yes_index) where yes_index is the option index meaning P(yes) for noul."""
     q = task.question
     qt, crit, instr = q["type"], q.get("criteria"), q["instructions"]
     if qt == "score":
@@ -63,16 +65,16 @@ def letter_row(task, tok, fmt):
     yes_index = next((i for i, k in enumerate(keys) if str(k).lower() == "true"), None) if qt == "noul" else None
     st = state_text(task.state)
     if fmt == "cygnet":
-        lines = [st.rstrip(), "", instr.rstrip(), "", "Options:"] + [f"{LET[i]}. {d or k}" for i, (k, d) in enumerate(items)]
-        lines += ["", "Answer with the letter of exactly one option, and nothing else:"]
-        msgs = [{"role": "system", "content": CYGNET_SYSTEM}, {"role": "user", "content": "\n".join(lines)}]
+        row = {"state": st, "instructions": instr, "qtype": "choice", "options": [str(d or k) for k, d in items]}
+        user = decoder_io.cygnet_msg(row)  # no card: options carry their descriptions
+        msgs = [{"role": "system", "content": CYGNET_SYSTEM}, {"role": "user", "content": user}]
         kw = {"enable_thinking": False} if "enable_thinking" in (tok.chat_template or "") else {}
         try:
             text = tok.apply_chat_template(msgs, tokenize=False, add_generation_prompt=True, **kw)
         except Exception:
-            msgs = [{"role": "user", "content": CYGNET_SYSTEM + "\n\n" + "\n".join(lines)}]
+            msgs = [{"role": "user", "content": CYGNET_SYSTEM + "\n\n" + user}]
             text = tok.apply_chat_template(msgs, tokenize=False, add_generation_prompt=True, **kw)
-        row = {"state": st, "instructions": instr, "qtype": "choice", "options": [str(d or k) for k, d in items], "_prompt": text}
+        row["_prompt"] = text
     else:  # inline
         opts = [f"{k}: {d}" if d and str(d).strip() and str(d).strip() != str(k) else str(k) for k, d in items]
         row = {"state": st, "instructions": instr, "qtype": "choice", "options": opts}

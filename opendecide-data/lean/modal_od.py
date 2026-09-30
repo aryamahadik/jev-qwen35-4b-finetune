@@ -10,6 +10,8 @@ Adapters live on the Modal volume "opendecide" under /vol/models/<name>.
 from __future__ import annotations
 
 import json
+import re
+import time
 from pathlib import Path
 
 import modal
@@ -23,26 +25,65 @@ image = (
     .pip_install("torch==2.8.0", "transformers==4.57.6", "peft==0.17.1", "accelerate", "gliclass==0.1.17",
                  "datasets", "numpy", "sentencepiece", "protobuf", "hf_transfer", "sentence-transformers==5.1.1")
     .env({"HF_HOME": "/vol/hf", "HF_HUB_ENABLE_HF_TRANSFER": "1", "TOKENIZERS_PARALLELISM": "false"})
-    .add_local_python_source("decoder_io", "gliclass_io", "train_decoder", "hc", "jevbench_od", "calc_tool")
+    .add_local_python_source("decoder_io", "gliclass_io", "train_decoder", "hc", "jevbench_od", "calc_tool", "prism_x")
     .add_local_dir(JB / "jevbench", "/root/jevbench_pkg/jevbench")
     .add_local_dir(JB / "datasets/public", "/root/jb_public")
     .add_local_dir(JB.parent / "splits", "/root/jb_split")
     .add_local_file(HERE / "train.py", "/root/train.py")
-    .add_local_dir(HERE / "data", "/root/data")
+    .add_local_dir(HERE / "data", "/root/data", ignore=lambda p: _data_ignore(p))
 )
 # Qwen3.5 (hybrid Gated-DeltaNet + attention) and Gemma 4 need transformers 5.x; fla's Triton kernels need
 # triton >= 3.7.1 on Hopper (torch 2.14 ships triton 3.8)
+# Every package pinned to the exact versions of the first Qwen3.5 image (built 25 Sep 2026, logs/probe35.log): each
+# Modal account builds its own image, and an unpinned package (peft 0.21.1 came out on 29 Sep) would silently differ
+# between the segments of a relay run. train_decoder refuses to resume on a different software stack.
+PINNED35 = """accelerate==1.15.0 aiohappyeyeballs==2.7.1 aiohttp==3.14.3 aiosignal==1.4.0 annotated-doc==0.0.5 anyio==4.15.1
+attrs==26.1.0 certifi==2026.7.22 charset_normalizer==3.5.1 click==8.5.0 cloudpickle==3.1.2 cuda-bindings==13.4.3
+cuda-pathfinder==1.8.2 cuda-toolkit==13.0.3.0 datasets==5.0.1 dill==0.4.1 einops==0.8.2 filelock==4.0.3 fla-core==0.5.2
+flash-linear-attention==0.5.2 frozenlist==1.8.0 fsspec==2026.6.0 h11==0.16.0 hf-xet==1.6.0 hf_transfer==0.1.9
+httpcore==1.0.9 httpx==0.28.1 huggingface-hub==1.33.0 idna==3.20 jinja2==3.1.6 joblib==1.6.0 markdown-it-py==4.2.0
+MarkupSafe==3.0.3 mdurl==0.1.2 mpmath==1.3.0 multidict==6.9.1 multiprocess==0.70.19 narwhals==2.26.0 networkx==3.7
+numpy==2.5.3 nvidia-cublas==13.1.1.3 nvidia-cuda-cupti==13.0.85 nvidia-cuda-nvrtc==13.0.88 nvidia-cuda-runtime==13.0.96
+nvidia-cudnn-cu13==9.24.0.43 nvidia-cufft==12.0.0.61 nvidia-cufile==1.15.1.6 nvidia-curand==10.4.0.35
+nvidia-cusolver==12.0.4.66 nvidia-cusparse==12.6.3.3 nvidia-cusparselt-cu13==0.8.1 nvidia-nccl-cu13==2.30.7
+nvidia-nvjitlink==13.4.92 nvidia-nvshmem-cu13==3.4.5 nvidia-nvtx==13.0.85 packaging==26.3 pandas==3.0.6 peft==0.21.0
+propcache==0.5.4 protobuf==7.36.2 psutil==7.2.2 pyarrow==25.0.1 pygments==2.21.0 python-dateutil==2.9.0.post0
+pyyaml==6.0.3 regex==2026.9.10 requests==2.34.2 rich==15.0.0 safetensors==0.8.0 scikit-learn==1.9.1 scipy==1.18.1
+sentence-transformers==6.1.0 sentencepiece==0.2.2 setuptools==84.0.0 shellingham==1.5.4 six==1.17.0 sympy==1.14.0
+threadpoolctl==3.7.0 tokenizers==0.23.2 torch==2.14.0 tqdm==4.70.1 transformers==5.17.0 triton==3.8.0 typer==0.27.2
+typing-extensions==4.16.0 urllib3==2.8.0 xxhash==4.0.1 yarl==1.25.1""".split()
+V14_KEEP = {"golden_train.jsonl", "golden_relations.jsonl", "golden_dev.jsonl", "golden_dev_relations.jsonl",
+            "train_2b_golden_kd.jsonl"}  # the 2B's train_file (FINETUNE_PLAN.md 3.5; build_2b_kd.py --out default)
+
+
+def _data_ignore(p: Path) -> bool:
+    """Upload only what runs read: top-level split and train files, plus the v14 golden files (not the raw parts,
+    audits, definitions or pre-gap-fill copies, about 2 GB and 15K files), and never a *_label_shards directory
+    (shard_golden.py / od_gcp.py label: about 1 GB of shard copies and labels_* that no run reads). p is relative to
+    data/."""
+    parts = p.parts
+    if not parts:
+        return False
+    if parts[0].endswith("_label_shards"):
+        return True
+    if not parts[0].endswith("_parts"):
+        return False
+    if parts[0] != "v14_parts":
+        return True
+    return len(parts) > 1 and not (len(parts) == 2 and parts[1] in V14_KEEP)
+
+
 image35 = (
-    modal.Image.debian_slim(python_version="3.12")
-    .pip_install("torch==2.14.0", "transformers==5.17.0", "peft", "accelerate", "flash-linear-attention==0.5.2",
-                 "datasets", "numpy", "sentencepiece", "protobuf", "hf_transfer", "sentence-transformers")
+    modal.Image.debian_slim(python_version="3.12.10")  # exact patch = what "3.12" gives under builder 2025.06 (all accounts)
+    .pip_install(*PINNED35)
     .env({"HF_HOME": "/vol/hf", "HF_HUB_ENABLE_HF_TRANSFER": "1", "TOKENIZERS_PARALLELISM": "false",
           "TRITON_CACHE_DIR": "/vol/triton_cache"})
-    .add_local_python_source("decoder_io", "train_decoder", "hc", "jevbench_od", "calc_tool", "writeblock")
+    .add_local_python_source("decoder_io", "train_decoder", "hc", "jevbench_od", "calc_tool", "writeblock", "prism_x",
+                             "od_gcp", "shard_golden")
     .add_local_dir(JB / "jevbench", "/root/jevbench_pkg/jevbench")
     .add_local_dir(JB / "datasets/public", "/root/jb_public")
     .add_local_dir(JB.parent / "splits", "/root/jb_split")
-    .add_local_dir(HERE / "data", "/root/data")
+    .add_local_dir(HERE / "data", "/root/data", ignore=_data_ignore)
 )
 SECRETS = [modal.Secret.from_name("opendecide-keys")]
 # LoRA on every decoder-layer projection (attention, Gated-DeltaNet in/out projections, MLP); vision blocks are not "layers.N"
@@ -134,6 +175,11 @@ def _train_impl(name, cfg, splits, tta):
         import writeblock as wb
         decoder_io.WRITEBLOCK, wb.STATE["enabled"] = False, False
         out["preds_nowb"] = {s: _predict("decoder", model, tok, _rows(s), tta=tta) for s in cfg["ablate_splits"]}
+    import prism_x
+    if prism_x.PX is not None and cfg.get("ablate_splits"):  # PRISM-X reliance check: same weights, control plane off
+        prism_x.STATE["enabled"] = False
+        out["preds_nopx"] = {s: _predict("decoder", model, tok, _rows(s), tta=tta) for s in cfg["ablate_splits"]}
+        prism_x.STATE["enabled"] = True
     return out
 
 
@@ -145,6 +191,63 @@ def train_remote(name: str, cfg: dict, splits: list[str], tta: bool = False) -> 
 @app.function(image=image35, gpu="L40S", volumes={"/vol": vol}, secrets=SECRETS, timeout=4 * 3600)
 def train_remote35(name: str, cfg: dict, splits: list[str], tta: bool = False) -> dict:
     return _train_impl(name, cfg, splits, tta)
+
+
+@app.function(image=image35, gpu="H100!", volumes={"/vol": vol}, secrets=SECRETS, timeout=10 * 3600)
+def train_relay35(name: str, cfg: dict) -> dict:
+    """One segment of a relay run (a long run split across Modal accounts): exactly an H100 ("!" = never an H200),
+    trains until cfg stop_after_min / stop_at_step, commits the Volume after every checkpoint, no predictions.
+    A preemption (SIGINT) saves a checkpoint and Modal restarts the input, which resumes from it."""
+    import decoder_io
+    decoder_io.STYLE = cfg.get("style", "od")
+    import train_decoder
+    res = train_decoder.train(cfg, Path("/root/data"), Path(f"/vol/models/{name}"), on_ckpt=vol.commit)
+    vol.commit()
+    if res.get("stopped"):
+        return {"stopped": True, "next_step": res["next_step"], "n_steps": res["n_steps"], "meta": res["meta"]}
+    return {"stopped": False, "meta": res["meta"]}
+
+
+@app.function(image=image35, gpu="H100!", volumes={"/vol": vol}, secrets=SECRETS, timeout=10 * 3600)
+def label_relay35(name: str, base: str, revision: str, layout: str, shard_ids: list, perm_seed: int) -> dict:
+    """Teacher labels on Modal (FINETUNE_PLAN.md 3.2) with the L4-verified od_gcp label path: the shard set is built
+    in the container from the golden data (shard_golden, deterministic; refuses a different existing set), then each
+    listed shard is labelled (resumable: a done shard is skipped) and the Volume is committed after every shard."""
+    import od_gcp
+    import shard_golden as sg
+    od_gcp.MODELS = Path("/vol/models")
+    sd = Path("/vol/label_shards")
+    sg.main(["--data-dir", "/root/data", "--out", str(sd)])
+    vol.commit()
+    write = sg.write_json_atomic
+
+    def write_and_commit(path, obj):  # a shard's meta is written last: commit then, so a finished shard is durable
+        write(path, obj)
+        vol.commit()
+    sg.write_json_atomic = write_and_commit
+    for i in shard_ids:
+        a = od_gcp.parser().parse_args(["label", "--name", name, "--base", base, "--layout", layout, "--shards-dir",
+                                        str(sd), "--shard", str(i), "--revision", revision, "--perm-seed",
+                                        str(perm_seed)])
+        od_gcp.cmd_label(a)
+    vol.commit()
+    return {"shards": list(shard_ids), "labels": str(sd / f"labels_{name}")}
+
+
+@app.local_entrypoint()
+def label(shards: str, name: str = "q35_4b_pxE", base: str = "Qwen/Qwen3.5-4B",
+          revision: str = "851bf6e806efd8d0a36b00ddf55e13ccb7b8cd0a", layout: str = "schema_branch_mark",
+          perm_seed: int = 20260930):
+    """Teacher labels for a range of shards, e.g. two accounts in parallel:
+      MODAL_PROFILE=arya-mahadik-ai modal run --detach modal_od.py::label --shards 0-9
+      MODAL_PROFILE=aryamhd modal run --detach modal_od.py::label --shards 10-19
+    The adapter must be on the account's Volume first (modal volume put opendecide <local adapter> models/<name>).
+    Fetch with: modal volume get opendecide label_shards/labels_<name> data/v14_label_shards/"""
+    ids = []
+    for part in shards.split(","):
+        lo, _, hi = part.partition("-")
+        ids += list(range(int(lo), int(hi or lo) + 1))
+    print(json.dumps(label_relay35.remote(name, base, revision, layout, ids, perm_seed)))
 
 
 @app.function(image=image, gpu="L40S", volumes={"/vol": vol}, secrets=SECRETS, timeout=4 * 3600)
@@ -336,8 +439,11 @@ def _save(name, preds_by_split, extra=None):
             for r, p in zip(rows, preds):
                 f.write(json.dumps({"id": r["id"], "model": name, "probs": p}) + "\n")
         meta_p = pd / f"{name}.meta.json"
-        meta = json.loads(meta_p.read_text()) if meta_p.exists() else {}
-        meta.update({"name": name, "rows": len(rows), **(extra or {})})
+        old = json.loads(meta_p.read_text()) if meta_p.exists() else {}
+        # a fresh meta: keys of an earlier run under this name (layout, tta, load of an od_gcp predict) never survive;
+        # only the latency entrypoint's latency_<gpu> measurements are kept
+        meta = {**{k: v for k, v in old.items() if k.startswith("latency_")}, "name": name, "rows": len(rows),
+                **(extra or {})}
         meta_p.write_text(json.dumps(meta, indent=2))
         print(f"wrote {pd.name}/{name}.jsonl ({len(preds)} rows)")
 
@@ -376,8 +482,452 @@ def train(name: str, base: str, recipe: str = "A3", splits: str = "dev,devzs", e
     _save(name + ("_tta" if tta else ""), res["preds"], {"base": base, "train": {k: v for k, v in res["meta"].items() if k != "log"}})
     if res.get("preds_nowb"):
         _save(name + "_nowb", res["preds_nowb"], {"base": base, "ablation": "write-block off at inference"})
+    if res.get("preds_nopx"):
+        _save(name + "_nopx", res["preds_nopx"], {"base": base, "ablation": "PRISM-X control plane off at inference"})
     (HERE / "logs").mkdir(exist_ok=True)
     (HERE / f"logs/{name}.json").write_text(json.dumps(res["meta"], indent=2))
+
+
+RELAY_REQUIRED = ("name", "base", "base_revision", "train_file", "rel_file", "epochs", "lr", "batch", "r", "alpha", "seed",
+                  "style", "layout", "micro_tokens", "targets", "ckpt_every_min")
+
+
+@app.local_entrypoint()
+def relay(config: str, expect_resume: bool = False, stop_after_min: float = 0.0, stop_at_step: int = 0,
+          name_suffix: str = "", log_every: int = 0):
+    """A segment of a relay run from ONE frozen config file (every key written out; no CLI defaults can differ between
+    accounts). Launch detached, with the account's profile:
+      MODAL_PROFILE=acct1 modal run --detach modal_od.py::relay --config runs/q35_4b_main.json --stop-after-min 360
+      MODAL_PROFILE=acct2 modal run --detach modal_od.py::relay --config runs/q35_4b_main.json --expect-resume \\
+          --stop-after-min 360
+    Only expect_resume and the stop point come from the command line; they are not part of the run's identity.
+    Pilot runs (pilot/RUNBOOK.md) add --name-suffix (e.g. _pA1): the same config and run identity, written to
+    /vol/models/<name><suffix>, never to the real run's folder; --log-every N (a per-segment knob) logs more steps."""
+    cfg = json.loads((HERE / config).read_text())
+    missing = [k for k in RELAY_REQUIRED if k not in cfg]
+    if missing:
+        raise SystemExit(f"{config}: missing keys {missing} (every key must be written out)")
+    name = cfg.pop("name")
+    if name_suffix:
+        if not re.fullmatch(r"_[A-Za-z0-9_]+", name_suffix):
+            raise SystemExit(f"--name-suffix must look like _pA1 (underscore, letters, digits), not {name_suffix!r}")
+        name += name_suffix
+    if cfg["targets"] == "QWEN35":
+        cfg["targets"] = QWEN35_TARGETS
+    import time
+    # an absolute end time: a Modal restart after a preemption keeps it (a relative stop_after_min would start over)
+    cfg.update({"no_overwrite": True, "expect_resume": expect_resume, "stop_at_step": stop_at_step,
+                "stop_at_unix": time.time() + 60 * stop_after_min if stop_after_min > 0 else 0})
+    if log_every > 0:
+        cfg["log_every"] = log_every
+    if not (stop_after_min > 0 or stop_at_step > 0):
+        print("note: no stop point set; this segment runs to the end (or until the account's credit runs out)")
+    res = train_relay35.remote(name, cfg)
+    (HERE / "logs").mkdir(exist_ok=True)
+    tag = f"stopped_at_{res['next_step']}" if res["stopped"] else "final"
+    (HERE / f"logs/relay_{name}_{tag}.json").write_text(json.dumps(res["meta"], indent=2, default=str))
+    print(json.dumps({"name": name, "stopped": res["stopped"], "next_step": res.get("next_step"), "of": res.get("n_steps")}))
+
+
+# ---------------------------------------------------------------- pilot runs (FINETUNE_PLAN.md 2.4 and 4.2; pilot/RUNBOOK.md)
+PILOT_CONFIG = "runs/q35_4b_main.json"
+# checks tied to the full golden file: a smoke on a mini file drops them (they would fail) and never snapshots
+SMOKE_DROP = ("expect_kd_targets", "expect_kd_full", "snap_every", "snap_fracs")
+H100_USD_H = 3.95
+
+
+def _frozen(config: str) -> tuple:
+    """(name, cfg) of a frozen run config, built as relay() builds it (every key checked, QWEN35 expanded)."""
+    cfg = json.loads((HERE / config).read_text())
+    missing = [k for k in RELAY_REQUIRED if k not in cfg]
+    if missing:
+        raise SystemExit(f"{config}: missing keys {missing} (every key must be written out)")
+    name = cfg.pop("name")
+    if cfg["targets"] == "QWEN35":
+        cfg["targets"] = QWEN35_TARGETS
+    return name, cfg
+
+
+def _pilot_dir(name: str, root: str = "/vol/models") -> Path:
+    """A pilot writes only under a 'pilot_...' name, so it can never touch a real run's folder (models/q35_4b_main500k)."""
+    if not re.fullmatch(r"pilot_[A-Za-z0-9_.-]+", name or ""):
+        raise ValueError(f"pilot runs write only under a 'pilot_...' name, not {name!r}")
+    return Path(root) / name
+
+
+def _alloc_conf(value: str) -> str:
+    """Sets PYTORCH_CUDA_ALLOC_CONF (e.g. "expandable_segments:True") for this container; CUDA reads it once, at start."""
+    import os
+    import sys
+    if value:
+        if "torch" in sys.modules and sys.modules["torch"].cuda.is_initialized():
+            raise RuntimeError("PYTORCH_CUDA_ALLOC_CONF must be set before CUDA starts")
+        os.environ["PYTORCH_CUDA_ALLOC_CONF"] = value
+    return os.environ.get("PYTORCH_CUDA_ALLOC_CONF", "")
+
+
+def _rss_gb() -> float:
+    """Peak resident memory of this process so far (getrusage: KB on Linux, bytes on macOS)."""
+    import resource
+    import sys
+    r = resource.getrusage(resource.RUSAGE_SELF).ru_maxrss
+    return round(r / (2**30 if sys.platform == "darwin" else 2**20), 2)
+
+
+def _is_oom(e: BaseException) -> bool:
+    import torch
+    return isinstance(e, torch.cuda.OutOfMemoryError) or (isinstance(e, RuntimeError) and "out of memory" in str(e))
+
+
+class _StepProbe:
+    """Wraps train_decoder's batches / pick_twins / cand_logits for one train() call and draws no random number.
+    A step starts when the trainer pulls its batch: the probe records the time, the peak reserved GPU memory since the
+    previous pull (then resets it) and the batch hash. script=[{"ids", "twins"}]: the trainer gets exactly these batches
+    (rows looked up by id in its own units) with twins at exactly these positions (second permutations from its own
+    twin RNG). shapes=True: also the padded shape [sequences, length, tokens] of every gradient forward."""
+
+    def __init__(self, td, script=None, shapes=False):
+        self.td, self.script, self.shapes = td, script, shapes
+        self.t, self.mem, self.hashes, self.forwards, self._saved = [], [], [], [], {}
+
+    def _mark(self):
+        import torch
+        peak = None
+        if torch.cuda.is_available():
+            torch.cuda.synchronize()
+            peak = torch.cuda.max_memory_reserved()
+            torch.cuda.reset_peak_memory_stats()
+        self.t.append(time.time())
+        self.mem.append(peak)
+
+    @staticmethod
+    def _shape(ro, rows, perms):
+        import decoder_io
+        tok = getattr(ro, "tok", None)
+        if tok is None:
+            return [len(rows), None, None]
+        texts = [r.get("_prompt") or ro.prompt(r, p) for r, p in zip(rows, perms or [None] * len(rows))]
+        n = max(len(x) for x in tok(texts, add_special_tokens=False)["input_ids"])
+        pad = max(1, decoder_io.PAD_MULTIPLE)
+        length = -(-min(n, decoder_io.MAX_LEN) // pad) * pad
+        return [len(rows), length, len(rows) * length]
+
+    def __enter__(self):
+        import torch
+        td, script = self.td, self.script
+        self._saved = {k: getattr(td, k) for k in ("batches", "pick_twins", "cand_logits")}
+        batches0, pick0, cand0 = self._saved["batches"], self._saved["pick_twins"], self._saved["cand_logits"]
+        twins = {tuple(b["ids"]): list(b["twins"]) for b in script} if script is not None else {}
+
+        def batches(units, batch_size):
+            if script is None:
+                src = batches0(units, batch_size)
+            else:
+                by_id = {r["id"]: r for u in units for r in u}
+                src = ([by_id[i] for i in b["ids"]] for b in script)
+            for b in src:
+                self._mark()
+                self.hashes.append(td._batch_hash(b))
+                self.forwards.append([])
+                yield b
+
+        def pick_twins(batch, perms, frac, rng):
+            key = tuple(r["id"] for r in batch)
+            if key in twins:
+                return [(i, td.second_perm(perms[i], rng)) for i in twins[key]]
+            return pick0(batch, perms, frac, rng)
+
+        def cand_logits(model, ro, rows, dev, perms=None):
+            if self.shapes and self.forwards and torch.is_grad_enabled():
+                self.forwards[-1].append(self._shape(ro, rows, perms))
+            return cand0(model, ro, rows, dev, perms=perms)
+
+        td.batches, td.pick_twins, td.cand_logits = batches, pick_twins, cand_logits
+        return self
+
+    def __exit__(self, *exc):
+        self._mark()  # the end of the last step (for a finished run: plus its final save)
+        for k, v in self._saved.items():
+            setattr(self.td, k, v)
+        return False
+
+    def steps(self) -> list:
+        """[(seconds, peak reserved bytes or None)] per started step."""
+        return [(self.t[k + 1] - self.t[k], self.mem[k + 1]) for k in range(len(self.hashes))]
+
+
+def _gpu_info() -> dict:
+    import torch
+    if not torch.cuda.is_available():
+        return {"gpu": None, "total_gb": None}
+    p = torch.cuda.get_device_properties(0)
+    return {"gpu": p.name, "total_gb": round(p.total_memory / 2**30, 2), "_total": p.total_memory}
+
+
+def _check_heavy(hv: dict, cfg: dict):
+    """pilot/heavy_batches.json must be ranked for this config's data stream and prompt format."""
+    want = {"seed": 20260925, "batch": 16, "style": "od", "layout": "text_first", "perm_twin": 0.0, **cfg}  # trainer defaults
+    bad = {k: [hv.get(k), want.get(k)] for k in ("train_file", "rel_file", "seed", "batch", "style", "layout", "perm_twin")
+           if hv.get(k) != want.get(k)}
+    if bad:
+        raise SystemExit(f"heavy_batches.json was ranked for another config (json -> config): {bad}; rerun rank_microbatches.py")
+
+
+def _smoke_spec(hv: dict, micro_tokens: int, n_ordinary: int = 20) -> dict:
+    """The smoke_heavy script for one micro_tokens value: the first n_ordinary steps of the pass, then each heavy batch
+    once (top micro-batches, heaviest unit, heaviest group with an anchor row, heaviest table-led group), lightest
+    first, so the first out-of-memory marks the limit. pred_* = the CPU tokenizer ranking."""
+    s = hv["settings"].get(str(micro_tokens))
+    if s is None:
+        raise SystemExit(f"micro_tokens {micro_tokens} is not ranked in heavy_batches.json (has {sorted(hv['settings'])})")
+    bt = hv["batches"]
+    tags = {}
+    for k, g in enumerate(s["top"]):
+        tags.setdefault(g["step"], []).append(f"top{k + 1}")
+    for kind, g in (("anchor", s.get("heaviest_anchor")), ("table", s.get("heaviest_table")), ("unit", hv.get("heaviest_unit"))):
+        if g:
+            tags.setdefault(g["step"], []).append(kind)
+
+    def item(step, tag):
+        b = bt[str(step)]
+        groups = (b.get("group_tokens") or {}).get(str(micro_tokens))
+        return {"tag": tag, "step": step, "ids": b["ids"], "twins": b["twins"], "pred_groups": groups,
+                "pred_max_tokens": max(groups) if groups else None}
+
+    heavy = sorted((item(st, "+".join(t)) for st, t in tags.items()), key=lambda x: (x["pred_max_tokens"] or 0, x["step"]))
+    return {"micro_tokens": int(micro_tokens), "ordinary": [item(st, "ordinary") for st in hv["ordinary_steps"][:n_ordinary]],
+            "heavy": heavy}
+
+
+def _write_mini(data_dir: Path, cfg: dict, ids: set, work: Path) -> dict:
+    """The exact lines of the rows `ids` (whole units) and the relations among them, written to `work` (inside the
+    container, never the repo)."""
+    work.mkdir(parents=True, exist_ok=True)
+    n = 0
+    with open(data_dir / cfg["train_file"]) as f, open(work / "mini_train.jsonl", "w") as g:
+        for line in f:
+            if json.loads(line)["id"] in ids:
+                g.write(line if line.endswith("\n") else line + "\n")
+                n += 1
+    if n != len(ids):
+        raise RuntimeError(f"{len(ids) - n} heavy-batch row id(s) are not in {cfg['train_file']} (stale heavy_batches.json?)")
+    with open(data_dir / cfg["rel_file"]) as f, open(work / "mini_relations.jsonl", "w") as g:
+        for line in f:
+            x = json.loads(line)
+            if x["a"] in ids and x["b"] in ids:
+                g.write(line if line.endswith("\n") else line + "\n")
+    return {"train_file": "mini_train.jsonl", "rel_file": "mini_relations.jsonl", "rows": n}
+
+
+def _smoke_heavy_impl(cfg: dict, spec: dict, data_dir: Path, work: Path, on_ckpt=None, dev="cuda") -> dict:
+    """Trains the frozen config on a mini file holding the smoke script's batches, at spec micro_tokens: the ordinary
+    steps, then one step per heavy batch. Per step: seconds, peak reserved GPU memory, every gradient forward's shape."""
+    import train_decoder as td
+    t_start = time.time()
+    script = spec["ordinary"] + spec["heavy"]
+    mini = _write_mini(Path(data_dir), cfg, {i for b in script for i in b["ids"]}, Path(work))
+    c = {k: v for k, v in cfg.items() if k not in SMOKE_DROP}
+    c.update({"train_file": mini["train_file"], "rel_file": mini["rel_file"], "micro_tokens": int(spec["micro_tokens"]),
+              "epochs": (len(script) - 0.5) * c["batch"] / mini["rows"],  # exactly len(script) steps
+              "resume": False, "ckpt_every_min": 0, "log_every": 1})
+    err, log = None, []
+    with _StepProbe(td, script=script, shapes=True) as probe:
+        try:
+            log = td.train(c, Path(work), Path(work) / "out", dev=dev, on_ckpt=on_ckpt)["meta"]["log"]
+        except Exception as e:  # noqa: BLE001
+            if not _is_oom(e):
+                raise
+            err = f"{type(e).__name__}: {str(e)[:300]}"
+    info = _gpu_info()
+    total = info.pop("_total", None)
+    loss = {r["step"]: r.get("loss") for r in log}
+    steps = []
+    for k, (sec, peak) in enumerate(probe.steps()):
+        b, fw = script[k], probe.forwards[k]
+        steps.append({"k": k, "tag": b["tag"], "src_step": b["step"], "pred_max_tokens": b.get("pred_max_tokens"),
+                      "max_fwd_tokens": max((f[2] or 0 for f in fw), default=0) or None, "forwards": fw,
+                      "reserved_gb": None if peak is None else round(peak / 2**30, 2),
+                      "frac": None if peak is None or not total else round(peak / total, 4),
+                      "s": round(sec, 2), "loss": loss.get(k)})
+    fr = [s["frac"] for s in steps if s["frac"] is not None]
+    ordinary = sorted(s["s"] for s in steps[1:len(spec["ordinary"])])
+    oom_at = steps[-1] if err and steps else None
+    return {**info, "micro_tokens": int(spec["micro_tokens"]), "steps_planned": len(script), "steps_run": len(steps),
+            "oom": err, "oom_step": {k: oom_at[k] for k in ("k", "tag", "src_step", "pred_max_tokens")} if oom_at else None,
+            "max_frac": max(fr) if fr else None, "max_reserved_gb": max((s["reserved_gb"] or 0 for s in steps), default=None),
+            "pass_memory": err is None and len(steps) == len(script) and (not fr or max(fr) <= 0.90),
+            "s_per_step_ordinary_median": ordinary[len(ordinary) // 2] if ordinary else None,
+            "peak_rss_gb": _rss_gb(), "seconds_total": round(time.time() - t_start, 1), "steps": steps}
+
+
+def _speed_impl(cfg: dict, steps: int, data_dir: Path, out_dir: Path, on_ckpt=None, dev="cuda", skip: int = 10) -> dict:
+    """`steps` real packed steps of the frozen config (full data, resume off, stop_at_step), timed per step. s/step is
+    the mean over steps skip..steps-2; the last step ends with the stop checkpoint (ckpt_s), whose cost per step at the
+    config's ckpt_every_min is added in s_per_step_incl_ckpt (periodic checkpoints are off here, so no step holds one)."""
+    import train_decoder as td
+    t_start = time.time()
+    c = {**cfg, "resume": False, "stop_at_step": int(steps), "ckpt_every_min": 0}
+    err, res = None, {}
+    with _StepProbe(td) as probe:
+        try:
+            res = td.train(c, Path(data_dir), Path(out_dir), dev=dev, on_ckpt=on_ckpt)
+        except Exception as e:  # noqa: BLE001
+            if not _is_oom(e):
+                raise
+            err = f"{type(e).__name__}: {str(e)[:300]}"
+    info = _gpu_info()
+    total = info.pop("_total", None)
+    per = probe.steps()
+    timed = [s for s, _ in per[skip:len(per) - 1]]
+    sps = sum(timed) / len(timed) if timed else None
+    peaks = [m for _, m in per if m is not None]
+    n_full = res.get("n_steps")
+    ckpt_s = per[-1][0] - sps if per and sps is not None and not err else None
+    every = float(cfg.get("ckpt_every_min", 15) or 0)
+    sps_all = None if sps is None else sps * (1 + (ckpt_s or 0) / (60 * every)) if every > 0 else sps
+    return {**info, "micro_tokens": cfg.get("micro_tokens"), "steps_planned": int(steps), "steps_run": len(per),
+            "stopped": bool(res.get("stopped")), "oom": err, "oom_step": len(per) - 1 if err else None,
+            "probe_ok": err is not None or len(per) == int(steps),  # one batch pull per trained step
+            "s_per_step": None if sps is None else round(sps, 4), "timed_steps": len(timed),
+            "s_per_step_median": sorted(timed)[len(timed) // 2] if timed else None,
+            "load_s": round(probe.t[0] - t_start, 1) if probe.t else None,
+            "ckpt_s": None if ckpt_s is None else round(ckpt_s, 1),
+            "s_per_step_incl_ckpt": None if sps_all is None else round(sps_all, 4),
+            "step_s": [round(s, 3) for s, _ in per],
+            "max_reserved_gb": round(max(peaks) / 2**30, 2) if peaks else None,
+            "max_frac": round(max(peaks) / total, 4) if peaks and total else None, "peak_rss_gb": _rss_gb(),
+            "first_batch": probe.hashes[0] if probe.hashes else None, "last_batch": probe.hashes[-1] if probe.hashes else None,
+            "n_steps_full": n_full,
+            "usd_per_step": None if sps_all is None else round(sps_all * H100_USD_H / 3600, 6),
+            "full_pass_usd_x1.21": None if sps_all is None or not n_full else round(n_full * sps_all * H100_USD_H / 3600 * 1.21, 1),
+            "log": (res.get("meta") or {}).get("log", [])}
+
+
+# single_use_containers: each pilot input gets a fresh process (a reused one keeps the previous input's CUDA cache,
+# peak memory and PYTORCH_CUDA_ALLOC_CONF, so its memory numbers would be wrong); with_options cannot set this
+@app.function(image=image35, gpu="H100!", volumes={"/vol": vol}, secrets=SECRETS, timeout=2 * 3600,
+              single_use_containers=True)
+def smoke_heavy_remote(cfg: dict, spec: dict, alloc_conf: str = "") -> dict:
+    """Pilot: the smoke script of one micro_tokens value (see smoke_heavy). Its mini files and adapter stay in /tmp."""
+    alloc = _alloc_conf(alloc_conf)
+    import decoder_io
+    decoder_io.STYLE = cfg.get("style", "od")
+    work = Path(f"/tmp/pilot/smoke_mt{spec['micro_tokens']}")
+    return {**_smoke_heavy_impl(cfg, spec, Path("/root/data"), work, on_ckpt=vol.commit), "alloc_conf": alloc}
+
+
+@app.function(image=image35, gpu="H100!", volumes={"/vol": vol}, secrets=SECRETS, timeout=2 * 3600,
+              single_use_containers=True)
+def speed_remote(name: str, cfg: dict, steps: int = 100, skip: int = 10, alloc_conf: str = "") -> dict:
+    """Pilot: seconds per real packed step of the frozen config (see speed). Writes only /vol/models/pilot_*."""
+    alloc = _alloc_conf(alloc_conf)
+    import decoder_io
+    decoder_io.STYLE = cfg.get("style", "od")
+    out = _speed_impl(cfg, steps, Path("/root/data"), _pilot_dir(name), on_ckpt=vol.commit, skip=skip)
+    vol.commit()
+    return {**out, "name": name, "alloc_conf": alloc}
+
+
+def _run_all(fn, args: list):
+    """Results of fn(*a) for each a, in order (an exception is returned, not raised). The first runs alone, so a fresh
+    account downloads the base model and fills the Triton cache on the Volume once; the rest then run in parallel."""
+    if not args:
+        return
+    try:
+        yield fn.remote(*args[0])
+    except Exception as e:  # noqa: BLE001
+        yield e
+    if len(args) > 1:
+        yield from fn.starmap(args[1:], return_exceptions=True)
+
+
+def _alloc_env(alloc_conf: str) -> dict:
+    """with_options kwargs that set PYTORCH_CUDA_ALLOC_CONF before the container's Python starts (the function sets it
+    again, before torch loads)."""
+    return {"env": {"PYTORCH_CUDA_ALLOC_CONF": alloc_conf}} if alloc_conf else {}
+
+
+def _mt_values(micro_tokens: str) -> list:
+    """The comma-separated micro_tokens values, each once, in order: '10240,10240' is one container, not two writing
+    the same result file (and the same pilot checkpoint folder)."""
+    return list(dict.fromkeys(int(x) for x in micro_tokens.split(",")))
+
+
+def _pilot_tag(gpu: str, micro_tokens: int, alloc_conf: str) -> str:
+    """e.g. h100_mt10240, l4_mt10240_exp (expandable_segments)."""
+    return (re.sub(r"[^a-z0-9]+", "", gpu.lower()) + f"_mt{micro_tokens}"
+            + ("_exp" if "expandable_segments:true" in alloc_conf.lower() else "_alloc" if alloc_conf else ""))
+
+
+def _override(override: str) -> tuple:
+    """(config changes, name tag) for a pilot run: a JSON object of frozen-config keys to change for this pilot only."""
+    ov = json.loads(override) if override else {}
+    if not isinstance(ov, dict):
+        raise SystemExit("--override must be a JSON object")
+    tag = "".join(f"_{k}-{str(v).lower()}" for k, v in sorted(ov.items()))
+    return ov, re.sub(r"[^A-Za-z0-9_.-]", "", tag)
+
+
+@app.local_entrypoint()
+def smoke_heavy(micro_tokens: str = "0,10240,16384,24576", gpu: str = "H100!", config: str = PILOT_CONFIG,
+                heavy: str = "pilot/heavy_batches.json", alloc_conf: str = "", ordinary: int = 20, override: str = ""):
+    """Pilot memory test (FINETUNE_PLAN.md 2.4): for each micro_tokens value, one container trains the frozen config
+    for `ordinary` real steps, then one step per heavy batch of pilot/heavy_batches.json (rank_microbatches.py).
+    Pass: no out-of-memory and max_memory_reserved <= 90% of the card on every step. Nothing is written to the Volume
+    except the Hugging Face / Triton caches.
+      MODAL_PROFILE=jaypatil-duke modal run modal_od.py::smoke_heavy --micro-tokens 0,10240,16384,24576
+      MODAL_PROFILE=jaypatil-duke modal run modal_od.py::smoke_heavy --micro-tokens 10240 --gpu L4
+    Writes logs/pilot/smoke_heavy_<gpu>_mt<N>.json."""
+    _, cfg = _frozen(config)
+    ov, ovtag = _override(override)  # pilot-only config changes, e.g. '{"grad_ckpt": false}'
+    cfg = {**cfg, **ov}
+    hv = json.loads((HERE / heavy).read_text())
+    _check_heavy(hv, cfg)
+    specs = [_smoke_spec(hv, x, ordinary) for x in _mt_values(micro_tokens)]
+    out = HERE / "logs/pilot"
+    out.mkdir(parents=True, exist_ok=True)
+    fn = smoke_heavy_remote.with_options(gpu=gpu, **_alloc_env(alloc_conf))
+    for spec, res in zip(specs, _run_all(fn, [(cfg, s, alloc_conf) for s in specs])):
+        tag = "smoke_heavy_" + _pilot_tag(gpu, spec["micro_tokens"], alloc_conf) + ovtag
+        if isinstance(res, BaseException):
+            print(json.dumps({"run": tag, "error": repr(res)[:500]}))
+            continue
+        (out / f"{tag}.json").write_text(json.dumps(res, indent=1))
+        print(json.dumps({"run": tag, **{k: res.get(k) for k in ("gpu", "pass_memory", "max_frac", "max_reserved_gb",
+                                                                  "oom", "oom_step", "steps_run", "steps_planned",
+                                                                  "s_per_step_ordinary_median", "peak_rss_gb")}}))
+
+
+@app.local_entrypoint()
+def speed(micro_tokens: str = "10240", steps: int = 100, skip: int = 10, gpu: str = "H100!", config: str = PILOT_CONFIG,
+          alloc_conf: str = "", override: str = ""):
+    """Pilot speed test (FINETUNE_PLAN.md 2.4): `steps` real packed steps of the frozen config at each micro_tokens
+    value (one container each, the same batches), s/step over steps skip..steps-2. Each writes a throwaway checkpoint
+    to /vol/models/pilot_speed_<gpu>_mt<N>[_exp] (resume off), never the real run's folder.
+      MODAL_PROFILE=jaypatil-duke modal run modal_od.py::speed --micro-tokens 0,10240,16384,24576
+    Writes logs/pilot/speed_<gpu>_mt<N>.json."""
+    _, cfg = _frozen(config)
+    ov, ovtag = _override(override)
+    cfg = {**cfg, **ov}
+    mts = _mt_values(micro_tokens)
+    names = ["pilot_speed_" + _pilot_tag(gpu, mt, alloc_conf) + ovtag for mt in mts]
+    for n in names:
+        _pilot_dir(n)
+    out = HERE / "logs/pilot"
+    out.mkdir(parents=True, exist_ok=True)
+    fn = speed_remote.with_options(gpu=gpu, **_alloc_env(alloc_conf))
+    args = [(n, {**cfg, "micro_tokens": mt}, steps, skip, alloc_conf) for n, mt in zip(names, mts)]
+    for (n, *_), res in zip(args, _run_all(fn, args)):
+        tag = "speed_" + n.removeprefix("pilot_speed_")
+        if isinstance(res, BaseException):
+            print(json.dumps({"run": tag, "error": repr(res)[:500]}))
+            continue
+        (out / f"{tag}.json").write_text(json.dumps(res, indent=1))
+        print(json.dumps({"run": tag, **{k: res.get(k) for k in ("gpu", "s_per_step", "s_per_step_median", "timed_steps",
+                                                                  "ckpt_s", "s_per_step_incl_ckpt", "load_s", "max_frac",
+                                                                  "oom", "probe_ok", "peak_rss_gb", "last_batch",
+                                                                  "full_pass_usd_x1.21")}}))
+    print("clean up: " + " && ".join(f"modal volume rm -r opendecide models/{n}" for n in names))
 
 
 @app.local_entrypoint()
@@ -979,23 +1529,29 @@ def sweep(name: str = "q35_4b_v10", base: str = "Qwen/Qwen3.5-4B", splits: str =
 
 
 @app.function(image=image35, gpu="H100", volumes={"/vol": vol}, secrets=SECRETS, timeout=3 * 3600)
-def multi_eval_remote(specs: list[dict], splits: list[str], style: str = "cygnet", layout: str = "text_first") -> dict:
-    """Plain predictions of several models (each {label, base, adapter}) on the same splits, one container."""
+def multi_eval_remote(specs: list[dict], splits: list[str], style: str = "cygnet", layout: str = "") -> dict:
+    """Plain predictions of several models (each {label, base, adapter}) on the same splits, one container. Each spec is
+    read in its own layout, whatever the spec order: an adapter in its train_meta's (an explicit layout that conflicts
+    raises), a base-only spec in `layout` (default text_first). "_load" holds what each load resolved."""
     import gc
     import time
     import torch
     import decoder_io
-    decoder_io.STYLE = style
-    decoder_io.LAYOUT = layout
     out = {}
     for sp_ in specs:
         t = time.time()
-        model, tok = _load("decoder", sp_["base"], adapter=sp_.get("adapter") or None)
-        if sp_.get("adapter"):
+        ad = sp_.get("adapter") or None
+        decoder_io.STYLE = style  # an adapter without a saved style gets `style`, never the previous spec's
+        model, tok = decoder_io.load(sp_["base"], "cuda", adapter=ad,
+                                     layout=(layout or None) if ad else (layout or "text_first"),
+                                     style=None if ad else style)
+        info = dict(decoder_io.LOAD_INFO)
+        if ad:
             model = model.merge_and_unload()
         model.eval()
         out[sp_["label"]] = {s: decoder_io.predict(model, tok, _rows(s), dev="cuda") for s in splits}
         out[sp_["label"]]["_sec"] = round(time.time() - t)
+        out[sp_["label"]]["_load"] = info
         del model
         gc.collect()
         torch.cuda.empty_cache()
@@ -1003,8 +1559,9 @@ def multi_eval_remote(specs: list[dict], splits: list[str], style: str = "cygnet
 
 
 @app.local_entrypoint()
-def multi_eval(specs: str, splits: str = "ohs", gpu: str = "H100", layout: str = "text_first"):
-    """specs: 'label=base[:adapter],...' e.g. 'q35_4b_v10=Qwen/Qwen3.5-4B:/vol/models/q35_4b_v10,qwen3.5-4b_cyg=Qwen/Qwen3.5-4B'"""
+def multi_eval(specs: str, splits: str = "ohs", gpu: str = "H100", layout: str = ""):
+    """specs: 'label=base[:adapter],...' e.g. 'q35_4b_v10=Qwen/Qwen3.5-4B:/vol/models/q35_4b_v10,qwen3.5-4b_cyg=Qwen/Qwen3.5-4B'
+    layout: default = each adapter's train_meta layout, text_first for a base-only spec."""
     sp = []
     for s in specs.split(","):
         label, rest = s.split("=", 1)
@@ -1012,8 +1569,10 @@ def multi_eval(specs: str, splits: str = "ohs", gpu: str = "H100", layout: str =
         sp.append({"label": label, "base": base, "adapter": adapter})
     res = multi_eval_remote.with_options(gpu=gpu).remote(sp, splits.split(","), layout=layout)
     for label, d in res.items():
-        sec = d.pop("_sec")
-        _save(label, d, {"base": [x["base"] for x in sp if x["label"] == label][0], "sec": sec})
+        sec, info = d.pop("_sec"), d.pop("_load")
+        _save(label, d, {"base": [x["base"] for x in sp if x["label"] == label][0], "sec": sec,
+                         "layout": info.get("layout"), "style": info.get("style"), "revision": info.get("revision"),
+                         "load": info})
 
 
 @app.function(image=image35, gpu="H100", volumes={"/vol": vol}, secrets=SECRETS, timeout=3 * 3600)
@@ -1061,7 +1620,12 @@ def soup_eval_remote(base: str, a: str, b: str, weights: list[float], splits: li
     import decoder_io
     from peft import PeftModel
     decoder_io.STYLE = "cygnet"
-    model, tok = decoder_io.load(base, "cuda")
+    # the adapters are attached below with PEFT, which skips resolve_prompt: take the layout, style and base revision
+    # from their train_meta here (as od_gcp.py blend does); adapters that disagree raise
+    info = decoder_io.resolve_prompt([f"/vol/models/{a}", f"/vol/models/{b}"], base)
+    model, tok = decoder_io.load(base, "cuda", revision=info["revision"], layout=info["layout"], style=info["style"])
+    load = {**info, "layout": decoder_io.LAYOUT, "style": decoder_io.STYLE,
+            "chat_template_sha": decoder_io.LOAD_INFO.get("chat_template_sha")}
     model = PeftModel.from_pretrained(model, f"/vol/models/{a}", adapter_name="a")
     model.load_adapter(f"/vol/models/{b}", adapter_name="b")
     out = {}
@@ -1076,12 +1640,14 @@ def soup_eval_remote(base: str, a: str, b: str, weights: list[float], splits: li
             model.save_pretrained(f"/vol/models/_soup_tmp", selected_adapters=[name])
         model.delete_adapter(name)
     vol.commit()
-    return out
+    return {"preds": out, "load": load}
 
 
 @app.local_entrypoint()
 def soup_eval(a: str = "q35_4b_v10", b: str = "q35_4b_v11", weights: str = "0.3,0.5,0.7", base: str = "Qwen/Qwen3.5-4B",
               splits: str = "dev_nc,taskbank_dev,hard_dev,dev_negwords,dev_claims,pg_dev,devzs", gpu: str = "H100"):
     res = soup_eval_remote.with_options(gpu=gpu).remote(base, a, b, [float(x) for x in weights.split(",")], splits.split(","))
-    for name, preds in res.items():
-        _save(f"{a}_{b}_{name}", preds, {"base": base, "blend": name, "a": a, "b": b})
+    info = res["load"]
+    for name, preds in res["preds"].items():
+        _save(f"{a}_{b}_{name}", preds, {"base": base, "blend": name, "a": a, "b": b, "layout": info["layout"],
+                                         "style": info["style"], "revision": info["revision"], "load": info})
