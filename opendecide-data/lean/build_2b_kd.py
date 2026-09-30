@@ -4,9 +4,10 @@ order; only meta.teacher / meta.teacher_src (and meta.teacher4b, the raw read ke
   - human vote-share / near-miss / exact-probability teachers (meta.teacher, not blend50): unchanged;
   - blend50 teachers (in-sample for 4B-E): deleted; the row trains on smoothed gold;
   - gold_probs rows and the 3 csqa duplicate-option rows: no new teacher;
-  - rows of a kd_full_src source (the 2B config's kd_full_src, e.g. gd_gen2_probability): no new teacher and no
-    copied fresh teacher, because train_decoder uses a kd_full teacher ALONE as the target (no gold mixing): only
-    their exact probabilities count, and the rest train on smoothed gold;
+  - yes/no rows of a kd_full_src source (the 2B config's kd_full_src, e.g. gd_gen2_probability): no new teacher and
+    no copied fresh teacher, because train_decoder uses a yes/no kd_full teacher ALONE as the target (no gold mixing):
+    only their exact probabilities count, and the rest train on smoothed gold. Choice rows of those sources are not
+    affected (train_decoder mixes their teacher with gold as usual), so they get 4B-E like any other row;
   - every other labelled row: meta.teacher = 4B-E ({"yes": p} or the full softmax), teacher_src = --teacher-src;
   - complement pairs where both rows have fresh 4B-E teachers: t_a <- (t_a + 1 - t_b) / 2, t_b <- 1 - t_a;
   - attacked twins (the 'b' side of inv): the clean partner's FINAL teacher is copied if it gives the gold answer
@@ -124,7 +125,7 @@ def build(rows, rels, labels, eligible, teacher_src="q35_4b_E", skip=("blend50",
         if kd_target(r) is not None:  # human vote share, near-miss bundle, exact probability
             n["human_or_exact_unchanged"] += 1
             continue
-        if r["source"] in kd_full:  # the teacher would be used alone (train_decoder kd_full): gold only
+        if r["source"] in kd_full and r["qtype"] == "noul":  # the teacher would be used alone: gold only
             n["kd_full_no_fresh_teacher"] += r["id"] in labels
             continue
         if r["id"] in labels:
@@ -160,7 +161,7 @@ def build(rows, rels, labels, eligible, teacher_src="q35_4b_E", skip=("blend50",
             n["twin_options_differ_deleted"] += 1
         elif not gives_gold(rb, ta):
             n["twin_partner_wrong_deleted"] += 1
-        elif rb["source"] in kd_full and ra["meta"].get("teacher_src") == teacher_src:
+        elif rb["source"] in kd_full and rb["qtype"] == "noul" and ra["meta"].get("teacher_src") == teacher_src:
             n["twin_kd_full_fresh_deleted"] += 1
         else:
             src = ra["meta"].get("teacher_src")
@@ -168,10 +169,10 @@ def build(rows, rels, labels, eligible, teacher_src="q35_4b_E", skip=("blend50",
             m["teacher_src"] = f"{teacher_src}_clean_copy" if src == teacher_src else f"{src or 'human'}_clean_copy"
             n["twin_copied_" + ("fresh" if src == teacher_src else "human_or_exact")] += 1
     validate(out, skip)
-    leak = [r["id"] for r in out if r["source"] in kd_full
+    leak = [r["id"] for r in out if r["source"] in kd_full and r["qtype"] == "noul"
             and str(r["meta"].get("teacher_src") or "").startswith(teacher_src)]
     if leak:
-        raise ValueError(f"{len(leak)} kd_full_src row(s) got a 4B teacher (it would be used alone): {leak[:5]}")
+        raise ValueError(f"{len(leak)} kd_full_src yes/no row(s) got a 4B teacher (used alone): {leak[:5]}")
     n["kd_targets"] = sum(kd_target(r) is not None for r in out)
     n["rows"] = len(out)
     return out, n

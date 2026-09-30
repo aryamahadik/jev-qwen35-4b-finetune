@@ -1188,18 +1188,20 @@ def test_build_2b_kd_rules():
 
 
 def test_build_2b_kd_kd_full_rows_get_no_4b_teacher():
-    """train_decoder uses a kd_full_src teacher ALONE as the target, so a 4B guess there would replace the gold:
-    kd_full rows without an exact probability must train on gold only (the audit's 94-row bug)."""
+    """train_decoder uses a yes/no kd_full_src teacher ALONE as the target, so a 4B guess there would replace the gold:
+    kd_full yes/no rows without an exact probability must train on gold only (the audit's 94-row bug: 94 of the 240
+    gd_gen2_probability rows without an exact probability are yes/no; the other 146 are choice rows, mixed as usual)."""
     rows = [
         noul("p_exact", 1, source="gd_gen2_probability", meta={"teacher": {"yes": 0.37}}),
         noul("p_plain", 0, source="gd_gen2_probability"),  # no exact probability; 4B-E labelled it
         noul("p_src", 1, source="gd_x"), noul("p_src_atk", 1, source="gd_gen2_probability", role="attacked"),
         noul("other", 1),
+        choice("p_choice", ["a", "b"], "a", source="gd_gen2_probability"),  # choice: normal KD mixing, unaffected
     ]
     rels = [{"type": "inv", "a": "p_src", "b": "p_src_atk"}]
     keep, _, _ = sg.select_rows(rows, rels, set())
     eligible = {r["id"] for r in keep}
-    labels = {i: {"yes": 0.8, "no": 0.2} for i in eligible}
+    labels = {i: ({"a": 0.6, "b": 0.4} if i == "p_choice" else {"yes": 0.8, "no": 0.2}) for i in eligible}
     assert "p_plain" in labels
     new, n = build_2b_kd.build(rows, rels, labels, eligible)
     by = {r["id"]: r["meta"] for r in new}
@@ -1208,6 +1210,7 @@ def test_build_2b_kd_kd_full_rows_get_no_4b_teacher():
     assert by["p_src"]["teacher_src"] == "q35_4b_E"  # an ordinary source still gets 4B-E
     assert "teacher" not in by["p_src_atk"]  # a fresh teacher is not copied onto a kd_full twin
     assert by["other"]["teacher"] == {"yes": 0.8}
+    assert by["p_choice"]["teacher"] == {"a": 0.6, "b": 0.4}  # only yes/no kd_full rows are gold-only
     assert n["kd_full_no_fresh_teacher"] == 1 and n["twin_kd_full_fresh_deleted"] == 1
     new2, _ = build_2b_kd.build(rows, rels, labels, eligible, kd_full=())  # the old behaviour, for contrast
     assert {r["id"]: r["meta"] for r in new2}["p_plain"]["teacher"] == {"yes": 0.8}
