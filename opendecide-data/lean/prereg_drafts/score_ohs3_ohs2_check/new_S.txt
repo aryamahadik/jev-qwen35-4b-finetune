@@ -1,0 +1,77 @@
+split ohs2 half S: 663 base rows, 13 tasks, 663 groups, 0 _neg pairs, 0 _perm pairs; boot 10000
+  Jev run jev_guard: micro 80.39 macro 80.02 brier 0.050304 missing base 0 twin 0 ties 1 not-pinned rows 0
+  Jev run jev_r2_guard: micro 79.34 macro 78.87 brier 0.052905 missing base 0 twin 0 ties 0 not-pinned rows 0
+  Jev run-to-run agreement: decision 0.9879, correctness 0.9894
+== q35_4b_v11c  (bc: None)
+  PRIMARY micro          OD  78.2805 Jev  79.8643 diff  -1.5837 [-3.9970, +0.7541] p 0.2020 holm 0.4040 -> neither
+  PRIMARY macro          OD  78.1899 Jev  79.4446 diff  -1.2547 [-3.9736, +1.4944] p 0.3666 holm 0.4040 -> neither
+  PRIMARY brier_yesno    OD   0.0865 Jev   0.0516 diff  -0.0349 [-0.0592, -0.0107] p 0.0052 holm 0.0156 -> jev_better
+  sec acc_track_F                    OD  82.9060 Jev  82.4786 diff  +0.4274 [-5.9829, +6.4103] p 0.9358 q 0.9358 -> no_clear_difference
+  sec acc_track_U                    OD  77.2894 Jev  79.3040 diff  -2.0147 [-4.5788, +0.5495] p 0.1278 q 0.3621 -> no_clear_difference
+  sec acc_task_arxiv_fresh_astro     OD  89.2857 Jev  92.8571 diff  -3.5714 [-14.2857, +7.1429] p 0.7770 q 0.8319 -> no_clear_difference
+  sec acc_task_arxiv_fresh_cs        OD  64.0000 Jev  54.0000 diff +10.0000 [-8.0000, +28.0000] p 0.3608 q 0.5576 -> no_clear_difference
+  sec acc_task_arxiv_fresh_math      OD  87.0968 Jev  93.5484 diff  -6.4516 [-16.1290, +0.0000] p 0.2512 q 0.4745 -> no_clear_difference
+  sec acc_task_arxiv_fresh_stat_eess OD  87.8788 Jev  84.8485 diff  +3.0303 [-6.0606, +12.1212] p 0.7830 q 0.8319 -> no_clear_difference
+  sec acc_task_big_patent_cpc        OD  61.7021 Jev  68.0851 diff  -6.3830 [-14.8936, +0.0000] p 0.0960 q 0.3621 -> no_clear_difference
+  sec acc_task_ddi2013               OD  64.9123 Jev  50.8772 diff +14.0351 [+3.5088, +24.5614] p 0.0056 q 0.0476 -> od_better
+  sec acc_task_evidence_inference    OD  85.2941 Jev  82.3529 diff  +2.9412 [-2.2059, +8.8235] p 0.3336 q 0.5576 -> no_clear_difference
+  sec acc_task_ibm_argq30k_stance    OD  94.2857 Jev  98.5714 diff  -4.2857 [-10.0000, +0.0000] p 0.0902 q 0.3621 -> no_clear_difference
+  sec acc_task_medical_abstracts     OD  73.8462 Jev  70.7692 diff  +3.0769 [-4.6154, +10.7692] p 0.5454 q 0.7132 -> no_clear_difference
+  sec acc_task_moral_stories         OD  82.8125 Jev  95.3125 diff -12.5000 [-21.8750, -4.6875] p 0.0010 q 0.0170 -> jev_better
+  sec acc_task_pubmed_rct20k         OD  69.8413 Jev  71.4286 diff  -1.5873 [-7.9365, +3.1746] p 0.7778 q 0.8319 -> no_clear_difference
+  sec acc_task_scifact               OD  76.6667 Jev  81.6667 diff  -5.0000 [-13.3333, +1.6667] p 0.2378 q 0.4745 -> no_clear_difference
+  sec acc_task_tabfact               OD  78.8462 Jev  88.4615 diff  -9.6154 [-23.0769, +3.8462] p 0.1876 q 0.4556 -> no_clear_difference
+  sec mcnemar vs_jev_guard: b=28 c=42 p 0.1196 q 0.3621 -> no_clear_difference
+  sec mcnemar vs_jev_r2_guard: b=33 c=40 p 0.4828 q 0.6839 -> no_clear_difference
+  OD answers: missing base 0 twin 0 ties 0
+== q35_4b_v11c_cal  (bc: q35_4b_v11c_cal_bc)
+  PRIMARY micro          OD  78.2805 Jev  79.8643 diff  -1.5837 [-3.9970, +0.7541] p 0.2020 holm 0.4040 -> neither
+  PRIMARY macro          OD  78.1899 Jev  79.4446 diff  -1.2547 [-3.9736, +1.4944] p 0.3666 holm 0.4040 -> neither
+  PRIMARY brier_yesno    OD   0.0865 Jev   0.0516 diff  -0.0349 [-0.0592, -0.0107] p 0.0052 holm 0.0156 -> jev_better
+  sec acc_track_F                    OD  82.9060 Jev  82.4786 diff  +0.4274 [-5.9829, +6.4103] p 0.9358 q 0.9358 -> no_clear_difference
+  sec acc_track_U                    OD  77.2894 Jev  79.3040 diff  -2.0147 [-4.5788, +0.5495] p 0.1278 q 0.3651 -> no_clear_difference
+  sec bc_micro                       OD  78.8839 Jev  79.8643 diff  -0.9804 [-3.4691, +1.5083] p 0.4502 q 0.6897 -> neither
+  sec bc_macro                       OD  78.9089 Jev  79.4446 diff  -0.5357 [-3.3351, +2.3167] p 0.6958 q 0.8242 -> neither
+  sec bc_brier_yesno                 OD   0.0865 Jev   0.0516 diff  -0.0349 [-0.0592, -0.0107] p 0.0052 q 0.0373 -> jev_better
+  sec acc_task_arxiv_fresh_astro     OD  89.2857 Jev  92.8571 diff  -3.5714 [-14.2857, +7.1429] p 0.7770 q 0.8242 -> no_clear_difference
+  sec acc_task_arxiv_fresh_cs        OD  64.0000 Jev  54.0000 diff +10.0000 [-8.0000, +28.0000] p 0.3608 q 0.6013 -> no_clear_difference
+  sec acc_task_arxiv_fresh_math      OD  87.0968 Jev  93.5484 diff  -6.4516 [-16.1290, +0.0000] p 0.2512 q 0.5024 -> no_clear_difference
+  sec acc_task_arxiv_fresh_stat_eess OD  87.8788 Jev  84.8485 diff  +3.0303 [-6.0606, +12.1212] p 0.7830 q 0.8242 -> no_clear_difference
+  sec acc_task_big_patent_cpc        OD  61.7021 Jev  68.0851 diff  -6.3830 [-14.8936, +0.0000] p 0.0960 q 0.3651 -> no_clear_difference
+  sec acc_task_ddi2013               OD  64.9123 Jev  50.8772 diff +14.0351 [+3.5088, +24.5614] p 0.0056 q 0.0373 -> od_better
+  sec acc_task_evidence_inference    OD  85.2941 Jev  82.3529 diff  +2.9412 [-2.2059, +8.8235] p 0.3336 q 0.6013 -> no_clear_difference
+  sec acc_task_ibm_argq30k_stance    OD  94.2857 Jev  98.5714 diff  -4.2857 [-10.0000, +0.0000] p 0.0902 q 0.3651 -> no_clear_difference
+  sec acc_task_medical_abstracts     OD  73.8462 Jev  70.7692 diff  +3.0769 [-4.6154, +10.7692] p 0.5454 q 0.7272 -> no_clear_difference
+  sec acc_task_moral_stories         OD  82.8125 Jev  95.3125 diff -12.5000 [-21.8750, -4.6875] p 0.0010 q 0.0200 -> jev_better
+  sec acc_task_pubmed_rct20k         OD  69.8413 Jev  71.4286 diff  -1.5873 [-7.9365, +3.1746] p 0.7778 q 0.8242 -> no_clear_difference
+  sec acc_task_scifact               OD  76.6667 Jev  81.6667 diff  -5.0000 [-13.3333, +1.6667] p 0.2378 q 0.5024 -> no_clear_difference
+  sec acc_task_tabfact               OD  78.8462 Jev  88.4615 diff  -9.6154 [-23.0769, +3.8462] p 0.1876 q 0.4690 -> no_clear_difference
+  sec mcnemar vs_jev_guard: b=28 c=42 p 0.1196 q 0.3651 -> no_clear_difference
+  sec mcnemar vs_jev_r2_guard: b=33 c=40 p 0.4828 q 0.6897 -> no_clear_difference
+  OD answers: missing base 0 twin 0 ties 0
+== q35_4b_v10_cal  (bc: q35_4b_v10_cal_bc)
+  PRIMARY micro          OD  77.6772 Jev  79.8643 diff  -2.1870 [-4.7511, +0.3017] p 0.0904 holm 0.1808 -> neither
+  PRIMARY macro          OD  77.3560 Jev  79.4446 diff  -2.0885 [-4.9073, +0.6302] p 0.1304 holm 0.1808 -> neither
+  PRIMARY brier_yesno    OD   0.0940 Jev   0.0516 diff  -0.0424 [-0.0694, -0.0158] p 0.0020 holm 0.0060 -> jev_better
+  sec acc_track_F                    OD  81.1966 Jev  82.4786 diff  -1.2821 [-6.8376, +4.2735] p 0.7254 q 0.9067 -> no_clear_difference
+  sec acc_track_U                    OD  76.9231 Jev  79.3040 diff  -2.3810 [-5.2198, +0.3663] p 0.0994 q 0.3976 -> no_clear_difference
+  sec bc_micro                       OD  79.1855 Jev  79.8643 diff  -0.6787 [-3.2428, +1.8854] p 0.6202 q 0.8860 -> neither
+  sec bc_macro                       OD  79.5581 Jev  79.4446 diff  +0.1136 [-2.6767, +2.8673] p 0.9388 q 0.9388 -> neither
+  sec bc_brier_yesno                 OD   0.0940 Jev   0.0516 diff  -0.0424 [-0.0694, -0.0158] p 0.0020 q 0.0200 -> jev_better
+  sec acc_task_arxiv_fresh_astro     OD  89.2857 Jev  92.8571 diff  -3.5714 [-10.7143, +0.0000] p 0.7182 q 0.9067 -> no_clear_difference
+  sec acc_task_arxiv_fresh_cs        OD  56.0000 Jev  54.0000 diff  +2.0000 [-18.0000, +22.0000] p 0.9236 q 0.9388 -> no_clear_difference
+  sec acc_task_arxiv_fresh_math      OD  87.0968 Jev  93.5484 diff  -6.4516 [-16.1290, +0.0000] p 0.2512 q 0.5445 -> no_clear_difference
+  sec acc_task_arxiv_fresh_stat_eess OD  87.8788 Jev  84.8485 diff  +3.0303 [-6.0606, +12.1212] p 0.7924 q 0.9322 -> no_clear_difference
+  sec acc_task_big_patent_cpc        OD  61.7021 Jev  68.0851 diff  -6.3830 [-17.0213, +3.1915] p 0.2622 q 0.5445 -> no_clear_difference
+  sec acc_task_ddi2013               OD  59.6491 Jev  50.8772 diff  +8.7719 [-1.7544, +19.2982] p 0.1194 q 0.3980 -> no_clear_difference
+  sec acc_task_evidence_inference    OD  85.2941 Jev  82.3529 diff  +2.9412 [-2.2059, +8.8235] p 0.3336 q 0.6065 -> no_clear_difference
+  sec acc_task_ibm_argq30k_stance    OD  90.0000 Jev  98.5714 diff  -8.5714 [-15.7143, -2.8571] p 0.0032 q 0.0213 -> jev_better
+  sec acc_task_medical_abstracts     OD  72.3077 Jev  70.7692 diff  +1.5385 [-7.6923, +10.7692] p 0.8692 q 0.9388 -> no_clear_difference
+  sec acc_task_moral_stories         OD  84.3750 Jev  95.3125 diff -10.9375 [-18.7500, -4.6875] p 0.0018 q 0.0200 -> jev_better
+  sec acc_task_pubmed_rct20k         OD  74.6032 Jev  71.4286 diff  +3.1746 [-3.1746, +9.5238] p 0.4604 q 0.7083 -> no_clear_difference
+  sec acc_task_scifact               OD  76.6667 Jev  81.6667 diff  -5.0000 [-15.0000, +5.0000] p 0.3946 q 0.6577 -> no_clear_difference
+  sec acc_task_tabfact               OD  80.7692 Jev  88.4615 diff  -7.6923 [-20.1923, +4.8077] p 0.2552 q 0.5445 -> no_clear_difference
+  sec mcnemar vs_jev_guard: b=29 c=47 p 0.0505 q 0.2523 -> no_clear_difference
+  sec mcnemar vs_jev_r2_guard: b=36 c=47 p 0.2723 q 0.5445 -> no_clear_difference
+  OD answers: missing base 0 twin 0 ties 0
+wrote prereg_drafts/score_ohs3_ohs2_check/new_S.json

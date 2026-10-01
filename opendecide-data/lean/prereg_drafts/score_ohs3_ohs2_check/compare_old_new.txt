@@ -1,0 +1,32 @@
+===== OHS-2 half all
+--- q35_4b_v11c
+  micro           OD old 79.92 new 79.9242 | diff old -1.629 new -1.629 | CI old [-3.295, 0.114] new [-3.295, +0.114] | p old 0.0698 new 0.0698 | adj old 0.1396 new 0.1396 | new verdict neither
+  macro           OD old 80.64 new 80.6410 | diff old -1.314 new -1.314 | CI old [-3.141, 0.577] new [-3.141, +0.577] | p old 0.1746 new 0.1774 | adj old 0.1746 new 0.1774 | new verdict neither
+  brier_yesno     OD old 0.0831 new 0.0831 | diff old +0.045 new -0.045 | CI old [0.029, 0.062] new [-0.061, -0.029] | p old 0.0 new 0.0000 | adj old 0.0 new 0.0000 | new verdict jev_better
+--- q35_4b_v11c_cal
+  micro           OD old 79.92 new 79.9242 | diff old -1.629 new -1.629 | CI old [-3.295, 0.114] new [-3.295, +0.114] | p old 0.0698 new 0.0698 | adj old 0.1396 new 0.1396 | new verdict neither
+  macro           OD old 80.64 new 80.6410 | diff old -1.314 new -1.314 | CI old [-3.141, 0.577] new [-3.141, +0.577] | p old 0.1746 new 0.1774 | adj old 0.1746 new 0.1774 | new verdict neither
+  brier_yesno     OD old 0.0831 new 0.0831 | diff old +0.045 new -0.045 | CI old [0.029, 0.062] new [-0.061, -0.029] | p old 0.0 new 0.0000 | adj old 0.0 new 0.0000 | new verdict jev_better
+  bc_micro        OD old 80.53 new 80.5303 | diff old -1.023 new -1.023 | CI old [-2.765, 0.758] new [-2.765, +0.758] | p old 0.2762 new 0.2762 | adj old 0.5524 new 0.4340 | new verdict neither
+  bc_macro        OD old 81.41 new 81.4103 | diff old -0.545 new -0.545 | CI old [-2.436, 1.378] new [-2.436, +1.378] | p old 0.574 new 0.5810 | adj old 0.574 new 0.7695 | new verdict neither
+  bc_brier_yesno  OD old 0.0831 new 0.0831 | diff old +0.045 new -0.045 | CI old [0.029, 0.062] new [-0.061, -0.029] | p old 0.0 new 0.0000 | adj old 0.0 new 0.0000 | new verdict jev_better
+--- q35_4b_v10_cal
+  micro           OD old 78.26 new 78.2576 | diff old -3.295 new -3.295 | CI old [-5.038, -1.515] new [-5.038, -1.515] | p old 0.0002 new 0.0002 | adj old 0.0004 new 0.0004 | new verdict jev_better
+  macro           OD old 78.91 new 78.9103 | diff old -3.045 new -3.045 | CI old [-4.872, -1.186] new [-4.872, -1.186] | p old 0.001 new 0.0010 | adj old 0.001 new 0.0010 | new verdict jev_better
+  brier_yesno     OD old 0.0904 new 0.0904 | diff old +0.053 new -0.053 | CI old [0.033, 0.072] new [-0.072, -0.034] | p old 0.0 new 0.0000 | adj old 0.0 new 0.0000 | new verdict jev_better
+===== OHS-2 half S
+--- q35_4b_v11c
+  micro           OD old 78.28 new 78.2805 | diff old -1.584 new -1.584 | CI old [-3.997, 0.754] new [-3.997, +0.754] | p old 0.202 new 0.2020 | adj old 0.404 new 0.4040 | new verdict neither
+  macro           OD old 78.19 new 78.1899 | diff old -1.255 new -1.255 | CI old [-3.974, 1.494] new [-3.974, +1.494] | p old 0.3666 new 0.3666 | adj old 0.404 new 0.4040 | new verdict neither
+  brier_yesno     OD old 0.0865 new 0.0865 | diff old +0.035 new -0.035 | CI old [0.011, 0.059] new [-0.059, -0.011] | p old 0.0048 new 0.0052 | adj old 0.0144 new 0.0156 | new verdict jev_better
+--- q35_4b_v11c_cal
+  micro           OD old 78.28 new 78.2805 | diff old -1.584 new -1.584 | CI old [-3.997, 0.754] new [-3.997, +0.754] | p old 0.202 new 0.2020 | adj old 0.404 new 0.4040 | new verdict neither
+  macro           OD old 78.19 new 78.1899 | diff old -1.255 new -1.255 | CI old [-3.974, 1.494] new [-3.974, +1.494] | p old 0.3666 new 0.3666 | adj old 0.404 new 0.4040 | new verdict neither
+  brier_yesno     OD old 0.0865 new 0.0865 | diff old +0.035 new -0.035 | CI old [0.011, 0.059] new [-0.059, -0.011] | p old 0.0048 new 0.0052 | adj old 0.0144 new 0.0156 | new verdict jev_better
+  bc_micro        OD old 78.88 new 78.8839 | diff old -0.980 new -0.980 | CI old [-3.469, 1.508] new [-3.469, +1.508] | p old 0.4502 new 0.4502 | adj old 0.9004 new 0.6897 | new verdict neither
+  bc_macro        OD old 78.91 new 78.9089 | diff old -0.536 new -0.536 | CI old [-3.335, 2.317] new [-3.335, +2.317] | p old 0.6958 new 0.6958 | adj old 0.9004 new 0.8242 | new verdict neither
+  bc_brier_yesno  OD old 0.0865 new 0.0865 | diff old +0.035 new -0.035 | CI old [0.011, 0.059] new [-0.059, -0.011] | p old 0.0048 new 0.0052 | adj old 0.0144 new 0.0373 | new verdict jev_better
+--- q35_4b_v10_cal
+  micro           OD old 77.68 new 77.6772 | diff old -2.187 new -2.187 | CI old [-4.751, 0.302] new [-4.751, +0.302] | p old 0.0904 new 0.0904 | adj old 0.1808 new 0.1808 | new verdict neither
+  macro           OD old 77.36 new 77.3560 | diff old -2.089 new -2.089 | CI old [-4.907, 0.63] new [-4.907, +0.630] | p old 0.1304 new 0.1304 | adj old 0.1808 new 0.1808 | new verdict neither
+  brier_yesno     OD old 0.094 new 0.0940 | diff old +0.042 new -0.042 | CI old [0.015, 0.069] new [-0.069, -0.016] | p old 0.0022 new 0.0020 | adj old 0.0066 new 0.0060 | new verdict jev_better

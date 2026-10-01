@@ -1,0 +1,38 @@
+split ohs half all: 1847 base rows, 17 tasks, 1474 groups, 527 _neg pairs, 0 _perm pairs; boot 10000
+  Jev run jev_guard: micro 81.75 macro 81.58 brier 0.114372 missing base 0 twin 0 ties 3 not-pinned rows 0
+  Jev run jev_r2_guard: micro 81.54 macro 81.51 brier 0.114006 missing base 0 twin 0 ties 5 not-pinned rows 0
+  Jev run-to-run agreement: decision 0.9838, correctness 0.9881
+== q35_4b_v11c_cal  (bc: None)
+  PRIMARY micro          OD  78.0184 Jev  81.6459 diff  -3.6275 [-5.2575, -2.0032] p 0.0000 holm 0.0000 -> jev_better
+  PRIMARY macro          OD  78.3247 Jev  81.5426 diff  -3.2179 [-5.0167, -1.4321] p 0.0008 holm 0.0016 -> jev_better
+  PRIMARY brier_yesno    OD   0.1450 Jev   0.1142 diff  -0.0308 [-0.0492, -0.0117] p 0.0008 holm 0.0016 -> jev_better
+  sec acc_track_C                    OD  81.3861 Jev  84.0594 diff  -2.6733 [-6.2376, +0.7921] p 0.1358 q 0.2828 -> no_clear_difference
+  sec acc_track_F                    OD  75.0000 Jev  75.4167 diff  -0.4167 [-4.5833, +3.5417] p 0.8704 q 0.9442 -> no_clear_difference
+  sec acc_track_U                    OD  77.1325 Jev  81.8966 diff  -4.7641 [-6.8058, -2.7273] p 0.0000 q 0.0000 -> jev_better
+  sec acc_over_26_options            OD  75.2381 Jev  77.8571 diff  -2.6190 [-7.3810, +2.1429] p 0.2994 q 0.4865 -> no_clear_difference
+  sec complement_violation           OD   0.1214 Jev   0.1195 diff  -0.0019 [-0.0389, +0.0332] p 0.9376 q 0.9442 -> no_clear_difference
+  sec acc_task_arxiv2026_condmat     OD  73.3333 Jev  65.8333 diff  +7.5000 [-1.6667, +16.6667] p 0.1214 q 0.2828 -> no_clear_difference
+  sec acc_task_arxiv2026_econqfin    OD  65.0000 Jev  66.6667 diff  -1.6667 [-11.6667, +10.0000] p 0.8768 q 0.9442 -> no_clear_difference
+  sec acc_task_arxiv2026_physics     OD  96.6667 Jev  98.3333 diff  -1.6667 [-5.0000, +0.0000] p 0.7122 q 0.8663 -> no_clear_difference
+  sec acc_task_arxiv2026_qbio        OD  65.0000 Jev  70.8333 diff  -5.8333 [-13.3333, +0.8333] p 0.1414 q 0.2828 -> no_clear_difference
+  sec acc_task_go_emotions           OD  65.3333 Jev  69.6667 diff  -4.3333 [-11.0000, +2.0000] p 0.2114 q 0.3926 -> no_clear_difference
+  sec acc_task_hatecheck             OD  95.1724 Jev  98.2759 diff  -3.1034 [-6.8966, +0.3448] p 0.0888 q 0.2565 -> no_clear_difference
+  sec acc_task_legalbench_abercrombie OD  70.0000 Jev  78.3333 diff  -8.3333 [-18.3333, +0.8333] p 0.1064 q 0.2766 -> no_clear_difference
+  sec acc_task_legalbench_cuad       OD  80.0000 Jev  80.6250 diff  -0.6250 [-7.5000, +6.2500] p 0.9442 q 0.9442 -> no_clear_difference
+  sec acc_task_legalbench_hearsay    OD  56.0976 Jev  85.3659 diff -29.2683 [-41.4634, -17.0732] p 0.0000 q 0.0000 -> jev_better
+  sec acc_task_legalbench_overruling OD  95.0000 Jev  90.0000 diff  +5.0000 [-7.5000, +17.5000] p 0.5260 q 0.7598 -> no_clear_difference
+  sec acc_task_legalbench_unfair_tos OD  86.2500 Jev  84.3750 diff  +1.8750 [-3.1250, +7.5000] p 0.5630 q 0.7704 -> no_clear_difference
+  sec acc_task_lexglue_ledgar        OD 100.0000 Jev  98.3333 diff  +1.6667 [+0.0000, +5.0000] p 0.7330 q 0.8663 -> no_clear_difference
+  sec acc_task_pubmedqa              OD  62.0000 Jev  63.6667 diff  -1.6667 [-7.3333, +3.6667] p 0.5968 q 0.7758 -> no_clear_difference
+  sec acc_task_scone                 OD  76.6667 Jev  84.7222 diff  -8.0556 [-13.0556, -3.0556] p 0.0016 q 0.0083 -> jev_better
+  sec acc_task_sgd                   OD  97.5000 Jev  99.0000 diff  -1.5000 [-4.0000, +0.5000] p 0.2412 q 0.4181 -> no_clear_difference
+  sec acc_task_this_is_not_a_dataset OD  75.0000 Jev  71.9444 diff  +3.0556 [-4.7222, +10.8333] p 0.4676 q 0.7152 -> no_clear_difference
+  sec acc_task_vitaminc              OD  72.5000 Jev  80.2500 diff  -7.7500 [-13.1316, -2.4272] p 0.0052 q 0.0169 -> jev_better
+  sec acc_half_A                     OD  77.9605 Jev  81.7434 diff  -3.7829 [-6.1356, -1.4351] p 0.0022 q 0.0095 -> jev_better
+  sec acc_half_S                     OD  78.0749 Jev  81.5508 diff  -3.4759 [-5.8003, -1.2127] p 0.0026 q 0.0097 -> jev_better
+  sec mcnemar vs_jev_guard: b=90 c=159 p 0.0000 q 0.0001 -> jev_better
+  sec mcnemar vs_jev_r2_guard: b=89 c=154 p 0.0000 q 0.0002 -> jev_better
+  desc complement_mean_abs_dev       OD   0.1010 Jev   0.0996 diff  -0.0014 [-0.0145, +0.0116] p 0.8538
+  desc acc_neg_rows                  OD  76.0911 Jev  78.1784 diff  -2.0873 [-5.9772, +1.8975] p 0.3144
+  OD answers: missing base 0 twin 0 ties 0
+wrote prereg_drafts/score_ohs3_ohs2_check/ohs1_consistency_smoke.json

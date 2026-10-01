@@ -1,0 +1,1276 @@
+{
+ "scorer": "score_ohs3.py",
+ "prereg": "PREREG_OHS3.md",
+ "split": "ohs2",
+ "half": "all",
+ "n_boot": 10000,
+ "seed": 0,
+ "data": {
+  "rows": 1320,
+  "base_rows": 1320,
+  "tasks": 13,
+  "groups": 1320,
+  "yes_no_base": 360,
+  "choice_base": 960,
+  "over_26_base": 0,
+  "neg_pairs": 0,
+  "perm_pairs": 0,
+  "unscored_relations": {},
+  "task_key": "source",
+  "source_equals_meta_task_partition": true,
+  "frozen_sha256_ok": null
+ },
+ "deviations": [],
+ "speed_cost": "not defined in PREREG_OHS3.md; not scored (see prereg_drafts/speed_cost_definition.md)",
+ "jev": {
+  "runs": [
+   "jev_guard",
+   "jev_r2_guard"
+  ],
+  "per_run": {
+   "jev_guard": {
+    "micro_pct": 81.893939,
+    "macro_pct": 82.307692,
+    "brier_yesno": 0.037188,
+    "missing_base": 0,
+    "missing_twin": 0,
+    "tie_base": 1,
+    "missing_base_by_task": {},
+    "extra_ids_not_in_data": 0,
+    "model_ids": {
+     "typesafe/jev-1.13-20260917": 1320
+    },
+    "rows_not_pinned_model": 0
+   },
+   "jev_r2_guard": {
+    "micro_pct": 81.212121,
+    "macro_pct": 81.602564,
+    "brier_yesno": 0.038619,
+    "missing_base": 0,
+    "missing_twin": 0,
+    "tie_base": 2,
+    "missing_base_by_task": {},
+    "extra_ids_not_in_data": 0,
+    "model_ids": {
+     "typesafe/jev-1.13-20260917": 1320
+    },
+    "rows_not_pinned_model": 0
+   }
+  },
+  "run_agreement": {
+   "decision": 0.988636,
+   "correctness": 0.991667,
+   "note": "decision = both runs give the same non-tie, non-missing answer; correctness = both right or both wrong (score_ohs.py's 'jev_run_agreement')"
+  },
+  "mean_of_runs": {
+   "micro_pct": 81.55303,
+   "macro_pct": 81.955128,
+   "brier_yesno": 0.037903
+  }
+ },
+ "models": {
+  "q35_4b_v11c": {
+   "primary": {
+    "micro": {
+     "od": 79.924242,
+     "jev": 81.55303,
+     "diff": -1.628788,
+     "ci95": [
+      -3.295455,
+      0.113636
+     ],
+     "p": 0.0698,
+     "n": 1320,
+     "p_holm": 0.1396,
+     "diff_definition": "OD - Jev, pp",
+     "verdict": {
+      "label": "neither",
+      "beats": false,
+      "matches": false,
+      "ci_above_0": false,
+      "ci_below_0": false
+     }
+    },
+    "macro": {
+     "od": 80.641026,
+     "jev": 81.955128,
+     "diff": -1.314103,
+     "ci95": [
+      -3.141026,
+      0.576923
+     ],
+     "p": 0.1774,
+     "n": 1320,
+     "p_holm": 0.1774,
+     "diff_definition": "OD - Jev, pp",
+     "verdict": {
+      "label": "neither",
+      "beats": false,
+      "matches": false,
+      "ci_above_0": false,
+      "ci_below_0": false
+     }
+    },
+    "brier_yesno": {
+     "od": 0.083063,
+     "jev": 0.037903,
+     "diff": -0.045159,
+     "ci95": [
+      -0.061233,
+      -0.028692
+     ],
+     "p": 0.0,
+     "n": 360,
+     "p_holm": 0.0,
+     "diff_definition": "Jev - OD (lower Brier is better)",
+     "verdict": {
+      "label": "jev_better",
+      "beats": false,
+      "matches": false,
+      "ci_above_0": false,
+      "ci_below_0": true
+     }
+    }
+   },
+   "secondary": {
+    "acc_track_F": {
+     "od": 84.583333,
+     "jev": 84.166667,
+     "diff": 0.416667,
+     "ci95": [
+      -3.958333,
+      4.791667
+     ],
+     "p": 0.8884,
+     "n": 240,
+     "q_bh": 0.937756,
+     "diff_definition": "OD - Jev, pp",
+     "verdict": "no_clear_difference"
+    },
+    "acc_track_U": {
+     "od": 78.888889,
+     "jev": 80.972222,
+     "diff": -2.083333,
+     "ci95": [
+      -3.888889,
+      -0.27662
+     ],
+     "p": 0.0278,
+     "n": 1080,
+     "q_bh": 0.108413,
+     "diff_definition": "OD - Jev, pp",
+     "verdict": "no_clear_difference"
+    },
+    "acc_task_arxiv_fresh_astro": {
+     "od": 85.0,
+     "jev": 88.333333,
+     "diff": -3.333333,
+     "ci95": [
+      -15.0,
+      8.333333
+     ],
+     "p": 0.641,
+     "n": 60,
+     "q_bh": 0.811933,
+     "diff_definition": "OD - Jev, pp",
+     "verdict": "no_clear_difference"
+    },
+    "acc_task_arxiv_fresh_cs": {
+     "od": 73.333333,
+     "jev": 66.666667,
+     "diff": 6.666667,
+     "ci95": [
+      -3.333333,
+      17.5
+     ],
+     "p": 0.2314,
+     "n": 60,
+     "q_bh": 0.399691,
+     "diff_definition": "OD - Jev, pp",
+     "verdict": "no_clear_difference"
+    },
+    "acc_task_arxiv_fresh_math": {
+     "od": 93.333333,
+     "jev": 96.666667,
+     "diff": -3.333333,
+     "ci95": [
+      -8.333333,
+      0.0
+     ],
+     "p": 0.254,
+     "n": 60,
+     "q_bh": 0.402167,
+     "diff_definition": "OD - Jev, pp",
+     "verdict": "no_clear_difference"
+    },
+    "acc_task_arxiv_fresh_stat_eess": {
+     "od": 86.666667,
+     "jev": 85.0,
+     "diff": 1.666667,
+     "ci95": [
+      -5.0,
+      8.333333
+     ],
+     "p": 0.827,
+     "n": 60,
+     "q_bh": 0.929882,
+     "diff_definition": "OD - Jev, pp",
+     "verdict": "no_clear_difference"
+    },
+    "acc_task_big_patent_cpc": {
+     "od": 65.0,
+     "jev": 66.666667,
+     "diff": -1.666667,
+     "ci95": [
+      -7.083333,
+      3.333333
+     ],
+     "p": 0.5946,
+     "n": 120,
+     "q_bh": 0.806957,
+     "diff_definition": "OD - Jev, pp",
+     "verdict": "no_clear_difference"
+    },
+    "acc_task_ddi2013": {
+     "od": 70.833333,
+     "jev": 58.333333,
+     "diff": 12.5,
+     "ci95": [
+      6.25,
+      19.583333
+     ],
+     "p": 0.0002,
+     "n": 120,
+     "q_bh": 0.0019,
+     "diff_definition": "OD - Jev, pp",
+     "verdict": "od_better"
+    },
+    "acc_task_evidence_inference": {
+     "od": 88.333333,
+     "jev": 88.333333,
+     "diff": 0.0,
+     "ci95": [
+      -3.75,
+      3.75
+     ],
+     "p": 1.0,
+     "n": 120,
+     "q_bh": 1.0,
+     "diff_definition": "OD - Jev, pp",
+     "verdict": "no_clear_difference"
+    },
+    "acc_task_ibm_argq30k_stance": {
+     "od": 96.666667,
+     "jev": 97.5,
+     "diff": -0.833333,
+     "ci95": [
+      -4.166667,
+      2.5
+     ],
+     "p": 0.832,
+     "n": 120,
+     "q_bh": 0.929882,
+     "diff_definition": "OD - Jev, pp",
+     "verdict": "no_clear_difference"
+    },
+    "acc_task_medical_abstracts": {
+     "od": 69.166667,
+     "jev": 65.833333,
+     "diff": 3.333333,
+     "ci95": [
+      -2.5,
+      9.166667
+     ],
+     "p": 0.3022,
+     "n": 120,
+     "q_bh": 0.441677,
+     "diff_definition": "OD - Jev, pp",
+     "verdict": "no_clear_difference"
+    },
+    "acc_task_moral_stories": {
+     "od": 85.0,
+     "jev": 97.5,
+     "diff": -12.5,
+     "ci95": [
+      -18.333333,
+      -6.666667
+     ],
+     "p": 0.0,
+     "n": 120,
+     "q_bh": 0.0,
+     "diff_definition": "OD - Jev, pp",
+     "verdict": "jev_better"
+    },
+    "acc_task_pubmed_rct20k": {
+     "od": 72.5,
+     "jev": 76.666667,
+     "diff": -4.166667,
+     "ci95": [
+      -8.333333,
+      0.0
+     ],
+     "p": 0.0682,
+     "n": 120,
+     "q_bh": 0.185114,
+     "diff_definition": "OD - Jev, pp",
+     "verdict": "no_clear_difference"
+    },
+    "acc_task_scifact": {
+     "od": 78.333333,
+     "jev": 85.416667,
+     "diff": -7.083333,
+     "ci95": [
+      -12.916667,
+      -1.666667
+     ],
+     "p": 0.014,
+     "n": 120,
+     "q_bh": 0.088667,
+     "diff_definition": "OD - Jev, pp",
+     "verdict": "no_clear_difference"
+    },
+    "acc_task_tabfact": {
+     "od": 84.166667,
+     "jev": 92.5,
+     "diff": -8.333333,
+     "ci95": [
+      -15.833333,
+      -0.833333
+     ],
+     "p": 0.0334,
+     "n": 120,
+     "q_bh": 0.108413,
+     "diff_definition": "OD - Jev, pp",
+     "verdict": "no_clear_difference"
+    },
+    "acc_half_A": {
+     "od": 81.582953,
+     "jev": 83.25723,
+     "diff": -1.674277,
+     "ci95": [
+      -4.099626,
+      0.72599
+     ],
+     "p": 0.1768,
+     "n": 657,
+     "q_bh": 0.374996,
+     "diff_definition": "OD - Jev, pp",
+     "verdict": "no_clear_difference"
+    },
+    "acc_half_S": {
+     "od": 78.280543,
+     "jev": 79.864253,
+     "diff": -1.58371,
+     "ci95": [
+      -3.987741,
+      0.83717
+     ],
+     "p": 0.2128,
+     "n": 663,
+     "q_bh": 0.399691,
+     "diff_definition": "OD - Jev, pp",
+     "verdict": "no_clear_difference"
+    }
+   },
+   "mcnemar": {
+    "vs_jev_guard": {
+     "od_right_jev_wrong": 57,
+     "od_wrong_jev_right": 83,
+     "p": 0.034236,
+     "q_bh": 0.108413,
+     "verdict": "no_clear_difference"
+    },
+    "vs_jev_r2_guard": {
+     "od_right_jev_wrong": 62,
+     "od_wrong_jev_right": 79,
+     "p": 0.17763,
+     "q_bh": 0.374996,
+     "verdict": "no_clear_difference"
+    }
+   },
+   "secondary_family": [
+    "acc_half_A",
+    "acc_half_S",
+    "acc_task_arxiv_fresh_astro",
+    "acc_task_arxiv_fresh_cs",
+    "acc_task_arxiv_fresh_math",
+    "acc_task_arxiv_fresh_stat_eess",
+    "acc_task_big_patent_cpc",
+    "acc_task_ddi2013",
+    "acc_task_evidence_inference",
+    "acc_task_ibm_argq30k_stance",
+    "acc_task_medical_abstracts",
+    "acc_task_moral_stories",
+    "acc_task_pubmed_rct20k",
+    "acc_task_scifact",
+    "acc_task_tabfact",
+    "acc_track_F",
+    "acc_track_U",
+    "mcnemar_vs_jev_guard",
+    "mcnemar_vs_jev_r2_guard"
+   ],
+   "descriptive": {},
+   "od_answers": {
+    "missing_base": 0,
+    "missing_twin": 0,
+    "tie_base": 0,
+    "missing_base_by_task": {},
+    "extra_ids_not_in_data": 0
+   },
+   "config_primary": "q35_4b_v11c",
+   "config_bc": null,
+   "note": "secondary configuration q35_4b_v11c_bc not found: bc_* endpoints not scored"
+  },
+  "q35_4b_v11c_cal": {
+   "primary": {
+    "micro": {
+     "od": 79.924242,
+     "jev": 81.55303,
+     "diff": -1.628788,
+     "ci95": [
+      -3.295455,
+      0.113636
+     ],
+     "p": 0.0698,
+     "n": 1320,
+     "p_holm": 0.1396,
+     "diff_definition": "OD - Jev, pp",
+     "verdict": {
+      "label": "neither",
+      "beats": false,
+      "matches": false,
+      "ci_above_0": false,
+      "ci_below_0": false
+     }
+    },
+    "macro": {
+     "od": 80.641026,
+     "jev": 81.955128,
+     "diff": -1.314103,
+     "ci95": [
+      -3.141026,
+      0.576923
+     ],
+     "p": 0.1774,
+     "n": 1320,
+     "p_holm": 0.1774,
+     "diff_definition": "OD - Jev, pp",
+     "verdict": {
+      "label": "neither",
+      "beats": false,
+      "matches": false,
+      "ci_above_0": false,
+      "ci_below_0": false
+     }
+    },
+    "brier_yesno": {
+     "od": 0.083063,
+     "jev": 0.037903,
+     "diff": -0.045159,
+     "ci95": [
+      -0.061233,
+      -0.028692
+     ],
+     "p": 0.0,
+     "n": 360,
+     "p_holm": 0.0,
+     "diff_definition": "Jev - OD (lower Brier is better)",
+     "verdict": {
+      "label": "jev_better",
+      "beats": false,
+      "matches": false,
+      "ci_above_0": false,
+      "ci_below_0": true
+     }
+    }
+   },
+   "secondary": {
+    "acc_track_F": {
+     "od": 84.583333,
+     "jev": 84.166667,
+     "diff": 0.416667,
+     "ci95": [
+      -3.958333,
+      4.791667
+     ],
+     "p": 0.8884,
+     "n": 240,
+     "q_bh": 0.930705,
+     "diff_definition": "OD - Jev, pp",
+     "verdict": "no_clear_difference"
+    },
+    "acc_track_U": {
+     "od": 78.888889,
+     "jev": 80.972222,
+     "diff": -2.083333,
+     "ci95": [
+      -3.888889,
+      -0.27662
+     ],
+     "p": 0.0278,
+     "n": 1080,
+     "q_bh": 0.107598,
+     "diff_definition": "OD - Jev, pp",
+     "verdict": "no_clear_difference"
+    },
+    "bc_micro": {
+     "od": 80.530303,
+     "jev": 81.55303,
+     "diff": -1.022727,
+     "ci95": [
+      -2.765152,
+      0.757576
+     ],
+     "p": 0.2762,
+     "n": 1320,
+     "q_bh": 0.434029,
+     "diff_definition": "OD - Jev, pp",
+     "verdict": {
+      "label": "neither",
+      "beats": false,
+      "matches": false,
+      "ci_above_0": false,
+      "ci_below_0": false
+     }
+    },
+    "bc_macro": {
+     "od": 81.410256,
+     "jev": 81.955128,
+     "diff": -0.544872,
+     "ci95": [
+      -2.435897,
+      1.378205
+     ],
+     "p": 0.581,
+     "n": 1320,
+     "q_bh": 0.769482,
+     "diff_definition": "OD - Jev, pp",
+     "verdict": {
+      "label": "neither",
+      "beats": false,
+      "matches": false,
+      "ci_above_0": false,
+      "ci_below_0": false
+     }
+    },
+    "bc_brier_yesno": {
+     "od": 0.083063,
+     "jev": 0.037903,
+     "diff": -0.045159,
+     "ci95": [
+      -0.061233,
+      -0.028692
+     ],
+     "p": 0.0,
+     "n": 360,
+     "q_bh": 0.0,
+     "diff_definition": "Jev - OD (lower is better)",
+     "verdict": {
+      "label": "jev_better",
+      "beats": false,
+      "matches": false,
+      "ci_above_0": false,
+      "ci_below_0": true
+     }
+    },
+    "acc_task_arxiv_fresh_astro": {
+     "od": 85.0,
+     "jev": 88.333333,
+     "diff": -3.333333,
+     "ci95": [
+      -15.0,
+      8.333333
+     ],
+     "p": 0.641,
+     "n": 60,
+     "q_bh": 0.783444,
+     "diff_definition": "OD - Jev, pp",
+     "verdict": "no_clear_difference"
+    },
+    "acc_task_arxiv_fresh_cs": {
+     "od": 73.333333,
+     "jev": 66.666667,
+     "diff": 6.666667,
+     "ci95": [
+      -3.333333,
+      17.5
+     ],
+     "p": 0.2314,
+     "n": 60,
+     "q_bh": 0.424233,
+     "diff_definition": "OD - Jev, pp",
+     "verdict": "no_clear_difference"
+    },
+    "acc_task_arxiv_fresh_math": {
+     "od": 93.333333,
+     "jev": 96.666667,
+     "diff": -3.333333,
+     "ci95": [
+      -8.333333,
+      0.0
+     ],
+     "p": 0.254,
+     "n": 60,
+     "q_bh": 0.429846,
+     "diff_definition": "OD - Jev, pp",
+     "verdict": "no_clear_difference"
+    },
+    "acc_task_arxiv_fresh_stat_eess": {
+     "od": 86.666667,
+     "jev": 85.0,
+     "diff": 1.666667,
+     "ci95": [
+      -5.0,
+      8.333333
+     ],
+     "p": 0.827,
+     "n": 60,
+     "q_bh": 0.9152,
+     "diff_definition": "OD - Jev, pp",
+     "verdict": "no_clear_difference"
+    },
+    "acc_task_big_patent_cpc": {
+     "od": 65.0,
+     "jev": 66.666667,
+     "diff": -1.666667,
+     "ci95": [
+      -7.083333,
+      3.333333
+     ],
+     "p": 0.5946,
+     "n": 120,
+     "q_bh": 0.769482,
+     "diff_definition": "OD - Jev, pp",
+     "verdict": "no_clear_difference"
+    },
+    "acc_task_ddi2013": {
+     "od": 70.833333,
+     "jev": 58.333333,
+     "diff": 12.5,
+     "ci95": [
+      6.25,
+      19.583333
+     ],
+     "p": 0.0002,
+     "n": 120,
+     "q_bh": 0.001467,
+     "diff_definition": "OD - Jev, pp",
+     "verdict": "od_better"
+    },
+    "acc_task_evidence_inference": {
+     "od": 88.333333,
+     "jev": 88.333333,
+     "diff": 0.0,
+     "ci95": [
+      -3.75,
+      3.75
+     ],
+     "p": 1.0,
+     "n": 120,
+     "q_bh": 1.0,
+     "diff_definition": "OD - Jev, pp",
+     "verdict": "no_clear_difference"
+    },
+    "acc_task_ibm_argq30k_stance": {
+     "od": 96.666667,
+     "jev": 97.5,
+     "diff": -0.833333,
+     "ci95": [
+      -4.166667,
+      2.5
+     ],
+     "p": 0.832,
+     "n": 120,
+     "q_bh": 0.9152,
+     "diff_definition": "OD - Jev, pp",
+     "verdict": "no_clear_difference"
+    },
+    "acc_task_medical_abstracts": {
+     "od": 69.166667,
+     "jev": 65.833333,
+     "diff": 3.333333,
+     "ci95": [
+      -2.5,
+      9.166667
+     ],
+     "p": 0.3022,
+     "n": 120,
+     "q_bh": 0.443227,
+     "diff_definition": "OD - Jev, pp",
+     "verdict": "no_clear_difference"
+    },
+    "acc_task_moral_stories": {
+     "od": 85.0,
+     "jev": 97.5,
+     "diff": -12.5,
+     "ci95": [
+      -18.333333,
+      -6.666667
+     ],
+     "p": 0.0,
+     "n": 120,
+     "q_bh": 0.0,
+     "diff_definition": "OD - Jev, pp",
+     "verdict": "jev_better"
+    },
+    "acc_task_pubmed_rct20k": {
+     "od": 72.5,
+     "jev": 76.666667,
+     "diff": -4.166667,
+     "ci95": [
+      -8.333333,
+      0.0
+     ],
+     "p": 0.0682,
+     "n": 120,
+     "q_bh": 0.18755,
+     "diff_definition": "OD - Jev, pp",
+     "verdict": "no_clear_difference"
+    },
+    "acc_task_scifact": {
+     "od": 78.333333,
+     "jev": 85.416667,
+     "diff": -7.083333,
+     "ci95": [
+      -12.916667,
+      -1.666667
+     ],
+     "p": 0.014,
+     "n": 120,
+     "q_bh": 0.077,
+     "diff_definition": "OD - Jev, pp",
+     "verdict": "no_clear_difference"
+    },
+    "acc_task_tabfact": {
+     "od": 84.166667,
+     "jev": 92.5,
+     "diff": -8.333333,
+     "ci95": [
+      -15.833333,
+      -0.833333
+     ],
+     "p": 0.0334,
+     "n": 120,
+     "q_bh": 0.107598,
+     "diff_definition": "OD - Jev, pp",
+     "verdict": "no_clear_difference"
+    },
+    "acc_half_A": {
+     "od": 81.582953,
+     "jev": 83.25723,
+     "diff": -1.674277,
+     "ci95": [
+      -4.099626,
+      0.72599
+     ],
+     "p": 0.1768,
+     "n": 657,
+     "q_bh": 0.390786,
+     "diff_definition": "OD - Jev, pp",
+     "verdict": "no_clear_difference"
+    },
+    "acc_half_S": {
+     "od": 78.280543,
+     "jev": 79.864253,
+     "diff": -1.58371,
+     "ci95": [
+      -3.987741,
+      0.83717
+     ],
+     "p": 0.2128,
+     "n": 663,
+     "q_bh": 0.424233,
+     "diff_definition": "OD - Jev, pp",
+     "verdict": "no_clear_difference"
+    }
+   },
+   "mcnemar": {
+    "vs_jev_guard": {
+     "od_right_jev_wrong": 57,
+     "od_wrong_jev_right": 83,
+     "p": 0.034236,
+     "q_bh": 0.107598,
+     "verdict": "no_clear_difference"
+    },
+    "vs_jev_r2_guard": {
+     "od_right_jev_wrong": 62,
+     "od_wrong_jev_right": 79,
+     "p": 0.17763,
+     "q_bh": 0.390786,
+     "verdict": "no_clear_difference"
+    }
+   },
+   "secondary_family": [
+    "acc_half_A",
+    "acc_half_S",
+    "acc_task_arxiv_fresh_astro",
+    "acc_task_arxiv_fresh_cs",
+    "acc_task_arxiv_fresh_math",
+    "acc_task_arxiv_fresh_stat_eess",
+    "acc_task_big_patent_cpc",
+    "acc_task_ddi2013",
+    "acc_task_evidence_inference",
+    "acc_task_ibm_argq30k_stance",
+    "acc_task_medical_abstracts",
+    "acc_task_moral_stories",
+    "acc_task_pubmed_rct20k",
+    "acc_task_scifact",
+    "acc_task_tabfact",
+    "acc_track_F",
+    "acc_track_U",
+    "bc_brier_yesno",
+    "bc_macro",
+    "bc_micro",
+    "mcnemar_vs_jev_guard",
+    "mcnemar_vs_jev_r2_guard"
+   ],
+   "descriptive": {},
+   "od_answers": {
+    "missing_base": 0,
+    "missing_twin": 0,
+    "tie_base": 0,
+    "missing_base_by_task": {},
+    "extra_ids_not_in_data": 0
+   },
+   "od_bc_answers": {
+    "missing_base": 0,
+    "missing_twin": 0,
+    "tie_base": 0,
+    "missing_base_by_task": {},
+    "extra_ids_not_in_data": 0
+   },
+   "config_primary": "q35_4b_v11c_cal",
+   "config_bc": "q35_4b_v11c_cal_bc"
+  },
+  "q35_4b_v10_cal": {
+   "primary": {
+    "micro": {
+     "od": 78.257576,
+     "jev": 81.55303,
+     "diff": -3.295455,
+     "ci95": [
+      -5.037879,
+      -1.515152
+     ],
+     "p": 0.0002,
+     "n": 1320,
+     "p_holm": 0.0004,
+     "diff_definition": "OD - Jev, pp",
+     "verdict": {
+      "label": "jev_better",
+      "beats": false,
+      "matches": false,
+      "ci_above_0": false,
+      "ci_below_0": true
+     }
+    },
+    "macro": {
+     "od": 78.910256,
+     "jev": 81.955128,
+     "diff": -3.044872,
+     "ci95": [
+      -4.871795,
+      -1.185897
+     ],
+     "p": 0.001,
+     "n": 1320,
+     "p_holm": 0.001,
+     "diff_definition": "OD - Jev, pp",
+     "verdict": {
+      "label": "jev_better",
+      "beats": false,
+      "matches": false,
+      "ci_above_0": false,
+      "ci_below_0": true
+     }
+    },
+    "brier_yesno": {
+     "od": 0.090415,
+     "jev": 0.037903,
+     "diff": -0.052511,
+     "ci95": [
+      -0.071687,
+      -0.033604
+     ],
+     "p": 0.0,
+     "n": 360,
+     "p_holm": 0.0,
+     "diff_definition": "Jev - OD (lower Brier is better)",
+     "verdict": {
+      "label": "jev_better",
+      "beats": false,
+      "matches": false,
+      "ci_above_0": false,
+      "ci_below_0": true
+     }
+    }
+   },
+   "secondary": {
+    "acc_track_F": {
+     "od": 82.5,
+     "jev": 84.166667,
+     "diff": -1.666667,
+     "ci95": [
+      -5.625,
+      2.291667
+     ],
+     "p": 0.436,
+     "n": 240,
+     "q_bh": 0.564235,
+     "diff_definition": "OD - Jev, pp",
+     "verdict": "no_clear_difference"
+    },
+    "acc_track_U": {
+     "od": 77.314815,
+     "jev": 80.972222,
+     "diff": -3.657407,
+     "ci95": [
+      -5.601852,
+      -1.666667
+     ],
+     "p": 0.0004,
+     "n": 1080,
+     "q_bh": 0.0022,
+     "diff_definition": "OD - Jev, pp",
+     "verdict": "jev_better"
+    },
+    "bc_micro": {
+     "od": 79.772727,
+     "jev": 81.55303,
+     "diff": -1.780303,
+     "ci95": [
+      -3.598485,
+      0.075758
+     ],
+     "p": 0.0616,
+     "n": 1320,
+     "q_bh": 0.1232,
+     "diff_definition": "OD - Jev, pp",
+     "verdict": {
+      "label": "neither",
+      "beats": false,
+      "matches": false,
+      "ci_above_0": false,
+      "ci_below_0": false
+     }
+    },
+    "bc_macro": {
+     "od": 80.769231,
+     "jev": 81.955128,
+     "diff": -1.185897,
+     "ci95": [
+      -3.044872,
+      0.705929
+     ],
+     "p": 0.2234,
+     "n": 1320,
+     "q_bh": 0.351057,
+     "diff_definition": "OD - Jev, pp",
+     "verdict": {
+      "label": "neither",
+      "beats": false,
+      "matches": false,
+      "ci_above_0": false,
+      "ci_below_0": false
+     }
+    },
+    "bc_brier_yesno": {
+     "od": 0.090415,
+     "jev": 0.037903,
+     "diff": -0.052511,
+     "ci95": [
+      -0.071687,
+      -0.033604
+     ],
+     "p": 0.0,
+     "n": 360,
+     "q_bh": 0.0,
+     "diff_definition": "Jev - OD (lower is better)",
+     "verdict": {
+      "label": "jev_better",
+      "beats": false,
+      "matches": false,
+      "ci_above_0": false,
+      "ci_below_0": true
+     }
+    },
+    "acc_task_arxiv_fresh_astro": {
+     "od": 85.0,
+     "jev": 88.333333,
+     "diff": -3.333333,
+     "ci95": [
+      -13.333333,
+      6.666667
+     ],
+     "p": 0.6238,
+     "n": 60,
+     "q_bh": 0.762422,
+     "diff_definition": "OD - Jev, pp",
+     "verdict": "no_clear_difference"
+    },
+    "acc_task_arxiv_fresh_cs": {
+     "od": 65.0,
+     "jev": 66.666667,
+     "diff": -1.666667,
+     "ci95": [
+      -10.833333,
+      7.5
+     ],
+     "p": 0.805,
+     "n": 60,
+     "q_bh": 0.850248,
+     "diff_definition": "OD - Jev, pp",
+     "verdict": "no_clear_difference"
+    },
+    "acc_task_arxiv_fresh_math": {
+     "od": 93.333333,
+     "jev": 96.666667,
+     "diff": -3.333333,
+     "ci95": [
+      -8.333333,
+      0.0
+     ],
+     "p": 0.254,
+     "n": 60,
+     "q_bh": 0.372533,
+     "diff_definition": "OD - Jev, pp",
+     "verdict": "no_clear_difference"
+    },
+    "acc_task_arxiv_fresh_stat_eess": {
+     "od": 86.666667,
+     "jev": 85.0,
+     "diff": 1.666667,
+     "ci95": [
+      -3.333333,
+      8.333333
+     ],
+     "p": 0.7788,
+     "n": 60,
+     "q_bh": 0.850248,
+     "diff_definition": "OD - Jev, pp",
+     "verdict": "no_clear_difference"
+    },
+    "acc_task_big_patent_cpc": {
+     "od": 61.666667,
+     "jev": 66.666667,
+     "diff": -5.0,
+     "ci95": [
+      -10.833333,
+      0.833333
+     ],
+     "p": 0.1036,
+     "n": 120,
+     "q_bh": 0.178031,
+     "diff_definition": "OD - Jev, pp",
+     "verdict": "no_clear_difference"
+    },
+    "acc_task_ddi2013": {
+     "od": 65.833333,
+     "jev": 58.333333,
+     "diff": 7.5,
+     "ci95": [
+      0.833333,
+      14.583333
+     ],
+     "p": 0.0294,
+     "n": 120,
+     "q_bh": 0.06468,
+     "diff_definition": "OD - Jev, pp",
+     "verdict": "no_clear_difference"
+    },
+    "acc_task_evidence_inference": {
+     "od": 87.5,
+     "jev": 88.333333,
+     "diff": -0.833333,
+     "ci95": [
+      -5.833333,
+      3.75
+     ],
+     "p": 0.8116,
+     "n": 120,
+     "q_bh": 0.850248,
+     "diff_definition": "OD - Jev, pp",
+     "verdict": "no_clear_difference"
+    },
+    "acc_task_ibm_argq30k_stance": {
+     "od": 91.666667,
+     "jev": 97.5,
+     "diff": -5.833333,
+     "ci95": [
+      -10.833333,
+      -1.666667
+     ],
+     "p": 0.0194,
+     "n": 120,
+     "q_bh": 0.047911,
+     "diff_definition": "OD - Jev, pp",
+     "verdict": "jev_better"
+    },
+    "acc_task_medical_abstracts": {
+     "od": 69.166667,
+     "jev": 65.833333,
+     "diff": 3.333333,
+     "ci95": [
+      -2.5,
+      9.166667
+     ],
+     "p": 0.3516,
+     "n": 120,
+     "q_bh": 0.48345,
+     "diff_definition": "OD - Jev, pp",
+     "verdict": "no_clear_difference"
+    },
+    "acc_task_moral_stories": {
+     "od": 85.833333,
+     "jev": 97.5,
+     "diff": -11.666667,
+     "ci95": [
+      -17.5,
+      -6.666667
+     ],
+     "p": 0.0,
+     "n": 120,
+     "q_bh": 0.0,
+     "diff_definition": "OD - Jev, pp",
+     "verdict": "jev_better"
+    },
+    "acc_task_pubmed_rct20k": {
+     "od": 75.833333,
+     "jev": 76.666667,
+     "diff": -0.833333,
+     "ci95": [
+      -5.0,
+      3.333333
+     ],
+     "p": 0.8566,
+     "n": 120,
+     "q_bh": 0.8566,
+     "diff_definition": "OD - Jev, pp",
+     "verdict": "no_clear_difference"
+    },
+    "acc_task_scifact": {
+     "od": 75.0,
+     "jev": 85.416667,
+     "diff": -10.416667,
+     "ci95": [
+      -17.5,
+      -3.333333
+     ],
+     "p": 0.0038,
+     "n": 120,
+     "q_bh": 0.011943,
+     "diff_definition": "OD - Jev, pp",
+     "verdict": "jev_better"
+    },
+    "acc_task_tabfact": {
+     "od": 83.333333,
+     "jev": 92.5,
+     "diff": -9.166667,
+     "ci95": [
+      -16.666667,
+      -1.666667
+     ],
+     "p": 0.0196,
+     "n": 120,
+     "q_bh": 0.047911,
+     "diff_definition": "OD - Jev, pp",
+     "verdict": "jev_better"
+    },
+    "acc_half_A": {
+     "od": 78.843227,
+     "jev": 83.25723,
+     "diff": -4.414003,
+     "ci95": [
+      -6.901904,
+      -1.919976
+     ],
+     "p": 0.001,
+     "n": 657,
+     "q_bh": 0.0044,
+     "diff_definition": "OD - Jev, pp",
+     "verdict": "jev_better"
+    },
+    "acc_half_S": {
+     "od": 77.677225,
+     "jev": 79.864253,
+     "diff": -2.187029,
+     "ci95": [
+      -4.787255,
+      0.378817
+     ],
+     "p": 0.1052,
+     "n": 663,
+     "q_bh": 0.178031,
+     "diff_definition": "OD - Jev, pp",
+     "verdict": "no_clear_difference"
+    }
+   },
+   "mcnemar": {
+    "vs_jev_guard": {
+     "od_right_jev_wrong": 51,
+     "od_wrong_jev_right": 99,
+     "p": 0.00011,
+     "q_bh": 0.000805,
+     "verdict": "jev_better"
+    },
+    "vs_jev_r2_guard": {
+     "od_right_jev_wrong": 59,
+     "od_wrong_jev_right": 98,
+     "p": 0.002317,
+     "q_bh": 0.008497,
+     "verdict": "jev_better"
+    }
+   },
+   "secondary_family": [
+    "acc_half_A",
+    "acc_half_S",
+    "acc_task_arxiv_fresh_astro",
+    "acc_task_arxiv_fresh_cs",
+    "acc_task_arxiv_fresh_math",
+    "acc_task_arxiv_fresh_stat_eess",
+    "acc_task_big_patent_cpc",
+    "acc_task_ddi2013",
+    "acc_task_evidence_inference",
+    "acc_task_ibm_argq30k_stance",
+    "acc_task_medical_abstracts",
+    "acc_task_moral_stories",
+    "acc_task_pubmed_rct20k",
+    "acc_task_scifact",
+    "acc_task_tabfact",
+    "acc_track_F",
+    "acc_track_U",
+    "bc_brier_yesno",
+    "bc_macro",
+    "bc_micro",
+    "mcnemar_vs_jev_guard",
+    "mcnemar_vs_jev_r2_guard"
+   ],
+   "descriptive": {},
+   "od_answers": {
+    "missing_base": 0,
+    "missing_twin": 0,
+    "tie_base": 0,
+    "missing_base_by_task": {},
+    "extra_ids_not_in_data": 0
+   },
+   "od_bc_answers": {
+    "missing_base": 0,
+    "missing_twin": 0,
+    "tie_base": 0,
+    "missing_base_by_task": {},
+    "extra_ids_not_in_data": 0
+   },
+   "config_primary": "q35_4b_v10_cal",
+   "config_bc": "q35_4b_v10_cal_bc"
+  }
+ },
+ "duplicate_pred_ids": {
+  "jev_guard": 0,
+  "jev_r2_guard": 0,
+  "q35_4b_v11c": 0,
+  "q35_4b_v11c_cal": 0,
+  "q35_4b_v11c_cal_bc": 0,
+  "q35_4b_v10_cal": 0,
+  "q35_4b_v10_cal_bc": 0
+ }
+}

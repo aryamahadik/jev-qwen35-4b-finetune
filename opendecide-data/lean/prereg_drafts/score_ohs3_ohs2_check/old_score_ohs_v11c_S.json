@@ -1,0 +1,116 @@
+{
+ "n_base": 663,
+ "n_groups": 663,
+ "tasks": 13,
+ "jev_runs": [
+  "jev_guard",
+  "jev_r2_guard"
+ ],
+ "half": "S",
+ "models": {
+  "q35_4b_v11c": {
+   "micro": 78.28,
+   "macro": 78.19,
+   "brier_yesno": 0.0865,
+   "tracks": {
+    "F": 82.91,
+    "U": 77.29
+   },
+   "over_26_options": null,
+   "per_task": {
+    "arxiv_fresh_astro": 89.3,
+    "arxiv_fresh_cs": 64.0,
+    "arxiv_fresh_math": 87.1,
+    "arxiv_fresh_stat_eess": 87.9,
+    "big_patent_cpc": 61.7,
+    "ddi2013": 64.9,
+    "evidence_inference": 85.3,
+    "ibm_argq30k_stance": 94.3,
+    "medical_abstracts": 73.8,
+    "moral_stories": 82.8,
+    "pubmed_rct20k": 69.8,
+    "scifact": 76.7,
+    "tabfact": 78.8
+   },
+   "consistency": {
+    "complement_violation": null,
+    "double_negation_drift": null,
+    "paraphrase_drift": null,
+    "paraphrase_flip_rate": null
+   },
+   "vs_jev": {
+    "micro": {
+     "diff": -1.584,
+     "ci95": [
+      -3.997,
+      0.754
+     ],
+     "p": 0.202,
+     "p_holm": 0.404
+    },
+    "macro": {
+     "diff": -1.255,
+     "ci95": [
+      -3.974,
+      1.494
+     ],
+     "p": 0.3666,
+     "p_holm": 0.404
+    },
+    "brier_yesno": {
+     "diff": 0.035,
+     "ci95": [
+      0.011,
+      0.059
+     ],
+     "p": 0.0048,
+     "p_holm": 0.0144
+    }
+   }
+  },
+  "JEV": {
+   "micro": 79.86,
+   "macro": 79.44,
+   "brier_yesno": 0.0516,
+   "tracks": {
+    "F": 82.48,
+    "U": 79.3
+   },
+   "over_26_options": null,
+   "per_task": {
+    "arxiv_fresh_astro": 92.9,
+    "arxiv_fresh_cs": 54.0,
+    "arxiv_fresh_math": 93.5,
+    "arxiv_fresh_stat_eess": 84.8,
+    "big_patent_cpc": 68.1,
+    "ddi2013": 50.9,
+    "evidence_inference": 82.4,
+    "ibm_argq30k_stance": 98.6,
+    "medical_abstracts": 70.8,
+    "moral_stories": 95.3,
+    "pubmed_rct20k": 71.4,
+    "scifact": 81.7,
+    "tabfact": 88.5
+   },
+   "consistency": {
+    "jev_guard": {
+     "complement_violation": null,
+     "double_negation_drift": null,
+     "paraphrase_drift": null,
+     "paraphrase_flip_rate": null
+    },
+    "jev_r2_guard": {
+     "complement_violation": null,
+     "double_negation_drift": null,
+     "paraphrase_drift": null,
+     "paraphrase_flip_rate": null
+    }
+   }
+  }
+ },
+ "jev_run_agreement": 0.9894,
+ "jev_runs_micro": [
+  80.39,
+  79.34
+ ]
+}

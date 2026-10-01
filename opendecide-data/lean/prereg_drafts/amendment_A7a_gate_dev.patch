@@ -1,0 +1,13 @@
+--- a/gate_dev.py
++++ b/gate_dev.py
+@@ -119,7 +119,9 @@
+                       "rotten_tomatoes": 394, "spam": 390}  # 17 sources, 3,847 rows
+ UNSEEN_FROZEN_SHA256 = "0fe614940b3008cef0e7df9d192c0be27742fce133f0976133fb3a617583af95"
+ CONSTRAINT_EXCLUDE = ("tb_mixtral",)  # REF-lineage family the new model is barred from: report-only (PREREG 3.3)
+-STORED_REF = {"4b": "q35_4b_pxE", "2b": "q35_2b_v11r"}  # the stored REF preds a fresh REF read must reproduce
++STORED_REF = {"4b": "q35_4b_pxE_parity", "2b": "q35_2b_v11r"}  # the stored REF preds a fresh REF read must reproduce
++# (4B: the od_gcp predict read of 4B-E made on the L4 on 30 Sep, the scoring job's own pipeline; amendment A7.
++#  It differs from the in-process read q35_4b_pxE by up to 0.099 on single rows: bf16 merge vs unmerged.)
+ OVERLAP_N, OVERLAP_FRAC = 5, 0.5  # text guard: a dev row is flagged when >= half of its word 5-grams occur in training
+ GRID = [round(0.25 + 0.05 * i, 2) for i in range(196)]  # calibrate.py's temperature grid, 0.25 .. 10.0
+ # pre-registered thresholds (pp unless noted)

@@ -1,0 +1,569 @@
+{
+ "scorer": "score_ohs3.py",
+ "prereg": "PREREG_OHS3.md",
+ "split": "ohs",
+ "half": "all",
+ "n_boot": 10000,
+ "seed": 0,
+ "data": {
+  "rows": 4292,
+  "base_rows": 1847,
+  "tasks": 17,
+  "groups": 1474,
+  "yes_no_base": 527,
+  "choice_base": 1320,
+  "over_26_base": 210,
+  "neg_pairs": 527,
+  "perm_pairs": 0,
+  "unscored_relations": {
+   "complement:noul/noul": 242,
+   "equiv:noul/noul": 1486
+  },
+  "task_key": "source",
+  "source_equals_meta_task_partition": false,
+  "frozen_sha256_ok": null
+ },
+ "deviations": [],
+ "speed_cost": "not defined in PREREG_OHS3.md; not scored (see prereg_drafts/speed_cost_definition.md)",
+ "jev": {
+  "runs": [
+   "jev_guard",
+   "jev_r2_guard"
+  ],
+  "per_run": {
+   "jev_guard": {
+    "micro_pct": 81.754196,
+    "macro_pct": 81.576006,
+    "brier_yesno": 0.114372,
+    "complement_violation": 0.12334,
+    "complement_mean_abs_dev": 0.099848,
+    "missing_base": 0,
+    "missing_twin": 0,
+    "tie_base": 3,
+    "missing_base_by_task": {},
+    "extra_ids_not_in_data": 0,
+    "model_ids": {
+     "typesafe/jev-1.13-20260917": 4292
+    },
+    "rows_not_pinned_model": 0
+   },
+   "jev_r2_guard": {
+    "micro_pct": 81.537629,
+    "macro_pct": 81.509294,
+    "brier_yesno": 0.114006,
+    "complement_violation": 0.11575,
+    "complement_mean_abs_dev": 0.099374,
+    "missing_base": 0,
+    "missing_twin": 0,
+    "tie_base": 5,
+    "missing_base_by_task": {},
+    "extra_ids_not_in_data": 0,
+    "model_ids": {
+     "typesafe/jev-1.13-20260917": 4292
+    },
+    "rows_not_pinned_model": 0
+   }
+  },
+  "run_agreement": {
+   "decision": 0.983757,
+   "correctness": 0.988089,
+   "note": "decision = both runs give the same non-tie, non-missing answer; correctness = both right or both wrong (score_ohs.py's 'jev_run_agreement')"
+  },
+  "mean_of_runs": {
+   "micro_pct": 81.645912,
+   "macro_pct": 81.54265,
+   "brier_yesno": 0.114189,
+   "complement_violation": 0.119545,
+   "complement_mean_abs_dev": 0.099611
+  }
+ },
+ "models": {
+  "q35_4b_v11c_cal": {
+   "primary": {
+    "micro": {
+     "od": 78.018408,
+     "jev": 81.645912,
+     "diff": -3.627504,
+     "ci95": [
+      -5.257453,
+      -2.003249
+     ],
+     "p": 0.0,
+     "n": 1847,
+     "p_holm": 0.0,
+     "diff_definition": "OD - Jev, pp",
+     "verdict": {
+      "label": "jev_better",
+      "beats": false,
+      "matches": false,
+      "ci_above_0": false,
+      "ci_below_0": true
+     }
+    },
+    "macro": {
+     "od": 78.324704,
+     "jev": 81.54265,
+     "diff": -3.217946,
+     "ci95": [
+      -5.016653,
+      -1.432104
+     ],
+     "p": 0.0008,
+     "n": 1847,
+     "p_holm": 0.0016,
+     "diff_definition": "OD - Jev, pp",
+     "verdict": {
+      "label": "jev_better",
+      "beats": false,
+      "matches": false,
+      "ci_above_0": false,
+      "ci_below_0": true
+     }
+    },
+    "brier_yesno": {
+     "od": 0.144982,
+     "jev": 0.114189,
+     "diff": -0.030793,
+     "ci95": [
+      -0.049213,
+      -0.011686
+     ],
+     "p": 0.0008,
+     "n": 527,
+     "p_holm": 0.0016,
+     "diff_definition": "Jev - OD (lower Brier is better)",
+     "verdict": {
+      "label": "jev_better",
+      "beats": false,
+      "matches": false,
+      "ci_above_0": false,
+      "ci_below_0": true
+     }
+    }
+   },
+   "secondary": {
+    "acc_track_C": {
+     "od": 81.386139,
+     "jev": 84.059406,
+     "diff": -2.673267,
+     "ci95": [
+      -6.237624,
+      0.792079
+     ],
+     "p": 0.1358,
+     "n": 505,
+     "q_bh": 0.2828,
+     "diff_definition": "OD - Jev, pp",
+     "verdict": "no_clear_difference"
+    },
+    "acc_track_F": {
+     "od": 75.0,
+     "jev": 75.416667,
+     "diff": -0.416667,
+     "ci95": [
+      -4.583333,
+      3.541667
+     ],
+     "p": 0.8704,
+     "n": 240,
+     "q_bh": 0.9442,
+     "diff_definition": "OD - Jev, pp",
+     "verdict": "no_clear_difference"
+    },
+    "acc_track_U": {
+     "od": 77.132486,
+     "jev": 81.896552,
+     "diff": -4.764065,
+     "ci95": [
+      -6.805808,
+      -2.727273
+     ],
+     "p": 0.0,
+     "n": 1102,
+     "q_bh": 0.0,
+     "diff_definition": "OD - Jev, pp",
+     "verdict": "jev_better"
+    },
+    "acc_over_26_options": {
+     "od": 75.238095,
+     "jev": 77.857143,
+     "diff": -2.619048,
+     "ci95": [
+      -7.380952,
+      2.142857
+     ],
+     "p": 0.2994,
+     "n": 210,
+     "q_bh": 0.486525,
+     "diff_definition": "OD - Jev, pp",
+     "verdict": "no_clear_difference"
+    },
+    "complement_violation": {
+     "od": 0.121442,
+     "jev": 0.119545,
+     "diff": -0.001898,
+     "ci95": [
+      -0.038899,
+      0.033207
+     ],
+     "p": 0.9376,
+     "n": 527,
+     "q_bh": 0.9442,
+     "diff_definition": "Jev - OD (lower is better)",
+     "verdict": "no_clear_difference"
+    },
+    "acc_task_arxiv2026_condmat": {
+     "od": 73.333333,
+     "jev": 65.833333,
+     "diff": 7.5,
+     "ci95": [
+      -1.666667,
+      16.666667
+     ],
+     "p": 0.1214,
+     "n": 60,
+     "q_bh": 0.2828,
+     "diff_definition": "OD - Jev, pp",
+     "verdict": "no_clear_difference"
+    },
+    "acc_task_arxiv2026_econqfin": {
+     "od": 65.0,
+     "jev": 66.666667,
+     "diff": -1.666667,
+     "ci95": [
+      -11.666667,
+      10.0
+     ],
+     "p": 0.8768,
+     "n": 60,
+     "q_bh": 0.9442,
+     "diff_definition": "OD - Jev, pp",
+     "verdict": "no_clear_difference"
+    },
+    "acc_task_arxiv2026_physics": {
+     "od": 96.666667,
+     "jev": 98.333333,
+     "diff": -1.666667,
+     "ci95": [
+      -5.0,
+      0.0
+     ],
+     "p": 0.7122,
+     "n": 60,
+     "q_bh": 0.866273,
+     "diff_definition": "OD - Jev, pp",
+     "verdict": "no_clear_difference"
+    },
+    "acc_task_arxiv2026_qbio": {
+     "od": 65.0,
+     "jev": 70.833333,
+     "diff": -5.833333,
+     "ci95": [
+      -13.333333,
+      0.833333
+     ],
+     "p": 0.1414,
+     "n": 60,
+     "q_bh": 0.2828,
+     "diff_definition": "OD - Jev, pp",
+     "verdict": "no_clear_difference"
+    },
+    "acc_task_go_emotions": {
+     "od": 65.333333,
+     "jev": 69.666667,
+     "diff": -4.333333,
+     "ci95": [
+      -11.0,
+      2.0
+     ],
+     "p": 0.2114,
+     "n": 150,
+     "q_bh": 0.3926,
+     "diff_definition": "OD - Jev, pp",
+     "verdict": "no_clear_difference"
+    },
+    "acc_task_hatecheck": {
+     "od": 95.172414,
+     "jev": 98.275862,
+     "diff": -3.103448,
+     "ci95": [
+      -6.896552,
+      0.344828
+     ],
+     "p": 0.0888,
+     "n": 145,
+     "q_bh": 0.256533,
+     "diff_definition": "OD - Jev, pp",
+     "verdict": "no_clear_difference"
+    },
+    "acc_task_legalbench_abercrombie": {
+     "od": 70.0,
+     "jev": 78.333333,
+     "diff": -8.333333,
+     "ci95": [
+      -18.333333,
+      0.833333
+     ],
+     "p": 0.1064,
+     "n": 60,
+     "q_bh": 0.27664,
+     "diff_definition": "OD - Jev, pp",
+     "verdict": "no_clear_difference"
+    },
+    "acc_task_legalbench_cuad": {
+     "od": 80.0,
+     "jev": 80.625,
+     "diff": -0.625,
+     "ci95": [
+      -7.5,
+      6.25
+     ],
+     "p": 0.9442,
+     "n": 80,
+     "q_bh": 0.9442,
+     "diff_definition": "OD - Jev, pp",
+     "verdict": "no_clear_difference"
+    },
+    "acc_task_legalbench_hearsay": {
+     "od": 56.097561,
+     "jev": 85.365854,
+     "diff": -29.268293,
+     "ci95": [
+      -41.463415,
+      -17.073171
+     ],
+     "p": 0.0,
+     "n": 82,
+     "q_bh": 0.0,
+     "diff_definition": "OD - Jev, pp",
+     "verdict": "jev_better"
+    },
+    "acc_task_legalbench_overruling": {
+     "od": 95.0,
+     "jev": 90.0,
+     "diff": 5.0,
+     "ci95": [
+      -7.5,
+      17.5
+     ],
+     "p": 0.526,
+     "n": 40,
+     "q_bh": 0.759778,
+     "diff_definition": "OD - Jev, pp",
+     "verdict": "no_clear_difference"
+    },
+    "acc_task_legalbench_unfair_tos": {
+     "od": 86.25,
+     "jev": 84.375,
+     "diff": 1.875,
+     "ci95": [
+      -3.125,
+      7.5
+     ],
+     "p": 0.563,
+     "n": 80,
+     "q_bh": 0.770421,
+     "diff_definition": "OD - Jev, pp",
+     "verdict": "no_clear_difference"
+    },
+    "acc_task_lexglue_ledgar": {
+     "od": 100.0,
+     "jev": 98.333333,
+     "diff": 1.666667,
+     "ci95": [
+      0.0,
+      5.0
+     ],
+     "p": 0.733,
+     "n": 60,
+     "q_bh": 0.866273,
+     "diff_definition": "OD - Jev, pp",
+     "verdict": "no_clear_difference"
+    },
+    "acc_task_pubmedqa": {
+     "od": 62.0,
+     "jev": 63.666667,
+     "diff": -1.666667,
+     "ci95": [
+      -7.333333,
+      3.666667
+     ],
+     "p": 0.5968,
+     "n": 150,
+     "q_bh": 0.77584,
+     "diff_definition": "OD - Jev, pp",
+     "verdict": "no_clear_difference"
+    },
+    "acc_task_scone": {
+     "od": 76.666667,
+     "jev": 84.722222,
+     "diff": -8.055556,
+     "ci95": [
+      -13.055556,
+      -3.055556
+     ],
+     "p": 0.0016,
+     "n": 180,
+     "q_bh": 0.00832,
+     "diff_definition": "OD - Jev, pp",
+     "verdict": "jev_better"
+    },
+    "acc_task_sgd": {
+     "od": 97.5,
+     "jev": 99.0,
+     "diff": -1.5,
+     "ci95": [
+      -4.0,
+      0.5
+     ],
+     "p": 0.2412,
+     "n": 200,
+     "q_bh": 0.41808,
+     "diff_definition": "OD - Jev, pp",
+     "verdict": "no_clear_difference"
+    },
+    "acc_task_this_is_not_a_dataset": {
+     "od": 75.0,
+     "jev": 71.944444,
+     "diff": 3.055556,
+     "ci95": [
+      -4.722222,
+      10.833333
+     ],
+     "p": 0.4676,
+     "n": 180,
+     "q_bh": 0.715153,
+     "diff_definition": "OD - Jev, pp",
+     "verdict": "no_clear_difference"
+    },
+    "acc_task_vitaminc": {
+     "od": 72.5,
+     "jev": 80.25,
+     "diff": -7.75,
+     "ci95": [
+      -13.131639,
+      -2.427184
+     ],
+     "p": 0.0052,
+     "n": 200,
+     "q_bh": 0.0169,
+     "diff_definition": "OD - Jev, pp",
+     "verdict": "jev_better"
+    },
+    "acc_half_A": {
+     "od": 77.960526,
+     "jev": 81.743421,
+     "diff": -3.782895,
+     "ci95": [
+      -6.135648,
+      -1.43512
+     ],
+     "p": 0.0022,
+     "n": 912,
+     "q_bh": 0.009533,
+     "diff_definition": "OD - Jev, pp",
+     "verdict": "jev_better"
+    },
+    "acc_half_S": {
+     "od": 78.074866,
+     "jev": 81.550802,
+     "diff": -3.475936,
+     "ci95": [
+      -5.800275,
+      -1.212656
+     ],
+     "p": 0.0026,
+     "n": 935,
+     "q_bh": 0.009657,
+     "diff_definition": "OD - Jev, pp",
+     "verdict": "jev_better"
+    }
+   },
+   "mcnemar": {
+    "vs_jev_guard": {
+     "od_right_jev_wrong": 90,
+     "od_wrong_jev_right": 159,
+     "p": 1.5e-05,
+     "q_bh": 0.000126,
+     "verdict": "jev_better"
+    },
+    "vs_jev_r2_guard": {
+     "od_right_jev_wrong": 89,
+     "od_wrong_jev_right": 154,
+     "p": 3.7e-05,
+     "q_bh": 0.000237,
+     "verdict": "jev_better"
+    }
+   },
+   "secondary_family": [
+    "acc_half_A",
+    "acc_half_S",
+    "acc_over_26_options",
+    "acc_task_arxiv2026_condmat",
+    "acc_task_arxiv2026_econqfin",
+    "acc_task_arxiv2026_physics",
+    "acc_task_arxiv2026_qbio",
+    "acc_task_go_emotions",
+    "acc_task_hatecheck",
+    "acc_task_legalbench_abercrombie",
+    "acc_task_legalbench_cuad",
+    "acc_task_legalbench_hearsay",
+    "acc_task_legalbench_overruling",
+    "acc_task_legalbench_unfair_tos",
+    "acc_task_lexglue_ledgar",
+    "acc_task_pubmedqa",
+    "acc_task_scone",
+    "acc_task_sgd",
+    "acc_task_this_is_not_a_dataset",
+    "acc_task_vitaminc",
+    "acc_track_C",
+    "acc_track_F",
+    "acc_track_U",
+    "complement_violation",
+    "mcnemar_vs_jev_guard",
+    "mcnemar_vs_jev_r2_guard"
+   ],
+   "descriptive": {
+    "complement_mean_abs_dev": {
+     "od": 0.10101,
+     "jev": 0.099611,
+     "diff": -0.001399,
+     "ci95": [
+      -0.014541,
+      0.011551
+     ],
+     "p": 0.8538,
+     "n": 527,
+     "diff_definition": "Jev - OD (lower is better)"
+    },
+    "acc_neg_rows": {
+     "od": 76.091082,
+     "jev": 78.178368,
+     "diff": -2.087287,
+     "ci95": [
+      -5.97723,
+      1.897533
+     ],
+     "p": 0.3144,
+     "n": 527,
+     "diff_definition": "OD - Jev, pp"
+    }
+   },
+   "od_answers": {
+    "missing_base": 0,
+    "missing_twin": 0,
+    "tie_base": 0,
+    "missing_base_by_task": {},
+    "extra_ids_not_in_data": 0
+   },
+   "config_primary": "q35_4b_v11c_cal",
+   "config_bc": null,
+   "note": "secondary configuration q35_4b_v11c_cal_bc not found: bc_* endpoints not scored"
+  }
+ },
+ "duplicate_pred_ids": {
+  "jev_guard": 0,
+  "jev_r2_guard": 0,
+  "q35_4b_v11c_cal": 0
+ }
+}
