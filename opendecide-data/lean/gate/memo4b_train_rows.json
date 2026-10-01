@@ -1,0 +1,229 @@
+{
+  "file": "data/memo4b_train_rows.jsonl",
+  "sha256": "8ec3029cc93f16a0c0416e4334882c67afc49a1acf40c520d2ba5860d4f24db3",
+  "rows": 3209,
+  "seed": 0,
+  "rule": "PREREG_FINAL.md 6 (d): golden_train rows drawn with seed 0, the same count per dev source; pool = golden_train rows whose source gate_dev.source_seen matches to the dev source, in file order; random.Random(0), dev sources sorted, sample(range(len(pool)), n), indices sorted; lines copied byte for byte",
+  "golden_train": {
+    "file": "data/v14_parts/golden_train.jsonl",
+    "sha256": "ff7a395bc9b501ac27949ed7265b771e720406fa96f0e296700c2c101f62a2a9",
+    "rows": 501732
+  },
+  "dev_rows": {
+    "total": 3209,
+    "families": {
+      "clinc150": 881,
+      "banking77": 559,
+      "pg_*": 1049,
+      "hard_*": 208,
+      "tb_label_nli": 113,
+      "hate": 399
+    },
+    "by_source": {
+      "banking77": 559,
+      "clinc150": 881,
+      "hate": 399,
+      "tb_label_nli": 113,
+      "pg_conflict": 150,
+      "pg_evidence": 150,
+      "pg_multihop": 150,
+      "pg_numeric": 150,
+      "pg_policy": 150,
+      "pg_routing": 150,
+      "pg_temporal": 149,
+      "hard_affect": 17,
+      "hard_clinical": 21,
+      "hard_contracts": 18,
+      "hard_evidence_a": 17,
+      "hard_evidence_b": 16,
+      "hard_evidence_claims_a": 15,
+      "hard_evidence_claims_b": 14,
+      "hard_nli_a": 19,
+      "hard_nli_b": 17,
+      "hard_policy_a": 18,
+      "hard_policy_b": 20,
+      "hard_scales": 16
+    },
+    "derivation_issues": []
+  },
+  "by_dev_source": {
+    "banking77": {
+      "rows": 559,
+      "pool_sources": [
+        "banking77"
+      ],
+      "pool_rows": 2300
+    },
+    "clinc150": {
+      "rows": 881,
+      "pool_sources": [
+        "clinc150"
+      ],
+      "pool_rows": 2651
+    },
+    "hard_affect": {
+      "rows": 17,
+      "pool_sources": [
+        "hard_affect",
+        "hard_affect_c"
+      ],
+      "pool_rows": 401
+    },
+    "hard_clinical": {
+      "rows": 21,
+      "pool_sources": [
+        "hard_clinical"
+      ],
+      "pool_rows": 242
+    },
+    "hard_contracts": {
+      "rows": 18,
+      "pool_sources": [
+        "hard_contracts"
+      ],
+      "pool_rows": 252
+    },
+    "hard_evidence_a": {
+      "rows": 17,
+      "pool_sources": [
+        "hard_evidence_a"
+      ],
+      "pool_rows": 254
+    },
+    "hard_evidence_b": {
+      "rows": 16,
+      "pool_sources": [
+        "hard_evidence_b"
+      ],
+      "pool_rows": 250
+    },
+    "hard_evidence_claims_a": {
+      "rows": 15,
+      "pool_sources": [
+        "hard_evidence_claims_a"
+      ],
+      "pool_rows": 268
+    },
+    "hard_evidence_claims_b": {
+      "rows": 14,
+      "pool_sources": [
+        "hard_evidence_claims_b"
+      ],
+      "pool_rows": 242
+    },
+    "hard_nli_a": {
+      "rows": 19,
+      "pool_sources": [
+        "hard_nli_a"
+      ],
+      "pool_rows": 234
+    },
+    "hard_nli_b": {
+      "rows": 17,
+      "pool_sources": [
+        "hard_nli_b"
+      ],
+      "pool_rows": 276
+    },
+    "hard_policy_a": {
+      "rows": 18,
+      "pool_sources": [
+        "hard_policy_a"
+      ],
+      "pool_rows": 274
+    },
+    "hard_policy_b": {
+      "rows": 20,
+      "pool_sources": [
+        "hard_policy_b"
+      ],
+      "pool_rows": 256
+    },
+    "hard_scales": {
+      "rows": 16,
+      "pool_sources": [
+        "hard_scales"
+      ],
+      "pool_rows": 272
+    },
+    "hate": {
+      "rows": 399,
+      "pool_sources": [
+        "gd_ghc_hate",
+        "std_hate"
+      ],
+      "pool_rows": 1651
+    },
+    "pg_conflict": {
+      "rows": 150,
+      "pool_sources": [
+        "pg_conflict"
+      ],
+      "pool_rows": 369
+    },
+    "pg_evidence": {
+      "rows": 150,
+      "pool_sources": [
+        "pg_evidence"
+      ],
+      "pool_rows": 395
+    },
+    "pg_multihop": {
+      "rows": 150,
+      "pool_sources": [
+        "pg_multihop"
+      ],
+      "pool_rows": 396
+    },
+    "pg_numeric": {
+      "rows": 150,
+      "pool_sources": [
+        "pg_numeric"
+      ],
+      "pool_rows": 404
+    },
+    "pg_policy": {
+      "rows": 150,
+      "pool_sources": [
+        "pg_policy"
+      ],
+      "pool_rows": 371
+    },
+    "pg_routing": {
+      "rows": 150,
+      "pool_sources": [
+        "pg_routing"
+      ],
+      "pool_rows": 378
+    },
+    "pg_temporal": {
+      "rows": 149,
+      "pool_sources": [
+        "pg_temporal"
+      ],
+      "pool_rows": 375
+    },
+    "tb_label_nli": {
+      "rows": 113,
+      "pool_sources": [
+        "tb_label_nli"
+      ],
+      "pool_rows": 1288
+    }
+  },
+  "qtype_train": {
+    "choice": 2378,
+    "noul": 831
+  },
+  "qtype_dev": {
+    "noul": 1663,
+    "choice": 1546
+  },
+  "est_l4_minutes": 8.6,
+  "training_pass": {
+    "pass_batches": 30457,
+    "config_steps": 30457,
+    "dropped_rows_in_pass": 1,
+    "sampled_rows_not_trained": []
+  }
+}
