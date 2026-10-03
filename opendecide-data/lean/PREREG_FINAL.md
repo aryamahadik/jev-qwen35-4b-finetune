@@ -1012,3 +1012,24 @@ This agrees with the earlier decision not to use TTA (X19).
 > - No further 4B top-up, merge or ensemble without a new amendment committed before that candidate exists.
 >
 > **E.** Nothing in this amendment opened OHS-3 data or predictions.
+
+> **Amendment A11 (3 Oct 2026, 04:49 UTC; owner decision in chat "do B first"; before any B candidate exists or is read): step B,
+> weight-softening (WiSE-FT) of the shipped C1.**
+> - **Candidates (fixed):** W(a) = W_base + a * dW_C1 for a in {0.6, 0.7, 0.8, 0.9}, made exactly by multiplying every
+>   `lora_B` tensor of C1's adapter (sha256 507d1c29...) by a (fp32), all else byte-identical. a = 1.0 is C1 itself,
+>   re-read on the same machine. Names: `q35_4b_main500k_wise060` / `_wise070` / `_wise080` / `_wise090`, `q35_4b_main500k_b100`.
+> - **Reads (fixed):** `od_gcp.py predict` with the gate's settings (base Qwen/Qwen3.5-4B @ 851bf6e8, layout
+>   schema_branch_mark, single standard read) on the 9 gate splits, all five on one machine (od-l4, or od-l4b if
+>   od-l4 is out of stock), same code sha256 as the gate.
+> - **Select (dev-select half only):** a* = the candidate with the highest accuracy on the unseen-source rows of the
+>   dev-select half (`gate_dev.half`, `ship_unseen_sources.json`); ties go to the larger a.
+> - **Confirm (dev-confirm half), all must hold vs a = 1.0, else B adopts nothing and C1 stays:**
+>   1. unseen-source accuracy >= C1 + 0.5 pp;
+>   2. full set (9 splits without tb_mixtral) >= C1 - 0.2 pp;
+>   3. yes/no >= C1 - 0.5 pp and choice >= C1 - 0.5 pp (full set);
+>   4. raw yes/no Brier <= C1 + 0.002;
+>   5. equivalence flips (722 pairs) and complement violations not above C1's.
+> - **One look, no other a, no snapshot, no tuning on any held-out set.** Dev data was already looked at for the gate
+>   (disclosed). If a* is adopted it replaces C1 as the shipped 4B under a dated note.
+> - **Next, only with the owner's choice of yardstick:** C1 and a* (if adopted) are compared with Jev on a test where
+>   Jev's answers exist. OHS-3 and LongBench v2 stay sealed.
