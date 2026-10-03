@@ -1,0 +1,113 @@
+{
+ "ref": "q35_4b_main500k_b100",
+ "cands": {
+  "q35_4b_main500k_wise090": {
+   "a": 0.9,
+   "select_unseen": 83.7453971593898,
+   "select_unseen_ref": 83.53498158863756,
+   "n_select_unseen": 1901,
+   "all_unseen_boot": {
+    "n": 3847,
+    "groups": 1519,
+    "cand": 84.03951130751234,
+    "ref": 83.9875227449961,
+    "diff": 0.05198856251624642,
+    "lo": -0.29989367502726283,
+    "hi": 0.40366171668123896
+   }
+  },
+  "q35_4b_main500k_wise080": {
+   "a": 0.8,
+   "select_unseen": 83.37716991057339,
+   "select_unseen_ref": 83.53498158863756,
+   "n_select_unseen": 1901,
+   "all_unseen_boot": {
+    "n": 3847,
+    "groups": 1519,
+    "cand": 83.75357421367299,
+    "ref": 83.9875227449961,
+    "diff": -0.23394853132310892,
+    "lo": -0.6845841886627118,
+    "hi": 0.22953914225144972
+   }
+  },
+  "q35_4b_main500k_wise070": {
+   "a": 0.7,
+   "select_unseen": 82.69331930562862,
+   "select_unseen_ref": 83.53498158863756,
+   "n_select_unseen": 1901,
+   "all_unseen_boot": {
+    "n": 3847,
+    "groups": 1519,
+    "cand": 83.20769430725241,
+    "ref": 83.9875227449961,
+    "diff": -0.7798284377436964,
+    "lo": -1.4694513792671695,
+    "hi": -0.1265398648581349
+   }
+  },
+  "q35_4b_main500k_wise060": {
+   "a": 0.6,
+   "select_unseen": 82.06207259337191,
+   "select_unseen_ref": 83.53498158863756,
+   "n_select_unseen": 1901,
+   "all_unseen_boot": {
+    "n": 3847,
+    "groups": 1519,
+    "cand": 82.8697686508968,
+    "ref": 83.9875227449961,
+    "diff": -1.117754094099298,
+    "lo": -1.8825189238254152,
+    "hi": -0.3689988296089495
+   }
+  }
+ },
+ "a_star": 0.9,
+ "a_star_name": "q35_4b_main500k_wise090",
+ "ref_select_unseen": 83.53498158863756,
+ "checks": [
+  {
+   "check": "unseen-source accuracy >= C1 + 0.5 pp",
+   "diff": -0.10277492291879753,
+   "pass": false,
+   "detail": "84.33 vs 84.43"
+  },
+  {
+   "check": "full set >= C1 - 0.2 pp",
+   "diff": -0.05701254275940926,
+   "pass": true,
+   "detail": "81.47 vs 81.53"
+  },
+  {
+   "check": "yes/no >= C1 - 0.5 pp",
+   "diff": -0.2608242044861697,
+   "pass": true,
+   "detail": "85.76 vs 86.02"
+  },
+  {
+   "check": "choice >= C1 - 0.5 pp",
+   "diff": 0.1885606536769302,
+   "pass": true,
+   "detail": "76.30 vs 76.12"
+  },
+  {
+   "check": "raw yes/no Brier <= C1 + 0.002",
+   "diff": 1.3903507380993996e-05,
+   "pass": true,
+   "detail": "0.1050 vs 0.1050"
+  },
+  {
+   "check": "equivalence flips not above C1",
+   "diff": -0.5665722379603402,
+   "pass": true,
+   "detail": "8.22% vs 8.78% (n=353)"
+  },
+  {
+   "check": "complement violations not above C1",
+   "diff": 0.8944543828264813,
+   "pass": false,
+   "detail": "4.47% vs 3.58% (n=559)"
+  }
+ ],
+ "verdict": "keep C1 (a* failed confirm)"
+}
