@@ -1120,3 +1120,46 @@ This agrees with the earlier decision not to use TTA (X19).
 >   domain, source or theme name, or any item.
 > - **Jev read:** once, at the C look, after the ship verdict is logged, through the OHS Jev harness. The OpenRouter
 >   spend is an owner GO point. The result is report-only.
+
+> **Amendment A16 (3 Oct 2026, 21:00 UTC; after A15 and before any C training row, generator run, pack, style pool,
+> codebook, public row, commit row or C candidate exists): the C plan, round 1.**
+> - **Plan documents** (frozen at these sha256 prefixes; any change needs a new amendment):
+>   - `c_spec/C_DATA_SPEC.md` v4 `4ca129963bef3e0a`;
+>   - `c_spec/C_TRAIN_RECIPE.md` v4 `f4b7915088942f9b`;
+>   - `c_spec/ADDENDUM_research.md` `0da2e8341929597e`.
+>   - The G0 family specs (`c_src/<family>/G0_SPEC.md`) are frozen per family, and their sha256 is logged before that
+>     family's first generator run. They are still closing their last ambiguities, and a generator cannot run until
+>     its G0 has 0 open label-flip ambiguities.
+> - **Model and training:**
+>   - Init: C1 = `q35_4b_main500k` (sha256 507d1c29...). Same LoRA (r16/a32, QWEN35 targets) and same loss weights as
+>     C1, plus the A4 ordinal term `lam_ord` 1.0.
+>   - Config `runs/q35_4b_c_r1.json` (`f3bb379e...`). The seed is fixed at **20261003**. `epochs`, `expect_ord_rows`
+>     and the KD counts are filled mechanically from the mixer and batch dry run.
+>   - Trainer `train_decoder.py` `c2c2d1d6...`, readout `decoder_io.py` `908c08d7...`. Every change is default-off, and
+>     C1 reproduces bit for bit.
+>   - One candidate in round 1. Budget about $30 under the owner's GO, plus a smoke run of at most $0.5.
+> - **Data, round 1:** 150,000 rows.
+>   - 90,000 replay rows (60%): `c_build/replay_sample.py` `4f93a215...`, which draws round 1 nested inside round 2.
+>   - 60,000 new rows: own families 45,250, licensed public 8,750, commits from other repos 6,000.
+>   - G9 crowd scoring runs on the free L4 only (owner, 3 Oct).
+> - **Deny-list** (`c_src/common/denylist.py` `a6dec381...`, aliases `b9cc417f...`). It reads `ohs3/used_sources.json`
+>   only in-process and prints verdicts only. Orchestrator rulings:
+>   - (a) Bare platform words (Wikipedia, Reddit, GitHub, arXiv, Zenodo, PubMed, ...) never match on their own. Real
+>     text overlap is caught by the counts-only n-gram decontamination against OHS-1/2/3, the sealed exports, Decision
+>     Index test items and JevBench items, run before every freeze.
+>   - (b) An entry rejected only for label quality (silver or noisy labels) is `no_new_rows`, not `taint`. This
+>     applies to T-REx, so MuSiQue (human-validated) passes. Contamination, licence, forbidden-task, dev and eval
+>     entries stay `taint`.
+>   - (c) "locked" counts as "avoid".
+>   - (d) A10 is handled by the A8′ whole-source drop of `gd_redocred` and `gd_helpsteer3_pref`.
+>   - (e) Attacked replay rows with C1 p_g < 0.2 are counted as successful attacks, not dropped. Their unit is judged
+>     by its clean partner.
+> - **Counters:**
+>   - `c_src/common/negcount.py` uses closed lexicons, which XF17 allows before the freeze.
+>   - Ruling: "neither ... nor" counts as one syntactic negation (k_syn 1), so it cannot fill the double-negation quota.
+> - **Addendum D2** (facility-location selection) is NOT adopted. Selection stays stratified and representative.
+> - **Gate (recipe 6.2-6.4, unchanged):**
+>   - Ship: the sealed part-A confirm gain over C1 is >= +1.0 pp with LB > 0, AND guards D1-D6 and D9 pass.
+>   - Round 2 runs only if the select gain is >= +2.0 pp with LB > 0 and the guards pass.
+>   - Looks: S1, then (S2), then C once; Jev is read once after the ship verdict.
+>   - ejs-5, OHS-1/2/3, JevBench, the Decision Index and LongBench never choose anything.
