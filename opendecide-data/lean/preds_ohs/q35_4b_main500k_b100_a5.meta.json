@@ -1,0 +1,37 @@
+{
+  "name": "q35_4b_main500k_b100_a5",
+  "rows": 4292,
+  "layout": "schema_branch_mark",
+  "style": "cygnet",
+  "base": "Qwen/Qwen3.5-4B",
+  "host": "gcp",
+  "gpu": "NVIDIA L4",
+  "torch": "2.14.0+cu130",
+  "cuda": "13.0",
+  "sec": 1993,
+  "tta": false,
+  "tta_choice": true,
+  "tta_noul": false,
+  "perm_seed": null,
+  "load": {
+    "adapters": [
+      "/home/aryamahadik/lean/models/q35_4b_main500k_b100"
+    ],
+    "layout": "schema_branch_mark",
+    "style": "cygnet",
+    "base": "Qwen/Qwen3.5-4B",
+    "revision": "851bf6e806efd8d0a36b00ddf55e13ccb7b8cd0a",
+    "saved": {
+      "layout": "schema_branch_mark",
+      "style": "cygnet",
+      "base": "Qwen/Qwen3.5-4B",
+      "revision": "851bf6e806efd8d0a36b00ddf55e13ccb7b8cd0a"
+    },
+    "saved_in": {
+      "/home/aryamahadik/lean/models/q35_4b_main500k_b100": "train_meta.json"
+    },
+    "forced": [],
+    "prism_x": false,
+    "chat_template_sha": "a4aee8afcf2e0711942cf848899be66016f8d14a889ff9ede07bca099c28f715"
+  }
+}
