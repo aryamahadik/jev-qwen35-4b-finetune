@@ -1063,3 +1063,26 @@ This agrees with the earlier decision not to use TTA (X19).
 >   scores after C are labelled fine-tuned.
 > - **Disclosures:** BANKING77 and CLINC150 are our dev sources and SGD is an OHS-1 source (evaluated, never trained). Any
 >   overlap between C1's training sources and Index datasets is listed from a counts-only check.
+
+> **Amendment A14 (3 Oct 2026, 15:20 UTC; owner goal flow, step 3; before any sealed-suite item exists): building the sealed
+> new-domains dev suite (C_DATA_SPEC v3 §9; recipe v3 §6.1).**
+> - **Builders:** separate agent sessions read only `c_spec/sealed_brief/` (BRIEF.md, names_only.json, c1_domain_map.md)
+>   and write only to `lean/sealed_nd/`. Both folders are git-ignored. No C builder opens them, and no sealed builder
+>   opens C's spec, data or style pools. The orchestrator gets counts by domain id only (D1..Dn), never domain or source
+>   names or themes.
+> - **Layout:**
+>   - Part A: >= 5,000 real-text items over 6-10 domains, none above 20%, with >= 4 non-adjacent domains holding
+>     >= 50% of items.
+>   - Part P: 3 x 200 program-built items. Part B1: 300 commit items from repos in no split of CommitChronicle or
+>     CommitPackFT, never n8n. Part B2: 200 long-document items (4-8K tokens).
+>   - Split: sha256("ndsel:" + group_id) mod 5, where {0, 1} is select and {2, 3, 4} is confirm.
+> - **Rules:**
+>   - Permissive licences are verified upstream. Gold comes from humans, officials or programs, never from an LLM.
+>   - Label-leak and duplicate filters are rules, not model agreement.
+>   - A noise-floor read is flag-only. A domain with > 8% clearly wrong golds is dropped whole.
+>   - A counts-only 12-gram check against C1's training file is run, and hits are dropped.
+>   - No model reads the suite before the freeze.
+> - **Freeze:** the suite file's sha256, its counts and the adjacency labels go into amendment A15 BEFORE any C data,
+>   generator, pack, style or public row exists (G14). Scoring prints aggregates only. Nobody inspects per-item failures.
+>   Looks follow recipe 6.2: the scorer logs and refuses any look not in the table. Jev is read once, at the C look,
+>   after the ship verdict.
