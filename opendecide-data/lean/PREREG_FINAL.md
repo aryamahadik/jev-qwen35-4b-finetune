@@ -1048,3 +1048,18 @@ This agrees with the earlier decision not to use TTA (X19).
 >   training round 1, each pre-registered before it runs.
 > - **Disclosure:** OHS-1 and OHS-2 become practice sets from this read on. They are never used for training or for
 >   choosing data. OHS-3 and LongBench v2 stay sealed.
+
+> **Amendment A13 (3 Oct 2026, 14:27 UTC; owner decision in chat "A"; before any Decision Index item is read by a model): a
+> report-only Jev Decision Index SAMPLE run on C1.**
+> - **Harness:** the public `decision-index` harness (github.com/flaviusburca/decision-index), pinned commit recorded at setup.
+>   Its own `suite sample` command takes about 10K requests with a fixed seed (recorded), and the harness's own metrics
+>   and index formula score them. Jev and the other models' numbers come from the published board, with no Jev calls.
+> - **Model:** C1 = `q35_4b_main500k` (sha256 507d1c29...), our shipped readout (choice read twice, yes/no once, T = 1),
+>   run once on the L4 through a thin engine adapter that maps each Index request to our decision format. The adapter is
+>   tested on a fake model first.
+> - **Use:** report-only. The results (aggregates per benchmark and the index) are NEVER used to choose training data,
+>   families, weights or models, and builders never see per-item results. Before any C training, C's data is
+>   decontaminated against every Index TEST item. Index datasets whose TRAINING splits enter C are listed, and their Index
+>   scores after C are labelled fine-tuned.
+> - **Disclosures:** BANKING77 and CLINC150 are our dev sources and SGD is an OHS-1 source (evaluated, never trained). Any
+>   overlap between C1's training sources and Index datasets is listed from a counts-only check.
