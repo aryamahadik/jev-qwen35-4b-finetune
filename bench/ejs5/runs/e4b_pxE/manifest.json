@@ -1,0 +1,87 @@
+{
+  "name": "e4b_pxE",
+  "mode": "gpu",
+  "status": "complete",
+  "base": "Qwen/Qwen3.5-4B",
+  "revision": "851bf6e806efd8d0a36b00ddf55e13ccb7b8cd0a",
+  "adapter": "/home/aryamahadik/lean/models/q35_4b_pxE",
+  "adapter_sha256": "1bbd8a79143f7ab5d6fd538c870ded0605120ab777c97d38ca3384b26c31a3f9",
+  "adapter_sha256_preregistered": "1bbd8a79143f7ab5d6fd538c870ded0605120ab777c97d38ca3384b26c31a3f9",
+  "prism_x": false,
+  "prism_x_sha256": null,
+  "readout": "2view",
+  "T": 1.0,
+  "rows": "/home/aryamahadik/bench/external_quarantine/ejs5/ejs5_rows.jsonl",
+  "rows_sha256": "7128b2b8545913fa263f6f4bbdcd0049b2368e0402d74a6516e51f24197b3a4f",
+  "rows_sha256_preregistered": "7128b2b8545913fa263f6f4bbdcd0049b2368e0402d74a6516e51f24197b3a4f",
+  "n_rows": 868,
+  "limit": null,
+  "layout": "schema_branch_mark",
+  "style": "cygnet",
+  "resolve_prompt": {
+    "adapters": [
+      "/home/aryamahadik/lean/models/q35_4b_pxE"
+    ],
+    "layout": "schema_branch_mark",
+    "style": "cygnet",
+    "base": "Qwen/Qwen3.5-4B",
+    "revision": "851bf6e806efd8d0a36b00ddf55e13ccb7b8cd0a",
+    "saved": {
+      "layout": "schema_branch_mark",
+      "style": "cygnet",
+      "base": "Qwen/Qwen3.5-4B"
+    },
+    "saved_in": {
+      "/home/aryamahadik/lean/models/q35_4b_pxE": "train_meta.json"
+    },
+    "forced": []
+  },
+  "code_sha256": {
+    "decoder_io.py": "8ba8ff4fb35389c76bb2d0851f66ef4822059d43fe4bef1ca582fcf21c5755cc",
+    "prism_x.py": "3c4425bfde62182c997960ef68d43232df65ba28031608acde0b9dc8ba87b4fe",
+    "run_ejs5.py": "3a8645d35d40adf2b860b79d731faadae331421e0ec9b1fd453d01e94522226b",
+    "ejs5lib.py": "c621243a06a410c17d51bf20911efe9427123b79b20c2506ac5f9782690c5962",
+    "convert.py": "6c63f101f19dac4333a8417c823fa8a0ff14ff7984f798f1f53a3a2ec13409b0"
+  },
+  "code_paths": {
+    "decoder_io": "/home/aryamahadik/lean/decoder_io.py",
+    "lean": "/home/aryamahadik/lean"
+  },
+  "host": "od-l4b",
+  "python": "3.12.14",
+  "torch": "2.14.0+cu130",
+  "hf_hub_offline": "1",
+  "hf_home": "/home/aryamahadik/hf",
+  "started_utc": "2026-10-03T04:24:16+00:00",
+  "preflight": {
+    "n": 868,
+    "tokens_mean": 317.20506912442397,
+    "tokens_max": 671
+  },
+  "transformers": "5.17.0",
+  "load": {
+    "layout": "schema_branch_mark",
+    "style": "cygnet",
+    "base": "Qwen/Qwen3.5-4B",
+    "revision": "851bf6e806efd8d0a36b00ddf55e13ccb7b8cd0a",
+    "saved": {
+      "layout": "schema_branch_mark",
+      "style": "cygnet",
+      "base": "Qwen/Qwen3.5-4B"
+    },
+    "saved_in": {
+      "/home/aryamahadik/lean/models/q35_4b_pxE": "train_meta.json"
+    },
+    "forced": [],
+    "prism_x": false,
+    "chat_template_sha": "a4aee8afcf2e0711942cf848899be66016f8d14a889ff9ede07bca099c28f715",
+    "base_commit": null
+  },
+  "gpu": "NVIDIA L4",
+  "gpu_users_before_load": "",
+  "cuda": "13.0",
+  "prism_x_active": false,
+  "warmup_tokens": 1024,
+  "finished_utc": "2026-10-03T04:27:33+00:00",
+  "n_errors": 0
+}
