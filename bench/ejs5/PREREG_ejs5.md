@@ -178,3 +178,10 @@ The run manifest records the sha256 of every code file actually used on the VM. 
 that differs from these values voids the run. Check before the run: `sha256sum ~/lean/decoder_io.py ~/lean/prism_x.py`.
 
 Commands and time: see `README.md`.
+
+## Note (03 Oct 2026 04:19 UTC, before any model read the rows): machine
+- `od-l4` (us-central1-a) was out of stock (4 tries, 04:08-04:15 UTC). The runs use the backup L4 `od-l4b`
+  (us-east4-c), made from the same machine image: same GPU type (NVIDIA L4), and the same code, verified by sha256
+  (`decoder_io.py` 8ba8ff4f…, `prism_x.py` 3c4425bf…). The adapters are C1 507d1c29… and 4B-E 1bbd8a79…, and the rows
+  file is 7128b2b8…. Nothing else changes.
+
