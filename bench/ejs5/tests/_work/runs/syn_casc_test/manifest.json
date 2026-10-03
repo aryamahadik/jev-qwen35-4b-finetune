@@ -1,0 +1,46 @@
+{
+  "name": "syn_casc_test",
+  "mode": "cascade-test",
+  "status": "complete",
+  "small": {
+    "run": "syn_2b_fake",
+    "adapter": "/Users/aryamahadik/Documents/jev/backups/gcp_models/q35_2b_armI_1600",
+    "adapter_sha256": "e36fb547d2a107f61801e93ff9d43e8da37c21d0d14e759a7390aeddc3736b70",
+    "readout": "single"
+  },
+  "big": {
+    "run": "syn_c1_single_fake",
+    "adapter": "/Users/aryamahadik/Documents/jev/backups/modal_models/q35_4b_main500k",
+    "adapter_sha256": "507d1c29690579f928a265713cd14b9c54a34baa8b74abd1e641560d987db078",
+    "readout": "single"
+  },
+  "tau": 0.62,
+  "w_big": 1.0,
+  "route_on": "raw",
+  "fit_log": "/Users/aryamahadik/Documents/jev/bench/ejs5/tests/_work/fit.json",
+  "fit_log_sha256": "ccd83a865a42f06af5172257db773818945fddfc4b12a5a45b21c993d9102561",
+  "fit_models": {
+    "small": "q35_2b_armI_1600",
+    "big": "q35_4b_main500k"
+  },
+  "fit_mismatch_allowed": false,
+  "rule": "ejs5lib.cascade_answer == prep89/ohs3_lib.cascade_answer (tests/test_ejs5.py checks equality)",
+  "rows": "/Users/aryamahadik/Documents/jev/bench/ejs5/tests/_work/src/ejs5_rows.jsonl",
+  "rows_sha256": "627ff70362c518f9cb15314d0d15b68f5a8552ac5dbd902355c98cb17db80ccb",
+  "n_rows": 80,
+  "routed": 8,
+  "routed_share": 0.1,
+  "routed_by_task": {
+    "route": 0,
+    "triage": 0,
+    "score": 8,
+    "gate": 0
+  },
+  "readout": "cascade",
+  "T": 1.0,
+  "code_sha256": {
+    "run_ejs5.py": "3a8645d35d40adf2b860b79d731faadae331421e0ec9b1fd453d01e94522226b",
+    "ejs5lib.py": "c621243a06a410c17d51bf20911efe9427123b79b20c2506ac5f9782690c5962"
+  },
+  "finished_utc": "2026-10-03T04:03:57+00:00"
+}

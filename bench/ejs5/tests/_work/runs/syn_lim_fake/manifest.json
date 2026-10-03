@@ -1,0 +1,70 @@
+{
+  "name": "syn_lim",
+  "mode": "fake-model",
+  "status": "complete",
+  "base": "Qwen/Qwen3.5-4B",
+  "revision": "851bf6e806efd8d0a36b00ddf55e13ccb7b8cd0a",
+  "adapter": "/Users/aryamahadik/Documents/jev/backups/modal_models/q35_4b_main500k",
+  "adapter_sha256": "507d1c29690579f928a265713cd14b9c54a34baa8b74abd1e641560d987db078",
+  "adapter_sha256_preregistered": null,
+  "prism_x": false,
+  "prism_x_sha256": null,
+  "readout": "single",
+  "T": 1.0,
+  "rows": "/Users/aryamahadik/Documents/jev/bench/ejs5/tests/_work/src/ejs5_rows.jsonl",
+  "rows_sha256": "627ff70362c518f9cb15314d0d15b68f5a8552ac5dbd902355c98cb17db80ccb",
+  "rows_sha256_preregistered": null,
+  "n_rows": 8,
+  "limit": 8,
+  "layout": "schema_branch_mark",
+  "style": "cygnet",
+  "resolve_prompt": {
+    "adapters": [
+      "/Users/aryamahadik/Documents/jev/backups/modal_models/q35_4b_main500k"
+    ],
+    "layout": "schema_branch_mark",
+    "style": "cygnet",
+    "base": "Qwen/Qwen3.5-4B",
+    "revision": "851bf6e806efd8d0a36b00ddf55e13ccb7b8cd0a",
+    "saved": {
+      "layout": "schema_branch_mark",
+      "style": "cygnet",
+      "base": "Qwen/Qwen3.5-4B",
+      "revision": "851bf6e806efd8d0a36b00ddf55e13ccb7b8cd0a"
+    },
+    "saved_in": {
+      "/Users/aryamahadik/Documents/jev/backups/modal_models/q35_4b_main500k": "train_meta.json"
+    },
+    "forced": []
+  },
+  "code_sha256": {
+    "decoder_io.py": "8ba8ff4fb35389c76bb2d0851f66ef4822059d43fe4bef1ca582fcf21c5755cc",
+    "prism_x.py": "3c4425bfde62182c997960ef68d43232df65ba28031608acde0b9dc8ba87b4fe",
+    "run_ejs5.py": "3a8645d35d40adf2b860b79d731faadae331421e0ec9b1fd453d01e94522226b",
+    "ejs5lib.py": "c621243a06a410c17d51bf20911efe9427123b79b20c2506ac5f9782690c5962",
+    "convert.py": "6c63f101f19dac4333a8417c823fa8a0ff14ff7984f798f1f53a3a2ec13409b0"
+  },
+  "code_paths": {
+    "decoder_io": "/Users/aryamahadik/Documents/jev/opendecide-data/lean/decoder_io.py",
+    "lean": "/Users/aryamahadik/Documents/jev/opendecide-data/lean"
+  },
+  "host": "Aryas-MacBook-Air.local",
+  "python": "3.12.10",
+  "torch": "2.14.0",
+  "hf_hub_offline": null,
+  "hf_home": null,
+  "started_utc": "2026-10-03T04:03:53+00:00",
+  "preflight": {
+    "n": 8,
+    "tokens_mean": 401.5,
+    "tokens_max": 473
+  },
+  "transformers": "4.57.6",
+  "load": {
+    "note": "fake-model: random Qwen3 (hidden 32) + the real tokenizer; answers are noise",
+    "prism_x_tiny": false
+  },
+  "prism_x_active": false,
+  "finished_utc": "2026-10-03T04:03:55+00:00",
+  "n_errors": 0
+}

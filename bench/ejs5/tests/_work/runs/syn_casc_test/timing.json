@@ -1,0 +1,39 @@
+{
+  "composed": "small latency + big latency on routed rows (offline composition of two batch-1 runs on the same GPU; no routing overhead, no second load)",
+  "n": 80,
+  "errors": 0,
+  "latency_ms": {
+    "p50": 48.388625611551106,
+    "p95": 303.6254391539842,
+    "mean": 109.02867290424183,
+    "max": 482.2581249754876
+  },
+  "by_task": {
+    "route": {
+      "n": 20,
+      "p50_ms": 68.85195849463344,
+      "p95_ms": 310.0943247205578
+    },
+    "triage": {
+      "n": 16,
+      "p50_ms": 40.71402060799301,
+      "p95_ms": 348.04606216493994
+    },
+    "score": {
+      "n": 24,
+      "p50_ms": 48.388625611551106,
+      "p95_ms": 231.62452260730788
+    },
+    "gate": {
+      "n": 20,
+      "p50_ms": 50.39929202757776,
+      "p95_ms": 293.9416690845974
+    }
+  },
+  "input_tokens": {
+    "mean": 396.95,
+    "max": 503,
+    "total": 31756
+  },
+  "note": "per-row model time: tokenisation + one prefill forward pass (two on 2-view choice rows) at batch 1, eager, CUDA-synchronised; no network, no server. Not an end-to-end API latency."
+}

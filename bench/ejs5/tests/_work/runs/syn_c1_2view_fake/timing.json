@@ -1,0 +1,43 @@
+{
+  "load_s": 1.9,
+  "warmup_s": 0.0,
+  "run_s": 8.7,
+  "rows_per_s": 9.19,
+  "device": "cpu (fake model)",
+  "n": 80,
+  "errors": 0,
+  "latency_ms": {
+    "p50": 58.93777101300657,
+    "p95": 318.68100798455987,
+    "mean": 108.83156720665284,
+    "max": 568.9028750639409
+  },
+  "by_task": {
+    "route": {
+      "n": 20,
+      "p50_ms": 136.82004157453775,
+      "p95_ms": 411.445560026914
+    },
+    "triage": {
+      "n": 16,
+      "p50_ms": 134.73995844833553,
+      "p95_ms": 325.12870797654614
+    },
+    "score": {
+      "n": 24,
+      "p50_ms": 79.78041714522988,
+      "p95_ms": 196.17101880721748
+    },
+    "gate": {
+      "n": 20,
+      "p50_ms": 16.288124956190586,
+      "p95_ms": 112.30204380117364
+    }
+  },
+  "input_tokens": {
+    "mean": 396.95,
+    "max": 503,
+    "total": 31756
+  },
+  "note": "per-row model time: tokenisation + one prefill forward pass (two on 2-view choice rows) at batch 1, eager, CUDA-synchronised; no network, no server. Not an end-to-end API latency."
+}

@@ -1,0 +1,44 @@
+{
+  "rows_file": "ejs5_rows.jsonl",
+  "rows_sha256": "627ff70362c518f9cb15314d0d15b68f5a8552ac5dbd902355c98cb17db80ccb",
+  "n_rows": 80,
+  "by_task": {
+    "route": 20,
+    "triage": 16,
+    "score": 24,
+    "gate": 20
+  },
+  "n_commits": 41,
+  "late_from": "2026-06-01",
+  "late_rows": 44,
+  "late_by_task": {
+    "route": 13,
+    "triage": 10,
+    "score": 12,
+    "gate": 9
+  },
+  "late_commits": 20,
+  "rows_without_date": 1,
+  "inputs_sha256": {
+    "run_public_bench.py": "09e7cd23971813253c03e51cf00463045e2c8006d08903a697cff38537de5229",
+    "public_route.json": "7e27d5273179a8301f9fdfb1ac5b742cc171e8c618fdc60efcbd422be4b2898d",
+    "public_triage.json": "ba85b705c4a0fbec9bb58766f4f286bfc95e80204d95b3699ccbedf788061ddb",
+    "public_score.json": "4d6eed74ccaefadd64c48abeabe7bc8bdb75fe74746478a1de66881c29e5c504",
+    "public_gate.json": "15a718583211c14612790f23a18c4c52791a8c0920a6e8dfbccb4b2b6d3ed948",
+    "commit_dates.json": "1435de1e902af96207ab601e1e64724df1776f8a4ccf29a40f87f727dfff425a"
+  },
+  "levels": [
+    "tiny",
+    "small",
+    "medium",
+    "large"
+  ],
+  "n_options": {
+    "route": 2,
+    "triage": 4,
+    "score": 4,
+    "gate": 2
+  },
+  "convert_py_sha256": "6c63f101f19dac4333a8417c823fa8a0ff14ff7984f798f1f53a3a2ec13409b0",
+  "ejs5lib_py_sha256": "c621243a06a410c17d51bf20911efe9427123b79b20c2506ac5f9782690c5962"
+}

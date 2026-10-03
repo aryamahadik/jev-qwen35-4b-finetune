@@ -1,0 +1,8 @@
+{"id": "ejs5_route_5e000014", "task": "route", "probs": {"frontend": 0.5069898962974548, "backend": 0.4930100739002228}, "latency_s": 0.01908970787189901, "n_tokens": 321, "error": null}
+{"id": "ejs5_route_5e00002b", "task": "route", "probs": {"frontend": 0.5069092512130737, "backend": 0.49309077858924866}, "latency_s": 0.07201566593721509, "n_tokens": 374, "error": null}
+{"id": "ejs5_triage_5e00001e", "task": "triage", "probs": {"fix": 0.24692241847515106, "feat": 0.24025937914848328, "refactor": 0.25927186012268066, "test": 0.2535463571548462}, "latency_s": 0.060761415865272284, "n_tokens": 435, "error": null}
+{"id": "ejs5_triage_5e000022", "task": "triage", "probs": {"fix": 0.24679969251155853, "feat": 0.23978771269321442, "refactor": 0.2595086395740509, "test": 0.2539040148258209}, "latency_s": 0.021218291018158197, "n_tokens": 414, "error": null}
+{"id": "ejs5_score_5e000011", "task": "score", "probs": {"tiny": 0.24588793516159058, "small": 0.2405475527048111, "medium": 0.26004669070243835, "large": 0.2535178065299988}, "latency_s": 0.01505375001579523, "n_tokens": 368, "error": null}
+{"id": "ejs5_score_5e000003", "task": "score", "probs": {"tiny": 0.24794620275497437, "small": 0.24017922580242157, "medium": 0.25926104187965393, "large": 0.25261354446411133}, "latency_s": 0.013311624992638826, "n_tokens": 473, "error": null}
+{"id": "ejs5_gate_5e00002c", "task": "gate", "probs": {"yes": 0.5069559216499329, "no": 0.49304407835006714}, "latency_s": 0.013575041899457574, "n_tokens": 389, "error": null}
+{"id": "ejs5_gate_5e00000d", "task": "gate", "probs": {"yes": 0.5065300464630127, "no": 0.4934699535369873}, "latency_s": 0.012477665906772017, "n_tokens": 438, "error": null}

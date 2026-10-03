@@ -1,0 +1,2183 @@
+{
+ "route|jev": [
+  {
+   "id": "5e000014",
+   "label": "backend",
+   "latency_s": 0.4,
+   "error": null,
+   "pred": "backend",
+   "confidence": 0.954,
+   "cost": 1e-05
+  },
+  {
+   "id": "5e000009",
+   "label": "frontend",
+   "latency_s": 0.4,
+   "error": null,
+   "pred": "frontend",
+   "confidence": 0.802,
+   "cost": 1e-05
+  },
+  {
+   "id": "5e000019",
+   "label": "frontend",
+   "latency_s": 0.4,
+   "error": null,
+   "pred": "frontend",
+   "confidence": 0.778,
+   "cost": 1e-05
+  },
+  {
+   "id": "5e000029",
+   "label": "frontend",
+   "latency_s": 0.4,
+   "error": null,
+   "pred": "frontend",
+   "confidence": 0.272,
+   "cost": 1e-05
+  },
+  {
+   "id": "5e000003",
+   "label": "frontend",
+   "latency_s": 0.4,
+   "error": null,
+   "pred": "backend",
+   "confidence": 0.292,
+   "cost": 1e-05
+  },
+  {
+   "id": "5e000004",
+   "label": "backend",
+   "latency_s": 0.4,
+   "error": null,
+   "pred": "backend",
+   "confidence": 0.974,
+   "cost": 1e-05
+  },
+  {
+   "id": "5e000022",
+   "label": "backend",
+   "latency_s": 0.4,
+   "error": null,
+   "pred": "frontend",
+   "confidence": 0.87,
+   "cost": 1e-05
+  },
+  {
+   "id": "5e000006",
+   "label": "backend",
+   "latency_s": 0.4,
+   "error": null,
+   "pred": "frontend",
+   "confidence": 0.831,
+   "cost": 1e-05
+  },
+  {
+   "id": "5e000017",
+   "label": "frontend",
+   "latency_s": 0.4,
+   "error": null,
+   "pred": "frontend",
+   "confidence": 0.309,
+   "cost": 1e-05
+  },
+  {
+   "id": "5e000025",
+   "label": "frontend",
+   "latency_s": 0.4,
+   "error": null,
+   "pred": "frontend",
+   "confidence": 0.888,
+   "cost": 1e-05
+  },
+  {
+   "id": "5e00002b",
+   "label": "frontend",
+   "latency_s": 0.4,
+   "error": null,
+   "pred": "frontend",
+   "confidence": 0.685,
+   "cost": 1e-05
+  },
+  {
+   "id": "5e000020",
+   "label": "frontend",
+   "latency_s": 0.4,
+   "error": null,
+   "pred": "frontend",
+   "confidence": 0.896,
+   "cost": 1e-05
+  },
+  {
+   "id": "5e00000d",
+   "label": "backend",
+   "latency_s": 0.4,
+   "error": null,
+   "pred": "frontend",
+   "confidence": 0.689,
+   "cost": 1e-05
+  },
+  {
+   "id": "5e000002",
+   "label": "frontend",
+   "latency_s": 0.4,
+   "error": null,
+   "pred": "frontend",
+   "confidence": 0.268,
+   "cost": 1e-05
+  },
+  {
+   "id": "5e000005",
+   "label": "frontend",
+   "latency_s": 0.4,
+   "error": null,
+   "pred": "frontend",
+   "confidence": 0.921,
+   "cost": 1e-05
+  },
+  {
+   "id": "5e00001b",
+   "label": "backend",
+   "latency_s": 0.4,
+   "error": null,
+   "pred": "frontend",
+   "confidence": 0.289,
+   "cost": 1e-05
+  },
+  {
+   "id": "5e00001a",
+   "label": "backend",
+   "latency_s": 0.4,
+   "error": null,
+   "pred": "backend",
+   "confidence": 0.891,
+   "cost": 1e-05
+  },
+  {
+   "id": "5e00002c",
+   "label": "backend",
+   "latency_s": 0.4,
+   "error": null,
+   "pred": "frontend",
+   "confidence": 0.274,
+   "cost": 1e-05
+  },
+  {
+   "id": "5e000007",
+   "label": "backend",
+   "latency_s": 0.4,
+   "error": null,
+   "pred": "frontend",
+   "confidence": 0.347,
+   "cost": 1e-05
+  },
+  {
+   "id": "5e00001e",
+   "label": "backend",
+   "latency_s": 0.4,
+   "error": null,
+   "pred": "backend",
+   "confidence": 0.554,
+   "cost": 1e-05
+  }
+ ],
+ "triage|jev": [
+  {
+   "id": "5e00001e",
+   "label": "fix",
+   "latency_s": 0.4,
+   "error": null,
+   "pred": "feat",
+   "confidence": 0.788,
+   "cost": 1e-05
+  },
+  {
+   "id": "5e00000f",
+   "label": "test",
+   "latency_s": 0.4,
+   "error": null,
+   "pred": "fix",
+   "confidence": 0.309,
+   "cost": 1e-05
+  },
+  {
+   "id": "5e00001c",
+   "label": "test",
+   "latency_s": 0.4,
+   "error": null,
+   "pred": "test",
+   "confidence": 0.395,
+   "cost": 1e-05
+  },
+  {
+   "id": "5e000006",
+   "label": "test",
+   "latency_s": 0.4,
+   "error": null,
+   "pred": "feat",
+   "confidence": 0.586,
+   "cost": 1e-05
+  },
+  {
+   "id": "5e00002a",
+   "label": "feat",
+   "latency_s": 0.4,
+   "error": null,
+   "pred": "feat",
+   "confidence": 0.385,
+   "cost": 1e-05
+  },
+  {
+   "id": "5e000029",
+   "label": "refactor",
+   "latency_s": 0.4,
+   "error": null,
+   "pred": "refactor",
+   "confidence": 0.536,
+   "cost": 1e-05
+  },
+  {
+   "id": "5e00001b",
+   "label": "feat",
+   "latency_s": 0.4,
+   "error": null,
+   "pred": "feat",
+   "confidence": 0.063,
+   "cost": 1e-05
+  },
+  {
+   "id": "5e00001f",
+   "label": "refactor",
+   "latency_s": 0.4,
+   "error": null,
+   "pred": "refactor",
+   "confidence": 0.521,
+   "cost": 1e-05
+  },
+  {
+   "id": "5e000022",
+   "label": "test",
+   "latency_s": 0.4,
+   "error": null,
+   "pred": "test",
+   "confidence": 0.833,
+   "cost": 1e-05
+  },
+  {
+   "id": "5e000019",
+   "label": "feat",
+   "latency_s": 0.4,
+   "error": null,
+   "pred": "feat",
+   "confidence": 0.506,
+   "cost": 1e-05
+  },
+  {
+   "id": "5e000020",
+   "label": "fix",
+   "latency_s": 0.4,
+   "error": null,
+   "pred": "fix",
+   "confidence": 0.213,
+   "cost": 1e-05
+  },
+  {
+   "id": "5e000013",
+   "label": "refactor",
+   "latency_s": 0.4,
+   "error": null,
+   "pred": "refactor",
+   "confidence": 0.806,
+   "cost": 1e-05
+  },
+  {
+   "id": "5e00000d",
+   "label": "fix",
+   "latency_s": 0.4,
+   "error": null,
+   "pred": "fix",
+   "confidence": 0.578,
+   "cost": 1e-05
+  },
+  {
+   "id": "5e00000e",
+   "label": "feat",
+   "latency_s": 0.4,
+   "error": null,
+   "pred": "feat",
+   "confidence": 0.78,
+   "cost": 1e-05
+  },
+  {
+   "id": "5e000015",
+   "label": "refactor",
+   "latency_s": 0.4,
+   "error": null,
+   "pred": "fix",
+   "confidence": 0.045,
+   "cost": 1e-05
+  },
+  {
+   "id": "5e00000c",
+   "label": "fix",
+   "latency_s": 0.4,
+   "error": null,
+   "pred": "refactor",
+   "confidence": 0.866,
+   "cost": 1e-05
+  }
+ ],
+ "score|jev": [
+  {
+   "id": "5e000011",
+   "label": "large",
+   "latency_s": 0.4,
+   "error": "HTTP 500: synthetic"
+  },
+  {
+   "id": "5e000005",
+   "label": "medium",
+   "latency_s": 0.4,
+   "error": null,
+   "pred": "medium",
+   "confidence": 0.463,
+   "cost": 1e-05
+  },
+  {
+   "id": "5e000016",
+   "label": "medium",
+   "latency_s": 0.4,
+   "error": null,
+   "pred": "medium",
+   "confidence": 0.316,
+   "cost": 1e-05
+  },
+  {
+   "id": "5e00001a",
+   "label": "large",
+   "latency_s": 0.4,
+   "error": null,
+   "pred": "large",
+   "confidence": 0.281,
+   "cost": 1e-05
+  },
+  {
+   "id": "5e000007",
+   "label": "tiny",
+   "latency_s": 0.4,
+   "error": null,
+   "pred": "tiny",
+   "confidence": 0.094,
+   "cost": 1e-05
+  },
+  {
+   "id": "5e000023",
+   "label": "medium",
+   "latency_s": 0.4,
+   "error": null,
+   "pred": "medium",
+   "confidence": 0.871,
+   "cost": 1e-05
+  },
+  {
+   "id": "5e00000d",
+   "label": "large",
+   "latency_s": 0.4,
+   "error": null,
+   "pred": "large",
+   "confidence": 0.587,
+   "cost": 1e-05
+  },
+  {
+   "id": "5e000018",
+   "label": "tiny",
+   "latency_s": 0.4,
+   "error": null,
+   "pred": "tiny",
+   "confidence": 0.925,
+   "cost": 1e-05
+  },
+  {
+   "id": "5e00002d",
+   "label": "small",
+   "latency_s": 0.4,
+   "error": null,
+   "pred": "small",
+   "confidence": 0.097,
+   "cost": 1e-05
+  },
+  {
+   "id": "5e000013",
+   "label": "small",
+   "latency_s": 0.4,
+   "error": null,
+   "pred": "small",
+   "confidence": 0.593,
+   "cost": 1e-05
+  },
+  {
+   "id": "5e00001b",
+   "label": "small",
+   "latency_s": 0.4,
+   "error": null,
+   "pred": "small",
+   "confidence": 0.131,
+   "cost": 1e-05
+  },
+  {
+   "id": "5e00002e",
+   "label": "large",
+   "latency_s": 0.4,
+   "error": null,
+   "pred": "small",
+   "confidence": 0.201,
+   "cost": 1e-05
+  },
+  {
+   "id": "5e000003",
+   "label": "tiny",
+   "latency_s": 0.4,
+   "error": null,
+   "pred": "tiny",
+   "confidence": 0.084,
+   "cost": 1e-05
+  },
+  {
+   "id": "5e00001e",
+   "label": "tiny",
+   "latency_s": 0.4,
+   "error": null,
+   "pred": "tiny",
+   "confidence": 0.557,
+   "cost": 1e-05
+  },
+  {
+   "id": "5e00000c",
+   "label": "medium",
+   "latency_s": 0.4,
+   "error": null,
+   "pred": "small",
+   "confidence": 0.487,
+   "cost": 1e-05
+  },
+  {
+   "id": "5e000017",
+   "label": "medium",
+   "latency_s": 0.4,
+   "error": null,
+   "pred": "tiny",
+   "confidence": 0.863,
+   "cost": 1e-05
+  },
+  {
+   "id": "5e00001c",
+   "label": "medium",
+   "latency_s": 0.4,
+   "error": null,
+   "pred": "medium",
+   "confidence": 0.922,
+   "cost": 1e-05
+  },
+  {
+   "id": "5e000006",
+   "label": "large",
+   "latency_s": 0.4,
+   "error": null,
+   "pred": "tiny",
+   "confidence": 0.257,
+   "cost": 1e-05
+  },
+  {
+   "id": "5e00000a",
+   "label": "small",
+   "latency_s": 0.4,
+   "error": null,
+   "pred": "small",
+   "confidence": 0.641,
+   "cost": 1e-05
+  },
+  {
+   "id": "5e00000b",
+   "label": "small",
+   "latency_s": 0.4,
+   "error": null,
+   "pred": "large",
+   "confidence": 0.507,
+   "cost": 1e-05
+  },
+  {
+   "id": "5e000020",
+   "label": "tiny",
+   "latency_s": 0.4,
+   "error": null,
+   "pred": "tiny",
+   "confidence": 0.85,
+   "cost": 1e-05
+  },
+  {
+   "id": "5e00000f",
+   "label": "tiny",
+   "latency_s": 0.4,
+   "error": null,
+   "pred": "tiny",
+   "confidence": 0.235,
+   "cost": 1e-05
+  },
+  {
+   "id": "5e000000",
+   "label": "large",
+   "latency_s": 0.4,
+   "error": null,
+   "pred": "tiny",
+   "confidence": 0.039,
+   "cost": 1e-05
+  },
+  {
+   "id": "5e000014",
+   "label": "small",
+   "latency_s": 0.4,
+   "error": null,
+   "pred": "small",
+   "confidence": 0.352,
+   "cost": 1e-05
+  }
+ ],
+ "gate|jev": [
+  {
+   "id": "5e00002c",
+   "label": "yes",
+   "latency_s": 0.4,
+   "error": null,
+   "pred": "no",
+   "confidence": 0.837,
+   "cost": 1e-05
+  },
+  {
+   "id": "5e00000b",
+   "label": "no",
+   "latency_s": 0.4,
+   "error": null,
+   "pred": "no",
+   "confidence": 0.786,
+   "cost": 1e-05
+  },
+  {
+   "id": "5e00001f",
+   "label": "yes",
+   "latency_s": 0.4,
+   "error": null,
+   "pred": "no",
+   "confidence": 0.056,
+   "cost": 1e-05
+  },
+  {
+   "id": "5e000025",
+   "label": "no",
+   "latency_s": 0.4,
+   "error": null,
+   "pred": "no",
+   "confidence": 0.755,
+   "cost": 1e-05
+  },
+  {
+   "id": "5e000016",
+   "label": "no",
+   "latency_s": 0.4,
+   "error": null,
+   "pred": "yes",
+   "confidence": 0.59,
+   "cost": 1e-05
+  },
+  {
+   "id": "5e000020",
+   "label": "yes",
+   "latency_s": 0.4,
+   "error": null,
+   "pred": "yes",
+   "confidence": 0.653,
+   "cost": 1e-05
+  },
+  {
+   "id": "5e000010",
+   "label": "yes",
+   "latency_s": 0.4,
+   "error": null,
+   "pred": "yes",
+   "confidence": 0.372,
+   "cost": 1e-05
+  },
+  {
+   "id": "5e000024",
+   "label": "yes",
+   "latency_s": 0.4,
+   "error": null,
+   "pred": "yes",
+   "confidence": 0.375,
+   "cost": 1e-05
+  },
+  {
+   "id": "5e00000a",
+   "label": "no",
+   "latency_s": 0.4,
+   "error": null,
+   "pred": "no",
+   "confidence": 0.441,
+   "cost": 1e-05
+  },
+  {
+   "id": "5e000012",
+   "label": "yes",
+   "latency_s": 0.4,
+   "error": null,
+   "pred": "no",
+   "confidence": 0.468,
+   "cost": 1e-05
+  },
+  {
+   "id": "5e00000d",
+   "label": "no",
+   "latency_s": 0.4,
+   "error": null,
+   "pred": "yes",
+   "confidence": 0.157,
+   "cost": 1e-05
+  },
+  {
+   "id": "5e00000e",
+   "label": "no",
+   "latency_s": 0.4,
+   "error": null,
+   "pred": "yes",
+   "confidence": 0.934,
+   "cost": 1e-05
+  },
+  {
+   "id": "5e00002d",
+   "label": "no",
+   "latency_s": 0.4,
+   "error": null,
+   "pred": "yes",
+   "confidence": 0.778,
+   "cost": 1e-05
+  },
+  {
+   "id": "5e000027",
+   "label": "yes",
+   "latency_s": 0.4,
+   "error": null,
+   "pred": "no",
+   "confidence": 0.842,
+   "cost": 1e-05
+  },
+  {
+   "id": "5e000007",
+   "label": "yes",
+   "latency_s": 0.4,
+   "error": null,
+   "pred": "yes",
+   "confidence": 0.452,
+   "cost": 1e-05
+  },
+  {
+   "id": "5e000005",
+   "label": "yes",
+   "latency_s": 0.4,
+   "error": null,
+   "pred": "yes",
+   "confidence": 0.823,
+   "cost": 1e-05
+  },
+  {
+   "id": "5e000023",
+   "label": "no",
+   "latency_s": 0.4,
+   "error": null,
+   "pred": "no",
+   "confidence": 0.628,
+   "cost": 1e-05
+  },
+  {
+   "id": "5e000019",
+   "label": "no",
+   "latency_s": 0.4,
+   "error": null,
+   "pred": "no",
+   "confidence": 0.222,
+   "cost": 1e-05
+  },
+  {
+   "id": "5e00002b",
+   "label": "yes",
+   "latency_s": 0.4,
+   "error": null,
+   "pred": "yes",
+   "confidence": 0.714,
+   "cost": 1e-05
+  },
+  {
+   "id": "5e000011",
+   "label": "no",
+   "latency_s": 0.4,
+   "error": null,
+   "pred": "no",
+   "confidence": 0.145,
+   "cost": 1e-05
+  }
+ ],
+ "route|openai/gpt-5.6-terra": [
+  {
+   "id": "5e000014",
+   "label": "backend",
+   "latency_s": 0.4,
+   "error": null,
+   "pred": "frontend",
+   "confidence": 0.418,
+   "cost": 1e-05
+  },
+  {
+   "id": "5e000009",
+   "label": "frontend",
+   "latency_s": 0.4,
+   "error": null,
+   "pred": "frontend",
+   "confidence": 0.025,
+   "cost": 1e-05
+  },
+  {
+   "id": "5e000019",
+   "label": "frontend",
+   "latency_s": 0.4,
+   "error": null,
+   "pred": "frontend",
+   "confidence": 0.297,
+   "cost": 1e-05
+  },
+  {
+   "id": "5e000029",
+   "label": "frontend",
+   "latency_s": 0.4,
+   "error": null,
+   "pred": "backend",
+   "confidence": 0.491,
+   "cost": 1e-05
+  },
+  {
+   "id": "5e000003",
+   "label": "frontend",
+   "latency_s": 0.4,
+   "error": null,
+   "pred": "frontend",
+   "confidence": 0.903,
+   "cost": 1e-05
+  },
+  {
+   "id": "5e000004",
+   "label": "backend",
+   "latency_s": 0.4,
+   "error": null,
+   "pred": "backend",
+   "confidence": 0.979,
+   "cost": 1e-05
+  },
+  {
+   "id": "5e000022",
+   "label": "backend",
+   "latency_s": 0.4,
+   "error": null,
+   "pred": "backend",
+   "confidence": 0.895,
+   "cost": 1e-05
+  },
+  {
+   "id": "5e000006",
+   "label": "backend",
+   "latency_s": 0.4,
+   "error": null,
+   "pred": "backend",
+   "confidence": 0.211,
+   "cost": 1e-05
+  },
+  {
+   "id": "5e000017",
+   "label": "frontend",
+   "latency_s": 0.4,
+   "error": null,
+   "pred": "frontend",
+   "confidence": 0.286,
+   "cost": 1e-05
+  },
+  {
+   "id": "5e000025",
+   "label": "frontend",
+   "latency_s": 0.4,
+   "error": null,
+   "pred": "frontend",
+   "confidence": 0.202,
+   "cost": 1e-05
+  },
+  {
+   "id": "5e00002b",
+   "label": "frontend",
+   "latency_s": 0.4,
+   "error": null,
+   "pred": "frontend",
+   "confidence": 0.991,
+   "cost": 1e-05
+  },
+  {
+   "id": "5e000020",
+   "label": "frontend",
+   "latency_s": 0.4,
+   "error": null,
+   "pred": "backend",
+   "confidence": 0.098,
+   "cost": 1e-05
+  },
+  {
+   "id": "5e00000d",
+   "label": "backend",
+   "latency_s": 0.4,
+   "error": null,
+   "pred": "backend",
+   "confidence": 0.896,
+   "cost": 1e-05
+  },
+  {
+   "id": "5e000002",
+   "label": "frontend",
+   "latency_s": 0.4,
+   "error": null,
+   "pred": "frontend",
+   "confidence": 0.726,
+   "cost": 1e-05
+  },
+  {
+   "id": "5e000005",
+   "label": "frontend",
+   "latency_s": 0.4,
+   "error": null,
+   "pred": "frontend",
+   "confidence": 0.979,
+   "cost": 1e-05
+  },
+  {
+   "id": "5e00001b",
+   "label": "backend",
+   "latency_s": 0.4,
+   "error": null,
+   "pred": "backend",
+   "confidence": 0.807,
+   "cost": 1e-05
+  },
+  {
+   "id": "5e00001a",
+   "label": "backend",
+   "latency_s": 0.4,
+   "error": null,
+   "pred": "backend",
+   "confidence": 0.14,
+   "cost": 1e-05
+  },
+  {
+   "id": "5e00002c",
+   "label": "backend",
+   "latency_s": 0.4,
+   "error": null,
+   "pred": "backend",
+   "confidence": 0.832,
+   "cost": 1e-05
+  },
+  {
+   "id": "5e000007",
+   "label": "backend",
+   "latency_s": 0.4,
+   "error": null,
+   "pred": "backend",
+   "confidence": 0.186,
+   "cost": 1e-05
+  },
+  {
+   "id": "5e00001e",
+   "label": "backend",
+   "latency_s": 0.4,
+   "error": null,
+   "pred": "backend",
+   "confidence": 0.912,
+   "cost": 1e-05
+  }
+ ],
+ "triage|openai/gpt-5.6-terra": [
+  {
+   "id": "5e00001e",
+   "label": "fix",
+   "latency_s": 0.4,
+   "error": null,
+   "pred": "fix",
+   "confidence": 0.571,
+   "cost": 1e-05
+  },
+  {
+   "id": "5e00000f",
+   "label": "test",
+   "latency_s": 0.4,
+   "error": null,
+   "pred": "test",
+   "confidence": 0.18,
+   "cost": 1e-05
+  },
+  {
+   "id": "5e00001c",
+   "label": "test",
+   "latency_s": 0.4,
+   "error": null,
+   "pred": "refactor",
+   "confidence": 0.176,
+   "cost": 1e-05
+  },
+  {
+   "id": "5e000006",
+   "label": "test",
+   "latency_s": 0.4,
+   "error": null,
+   "pred": "test",
+   "confidence": 0.829,
+   "cost": 1e-05
+  },
+  {
+   "id": "5e00002a",
+   "label": "feat",
+   "latency_s": 0.4,
+   "error": null,
+   "pred": "test",
+   "confidence": 0.495,
+   "cost": 1e-05
+  },
+  {
+   "id": "5e000029",
+   "label": "refactor",
+   "latency_s": 0.4,
+   "error": null,
+   "pred": "refactor",
+   "confidence": 0.206,
+   "cost": 1e-05
+  },
+  {
+   "id": "5e00001b",
+   "label": "feat",
+   "latency_s": 0.4,
+   "error": null,
+   "pred": "feat",
+   "confidence": 0.708,
+   "cost": 1e-05
+  },
+  {
+   "id": "5e00001f",
+   "label": "refactor",
+   "latency_s": 0.4,
+   "error": null,
+   "pred": "test",
+   "confidence": 0.308,
+   "cost": 1e-05
+  },
+  {
+   "id": "5e000022",
+   "label": "test",
+   "latency_s": 0.4,
+   "error": null,
+   "pred": "test",
+   "confidence": 0.692,
+   "cost": 1e-05
+  },
+  {
+   "id": "5e000019",
+   "label": "feat",
+   "latency_s": 0.4,
+   "error": null,
+   "pred": "feat",
+   "confidence": 0.841,
+   "cost": 1e-05
+  },
+  {
+   "id": "5e000020",
+   "label": "fix",
+   "latency_s": 0.4,
+   "error": null,
+   "pred": "test",
+   "confidence": 0.811,
+   "cost": 1e-05
+  },
+  {
+   "id": "5e000013",
+   "label": "refactor",
+   "latency_s": 0.4,
+   "error": null,
+   "pred": "refactor",
+   "confidence": 0.842,
+   "cost": 1e-05
+  },
+  {
+   "id": "5e00000d",
+   "label": "fix",
+   "latency_s": 0.4,
+   "error": null,
+   "pred": "refactor",
+   "confidence": 0.09,
+   "cost": 1e-05
+  },
+  {
+   "id": "5e00000e",
+   "label": "feat",
+   "latency_s": 0.4,
+   "error": null,
+   "pred": "feat",
+   "confidence": 0.763,
+   "cost": 1e-05
+  },
+  {
+   "id": "5e000015",
+   "label": "refactor",
+   "latency_s": 0.4,
+   "error": null,
+   "pred": "refactor",
+   "confidence": 0.665,
+   "cost": 1e-05
+  },
+  {
+   "id": "5e00000c",
+   "label": "fix",
+   "latency_s": 0.4,
+   "error": null,
+   "pred": "fix",
+   "confidence": 0.563,
+   "cost": 1e-05
+  }
+ ],
+ "score|openai/gpt-5.6-terra": [
+  {
+   "id": "5e000011",
+   "label": "large",
+   "latency_s": 0.4,
+   "error": null,
+   "pred": "tiny",
+   "confidence": 0.163,
+   "cost": 1e-05
+  },
+  {
+   "id": "5e000005",
+   "label": "medium",
+   "latency_s": 0.4,
+   "error": null,
+   "pred": "medium",
+   "confidence": 0.595,
+   "cost": 1e-05
+  },
+  {
+   "id": "5e000016",
+   "label": "medium",
+   "latency_s": 0.4,
+   "error": null,
+   "pred": "medium",
+   "confidence": 0.52,
+   "cost": 1e-05
+  },
+  {
+   "id": "5e00001a",
+   "label": "large",
+   "latency_s": 0.4,
+   "error": null,
+   "pred": "large",
+   "confidence": 0.516,
+   "cost": 1e-05
+  },
+  {
+   "id": "5e000007",
+   "label": "tiny",
+   "latency_s": 0.4,
+   "error": null,
+   "pred": "tiny",
+   "confidence": 0.715,
+   "cost": 1e-05
+  },
+  {
+   "id": "5e000023",
+   "label": "medium",
+   "latency_s": 0.4,
+   "error": null,
+   "pred": "small",
+   "confidence": 0.779,
+   "cost": 1e-05
+  },
+  {
+   "id": "5e00000d",
+   "label": "large",
+   "latency_s": 0.4,
+   "error": null,
+   "pred": "medium",
+   "confidence": 0.751,
+   "cost": 1e-05
+  },
+  {
+   "id": "5e000018",
+   "label": "tiny",
+   "latency_s": 0.4,
+   "error": null,
+   "pred": "tiny",
+   "confidence": 0.873,
+   "cost": 1e-05
+  },
+  {
+   "id": "5e00002d",
+   "label": "small",
+   "latency_s": 0.4,
+   "error": null,
+   "pred": "medium",
+   "confidence": 0.446,
+   "cost": 1e-05
+  },
+  {
+   "id": "5e000013",
+   "label": "small",
+   "latency_s": 0.4,
+   "error": null,
+   "pred": "small",
+   "confidence": 0.805,
+   "cost": 1e-05
+  },
+  {
+   "id": "5e00001b",
+   "label": "small",
+   "latency_s": 0.4,
+   "error": null,
+   "pred": "small",
+   "confidence": 0.244,
+   "cost": 1e-05
+  },
+  {
+   "id": "5e00002e",
+   "label": "large",
+   "latency_s": 0.4,
+   "error": null,
+   "pred": "large",
+   "confidence": 0.619,
+   "cost": 1e-05
+  },
+  {
+   "id": "5e000003",
+   "label": "tiny",
+   "latency_s": 0.4,
+   "error": null,
+   "pred": "tiny",
+   "confidence": 0.312,
+   "cost": 1e-05
+  },
+  {
+   "id": "5e00001e",
+   "label": "tiny",
+   "latency_s": 0.4,
+   "error": null,
+   "pred": "tiny",
+   "confidence": 0.955,
+   "cost": 1e-05
+  },
+  {
+   "id": "5e00000c",
+   "label": "medium",
+   "latency_s": 0.4,
+   "error": null,
+   "pred": "medium",
+   "confidence": 0.926,
+   "cost": 1e-05
+  },
+  {
+   "id": "5e000017",
+   "label": "medium",
+   "latency_s": 0.4,
+   "error": null,
+   "pred": "medium",
+   "confidence": 0.261,
+   "cost": 1e-05
+  },
+  {
+   "id": "5e00001c",
+   "label": "medium",
+   "latency_s": 0.4,
+   "error": null,
+   "pred": "large",
+   "confidence": 0.576,
+   "cost": 1e-05
+  },
+  {
+   "id": "5e000006",
+   "label": "large",
+   "latency_s": 0.4,
+   "error": null,
+   "pred": "large",
+   "confidence": 0.703,
+   "cost": 1e-05
+  },
+  {
+   "id": "5e00000a",
+   "label": "small",
+   "latency_s": 0.4,
+   "error": null,
+   "pred": "small",
+   "confidence": 0.87,
+   "cost": 1e-05
+  },
+  {
+   "id": "5e00000b",
+   "label": "small",
+   "latency_s": 0.4,
+   "error": null,
+   "pred": "small",
+   "confidence": 0.045,
+   "cost": 1e-05
+  },
+  {
+   "id": "5e000020",
+   "label": "tiny",
+   "latency_s": 0.4,
+   "error": null,
+   "pred": "tiny",
+   "confidence": 0.494,
+   "cost": 1e-05
+  },
+  {
+   "id": "5e00000f",
+   "label": "tiny",
+   "latency_s": 0.4,
+   "error": null,
+   "pred": "tiny",
+   "confidence": 0.28,
+   "cost": 1e-05
+  },
+  {
+   "id": "5e000000",
+   "label": "large",
+   "latency_s": 0.4,
+   "error": null,
+   "pred": "large",
+   "confidence": 0.406,
+   "cost": 1e-05
+  },
+  {
+   "id": "5e000014",
+   "label": "small",
+   "latency_s": 0.4,
+   "error": null,
+   "pred": "small",
+   "confidence": 0.592,
+   "cost": 1e-05
+  }
+ ],
+ "gate|openai/gpt-5.6-terra": [
+  {
+   "id": "5e00002c",
+   "label": "yes",
+   "latency_s": 0.4,
+   "error": null,
+   "pred": "no",
+   "confidence": 0.669,
+   "cost": 1e-05
+  },
+  {
+   "id": "5e00000b",
+   "label": "no",
+   "latency_s": 0.4,
+   "error": null,
+   "pred": "no",
+   "confidence": 0.397,
+   "cost": 1e-05
+  },
+  {
+   "id": "5e00001f",
+   "label": "yes",
+   "latency_s": 0.4,
+   "error": null,
+   "pred": "no",
+   "confidence": 0.938,
+   "cost": 1e-05
+  },
+  {
+   "id": "5e000025",
+   "label": "no",
+   "latency_s": 0.4,
+   "error": null,
+   "pred": "no",
+   "confidence": 0.42,
+   "cost": 1e-05
+  },
+  {
+   "id": "5e000016",
+   "label": "no",
+   "latency_s": 0.4,
+   "error": null,
+   "pred": "yes",
+   "confidence": 0.396,
+   "cost": 1e-05
+  },
+  {
+   "id": "5e000020",
+   "label": "yes",
+   "latency_s": 0.4,
+   "error": null,
+   "pred": "no",
+   "confidence": 0.339,
+   "cost": 1e-05
+  },
+  {
+   "id": "5e000010",
+   "label": "yes",
+   "latency_s": 0.4,
+   "error": null,
+   "pred": "yes",
+   "confidence": 0.335,
+   "cost": 1e-05
+  },
+  {
+   "id": "5e000024",
+   "label": "yes",
+   "latency_s": 0.4,
+   "error": null,
+   "pred": "yes",
+   "confidence": 0.981,
+   "cost": 1e-05
+  },
+  {
+   "id": "5e00000a",
+   "label": "no",
+   "latency_s": 0.4,
+   "error": null,
+   "pred": "yes",
+   "confidence": 0.815,
+   "cost": 1e-05
+  },
+  {
+   "id": "5e000012",
+   "label": "yes",
+   "latency_s": 0.4,
+   "error": null,
+   "pred": "no",
+   "confidence": 0.325,
+   "cost": 1e-05
+  },
+  {
+   "id": "5e00000d",
+   "label": "no",
+   "latency_s": 0.4,
+   "error": null,
+   "pred": "no",
+   "confidence": 0.68,
+   "cost": 1e-05
+  },
+  {
+   "id": "5e00000e",
+   "label": "no",
+   "latency_s": 0.4,
+   "error": null,
+   "pred": "no",
+   "confidence": 0.87,
+   "cost": 1e-05
+  },
+  {
+   "id": "5e00002d",
+   "label": "no",
+   "latency_s": 0.4,
+   "error": null,
+   "pred": "no",
+   "confidence": 0.012,
+   "cost": 1e-05
+  },
+  {
+   "id": "5e000027",
+   "label": "yes",
+   "latency_s": 0.4,
+   "error": null,
+   "pred": "yes",
+   "confidence": 0.187,
+   "cost": 1e-05
+  },
+  {
+   "id": "5e000007",
+   "label": "yes",
+   "latency_s": 0.4,
+   "error": null,
+   "pred": "yes",
+   "confidence": 0.201,
+   "cost": 1e-05
+  },
+  {
+   "id": "5e000005",
+   "label": "yes",
+   "latency_s": 0.4,
+   "error": null,
+   "pred": "yes",
+   "confidence": 0.225,
+   "cost": 1e-05
+  },
+  {
+   "id": "5e000023",
+   "label": "no",
+   "latency_s": 0.4,
+   "error": null,
+   "pred": "no",
+   "confidence": 0.397,
+   "cost": 1e-05
+  },
+  {
+   "id": "5e000019",
+   "label": "no",
+   "latency_s": 0.4,
+   "error": null,
+   "pred": "yes",
+   "confidence": 0.633,
+   "cost": 1e-05
+  },
+  {
+   "id": "5e00002b",
+   "label": "yes",
+   "latency_s": 0.4,
+   "error": null,
+   "pred": "no",
+   "confidence": 0.034,
+   "cost": 1e-05
+  },
+  {
+   "id": "5e000011",
+   "label": "no",
+   "latency_s": 0.4,
+   "error": null,
+   "pred": "no",
+   "confidence": 0.266,
+   "cost": 1e-05
+  }
+ ],
+ "route|anthropic/claude-opus-5": [
+  {
+   "id": "5e000014",
+   "label": "backend",
+   "latency_s": 0.4,
+   "error": null,
+   "pred": "backend",
+   "confidence": 0.273,
+   "cost": 1e-05
+  },
+  {
+   "id": "5e000009",
+   "label": "frontend",
+   "latency_s": 0.4,
+   "error": null,
+   "pred": "frontend",
+   "confidence": 0.924,
+   "cost": 1e-05
+  },
+  {
+   "id": "5e000019",
+   "label": "frontend",
+   "latency_s": 0.4,
+   "error": null,
+   "pred": "frontend",
+   "confidence": 0.251,
+   "cost": 1e-05
+  },
+  {
+   "id": "5e000029",
+   "label": "frontend",
+   "latency_s": 0.4,
+   "error": null,
+   "pred": "frontend",
+   "confidence": 0.434,
+   "cost": 1e-05
+  },
+  {
+   "id": "5e000003",
+   "label": "frontend",
+   "latency_s": 0.4,
+   "error": null,
+   "pred": "backend",
+   "confidence": 0.113,
+   "cost": 1e-05
+  },
+  {
+   "id": "5e000004",
+   "label": "backend",
+   "latency_s": 0.4,
+   "error": null,
+   "pred": "backend",
+   "confidence": 0.167,
+   "cost": 1e-05
+  },
+  {
+   "id": "5e000022",
+   "label": "backend",
+   "latency_s": 0.4,
+   "error": null,
+   "pred": "backend",
+   "confidence": 0.959,
+   "cost": 1e-05
+  },
+  {
+   "id": "5e000006",
+   "label": "backend",
+   "latency_s": 0.4,
+   "error": null,
+   "pred": "frontend",
+   "confidence": 0.084,
+   "cost": 1e-05
+  },
+  {
+   "id": "5e000017",
+   "label": "frontend",
+   "latency_s": 0.4,
+   "error": null,
+   "pred": "frontend",
+   "confidence": 0.932,
+   "cost": 1e-05
+  },
+  {
+   "id": "5e000025",
+   "label": "frontend",
+   "latency_s": 0.4,
+   "error": null,
+   "pred": "frontend",
+   "confidence": 0.512,
+   "cost": 1e-05
+  },
+  {
+   "id": "5e00002b",
+   "label": "frontend",
+   "latency_s": 0.4,
+   "error": null,
+   "pred": "backend",
+   "confidence": 0.577,
+   "cost": 1e-05
+  },
+  {
+   "id": "5e000020",
+   "label": "frontend",
+   "latency_s": 0.4,
+   "error": null,
+   "pred": "frontend",
+   "confidence": 0.736,
+   "cost": 1e-05
+  },
+  {
+   "id": "5e00000d",
+   "label": "backend",
+   "latency_s": 0.4,
+   "error": null,
+   "pred": "backend",
+   "confidence": 0.287,
+   "cost": 1e-05
+  },
+  {
+   "id": "5e000002",
+   "label": "frontend",
+   "latency_s": 0.4,
+   "error": null,
+   "pred": "frontend",
+   "confidence": 0.695,
+   "cost": 1e-05
+  },
+  {
+   "id": "5e000005",
+   "label": "frontend",
+   "latency_s": 0.4,
+   "error": null,
+   "pred": "frontend",
+   "confidence": 0.387,
+   "cost": 1e-05
+  },
+  {
+   "id": "5e00001b",
+   "label": "backend",
+   "latency_s": 0.4,
+   "error": null,
+   "pred": "backend",
+   "confidence": 0.367,
+   "cost": 1e-05
+  },
+  {
+   "id": "5e00001a",
+   "label": "backend",
+   "latency_s": 0.4,
+   "error": null,
+   "pred": "frontend",
+   "confidence": 0.613,
+   "cost": 1e-05
+  },
+  {
+   "id": "5e00002c",
+   "label": "backend",
+   "latency_s": 0.4,
+   "error": null,
+   "pred": "backend",
+   "confidence": 0.311,
+   "cost": 1e-05
+  },
+  {
+   "id": "5e000007",
+   "label": "backend",
+   "latency_s": 0.4,
+   "error": null,
+   "pred": "backend",
+   "confidence": 0.222,
+   "cost": 1e-05
+  },
+  {
+   "id": "5e00001e",
+   "label": "backend",
+   "latency_s": 0.4,
+   "error": null,
+   "pred": "backend",
+   "confidence": 0.383,
+   "cost": 1e-05
+  }
+ ],
+ "triage|anthropic/claude-opus-5": [
+  {
+   "id": "5e00001e",
+   "label": "fix",
+   "latency_s": 0.4,
+   "error": null,
+   "pred": "fix",
+   "confidence": 0.012,
+   "cost": 1e-05
+  },
+  {
+   "id": "5e00000f",
+   "label": "test",
+   "latency_s": 0.4,
+   "error": null,
+   "pred": "test",
+   "confidence": 0.862,
+   "cost": 1e-05
+  },
+  {
+   "id": "5e00001c",
+   "label": "test",
+   "latency_s": 0.4,
+   "error": null,
+   "pred": "test",
+   "confidence": 0.557,
+   "cost": 1e-05
+  },
+  {
+   "id": "5e000006",
+   "label": "test",
+   "latency_s": 0.4,
+   "error": null,
+   "pred": "test",
+   "confidence": 0.285,
+   "cost": 1e-05
+  },
+  {
+   "id": "5e00002a",
+   "label": "feat",
+   "latency_s": 0.4,
+   "error": null,
+   "pred": "refactor",
+   "confidence": 0.057,
+   "cost": 1e-05
+  },
+  {
+   "id": "5e000029",
+   "label": "refactor",
+   "latency_s": 0.4,
+   "error": null,
+   "pred": "refactor",
+   "confidence": 0.551,
+   "cost": 1e-05
+  },
+  {
+   "id": "5e00001b",
+   "label": "feat",
+   "latency_s": 0.4,
+   "error": null,
+   "pred": "feat",
+   "confidence": 0.348,
+   "cost": 1e-05
+  },
+  {
+   "id": "5e00001f",
+   "label": "refactor",
+   "latency_s": 0.4,
+   "error": null,
+   "pred": "refactor",
+   "confidence": 0.517,
+   "cost": 1e-05
+  },
+  {
+   "id": "5e000022",
+   "label": "test",
+   "latency_s": 0.4,
+   "error": null,
+   "pred": "feat",
+   "confidence": 0.735,
+   "cost": 1e-05
+  },
+  {
+   "id": "5e000019",
+   "label": "feat",
+   "latency_s": 0.4,
+   "error": null,
+   "pred": "feat",
+   "confidence": 0.225,
+   "cost": 1e-05
+  },
+  {
+   "id": "5e000020",
+   "label": "fix",
+   "latency_s": 0.4,
+   "error": null,
+   "pred": "test",
+   "confidence": 0.934,
+   "cost": 1e-05
+  },
+  {
+   "id": "5e000013",
+   "label": "refactor",
+   "latency_s": 0.4,
+   "error": null,
+   "pred": "refactor",
+   "confidence": 0.668,
+   "cost": 1e-05
+  },
+  {
+   "id": "5e00000d",
+   "label": "fix",
+   "latency_s": 0.4,
+   "error": null,
+   "pred": "fix",
+   "confidence": 0.202,
+   "cost": 1e-05
+  },
+  {
+   "id": "5e00000e",
+   "label": "feat",
+   "latency_s": 0.4,
+   "error": null,
+   "pred": "feat",
+   "confidence": 0.277,
+   "cost": 1e-05
+  },
+  {
+   "id": "5e000015",
+   "label": "refactor",
+   "latency_s": 0.4,
+   "error": null,
+   "pred": "fix",
+   "confidence": 0.739,
+   "cost": 1e-05
+  },
+  {
+   "id": "5e00000c",
+   "label": "fix",
+   "latency_s": 0.4,
+   "error": null,
+   "pred": "fix",
+   "confidence": 0.76,
+   "cost": 1e-05
+  }
+ ],
+ "score|anthropic/claude-opus-5": [
+  {
+   "id": "5e000011",
+   "label": "large",
+   "latency_s": 0.4,
+   "error": null,
+   "pred": "large",
+   "confidence": 0.785,
+   "cost": 1e-05
+  },
+  {
+   "id": "5e000005",
+   "label": "medium",
+   "latency_s": 0.4,
+   "error": null,
+   "pred": "medium",
+   "confidence": 0.915,
+   "cost": 1e-05
+  },
+  {
+   "id": "5e000016",
+   "label": "medium",
+   "latency_s": 0.4,
+   "error": null,
+   "pred": "medium",
+   "confidence": 0.871,
+   "cost": 1e-05
+  },
+  {
+   "id": "5e00001a",
+   "label": "large",
+   "latency_s": 0.4,
+   "error": null,
+   "pred": "large",
+   "confidence": 0.766,
+   "cost": 1e-05
+  },
+  {
+   "id": "5e000007",
+   "label": "tiny",
+   "latency_s": 0.4,
+   "error": null,
+   "pred": "tiny",
+   "confidence": 0.498,
+   "cost": 1e-05
+  },
+  {
+   "id": "5e000023",
+   "label": "medium",
+   "latency_s": 0.4,
+   "error": null,
+   "pred": "large",
+   "confidence": 0.15,
+   "cost": 1e-05
+  },
+  {
+   "id": "5e00000d",
+   "label": "large",
+   "latency_s": 0.4,
+   "error": null,
+   "pred": "small",
+   "confidence": 0.873,
+   "cost": 1e-05
+  },
+  {
+   "id": "5e000018",
+   "label": "tiny",
+   "latency_s": 0.4,
+   "error": null,
+   "pred": "tiny",
+   "confidence": 0.38,
+   "cost": 1e-05
+  },
+  {
+   "id": "5e00002d",
+   "label": "small",
+   "latency_s": 0.4,
+   "error": null,
+   "pred": "small",
+   "confidence": 0.458,
+   "cost": 1e-05
+  },
+  {
+   "id": "5e000013",
+   "label": "small",
+   "latency_s": 0.4,
+   "error": null,
+   "pred": "small",
+   "confidence": 0.293,
+   "cost": 1e-05
+  },
+  {
+   "id": "5e00001b",
+   "label": "small",
+   "latency_s": 0.4,
+   "error": null,
+   "pred": "small",
+   "confidence": 0.555,
+   "cost": 1e-05
+  },
+  {
+   "id": "5e00002e",
+   "label": "large",
+   "latency_s": 0.4,
+   "error": null,
+   "pred": "large",
+   "confidence": 0.322,
+   "cost": 1e-05
+  },
+  {
+   "id": "5e000003",
+   "label": "tiny",
+   "latency_s": 0.4,
+   "error": null,
+   "pred": "tiny",
+   "confidence": 0.85,
+   "cost": 1e-05
+  },
+  {
+   "id": "5e00001e",
+   "label": "tiny",
+   "latency_s": 0.4,
+   "error": null,
+   "pred": "tiny",
+   "confidence": 0.444,
+   "cost": 1e-05
+  },
+  {
+   "id": "5e00000c",
+   "label": "medium",
+   "latency_s": 0.4,
+   "error": null,
+   "pred": "medium",
+   "confidence": 0.304,
+   "cost": 1e-05
+  },
+  {
+   "id": "5e000017",
+   "label": "medium",
+   "latency_s": 0.4,
+   "error": null,
+   "pred": "medium",
+   "confidence": 0.575,
+   "cost": 1e-05
+  },
+  {
+   "id": "5e00001c",
+   "label": "medium",
+   "latency_s": 0.4,
+   "error": null,
+   "pred": "medium",
+   "confidence": 0.088,
+   "cost": 1e-05
+  },
+  {
+   "id": "5e000006",
+   "label": "large",
+   "latency_s": 0.4,
+   "error": null,
+   "pred": "small",
+   "confidence": 0.969,
+   "cost": 1e-05
+  },
+  {
+   "id": "5e00000a",
+   "label": "small",
+   "latency_s": 0.4,
+   "error": null,
+   "pred": "small",
+   "confidence": 0.243,
+   "cost": 1e-05
+  },
+  {
+   "id": "5e00000b",
+   "label": "small",
+   "latency_s": 0.4,
+   "error": null,
+   "pred": "small",
+   "confidence": 0.972,
+   "cost": 1e-05
+  },
+  {
+   "id": "5e000020",
+   "label": "tiny",
+   "latency_s": 0.4,
+   "error": null,
+   "pred": "small",
+   "confidence": 0.026,
+   "cost": 1e-05
+  },
+  {
+   "id": "5e00000f",
+   "label": "tiny",
+   "latency_s": 0.4,
+   "error": null,
+   "pred": "tiny",
+   "confidence": 0.896,
+   "cost": 1e-05
+  },
+  {
+   "id": "5e000000",
+   "label": "large",
+   "latency_s": 0.4,
+   "error": null,
+   "pred": "large",
+   "confidence": 0.536,
+   "cost": 1e-05
+  },
+  {
+   "id": "5e000014",
+   "label": "small",
+   "latency_s": 0.4,
+   "error": null,
+   "pred": "small",
+   "confidence": 0.62,
+   "cost": 1e-05
+  }
+ ],
+ "gate|anthropic/claude-opus-5": [
+  {
+   "id": "5e00002c",
+   "label": "yes",
+   "latency_s": 0.4,
+   "error": null,
+   "pred": "yes",
+   "confidence": 0.826,
+   "cost": 1e-05
+  },
+  {
+   "id": "5e00000b",
+   "label": "no",
+   "latency_s": 0.4,
+   "error": null,
+   "pred": "no",
+   "confidence": 0.43,
+   "cost": 1e-05
+  },
+  {
+   "id": "5e00001f",
+   "label": "yes",
+   "latency_s": 0.4,
+   "error": null,
+   "pred": "yes",
+   "confidence": 0.041,
+   "cost": 1e-05
+  },
+  {
+   "id": "5e000025",
+   "label": "no",
+   "latency_s": 0.4,
+   "error": null,
+   "pred": "no",
+   "confidence": 0.453,
+   "cost": 1e-05
+  },
+  {
+   "id": "5e000016",
+   "label": "no",
+   "latency_s": 0.4,
+   "error": null,
+   "pred": "no",
+   "confidence": 0.068,
+   "cost": 1e-05
+  },
+  {
+   "id": "5e000020",
+   "label": "yes",
+   "latency_s": 0.4,
+   "error": null,
+   "pred": "yes",
+   "confidence": 0.41,
+   "cost": 1e-05
+  },
+  {
+   "id": "5e000010",
+   "label": "yes",
+   "latency_s": 0.4,
+   "error": null,
+   "pred": "yes",
+   "confidence": 0.649,
+   "cost": 1e-05
+  },
+  {
+   "id": "5e000024",
+   "label": "yes",
+   "latency_s": 0.4,
+   "error": null,
+   "pred": "no",
+   "confidence": 0.88,
+   "cost": 1e-05
+  },
+  {
+   "id": "5e00000a",
+   "label": "no",
+   "latency_s": 0.4,
+   "error": null,
+   "pred": "yes",
+   "confidence": 0.402,
+   "cost": 1e-05
+  },
+  {
+   "id": "5e000012",
+   "label": "yes",
+   "latency_s": 0.4,
+   "error": null,
+   "pred": "yes",
+   "confidence": 0.899,
+   "cost": 1e-05
+  },
+  {
+   "id": "5e00000d",
+   "label": "no",
+   "latency_s": 0.4,
+   "error": null,
+   "pred": "no",
+   "confidence": 0.692,
+   "cost": 1e-05
+  },
+  {
+   "id": "5e00000e",
+   "label": "no",
+   "latency_s": 0.4,
+   "error": null,
+   "pred": "no",
+   "confidence": 0.092,
+   "cost": 1e-05
+  },
+  {
+   "id": "5e00002d",
+   "label": "no",
+   "latency_s": 0.4,
+   "error": null,
+   "pred": "no",
+   "confidence": 0.367,
+   "cost": 1e-05
+  },
+  {
+   "id": "5e000027",
+   "label": "yes",
+   "latency_s": 0.4,
+   "error": null,
+   "pred": "yes",
+   "confidence": 0.311,
+   "cost": 1e-05
+  },
+  {
+   "id": "5e000007",
+   "label": "yes",
+   "latency_s": 0.4,
+   "error": null,
+   "pred": "yes",
+   "confidence": 0.656,
+   "cost": 1e-05
+  },
+  {
+   "id": "5e000005",
+   "label": "yes",
+   "latency_s": 0.4,
+   "error": null,
+   "pred": "yes",
+   "confidence": 0.343,
+   "cost": 1e-05
+  },
+  {
+   "id": "5e000023",
+   "label": "no",
+   "latency_s": 0.4,
+   "error": null,
+   "pred": "yes",
+   "confidence": 0.631,
+   "cost": 1e-05
+  },
+  {
+   "id": "5e000019",
+   "label": "no",
+   "latency_s": 0.4,
+   "error": null,
+   "pred": "no",
+   "confidence": 0.816,
+   "cost": 1e-05
+  },
+  {
+   "id": "5e00002b",
+   "label": "yes",
+   "latency_s": 0.4,
+   "error": null,
+   "pred": "yes",
+   "confidence": 0.893,
+   "cost": 1e-05
+  },
+  {
+   "id": "5e000011",
+   "label": "no",
+   "latency_s": 0.4,
+   "error": null,
+   "pred": "no",
+   "confidence": 0.06,
+   "cost": 1e-05
+  }
+ ]
+}
