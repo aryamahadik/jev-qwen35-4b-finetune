@@ -1163,3 +1163,22 @@ This agrees with the earlier decision not to use TTA (X19).
 >   - Round 2 runs only if the select gain is >= +2.0 pp with LB > 0 and the guards pass.
 >   - Looks: S1, then (S2), then C once; Jev is read once after the ship verdict.
 >   - ejs-5, OHS-1/2/3, JevBench, the Decision Index and LongBench never choose anything.
+
+> **Amendment A16.1 (4 Oct 2026, 00:10 UTC; before any generator run, C row selection or C candidate): tool versions
+> that implement A16's rulings.**
+> - Pinned versions:
+>   - `c_src/common/denylist.py` v1.2 `e268d5667f181bba` (was `a6dec381`);
+>   - `deny_aliases.json` v1.1 `40eeb47e2f379ea8` (was `b9cc417f`);
+>   - `negcount.py` v1.1 `79368f465d438617` ("neither ... nor" k_syn 1);
+>   - `c_build/replay_sample.py` `5735ca3eb673895d` (was `4f93a215`).
+> - What changed:
+>   - A16 (b) is applied as 17 sub-entries moved to `no_new_rows` / `label_quality`, including T-REx. Mixed or
+>     text-based reasons stay `taint`.
+>   - The replay writer refuses pending or stale verdicts and requires the A15 suite sha.
+> - The round-1 replay draw was written with these versions (20:50 UTC, 3 Oct): 99,069 rows in 20 shards, plus a
+>   2,000-row old slice. Its manifest sha256s are `3f96d3ed...` and `9118d6b5...`.
+> - Two more rulings:
+>   - (f) The X15 2-of-3-annotator filter applies to every EDOS row: F10/F11 S7 and public 3E.
+>   - (g) On choice rows, everything a row needs goes in `instructions`, `state` or `- option: definition` card lines.
+>     The `schema_branch_mark` layout shows only option-definition lines from the card on choice rows. Every family
+>     must pass `loader_check` on every row. Token caps count `instructions` twice, because the layout repeats them.

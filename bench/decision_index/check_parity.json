@@ -1,0 +1,501 @@
+{
+  "published_run": "Kshetrajna/decision-index-results runs/reflex-27b-p2-full-r8-p32 (complete v0.1 run)",
+  "published_index": {
+    "balanced_raw": 56.23,
+    "balanced_skill": 42.15,
+    "breadth_skill": 40.88
+  },
+  "rescored_index": {
+    "balanced_raw": 56.23,
+    "balanced_skill": 42.15,
+    "breadth_skill": 40.88
+  },
+  "index_benchmarks_max_abs_diff": 0.0,
+  "index_benchmarks": [
+    {
+      "catalog_id": 1,
+      "raw_pub": 0.9705,
+      "raw_rescored": 0.9705,
+      "abs_diff": 0.0
+    },
+    {
+      "catalog_id": 2,
+      "raw_pub": 0.4346,
+      "raw_rescored": 0.4346,
+      "abs_diff": 0.0
+    },
+    {
+      "catalog_id": 6,
+      "raw_pub": 0.7986,
+      "raw_rescored": 0.7986,
+      "abs_diff": 0.0
+    },
+    {
+      "catalog_id": 7,
+      "raw_pub": 0.0,
+      "raw_rescored": 0.0,
+      "abs_diff": 0.0
+    },
+    {
+      "catalog_id": 11,
+      "raw_pub": 0.7706,
+      "raw_rescored": 0.7706,
+      "abs_diff": 0.0
+    },
+    {
+      "catalog_id": 13,
+      "raw_pub": 0.0,
+      "raw_rescored": 0.0,
+      "abs_diff": 0.0
+    },
+    {
+      "catalog_id": 15,
+      "raw_pub": 0.0,
+      "raw_rescored": 0.0,
+      "abs_diff": 0.0
+    },
+    {
+      "catalog_id": 16,
+      "raw_pub": 0.0,
+      "raw_rescored": 0.0,
+      "abs_diff": 0.0
+    },
+    {
+      "catalog_id": 17,
+      "raw_pub": 0.0,
+      "raw_rescored": 0.0,
+      "abs_diff": 0.0
+    },
+    {
+      "catalog_id": 19,
+      "raw_pub": 0.0,
+      "raw_rescored": 0.0,
+      "abs_diff": 0.0
+    },
+    {
+      "catalog_id": 20,
+      "raw_pub": 0.9619,
+      "raw_rescored": 0.9619,
+      "abs_diff": 0.0
+    },
+    {
+      "catalog_id": 21,
+      "raw_pub": 0.6301,
+      "raw_rescored": 0.6301,
+      "abs_diff": 0.0
+    },
+    {
+      "catalog_id": 22,
+      "raw_pub": 0.0,
+      "raw_rescored": 0.0,
+      "abs_diff": 0.0
+    },
+    {
+      "catalog_id": 23,
+      "raw_pub": 0.6438,
+      "raw_rescored": 0.6438,
+      "abs_diff": 0.0
+    },
+    {
+      "catalog_id": 24,
+      "raw_pub": 0.8263,
+      "raw_rescored": 0.8263,
+      "abs_diff": 0.0
+    },
+    {
+      "catalog_id": 25,
+      "raw_pub": 0.5153,
+      "raw_rescored": 0.5153,
+      "abs_diff": 0.0
+    },
+    {
+      "catalog_id": 30,
+      "raw_pub": 0.6535,
+      "raw_rescored": 0.6535,
+      "abs_diff": 0.0
+    },
+    {
+      "catalog_id": 31,
+      "raw_pub": 0.088,
+      "raw_rescored": 0.088,
+      "abs_diff": 0.0
+    },
+    {
+      "catalog_id": 36,
+      "raw_pub": 0.1911,
+      "raw_rescored": 0.1911,
+      "abs_diff": 0.0
+    },
+    {
+      "catalog_id": 37,
+      "raw_pub": 0.5315,
+      "raw_rescored": 0.5315,
+      "abs_diff": 0.0
+    },
+    {
+      "catalog_id": 40,
+      "raw_pub": 0.5008,
+      "raw_rescored": 0.5008,
+      "abs_diff": 0.0
+    },
+    {
+      "catalog_id": 41,
+      "raw_pub": 0.6066,
+      "raw_rescored": 0.6066,
+      "abs_diff": 0.0
+    },
+    {
+      "catalog_id": 43,
+      "raw_pub": 0.6123,
+      "raw_rescored": 0.6123,
+      "abs_diff": 0.0
+    },
+    {
+      "catalog_id": 44,
+      "raw_pub": 0.6396,
+      "raw_rescored": 0.6396,
+      "abs_diff": 0.0
+    },
+    {
+      "catalog_id": 50,
+      "raw_pub": 0.4326,
+      "raw_rescored": 0.4326,
+      "abs_diff": 0.0
+    }
+  ],
+  "benchmarks_exact": 32,
+  "benchmarks_compared": 32,
+  "benchmarks": [
+    {
+      "catalog_id": 1,
+      "dataset": "BFCL",
+      "published": 0.9705,
+      "rescored": 0.9705,
+      "abs_diff": 0.0,
+      "requests_pub": 1694,
+      "requests_rescored": 1694
+    },
+    {
+      "catalog_id": 2,
+      "dataset": "ToolRet",
+      "published": 0.4346,
+      "rescored": 0.4346,
+      "abs_diff": 0.0,
+      "requests_pub": 7704,
+      "requests_rescored": 7704
+    },
+    {
+      "catalog_id": 3,
+      "dataset": "API-Bank",
+      "published": null,
+      "rescored": null,
+      "abs_diff": null,
+      "requests_pub": 508,
+      "requests_rescored": 508
+    },
+    {
+      "catalog_id": 4,
+      "dataset": "BANKING77",
+      "published": null,
+      "rescored": null,
+      "abs_diff": null,
+      "requests_pub": 3080,
+      "requests_rescored": 3080
+    },
+    {
+      "catalog_id": 5,
+      "dataset": "CLINC150+OOS",
+      "published": null,
+      "rescored": null,
+      "abs_diff": null,
+      "requests_pub": 5500,
+      "requests_rescored": 5500
+    },
+    {
+      "catalog_id": 6,
+      "dataset": "RouterBench",
+      "published": 0.7986,
+      "rescored": 0.7986,
+      "abs_diff": 0.0,
+      "requests_pub": 10000,
+      "requests_rescored": 10000
+    },
+    {
+      "catalog_id": 9,
+      "dataset": "Home appliance simulator",
+      "published": 0.5687,
+      "rescored": 0.5687,
+      "abs_diff": 0.0,
+      "requests_pub": 160,
+      "requests_rescored": 160
+    },
+    {
+      "catalog_id": 10,
+      "dataset": "SGD/SGD-X",
+      "published": 0.4063,
+      "rescored": 0.4063,
+      "abs_diff": 0.0,
+      "requests_pub": 2500,
+      "requests_rescored": 2500
+    },
+    {
+      "catalog_id": 11,
+      "dataset": "ContractNLI",
+      "published": 0.7706,
+      "rescored": 0.7706,
+      "abs_diff": 0.0,
+      "requests_pub": 123,
+      "requests_rescored": 123
+    },
+    {
+      "catalog_id": 12,
+      "dataset": "ANLI",
+      "published": 0.645,
+      "rescored": 0.645,
+      "abs_diff": 0.0,
+      "requests_pub": 3200,
+      "requests_rescored": 3200
+    },
+    {
+      "catalog_id": 20,
+      "dataset": "BPoMP",
+      "published": 0.9604,
+      "rescored": 0.9604,
+      "abs_diff": 0.0,
+      "requests_pub": 5000,
+      "requests_rescored": 5000
+    },
+    {
+      "catalog_id": 21,
+      "dataset": "Humicroedit",
+      "published": 0.6301,
+      "rescored": 0.6301,
+      "abs_diff": 0.0,
+      "requests_pub": 2628,
+      "requests_rescored": 2628
+    },
+    {
+      "catalog_id": 22,
+      "dataset": "POP909-CL",
+      "published": null,
+      "rescored": null,
+      "abs_diff": null,
+      "requests_pub": 2000,
+      "requests_rescored": 2000
+    },
+    {
+      "catalog_id": 23,
+      "dataset": "cfcolor",
+      "published": 0.6514,
+      "rescored": 0.6514,
+      "abs_diff": 0.0,
+      "requests_pub": 5000,
+      "requests_rescored": 5000
+    },
+    {
+      "catalog_id": 24,
+      "dataset": "MMLU",
+      "published": 0.8217,
+      "rescored": 0.8217,
+      "abs_diff": 0.0,
+      "requests_pub": 14033,
+      "requests_rescored": 14033
+    },
+    {
+      "catalog_id": 25,
+      "dataset": "GPQA Diamond",
+      "published": 0.5153,
+      "rescored": 0.5153,
+      "abs_diff": 0.0,
+      "requests_pub": 196,
+      "requests_rescored": 196
+    },
+    {
+      "catalog_id": 26,
+      "dataset": "ARC-Easy",
+      "published": 0.9874,
+      "rescored": 0.9874,
+      "abs_diff": 0.0,
+      "requests_pub": 2376,
+      "requests_rescored": 2376
+    },
+    {
+      "catalog_id": 27,
+      "dataset": "ARC-Challenge",
+      "published": 0.9684,
+      "rescored": 0.9684,
+      "abs_diff": 0.0,
+      "requests_pub": 1172,
+      "requests_rescored": 1172
+    },
+    {
+      "catalog_id": 28,
+      "dataset": "WinoGrande",
+      "published": 0.7932,
+      "rescored": 0.7932,
+      "abs_diff": 0.0,
+      "requests_pub": 1267,
+      "requests_rescored": 1267
+    },
+    {
+      "catalog_id": 29,
+      "dataset": "HellaSwag",
+      "published": 0.938,
+      "rescored": 0.938,
+      "abs_diff": 0.0,
+      "requests_pub": 10042,
+      "requests_rescored": 10042
+    },
+    {
+      "catalog_id": 30,
+      "dataset": "GSM8K",
+      "published": 0.6535,
+      "rescored": 0.6535,
+      "abs_diff": 0.0,
+      "requests_pub": 2638,
+      "requests_rescored": 2638
+    },
+    {
+      "catalog_id": 31,
+      "dataset": "ChessBench",
+      "published": 0.2771,
+      "rescored": 0.2771,
+      "abs_diff": 0.0,
+      "requests_pub": 5000,
+      "requests_rescored": 5000
+    },
+    {
+      "catalog_id": 32,
+      "dataset": "MuSR",
+      "published": 0.6277,
+      "rescored": 0.6277,
+      "abs_diff": 0.0,
+      "requests_pub": 752,
+      "requests_rescored": 752
+    },
+    {
+      "catalog_id": 33,
+      "dataset": "SATA-Bench",
+      "published": 0.2739,
+      "rescored": 0.2739,
+      "abs_diff": 0.0,
+      "requests_pub": 1650,
+      "requests_rescored": 1650
+    },
+    {
+      "catalog_id": 34,
+      "dataset": "SimpleBench",
+      "published": 0.1,
+      "rescored": 0.1,
+      "abs_diff": 0.0,
+      "requests_pub": 10,
+      "requests_rescored": 10
+    },
+    {
+      "catalog_id": 36,
+      "dataset": "BRIGHT",
+      "published": 0.1911,
+      "rescored": 0.1911,
+      "abs_diff": 0.0,
+      "requests_pub": 1297,
+      "requests_rescored": 1297
+    },
+    {
+      "catalog_id": 37,
+      "dataset": "Amazon ESCI",
+      "published": 0.5315,
+      "rescored": 0.5315,
+      "abs_diff": 0.0,
+      "requests_pub": 5000,
+      "requests_rescored": 5000
+    },
+    {
+      "catalog_id": 38,
+      "dataset": "ACOS",
+      "published": 0.0093,
+      "rescored": 0.0093,
+      "abs_diff": 0.0,
+      "requests_pub": 5479,
+      "requests_rescored": 5479
+    },
+    {
+      "catalog_id": 39,
+      "dataset": "FinEntity",
+      "published": 0.7817,
+      "rescored": 0.7817,
+      "abs_diff": 0.0,
+      "requests_pub": 979,
+      "requests_rescored": 979
+    },
+    {
+      "catalog_id": 40,
+      "dataset": "iSarcasmEval",
+      "published": 0.5008,
+      "rescored": 0.5008,
+      "abs_diff": 0.0,
+      "requests_pub": 4600,
+      "requests_rescored": 4600
+    },
+    {
+      "catalog_id": 41,
+      "dataset": "VAST",
+      "published": 0.6066,
+      "rescored": 0.6066,
+      "abs_diff": 0.0,
+      "requests_pub": 3006,
+      "requests_rescored": 3006
+    },
+    {
+      "catalog_id": 42,
+      "dataset": "NLI4CT",
+      "published": 0.8064,
+      "rescored": 0.8064,
+      "abs_diff": 0.0,
+      "requests_pub": 5500,
+      "requests_rescored": 5500
+    },
+    {
+      "catalog_id": 43,
+      "dataset": "CRUXEval",
+      "published": 0.6123,
+      "rescored": 0.6123,
+      "abs_diff": 0.0,
+      "requests_pub": 570,
+      "requests_rescored": 570
+    },
+    {
+      "catalog_id": 44,
+      "dataset": "CLadder",
+      "published": 0.6396,
+      "rescored": 0.6396,
+      "abs_diff": 0.0,
+      "requests_pub": 5000,
+      "requests_rescored": 5000
+    },
+    {
+      "catalog_id": 45,
+      "dataset": "HLE",
+      "published": 0.1178,
+      "rescored": null
+    },
+    {
+      "catalog_id": 48,
+      "dataset": "ForecastBench",
+      "published": 0.1915,
+      "rescored": 0.1915,
+      "abs_diff": 0.0,
+      "requests_pub": 10139,
+      "requests_rescored": 10139
+    },
+    {
+      "catalog_id": 50,
+      "dataset": "Habermas Machine",
+      "published": 0.4326,
+      "rescored": 0.4326,
+      "abs_diff": 0.0,
+      "requests_pub": 1676,
+      "requests_rescored": 1676
+    }
+  ],
+  "results_sha256_gz": "611f1bb629e05525803be04192efc50d61ef4786209a6db4334d4c87cce82804"
+}

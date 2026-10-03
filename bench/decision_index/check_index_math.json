@@ -1,0 +1,89 @@
+{
+  "jev_published": {
+    "balanced_raw": 59.51,
+    "balanced_skill": 46.26,
+    "breadth_skill": 44.79
+  },
+  "harness_recomputed": {
+    "balanced_raw": 59.51,
+    "balanced_skill": 46.26,
+    "breadth_skill": 44.79
+  },
+  "match_2dp": true,
+  "areas": [
+    {
+      "area": "knowledge",
+      "raw": 0.6888,
+      "raw_pub": 0.6888,
+      "skill": 0.5811,
+      "skill_pub": 0.5811,
+      "n": 6,
+      "n_pub": 6
+    },
+    {
+      "area": "language",
+      "raw": 0.6228,
+      "raw_pub": 0.6228,
+      "skill": 0.4745,
+      "skill_pub": 0.4745,
+      "n": 3,
+      "n_pub": 3
+    },
+    {
+      "area": "retrieval",
+      "raw": 0.3701,
+      "raw_pub": 0.3701,
+      "skill": 0.2943,
+      "skill_pub": 0.2943,
+      "n": 2,
+      "n_pub": 2
+    },
+    {
+      "area": "tools",
+      "raw": 0.7343,
+      "raw_pub": 0.7343,
+      "skill": 0.6194,
+      "skill_pub": 0.6194,
+      "n": 3,
+      "n_pub": 3
+    },
+    {
+      "area": "arts",
+      "raw": 0.5594,
+      "raw_pub": 0.5595,
+      "skill": 0.3438,
+      "skill_pub": 0.3438,
+      "n": 5,
+      "n_pub": 5
+    }
+  ],
+  "area_max_abs_diff": 9.999999999998899e-05,
+  "jev_index_benchmarks": 25,
+  "panel_ids_harness": [
+    1,
+    2,
+    6,
+    7,
+    11,
+    13,
+    15,
+    16,
+    17,
+    19,
+    20,
+    21,
+    22,
+    23,
+    24,
+    25,
+    30,
+    31,
+    36,
+    37,
+    40,
+    41,
+    43,
+    44,
+    50
+  ]
+}

@@ -1,0 +1,381 @@
+{
+  "name": "sample10k",
+  "ngram": 12,
+  "boilerplate_threshold_requests": 20,
+  "train_file": "/Users/aryamahadik/Documents/jev/opendecide-data/lean/data/v14_parts/golden_train.jsonl",
+  "train_rows": 501732,
+  "train_rows_sharing_a_gram": 1019,
+  "train_sources_sharing": {
+    "gd_medqa_yn": 252,
+    "gd_prm800k_steps": 229,
+    "gd_bbh_mistake": 165,
+    "musr_object_placements": 87,
+    "musr_murder_mysteries": 63,
+    "musr_team_allocation": 35,
+    "judge_prm800k": 32,
+    "gd_totto_claims": 27,
+    "gd_mtbench_human": 26,
+    "gd_semtabfacts_sci": 20,
+    "gd_wtq": 17,
+    "gd_helpsteer3_pref": 11,
+    "br_emobank": 10,
+    "gd_druglabel_section": 7,
+    "hard_contracts": 6,
+    "gd_ropes_sci": 5,
+    "hard_evidence_claims_b": 4,
+    "gd_feverous": 3,
+    "rte": 3,
+    "hard_nli_b": 2,
+    "gd_finqa": 2,
+    "gd_hotpotqa_yesno": 2,
+    "banking77": 1,
+    "gd_medquad_qtype": 1,
+    "br_mnds": 1,
+    "arc": 1,
+    "br_claimbuster": 1,
+    "proc_multihop": 1,
+    "gd_climate_targets": 1,
+    "gd_helpsteer2_attr": 1,
+    "gd_taskmaster3": 1,
+    "gd_taskmaster2": 1,
+    "judge_helpsteer2": 1
+  },
+  "benchmarks": [
+    {
+      "catalog_id": 1,
+      "dataset": "BFCL",
+      "requests": 230,
+      "overlap_requests": 8,
+      "overlap_share": 0.0348,
+      "top_sources": {
+        "hard_evidence_claims_b": 8
+      }
+    },
+    {
+      "catalog_id": 2,
+      "dataset": "ToolRet",
+      "requests": 230,
+      "overlap_requests": 23,
+      "overlap_share": 0.1,
+      "top_sources": {
+        "gd_prm800k_steps": 11,
+        "gd_totto_claims": 7,
+        "hard_nli_b": 5,
+        "gd_bbh_mistake": 4,
+        "judge_prm800k": 3
+      }
+    },
+    {
+      "catalog_id": 3,
+      "dataset": "API-Bank",
+      "requests": 230,
+      "overlap_requests": 2,
+      "overlap_share": 0.0087,
+      "top_sources": {
+        "gd_taskmaster2": 1,
+        "gd_helpsteer3_pref": 1
+      }
+    },
+    {
+      "catalog_id": 4,
+      "dataset": "BANKING77",
+      "requests": 230,
+      "overlap_requests": 1,
+      "overlap_share": 0.0043,
+      "top_sources": {
+        "banking77": 1
+      }
+    },
+    {
+      "catalog_id": 5,
+      "dataset": "CLINC150+OOS",
+      "requests": 230,
+      "overlap_requests": 0,
+      "overlap_share": 0.0,
+      "top_sources": {}
+    },
+    {
+      "catalog_id": 6,
+      "dataset": "RouterBench",
+      "requests": 462,
+      "overlap_requests": 10,
+      "overlap_share": 0.0216,
+      "top_sources": {
+        "arc": 7,
+        "gd_medqa_yn": 2,
+        "judge_prm800k": 1
+      }
+    },
+    {
+      "catalog_id": 9,
+      "dataset": "Home appliance simulator",
+      "requests": 160,
+      "overlap_requests": 0,
+      "overlap_share": 0.0,
+      "top_sources": {}
+    },
+    {
+      "catalog_id": 10,
+      "dataset": "SGD/SGD-X",
+      "requests": 230,
+      "overlap_requests": 1,
+      "overlap_share": 0.0043,
+      "top_sources": {
+        "gd_taskmaster3": 1
+      }
+    },
+    {
+      "catalog_id": 11,
+      "dataset": "ContractNLI",
+      "requests": 123,
+      "overlap_requests": 3,
+      "overlap_share": 0.0244,
+      "top_sources": {
+        "proc_multihop": 2,
+        "hard_contracts": 1
+      }
+    },
+    {
+      "catalog_id": 12,
+      "dataset": "ANLI",
+      "requests": 230,
+      "overlap_requests": 4,
+      "overlap_share": 0.0174,
+      "top_sources": {
+        "br_claimbuster": 1,
+        "gd_hotpotqa_yesno": 1,
+        "br_mnds": 1,
+        "rte": 1
+      }
+    },
+    {
+      "catalog_id": 20,
+      "dataset": "BPoMP",
+      "requests": 1273,
+      "overlap_requests": 0,
+      "overlap_share": 0.0,
+      "top_sources": {}
+    },
+    {
+      "catalog_id": 21,
+      "dataset": "Humicroedit",
+      "requests": 230,
+      "overlap_requests": 0,
+      "overlap_share": 0.0,
+      "top_sources": {}
+    },
+    {
+      "catalog_id": 22,
+      "dataset": "POP909-CL",
+      "requests": 230,
+      "overlap_requests": 0,
+      "overlap_share": 0.0,
+      "top_sources": {}
+    },
+    {
+      "catalog_id": 23,
+      "dataset": "cfcolor",
+      "requests": 230,
+      "overlap_requests": 0,
+      "overlap_share": 0.0,
+      "top_sources": {}
+    },
+    {
+      "catalog_id": 24,
+      "dataset": "MMLU",
+      "requests": 230,
+      "overlap_requests": 6,
+      "overlap_share": 0.0261,
+      "top_sources": {
+        "gd_medqa_yn": 6
+      }
+    },
+    {
+      "catalog_id": 25,
+      "dataset": "GPQA Diamond",
+      "requests": 196,
+      "overlap_requests": 0,
+      "overlap_share": 0.0,
+      "top_sources": {}
+    },
+    {
+      "catalog_id": 26,
+      "dataset": "ARC-Easy",
+      "requests": 230,
+      "overlap_requests": 0,
+      "overlap_share": 0.0,
+      "top_sources": {}
+    },
+    {
+      "catalog_id": 27,
+      "dataset": "ARC-Challenge",
+      "requests": 230,
+      "overlap_requests": 0,
+      "overlap_share": 0.0,
+      "top_sources": {}
+    },
+    {
+      "catalog_id": 28,
+      "dataset": "WinoGrande",
+      "requests": 230,
+      "overlap_requests": 0,
+      "overlap_share": 0.0,
+      "top_sources": {}
+    },
+    {
+      "catalog_id": 29,
+      "dataset": "HellaSwag",
+      "requests": 230,
+      "overlap_requests": 0,
+      "overlap_share": 0.0,
+      "top_sources": {}
+    },
+    {
+      "catalog_id": 30,
+      "dataset": "GSM8K",
+      "requests": 460,
+      "overlap_requests": 0,
+      "overlap_share": 0.0,
+      "top_sources": {}
+    },
+    {
+      "catalog_id": 31,
+      "dataset": "ChessBench",
+      "requests": 230,
+      "overlap_requests": 0,
+      "overlap_share": 0.0,
+      "top_sources": {}
+    },
+    {
+      "catalog_id": 32,
+      "dataset": "MuSR",
+      "requests": 230,
+      "overlap_requests": 160,
+      "overlap_share": 0.6957,
+      "top_sources": {
+        "musr_object_placements": 79,
+        "musr_murder_mysteries": 51,
+        "musr_team_allocation": 30
+      }
+    },
+    {
+      "catalog_id": 33,
+      "dataset": "SATA-Bench",
+      "requests": 230,
+      "overlap_requests": 7,
+      "overlap_share": 0.0304,
+      "top_sources": {
+        "br_emobank": 5,
+        "gd_climate_targets": 2
+      }
+    },
+    {
+      "catalog_id": 34,
+      "dataset": "SimpleBench",
+      "requests": 10,
+      "overlap_requests": 0,
+      "overlap_share": 0.0,
+      "top_sources": {}
+    },
+    {
+      "catalog_id": 36,
+      "dataset": "BRIGHT",
+      "requests": 230,
+      "overlap_requests": 57,
+      "overlap_share": 0.2478,
+      "top_sources": {
+        "gd_prm800k_steps": 37,
+        "judge_prm800k": 19,
+        "gd_helpsteer3_pref": 10,
+        "gd_totto_claims": 7,
+        "gd_semtabfacts_sci": 6
+      }
+    },
+    {
+      "catalog_id": 37,
+      "dataset": "Amazon ESCI",
+      "requests": 230,
+      "overlap_requests": 0,
+      "overlap_share": 0.0,
+      "top_sources": {}
+    },
+    {
+      "catalog_id": 38,
+      "dataset": "ACOS",
+      "requests": 885,
+      "overlap_requests": 0,
+      "overlap_share": 0.0,
+      "top_sources": {}
+    },
+    {
+      "catalog_id": 39,
+      "dataset": "FinEntity",
+      "requests": 229,
+      "overlap_requests": 0,
+      "overlap_share": 0.0,
+      "top_sources": {}
+    },
+    {
+      "catalog_id": 40,
+      "dataset": "iSarcasmEval",
+      "requests": 229,
+      "overlap_requests": 0,
+      "overlap_share": 0.0,
+      "top_sources": {}
+    },
+    {
+      "catalog_id": 41,
+      "dataset": "VAST",
+      "requests": 229,
+      "overlap_requests": 0,
+      "overlap_share": 0.0,
+      "top_sources": {}
+    },
+    {
+      "catalog_id": 42,
+      "dataset": "NLI4CT",
+      "requests": 229,
+      "overlap_requests": 2,
+      "overlap_share": 0.0087,
+      "top_sources": {
+        "gd_druglabel_section": 2
+      }
+    },
+    {
+      "catalog_id": 43,
+      "dataset": "CRUXEval",
+      "requests": 229,
+      "overlap_requests": 1,
+      "overlap_share": 0.0044,
+      "top_sources": {
+        "gd_totto_claims": 1,
+        "gd_prm800k_steps": 1
+      }
+    },
+    {
+      "catalog_id": 44,
+      "dataset": "CLadder",
+      "requests": 229,
+      "overlap_requests": 0,
+      "overlap_share": 0.0,
+      "top_sources": {}
+    },
+    {
+      "catalog_id": 48,
+      "dataset": "ForecastBench",
+      "requests": 229,
+      "overlap_requests": 0,
+      "overlap_share": 0.0,
+      "top_sources": {}
+    },
+    {
+      "catalog_id": 50,
+      "dataset": "Habermas Machine",
+      "requests": 229,
+      "overlap_requests": 0,
+      "overlap_share": 0.0,
+      "top_sources": {}
+    }
+  ],
+  "note": "counts only; an overlapping request shares at least one non-boilerplate 12-gram with >= 1 training row"
+}

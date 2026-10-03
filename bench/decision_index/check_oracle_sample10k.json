@@ -1,0 +1,290 @@
+{
+  "name": "sample10k",
+  "what": "Oracle end-to-end mapping check for od_engine (CPU, no weights; counts and aggregate scores only, no item text).",
+  "view_and_request_counts": {
+    "questions_gold_set": 82939,
+    "views_gold_label_found_in_prompt": 96108,
+    "views_prompt_label_ne_perm_position": 0,
+    "requests_ok": 9999,
+    "requests_unsupported": 2
+  },
+  "oracle_index": 89.37,
+  "counts": {
+    "ok": 9999,
+    "unsupported": 2
+  },
+  "benchmarks": [
+    {
+      "catalog_id": 1,
+      "dataset": "BFCL",
+      "in_index": true,
+      "oracle_raw": 1.0,
+      "coverage": 1.0,
+      "ceiling": 1.0
+    },
+    {
+      "catalog_id": 2,
+      "dataset": "ToolRet",
+      "in_index": true,
+      "oracle_raw": 0.6208,
+      "coverage": 1.0,
+      "ceiling": 0.6208
+    },
+    {
+      "catalog_id": 6,
+      "dataset": "RouterBench",
+      "in_index": true,
+      "oracle_raw": 0.908,
+      "coverage": 1.0,
+      "ceiling": 0.908
+    },
+    {
+      "catalog_id": 11,
+      "dataset": "ContractNLI",
+      "in_index": true,
+      "oracle_raw": 1.0,
+      "coverage": 1.0,
+      "ceiling": 1.0
+    },
+    {
+      "catalog_id": 20,
+      "dataset": "BPoMP",
+      "in_index": true,
+      "oracle_raw": 1.0,
+      "coverage": 1.0,
+      "ceiling": 1.0
+    },
+    {
+      "catalog_id": 21,
+      "dataset": "Humicroedit",
+      "in_index": true,
+      "oracle_raw": 1.0,
+      "coverage": 1.0,
+      "ceiling": 1.0
+    },
+    {
+      "catalog_id": 22,
+      "dataset": "POP909-CL",
+      "in_index": true,
+      "oracle_raw": 0.9951,
+      "coverage": 0.9957,
+      "ceiling": 1.0
+    },
+    {
+      "catalog_id": 23,
+      "dataset": "cfcolor",
+      "in_index": true,
+      "oracle_raw": 1.0,
+      "coverage": 1.0,
+      "ceiling": 1.0
+    },
+    {
+      "catalog_id": 24,
+      "dataset": "MMLU",
+      "in_index": true,
+      "oracle_raw": 1.0,
+      "coverage": 1.0,
+      "ceiling": 1.0
+    },
+    {
+      "catalog_id": 25,
+      "dataset": "GPQA Diamond",
+      "in_index": true,
+      "oracle_raw": 1.0,
+      "coverage": 1.0,
+      "ceiling": 1.0
+    },
+    {
+      "catalog_id": 30,
+      "dataset": "GSM8K",
+      "in_index": true,
+      "oracle_raw": 1.0,
+      "coverage": 1.0,
+      "ceiling": 1.0
+    },
+    {
+      "catalog_id": 31,
+      "dataset": "ChessBench",
+      "in_index": true,
+      "oracle_raw": 1.0,
+      "coverage": 1.0,
+      "ceiling": 1.0
+    },
+    {
+      "catalog_id": 36,
+      "dataset": "BRIGHT",
+      "in_index": true,
+      "oracle_raw": 0.2535,
+      "coverage": 0.9957,
+      "ceiling": 0.2535
+    },
+    {
+      "catalog_id": 37,
+      "dataset": "Amazon ESCI",
+      "in_index": true,
+      "oracle_raw": 1.0,
+      "coverage": 1.0,
+      "ceiling": 1.0
+    },
+    {
+      "catalog_id": 40,
+      "dataset": "iSarcasmEval",
+      "in_index": true,
+      "oracle_raw": 1.0,
+      "coverage": 1.0,
+      "ceiling": 1.0
+    },
+    {
+      "catalog_id": 41,
+      "dataset": "VAST",
+      "in_index": true,
+      "oracle_raw": 1.0,
+      "coverage": 1.0,
+      "ceiling": 1.0
+    },
+    {
+      "catalog_id": 43,
+      "dataset": "CRUXEval",
+      "in_index": true,
+      "oracle_raw": 1.0,
+      "coverage": 1.0,
+      "ceiling": 1.0
+    },
+    {
+      "catalog_id": 44,
+      "dataset": "CLadder",
+      "in_index": true,
+      "oracle_raw": 1.0,
+      "coverage": 1.0,
+      "ceiling": 1.0
+    },
+    {
+      "catalog_id": 50,
+      "dataset": "Habermas Machine",
+      "in_index": true,
+      "oracle_raw": 1.0,
+      "coverage": 1.0,
+      "ceiling": 1.0
+    },
+    {
+      "catalog_id": 3,
+      "dataset": "API-Bank",
+      "in_index": false,
+      "metric": "accuracy",
+      "oracle_score": 1
+    },
+    {
+      "catalog_id": 4,
+      "dataset": "BANKING77",
+      "in_index": false,
+      "metric": "macro-F1",
+      "oracle_score": 1.0
+    },
+    {
+      "catalog_id": 5,
+      "dataset": "CLINC150+OOS",
+      "in_index": false,
+      "metric": "macro-F1",
+      "oracle_score": 1.0
+    },
+    {
+      "catalog_id": 9,
+      "dataset": "Home appliance simulator",
+      "in_index": false,
+      "metric": "case exact accuracy",
+      "oracle_score": 1
+    },
+    {
+      "catalog_id": 10,
+      "dataset": "SGD/SGD-X",
+      "in_index": false,
+      "metric": "macro-F1",
+      "oracle_score": 1.0
+    },
+    {
+      "catalog_id": 12,
+      "dataset": "ANLI",
+      "in_index": false,
+      "metric": "macro-F1",
+      "oracle_score": 1.0
+    },
+    {
+      "catalog_id": 26,
+      "dataset": "ARC-Easy",
+      "in_index": false,
+      "metric": "accuracy",
+      "oracle_score": 1
+    },
+    {
+      "catalog_id": 27,
+      "dataset": "ARC-Challenge",
+      "in_index": false,
+      "metric": "accuracy",
+      "oracle_score": 1
+    },
+    {
+      "catalog_id": 28,
+      "dataset": "WinoGrande",
+      "in_index": false,
+      "metric": "accuracy",
+      "oracle_score": 1
+    },
+    {
+      "catalog_id": 29,
+      "dataset": "HellaSwag",
+      "in_index": false,
+      "metric": "accuracy",
+      "oracle_score": 1
+    },
+    {
+      "catalog_id": 32,
+      "dataset": "MuSR",
+      "in_index": false,
+      "metric": "accuracy",
+      "oracle_score": 1
+    },
+    {
+      "catalog_id": 33,
+      "dataset": "SATA-Bench",
+      "in_index": false,
+      "metric": "case exact accuracy",
+      "oracle_score": 1
+    },
+    {
+      "catalog_id": 34,
+      "dataset": "SimpleBench",
+      "in_index": false,
+      "metric": "accuracy",
+      "oracle_score": 1
+    },
+    {
+      "catalog_id": 38,
+      "dataset": "ACOS",
+      "in_index": false,
+      "metric": "case exact accuracy",
+      "oracle_score": 1
+    },
+    {
+      "catalog_id": 39,
+      "dataset": "FinEntity",
+      "in_index": false,
+      "metric": "macro-F1",
+      "oracle_score": 1.0
+    },
+    {
+      "catalog_id": 42,
+      "dataset": "NLI4CT",
+      "in_index": false,
+      "metric": "macro-F1",
+      "oracle_score": 1.0
+    },
+    {
+      "catalog_id": 48,
+      "dataset": "ForecastBench",
+      "in_index": false,
+      "metric": "Brier (lower is better)",
+      "oracle_score": 0.0
+    }
+  ],
+  "note": "ceiling = 1.0 except ToolRet/BRIGHT (best nDCG@10 of the scored candidates under the qrels) and RouterBench (mean best outcome quality); coverage < 1 = the requests over the 16,384-token limit"
+}

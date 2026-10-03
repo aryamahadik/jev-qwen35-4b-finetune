@@ -1,0 +1,501 @@
+{
+  "name": "smoke50",
+  "harness_repo": "github.com/flaviusburca/decision-index",
+  "harness_commit": "52a698928a9ae5bdf16b75687c903871db29c6e5",
+  "command": "python -m decision_index suite sample --dir <rebuilt suite> --n 50 --seed 20260919 --out smoke50.jsonl.gz",
+  "seed": 20260919,
+  "n_requested": 50,
+  "sampler_result": {
+    "rows": 50,
+    "benchmarks": 36
+  },
+  "complete_groups": true,
+  "exclusions_applied": true,
+  "sample_sha256_gz": "7fbb9d8a9659df2831855a8591fca1105d0f9e5e4afd32179f1140a42f6e7904",
+  "sample_sha256": "c6df7ef6ac83a93685240654da6e850031ea708c6764a9f5293f051caee18e2c",
+  "suite_rows_sha256": "3eb7aa1eabd0a3de999008e9a3922068a1fb7499024175020acbf83b326e1fca",
+  "suite_rows_sha256_pinned_full": "288d37207a9581187bdf83eada1983aa63de6fc50b0108e2badb229547a57f99",
+  "requests": 50,
+  "groups": 42,
+  "questions": 554,
+  "benchmarks_in_sample": 36,
+  "benchmarks_in_index_in_sample": 19,
+  "missing_vs_rebuilt_suite": [],
+  "question_mapping_totals": {
+    "noul/yes_no_card": 464,
+    "choice/plain": 35,
+    "choice/named_card": 39,
+    "noul/yes_no": 16
+  },
+  "benchmarks": [
+    {
+      "catalog_id": 1,
+      "dataset": "BFCL",
+      "in_index": true,
+      "requests": 2,
+      "groups": 2,
+      "questions": 4,
+      "full_suite_requests": 1694,
+      "share_of_benchmark": 0.0012,
+      "mapping": {
+        "noul/yes_no_card": 4
+      }
+    },
+    {
+      "catalog_id": 2,
+      "dataset": "ToolRet",
+      "in_index": true,
+      "requests": 2,
+      "groups": 2,
+      "questions": 64,
+      "full_suite_requests": 7704,
+      "share_of_benchmark": 0.0003,
+      "mapping": {
+        "noul/yes_no_card": 64
+      }
+    },
+    {
+      "catalog_id": 3,
+      "dataset": "API-Bank",
+      "in_index": false,
+      "requests": 2,
+      "groups": 2,
+      "questions": 2,
+      "full_suite_requests": 508,
+      "share_of_benchmark": 0.0039,
+      "mapping": {
+        "choice/plain": 2
+      }
+    },
+    {
+      "catalog_id": 4,
+      "dataset": "BANKING77",
+      "in_index": false,
+      "requests": 2,
+      "groups": 2,
+      "questions": 2,
+      "full_suite_requests": 3080,
+      "share_of_benchmark": 0.0006,
+      "mapping": {
+        "choice/plain": 2
+      }
+    },
+    {
+      "catalog_id": 5,
+      "dataset": "CLINC150+OOS",
+      "in_index": false,
+      "requests": 2,
+      "groups": 2,
+      "questions": 2,
+      "full_suite_requests": 5500,
+      "share_of_benchmark": 0.0004,
+      "mapping": {
+        "choice/plain": 2
+      }
+    },
+    {
+      "catalog_id": 6,
+      "dataset": "RouterBench",
+      "in_index": true,
+      "requests": 4,
+      "groups": 2,
+      "questions": 8,
+      "full_suite_requests": 10000,
+      "share_of_benchmark": 0.0004,
+      "mapping": {
+        "choice/plain": 8
+      }
+    },
+    {
+      "catalog_id": 9,
+      "dataset": "Home appliance simulator",
+      "in_index": false,
+      "requests": 1,
+      "groups": 1,
+      "questions": 18,
+      "full_suite_requests": 160,
+      "share_of_benchmark": 0.0063,
+      "mapping": {
+        "choice/named_card": 18
+      }
+    },
+    {
+      "catalog_id": 10,
+      "dataset": "SGD/SGD-X",
+      "in_index": false,
+      "requests": 1,
+      "groups": 1,
+      "questions": 1,
+      "full_suite_requests": 2500,
+      "share_of_benchmark": 0.0004,
+      "mapping": {
+        "choice/plain": 1
+      }
+    },
+    {
+      "catalog_id": 11,
+      "dataset": "ContractNLI",
+      "in_index": true,
+      "requests": 1,
+      "groups": 1,
+      "questions": 17,
+      "full_suite_requests": 123,
+      "share_of_benchmark": 0.0081,
+      "mapping": {
+        "choice/named_card": 17
+      }
+    },
+    {
+      "catalog_id": 12,
+      "dataset": "ANLI",
+      "in_index": false,
+      "requests": 1,
+      "groups": 1,
+      "questions": 1,
+      "full_suite_requests": 3200,
+      "share_of_benchmark": 0.0003,
+      "mapping": {
+        "choice/plain": 1
+      }
+    },
+    {
+      "catalog_id": 20,
+      "dataset": "BPoMP",
+      "in_index": true,
+      "requests": 1,
+      "groups": 1,
+      "questions": 1,
+      "full_suite_requests": 5000,
+      "share_of_benchmark": 0.0002,
+      "mapping": {
+        "choice/plain": 1
+      }
+    },
+    {
+      "catalog_id": 21,
+      "dataset": "Humicroedit",
+      "in_index": true,
+      "requests": 1,
+      "groups": 1,
+      "questions": 1,
+      "full_suite_requests": 2628,
+      "share_of_benchmark": 0.0004,
+      "mapping": {
+        "choice/named_card": 1
+      }
+    },
+    {
+      "catalog_id": 22,
+      "dataset": "POP909-CL",
+      "in_index": true,
+      "requests": 1,
+      "groups": 1,
+      "questions": 1,
+      "full_suite_requests": 2000,
+      "share_of_benchmark": 0.0005,
+      "mapping": {
+        "choice/named_card": 1
+      }
+    },
+    {
+      "catalog_id": 23,
+      "dataset": "cfcolor",
+      "in_index": true,
+      "requests": 1,
+      "groups": 1,
+      "questions": 1,
+      "full_suite_requests": 5000,
+      "share_of_benchmark": 0.0002,
+      "mapping": {
+        "choice/plain": 1
+      }
+    },
+    {
+      "catalog_id": 24,
+      "dataset": "MMLU",
+      "in_index": true,
+      "requests": 1,
+      "groups": 1,
+      "questions": 1,
+      "full_suite_requests": 14033,
+      "share_of_benchmark": 0.0001,
+      "mapping": {
+        "choice/plain": 1
+      }
+    },
+    {
+      "catalog_id": 25,
+      "dataset": "GPQA Diamond",
+      "in_index": true,
+      "requests": 1,
+      "groups": 1,
+      "questions": 1,
+      "full_suite_requests": 196,
+      "share_of_benchmark": 0.0051,
+      "mapping": {
+        "choice/plain": 1
+      }
+    },
+    {
+      "catalog_id": 26,
+      "dataset": "ARC-Easy",
+      "in_index": false,
+      "requests": 1,
+      "groups": 1,
+      "questions": 1,
+      "full_suite_requests": 2376,
+      "share_of_benchmark": 0.0004,
+      "mapping": {
+        "choice/plain": 1
+      }
+    },
+    {
+      "catalog_id": 27,
+      "dataset": "ARC-Challenge",
+      "in_index": false,
+      "requests": 1,
+      "groups": 1,
+      "questions": 1,
+      "full_suite_requests": 1172,
+      "share_of_benchmark": 0.0009,
+      "mapping": {
+        "choice/plain": 1
+      }
+    },
+    {
+      "catalog_id": 28,
+      "dataset": "WinoGrande",
+      "in_index": false,
+      "requests": 1,
+      "groups": 1,
+      "questions": 1,
+      "full_suite_requests": 1267,
+      "share_of_benchmark": 0.0008,
+      "mapping": {
+        "choice/plain": 1
+      }
+    },
+    {
+      "catalog_id": 29,
+      "dataset": "HellaSwag",
+      "in_index": false,
+      "requests": 1,
+      "groups": 1,
+      "questions": 1,
+      "full_suite_requests": 10042,
+      "share_of_benchmark": 0.0001,
+      "mapping": {
+        "choice/plain": 1
+      }
+    },
+    {
+      "catalog_id": 30,
+      "dataset": "GSM8K",
+      "in_index": true,
+      "requests": 2,
+      "groups": 1,
+      "questions": 2,
+      "full_suite_requests": 2638,
+      "share_of_benchmark": 0.0008,
+      "mapping": {
+        "choice/plain": 2
+      }
+    },
+    {
+      "catalog_id": 31,
+      "dataset": "ChessBench",
+      "in_index": true,
+      "requests": 1,
+      "groups": 1,
+      "questions": 1,
+      "full_suite_requests": 5000,
+      "share_of_benchmark": 0.0002,
+      "mapping": {
+        "choice/named_card": 1
+      }
+    },
+    {
+      "catalog_id": 32,
+      "dataset": "MuSR",
+      "in_index": false,
+      "requests": 1,
+      "groups": 1,
+      "questions": 1,
+      "full_suite_requests": 752,
+      "share_of_benchmark": 0.0013,
+      "mapping": {
+        "choice/plain": 1
+      }
+    },
+    {
+      "catalog_id": 33,
+      "dataset": "SATA-Bench",
+      "in_index": false,
+      "requests": 1,
+      "groups": 1,
+      "questions": 15,
+      "full_suite_requests": 1650,
+      "share_of_benchmark": 0.0006,
+      "mapping": {
+        "noul/yes_no": 15
+      }
+    },
+    {
+      "catalog_id": 34,
+      "dataset": "SimpleBench",
+      "in_index": false,
+      "requests": 1,
+      "groups": 1,
+      "questions": 1,
+      "full_suite_requests": 10,
+      "share_of_benchmark": 0.1,
+      "mapping": {
+        "choice/plain": 1
+      }
+    },
+    {
+      "catalog_id": 36,
+      "dataset": "BRIGHT",
+      "in_index": true,
+      "requests": 1,
+      "groups": 1,
+      "questions": 32,
+      "full_suite_requests": 1297,
+      "share_of_benchmark": 0.0008,
+      "mapping": {
+        "noul/yes_no_card": 32
+      }
+    },
+    {
+      "catalog_id": 37,
+      "dataset": "Amazon ESCI",
+      "in_index": true,
+      "requests": 1,
+      "groups": 1,
+      "questions": 1,
+      "full_suite_requests": 5000,
+      "share_of_benchmark": 0.0002,
+      "mapping": {
+        "choice/plain": 1
+      }
+    },
+    {
+      "catalog_id": 38,
+      "dataset": "ACOS",
+      "in_index": false,
+      "requests": 6,
+      "groups": 1,
+      "questions": 363,
+      "full_suite_requests": 5479,
+      "share_of_benchmark": 0.0011,
+      "mapping": {
+        "noul/yes_no_card": 363
+      }
+    },
+    {
+      "catalog_id": 39,
+      "dataset": "FinEntity",
+      "in_index": false,
+      "requests": 1,
+      "groups": 1,
+      "questions": 2,
+      "full_suite_requests": 979,
+      "share_of_benchmark": 0.001,
+      "mapping": {
+        "choice/plain": 2
+      }
+    },
+    {
+      "catalog_id": 40,
+      "dataset": "iSarcasmEval",
+      "in_index": true,
+      "requests": 1,
+      "groups": 1,
+      "questions": 1,
+      "full_suite_requests": 4600,
+      "share_of_benchmark": 0.0002,
+      "mapping": {
+        "noul/yes_no": 1
+      }
+    },
+    {
+      "catalog_id": 41,
+      "dataset": "VAST",
+      "in_index": true,
+      "requests": 1,
+      "groups": 1,
+      "questions": 1,
+      "full_suite_requests": 3006,
+      "share_of_benchmark": 0.0003,
+      "mapping": {
+        "choice/plain": 1
+      }
+    },
+    {
+      "catalog_id": 42,
+      "dataset": "NLI4CT",
+      "in_index": false,
+      "requests": 1,
+      "groups": 1,
+      "questions": 1,
+      "full_suite_requests": 5500,
+      "share_of_benchmark": 0.0002,
+      "mapping": {
+        "choice/named_card": 1
+      }
+    },
+    {
+      "catalog_id": 43,
+      "dataset": "CRUXEval",
+      "in_index": true,
+      "requests": 1,
+      "groups": 1,
+      "questions": 1,
+      "full_suite_requests": 570,
+      "share_of_benchmark": 0.0018,
+      "mapping": {
+        "choice/plain": 1
+      }
+    },
+    {
+      "catalog_id": 44,
+      "dataset": "CLadder",
+      "in_index": true,
+      "requests": 1,
+      "groups": 1,
+      "questions": 1,
+      "full_suite_requests": 5000,
+      "share_of_benchmark": 0.0002,
+      "mapping": {
+        "choice/plain": 1
+      }
+    },
+    {
+      "catalog_id": 48,
+      "dataset": "ForecastBench",
+      "in_index": false,
+      "requests": 1,
+      "groups": 1,
+      "questions": 1,
+      "full_suite_requests": 10139,
+      "share_of_benchmark": 0.0001,
+      "mapping": {
+        "noul/yes_no_card": 1
+      }
+    },
+    {
+      "catalog_id": 50,
+      "dataset": "Habermas Machine",
+      "in_index": true,
+      "requests": 1,
+      "groups": 1,
+      "questions": 1,
+      "full_suite_requests": 1676,
+      "share_of_benchmark": 0.0006,
+      "mapping": {
+        "choice/plain": 1
+      }
+    }
+  ],
+  "created_utc": "2026-10-03T14:52:19Z"
+}
