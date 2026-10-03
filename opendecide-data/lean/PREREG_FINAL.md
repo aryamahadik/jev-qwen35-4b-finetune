@@ -1033,3 +1033,18 @@ This agrees with the earlier decision not to use TTA (X19).
 >   (disclosed). If a* is adopted it replaces C1 as the shipped 4B under a dated note.
 > - **Next, only with the owner's choice of yardstick:** C1 and a* (if adopted) are compared with Jev on a test where
 >   Jev's answers exist. OHS-3 and LongBench v2 stay sealed.
+
+> **Amendment A12 (3 Oct 2026, 04:57 UTC; owner decision in chat; before any OHS-1/2 read of these models): the Jev yardstick
+> after step B, and the overnight branch.**
+> - **Models read once on OHS-1 (`data/ohs.jsonl`, sha256 a191f42f...) and OHS-2 (`data/ohs2.jsonl`, sha256 8e7a28d9...):** C1
+>   (`q35_4b_main500k_b100`, byte-identical to C1) and, only if A11 adopts it, the B winner. The machine is the same one
+>   as the B reads.
+> - **Readout:** the shipped A5 readout: choice rows read twice (given + exact reversal, averaged), yes/no once, T = 1;
+>   `od_gcp.py predict --tta-choice`. No calibration step.
+> - **Score:** `score_ohs.py` unchanged, vs Jev (`jev_guard`, `jev_r2_guard`), with the micro accuracy on base rows of
+>   OHS-1 and OHS-2 pooled by row count as the yardstick. Per-test numbers, macro and Brier are also reported.
+> - **Branch rule:** if the shipped 4B's pooled micro accuracy >= Jev's + 1.0 pp (point estimate), the work STOPS for
+>   the owner's review. Otherwise it continues with the deep research → sealed new-domains dev suite → C dataset →
+>   training round 1, each pre-registered before it runs.
+> - **Disclosure:** OHS-1 and OHS-2 become practice sets from this read on. They are never used for training or for
+>   choosing data. OHS-3 and LongBench v2 stay sealed.
