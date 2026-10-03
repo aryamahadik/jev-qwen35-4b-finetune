@@ -1,0 +1,60 @@
+{
+ "lexemes": [
+  "a-",
+  "abstain",
+  "at no point",
+  "contrary",
+  "enter no if",
+  "erroneous",
+  "far from true",
+  "forgo",
+  "groundless",
+  "ir-",
+  "mark no if",
+  "no longer",
+  "not one",
+  "overturn",
+  "rebut",
+  "turn down",
+  "veto"
+ ],
+ "frame_families": [
+  "audit",
+  "contrary",
+  "verdict"
+ ],
+ "frame_ids": [
+  "ha1",
+  "ha2",
+  "ha3",
+  "ha4",
+  "hc1",
+  "hc2",
+  "hc3",
+  "hc4",
+  "hc5",
+  "hc6",
+  "hv1",
+  "hv2",
+  "hv3",
+  "hv4",
+  "hv5"
+ ],
+ "cue_combos": [
+  [
+   "affixal",
+   "cross+answer",
+   "truth_frame"
+  ],
+  [
+   "cross+answer",
+   "lexical",
+   "truth_frame"
+  ]
+ ],
+ "sources": [
+  "civil_comments+toxic_conv",
+  "gd_saferproducts_severity",
+  "gd_wiki_help_routing"
+ ]
+}

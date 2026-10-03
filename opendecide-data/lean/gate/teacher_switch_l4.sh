@@ -21,6 +21,16 @@
 # explicit CAND, vm-memo reads only when job 1 ended in a FINAL SHIP and the summary's (c) margin is >= +1.0 pp
 # (gate/RUNBOOK_4B_GATE.md 8: (d) is needed only if (b) and (c) pass); otherwise it logs why and skips.
 # REF: the fresh 4B-E read of CAND's ship look (q35_4b_pxE_fresh; _fresh2 for C3). Env as in gate/gate_4b_l4.sh: NO_SHUTDOWN, GATE_SIM, PREDICT_CMD.
+#
+# A8-prime (C4 = q35_4b_main500k_fix2, scored in gate job 3): set the TS_* variables so this script reads job 3's
+# settings, folder, REF and adapter manifest instead of job 1's. Unset, every default is job 1's (unchanged behaviour).
+#   TS_GATE=gate/gate_4b_fix2_l4.sh   the gate script whose BASE/REV/LAYOUT/REFA (and RUN, else C4) are read
+#   TS_G=logs/gate4b_fix2             the job folder (events, summary.json, look_ship*.json)
+#   TS_FRESH=q35_4b_pxE_fresh3        the fresh 4B-E read of C4's ship look (the default REF of 'check')
+#   TS_MANA=gate/manifest_adapters_fix2.sha256   the adapter manifest that lists models/<C4>/
+#   TS_RUN=<name>                     optional: the default CAND when the gate script has neither RUN= nor C4=
+# Job 3's summary.json has no (c) margin, so pass CAND explicitly (vm-memo q35_4b_main500k_fix2); (c) is computed by
+# 'check' (gate/teacher_switch.py) on the Mac.
 set -uo pipefail
 
 P=${GCP_PROJECT:-system-one-509903}; Z=${GCP_ZONE:-us-central1-a}; VM=${GCP_VM:-od-l4}
@@ -31,14 +41,16 @@ if [ -z "${PY:-}" ]; then
 fi
 PREDICT_CMD=${PREDICT_CMD:-"$PY od_gcp.py predict"}
 
-GATE=gate/gate_4b_l4.sh
+GATE=${TS_GATE:-gate/gate_4b_l4.sh}
 gv() { sed -n "s/^$1=\([^ #;]*\).*/\1/p" "$GATE" | head -n 1; }   # a setting of the gate script, as written there
-BASE=$(gv BASE); REV=$(gv REV); LAYOUT=$(gv LAYOUT); RUN=$(gv RUN); REFA=$(gv REFA)
+BASE=$(gv BASE); REV=$(gv REV); LAYOUT=$(gv LAYOUT); RUN=${TS_RUN:-$(gv RUN)}; REFA=$(gv REFA)
+[ -n "$RUN" ] || RUN=$(gv C4)
 [ -n "$BASE" ] && [ -n "$REV" ] && [ -n "$LAYOUT" ] && [ -n "$RUN" ] && [ -n "$REFA" ] \
   || { echo "cannot read BASE/REV/LAYOUT/RUN/REFA from $GATE"; exit 1; }
-FRESH=${REFA}_fresh
+FRESH=${TS_FRESH:-${REFA}_fresh}
 MEMO=memo4b_train_rows
-G=logs/gate4b
+G=${TS_G:-logs/gate4b}
+MANA=${TS_MANA:-gate/manifest_adapters.sha256}
 
 ts() { date -u +%FT%TZ; }
 ev() { mkdir -p "$G"; echo "$(ts) MEMO $*" | tee -a "$G/events.log"; }
@@ -101,13 +113,13 @@ vm_memo() {
   for s in dev_nc taskbank_dev hard_dev dev_negwords dev_claims pg_dev devzs devp_card dev; do
     [ -f "preds_$s/$cand.meta.json" ] || die 2 "preds_$s/$cand.meta.json missing: job 1 has not read $cand (this read follows job 1)"
   done
-  if grep -qE "  models/$cand/[^/]+$" gate/manifest_adapters.sha256 2>/dev/null; then
-    grep -E "  models/$cand/[^/]+$" gate/manifest_adapters.sha256 > "$G/memo_adapter.sha256"
+  if grep -qE "  models/$cand/[^/]+$" "$MANA" 2>/dev/null; then
+    grep -E "  models/$cand/[^/]+$" "$MANA" > "$G/memo_adapter.sha256"
     sha_check "$G/memo_adapter.sha256" > "$G/memo_preflight_sha.txt" 2>&1 || die 2 "models/$cand differs from the Mac's manifest"
   elif [ -f "$G/built_$cand.json" ]; then
     ev "models/$cand was materialized by job 1 ($G/built_$cand.json)"
   else
-    die 2 "models/$cand is neither in gate/manifest_adapters.sha256 nor built by job 1"
+    die 2 "models/$cand is neither in $MANA nor built by job 1"
   fi
   if [ -z "${GATE_SIM:-}" ]; then
     [ -f "$HOME/.cache/huggingface/hub/models--Qwen--Qwen3.5-4B/snapshots/$REV/config.json" ] \
@@ -190,7 +202,7 @@ gcloud compute scp --zone $Z --project $P --quiet gate/teacher_switch.py gate/te
 $(predict_line "$cand")
 # Mac: results back, then (b) (c) (d)
 gcloud compute scp --zone $Z --project $P --quiet "$VM:~/lean/preds_$MEMO/$cand.*" preds_$MEMO/
-$PY gate/teacher_switch.py check $cand $FRESH --ship-json $G/look_ship1.json [$G/look_ship2.json] --json $G/teacher_switch.json
+$PY gate/teacher_switch.py check $cand $FRESH --ship-json $([ -n "${TS_G:-}" ] && echo "$G/look_ship*.json" || echo "$G/look_ship1.json [$G/look_ship2.json]") --json $G/teacher_switch.json
 EOF
 }
 

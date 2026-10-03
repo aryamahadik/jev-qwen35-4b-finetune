@@ -1,0 +1,2265 @@
+{
+ "tool": "extra/build_fix2.py",
+ "generated_utc": "2026-10-03T01:32:13Z",
+ "files": {
+  "v14_parts/fix2_train.jsonl": "66423fe37b54245da035b8a0df0689776d6c8a78dbf2894df5ea294bef8e0cd4",
+  "v14_parts/fix2_relations.jsonl": "6d54086a483eb7072f3d24f330623d31c35c393e6d8b722ce2c588da673ce76b",
+  "v14_parts/f7fix2_train.jsonl": "ffa5cecacde7ed65f0b8a105784eae3fae62007650eefd7aff7d8df5197b601c",
+  "v14_parts/f7fix2_relations.jsonl": "895fab57e5db294ea89d638f37555f9438d2cb1685b6b6418a5f3dd37397a1a3",
+  "v14_parts/f7fix2_meta.jsonl": "b632cc2d702792cd94e6a24eb06eeeb32f589413eb9cc09935a04972ee34e598",
+  "f7_probe.jsonl": "e715fbd054bf2846410ce9034fe8c9f1b4f384efa853f9e2dd5a3d5d0d7d0710",
+  "f7_probe_relations.jsonl": "eda2e82450c9b6dcd14eb141887160249f21eb9c83b1524873d17de626684d04",
+  "f7_probe_meta.jsonl": "f4c8c3357730b34616e735e093d4d59ee11628ce1f6baaf65abc0634a57330d4",
+  "f7_devx.jsonl": "b5579786954652c201d9871a2d4e8a16c23340d4cad0254c1e5e84f8a4d34168",
+  "f7_devx_relations.jsonl": "74cb00c9918959480caed38a1eb409974e7284578bde125f484994dc4c7da9d2",
+  "f7_devx_meta.jsonl": "bc22f752d2e917f333401bfad926dfddfcf41a9d48ace2de156f6b10a11e5ac2"
+ },
+ "inputs": {
+  "v14_parts/golden_train.jsonl": "ff7a395bc9b501ac27949ed7265b771e720406fa96f0e296700c2c101f62a2a9",
+  "v14_parts/golden_relations.jsonl": "072ee6c45f3f246cca7cc7b465387c83412c406e552e2b161c05d291afb9b214",
+  "v14_parts/yn2b_ab/yn2b_train.jsonl": "48a2bf0ffec2792a7c13bcc6c0278c5ec3b0ff77eee3794b662a78dd1741d259",
+  "v14_parts/yn2b_ab/yn2b_relations.jsonl": "39a56113a4d55605fa8edf4d780c93b5bdc53f454cadc5c484e540346c7a40ae",
+  "v14_parts/f7_train.jsonl": "ffa5cecacde7ed65f0b8a105784eae3fae62007650eefd7aff7d8df5197b601c",
+  "v14_parts/f7_relations.jsonl": "895fab57e5db294ea89d638f37555f9438d2cb1685b6b6418a5f3dd37397a1a3",
+  "v14_parts/f7_meta.jsonl": "b632cc2d702792cd94e6a24eb06eeeb32f589413eb9cc09935a04972ee34e598",
+  "v14_parts/f7_probe.jsonl": "e715fbd054bf2846410ce9034fe8c9f1b4f384efa853f9e2dd5a3d5d0d7d0710",
+  "v14_parts/f7_probe_relations.jsonl": "eda2e82450c9b6dcd14eb141887160249f21eb9c83b1524873d17de626684d04",
+  "v14_parts/f7_probe_meta.jsonl": "f4c8c3357730b34616e735e093d4d59ee11628ce1f6baaf65abc0634a57330d4",
+  "v14_parts/f7_devx.jsonl": "b5579786954652c201d9871a2d4e8a16c23340d4cad0254c1e5e84f8a4d34168",
+  "v14_parts/f7_devx_relations.jsonl": "74cb00c9918959480caed38a1eb409974e7284578bde125f484994dc4c7da9d2",
+  "v14_parts/f7_devx_meta.jsonl": "bc22f752d2e917f333401bfad926dfddfcf41a9d48ace2de156f6b10a11e5ac2",
+  "v14_parts/f7_holdout_spec.json": "ab2fe8539ba8dd850ba467de45729fe01b7f5de6d07f0c3dc335eb42b8f8fbd8",
+  "v14_parts/f7_lexicon.json": "bc32ec4c0e4989467cecd136a492ca0495efa175c74bddce5c28a45fdab25675",
+  "yn2b/label_audit_known_bad_ids.json": "d4de5ed1bb9a74054968f652101f044053620afcb1f222b583e4d367c262e5a0",
+  "yn2b/decontam_only/negation_benchmarks.json": "0ff200b57b926cb913637a88b0076efb000b4138f99cad063450d5dbe242d4ba",
+  "yn2b/f7_fix2_drops.json": "364f3c6a37505e88a71d845675234acd380b08bcc226c1b559ca3dfa6f430709"
+ },
+ "rows": 42566,
+ "n_relations": 10325,
+ "relations": {
+  "complement": 5440,
+  "inv": 4306,
+  "equiv": 579
+ },
+ "part2": "none",
+ "parts": {
+  "F7": 12768,
+  "G_t_golden_dneg_units": 0,
+  "F4_polarity_ladder": 0,
+  "G_r_stratified_replay": 29798
+ },
+ "shares": {
+  "G_r": 0.7,
+  "F7": 0.3
+ },
+ "replay_share_target": 0.7,
+ "replay_fraction_of_each_stratum": 0.067611,
+ "replay_rows_needed": 29792,
+ "units": {
+  "F7_ladders": 2556,
+  "G_t": 0,
+  "F4": 0,
+  "G_r": 20670,
+  "all": 23226
+ },
+ "F7": {
+  "rows_built": 12768,
+  "ladders_built": 2556,
+  "dropped_pairs": {},
+  "rows_kept": 12768,
+  "ladders_kept": 2556,
+  "relations": {
+   "inv": 2224,
+   "complement": 3292,
+   "equiv": 482
+  },
+  "inv_anchor_is_R0": 2224,
+  "inv_anchor_other_rung": {},
+  "ladders_with_R0": 2060,
+  "max_complement_per_row": 1,
+  "max_ladder_rows": 5,
+  "max_ladder_total_state_chars": 18985
+ },
+ "retyped": {},
+ "composition_probes_mix_level": {
+  "none": {
+   "rows": 10220,
+   "C1": 0.5227,
+   "C2": 0.5761,
+   "C2_by_depth": {
+    "0": 0.4903,
+    "1": 0.6831,
+    "2": 0.6406,
+    "3": 0.506,
+    "4": 0.4852
+   },
+   "pass": true,
+   "part2_rows": 0
+  },
+  "gt": {
+   "rows": 10554,
+   "C1": 0.5269,
+   "C2": 0.5895,
+   "C2_by_depth": {
+    "0": 0.5177,
+    "1": 0.7,
+    "2": 0.6527,
+    "3": 0.506,
+    "4": 0.4852
+   },
+   "pass": true,
+   "part2_rows": 366
+  },
+  "gt+f4": {
+   "rows": 11462,
+   "C1": 0.5422,
+   "C2": 0.6221,
+   "C2_by_depth": {
+    "0": 0.6009,
+    "1": 0.7318,
+    "2": 0.6741,
+    "3": 0.506,
+    "4": 0.4852
+   },
+   "pass": true,
+   "part2_rows": 1274
+  }
+ },
+ "qtype": {
+  "choice": 12955,
+  "noul": 29611
+ },
+ "roles": {
+  "aff": 17895,
+  "choice": 12110,
+  "neg": 6936,
+  "dneg": 3251,
+  "attacked": 1902,
+  "para": 275,
+  "defswap": 166,
+  "clause_neg": 19,
+  "trap_aff": 6,
+  "trap_neg": 6
+ },
+ "dneg_rows": 3251,
+ "yes_share_noul": 0.4965,
+ "kd_targets": 1198,
+ "kd_full": 16,
+ "kd_skip_src": [
+  "blend50"
+ ],
+ "kd_full_src": [
+  "gd_gen2_probability"
+ ],
+ "teacher_dict_rows_by_part": {
+  "G_r": 3821
+ },
+ "replay": {
+  "eligible_rows": 442493,
+  "eligible_sources": 172,
+  "strata": 288,
+  "strata_short": {
+   "amazon_polarity|mixed": 1,
+   "arc|choice": 1,
+   "banking77|mixed": 2,
+   "banking77|noul": 1,
+   "boolq|noul": 1,
+   "br_fm2|noul": 24,
+   "br_mnds|mixed": 1,
+   "br_newsmtsc|mixed": 1,
+   "br_star|mixed": 1,
+   "br_wos46985|mixed": 1,
+   "clinc150|mixed": 1,
+   "condaqa|noul": 53,
+   "dbpedia|choice": 1,
+   "gd_crossner|mixed": 1,
+   "gd_gen_constraints|choice": 1,
+   "gd_gen_evidence_conflict|choice": 1,
+   "gd_gen_evidence_conflict|mixed": 2,
+   "gd_gen_msn_consent|noul": 1,
+   "gd_gen_msn_rules|noul": 1,
+   "gd_gen_numeric_dates|noul": 1,
+   "gd_gen_ranking|choice": 1,
+   "gd_gen_ranking|mixed": 1,
+   "gd_gen_routing|mixed": 1,
+   "gd_gen_tables|noul": 1,
+   "gd_infotabs_nli|choice": 1,
+   "gd_onestop_level|mixed": 1,
+   "gd_onet_occupation|mixed": 1,
+   "gd_opentdb|mixed": 2,
+   "gd_qasc|mixed": 1,
+   "gd_sd311_routing|mixed": 1,
+   "gd_smcalflow_action|mixed": 1,
+   "gd_star_next_action|mixed": 1,
+   "gd_taskmaster1|noul": 1,
+   "gd_wands_product|mixed": 1,
+   "gd_webred|mixed": 1,
+   "gd_wnut17|mixed": 1,
+   "mnli3|mixed": 2,
+   "mrpc|noul": 1,
+   "rte|choice": 3,
+   "rte|mixed": 41,
+   "tb_label_nli|noul": 1,
+   "yelp|choice": 1,
+   "yelp|mixed": 1
+  },
+  "max_abs_source_share_deviation": 0.00178,
+  "qtype_share_picked": {
+   "choice": 0.3493,
+   "noul": 0.6507
+  },
+  "qtype_share_eligible": {
+   "choice": 0.3475,
+   "noul": 0.6525
+  },
+  "per_stratum": {
+   "amazon_polarity|choice": {
+    "stratum_rows": 34,
+    "quota": 2.3,
+    "picked": 2
+   },
+   "amazon_polarity|mixed": {
+    "stratum_rows": 464,
+    "quota": 31.37,
+    "picked": 30
+   },
+   "amazon_polarity|noul": {
+    "stratum_rows": 256,
+    "quota": 17.31,
+    "picked": 18
+   },
+   "arc|choice": {
+    "stratum_rows": 414,
+    "quota": 27.99,
+    "picked": 27
+   },
+   "banking77|choice": {
+    "stratum_rows": 1855,
+    "quota": 125.42,
+    "picked": 125
+   },
+   "banking77|mixed": {
+    "stratum_rows": 84,
+    "quota": 5.68,
+    "picked": 4
+   },
+   "banking77|noul": {
+    "stratum_rows": 361,
+    "quota": 24.41,
+    "picked": 23
+   },
+   "binj_adult|choice": {
+    "stratum_rows": 172,
+    "quota": 11.63,
+    "picked": 12
+   },
+   "binj_adult|noul": {
+    "stratum_rows": 41,
+    "quota": 2.77,
+    "picked": 3
+   },
+   "binj_consistency|choice": {
+    "stratum_rows": 167,
+    "quota": 11.29,
+    "picked": 11
+   },
+   "binj_consistency|noul": {
+    "stratum_rows": 59,
+    "quota": 3.99,
+    "picked": 4
+   },
+   "boolq|noul": {
+    "stratum_rows": 896,
+    "quota": 60.58,
+    "picked": 60
+   },
+   "br_abcd|choice": {
+    "stratum_rows": 437,
+    "quota": 29.55,
+    "picked": 30
+   },
+   "br_abcd|mixed": {
+    "stratum_rows": 270,
+    "quota": 18.25,
+    "picked": 18
+   },
+   "br_casino|choice": {
+    "stratum_rows": 261,
+    "quota": 17.65,
+    "picked": 18
+   },
+   "br_casino|mixed": {
+    "stratum_rows": 171,
+    "quota": 11.56,
+    "picked": 12
+   },
+   "br_casino|noul": {
+    "stratum_rows": 57,
+    "quota": 3.85,
+    "picked": 4
+   },
+   "br_cfpb|choice": {
+    "stratum_rows": 455,
+    "quota": 30.76,
+    "picked": 31
+   },
+   "br_cfpb|mixed": {
+    "stratum_rows": 213,
+    "quota": 14.4,
+    "picked": 15
+   },
+   "br_claimbuster|choice": {
+    "stratum_rows": 315,
+    "quota": 21.3,
+    "picked": 21
+   },
+   "br_claimbuster|mixed": {
+    "stratum_rows": 159,
+    "quota": 10.75,
+    "picked": 12
+   },
+   "br_congress_policy|choice": {
+    "stratum_rows": 396,
+    "quota": 26.77,
+    "picked": 27
+   },
+   "br_congress_policy|mixed": {
+    "stratum_rows": 303,
+    "quota": 20.49,
+    "picked": 21
+   },
+   "br_emobank|choice": {
+    "stratum_rows": 404,
+    "quota": 27.31,
+    "picked": 27
+   },
+   "br_emobank|mixed": {
+    "stratum_rows": 267,
+    "quota": 18.05,
+    "picked": 18
+   },
+   "br_fm2|noul": {
+    "stratum_rows": 357,
+    "quota": 24.14,
+    "picked": 0
+   },
+   "br_infotabs|choice": {
+    "stratum_rows": 395,
+    "quota": 26.71,
+    "picked": 27
+   },
+   "br_infotabs|mixed": {
+    "stratum_rows": 294,
+    "quota": 19.88,
+    "picked": 21
+   },
+   "br_mams_acsa|choice": {
+    "stratum_rows": 160,
+    "quota": 10.82,
+    "picked": 11
+   },
+   "br_mams_acsa|mixed": {
+    "stratum_rows": 87,
+    "quota": 5.88,
+    "picked": 6
+   },
+   "br_mams_acsa|noul": {
+    "stratum_rows": 142,
+    "quota": 9.6,
+    "picked": 10
+   },
+   "br_mnds|choice": {
+    "stratum_rows": 444,
+    "quota": 30.02,
+    "picked": 30
+   },
+   "br_mnds|mixed": {
+    "stratum_rows": 285,
+    "quota": 19.27,
+    "picked": 18
+   },
+   "br_newsgroups20|choice": {
+    "stratum_rows": 384,
+    "quota": 25.96,
+    "picked": 26
+   },
+   "br_newsgroups20|mixed": {
+    "stratum_rows": 207,
+    "quota": 14.0,
+    "picked": 15
+   },
+   "br_newsmtsc|choice": {
+    "stratum_rows": 373,
+    "quota": 25.22,
+    "picked": 25
+   },
+   "br_newsmtsc|mixed": {
+    "stratum_rows": 234,
+    "quota": 15.82,
+    "picked": 15
+   },
+   "br_sarcasm_headlines|noul": {
+    "stratum_rows": 191,
+    "quota": 12.91,
+    "picked": 13
+   },
+   "br_star|choice": {
+    "stratum_rows": 363,
+    "quota": 24.54,
+    "picked": 25
+   },
+   "br_star|mixed": {
+    "stratum_rows": 279,
+    "quota": 18.86,
+    "picked": 18
+   },
+   "br_steam_aspect|noul": {
+    "stratum_rows": 200,
+    "quota": 13.52,
+    "picked": 14
+   },
+   "br_topv2|choice": {
+    "stratum_rows": 479,
+    "quota": 32.39,
+    "picked": 32
+   },
+   "br_topv2|mixed": {
+    "stratum_rows": 291,
+    "quota": 19.67,
+    "picked": 21
+   },
+   "br_wos46985|choice": {
+    "stratum_rows": 428,
+    "quota": 28.94,
+    "picked": 29
+   },
+   "br_wos46985|mixed": {
+    "stratum_rows": 330,
+    "quota": 22.31,
+    "picked": 21
+   },
+   "clinc150|choice": {
+    "stratum_rows": 2223,
+    "quota": 150.3,
+    "picked": 150
+   },
+   "clinc150|mixed": {
+    "stratum_rows": 79,
+    "quota": 5.34,
+    "picked": 4
+   },
+   "clinc150|noul": {
+    "stratum_rows": 349,
+    "quota": 23.6,
+    "picked": 24
+   },
+   "clothing|choice": {
+    "stratum_rows": 6,
+    "quota": 0.41,
+    "picked": 0
+   },
+   "clothing|mixed": {
+    "stratum_rows": 133,
+    "quota": 8.99,
+    "picked": 9
+   },
+   "clothing|noul": {
+    "stratum_rows": 72,
+    "quota": 4.87,
+    "picked": 6
+   },
+   "condaqa|noul": {
+    "stratum_rows": 788,
+    "quota": 53.28,
+    "picked": 0
+   },
+   "copa|choice": {
+    "stratum_rows": 243,
+    "quota": 16.43,
+    "picked": 16
+   },
+   "csqa|choice": {
+    "stratum_rows": 478,
+    "quota": 32.32,
+    "picked": 32
+   },
+   "dbpedia|choice": {
+    "stratum_rows": 882,
+    "quota": 59.63,
+    "picked": 59
+   },
+   "fld|choice": {
+    "stratum_rows": 574,
+    "quota": 38.81,
+    "picked": 39
+   },
+   "gd_answer_equiv|noul": {
+    "stratum_rows": 2832,
+    "quota": 191.47,
+    "picked": 191
+   },
+   "gd_babi_logic|choice": {
+    "stratum_rows": 1256,
+    "quota": 84.92,
+    "picked": 85
+   },
+   "gd_babi_logic|mixed": {
+    "stratum_rows": 1069,
+    "quota": 72.28,
+    "picked": 73
+   },
+   "gd_babi_logic|noul": {
+    "stratum_rows": 1924,
+    "quota": 130.08,
+    "picked": 130
+   },
+   "gd_bbh_mistake|noul": {
+    "stratum_rows": 905,
+    "quota": 61.19,
+    "picked": 61
+   },
+   "gd_biored|choice": {
+    "stratum_rows": 281,
+    "quota": 19.0,
+    "picked": 19
+   },
+   "gd_biored|mixed": {
+    "stratum_rows": 258,
+    "quota": 17.44,
+    "picked": 19
+   },
+   "gd_boardgameqa|choice": {
+    "stratum_rows": 5249,
+    "quota": 354.89,
+    "picked": 355
+   },
+   "gd_boardgameqa|mixed": {
+    "stratum_rows": 4301,
+    "quota": 290.8,
+    "picked": 292
+   },
+   "gd_cards|noul": {
+    "stratum_rows": 7096,
+    "quota": 479.77,
+    "picked": 480
+   },
+   "gd_casehold_yn|noul": {
+    "stratum_rows": 4039,
+    "quota": 273.08,
+    "picked": 274
+   },
+   "gd_check_covid|noul": {
+    "stratum_rows": 713,
+    "quota": 48.21,
+    "picked": 48
+   },
+   "gd_clickbait16|noul": {
+    "stratum_rows": 444,
+    "quota": 30.02,
+    "picked": 30
+   },
+   "gd_clickbait17|noul": {
+    "stratum_rows": 4461,
+    "quota": 301.61,
+    "picked": 302
+   },
+   "gd_climate_targets|noul": {
+    "stratum_rows": 1071,
+    "quota": 72.41,
+    "picked": 72
+   },
+   "gd_codah|choice": {
+    "stratum_rows": 472,
+    "quota": 31.91,
+    "picked": 32
+   },
+   "gd_codah|mixed": {
+    "stratum_rows": 440,
+    "quota": 29.75,
+    "picked": 30
+   },
+   "gd_codah|noul": {
+    "stratum_rows": 1323,
+    "quota": 89.45,
+    "picked": 89
+   },
+   "gd_comve|noul": {
+    "stratum_rows": 5419,
+    "quota": 366.38,
+    "picked": 366
+   },
+   "gd_conditionalqa|choice": {
+    "stratum_rows": 907,
+    "quota": 61.32,
+    "picked": 61
+   },
+   "gd_conditionalqa|mixed": {
+    "stratum_rows": 806,
+    "quota": 54.49,
+    "picked": 54
+   },
+   "gd_crossner|choice": {
+    "stratum_rows": 499,
+    "quota": 33.74,
+    "picked": 34
+   },
+   "gd_crossner|mixed": {
+    "stratum_rows": 451,
+    "quota": 30.49,
+    "picked": 29
+   },
+   "gd_crowdtruth_mre|noul": {
+    "stratum_rows": 963,
+    "quota": 65.11,
+    "picked": 65
+   },
+   "gd_csc_sarcasm|noul": {
+    "stratum_rows": 1739,
+    "quota": 117.58,
+    "picked": 118
+   },
+   "gd_druglabel_section|choice": {
+    "stratum_rows": 2351,
+    "quota": 158.95,
+    "picked": 159
+   },
+   "gd_druglabel_section|mixed": {
+    "stratum_rows": 1933,
+    "quota": 130.69,
+    "picked": 132
+   },
+   "gd_drugprot|choice": {
+    "stratum_rows": 4640,
+    "quota": 313.72,
+    "picked": 314
+   },
+   "gd_drugprot|mixed": {
+    "stratum_rows": 4154,
+    "quota": 280.86,
+    "picked": 282
+   },
+   "gd_dstc9_track1|noul": {
+    "stratum_rows": 4631,
+    "quota": 313.11,
+    "picked": 313
+   },
+   "gd_edgar_10k_item|choice": {
+    "stratum_rows": 2636,
+    "quota": 178.22,
+    "picked": 178
+   },
+   "gd_edgar_10k_item|mixed": {
+    "stratum_rows": 2343,
+    "quota": 158.41,
+    "picked": 160
+   },
+   "gd_edgar_10k_item|noul": {
+    "stratum_rows": 1091,
+    "quota": 73.76,
+    "picked": 74
+   },
+   "gd_faithdial|noul": {
+    "stratum_rows": 2963,
+    "quota": 200.33,
+    "picked": 200
+   },
+   "gd_feverous|noul": {
+    "stratum_rows": 8318,
+    "quota": 562.39,
+    "picked": 562
+   },
+   "gd_finqa|noul": {
+    "stratum_rows": 4970,
+    "quota": 336.03,
+    "picked": 336
+   },
+   "gd_gen2_json_fields|choice": {
+    "stratum_rows": 290,
+    "quota": 19.61,
+    "picked": 20
+   },
+   "gd_gen2_json_fields|noul": {
+    "stratum_rows": 380,
+    "quota": 25.69,
+    "picked": 26
+   },
+   "gd_gen2_long_policy|choice": {
+    "stratum_rows": 146,
+    "quota": 9.87,
+    "picked": 10
+   },
+   "gd_gen2_long_policy|noul": {
+    "stratum_rows": 148,
+    "quota": 10.01,
+    "picked": 10
+   },
+   "gd_gen2_probability|choice": {
+    "stratum_rows": 146,
+    "quota": 9.87,
+    "picked": 10
+   },
+   "gd_gen2_probability|noul": {
+    "stratum_rows": 332,
+    "quota": 22.45,
+    "picked": 22
+   },
+   "gd_gen2_tool_selection|choice": {
+    "stratum_rows": 290,
+    "quota": 19.61,
+    "picked": 20
+   },
+   "gd_gen_constraints|choice": {
+    "stratum_rows": 3395,
+    "quota": 229.54,
+    "picked": 229
+   },
+   "gd_gen_constraints|mixed": {
+    "stratum_rows": 8031,
+    "quota": 542.98,
+    "picked": 543
+   },
+   "gd_gen_evidence_conflict|choice": {
+    "stratum_rows": 1625,
+    "quota": 109.87,
+    "picked": 109
+   },
+   "gd_gen_evidence_conflict|mixed": {
+    "stratum_rows": 3559,
+    "quota": 240.63,
+    "picked": 239
+   },
+   "gd_gen_evidence_conflict|noul": {
+    "stratum_rows": 6352,
+    "quota": 429.47,
+    "picked": 430
+   },
+   "gd_gen_logic_negation|noul": {
+    "stratum_rows": 11526,
+    "quota": 779.29,
+    "picked": 779
+   },
+   "gd_gen_msn_consent|noul": {
+    "stratum_rows": 5161,
+    "quota": 348.94,
+    "picked": 348
+   },
+   "gd_gen_msn_fault|noul": {
+    "stratum_rows": 6197,
+    "quota": 418.99,
+    "picked": 419
+   },
+   "gd_gen_msn_rules|noul": {
+    "stratum_rows": 8253,
+    "quota": 557.99,
+    "picked": 557
+   },
+   "gd_gen_nlr_heuristics|noul": {
+    "stratum_rows": 4930,
+    "quota": 333.32,
+    "picked": 333
+   },
+   "gd_gen_numeric_dates|choice": {
+    "stratum_rows": 1297,
+    "quota": 87.69,
+    "picked": 89
+   },
+   "gd_gen_numeric_dates|mixed": {
+    "stratum_rows": 2890,
+    "quota": 195.4,
+    "picked": 198
+   },
+   "gd_gen_numeric_dates|noul": {
+    "stratum_rows": 7344,
+    "quota": 496.54,
+    "picked": 496
+   },
+   "gd_gen_policy_exceptions|choice": {
+    "stratum_rows": 1219,
+    "quota": 82.42,
+    "picked": 82
+   },
+   "gd_gen_policy_exceptions|mixed": {
+    "stratum_rows": 2756,
+    "quota": 186.34,
+    "picked": 186
+   },
+   "gd_gen_policy_exceptions|noul": {
+    "stratum_rows": 7488,
+    "quota": 506.27,
+    "picked": 507
+   },
+   "gd_gen_ranking|choice": {
+    "stratum_rows": 3691,
+    "quota": 249.55,
+    "picked": 249
+   },
+   "gd_gen_ranking|mixed": {
+    "stratum_rows": 7853,
+    "quota": 530.95,
+    "picked": 530
+   },
+   "gd_gen_routing|choice": {
+    "stratum_rows": 3433,
+    "quota": 232.11,
+    "picked": 233
+   },
+   "gd_gen_routing|mixed": {
+    "stratum_rows": 8063,
+    "quota": 545.15,
+    "picked": 544
+   },
+   "gd_gen_tables|choice": {
+    "stratum_rows": 1261,
+    "quota": 85.26,
+    "picked": 86
+   },
+   "gd_gen_tables|mixed": {
+    "stratum_rows": 2520,
+    "quota": 170.38,
+    "picked": 172
+   },
+   "gd_gen_tables|noul": {
+    "stratum_rows": 7824,
+    "quota": 528.99,
+    "picked": 528
+   },
+   "gd_helpsteer2_attr|noul": {
+    "stratum_rows": 2729,
+    "quota": 184.51,
+    "picked": 185
+   },
+   "gd_hotpotqa_yesno|noul": {
+    "stratum_rows": 3274,
+    "quota": 221.36,
+    "picked": 221
+   },
+   "gd_infotabs_nli|choice": {
+    "stratum_rows": 2218,
+    "quota": 149.96,
+    "picked": 149
+   },
+   "gd_infotabs_nli|mixed": {
+    "stratum_rows": 1849,
+    "quota": 125.01,
+    "picked": 125
+   },
+   "gd_infotabs_nli|noul": {
+    "stratum_rows": 2957,
+    "quota": 199.93,
+    "picked": 200
+   },
+   "gd_logicinference|choice": {
+    "stratum_rows": 1963,
+    "quota": 132.72,
+    "picked": 133
+   },
+   "gd_logicinference|mixed": {
+    "stratum_rows": 1685,
+    "quota": 113.92,
+    "picked": 115
+   },
+   "gd_logicinference|noul": {
+    "stratum_rows": 1939,
+    "quota": 131.1,
+    "picked": 131
+   },
+   "gd_mediqa_qa|noul": {
+    "stratum_rows": 639,
+    "quota": 43.2,
+    "picked": 43
+   },
+   "gd_medmcqa_subject|choice": {
+    "stratum_rows": 4224,
+    "quota": 285.59,
+    "picked": 286
+   },
+   "gd_medmcqa_subject|mixed": {
+    "stratum_rows": 3753,
+    "quota": 253.74,
+    "picked": 254
+   },
+   "gd_medqa_yn|noul": {
+    "stratum_rows": 8274,
+    "quota": 559.41,
+    "picked": 559
+   },
+   "gd_medquad_qtype|choice": {
+    "stratum_rows": 3105,
+    "quota": 209.93,
+    "picked": 210
+   },
+   "gd_medquad_qtype|mixed": {
+    "stratum_rows": 2676,
+    "quota": 180.93,
+    "picked": 181
+   },
+   "gd_meganegraising|noul": {
+    "stratum_rows": 150,
+    "quota": 10.14,
+    "picked": 10
+   },
+   "gd_megaveridicality|noul": {
+    "stratum_rows": 1424,
+    "quota": 96.28,
+    "picked": 96
+   },
+   "gd_msha_injury|choice": {
+    "stratum_rows": 4804,
+    "quota": 324.8,
+    "picked": 325
+   },
+   "gd_msha_injury|mixed": {
+    "stratum_rows": 3879,
+    "quota": 262.26,
+    "picked": 262
+   },
+   "gd_mtbench_human|noul": {
+    "stratum_rows": 970,
+    "quota": 65.58,
+    "picked": 66
+   },
+   "gd_multiwoz21_sysacts|noul": {
+    "stratum_rows": 2703,
+    "quota": 182.75,
+    "picked": 183
+   },
+   "gd_naics_subsector|choice": {
+    "stratum_rows": 1589,
+    "quota": 107.43,
+    "picked": 107
+   },
+   "gd_naics_subsector|mixed": {
+    "stratum_rows": 1315,
+    "quota": 88.91,
+    "picked": 90
+   },
+   "gd_ncbi_disease|choice": {
+    "stratum_rows": 2057,
+    "quota": 139.08,
+    "picked": 139
+   },
+   "gd_ncbi_disease|mixed": {
+    "stratum_rows": 1823,
+    "quota": 123.25,
+    "picked": 123
+   },
+   "gd_ncvec_ham|choice": {
+    "stratum_rows": 1012,
+    "quota": 68.42,
+    "picked": 68
+   },
+   "gd_ncvec_ham|mixed": {
+    "stratum_rows": 858,
+    "quota": 58.01,
+    "picked": 59
+   },
+   "gd_nhtsa_complaints|noul": {
+    "stratum_rows": 2856,
+    "quota": 193.1,
+    "picked": 193
+   },
+   "gd_nrc_gfe|choice": {
+    "stratum_rows": 1692,
+    "quota": 114.4,
+    "picked": 114
+   },
+   "gd_nrc_gfe|mixed": {
+    "stratum_rows": 1460,
+    "quota": 98.71,
+    "picked": 100
+   },
+   "gd_oiics_event|choice": {
+    "stratum_rows": 3672,
+    "quota": 248.27,
+    "picked": 248
+   },
+   "gd_oiics_event|mixed": {
+    "stratum_rows": 3200,
+    "quota": 216.36,
+    "picked": 217
+   },
+   "gd_onestop_level|choice": {
+    "stratum_rows": 1013,
+    "quota": 68.49,
+    "picked": 68
+   },
+   "gd_onestop_level|mixed": {
+    "stratum_rows": 718,
+    "quota": 48.54,
+    "picked": 48
+   },
+   "gd_onet_occupation|choice": {
+    "stratum_rows": 318,
+    "quota": 21.5,
+    "picked": 22
+   },
+   "gd_onet_occupation|mixed": {
+    "stratum_rows": 316,
+    "quota": 21.37,
+    "picked": 20
+   },
+   "gd_onet_occupation|noul": {
+    "stratum_rows": 995,
+    "quota": 67.27,
+    "picked": 67
+   },
+   "gd_opentdb|choice": {
+    "stratum_rows": 2761,
+    "quota": 186.67,
+    "picked": 187
+   },
+   "gd_opentdb|mixed": {
+    "stratum_rows": 2378,
+    "quota": 160.78,
+    "picked": 159
+   },
+   "gd_prm800k_steps|noul": {
+    "stratum_rows": 5317,
+    "quota": 359.49,
+    "picked": 359
+   },
+   "gd_prontoqa|noul": {
+    "stratum_rows": 1434,
+    "quota": 96.95,
+    "picked": 97
+   },
+   "gd_qasc|choice": {
+    "stratum_rows": 2226,
+    "quota": 150.5,
+    "picked": 151
+   },
+   "gd_qasc|mixed": {
+    "stratum_rows": 1884,
+    "quota": 127.38,
+    "picked": 126
+   },
+   "gd_qasc|noul": {
+    "stratum_rows": 1997,
+    "quota": 135.02,
+    "picked": 135
+   },
+   "gd_quartz|noul": {
+    "stratum_rows": 1798,
+    "quota": 121.56,
+    "picked": 122
+   },
+   "gd_ragtruth_summary|noul": {
+    "stratum_rows": 953,
+    "quota": 64.43,
+    "picked": 65
+   },
+   "gd_ropes_sci|noul": {
+    "stratum_rows": 941,
+    "quota": 63.62,
+    "picked": 64
+   },
+   "gd_sc101|noul": {
+    "stratum_rows": 8261,
+    "quota": 558.54,
+    "picked": 559
+   },
+   "gd_sd311_routing|choice": {
+    "stratum_rows": 3055,
+    "quota": 206.55,
+    "picked": 207
+   },
+   "gd_sd311_routing|mixed": {
+    "stratum_rows": 2744,
+    "quota": 185.52,
+    "picked": 185
+   },
+   "gd_semtabfacts_sci|noul": {
+    "stratum_rows": 4048,
+    "quota": 273.69,
+    "picked": 274
+   },
+   "gd_smcalflow_action|choice": {
+    "stratum_rows": 3343,
+    "quota": 226.02,
+    "picked": 226
+   },
+   "gd_smcalflow_action|mixed": {
+    "stratum_rows": 2877,
+    "quota": 194.52,
+    "picked": 194
+   },
+   "gd_spiced|noul": {
+    "stratum_rows": 1002,
+    "quota": 67.75,
+    "picked": 68
+   },
+   "gd_star_next_action|choice": {
+    "stratum_rows": 1872,
+    "quota": 126.57,
+    "picked": 127
+   },
+   "gd_star_next_action|mixed": {
+    "stratum_rows": 1467,
+    "quota": 99.19,
+    "picked": 98
+   },
+   "gd_storm_ef|choice": {
+    "stratum_rows": 2904,
+    "quota": 196.34,
+    "picked": 196
+   },
+   "gd_storm_ef|mixed": {
+    "stratum_rows": 2523,
+    "quota": 170.58,
+    "picked": 171
+   },
+   "gd_tabmcq|noul": {
+    "stratum_rows": 1188,
+    "quota": 80.32,
+    "picked": 80
+   },
+   "gd_taskmaster1|noul": {
+    "stratum_rows": 3692,
+    "quota": 249.62,
+    "picked": 249
+   },
+   "gd_taskmaster2|noul": {
+    "stratum_rows": 2370,
+    "quota": 160.24,
+    "picked": 160
+   },
+   "gd_taskmaster3|noul": {
+    "stratum_rows": 2335,
+    "quota": 157.87,
+    "picked": 158
+   },
+   "gd_tathqa|noul": {
+    "stratum_rows": 4154,
+    "quota": 280.86,
+    "picked": 281
+   },
+   "gd_tatqa|noul": {
+    "stratum_rows": 6740,
+    "quota": 455.7,
+    "picked": 456
+   },
+   "gd_totto_claims|noul": {
+    "stratum_rows": 6226,
+    "quota": 420.95,
+    "picked": 421
+   },
+   "gd_uds_ordinal|choice": {
+    "stratum_rows": 2173,
+    "quota": 146.92,
+    "picked": 147
+   },
+   "gd_uds_ordinal|mixed": {
+    "stratum_rows": 1836,
+    "quota": 124.13,
+    "picked": 125
+   },
+   "gd_usb_factuality|noul": {
+    "stratum_rows": 1253,
+    "quota": 84.72,
+    "picked": 85
+   },
+   "gd_uscg_mariner|choice": {
+    "stratum_rows": 4883,
+    "quota": 330.14,
+    "picked": 330
+   },
+   "gd_uscg_mariner|mixed": {
+    "stratum_rows": 3927,
+    "quota": 265.51,
+    "picked": 266
+   },
+   "gd_wands_product|choice": {
+    "stratum_rows": 1138,
+    "quota": 76.94,
+    "picked": 77
+   },
+   "gd_wands_product|mixed": {
+    "stratum_rows": 1014,
+    "quota": 68.56,
+    "picked": 68
+   },
+   "gd_webred|choice": {
+    "stratum_rows": 1911,
+    "quota": 129.2,
+    "picked": 129
+   },
+   "gd_webred|mixed": {
+    "stratum_rows": 1637,
+    "quota": 110.68,
+    "picked": 110
+   },
+   "gd_winogrande|noul": {
+    "stratum_rows": 4734,
+    "quota": 320.07,
+    "picked": 320
+   },
+   "gd_wnut17|choice": {
+    "stratum_rows": 878,
+    "quota": 59.36,
+    "picked": 59
+   },
+   "gd_wnut17|mixed": {
+    "stratum_rows": 738,
+    "quota": 49.9,
+    "picked": 49
+   },
+   "gd_wtq|noul": {
+    "stratum_rows": 5183,
+    "quota": 350.43,
+    "picked": 350
+   },
+   "hard_affect_c|choice": {
+    "stratum_rows": 81,
+    "quota": 5.48,
+    "picked": 5
+   },
+   "hard_affect_c|noul": {
+    "stratum_rows": 28,
+    "quota": 1.89,
+    "picked": 2
+   },
+   "hard_clinical|choice": {
+    "stratum_rows": 176,
+    "quota": 11.9,
+    "picked": 12
+   },
+   "hard_clinical|noul": {
+    "stratum_rows": 66,
+    "quota": 4.46,
+    "picked": 4
+   },
+   "hard_codebook_c|choice": {
+    "stratum_rows": 123,
+    "quota": 8.32,
+    "picked": 8
+   },
+   "hard_codebook_c|noul": {
+    "stratum_rows": 27,
+    "quota": 1.83,
+    "picked": 2
+   },
+   "hard_contracts|choice": {
+    "stratum_rows": 188,
+    "quota": 12.71,
+    "picked": 13
+   },
+   "hard_contracts|noul": {
+    "stratum_rows": 64,
+    "quota": 4.33,
+    "picked": 4
+   },
+   "hard_evidence_a|choice": {
+    "stratum_rows": 152,
+    "quota": 10.28,
+    "picked": 10
+   },
+   "hard_evidence_a|noul": {
+    "stratum_rows": 102,
+    "quota": 6.9,
+    "picked": 7
+   },
+   "hard_evidence_b|choice": {
+    "stratum_rows": 156,
+    "quota": 10.55,
+    "picked": 11
+   },
+   "hard_evidence_b|noul": {
+    "stratum_rows": 94,
+    "quota": 6.36,
+    "picked": 6
+   },
+   "hard_evidence_claims_a|choice": {
+    "stratum_rows": 178,
+    "quota": 12.03,
+    "picked": 12
+   },
+   "hard_evidence_claims_a|noul": {
+    "stratum_rows": 90,
+    "quota": 6.08,
+    "picked": 6
+   },
+   "hard_evidence_claims_b|choice": {
+    "stratum_rows": 180,
+    "quota": 12.17,
+    "picked": 12
+   },
+   "hard_evidence_claims_b|noul": {
+    "stratum_rows": 62,
+    "quota": 4.19,
+    "picked": 4
+   },
+   "hard_nli_a|choice": {
+    "stratum_rows": 110,
+    "quota": 7.44,
+    "picked": 7
+   },
+   "hard_nli_a|noul": {
+    "stratum_rows": 124,
+    "quota": 8.38,
+    "picked": 8
+   },
+   "hard_nli_b|choice": {
+    "stratum_rows": 174,
+    "quota": 11.76,
+    "picked": 12
+   },
+   "hard_nli_b|noul": {
+    "stratum_rows": 102,
+    "quota": 6.9,
+    "picked": 7
+   },
+   "hard_nli_c|choice": {
+    "stratum_rows": 82,
+    "quota": 5.54,
+    "picked": 6
+   },
+   "hard_nli_c|noul": {
+    "stratum_rows": 44,
+    "quota": 2.97,
+    "picked": 3
+   },
+   "hard_reason_c|choice": {
+    "stratum_rows": 101,
+    "quota": 6.83,
+    "picked": 7
+   },
+   "hard_reason_c|noul": {
+    "stratum_rows": 36,
+    "quota": 2.43,
+    "picked": 2
+   },
+   "hard_scales|choice": {
+    "stratum_rows": 216,
+    "quota": 14.6,
+    "picked": 15
+   },
+   "hard_scales|noul": {
+    "stratum_rows": 56,
+    "quota": 3.79,
+    "picked": 4
+   },
+   "judge_helpsteer2|noul": {
+    "stratum_rows": 461,
+    "quota": 31.17,
+    "picked": 31
+   },
+   "judge_mathderiv|noul": {
+    "stratum_rows": 479,
+    "quota": 32.39,
+    "picked": 32
+   },
+   "judge_prm800k|noul": {
+    "stratum_rows": 826,
+    "quota": 55.85,
+    "picked": 56
+   },
+   "logiqa2|choice": {
+    "stratum_rows": 441,
+    "quota": 29.82,
+    "picked": 30
+   },
+   "massive|choice": {
+    "stratum_rows": 1452,
+    "quota": 98.17,
+    "picked": 98
+   },
+   "massive|mixed": {
+    "stratum_rows": 48,
+    "quota": 3.25,
+    "picked": 6
+   },
+   "massive|noul": {
+    "stratum_rows": 203,
+    "quota": 13.73,
+    "picked": 15
+   },
+   "mnli|noul": {
+    "stratum_rows": 661,
+    "quota": 44.69,
+    "picked": 45
+   },
+   "mnli3|choice": {
+    "stratum_rows": 50,
+    "quota": 3.38,
+    "picked": 3
+   },
+   "mnli3|mixed": {
+    "stratum_rows": 655,
+    "quota": 44.29,
+    "picked": 42
+   },
+   "mnli3|noul": {
+    "stratum_rows": 385,
+    "quota": 26.03,
+    "picked": 27
+   },
+   "mnli_neutral|noul": {
+    "stratum_rows": 164,
+    "quota": 11.09,
+    "picked": 12
+   },
+   "mrpc|choice": {
+    "stratum_rows": 40,
+    "quota": 2.7,
+    "picked": 3
+   },
+   "mrpc|mixed": {
+    "stratum_rows": 363,
+    "quota": 24.54,
+    "picked": 25
+   },
+   "mrpc|noul": {
+    "stratum_rows": 229,
+    "quota": 15.48,
+    "picked": 14
+   },
+   "musr_murder_mysteries|choice": {
+    "stratum_rows": 111,
+    "quota": 7.5,
+    "picked": 8
+   },
+   "musr_object_placements|choice": {
+    "stratum_rows": 96,
+    "quota": 6.49,
+    "picked": 6
+   },
+   "musr_team_allocation|choice": {
+    "stratum_rows": 91,
+    "quota": 6.15,
+    "picked": 6
+   },
+   "pg_conflict|choice": {
+    "stratum_rows": 301,
+    "quota": 20.35,
+    "picked": 20
+   },
+   "pg_conflict|noul": {
+    "stratum_rows": 68,
+    "quota": 4.6,
+    "picked": 5
+   },
+   "pg_evidence|choice": {
+    "stratum_rows": 326,
+    "quota": 22.04,
+    "picked": 22
+   },
+   "pg_evidence|noul": {
+    "stratum_rows": 69,
+    "quota": 4.67,
+    "picked": 5
+   },
+   "pg_multihop|choice": {
+    "stratum_rows": 294,
+    "quota": 19.88,
+    "picked": 20
+   },
+   "pg_multihop|noul": {
+    "stratum_rows": 102,
+    "quota": 6.9,
+    "picked": 7
+   },
+   "pg_numeric|choice": {
+    "stratum_rows": 321,
+    "quota": 21.7,
+    "picked": 22
+   },
+   "pg_numeric|noul": {
+    "stratum_rows": 83,
+    "quota": 5.61,
+    "picked": 6
+   },
+   "pg_policy|choice": {
+    "stratum_rows": 282,
+    "quota": 19.07,
+    "picked": 19
+   },
+   "pg_policy|noul": {
+    "stratum_rows": 89,
+    "quota": 6.02,
+    "picked": 6
+   },
+   "pg_routing|choice": {
+    "stratum_rows": 302,
+    "quota": 20.42,
+    "picked": 20
+   },
+   "pg_routing|noul": {
+    "stratum_rows": 76,
+    "quota": 5.14,
+    "picked": 5
+   },
+   "pg_temporal|choice": {
+    "stratum_rows": 295,
+    "quota": 19.95,
+    "picked": 20
+   },
+   "pg_temporal|noul": {
+    "stratum_rows": 80,
+    "quota": 5.41,
+    "picked": 5
+   },
+   "planted_a|noul": {
+    "stratum_rows": 448,
+    "quota": 30.29,
+    "picked": 30
+   },
+   "planted_b|noul": {
+    "stratum_rows": 442,
+    "quota": 29.88,
+    "picked": 30
+   },
+   "proc_adversarial|choice": {
+    "stratum_rows": 186,
+    "quota": 12.58,
+    "picked": 13
+   },
+   "proc_evidence|choice": {
+    "stratum_rows": 165,
+    "quota": 11.16,
+    "picked": 11
+   },
+   "proc_longpolicy|choice": {
+    "stratum_rows": 150,
+    "quota": 10.14,
+    "picked": 10
+   },
+   "proc_multihop|choice": {
+    "stratum_rows": 152,
+    "quota": 10.28,
+    "picked": 10
+   },
+   "proc_routing|choice": {
+    "stratum_rows": 157,
+    "quota": 10.61,
+    "picked": 11
+   },
+   "proc_rubric|choice": {
+    "stratum_rows": 98,
+    "quota": 6.63,
+    "picked": 7
+   },
+   "proc_rubric|noul": {
+    "stratum_rows": 30,
+    "quota": 2.03,
+    "picked": 2
+   },
+   "proc_temporal|choice": {
+    "stratum_rows": 188,
+    "quota": 12.71,
+    "picked": 13
+   },
+   "proc_tradeoff|choice": {
+    "stratum_rows": 155,
+    "quota": 10.48,
+    "picked": 10
+   },
+   "proc_trap|choice": {
+    "stratum_rows": 169,
+    "quota": 11.43,
+    "picked": 11
+   },
+   "proofwriter|choice": {
+    "stratum_rows": 687,
+    "quota": 46.45,
+    "picked": 46
+   },
+   "qnli|choice": {
+    "stratum_rows": 71,
+    "quota": 4.8,
+    "picked": 6
+   },
+   "qnli|mixed": {
+    "stratum_rows": 533,
+    "quota": 36.04,
+    "picked": 36
+   },
+   "qnli|noul": {
+    "stratum_rows": 299,
+    "quota": 20.22,
+    "picked": 21
+   },
+   "rte|choice": {
+    "stratum_rows": 51,
+    "quota": 3.45,
+    "picked": 0
+   },
+   "rte|mixed": {
+    "stratum_rows": 611,
+    "quota": 41.31,
+    "picked": 0
+   },
+   "rte|noul": {
+    "stratum_rows": 290,
+    "quota": 19.61,
+    "picked": 20
+   },
+   "std_trademark|choice": {
+    "stratum_rows": 380,
+    "quota": 25.69,
+    "picked": 26
+   },
+   "std_trademark|noul": {
+    "stratum_rows": 60,
+    "quota": 4.06,
+    "picked": 4
+   },
+   "tb_label_nli|choice": {
+    "stratum_rows": 819,
+    "quota": 55.37,
+    "picked": 55
+   },
+   "tb_label_nli|noul": {
+    "stratum_rows": 469,
+    "quota": 31.71,
+    "picked": 31
+   },
+   "wiki_stance_afd|noul": {
+    "stratum_rows": 901,
+    "quota": 60.92,
+    "picked": 61
+   },
+   "yahoo|choice": {
+    "stratum_rows": 23,
+    "quota": 1.56,
+    "picked": 3
+   },
+   "yahoo|mixed": {
+    "stratum_rows": 316,
+    "quota": 21.37,
+    "picked": 23
+   },
+   "yahoo|noul": {
+    "stratum_rows": 199,
+    "quota": 13.45,
+    "picked": 13
+   },
+   "yelp|choice": {
+    "stratum_rows": 15,
+    "quota": 1.01,
+    "picked": 0
+   },
+   "yelp|mixed": {
+    "stratum_rows": 175,
+    "quota": 11.83,
+    "picked": 11
+   },
+   "yelp|noul": {
+    "stratum_rows": 113,
+    "quota": 7.64,
+    "picked": 9
+   },
+   "yelp5|choice": {
+    "stratum_rows": 373,
+    "quota": 25.22,
+    "picked": 26
+   }
+  }
+ },
+ "exclusions": {
+  "excluded_sources": {
+   "gd_hatemoji_build_v14": [
+    "family source name",
+    "family dataset: family tag / name / word on 2541 of 2541 rows"
+   ],
+   "gd_wiki_help_routing": [
+    "family dataset: family tag / name / word on 2662 of 6440 rows",
+    "probe/devx source"
+   ],
+   "gd_saferproducts_severity": [
+    "probe/devx source"
+   ],
+   "gd_slur_usage": [
+    "family source name",
+    "family dataset: family tag / name / word on 3477 of 3477 rows"
+   ],
+   "gd_vader_intensity": [
+    "family dataset: family tag / name / word on 3389 of 3389 rows"
+   ],
+   "gd_redocred": [
+    "owner OHS-3 12-gram check hit (whole source left out)"
+   ],
+   "hard_policy_b": [
+    "family dataset: family tag / name / word on 64 of 256 rows"
+   ],
+   "gd_east_asian_prejudice": [
+    "family source name",
+    "family dataset: family tag / name / word on 3600 of 3600 rows"
+   ],
+   "br_politeness_wiki": [
+    "family dataset: family tag / name / word on 488 of 488 rows"
+   ],
+   "gd_ghc_hate": [
+    "family source name",
+    "family dataset: family tag / name / word on 1273 of 1273 rows"
+   ],
+   "hard_affect": [
+    "family dataset: family tag / name / word on 98 of 292 rows"
+   ],
+   "gd_aegis_prompts": [
+    "family dataset: family tag / name / word on 1887 of 1887 rows"
+   ],
+   "br_edos": [
+    "family dataset: family tag / name / word on 624 of 624 rows"
+   ],
+   "br_hatemoji_build": [
+    "family source name",
+    "family dataset: family tag / name / word on 362 of 362 rows"
+   ],
+   "gd_edos_sexism": [
+    "family source name",
+    "family dataset: family tag / name / word on 3433 of 3433 rows"
+   ],
+   "br_xed_en": [
+    "family dataset: family tag / name / word on 432 of 499 rows"
+   ],
+   "br_ghc": [
+    "family dataset: family tag / name / word on 472 of 472 rows"
+   ],
+   "toxic_conv": [
+    "family source name",
+    "family dataset: family tag / name / word on 729 of 729 rows",
+    "probe/devx source"
+   ],
+   "std_evidence": [
+    "held-out (OHS) source ['evidence_inference']"
+   ],
+   "hard_policy_a": [
+    "family dataset: family tag / name / word on 176 of 274 rows"
+   ],
+   "binj_intent": [
+    "family dataset: family tag / name / word on 212 of 212 rows"
+   ],
+   "std_hate": [
+    "family source name",
+    "family dataset: family tag / name / word on 378 of 378 rows"
+   ],
+   "br_convabuse": [
+    "family source name",
+    "family dataset: family tag / name / word on 397 of 397 rows"
+   ],
+   "hard_intent_c": [
+    "family dataset: family tag / name / word on 61 of 114 rows"
+   ],
+   "binj_offensive": [
+    "family source name",
+    "family dataset: family tag / name / word on 203 of 203 rows"
+   ],
+   "hard_policy_c": [
+    "family dataset: family tag / name / word on 27 of 127 rows"
+   ],
+   "civil_comments": [
+    "family dataset: family tag / name / word on 364 of 364 rows",
+    "probe/devx source"
+   ],
+   "gd_mfrc": [
+    "family dataset: family tag / name / word on 2916 of 8254 rows"
+   ],
+   "gd_helpsteer3_pref": [
+    "owner OHS-3 12-gram check hit (whole source left out)"
+   ],
+   "gd_politeness_votes": [
+    "family dataset: family tag / name / word on 526 of 1444 rows"
+   ],
+   "gd_misogyny_reddit": [
+    "family source name",
+    "family dataset: family tag / name / word on 328 of 328 rows"
+   ],
+   "std_hearsay": [
+    "held-out (OHS) source ['legalbench_hearsay']"
+   ]
+  },
+  "excluded_source_rows": 59239,
+  "excluded_derived_sources": [],
+  "excluded_sources_part2": {
+   "hard_clinical": [
+    "dev/eval source ['hard_clinical'] (part (ii) only; the replay keeps it)"
+   ],
+   "gd_hatemoji_build_v14": [
+    "family source name",
+    "family dataset: family tag / name / word on 2541 of 2541 rows"
+   ],
+   "proc_evidence": [
+    "dev/eval source ['proc_evidence'] (part (ii) only; the replay keeps it)"
+   ],
+   "gd_wiki_help_routing": [
+    "family dataset: family tag / name / word on 2662 of 6440 rows",
+    "probe/devx source"
+   ],
+   "proc_temporal": [
+    "dev/eval source ['proc_temporal'] (part (ii) only; the replay keeps it)"
+   ],
+   "gd_saferproducts_severity": [
+    "probe/devx source"
+   ],
+   "banking77": [
+    "dev/eval source ['banking77'] (part (ii) only; the replay keeps it)"
+   ],
+   "gd_slur_usage": [
+    "family source name",
+    "family dataset: family tag / name / word on 3477 of 3477 rows"
+   ],
+   "pg_routing": [
+    "dev/eval source ['pg_routing'] (part (ii) only; the replay keeps it)"
+   ],
+   "clinc150": [
+    "dev/eval source ['clinc150'] (part (ii) only; the replay keeps it)"
+   ],
+   "tb_label_nli": [
+    "dev/eval source ['redef:tb_label_nli', 'tb_label_nli'] (part (ii) only; the replay keeps it)"
+   ],
+   "gd_vader_intensity": [
+    "family dataset: family tag / name / word on 3389 of 3389 rows"
+   ],
+   "gd_redocred": [
+    "owner OHS-3 12-gram check hit (whole source left out)"
+   ],
+   "hard_policy_b": [
+    "family dataset: family tag / name / word on 64 of 256 rows",
+    "dev/eval source ['hard_policy_b'] (part (ii) only; the replay keeps it)"
+   ],
+   "gd_east_asian_prejudice": [
+    "family source name",
+    "family dataset: family tag / name / word on 3600 of 3600 rows"
+   ],
+   "pg_conflict": [
+    "dev/eval source ['pg_conflict'] (part (ii) only; the replay keeps it)"
+   ],
+   "br_politeness_wiki": [
+    "family dataset: family tag / name / word on 488 of 488 rows"
+   ],
+   "proc_adversarial": [
+    "dev/eval source ['proc_adversarial'] (part (ii) only; the replay keeps it)"
+   ],
+   "gd_ghc_hate": [
+    "family source name",
+    "family dataset: family tag / name / word on 1273 of 1273 rows",
+    "dev/eval source ['hate'] (part (ii) only; the replay keeps it)"
+   ],
+   "pg_evidence": [
+    "dev/eval source ['pg_evidence'] (part (ii) only; the replay keeps it)"
+   ],
+   "hard_affect": [
+    "family dataset: family tag / name / word on 98 of 292 rows",
+    "dev/eval source ['hard_affect', 'hard_affect_c'] (part (ii) only; the replay keeps it)"
+   ],
+   "hard_codebook_c": [
+    "dev/eval source ['hard_codebook_c'] (part (ii) only; the replay keeps it)"
+   ],
+   "pg_policy": [
+    "dev/eval source ['pg_policy'] (part (ii) only; the replay keeps it)"
+   ],
+   "gd_aegis_prompts": [
+    "family dataset: family tag / name / word on 1887 of 1887 rows"
+   ],
+   "br_edos": [
+    "family dataset: family tag / name / word on 624 of 624 rows"
+   ],
+   "br_hatemoji_build": [
+    "family source name",
+    "family dataset: family tag / name / word on 362 of 362 rows"
+   ],
+   "gd_edos_sexism": [
+    "family source name",
+    "family dataset: family tag / name / word on 3433 of 3433 rows"
+   ],
+   "proc_longpolicy": [
+    "dev/eval source ['proc_longpolicy'] (part (ii) only; the replay keeps it)"
+   ],
+   "proc_multihop": [
+    "dev/eval source ['proc_multihop'] (part (ii) only; the replay keeps it)"
+   ],
+   "hard_nli_c": [
+    "dev/eval source ['hard_nli_c'] (part (ii) only; the replay keeps it)"
+   ],
+   "hard_reason_c": [
+    "dev/eval source ['hard_reason_c'] (part (ii) only; the replay keeps it)"
+   ],
+   "br_xed_en": [
+    "family dataset: family tag / name / word on 432 of 499 rows"
+   ],
+   "hard_affect_c": [
+    "dev/eval source ['hard_affect', 'hard_affect_c'] (part (ii) only; the replay keeps it)"
+   ],
+   "pg_temporal": [
+    "dev/eval source ['pg_temporal'] (part (ii) only; the replay keeps it)"
+   ],
+   "pg_numeric": [
+    "dev/eval source ['pg_numeric'] (part (ii) only; the replay keeps it)"
+   ],
+   "proc_rubric": [
+    "dev/eval source ['proc_rubric'] (part (ii) only; the replay keeps it)"
+   ],
+   "br_ghc": [
+    "family dataset: family tag / name / word on 472 of 472 rows"
+   ],
+   "toxic_conv": [
+    "family source name",
+    "family dataset: family tag / name / word on 729 of 729 rows",
+    "probe/devx source"
+   ],
+   "std_evidence": [
+    "held-out (OHS) source ['evidence_inference']",
+    "dev/eval source ['hard_evidence_a', 'hard_evidence_b', 'hard_evidence_claims_a'] (part (ii) only; the replay keeps it)"
+   ],
+   "hard_evidence_a": [
+    "dev/eval source ['hard_evidence_a'] (part (ii) only; the replay keeps it)"
+   ],
+   "hard_policy_a": [
+    "family dataset: family tag / name / word on 176 of 274 rows",
+    "dev/eval source ['hard_policy_a'] (part (ii) only; the replay keeps it)"
+   ],
+   "proc_tradeoff": [
+    "dev/eval source ['proc_tradeoff'] (part (ii) only; the replay keeps it)"
+   ],
+   "pg_multihop": [
+    "dev/eval source ['pg_multihop'] (part (ii) only; the replay keeps it)"
+   ],
+   "binj_intent": [
+    "family dataset: family tag / name / word on 212 of 212 rows"
+   ],
+   "hard_contracts": [
+    "dev/eval source ['hard_contracts'] (part (ii) only; the replay keeps it)"
+   ],
+   "proc_routing": [
+    "dev/eval source ['proc_routing'] (part (ii) only; the replay keeps it)"
+   ],
+   "hard_evidence_claims_a": [
+    "dev/eval source ['hard_evidence_claims_a'] (part (ii) only; the replay keeps it)"
+   ],
+   "std_hate": [
+    "family source name",
+    "family dataset: family tag / name / word on 378 of 378 rows",
+    "dev/eval source ['hate'] (part (ii) only; the replay keeps it)"
+   ],
+   "proc_trap": [
+    "dev/eval source ['proc_trap'] (part (ii) only; the replay keeps it)"
+   ],
+   "hard_scales": [
+    "dev/eval source ['hard_scales'] (part (ii) only; the replay keeps it)"
+   ],
+   "br_convabuse": [
+    "family source name",
+    "family dataset: family tag / name / word on 397 of 397 rows"
+   ],
+   "hard_evidence_claims_b": [
+    "dev/eval source ['hard_evidence_claims_b'] (part (ii) only; the replay keeps it)"
+   ],
+   "hard_intent_c": [
+    "family dataset: family tag / name / word on 61 of 114 rows",
+    "dev/eval source ['hard_intent_c'] (part (ii) only; the replay keeps it)"
+   ],
+   "hard_nli_b": [
+    "dev/eval source ['hard_nli_b'] (part (ii) only; the replay keeps it)"
+   ],
+   "binj_offensive": [
+    "family source name",
+    "family dataset: family tag / name / word on 203 of 203 rows",
+    "dev/eval source ['offensive'] (part (ii) only; the replay keeps it)"
+   ],
+   "hard_policy_c": [
+    "family dataset: family tag / name / word on 27 of 127 rows",
+    "dev/eval source ['hard_policy_c'] (part (ii) only; the replay keeps it)"
+   ],
+   "hard_nli_a": [
+    "dev/eval source ['hard_nli_a'] (part (ii) only; the replay keeps it)"
+   ],
+   "hard_evidence_b": [
+    "dev/eval source ['hard_evidence_b'] (part (ii) only; the replay keeps it)"
+   ],
+   "civil_comments": [
+    "family dataset: family tag / name / word on 364 of 364 rows",
+    "probe/devx source"
+   ],
+   "gd_mfrc": [
+    "family dataset: family tag / name / word on 2916 of 8254 rows"
+   ],
+   "gd_climate_targets": [
+    "dev/eval source ['climate'] (part (ii) only; the replay keeps it)"
+   ],
+   "gd_helpsteer3_pref": [
+    "owner OHS-3 12-gram check hit (whole source left out)"
+   ],
+   "wiki_stance_afd": [
+    "dev/eval source ['afd', 'wiki_stance_afd'] (part (ii) only; the replay keeps it)"
+   ],
+   "gd_politeness_votes": [
+    "family dataset: family tag / name / word on 526 of 1444 rows"
+   ],
+   "gd_misogyny_reddit": [
+    "family source name",
+    "family dataset: family tag / name / word on 328 of 328 rows"
+   ],
+   "planted_a": [
+    "dev/eval source ['planted_a'] (part (ii) only; the replay keeps it)"
+   ],
+   "planted_b": [
+    "dev/eval source ['planted_b'] (part (ii) only; the replay keeps it)"
+   ],
+   "std_hearsay": [
+    "held-out (OHS) source ['legalbench_hearsay']"
+   ]
+  },
+  "excluded_source_rows_part2": 75290,
+  "excluded_derived_sources_part2": [],
+  "replay_rule": "G_r = byte copies of C1's own golden_train units: held-out (OHS-1/2, OHS-3 names, JevBench) source / 12-gram / template filters, never a dev / eval / OHS row (ids, (state, instruction) pairs), the family, the probe / devx, label noise; the dev / eval 12-gram, template and frame filters are report only (replay_dev_overlap_report_only)",
+  "replay_dev_overlap_report_only": {
+   "dev12gram_report_only": 1228,
+   "banned_word_report_only": 10841,
+   "devtmpl6_report_only": 1159
+  },
+  "replay_rows_from_dev_eval_sources": 1078,
+  "replay_dev_eval_sources_drawn": [
+   "banking77",
+   "clinc150",
+   "gd_climate_targets",
+   "hard_affect_c",
+   "hard_clinical",
+   "hard_codebook_c",
+   "hard_contracts",
+   "hard_evidence_a",
+   "hard_evidence_b",
+   "hard_evidence_claims_a",
+   "hard_evidence_claims_b",
+   "hard_nli_a",
+   "hard_nli_b",
+   "hard_nli_c",
+   "hard_reason_c",
+   "hard_scales",
+   "pg_conflict",
+   "pg_evidence",
+   "pg_multihop",
+   "pg_numeric",
+   "pg_policy",
+   "pg_routing",
+   "pg_temporal",
+   "planted_a",
+   "planted_b",
+   "proc_adversarial",
+   "proc_evidence",
+   "proc_longpolicy",
+   "proc_multihop",
+   "proc_routing",
+   "proc_rubric",
+   "proc_temporal",
+   "proc_tradeoff",
+   "proc_trap",
+   "tb_label_nli",
+   "wiki_stance_afd"
+  ],
+  "golden_row_reasons": {
+   "report_banned_word": 179175,
+   "banned_word_report_only": 179175,
+   "family_meta": 16539,
+   "family_source": 16721,
+   "family_label": 5782,
+   "family_card": 32688,
+   "hate_word": 7136,
+   "report_probe_heldout_run": 11371,
+   "probe_source": 12847,
+   "dev12gram_report_only": 13655,
+   "part2_only_12gram": 14217,
+   "family_instruction": 15937,
+   "report_probe_heldout_lexeme": 22180,
+   "devtmpl6_report_only": 11463,
+   "part2_only_tmpl6": 18772,
+   "tmpl6_heldout": 7309,
+   "negbench_run": 1459,
+   "12gram_heldout": 562,
+   "failure_phrase": 260,
+   "text": 12,
+   "probe_12gram": 6
+  },
+  "golden_unit_reasons": {
+   "family_label": 3877,
+   "excluded_source": 45214,
+   "family_card": 25237,
+   "family_source": 13208,
+   "hate_word": 6149,
+   "family_meta": 13440,
+   "probe_source": 7661,
+   "family_instruction": 12365,
+   "tmpl6_heldout": 6642,
+   "label_noise_id": 179,
+   "negbench_run": 822,
+   "12gram_heldout": 366,
+   "failure_phrase": 198,
+   "text": 12,
+   "probe_12gram": 4
+  },
+  "golden_dneg_units": {
+   "all": 930,
+   "clean": 102,
+   "rows_clean": 366,
+   "reasons": {
+    "12gram_heldout": 56,
+    "banned_word": 678,
+    "12gram": 116,
+    "tmpl6": 229,
+    "tmpl6_heldout": 39,
+    "family_label": 63,
+    "excluded_source": 228,
+    "family_card": 60,
+    "family_source": 58,
+    "probe_source": 86,
+    "family_instruction": 90,
+    "negbench_run": 246,
+    "probe_heldout_lexeme": 63,
+    "probe_heldout_run": 52,
+    "failure_phrase": 17,
+    "hate_word": 3
+   }
+  },
+  "golden_dneg_units_in_replay": {
+   "units": 36,
+   "rows": 138,
+   "relations_kept_as_in_golden": "yes (not retyped)"
+  },
+  "f4_units": {
+   "all": 750,
+   "clean": 454,
+   "rows_clean": 908,
+   "reasons": {
+    "f4_base_source_excluded:gd_saferproducts_severity": 101,
+    "probe_heldout_run": 64,
+    "failure_phrase": 63,
+    "probe_heldout_lexeme": 57,
+    "f4_base_source_excluded:gd_slur_usage": 50,
+    "family_card": 66,
+    "f4_base_source_excluded:gd_hatemoji_build_v14": 16,
+    "family_label": 16,
+    "hate_word": 16,
+    "family_instruction": 7,
+    "label_noise_id": 1
+   }
+  },
+  "family_rows_by_source_top": {
+   "gd_east_asian_prejudice": 3600,
+   "gd_slur_usage": 3477,
+   "gd_edos_sexism": 3433,
+   "gd_vader_intensity": 3389,
+   "gd_mfrc": 2916,
+   "gd_wiki_help_routing": 2662,
+   "gd_hatemoji_build_v14": 2541,
+   "gd_aegis_prompts": 1887,
+   "gd_gen_routing": 1677,
+   "gd_ghc_hate": 1273,
+   "toxic_conv": 729,
+   "br_edos": 624,
+   "gd_politeness_votes": 526,
+   "br_politeness_wiki": 488,
+   "br_ghc": 472,
+   "br_xed_en": 432,
+   "br_convabuse": 397,
+   "std_hate": 378,
+   "civil_comments": 364,
+   "br_hatemoji_build": 362,
+   "gd_misogyny_reddit": 328,
+   "binj_intent": 212,
+   "binj_offensive": 203,
+   "hard_policy_a": 176,
+   "gd_druglabel_section": 167,
+   "tb_label_nli": 136,
+   "hard_affect": 98,
+   "hard_policy_b": 64,
+   "hard_intent_c": 61,
+   "br_cfpb": 51
+  },
+  "probe_refs": {
+   "states": 544,
+   "sources": [
+    "civil_comments",
+    "civil_comments+toxic_conv",
+    "gd_saferproducts_severity",
+    "gd_wiki_help_routing",
+    "toxic_conv"
+   ],
+   "heldout_runs6": 10721,
+   "word_lexemes": [
+    "abstain",
+    "at no point",
+    "contrary",
+    "enter no if",
+    "erroneous",
+    "far from true",
+    "forgo",
+    "groundless",
+    "mark no if",
+    "no longer",
+    "not one",
+    "overturn",
+    "rebut",
+    "turn down",
+    "veto"
+   ]
+  },
+  "probe_state_12gram_share_worst": 0.0882,
+  "ref_sources": 116,
+  "ohs3_names": [
+   "bias_in_bios_profession",
+   "causal_news_corpus",
+   "ct_study_type",
+   "few_nerd_fine",
+   "fewrel_relation",
+   "fr_agency",
+   "medrxiv_category",
+   "nvd_attack_vector",
+   "openfda_recall_class",
+   "rosetta_code_language",
+   "se_site",
+   "uk_wq_answering_body",
+   "zenodo_resource_type",
+   "sec_8k_item"
+  ],
+  "negbench": {
+   "ScoNe (tasksource/scone, HF cache)": {
+    "files": 2,
+    "texts": 3222,
+    "new_runs": 9767
+   },
+   "ScoNe (official repo files, OHS-1 build cache)": {
+    "files": 6,
+    "texts": 636,
+    "new_runs": 7
+   },
+   "CONDAQA questions and negated sentences (lasha-nlp/CONDAQA)": {
+    "files": 3,
+    "texts": 5127,
+    "new_runs": 91834
+   },
+   "CONDAQA (hub json copy)": {
+    "files": 3,
+    "texts": 5127,
+    "new_runs": 0
+   },
+   "NaN-NLI (joey234/nan-nli)": {
+    "files": 1,
+    "texts": 299,
+    "new_runs": 621
+   },
+   "This is not a Dataset (HiTZ)": {
+    "files": 3,
+    "texts": 379519,
+    "new_runs": 575736
+   },
+   "MoNLI (tasksource/monli)": {
+    "files": 2,
+    "texts": 642,
+    "new_runs": 132
+   },
+   "HateCheck (Paul/hatecheck)": {
+    "files": 1,
+    "texts": 4544,
+    "new_runs": 10238
+   },
+   "Recalled public templates (NOT verified against the original files; CheckList, NeQA, BLiMP, Thunder-NUBench, NegBench, IMPPRES style frames)": {
+    "files": 1,
+    "texts": 9,
+    "new_runs": 25
+   }
+  },
+  "failure_questions": 90,
+  "golden_rows_repeated_in_another_unit_as_in_golden_train": 5,
+  "final_recheck_hits": 0,
+  "ohs3_data": "never opened (12-gram check vs OHS-3 is owner-only: extra/fix2_ohs3_blind.py)"
+ }
+}

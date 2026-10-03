@@ -1,0 +1,4602 @@
+{
+ "_doc": "devx parse table for decide2 (ids r_f7x2_* from devx round 2, r_f7x3_* from devx round 3). The r_f7x2_* LFs were authored by the round-3 arbiter from yn2b/f7_devx_blind_packet.jsonl ONLY (id, ladder_id, orig, qtype, state, instructions, card, options); no devx gold, sidecar, relation file, builder or audit file was opened before that table was written and hashed. Per ladder: atoms (how label / item atoms are read from the human label(s) of meta.orig) and facts (bool, quote from the state). Per row: the LF of 'yes' (yes/no rows) or CHOICE(select, [option LFs]). Ops: NOT, AND, OR, ANY, NONE, ALL, ATLEAST k, ATMOST k, EXACTLY k, L (label), I (batch item), F (fact). AMBIG(note, A, B) holds two readings of one construction and is refused when they differ: every devx exceptive (r_f7x2_14a_4 option 1, r_f7x3_17*_1, r_f7x2_17a_4 option 4; arbiter A3). The round-3 AMBIG wrappers were added after the golds were seen (disclosed in yn2b/F7_OBJECTIONS.md, arbiter round 3); every other r_f7x2_* LF is unchanged from the version hashed before any gold was opened (sha256 407c27f1...). The 4 r_f7x3_* LFs were written by the round-4 arbiter from the blind packet text only, before any decide2 or precheck run on them (yn2b/F7_OBJECTIONS.md, arbiter round 4). text_sha256: per row, the sha256 of json.dumps([state, instructions, card, options], ensure_ascii=False, sort_keys=True) of the text the LF was written from; decide2 refuses a devx row whose text differs.",
+ "ladders": {
+  "f7x2_L01a": {
+   "atoms": {
+    "type": "tox",
+    "pos": [
+     "toxic"
+    ],
+    "neg": [
+     "non-toxic"
+    ]
+   },
+   "facts": {
+    "personal": [
+     true,
+     "'And you are an ignorant, ignorant person.' addresses the reader as 'you'"
+    ]
+   }
+  },
+  "f7x2_L01b": {
+   "atoms": {
+    "type": "tox",
+    "pos": [
+     "toxic"
+    ],
+    "neg": [
+     "non-toxic"
+    ]
+   },
+   "facts": {
+    "question": [
+     true,
+     "'What are they, pray tell?'"
+    ]
+   }
+  },
+  "f7x2_L02a": {
+   "atoms": {
+    "type": "tox",
+    "pos": [
+     "abusive"
+    ],
+    "neg": [
+     "civil"
+    ]
+   },
+   "facts": {
+    "insulting": [
+     true,
+     "'Wrong again genius. ... your smelly bait, troll.' calls the reader 'troll'"
+    ]
+   }
+  },
+  "f7x2_L02b": {
+   "atoms": {
+    "type": "tox",
+    "pos": [
+     "abusive"
+    ],
+    "neg": [
+     "civil"
+    ]
+   },
+   "facts": {
+    "advertising": [
+     false,
+     "'I read that, too. Doesn't change the fact ...' promotes nothing"
+    ]
+   }
+  },
+  "f7x2_L03a": {
+   "atoms": {
+    "type": "tox",
+    "pos": [
+     "hostile",
+     "demeans, insults or threatens"
+    ],
+    "neg": [
+     "harmless",
+     "free of insults and threats",
+     "free of insults",
+     "does not insult or threaten anyone"
+    ]
+   },
+   "facts": {
+    "praises_dunham": [
+     false,
+     "'resembles that dummy Walter on Jeff Dunham's shows' praises no one"
+    ],
+    "sunset": [
+     false,
+     "no sunset in the comment"
+    ],
+    "asks_question": [
+     false,
+     "two statements, no question mark"
+    ]
+   }
+  },
+  "f7x2_L03b": {
+   "atoms": {
+    "type": "tox",
+    "pos": [
+     "hostile",
+     "demeans, insults or threatens"
+    ],
+    "neg": [
+     "harmless",
+     "free of insults and threats",
+     "free of insults",
+     "does not insult or threaten anyone"
+    ]
+   },
+   "facts": {
+    "stayed_home_thursday": [
+     false,
+     "'I was there on Thursday'"
+    ],
+    "red_marker": [
+     false,
+     "'a black permanent marker'"
+    ],
+    "nobody_saw_bus": [
+     false,
+     "'he definitely made it to the bus'; nothing says nobody saw the bus"
+    ]
+   }
+  },
+  "f7x2_L04a": {
+   "atoms": {
+    "type": "tox",
+    "pos": [
+     "insulting"
+    ],
+    "neg": [
+     "insult-free"
+    ]
+   },
+   "facts": {
+    "trump_unpopular_anywhere": [
+     false,
+     "'Trump ain't all that popular here' (here, not anywhere)"
+    ],
+    "names_alaska_governor": [
+     false,
+     "George W is named as winning Alaska, not as its governor"
+    ],
+    "praises_george_w": [
+     false,
+     "'the idiot, George W'"
+    ]
+   }
+  },
+  "f7x2_L04b": {
+   "atoms": {
+    "type": "tox",
+    "pos": [
+     "insulting"
+    ],
+    "neg": [
+     "insult-free"
+    ]
+   },
+   "facts": {
+    "about_doctors": [
+     true,
+     "'I don't see doctors like that. My doctor asks ...'"
+    ]
+   }
+  },
+  "f7x2_L05a": {
+   "atoms": {
+    "type": "tox",
+    "pos": [
+     "offensive"
+    ],
+    "neg": [
+     "inoffensive"
+    ]
+   },
+   "facts": {
+    "praise": [
+     false,
+     "'Are you ever going to give it up? Moronic!'"
+    ]
+   }
+  },
+  "f7x2_L05b": {
+   "atoms": {
+    "type": "tox",
+    "pos": [
+     "offensive"
+    ],
+    "neg": [
+     "inoffensive"
+    ]
+   },
+   "facts": {
+    "friendly": [
+     true,
+     "'They are coming out of the woodwork my friend.'"
+    ]
+   }
+  },
+  "f7x2_L06a": {
+   "atoms": {
+    "type": "tox",
+    "pos": [
+     "attack"
+    ],
+    "neg": [
+     "no attack"
+    ]
+   },
+   "facts": {
+    "ends_exclamation": [
+     true,
+     "ends with 'Don't deny it!'"
+    ]
+   }
+  },
+  "f7x2_L06b": {
+   "atoms": {
+    "type": "tox",
+    "pos": [
+     "attack"
+    ],
+    "neg": [
+     "no attack"
+    ]
+   },
+   "facts": {
+    "hope": [
+     true,
+     "'Let's hope this one proves not to be true!'"
+    ]
+   }
+  },
+  "f7x2_L07a": {
+   "atoms": {
+    "type": "tox",
+    "pos": [
+     "rude"
+    ],
+    "neg": [
+     "respectful",
+     "free of insults"
+    ]
+   },
+   "facts": {
+    "thanks_flowers": [
+     false,
+     "no thanks in the comment"
+    ],
+    "lacks_praise_for_addressee": [
+     true,
+     "Ms. Flowers is called 'stupid'; no praise"
+    ],
+    "asks_question": [
+     false,
+     "one statement, no question mark"
+    ],
+    "names_judge": [
+     false,
+     "no judge named"
+    ]
+   }
+  },
+  "f7x2_L07b": {
+   "atoms": {
+    "type": "tox",
+    "pos": [
+     "rude"
+    ],
+    "neg": [
+     "respectful",
+     "free of insults"
+    ]
+   },
+   "facts": {
+    "predicts_eu_end": [
+     true,
+     "'This is the end of the european union'"
+    ],
+    "time_frame": [
+     true,
+     "'it will be gone in a year or 2'"
+    ],
+    "mentions_eu": [
+     true,
+     "'the european union'"
+    ]
+   }
+  },
+  "f7x2_L08a": {
+   "atoms": {
+    "type": "safer",
+    "map": {
+     "mild": [
+      "no incident, no injury",
+      "incident, but no injury",
+      "injury, no first aid or medical care",
+      "injury, first aid by a non-medical person"
+     ],
+     "moderate": [
+      "injury, seen by a medical professional",
+      "injury, emergency department treatment"
+     ],
+     "severe": [
+      "injury, hospital admission",
+      "death"
+     ]
+    }
+   },
+   "facts": {}
+  },
+  "f7x2_L08b": {
+   "atoms": {
+    "type": "safer",
+    "map": {
+     "mild": [
+      "no incident, no injury",
+      "incident, but no injury",
+      "injury, no first aid or medical care",
+      "injury, first aid by a non-medical person"
+     ],
+     "moderate": [
+      "injury, seen by a medical professional",
+      "injury, emergency department treatment"
+     ],
+     "severe": [
+      "injury, hospital admission",
+      "death"
+     ]
+    }
+   },
+   "facts": {}
+  },
+  "f7x2_L09a": {
+   "atoms": {
+    "type": "safer",
+    "map": {
+     "mild": [
+      "no incident, no injury",
+      "incident, but no injury",
+      "injury, no first aid or medical care",
+      "injury, first aid by a non-medical person"
+     ],
+     "moderate": [
+      "injury, seen by a medical professional",
+      "injury, emergency department treatment"
+     ],
+     "severe": [
+      "injury, hospital admission",
+      "death"
+     ]
+    }
+   },
+   "facts": {}
+  },
+  "f7x2_L09b": {
+   "atoms": {
+    "type": "safer",
+    "map": {
+     "mild": [
+      "no incident, no injury",
+      "incident, but no injury",
+      "injury, no first aid or medical care",
+      "injury, first aid by a non-medical person"
+     ],
+     "moderate": [
+      "injury, seen by a medical professional",
+      "injury, emergency department treatment"
+     ],
+     "severe": [
+      "injury, hospital admission",
+      "death"
+     ]
+    }
+   },
+   "facts": {
+    "knife_folded": [
+     true,
+     "'ended up folding onto my index finger'"
+    ],
+    "three_stitches": [
+     true,
+     "'requiring 3 stitches'"
+    ],
+    "urgent_care": [
+     true,
+     "'at a local Urgent Care Clinic'"
+    ]
+   }
+  },
+  "f7x2_L10a": {
+   "atoms": {
+    "type": "safer",
+    "map": {
+     "hurt": [
+      "injury, no first aid or medical care",
+      "injury, first aid by a non-medical person",
+      "injury, seen by a medical professional",
+      "injury, emergency department treatment",
+      "injury, hospital admission",
+      "death"
+     ],
+     "medical care": [
+      "injury, first aid by a non-medical person",
+      "injury, seen by a medical professional",
+      "injury, emergency department treatment",
+      "injury, hospital admission"
+     ],
+     "home-handled": [
+      "no incident, no injury",
+      "incident, but no injury",
+      "injury, no first aid or medical care",
+      "injury, first aid by a non-medical person"
+     ]
+    }
+   },
+   "facts": {
+    "appliance": [
+     true,
+     "'Bosch dishwasher'"
+    ]
+   }
+  },
+  "f7x2_L10b": {
+   "atoms": {
+    "type": "safer",
+    "map": {
+     "hurt": [
+      "injury, no first aid or medical care",
+      "injury, first aid by a non-medical person",
+      "injury, seen by a medical professional",
+      "injury, emergency department treatment",
+      "injury, hospital admission",
+      "death"
+     ],
+     "medical care": [
+      "injury, first aid by a non-medical person",
+      "injury, seen by a medical professional",
+      "injury, emergency department treatment",
+      "injury, hospital admission"
+     ],
+     "home-handled": [
+      "no incident, no injury",
+      "incident, but no injury",
+      "injury, no first aid or medical care",
+      "injury, first aid by a non-medical person"
+     ]
+    }
+   },
+   "facts": {
+    "stroller_blue": [
+     false,
+     "'Red single britax b- agile stroller'"
+    ],
+    "thumb_crushed": [
+     false,
+     "'my right hand fifth digit was crushed' (the little finger)"
+    ],
+    "admitted": [
+     false,
+     "'I went to urgent care'; no admission"
+    ]
+   }
+  },
+  "f7x2_L11a": {
+   "atoms": {
+    "type": "wiki",
+    "map": {
+     "Computing desk": "Computing reference desk",
+     "Mathematics desk": "Mathematics reference desk",
+     "Language desk": "Language reference desk",
+     "Science desk": "Science reference desk",
+     "Entertainment desk": "Entertainment reference desk",
+     "Humanities desk": "Humanities reference desk",
+     "COI board": "Conflict of interest noticeboard",
+     "Sources board": "Reliable sources noticeboard",
+     "Technical board": "Village pump (technical)",
+     "Fringe board": "Fringe theories noticeboard"
+    }
+   },
+   "facts": {
+    "asks_printer": [
+     false,
+     "asks about the language used with punched cards"
+    ],
+    "heading_wikipedia": [
+     false,
+     "'Heading: What programming language did Punched cards use?'"
+    ]
+   }
+  },
+  "f7x2_L11b": {
+   "atoms": {
+    "type": "wiki",
+    "map": {
+     "Computing desk": "Computing reference desk",
+     "Mathematics desk": "Mathematics reference desk",
+     "Language desk": "Language reference desk",
+     "Science desk": "Science reference desk",
+     "Entertainment desk": "Entertainment reference desk",
+     "Humanities desk": "Humanities reference desk",
+     "COI board": "Conflict of interest noticeboard",
+     "Sources board": "Reliable sources noticeboard",
+     "Technical board": "Village pump (technical)",
+     "Fringe board": "Fringe theories noticeboard"
+    }
+   },
+   "facts": {}
+  },
+  "f7x2_L12a": {
+   "atoms": {
+    "type": "wiki",
+    "map": {
+     "Computing desk": "Computing reference desk",
+     "Mathematics desk": "Mathematics reference desk",
+     "Language desk": "Language reference desk",
+     "Science desk": "Science reference desk",
+     "Entertainment desk": "Entertainment reference desk",
+     "Humanities desk": "Humanities reference desk",
+     "COI board": "Conflict of interest noticeboard",
+     "Sources board": "Reliable sources noticeboard",
+     "Technical board": "Village pump (technical)",
+     "Fringe board": "Fringe theories noticeboard"
+    }
+   },
+   "facts": {
+    "asks_question": [
+     true,
+     "'What would you call someone who studies carnivals?'"
+    ]
+   }
+  },
+  "f7x2_L12b": {
+   "atoms": {
+    "type": "wiki",
+    "map": {
+     "Computing desk": "Computing reference desk",
+     "Mathematics desk": "Mathematics reference desk",
+     "Language desk": "Language reference desk",
+     "Science desk": "Science reference desk",
+     "Entertainment desk": "Entertainment reference desk",
+     "Humanities desk": "Humanities reference desk",
+     "COI board": "Conflict of interest noticeboard",
+     "Sources board": "Reliable sources noticeboard",
+     "Technical board": "Village pump (technical)",
+     "Fringe board": "Fringe theories noticeboard"
+    }
+   },
+   "facts": {
+    "asks_finale": [
+     true,
+     "'in the series finale of Passions?'"
+    ],
+    "names_crane": [
+     true,
+     "'Alistair Crane'"
+    ],
+    "names_passions": [
+     true,
+     "'Passions'"
+    ]
+   }
+  },
+  "f7x2_L13a": {
+   "atoms": {
+    "type": "wiki",
+    "map": {
+     "Computing desk": "Computing reference desk",
+     "Mathematics desk": "Mathematics reference desk",
+     "Language desk": "Language reference desk",
+     "Science desk": "Science reference desk",
+     "Entertainment desk": "Entertainment reference desk",
+     "Humanities desk": "Humanities reference desk",
+     "COI board": "Conflict of interest noticeboard",
+     "Sources board": "Reliable sources noticeboard",
+     "Technical board": "Village pump (technical)",
+     "Fringe board": "Fringe theories noticeboard"
+    }
+   },
+   "facts": {
+    "asks_cite_website": [
+     true,
+     "'Is sikhiwiki.org a reliable source for anything?'"
+    ],
+    "asks_sikhiwiki": [
+     true,
+     "'Is sikhiwiki.org a reliable source for anything?'"
+    ],
+    "mentions_historian": [
+     true,
+     "'Karam Singh (historian)'"
+    ],
+    "point_editor": [
+     true,
+     "'I'd like to be able to point the editor towards a discussion'"
+    ]
+   }
+  },
+  "f7x2_L13b": {
+   "atoms": {
+    "type": "wiki",
+    "map": {
+     "Computing desk": "Computing reference desk",
+     "Mathematics desk": "Mathematics reference desk",
+     "Language desk": "Language reference desk",
+     "Science desk": "Science reference desk",
+     "Entertainment desk": "Entertainment reference desk",
+     "Humanities desk": "Humanities reference desk",
+     "COI board": "Conflict of interest noticeboard",
+     "Sources board": "Reliable sources noticeboard",
+     "Technical board": "Village pump (technical)",
+     "Fringe board": "Fringe theories noticeboard"
+    }
+   },
+   "facts": {
+    "asks_cite_website": [
+     false,
+     "'... was written by GAWRDpr, Obvious COI problem.' asks about no source"
+    ],
+    "broken_template": [
+     false,
+     "no template mentioned"
+    ],
+    "names_fringe": [
+     false,
+     "no fringe theory named"
+    ]
+   }
+  },
+  "f7x2_L14a": {
+   "atoms": {
+    "type": "tox_batch"
+   },
+   "facts": {}
+  },
+  "f7x2_L14b": {
+   "atoms": {
+    "type": "tox_batch"
+   },
+   "facts": {
+    "c2_alaskans": [
+     true,
+     "Comment 2: 'I hope  Alaskans will enjoy'"
+    ],
+    "c3_uber": [
+     true,
+     "Comment 3: 'allow über'"
+    ],
+    "c4_fuel_cells": [
+     true,
+     "Comment 4: 'Hydrogen fuel cells'"
+    ]
+   }
+  },
+  "f7x2_L15a": {
+   "atoms": {
+    "type": "tox_batch"
+   },
+   "facts": {}
+  },
+  "f7x2_L15b": {
+   "atoms": {
+    "type": "tox_batch"
+   },
+   "facts": {}
+  },
+  "f7x2_L16a": {
+   "atoms": {
+    "type": "safer_batch",
+    "map": {
+     "hurt": [
+      "injury, no first aid or medical care",
+      "injury, first aid by a non-medical person",
+      "injury, seen by a medical professional",
+      "injury, emergency department treatment",
+      "injury, hospital admission",
+      "death"
+     ]
+    }
+   },
+   "facts": {
+    "r1_golf_cart_stop": [
+     true,
+     "Report 1: 'bringing the golf cart to an abrupt stop'"
+    ],
+    "r2_rash_neck": [
+     true,
+     "Report 2: 'a red, painful, papular rash on my neck'"
+    ],
+    "r2_sports": [
+     true,
+     "Report 2: 'during sports'"
+    ]
+   }
+  },
+  "f7x2_L16b": {
+   "atoms": {
+    "type": "safer_batch",
+    "map": {
+     "hurt": [
+      "injury, no first aid or medical care",
+      "injury, first aid by a non-medical person",
+      "injury, seen by a medical professional",
+      "injury, emergency department treatment",
+      "injury, hospital admission",
+      "death"
+     ]
+    }
+   },
+   "facts": {
+    "r1_toy_upright": [
+     false,
+     "Report 1: 'This item tips over backwards'"
+    ],
+    "r2_doctor_hand": [
+     false,
+     "Report 2 mentions pain to the hand; no doctor"
+    ],
+    "r1_names_store": [
+     false,
+     "Report 1 says 'Check Amazon reviews'; it does not say where the rocker was bought"
+    ]
+   }
+  },
+  "f7x2_L17a": {
+   "atoms": {
+    "type": "wiki_batch",
+    "map": {
+     "Computing desk": "Computing reference desk",
+     "Mathematics desk": "Mathematics reference desk",
+     "Language desk": "Language reference desk",
+     "Science desk": "Science reference desk",
+     "Entertainment desk": "Entertainment reference desk",
+     "Humanities desk": "Humanities reference desk",
+     "COI board": "Conflict of interest noticeboard",
+     "Sources board": "Reliable sources noticeboard",
+     "Technical board": "Village pump (technical)",
+     "Fringe board": "Fringe theories noticeboard"
+    }
+   },
+   "facts": {}
+  },
+  "f7x2_L17b": {
+   "atoms": {
+    "type": "wiki_batch",
+    "map": {
+     "Computing desk": "Computing reference desk",
+     "Mathematics desk": "Mathematics reference desk",
+     "Language desk": "Language reference desk",
+     "Science desk": "Science reference desk",
+     "Entertainment desk": "Entertainment reference desk",
+     "Humanities desk": "Humanities reference desk",
+     "COI board": "Conflict of interest noticeboard",
+     "Sources board": "Reliable sources noticeboard",
+     "Technical board": "Village pump (technical)",
+     "Fringe board": "Fringe theories noticeboard"
+    }
+   },
+   "facts": {
+    "p1_colorblind": [
+     true,
+     "Post 1: 'How do scientists \"know\" that?' (animals color-blind)"
+    ],
+    "p2_hebrew": [
+     true,
+     "Post 2: 'When was the Hebrew calendar created?'"
+    ],
+    "p3_formula": [
+     true,
+     "Post 3: 'What formula could I use?'"
+    ]
+   }
+  },
+  "f7x2_L18a": {
+   "atoms": {
+    "type": "record"
+   },
+   "facts": {
+    "asks_refund": [
+     true,
+     "'Please send my money back to the card I paid with.'"
+    ],
+    "other_request": [
+     false,
+     "the only request is the money back"
+    ],
+    "praise": [
+     false,
+     "no thanks for a good order; the lid arrived cracked"
+    ]
+   }
+  },
+  "f7x2_L18b": {
+   "atoms": {
+    "type": "record"
+   },
+   "facts": {
+    "asks_refund": [
+     false,
+     "'Please send me a new kettle in its place.'"
+    ],
+    "other_request": [
+     true,
+     "'Please send me a new kettle in its place.'"
+    ],
+    "complaint": [
+     true,
+     "'arrived on Tuesday with a cracked lid'"
+    ]
+   }
+  },
+  "f7x2_L19a": {
+   "atoms": {
+    "type": "record"
+   },
+   "facts": {
+    "asks_refund": [
+     true,
+     "'I would like my money back, please.'"
+    ],
+    "note_claims_refund": [
+     true,
+     "'Triage note: topic = refund request'"
+    ],
+    "by_chat": [
+     true,
+     "'Channel: chat'"
+    ],
+    "lamp_broken": [
+     true,
+     "'the lamp inside is broken'"
+    ],
+    "ticket_55_2190": [
+     true,
+     "'Ticket: 55-2190'"
+    ]
+   }
+  },
+  "f7x2_L19b": {
+   "atoms": {
+    "type": "record"
+   },
+   "facts": {
+    "asks_refund": [
+     false,
+     "'Could you pass this on to the courier?'; no refund asked"
+    ],
+    "note_claims_refund": [
+     false,
+     "'Triage note: topic = packaging; refund wanted = no'"
+    ],
+    "lamp_broken": [
+     false,
+     "'the lamp inside works'"
+    ]
+   }
+  },
+  "f7x2_L20a": {
+   "atoms": {
+    "type": "record"
+   },
+   "facts": {
+    "receipt": [
+     true,
+     "'\"receipt\": \"scan_0412.pdf\"'"
+    ],
+    "expense": [
+     true,
+     "'\"claim_id\": \"EXP-30771\"' ... 'amount_eur'"
+    ]
+   }
+  },
+  "f7x2_L20b": {
+   "atoms": {
+    "type": "record"
+   },
+   "facts": {
+    "receipt": [
+     false,
+     "'\"receipt\": null'"
+    ],
+    "expense": [
+     true,
+     "'\"claim_id\": \"EXP-30771\"' ... 'amount_eur'"
+    ]
+   }
+  },
+  "f7x2_L21a": {
+   "atoms": {
+    "type": "record"
+   },
+   "facts": {
+    "delivered": [
+     true,
+     "'13:31  delivered; signed by R. Binley'"
+    ],
+    "signed": [
+     true,
+     "'signed by R. Binley'"
+    ],
+    "label_5_may": [
+     false,
+     "'2026-05-03 08:14  label printed'"
+    ],
+    "asked_text": [
+     false,
+     "'customer had asked for a call before delivery'"
+    ]
+   }
+  },
+  "f7x2_L21b": {
+   "atoms": {
+    "type": "record"
+   },
+   "facts": {
+    "delivered": [
+     false,
+     "'13:31  delivery attempt failed; parcel taken back to Hollins depot'"
+    ],
+    "scanned": [
+     true,
+     "'parcel scanned at Hollins depot'"
+    ]
+   }
+  },
+  "f7x2_L22a": {
+   "atoms": {
+    "type": "record"
+   },
+   "facts": {
+    "approved": [
+     true,
+     "'[11:15] Bemis Belov: Approved, go ahead.'"
+    ],
+    "bot_1116_claims_unapproved": [
+     false,
+     "'[11:16] IT bot: Status changed: approved.'"
+    ],
+    "manager_out": [
+     false,
+     "'Approved, go ahead.'"
+    ],
+    "logged_6602": [
+     false,
+     "'Request logged as ACC-6620.'"
+    ],
+    "payroll": [
+     false,
+     "'edit access to the Q3 budget sheet'"
+    ]
+   }
+  },
+  "f7x2_L22b": {
+   "atoms": {
+    "type": "record"
+   },
+   "facts": {
+    "approved": [
+     false,
+     "'I'm out today, I'll look at it tomorrow.' / 'Status unchanged: unapproved.'"
+    ],
+    "bot_1116_claims_unapproved": [
+     true,
+     "'[11:16] IT bot: Status unchanged: unapproved.'"
+    ],
+    "logged": [
+     true,
+     "'Request logged as ACC-6620.'"
+    ]
+   }
+  }
+ },
+ "rows": {
+  "r_f7x2_01a_0": [
+   "L",
+   "toxic"
+  ],
+  "r_f7x2_01a_1": [
+   "L",
+   "non-toxic"
+  ],
+  "r_f7x2_01a_2": [
+   "NOT",
+   [
+    "L",
+    "non-toxic"
+   ]
+  ],
+  "r_f7x2_01a_3": [
+   "NOT",
+   [
+    "NOT",
+    [
+     "L",
+     "non-toxic"
+    ]
+   ]
+  ],
+  "r_f7x2_01a_4": [
+   "CHOICE",
+   "false",
+   [
+    [
+     "L",
+     "toxic"
+    ],
+    [
+     "F",
+     "personal"
+    ],
+    [
+     "L",
+     "non-toxic"
+    ]
+   ]
+  ],
+  "r_f7x2_01b_0": [
+   "L",
+   "toxic"
+  ],
+  "r_f7x2_01b_1": [
+   "L",
+   "non-toxic"
+  ],
+  "r_f7x2_01b_2": [
+   "NOT",
+   [
+    "L",
+    "non-toxic"
+   ]
+  ],
+  "r_f7x2_01b_3": [
+   "NOT",
+   [
+    "NOT",
+    [
+     "L",
+     "non-toxic"
+    ]
+   ]
+  ],
+  "r_f7x2_01b_4": [
+   "CHOICE",
+   "false",
+   [
+    [
+     "L",
+     "non-toxic"
+    ],
+    [
+     "F",
+     "question"
+    ],
+    [
+     "NOT",
+     [
+      "L",
+      "non-toxic"
+     ]
+    ]
+   ]
+  ],
+  "r_f7x2_02a_0": [
+   "L",
+   "abusive"
+  ],
+  "r_f7x2_02a_1": [
+   "AND",
+   [
+    "L",
+    "civil"
+   ],
+   [
+    "NOT",
+    [
+     "L",
+     "abusive"
+    ]
+   ]
+  ],
+  "r_f7x2_02a_2": [
+   "NOT",
+   [
+    "L",
+    "civil"
+   ]
+  ],
+  "r_f7x2_02a_3": [
+   "NOT",
+   [
+    "NOT",
+    [
+     "L",
+     "civil"
+    ]
+   ]
+  ],
+  "r_f7x2_02a_4": [
+   "CHOICE",
+   "false",
+   [
+    [
+     "L",
+     "abusive"
+    ],
+    [
+     "F",
+     "insulting"
+    ],
+    [
+     "L",
+     "civil"
+    ]
+   ]
+  ],
+  "r_f7x2_02b_0": [
+   "L",
+   "abusive"
+  ],
+  "r_f7x2_02b_1": [
+   "AND",
+   [
+    "L",
+    "civil"
+   ],
+   [
+    "NOT",
+    [
+     "L",
+     "abusive"
+    ]
+   ]
+  ],
+  "r_f7x2_02b_2": [
+   "NOT",
+   [
+    "L",
+    "civil"
+   ]
+  ],
+  "r_f7x2_02b_3": [
+   "NOT",
+   [
+    "NOT",
+    [
+     "L",
+     "civil"
+    ]
+   ]
+  ],
+  "r_f7x2_02b_4": [
+   "CHOICE",
+   "true",
+   [
+    [
+     "L",
+     "abusive"
+    ],
+    [
+     "F",
+     "advertising"
+    ],
+    [
+     "L",
+     "civil"
+    ]
+   ]
+  ],
+  "r_f7x2_03a_0": [
+   "L",
+   "demeans, insults or threatens"
+  ],
+  "r_f7x2_03a_1": [
+   "NOT",
+   [
+    "L",
+    "hostile"
+   ]
+  ],
+  "r_f7x2_03a_2": [
+   "NOT",
+   [
+    "L",
+    "harmless"
+   ]
+  ],
+  "r_f7x2_03a_3": [
+   "NOT",
+   [
+    "NOT",
+    [
+     "L",
+     "free of insults and threats"
+    ]
+   ]
+  ],
+  "r_f7x2_03a_4": [
+   "CHOICE",
+   "true",
+   [
+    [
+     "NOT",
+     [
+      "L",
+      "free of insults"
+     ]
+    ],
+    [
+     "F",
+     "praises_dunham"
+    ],
+    [
+     "F",
+     "sunset"
+    ],
+    [
+     "F",
+     "asks_question"
+    ]
+   ]
+  ],
+  "r_f7x2_03b_0": [
+   "L",
+   "demeans, insults or threatens"
+  ],
+  "r_f7x2_03b_1": [
+   "NOT",
+   [
+    "L",
+    "hostile"
+   ]
+  ],
+  "r_f7x2_03b_2": [
+   "NOT",
+   [
+    "L",
+    "harmless"
+   ]
+  ],
+  "r_f7x2_03b_3": [
+   "NOT",
+   [
+    "NOT",
+    [
+     "L",
+     "free of insults and threats"
+    ]
+   ]
+  ],
+  "r_f7x2_03b_4": [
+   "CHOICE",
+   "true",
+   [
+    [
+     "L",
+     "does not insult or threaten anyone"
+    ],
+    [
+     "F",
+     "stayed_home_thursday"
+    ],
+    [
+     "F",
+     "red_marker"
+    ],
+    [
+     "F",
+     "nobody_saw_bus"
+    ]
+   ]
+  ],
+  "r_f7x2_04a_0": [
+   "L",
+   "insulting"
+  ],
+  "r_f7x2_04a_1": [
+   "NOT",
+   [
+    "L",
+    "insulting"
+   ]
+  ],
+  "r_f7x2_04a_2": [
+   "NOT",
+   [
+    "L",
+    "insult-free"
+   ]
+  ],
+  "r_f7x2_04a_3": [
+   "NOT",
+   [
+    "NOT",
+    [
+     "L",
+     "insult-free"
+    ]
+   ]
+  ],
+  "r_f7x2_04a_4": [
+   "CHOICE",
+   "true",
+   [
+    [
+     "F",
+     "trump_unpopular_anywhere"
+    ],
+    [
+     "NOT",
+     [
+      "L",
+      "insult-free"
+     ]
+    ],
+    [
+     "F",
+     "names_alaska_governor"
+    ],
+    [
+     "F",
+     "praises_george_w"
+    ]
+   ]
+  ],
+  "r_f7x2_04b_0": [
+   "L",
+   "insulting"
+  ],
+  "r_f7x2_04b_1": [
+   "NOT",
+   [
+    "L",
+    "insulting"
+   ]
+  ],
+  "r_f7x2_04b_2": [
+   "NOT",
+   [
+    "L",
+    "insult-free"
+   ]
+  ],
+  "r_f7x2_04b_3": [
+   "NOT",
+   [
+    "NOT",
+    [
+     "L",
+     "insult-free"
+    ]
+   ]
+  ],
+  "r_f7x2_04b_4": [
+   "CHOICE",
+   "false",
+   [
+    [
+     "NOT",
+     [
+      "L",
+      "insult-free"
+     ]
+    ],
+    [
+     "L",
+     "insult-free"
+    ],
+    [
+     "F",
+     "about_doctors"
+    ]
+   ]
+  ],
+  "r_f7x2_05a_0": [
+   "L",
+   "offensive"
+  ],
+  "r_f7x2_05a_1": [
+   "L",
+   "inoffensive"
+  ],
+  "r_f7x2_05a_2": [
+   "L",
+   "inoffensive"
+  ],
+  "r_f7x2_05a_3": [
+   "NOT",
+   [
+    "NOT",
+    [
+     "L",
+     "inoffensive"
+    ]
+   ]
+  ],
+  "r_f7x2_05a_4": [
+   "CHOICE",
+   "true",
+   [
+    [
+     "L",
+     "inoffensive"
+    ],
+    [
+     "NOT",
+     [
+      "L",
+      "inoffensive"
+     ]
+    ],
+    [
+     "F",
+     "praise"
+    ]
+   ]
+  ],
+  "r_f7x2_05b_0": [
+   "L",
+   "offensive"
+  ],
+  "r_f7x2_05b_1": [
+   "L",
+   "inoffensive"
+  ],
+  "r_f7x2_05b_2": [
+   "L",
+   "inoffensive"
+  ],
+  "r_f7x2_05b_3": [
+   "NOT",
+   [
+    "NOT",
+    [
+     "L",
+     "inoffensive"
+    ]
+   ]
+  ],
+  "r_f7x2_05b_4": [
+   "CHOICE",
+   "false",
+   [
+    [
+     "L",
+     "inoffensive"
+    ],
+    [
+     "NOT",
+     [
+      "L",
+      "inoffensive"
+     ]
+    ],
+    [
+     "F",
+     "friendly"
+    ]
+   ]
+  ],
+  "r_f7x2_06a_0": [
+   "L",
+   "attack"
+  ],
+  "r_f7x2_06a_1": [
+   "NOT",
+   [
+    "L",
+    "attack"
+   ]
+  ],
+  "r_f7x2_06a_2": [
+   "NOT",
+   [
+    "L",
+    "no attack"
+   ]
+  ],
+  "r_f7x2_06a_3": [
+   "NOT",
+   [
+    "NOT",
+    [
+     "L",
+     "no attack"
+    ]
+   ]
+  ],
+  "r_f7x2_06a_4": [
+   "CHOICE",
+   "false",
+   [
+    [
+     "L",
+     "no attack"
+    ],
+    [
+     "L",
+     "attack"
+    ],
+    [
+     "F",
+     "ends_exclamation"
+    ]
+   ]
+  ],
+  "r_f7x2_06b_0": [
+   "L",
+   "attack"
+  ],
+  "r_f7x2_06b_1": [
+   "NOT",
+   [
+    "L",
+    "attack"
+   ]
+  ],
+  "r_f7x2_06b_2": [
+   "NOT",
+   [
+    "L",
+    "no attack"
+   ]
+  ],
+  "r_f7x2_06b_3": [
+   "NOT",
+   [
+    "NOT",
+    [
+     "L",
+     "no attack"
+    ]
+   ]
+  ],
+  "r_f7x2_06b_4": [
+   "CHOICE",
+   "false",
+   [
+    [
+     "L",
+     "no attack"
+    ],
+    [
+     "F",
+     "hope"
+    ],
+    [
+     "NOT",
+     [
+      "L",
+      "no attack"
+     ]
+    ]
+   ]
+  ],
+  "r_f7x2_07a_0": [
+   "L",
+   "rude"
+  ],
+  "r_f7x2_07a_1": [
+   "L",
+   "respectful"
+  ],
+  "r_f7x2_07a_2": [
+   "NOT",
+   [
+    "NOT",
+    [
+     "L",
+     "rude"
+    ]
+   ]
+  ],
+  "r_f7x2_07a_3": [
+   "NOT",
+   [
+    "NOT",
+    [
+     "NOT",
+     [
+      "L",
+      "rude"
+     ]
+    ]
+   ]
+  ],
+  "r_f7x2_07a_4": [
+   "CHOICE",
+   "true",
+   [
+    [
+     "F",
+     "thanks_flowers"
+    ],
+    [
+     "F",
+     "lacks_praise_for_addressee"
+    ],
+    [
+     "F",
+     "asks_question"
+    ],
+    [
+     "F",
+     "names_judge"
+    ]
+   ]
+  ],
+  "r_f7x2_07b_0": [
+   "L",
+   "rude"
+  ],
+  "r_f7x2_07b_1": [
+   "L",
+   "respectful"
+  ],
+  "r_f7x2_07b_2": [
+   "NOT",
+   [
+    "NOT",
+    [
+     "L",
+     "rude"
+    ]
+   ]
+  ],
+  "r_f7x2_07b_3": [
+   "NOT",
+   [
+    "NOT",
+    [
+     "NOT",
+     [
+      "L",
+      "rude"
+     ]
+    ]
+   ]
+  ],
+  "r_f7x2_07b_4": [
+   "CHOICE",
+   "false",
+   [
+    [
+     "F",
+     "predicts_eu_end"
+    ],
+    [
+     "F",
+     "time_frame"
+    ],
+    [
+     "F",
+     "mentions_eu"
+    ],
+    [
+     "NOT",
+     [
+      "L",
+      "free of insults"
+     ]
+    ]
+   ]
+  ],
+  "r_f7x2_08a_0": [
+   "L",
+   "severe"
+  ],
+  "r_f7x2_08a_1": [
+   "OR",
+   [
+    "L",
+    "mild"
+   ],
+   [
+    "L",
+    "moderate"
+   ]
+  ],
+  "r_f7x2_08a_2": [
+   "NOT",
+   [
+    "NOT",
+    [
+     "L",
+     "severe"
+    ]
+   ]
+  ],
+  "r_f7x2_08a_3": [
+   "NOT",
+   [
+    "NOT",
+    [
+     "NOT",
+     [
+      "L",
+      "severe"
+     ]
+    ]
+   ]
+  ],
+  "r_f7x2_08a_4": [
+   "CHOICE",
+   "true",
+   [
+    [
+     "NOT",
+     [
+      "L",
+      "severe"
+     ]
+    ],
+    [
+     "L",
+     "mild"
+    ],
+    [
+     "NOT",
+     [
+      "NOT",
+      [
+       "L",
+       "severe"
+      ]
+     ]
+    ]
+   ]
+  ],
+  "r_f7x2_08b_0": [
+   "L",
+   "severe"
+  ],
+  "r_f7x2_08b_1": [
+   "OR",
+   [
+    "L",
+    "mild"
+   ],
+   [
+    "L",
+    "moderate"
+   ]
+  ],
+  "r_f7x2_08b_2": [
+   "NOT",
+   [
+    "NOT",
+    [
+     "L",
+     "severe"
+    ]
+   ]
+  ],
+  "r_f7x2_08b_3": [
+   "NOT",
+   [
+    "NOT",
+    [
+     "NOT",
+     [
+      "L",
+      "severe"
+     ]
+    ]
+   ]
+  ],
+  "r_f7x2_08b_4": [
+   "CHOICE",
+   "true",
+   [
+    [
+     "NOT",
+     [
+      "L",
+      "severe"
+     ]
+    ],
+    [
+     "L",
+     "mild"
+    ],
+    [
+     "L",
+     "severe"
+    ]
+   ]
+  ],
+  "r_f7x2_09a_0": [
+   "L",
+   "mild"
+  ],
+  "r_f7x2_09a_1": [
+   "NOT",
+   [
+    "L",
+    "mild"
+   ]
+  ],
+  "r_f7x2_09a_2": [
+   "NOT",
+   [
+    "NOT",
+    [
+     "L",
+     "mild"
+    ]
+   ]
+  ],
+  "r_f7x2_09a_3": [
+   "NOT",
+   [
+    "NOT",
+    [
+     "NOT",
+     [
+      "L",
+      "mild"
+     ]
+    ]
+   ]
+  ],
+  "r_f7x2_09a_4": [
+   "CHOICE",
+   "true",
+   [
+    [
+     "NOT",
+     [
+      "NOT",
+      [
+       "L",
+       "mild"
+      ]
+     ]
+    ],
+    [
+     "NOT",
+     [
+      "L",
+      "mild"
+     ]
+    ],
+    [
+     "L",
+     "severe"
+    ]
+   ]
+  ],
+  "r_f7x2_09b_0": [
+   "L",
+   "mild"
+  ],
+  "r_f7x2_09b_1": [
+   "NOT",
+   [
+    "L",
+    "mild"
+   ]
+  ],
+  "r_f7x2_09b_2": [
+   "NOT",
+   [
+    "NOT",
+    [
+     "L",
+     "mild"
+    ]
+   ]
+  ],
+  "r_f7x2_09b_3": [
+   "NOT",
+   [
+    "NOT",
+    [
+     "NOT",
+     [
+      "L",
+      "mild"
+     ]
+    ]
+   ]
+  ],
+  "r_f7x2_09b_4": [
+   "CHOICE",
+   "false",
+   [
+    [
+     "NOT",
+     [
+      "L",
+      "moderate"
+     ]
+    ],
+    [
+     "F",
+     "knife_folded"
+    ],
+    [
+     "F",
+     "three_stitches"
+    ],
+    [
+     "F",
+     "urgent_care"
+    ]
+   ]
+  ],
+  "r_f7x2_10a_0": [
+   "L",
+   "hurt"
+  ],
+  "r_f7x2_10a_1": [
+   "NOT",
+   [
+    "L",
+    "medical care"
+   ]
+  ],
+  "r_f7x2_10a_2": [
+   "NOT",
+   [
+    "L",
+    "home-handled"
+   ]
+  ],
+  "r_f7x2_10a_3": [
+   "NOT",
+   [
+    "NOT",
+    [
+     "NOT",
+     [
+      "L",
+      "hurt"
+     ]
+    ]
+   ]
+  ],
+  "r_f7x2_10a_4": [
+   "CHOICE",
+   "false",
+   [
+    [
+     "NOT",
+     [
+      "NOT",
+      [
+       "L",
+       "hurt"
+      ]
+     ]
+    ],
+    [
+     "NOT",
+     [
+      "L",
+      "hurt"
+     ]
+    ],
+    [
+     "F",
+     "appliance"
+    ]
+   ]
+  ],
+  "r_f7x2_10b_0": [
+   "L",
+   "hurt"
+  ],
+  "r_f7x2_10b_1": [
+   "NOT",
+   [
+    "L",
+    "medical care"
+   ]
+  ],
+  "r_f7x2_10b_2": [
+   "NOT",
+   [
+    "L",
+    "home-handled"
+   ]
+  ],
+  "r_f7x2_10b_3": [
+   "NOT",
+   [
+    "NOT",
+    [
+     "NOT",
+     [
+      "L",
+      "hurt"
+     ]
+    ]
+   ]
+  ],
+  "r_f7x2_10b_4": [
+   "CHOICE",
+   "true",
+   [
+    [
+     "F",
+     "stroller_blue"
+    ],
+    [
+     "F",
+     "thumb_crushed"
+    ],
+    [
+     "NOT",
+     [
+      "NOT",
+      [
+       "L",
+       "hurt"
+      ]
+     ]
+    ],
+    [
+     "F",
+     "admitted"
+    ]
+   ]
+  ],
+  "r_f7x2_11a_0": [
+   "L",
+   "Computing desk"
+  ],
+  "r_f7x2_11a_1": [
+   "OR",
+   [
+    "L",
+    "Mathematics desk"
+   ],
+   [
+    "L",
+    "Language desk"
+   ],
+   [
+    "L",
+    "Science desk"
+   ]
+  ],
+  "r_f7x2_11a_2": [
+   "NOT",
+   [
+    "NOT",
+    [
+     "L",
+     "Computing desk"
+    ]
+   ]
+  ],
+  "r_f7x2_11a_3": [
+   "NOT",
+   [
+    "NOT",
+    [
+     "NOT",
+     [
+      "L",
+      "Computing desk"
+     ]
+    ]
+   ]
+  ],
+  "r_f7x2_11a_4": [
+   "CHOICE",
+   "true",
+   [
+    [
+     "F",
+     "asks_printer"
+    ],
+    [
+     "L",
+     "Language desk"
+    ],
+    [
+     "NOT",
+     [
+      "L",
+      "Science desk"
+     ]
+    ],
+    [
+     "F",
+     "heading_wikipedia"
+    ]
+   ]
+  ],
+  "r_f7x2_11b_0": [
+   "L",
+   "Computing desk"
+  ],
+  "r_f7x2_11b_1": [
+   "OR",
+   [
+    "L",
+    "Mathematics desk"
+   ],
+   [
+    "L",
+    "Language desk"
+   ],
+   [
+    "L",
+    "Science desk"
+   ]
+  ],
+  "r_f7x2_11b_2": [
+   "NOT",
+   [
+    "NOT",
+    [
+     "L",
+     "Computing desk"
+    ]
+   ]
+  ],
+  "r_f7x2_11b_3": [
+   "NOT",
+   [
+    "NOT",
+    [
+     "NOT",
+     [
+      "L",
+      "Computing desk"
+     ]
+    ]
+   ]
+  ],
+  "r_f7x2_11b_4": [
+   "CHOICE",
+   "true",
+   [
+    [
+     "L",
+     "Computing desk"
+    ],
+    [
+     "NOT",
+     [
+      "L",
+      "Computing desk"
+     ]
+    ],
+    [
+     "L",
+     "Mathematics desk"
+    ]
+   ]
+  ],
+  "r_f7x2_12a_0": [
+   "L",
+   "Language desk"
+  ],
+  "r_f7x2_12a_1": [
+   "NOT",
+   [
+    "L",
+    "Language desk"
+   ]
+  ],
+  "r_f7x2_12a_2": [
+   "NOT",
+   [
+    "NOT",
+    [
+     "L",
+     "Language desk"
+    ]
+   ]
+  ],
+  "r_f7x2_12a_3": [
+   "NOT",
+   [
+    "NOT",
+    [
+     "NOT",
+     [
+      "L",
+      "Language desk"
+     ]
+    ]
+   ]
+  ],
+  "r_f7x2_12a_4": [
+   "CHOICE",
+   "false",
+   [
+    [
+     "NOT",
+     [
+      "L",
+      "Language desk"
+     ]
+    ],
+    [
+     "L",
+     "Language desk"
+    ],
+    [
+     "F",
+     "asks_question"
+    ]
+   ]
+  ],
+  "r_f7x2_12b_0": [
+   "L",
+   "Language desk"
+  ],
+  "r_f7x2_12b_1": [
+   "NOT",
+   [
+    "L",
+    "Language desk"
+   ]
+  ],
+  "r_f7x2_12b_2": [
+   "NOT",
+   [
+    "NOT",
+    [
+     "L",
+     "Language desk"
+    ]
+   ]
+  ],
+  "r_f7x2_12b_3": [
+   "NOT",
+   [
+    "NOT",
+    [
+     "NOT",
+     [
+      "L",
+      "Language desk"
+     ]
+    ]
+   ]
+  ],
+  "r_f7x2_12b_4": [
+   "CHOICE",
+   "false",
+   [
+    [
+     "NOT",
+     [
+      "NOT",
+      [
+       "L",
+       "Language desk"
+      ]
+     ]
+    ],
+    [
+     "F",
+     "asks_finale"
+    ],
+    [
+     "F",
+     "names_crane"
+    ],
+    [
+     "F",
+     "names_passions"
+    ]
+   ]
+  ],
+  "r_f7x2_13a_0": [
+   "L",
+   "Sources board"
+  ],
+  "r_f7x2_13a_1": [
+   "NOT",
+   [
+    "F",
+    "asks_cite_website"
+   ]
+  ],
+  "r_f7x2_13a_2": [
+   "NOT",
+   [
+    "NOT",
+    [
+     "L",
+     "Sources board"
+    ]
+   ]
+  ],
+  "r_f7x2_13a_3": [
+   "NOT",
+   [
+    "NOT",
+    [
+     "NOT",
+     [
+      "L",
+      "Sources board"
+     ]
+    ]
+   ]
+  ],
+  "r_f7x2_13a_4": [
+   "CHOICE",
+   "false",
+   [
+    [
+     "F",
+     "asks_sikhiwiki"
+    ],
+    [
+     "AND",
+     [
+      "NOT",
+      [
+       "L",
+       "Sources board"
+      ]
+     ],
+     [
+      "L",
+      "COI board"
+     ]
+    ],
+    [
+     "F",
+     "mentions_historian"
+    ],
+    [
+     "F",
+     "point_editor"
+    ]
+   ]
+  ],
+  "r_f7x2_13b_0": [
+   "L",
+   "Sources board"
+  ],
+  "r_f7x2_13b_1": [
+   "NOT",
+   [
+    "F",
+    "asks_cite_website"
+   ]
+  ],
+  "r_f7x2_13b_2": [
+   "NOT",
+   [
+    "NOT",
+    [
+     "L",
+     "Sources board"
+    ]
+   ]
+  ],
+  "r_f7x2_13b_3": [
+   "NOT",
+   [
+    "NOT",
+    [
+     "NOT",
+     [
+      "L",
+      "Sources board"
+     ]
+    ]
+   ]
+  ],
+  "r_f7x2_13b_4": [
+   "CHOICE",
+   "true",
+   [
+    [
+     "F",
+     "asks_cite_website"
+    ],
+    [
+     "F",
+     "broken_template"
+    ],
+    [
+     "F",
+     "names_fringe"
+    ],
+    [
+     "AND",
+     [
+      "NOT",
+      [
+       "L",
+       "Sources board"
+      ]
+     ],
+     [
+      "L",
+      "COI board"
+     ]
+    ]
+   ]
+  ],
+  "r_f7x2_14a_0": [
+   "ANY",
+   [
+    "I",
+    1
+   ],
+   [
+    "I",
+    2
+   ],
+   [
+    "I",
+    3
+   ],
+   [
+    "I",
+    4
+   ]
+  ],
+  "r_f7x2_14a_1": [
+   "NOT",
+   [
+    "ANY",
+    [
+     "I",
+     1
+    ],
+    [
+     "I",
+     2
+    ],
+    [
+     "I",
+     3
+    ],
+    [
+     "I",
+     4
+    ]
+   ]
+  ],
+  "r_f7x2_14a_2": [
+   "NOT",
+   [
+    "NONE",
+    [
+     "I",
+     1
+    ],
+    [
+     "I",
+     2
+    ],
+    [
+     "I",
+     3
+    ],
+    [
+     "I",
+     4
+    ]
+   ]
+  ],
+  "r_f7x2_14a_4": [
+   "CHOICE",
+   "true",
+   [
+    [
+     "AMBIG",
+     "exceptive inclusion condition: literal set-minus reading vs the reading in which the excepted item has the property (A3)",
+     [
+      "AND",
+      [
+       "NOT",
+       [
+        "I",
+        1
+       ]
+      ],
+      [
+       "NOT",
+       [
+        "I",
+        2
+       ]
+      ],
+      [
+       "NOT",
+       [
+        "I",
+        4
+       ]
+      ]
+     ],
+     [
+      "AND",
+      [
+       "I",
+       3
+      ],
+      [
+       "NOT",
+       [
+        "I",
+        1
+       ]
+      ],
+      [
+       "NOT",
+       [
+        "I",
+        2
+       ]
+      ],
+      [
+       "NOT",
+       [
+        "I",
+        4
+       ]
+      ]
+     ]
+    ],
+    [
+     "ALL",
+     [
+      "I",
+      1
+     ],
+     [
+      "I",
+      2
+     ],
+     [
+      "I",
+      3
+     ],
+     [
+      "I",
+      4
+     ]
+    ],
+    [
+     "NONE",
+     [
+      "I",
+      1
+     ],
+     [
+      "I",
+      2
+     ],
+     [
+      "I",
+      3
+     ],
+     [
+      "I",
+      4
+     ]
+    ],
+    [
+     "I",
+     1
+    ]
+   ]
+  ],
+  "r_f7x2_14b_0": [
+   "ANY",
+   [
+    "I",
+    1
+   ],
+   [
+    "I",
+    2
+   ],
+   [
+    "I",
+    3
+   ],
+   [
+    "I",
+    4
+   ]
+  ],
+  "r_f7x2_14b_1": [
+   "NOT",
+   [
+    "ANY",
+    [
+     "I",
+     1
+    ],
+    [
+     "I",
+     2
+    ],
+    [
+     "I",
+     3
+    ],
+    [
+     "I",
+     4
+    ]
+   ]
+  ],
+  "r_f7x2_14b_2": [
+   "NOT",
+   [
+    "NONE",
+    [
+     "I",
+     1
+    ],
+    [
+     "I",
+     2
+    ],
+    [
+     "I",
+     3
+    ],
+    [
+     "I",
+     4
+    ]
+   ]
+  ],
+  "r_f7x2_14b_4": [
+   "CHOICE",
+   "false",
+   [
+    [
+     "F",
+     "c2_alaskans"
+    ],
+    [
+     "NOT",
+     [
+      "ALL",
+      [
+       "NOT",
+       [
+        "I",
+        1
+       ]
+      ],
+      [
+       "NOT",
+       [
+        "I",
+        2
+       ]
+      ],
+      [
+       "NOT",
+       [
+        "I",
+        3
+       ]
+      ],
+      [
+       "NOT",
+       [
+        "I",
+        4
+       ]
+      ]
+     ]
+    ],
+    [
+     "F",
+     "c3_uber"
+    ],
+    [
+     "F",
+     "c4_fuel_cells"
+    ]
+   ]
+  ],
+  "r_f7x2_15a_0": [
+   "ATLEAST",
+   3,
+   [
+    "I",
+    1
+   ],
+   [
+    "I",
+    2
+   ],
+   [
+    "I",
+    3
+   ],
+   [
+    "I",
+    4
+   ],
+   [
+    "I",
+    5
+   ]
+  ],
+  "r_f7x2_15a_1": [
+   "NOT",
+   [
+    "ATMOST",
+    2,
+    [
+     "I",
+     1
+    ],
+    [
+     "I",
+     2
+    ],
+    [
+     "I",
+     3
+    ],
+    [
+     "I",
+     4
+    ],
+    [
+     "I",
+     5
+    ]
+   ]
+  ],
+  "r_f7x2_15a_2": [
+   "NOT",
+   [
+    "ATMOST",
+    2,
+    [
+     "I",
+     1
+    ],
+    [
+     "I",
+     2
+    ],
+    [
+     "I",
+     3
+    ],
+    [
+     "I",
+     4
+    ],
+    [
+     "I",
+     5
+    ]
+   ]
+  ],
+  "r_f7x2_15a_3": [
+   "NOT",
+   [
+    "NOT",
+    [
+     "ATMOST",
+     2,
+     [
+      "I",
+      1
+     ],
+     [
+      "I",
+      2
+     ],
+     [
+      "I",
+      3
+     ],
+     [
+      "I",
+      4
+     ],
+     [
+      "I",
+      5
+     ]
+    ]
+   ]
+  ],
+  "r_f7x2_15a_4": [
+   "CHOICE",
+   "true",
+   [
+    [
+     "EXACTLY",
+     2,
+     [
+      "I",
+      1
+     ],
+     [
+      "I",
+      2
+     ],
+     [
+      "I",
+      3
+     ],
+     [
+      "I",
+      4
+     ],
+     [
+      "I",
+      5
+     ]
+    ],
+    [
+     "ATMOST",
+     1,
+     [
+      "I",
+      1
+     ],
+     [
+      "I",
+      2
+     ],
+     [
+      "I",
+      3
+     ],
+     [
+      "I",
+      4
+     ],
+     [
+      "I",
+      5
+     ]
+    ],
+    [
+     "NOT",
+     [
+      "ALL",
+      [
+       "NOT",
+       [
+        "I",
+        1
+       ]
+      ],
+      [
+       "NOT",
+       [
+        "I",
+        2
+       ]
+      ],
+      [
+       "NOT",
+       [
+        "I",
+        3
+       ]
+      ],
+      [
+       "NOT",
+       [
+        "I",
+        4
+       ]
+      ],
+      [
+       "NOT",
+       [
+        "I",
+        5
+       ]
+      ]
+     ]
+    ],
+    [
+     "ALL",
+     [
+      "I",
+      1
+     ],
+     [
+      "I",
+      2
+     ],
+     [
+      "I",
+      3
+     ],
+     [
+      "I",
+      4
+     ],
+     [
+      "I",
+      5
+     ]
+    ]
+   ]
+  ],
+  "r_f7x2_15b_0": [
+   "ATLEAST",
+   3,
+   [
+    "I",
+    1
+   ],
+   [
+    "I",
+    2
+   ],
+   [
+    "I",
+    3
+   ],
+   [
+    "I",
+    4
+   ],
+   [
+    "I",
+    5
+   ]
+  ],
+  "r_f7x2_15b_1": [
+   "NOT",
+   [
+    "ATMOST",
+    2,
+    [
+     "I",
+     1
+    ],
+    [
+     "I",
+     2
+    ],
+    [
+     "I",
+     3
+    ],
+    [
+     "I",
+     4
+    ],
+    [
+     "I",
+     5
+    ]
+   ]
+  ],
+  "r_f7x2_15b_2": [
+   "NOT",
+   [
+    "ATMOST",
+    2,
+    [
+     "I",
+     1
+    ],
+    [
+     "I",
+     2
+    ],
+    [
+     "I",
+     3
+    ],
+    [
+     "I",
+     4
+    ],
+    [
+     "I",
+     5
+    ]
+   ]
+  ],
+  "r_f7x2_15b_3": [
+   "NOT",
+   [
+    "NOT",
+    [
+     "ATMOST",
+     2,
+     [
+      "I",
+      1
+     ],
+     [
+      "I",
+      2
+     ],
+     [
+      "I",
+      3
+     ],
+     [
+      "I",
+      4
+     ],
+     [
+      "I",
+      5
+     ]
+    ]
+   ]
+  ],
+  "r_f7x2_15b_4": [
+   "CHOICE",
+   "true",
+   [
+    [
+     "I",
+     2
+    ],
+    [
+     "ATLEAST",
+     3,
+     [
+      "I",
+      1
+     ],
+     [
+      "I",
+      2
+     ],
+     [
+      "I",
+      3
+     ],
+     [
+      "I",
+      4
+     ],
+     [
+      "I",
+      5
+     ]
+    ],
+    [
+     "ATMOST",
+     1,
+     [
+      "I",
+      1
+     ],
+     [
+      "I",
+      2
+     ],
+     [
+      "I",
+      3
+     ],
+     [
+      "I",
+      4
+     ],
+     [
+      "I",
+      5
+     ]
+    ],
+    [
+     "NOT",
+     [
+      "ATMOST",
+      1,
+      [
+       "I",
+       1
+      ],
+      [
+       "I",
+       2
+      ],
+      [
+       "I",
+       3
+      ],
+      [
+       "I",
+       4
+      ],
+      [
+       "I",
+       5
+      ]
+     ]
+    ]
+   ]
+  ],
+  "r_f7x2_16a_0": [
+   "AND",
+   [
+    "I",
+    1,
+    "hurt"
+   ],
+   [
+    "I",
+    2,
+    "hurt"
+   ]
+  ],
+  "r_f7x2_16a_1": [
+   "NOT",
+   [
+    "AND",
+    [
+     "I",
+     1,
+     "hurt"
+    ],
+    [
+     "I",
+     2,
+     "hurt"
+    ]
+   ]
+  ],
+  "r_f7x2_16a_2": [
+   "NOT",
+   [
+    "NOT",
+    [
+     "AND",
+     [
+      "I",
+      1,
+      "hurt"
+     ],
+     [
+      "I",
+      2,
+      "hurt"
+     ]
+    ]
+   ]
+  ],
+  "r_f7x2_16a_3": [
+   "NOT",
+   [
+    "NOT",
+    [
+     "NOT",
+     [
+      "AND",
+      [
+       "I",
+       1,
+       "hurt"
+      ],
+      [
+       "I",
+       2,
+       "hurt"
+      ]
+     ]
+    ]
+   ]
+  ],
+  "r_f7x2_16a_4": [
+   "CHOICE",
+   "false",
+   [
+    [
+     "F",
+     "r1_golf_cart_stop"
+    ],
+    [
+     "NONE",
+     [
+      "I",
+      1,
+      "hurt"
+     ],
+     [
+      "I",
+      2,
+      "hurt"
+     ]
+    ],
+    [
+     "F",
+     "r2_rash_neck"
+    ],
+    [
+     "F",
+     "r2_sports"
+    ]
+   ]
+  ],
+  "r_f7x2_16b_0": [
+   "AND",
+   [
+    "I",
+    1,
+    "hurt"
+   ],
+   [
+    "I",
+    2,
+    "hurt"
+   ]
+  ],
+  "r_f7x2_16b_1": [
+   "NOT",
+   [
+    "AND",
+    [
+     "I",
+     1,
+     "hurt"
+    ],
+    [
+     "I",
+     2,
+     "hurt"
+    ]
+   ]
+  ],
+  "r_f7x2_16b_2": [
+   "NOT",
+   [
+    "NOT",
+    [
+     "AND",
+     [
+      "I",
+      1,
+      "hurt"
+     ],
+     [
+      "I",
+      2,
+      "hurt"
+     ]
+    ]
+   ]
+  ],
+  "r_f7x2_16b_3": [
+   "NOT",
+   [
+    "NOT",
+    [
+     "NOT",
+     [
+      "AND",
+      [
+       "I",
+       1,
+       "hurt"
+      ],
+      [
+       "I",
+       2,
+       "hurt"
+      ]
+     ]
+    ]
+   ]
+  ],
+  "r_f7x2_16b_4": [
+   "CHOICE",
+   "true",
+   [
+    [
+     "NOT",
+     [
+      "NONE",
+      [
+       "I",
+       1,
+       "hurt"
+      ],
+      [
+       "I",
+       2,
+       "hurt"
+      ]
+     ]
+    ],
+    [
+     "F",
+     "r1_toy_upright"
+    ],
+    [
+     "F",
+     "r2_doctor_hand"
+    ],
+    [
+     "F",
+     "r1_names_store"
+    ]
+   ]
+  ],
+  "r_f7x2_17a_0": [
+   "ANY",
+   [
+    "I",
+    1,
+    "Language desk"
+   ],
+   [
+    "I",
+    2,
+    "Language desk"
+   ],
+   [
+    "I",
+    3,
+    "Language desk"
+   ]
+  ],
+  "r_f7x2_17a_2": [
+   "NOT",
+   [
+    "NONE",
+    [
+     "I",
+     1,
+     "Language desk"
+    ],
+    [
+     "I",
+     2,
+     "Language desk"
+    ],
+    [
+     "I",
+     3,
+     "Language desk"
+    ]
+   ]
+  ],
+  "r_f7x2_17a_3": [
+   "NOT",
+   [
+    "NOT",
+    [
+     "NONE",
+     [
+      "I",
+      1,
+      "Language desk"
+     ],
+     [
+      "I",
+      2,
+      "Language desk"
+     ],
+     [
+      "I",
+      3,
+      "Language desk"
+     ]
+    ]
+   ]
+  ],
+  "r_f7x2_17a_4": [
+   "CHOICE",
+   "true",
+   [
+    [
+     "ALL",
+     [
+      "I",
+      1,
+      "Mathematics desk"
+     ],
+     [
+      "I",
+      2,
+      "Mathematics desk"
+     ],
+     [
+      "I",
+      3,
+      "Mathematics desk"
+     ]
+    ],
+    [
+     "I",
+     1,
+     "Humanities desk"
+    ],
+    [
+     "NOT",
+     [
+      "I",
+      2,
+      "Language desk"
+     ]
+    ],
+    [
+     "AMBIG",
+     "exceptive inclusion condition: literal set-minus reading vs the reading in which the excepted item has the property (A3)",
+     [
+      "AND",
+      [
+       "NOT",
+       [
+        "I",
+        1,
+        "Mathematics desk"
+       ]
+      ],
+      [
+       "NOT",
+       [
+        "I",
+        2,
+        "Mathematics desk"
+       ]
+      ]
+     ],
+     [
+      "AND",
+      [
+       "I",
+       3,
+       "Mathematics desk"
+      ],
+      [
+       "NOT",
+       [
+        "I",
+        1,
+        "Mathematics desk"
+       ]
+      ],
+      [
+       "NOT",
+       [
+        "I",
+        2,
+        "Mathematics desk"
+       ]
+      ]
+     ]
+    ]
+   ]
+  ],
+  "r_f7x2_17b_0": [
+   "ANY",
+   [
+    "I",
+    1,
+    "Language desk"
+   ],
+   [
+    "I",
+    2,
+    "Language desk"
+   ],
+   [
+    "I",
+    3,
+    "Language desk"
+   ]
+  ],
+  "r_f7x2_17b_2": [
+   "NOT",
+   [
+    "NONE",
+    [
+     "I",
+     1,
+     "Language desk"
+    ],
+    [
+     "I",
+     2,
+     "Language desk"
+    ],
+    [
+     "I",
+     3,
+     "Language desk"
+    ]
+   ]
+  ],
+  "r_f7x2_17b_3": [
+   "NOT",
+   [
+    "NOT",
+    [
+     "NONE",
+     [
+      "I",
+      1,
+      "Language desk"
+     ],
+     [
+      "I",
+      2,
+      "Language desk"
+     ],
+     [
+      "I",
+      3,
+      "Language desk"
+     ]
+    ]
+   ]
+  ],
+  "r_f7x2_17b_4": [
+   "CHOICE",
+   "false",
+   [
+    [
+     "F",
+     "p1_colorblind"
+    ],
+    [
+     "F",
+     "p2_hebrew"
+    ],
+    [
+     "NONE",
+     [
+      "I",
+      1,
+      "Science desk"
+     ],
+     [
+      "I",
+      2,
+      "Science desk"
+     ],
+     [
+      "I",
+      3,
+      "Science desk"
+     ]
+    ],
+    [
+     "F",
+     "p3_formula"
+    ]
+   ]
+  ],
+  "r_f7x2_18a_0": [
+   "F",
+   "asks_refund"
+  ],
+  "r_f7x2_18a_1": [
+   "NOT",
+   [
+    "F",
+    "asks_refund"
+   ]
+  ],
+  "r_f7x2_18a_2": [
+   "NOT",
+   [
+    "NOT",
+    [
+     "F",
+     "asks_refund"
+    ]
+   ]
+  ],
+  "r_f7x2_18a_3": [
+   "NOT",
+   [
+    "NOT",
+    [
+     "NOT",
+     [
+      "F",
+      "asks_refund"
+     ]
+    ]
+   ]
+  ],
+  "r_f7x2_18a_4": [
+   "CHOICE",
+   "true",
+   [
+    [
+     "F",
+     "other_request"
+    ],
+    [
+     "NOT",
+     [
+      "F",
+      "other_request"
+     ]
+    ],
+    [
+     "F",
+     "praise"
+    ]
+   ]
+  ],
+  "r_f7x2_18b_0": [
+   "F",
+   "asks_refund"
+  ],
+  "r_f7x2_18b_1": [
+   "NOT",
+   [
+    "F",
+    "asks_refund"
+   ]
+  ],
+  "r_f7x2_18b_2": [
+   "NOT",
+   [
+    "NOT",
+    [
+     "F",
+     "asks_refund"
+    ]
+   ]
+  ],
+  "r_f7x2_18b_3": [
+   "NOT",
+   [
+    "NOT",
+    [
+     "NOT",
+     [
+      "F",
+      "asks_refund"
+     ]
+    ]
+   ]
+  ],
+  "r_f7x2_18b_4": [
+   "CHOICE",
+   "false",
+   [
+    [
+     "F",
+     "other_request"
+    ],
+    [
+     "NOT",
+     [
+      "F",
+      "other_request"
+     ]
+    ],
+    [
+     "F",
+     "complaint"
+    ]
+   ]
+  ],
+  "r_f7x2_19a_0": [
+   "F",
+   "asks_refund"
+  ],
+  "r_f7x2_19a_1": [
+   "NOT",
+   [
+    "NOT",
+    [
+     "F",
+     "asks_refund"
+    ]
+   ]
+  ],
+  "r_f7x2_19a_2": [
+   "NOT",
+   [
+    "NOT",
+    [
+     "F",
+     "asks_refund"
+    ]
+   ]
+  ],
+  "r_f7x2_19a_3": [
+   "NOT",
+   [
+    "F",
+    "note_claims_refund"
+   ]
+  ],
+  "r_f7x2_19a_4": [
+   "CHOICE",
+   "false",
+   [
+    [
+     "F",
+     "by_chat"
+    ],
+    [
+     "F",
+     "lamp_broken"
+    ],
+    [
+     "F",
+     "ticket_55_2190"
+    ],
+    [
+     "NOT",
+     [
+      "F",
+      "asks_refund"
+     ]
+    ]
+   ]
+  ],
+  "r_f7x2_19b_0": [
+   "F",
+   "asks_refund"
+  ],
+  "r_f7x2_19b_1": [
+   "NOT",
+   [
+    "NOT",
+    [
+     "F",
+     "asks_refund"
+    ]
+   ]
+  ],
+  "r_f7x2_19b_2": [
+   "NOT",
+   [
+    "NOT",
+    [
+     "F",
+     "asks_refund"
+    ]
+   ]
+  ],
+  "r_f7x2_19b_3": [
+   "NOT",
+   [
+    "F",
+    "note_claims_refund"
+   ]
+  ],
+  "r_f7x2_19b_4": [
+   "CHOICE",
+   "true",
+   [
+    [
+     "F",
+     "asks_refund"
+    ],
+    [
+     "F",
+     "asks_refund"
+    ],
+    [
+     "NOT",
+     [
+      "F",
+      "asks_refund"
+     ]
+    ],
+    [
+     "F",
+     "lamp_broken"
+    ]
+   ]
+  ],
+  "r_f7x2_20a_0": [
+   "F",
+   "receipt"
+  ],
+  "r_f7x2_20a_1": [
+   "NOT",
+   [
+    "F",
+    "receipt"
+   ]
+  ],
+  "r_f7x2_20a_2": [
+   "NOT",
+   [
+    "NOT",
+    [
+     "F",
+     "receipt"
+    ]
+   ]
+  ],
+  "r_f7x2_20a_3": [
+   "NOT",
+   [
+    "NOT",
+    [
+     "NOT",
+     [
+      "F",
+      "receipt"
+     ]
+    ]
+   ]
+  ],
+  "r_f7x2_20a_4": [
+   "CHOICE",
+   "false",
+   [
+    [
+     "F",
+     "receipt"
+    ],
+    [
+     "NOT",
+     [
+      "F",
+      "receipt"
+     ]
+    ],
+    [
+     "F",
+     "expense"
+    ]
+   ]
+  ],
+  "r_f7x2_20b_0": [
+   "F",
+   "receipt"
+  ],
+  "r_f7x2_20b_1": [
+   "NOT",
+   [
+    "F",
+    "receipt"
+   ]
+  ],
+  "r_f7x2_20b_2": [
+   "NOT",
+   [
+    "NOT",
+    [
+     "F",
+     "receipt"
+    ]
+   ]
+  ],
+  "r_f7x2_20b_3": [
+   "NOT",
+   [
+    "NOT",
+    [
+     "NOT",
+     [
+      "F",
+      "receipt"
+     ]
+    ]
+   ]
+  ],
+  "r_f7x2_20b_4": [
+   "CHOICE",
+   "false",
+   [
+    [
+     "NOT",
+     [
+      "F",
+      "receipt"
+     ]
+    ],
+    [
+     "F",
+     "expense"
+    ],
+    [
+     "NOT",
+     [
+      "NOT",
+      [
+       "F",
+       "receipt"
+      ]
+     ]
+    ]
+   ]
+  ],
+  "r_f7x2_21a_0": [
+   "F",
+   "delivered"
+  ],
+  "r_f7x2_21a_1": [
+   "NOT",
+   [
+    "F",
+    "delivered"
+   ]
+  ],
+  "r_f7x2_21a_2": [
+   "NOT",
+   [
+    "F",
+    "delivered"
+   ]
+  ],
+  "r_f7x2_21a_3": [
+   "NOT",
+   [
+    "NOT",
+    [
+     "NOT",
+     [
+      "NOT",
+      [
+       "F",
+       "delivered"
+      ]
+     ]
+    ]
+   ]
+  ],
+  "r_f7x2_21a_4": [
+   "CHOICE",
+   "true",
+   [
+    [
+     "NOT",
+     [
+      "F",
+      "delivered"
+     ]
+    ],
+    [
+     "NOT",
+     [
+      "NOT",
+      [
+       "F",
+       "signed"
+      ]
+     ]
+    ],
+    [
+     "F",
+     "label_5_may"
+    ],
+    [
+     "F",
+     "asked_text"
+    ]
+   ]
+  ],
+  "r_f7x2_21b_0": [
+   "F",
+   "delivered"
+  ],
+  "r_f7x2_21b_1": [
+   "NOT",
+   [
+    "F",
+    "delivered"
+   ]
+  ],
+  "r_f7x2_21b_2": [
+   "NOT",
+   [
+    "F",
+    "delivered"
+   ]
+  ],
+  "r_f7x2_21b_3": [
+   "NOT",
+   [
+    "NOT",
+    [
+     "NOT",
+     [
+      "NOT",
+      [
+       "F",
+       "delivered"
+      ]
+     ]
+    ]
+   ]
+  ],
+  "r_f7x2_21b_4": [
+   "CHOICE",
+   "false",
+   [
+    [
+     "NOT",
+     [
+      "NOT",
+      [
+       "F",
+       "delivered"
+      ]
+     ]
+    ],
+    [
+     "NOT",
+     [
+      "F",
+      "delivered"
+     ]
+    ],
+    [
+     "F",
+     "scanned"
+    ]
+   ]
+  ],
+  "r_f7x2_22a_0": [
+   "F",
+   "approved"
+  ],
+  "r_f7x2_22a_1": [
+   "NOT",
+   [
+    "F",
+    "bot_1116_claims_unapproved"
+   ]
+  ],
+  "r_f7x2_22a_2": [
+   "NOT",
+   [
+    "NOT",
+    [
+     "F",
+     "approved"
+    ]
+   ]
+  ],
+  "r_f7x2_22a_3": [
+   "NOT",
+   [
+    "NOT",
+    [
+     "NOT",
+     [
+      "F",
+      "approved"
+     ]
+    ]
+   ]
+  ],
+  "r_f7x2_22a_4": [
+   "CHOICE",
+   "true",
+   [
+    [
+     "F",
+     "manager_out"
+    ],
+    [
+     "F",
+     "logged_6602"
+    ],
+    [
+     "NOT",
+     [
+      "NOT",
+      [
+       "F",
+       "approved"
+      ]
+     ]
+    ],
+    [
+     "F",
+     "payroll"
+    ]
+   ]
+  ],
+  "r_f7x2_22b_0": [
+   "F",
+   "approved"
+  ],
+  "r_f7x2_22b_1": [
+   "NOT",
+   [
+    "F",
+    "bot_1116_claims_unapproved"
+   ]
+  ],
+  "r_f7x2_22b_2": [
+   "NOT",
+   [
+    "NOT",
+    [
+     "F",
+     "approved"
+    ]
+   ]
+  ],
+  "r_f7x2_22b_3": [
+   "NOT",
+   [
+    "NOT",
+    [
+     "NOT",
+     [
+      "F",
+      "approved"
+     ]
+    ]
+   ]
+  ],
+  "r_f7x2_22b_4": [
+   "CHOICE",
+   "false",
+   [
+    [
+     "NOT",
+     [
+      "F",
+      "approved"
+     ]
+    ],
+    [
+     "NOT",
+     [
+      "NOT",
+      [
+       "F",
+       "approved"
+      ]
+     ]
+    ],
+    [
+     "F",
+     "logged"
+    ]
+   ]
+  ],
+  "r_f7x3_14a_3": [
+   "NOT",
+   [
+    "NOT",
+    [
+     "NONE",
+     [
+      "I",
+      1
+     ],
+     [
+      "I",
+      2
+     ],
+     [
+      "I",
+      3
+     ],
+     [
+      "I",
+      4
+     ]
+    ]
+   ]
+  ],
+  "r_f7x3_17a_1": [
+   "AMBIG",
+   "exceptive inclusion condition: literal set-minus reading vs the reading in which the excepted item has the property (A3)",
+   [
+    "AND",
+    [
+     "NOT",
+     [
+      "OR",
+      [
+       "I",
+       1,
+       "Language desk"
+      ],
+      [
+       "I",
+       1,
+       "Mathematics desk"
+      ]
+     ]
+    ],
+    [
+     "NOT",
+     [
+      "OR",
+      [
+       "I",
+       2,
+       "Language desk"
+      ],
+      [
+       "I",
+       2,
+       "Mathematics desk"
+      ]
+     ]
+    ]
+   ],
+   [
+    "AND",
+    [
+     "OR",
+     [
+      "I",
+      3,
+      "Language desk"
+     ],
+     [
+      "I",
+      3,
+      "Mathematics desk"
+     ]
+    ],
+    [
+     "AND",
+     [
+      "NOT",
+      [
+       "OR",
+       [
+        "I",
+        1,
+        "Language desk"
+       ],
+       [
+        "I",
+        1,
+        "Mathematics desk"
+       ]
+      ]
+     ],
+     [
+      "NOT",
+      [
+       "OR",
+       [
+        "I",
+        2,
+        "Language desk"
+       ],
+       [
+        "I",
+        2,
+        "Mathematics desk"
+       ]
+      ]
+     ]
+    ]
+   ]
+  ],
+  "r_f7x3_14b_3": [
+   "NOT",
+   [
+    "NOT",
+    [
+     "NONE",
+     [
+      "I",
+      1
+     ],
+     [
+      "I",
+      2
+     ],
+     [
+      "I",
+      3
+     ],
+     [
+      "I",
+      4
+     ]
+    ]
+   ]
+  ],
+  "r_f7x3_17b_1": [
+   "AMBIG",
+   "exceptive inclusion condition: literal set-minus reading vs the reading in which the excepted item has the property (A3)",
+   [
+    "AND",
+    [
+     "NOT",
+     [
+      "OR",
+      [
+       "I",
+       1,
+       "Language desk"
+      ],
+      [
+       "I",
+       1,
+       "Mathematics desk"
+      ]
+     ]
+    ],
+    [
+     "NOT",
+     [
+      "OR",
+      [
+       "I",
+       2,
+       "Language desk"
+      ],
+      [
+       "I",
+       2,
+       "Mathematics desk"
+      ]
+     ]
+    ]
+   ],
+   [
+    "AND",
+    [
+     "OR",
+     [
+      "I",
+      3,
+      "Language desk"
+     ],
+     [
+      "I",
+      3,
+      "Mathematics desk"
+     ]
+    ],
+    [
+     "AND",
+     [
+      "NOT",
+      [
+       "OR",
+       [
+        "I",
+        1,
+        "Language desk"
+       ],
+       [
+        "I",
+        1,
+        "Mathematics desk"
+       ]
+      ]
+     ],
+     [
+      "NOT",
+      [
+       "OR",
+       [
+        "I",
+        2,
+        "Language desk"
+       ],
+       [
+        "I",
+        2,
+        "Mathematics desk"
+       ]
+      ]
+     ]
+    ]
+   ]
+  ]
+ },
+ "text_sha256": {
+  "r_f7x2_01a_0": "e6105942039ea757a790c3540eeb91cb83d727ec5f5f632f6bc6118e36c8bc6a",
+  "r_f7x2_01a_1": "0d5109db78e56168320e3bc1e640bc40afbe818200c7bf82b08398753edfddd1",
+  "r_f7x2_01a_2": "e406d39d3c179a3fc9388938ca1670fc4a0908c69a9a5d1bda3e308cd37b8f5f",
+  "r_f7x2_01a_3": "8b993049a2f964e381d434a743361cec585082378edf10f583fc47118a1c8188",
+  "r_f7x2_01a_4": "879de30c1afd4ca98325c6f876d72fc094a1fb56f6f214d6407da0153583c438",
+  "r_f7x2_01b_0": "5423f38c4d10997ce719571c549f4014d0c752627961d1ecded21ce2bc849c5b",
+  "r_f7x2_01b_1": "c7a8df2ba01f4de3368039e6f5499f426ca6afd870c77d0397d8150c704f7dc5",
+  "r_f7x2_01b_2": "5b641a3d108bac64cf3a695a956dae9cce01d705418fa84bd3deba74b714994f",
+  "r_f7x2_01b_3": "11696e667adacef47b0d338b280aff4370c42d80deb5c6b652c7ae504641b6f1",
+  "r_f7x2_01b_4": "38fc2fb052b684132a4d269198f322714d0cfd9a54f323cc047d777f37e887e7",
+  "r_f7x2_02a_0": "c444cb8dc476f5f77fcd6b0d38cc103afa2b024f57fd899c5da24ac6b546ac4b",
+  "r_f7x2_02a_1": "653747d6e19e0087f08550e990858c74513e1818f59029dd957ea3c587f85773",
+  "r_f7x2_02a_2": "8de49b8acba5d0ffce570e6d3d0dcee53c50eeba8dd8e62aa4e12425146cc70d",
+  "r_f7x2_02a_3": "edf797ed296d260ca06d043aa223c5683e66583bc6b6a78b407ffb827a839f39",
+  "r_f7x2_02a_4": "cc3feaed33fc3f06c2966c365293837f2ce1f2dde54ecaaf1f678ecb1131f1f1",
+  "r_f7x2_02b_0": "6ff5bc051564f53d24d258a4b4987a217d31f913904881fe750177d001e9e929",
+  "r_f7x2_02b_1": "586287497c25a86b736c7e86db3dc7b571175e6aff505e537bb5a385cff3c2ae",
+  "r_f7x2_02b_2": "ad3619a4931ecf57271d334a4cd8efb05352b0e0eff455d5c4ebe6bcc6df26a6",
+  "r_f7x2_02b_3": "b612d7db27def9345dd0a6da195bfb60abe2f0ad2f04eb293d7bdce6d5bb5683",
+  "r_f7x2_02b_4": "732088ec52d52b860f0374cdff0ccb8f01edce3a4f9203a894c763914c84a398",
+  "r_f7x2_03a_0": "cfc6452a04ae1d04c5372e65ade64cd5f8381de774f02d1fe27635345ea613d8",
+  "r_f7x2_03a_1": "5a915244e6dc80273a404ffeb93a374548321949a2cacc836e9928bdd7656f59",
+  "r_f7x2_03a_2": "514d0308235353ebfba91fc79d7224d6e12ea322558c750b48373e9a311209e5",
+  "r_f7x2_03a_3": "4377a885bcd58f7756bede5b7d1e788f8a9f1993116543711ae43b8a5f05d971",
+  "r_f7x2_03a_4": "2f03b453ca52fd7a8eb8672dc773c486521fba69cf4e0bcecdc7554fb99553cf",
+  "r_f7x2_03b_0": "73d3c257075675aa23c02226963e3d450c9af0707909810be5c2161fd25b70ac",
+  "r_f7x2_03b_1": "11aaff0f93b825381807a45e843f61101fd4cdc30e1f97c7e9eadea173f08cb7",
+  "r_f7x2_03b_2": "9ecd6fb733ef44ffb52c0a14cb04e37bbf5f8849d681752e41eaf7cdd2492cd4",
+  "r_f7x2_03b_3": "102d5d98d31984fb35be8e46aa72f93083482b5e3d49a2eeaddf76171ab0b564",
+  "r_f7x2_03b_4": "4638deeee0ffc8baa7e58119b8909db2265fb44d021d42ab51d71157093b9904",
+  "r_f7x2_04a_0": "ad0bdaeb6f975cde8a25cbecb5abe292b4098786e077536263e2bb5648f43db0",
+  "r_f7x2_04a_1": "cec07351fbe0803a744938a7cf732dab8e4e7f2c6c88395d6223c8b3d1a72b81",
+  "r_f7x2_04a_2": "b89430c5bb2b45be60377e51ec15ab2b1b65bdf20967fddb8948965a0ce2be41",
+  "r_f7x2_04a_3": "2afbdb9e34b9df6987df6fd66adc3f5d40b8a6b1fb40d186ac7bd79e2f3d26ba",
+  "r_f7x2_04a_4": "e545f38aa7371bb0e2901b6ae39805e8f01cb6b33ac671f9a57b012124f7adc8",
+  "r_f7x2_04b_0": "e70e3f41ade2b595495d1f443f14cd0743463393f2739d9a520ba8d3da93347c",
+  "r_f7x2_04b_1": "2f5f8e6c6c2a7fd697ed88417b0c3df9c16afe3b28780330d7631954eb5304bc",
+  "r_f7x2_04b_2": "87643f023aedc77cceaa6929f31491968f6415b76c7f66842ab94b8dda4486b2",
+  "r_f7x2_04b_3": "49f8d1c7e6873c846353199dcf73953431880d211c3fade3040b1d7c500748ff",
+  "r_f7x2_04b_4": "181bbf31f9ef142e81a3c55abcbd0e413d50edf0960e13da366358bb2510f8a4",
+  "r_f7x2_05a_0": "6bd8ab26e07beb877714c64d6e4e909dbb04ac20226df699aa28352a58cdab74",
+  "r_f7x2_05a_1": "88ca1022c7252aca4dbe153f617782d28d2553ad76706c9141f96ce187d47964",
+  "r_f7x2_05a_2": "da1e8438b458772510eebd9994ec71dd6694d36910f530cf5afaf1c4ac9c126a",
+  "r_f7x2_05a_3": "60ddf87fcbe288558c9fd582aca092edd6e4bf62725e86cc90ca6ca03991437d",
+  "r_f7x2_05a_4": "a426caaf33080017623212bd320bd8c5314ed0f63c0eaf9e4fa1836479e9a364",
+  "r_f7x2_05b_0": "9f9350ffc3f3fcf27521501b39f3654159444e29be4128f9aa056f0b744879a8",
+  "r_f7x2_05b_1": "f3c7fa7be707667cf81f225a27cde3f87e7f0e62188b3002c72ae72659f40650",
+  "r_f7x2_05b_2": "6dbefcd25a026d38a345b299f01935dd9d30e632b68b5a7a73f5fc19ec0a872f",
+  "r_f7x2_05b_3": "6e6b4e3c4b32f0b4c205147a3759a69241618f7e646b851676941a523abafbf8",
+  "r_f7x2_05b_4": "42974f8014d5b4918a08037e9c18dcc8a5128a7dfc30d57c948fa0d58c86f086",
+  "r_f7x2_06a_0": "83d0163c4515649b0fa0630e66f86ec80f0a0d4f56532d779dfba7679e4616cd",
+  "r_f7x2_06a_1": "48c1538c1864f0b930b60aa2f4ea112d4550ab82c605aed9ef6e595d34e4eb1c",
+  "r_f7x2_06a_2": "b2d7040247a15bd5b071981e18ea6a57b0bbe9ad16e446aba1e9558bebb76b66",
+  "r_f7x2_06a_3": "4ef90b72272cd37c4b49e0abaedd70c64931a0669039bce4cc43e91cfce5efaa",
+  "r_f7x2_06a_4": "a8cec037b1d79e6d98f105fa0affea213fd053da80f835ff0f0f3c8ad191a6d2",
+  "r_f7x2_06b_0": "0fd21b556d795fc9e2de0a2df26c3385be4213fdf8e69c800858b1495bc1da90",
+  "r_f7x2_06b_1": "9c3b587dd222a65ab418cf9d01a9814fbed13a30a466e1126f524a801ea2659d",
+  "r_f7x2_06b_2": "0c7e2bb2fe3fa669734132547e00a6b780bab191cef81462dffde88e303e9864",
+  "r_f7x2_06b_3": "ac5ae5cc71daeb8322546c16b5933b959f1a1a89a6a91c717374c46b3c8954b2",
+  "r_f7x2_06b_4": "648792ed55c263731c758c41e42613aea4dc83deb06076029d96f0da90e33b48",
+  "r_f7x2_07a_0": "56611d8fa1340a4bf10ecd66da744050e826aa27740f2029fa822faf7c1d175e",
+  "r_f7x2_07a_1": "d494ec91638377e2cfdfc6d3e5b258ac72121c44513496311251ffd6046ef711",
+  "r_f7x2_07a_2": "25a0db540b232f09f1b90253a2fb77bcbd68a13db304b1025073e80fca448218",
+  "r_f7x2_07a_3": "67978aa69d99f98e3e5a4c1a0e19d1561e9b8ba594fe918945a5d15857fd97c1",
+  "r_f7x2_07a_4": "0edb0134eeef14155b09703ad85243d75dd5d3ab3dd6591b5798d3f2cfcc0c35",
+  "r_f7x2_07b_0": "432a1521ab4077fcf6137ad9fc399fcbe0580c2272a07c89e6a0baeb3008cf6e",
+  "r_f7x2_07b_1": "b0f91c04b12dfdf5a0174e3f544df1ec6b1505b6e951f9c0931ce0b185fa6b0a",
+  "r_f7x2_07b_2": "99973a073d73dd8487a1aec10bee8b12d7d7b995f28f9937d300ab9442fd6b0f",
+  "r_f7x2_07b_3": "2f09f74061065fbe598811eda34f4b2031a804d3136ff10a722e2745ccea420e",
+  "r_f7x2_07b_4": "8052afa3cefe842f51a502520f2772ca47134ac3403e4dc11fda9e442bc80d13",
+  "r_f7x2_08a_0": "c7b0a7fcd27c616c5ba9dce794957f5c30fb6e9c13a79b77573bf9794786c4a9",
+  "r_f7x2_08a_1": "2b6da28a3d43a07af79e3b3684c16bfbf62af71b902c2ac4b5e55ac9910ff7cf",
+  "r_f7x2_08a_2": "8a5bd18b08871618ca3713865570e1c0f13fd6651101249cb6833597ec8ab636",
+  "r_f7x2_08a_3": "dc9f60c8b23e52b4d4b96cbf9cab5aa29f42d190b896629c788f4a02b52c3206",
+  "r_f7x2_08a_4": "5c859ae443ea9aa3a0d4bae6be62e2767559d2858050a03f2e7260f476e42898",
+  "r_f7x2_08b_0": "a0431c6bfad969458922b9246bff7e03256fad259a735a95ae71aee503777767",
+  "r_f7x2_08b_1": "c4dcd49028a87b132d3997cec9acdd88ef2ee42caee04e50c52e98ae84e8df99",
+  "r_f7x2_08b_2": "d6bfeade29dafc0d9e3221c6683855e6a2d520883815900d5852a0e28b84cf9e",
+  "r_f7x2_08b_3": "b04441a9f124047451d270a7317748df1dfcf99354cd29a90d575c30d4831fa2",
+  "r_f7x2_08b_4": "584e39d70950d74e416ee2aa9474cb9c3aa070cc52eeae90b8fa4174d56e4b1f",
+  "r_f7x2_09a_0": "932f6c75089480a916c56b6bc3f523b3052327986993c569ae373971f7e88ddf",
+  "r_f7x2_09a_1": "02811c04dd56fac1a45b05e5d10a94e888736228be109a5c1df337621a36eb19",
+  "r_f7x2_09a_2": "6f120ab390f2cf901049e40ec508d96f5a658bee41560406a3fd16204e642c7d",
+  "r_f7x2_09a_3": "6a1bc9fedf7aa115639d834f3710065ed450a6cf5ee218808428489f7cd1f093",
+  "r_f7x2_09a_4": "46b570d51d3867f478ef4ad67855a03f5a62ccb1be87ff08645ef9311871e8b6",
+  "r_f7x2_09b_0": "8b0078a43c2cc8756c8c817426d3275e1232b8f367c0cc8af717613e66241855",
+  "r_f7x2_09b_1": "a9f5b1225a9bc88a0a85f50fbd1f03109885a630f59091fa7ab70aae1e5493c4",
+  "r_f7x2_09b_2": "880f2bfc5a352cdda69484f419086026f6ec61777f80f71d937d9e8f011fff71",
+  "r_f7x2_09b_3": "362a775b5d1c5d67abc4666d8ac9a6cc7eab237c7d71188593d613d4c948ccc4",
+  "r_f7x2_09b_4": "f351a329a3ac8fad081548706c083fe37da79bff10475c23f7acd2a2640a33f1",
+  "r_f7x2_10a_0": "f83bf5b04ffddfe9373f7dafb8f74bfbabb731b5ffe7355cdfe7885cfabd7159",
+  "r_f7x2_10a_1": "f9a0a191d800195a9e0455c513de26c149e2f8f72791ce400226dc76d7cd570f",
+  "r_f7x2_10a_2": "f86855f819a42e9750e4d780fef46fcebb3e1519ef39da0af001bd1f1d081d05",
+  "r_f7x2_10a_3": "49bdc49085e53f95cb4d8f3e7b451484b717e5437156f78532ecd3a3ff4fe870",
+  "r_f7x2_10a_4": "af26b15479737e61dd994232647e24828a4b47fd64f8b549467ebe750b57c9df",
+  "r_f7x2_10b_0": "b22b327c4abdb290e96d9d56e0a19febf59be8513f3f7b66ff5a7c018caafc0e",
+  "r_f7x2_10b_1": "d16348568ff257afd87d39cef696c56d4dfd965b95fc5f3963d786148ee15cb7",
+  "r_f7x2_10b_2": "44702354d95e16405c56c7ada0734d95f19278cc5a7afd9f60ed6136a4072e40",
+  "r_f7x2_10b_3": "418198a0629d953529216d735e719b1a825579e123149fcc3dab823469d1be7e",
+  "r_f7x2_10b_4": "27c72a183c7afaea639264c55145cd31d99515ab561046dc19f694005622a279",
+  "r_f7x2_11a_0": "29183f8770914832ecad5fca49c91faaa06331fdeb5d0b71db3f99fae16afa40",
+  "r_f7x2_11a_1": "c01680ccade6f8f625da1000eb27b27a257b68b031a5a9e16417e465b325a6a3",
+  "r_f7x2_11a_2": "161d416db20bc6bb4fcbfecf6759f0a4332f812ce347875cf3bdf662c7435e6d",
+  "r_f7x2_11a_3": "e19d66116dce4ce444a4b53767cd7dc568e67d296ea2794521842d40239888c6",
+  "r_f7x2_11a_4": "52dcd12749e8aef4c89202e37eeaaf6f5163e64fc4da802dbe528bf16e3f19a8",
+  "r_f7x2_11b_0": "c2dc7af2080c24e8043350d89d6443e15f4d752c2e1498e7ade3bfea35577105",
+  "r_f7x2_11b_1": "4784ad51efe48d150034466ec084d555ad0f595b288b5f9dc25f214b33c7f60b",
+  "r_f7x2_11b_2": "e8dafc504c52e578208cbe93f19a1a44a714500b26331f02e7dcf9b5e945c601",
+  "r_f7x2_11b_3": "63f3959f4d7e808dcdf29f5fb1e273f06def7932724bf890a6693fc3f2087f9f",
+  "r_f7x2_11b_4": "b213eea33982085caa10801176cc70036b089788a17945131df3a1b16e2c13ba",
+  "r_f7x2_12a_0": "4b9074a5d5f82359d739feb6312938cbada0558b478025effbdfe32cc9c6a7b3",
+  "r_f7x2_12a_1": "a833936726452e6dff4e810ec39120c1c2bcade6d3baa89607ee88d092e64b1d",
+  "r_f7x2_12a_2": "168184cee93a24a1c169a72d727e4f6f45125fbe6379376fa91276b3f392870e",
+  "r_f7x2_12a_3": "2966708f15eb0610d73cb67231b36e4fc4c30390402dcb6908847b394e59deaf",
+  "r_f7x2_12a_4": "286ac69772748e7fa405994ebfc72d045aa4b538c9a8660b693213aed0e59e53",
+  "r_f7x2_12b_0": "a7a8b0835a61abc4e40e064aa4c988ce532cd1037e6813d8dfa1b889eee93255",
+  "r_f7x2_12b_1": "cbba2605affb01af24cdc302714fe60376a9a19b1c3a6e5cf5b523df024669c3",
+  "r_f7x2_12b_2": "d339838a200afbd192bda0aaf84971cd91a8e39ba74bf112ed3a0783e50fa924",
+  "r_f7x2_12b_3": "70864bcebf1b38c38b16f1cf66cb078291cfd12fbe881569e07c24fbdeadc20f",
+  "r_f7x2_12b_4": "0253de8386cdbdc900e00324b110daffb5860bcf124b34163846e9d60b21f0ba",
+  "r_f7x2_13a_0": "70f3f55b67c3d54ea3245e16ffc0125b4bb66fe90abdb77a22f93b8d75cd6d0a",
+  "r_f7x2_13a_1": "40543d7ff1ad0f4e81f0aa5766f28db05e8fb6c49da5f05364a70cbb5c4616fd",
+  "r_f7x2_13a_2": "cfc1f583e093b30a116689480fba9e36914733594af4b6bde4a9d0c9613b99bf",
+  "r_f7x2_13a_3": "f8872d05b2ebdc5b1273af262d763a8cde63f2b978b5043c5a5bde4a896ab00c",
+  "r_f7x2_13a_4": "1560d8700d8a099544e1ccfbe6b57bb2b377c8a2eec7f71e6dcd6c5388f67640",
+  "r_f7x2_13b_0": "4a70d931f877d4c5be4909bbf43783ac183c1f3d98647ff7a19b97a1865f7c92",
+  "r_f7x2_13b_1": "5070262bf643cc6c967cd23d959f457332251f129f6cdb5df39933b517f6cd4f",
+  "r_f7x2_13b_2": "0329d056bdbdd2a88fa11184130fbfdab09683229afb09fb6494306334678783",
+  "r_f7x2_13b_3": "286a5925cca09da76470e3d0ebad540752e45ae95708704dde8541ca8de60bb6",
+  "r_f7x2_13b_4": "12be3816d1f9acf36382e474d9ed48ae0e87bd9e350ec642fb4dd13588c68aa5",
+  "r_f7x2_14a_0": "2ffc31638c22eede4dcf0c512efa49aa381c1bdb721774342407f8a7f3008c0f",
+  "r_f7x2_14a_1": "8fa3052c323854c3cd7a4ed2c980552efc458dadaacf6baf0c4fb53171948c19",
+  "r_f7x2_14a_2": "941b7a306fe91c3712f9922a6b58c979aeb2ae33883e956dbff1aa7323d35050",
+  "r_f7x3_14a_3": "b9d3ad2d02731ab9dfbd1e4fe959ba1051d6d6fa61b9d35556ccca1497cfd54f",
+  "r_f7x2_14a_4": "ec950c1b49bbe50c2e2f8feba83bc933e748bde762ce8d1297e4810581710dbb",
+  "r_f7x2_14b_0": "7383180187e0e6a75193cae0c1c8dc78dc76410b61ff6e453d43a6f2ee7906b8",
+  "r_f7x2_14b_1": "688bf19abecf3ed1bad24b7870067e601c556b77671c7a5d23ef0ee6566c877d",
+  "r_f7x2_14b_2": "c6da4fd0723e4b5f4c1ad83b38befad31fce5a2832b32f39c0a367e4056bc799",
+  "r_f7x3_14b_3": "ad86e0658bb6d558a53b89e19914d6846ed076d6ec2a42e45afb8a85a4f2364e",
+  "r_f7x2_14b_4": "c6e6c883b2ff46c4b21a728cc4239c2c99a46dd28d563fd236ba2df6c9e0dde1",
+  "r_f7x2_15a_0": "c4635ea4510a64194f4f0fbeb0942c0a7b49c4276a79ef92d5d61a6702b25d01",
+  "r_f7x2_15a_1": "09c38a3e8a221e70d9ead53b7f1b110b9c1ca9911e6a438eda266d273951cc25",
+  "r_f7x2_15a_2": "501f25f764493775d09f4e146a08d5ac876e1125fd6396ca25080f3abec90b8c",
+  "r_f7x2_15a_3": "1a267ddde86e3f76b1d3bf3d3bbfcb75e3c38b0533af736e1c56d2cc5c76691a",
+  "r_f7x2_15a_4": "1e2f0f4c902d220b0295b1abde2b42f839813c2210127b273aef610c812ef08f",
+  "r_f7x2_15b_0": "35aeef31307c212232d013d3795b116405e5764431515c51650f373cb4b17b7d",
+  "r_f7x2_15b_1": "1e60f6968dbb8ac6f4853770ed7642c87619c64664483bed953f8dc4ff8b0fd7",
+  "r_f7x2_15b_2": "4c365e815fccd236535b301ee1dcf5aa5fa70f470c88ba5f1d7960caf35eb7d0",
+  "r_f7x2_15b_3": "4bcf63649525b869798a7f8fad9a578d47cf51ce1bf4c574e8fdb9263e739720",
+  "r_f7x2_15b_4": "1220df58bf620060fd0fe50753c53d6909f60e08107731a4369db849f9ebf864",
+  "r_f7x2_16a_0": "46edac29b78bc0d4ab4e1f069233c66b6f73b269b46d2ed9294c17b06137551c",
+  "r_f7x2_16a_1": "67420849c84b0e70241232059c7d5bffe50a0d9c0121289b76b401565f1632f9",
+  "r_f7x2_16a_2": "5182edd1a85e7c7e71ed4eddef9571008a01a08ae6105ee4220f0ad9211b95ad",
+  "r_f7x2_16a_3": "b239095143641b0cd0520cf3a1777bcc8c1c4d7cce1bcbec52df88afe6bd1ca3",
+  "r_f7x2_16a_4": "329f1feeebae77ec2641ac34cbdc695c68bd532f436f5165945479bc79be56d5",
+  "r_f7x2_16b_0": "dd58e90437bf03c0e92b9c28883e2ec37c7ec76011aab8c168fb8dfefae671a9",
+  "r_f7x2_16b_1": "278cb7d9f7d0e9bcd3a989fc221c009a8f0808150f3bf8c0f3056f4464265a38",
+  "r_f7x2_16b_2": "59f753312b4c04436453a47cc1485f04e93f0059aa1b3de9ada499f03012a496",
+  "r_f7x2_16b_3": "53eff9240350c93ad0b47612d9eed126938d42a21fbeb77ecdeda383456631a8",
+  "r_f7x2_16b_4": "f3bee1e5a2fff8a242fecf1a71fe920ae6ebbb6d7a9a2f1542008556c8d9d63f",
+  "r_f7x2_17a_0": "ed40d92b71accf51c5973f6ef846af40f01c7ef338e80b531cee2ae612671c43",
+  "r_f7x3_17a_1": "53471d47a48975ff69ccb24c114eb44b31d78899d0aaaa3b45a8ed2d454a9a10",
+  "r_f7x2_17a_2": "80235216399b05b9e9dc76dc379d606bc96e047295a80d1f393b4dd9be746432",
+  "r_f7x2_17a_3": "8ee81b236bdd587ad92c698f7d84f8a7d511c6759309caa363a5fd86d0281eff",
+  "r_f7x2_17a_4": "e03e1f2cd8821eaeceff9ebd5c0cffe30bf861f7001bf162c59ffb4650118416",
+  "r_f7x2_17b_0": "a779d84f3722819905ea6be993bffda89fa14d0071dd405e97b5f057124cc9a0",
+  "r_f7x3_17b_1": "f8f85b66e17d51c488227fedf72fc32b03e3aec256825bee58eaf9d9cf43d5d7",
+  "r_f7x2_17b_2": "e9d428d12ba827a9699a5dcf7ed3f949b92a1090926ecfd6e63eebe9fe83b0b8",
+  "r_f7x2_17b_3": "95aa2d1b8e83513c495655654f327bb85d0574b55f4bce5f8ae4adf46ef4daa4",
+  "r_f7x2_17b_4": "022b4972ae7782eda47148df6801e771f24ca0a585628b4db48580b5514a4c34",
+  "r_f7x2_18a_0": "34320f42155e51471ec40483c6d24cd8b6d71152545a2f95b15107ece43e5788",
+  "r_f7x2_18a_1": "e70de21a8c25453974ab47b719e2df6e65c3b89008b75872b55fd25f3a70fdf3",
+  "r_f7x2_18a_2": "03aabc154857e4edc06415e1c862a940ca32d53f1eab83c4b2cf8fdf6dcb3b90",
+  "r_f7x2_18a_3": "1d3b262e386b60368ba9f8360c6b5b14a0ba195bfed3153b6f1ff775a08218c7",
+  "r_f7x2_18a_4": "8af92dc2b6ddc9091e65fc6e501f89412f9e0f1537d55dc7aea4cc918c3b155b",
+  "r_f7x2_18b_0": "d957ea7e36c05173c44c673ce4b69c3209f49bccba33cecdb0a48cf4561181a3",
+  "r_f7x2_18b_1": "7aa6d882593ba3ecc2d670cc772aee4fc69d43f7b4a310737f285353d6886a0b",
+  "r_f7x2_18b_2": "ea9710616b50807e44bb7884a6ab8874f12250fafb7889d0f3e0ef99ff5e3ae2",
+  "r_f7x2_18b_3": "bd215d5b10a657081f777bb7445b755c162ffed864dbbcc9c62da8a9e32b38b6",
+  "r_f7x2_18b_4": "5acdb5bcdc7a6872196886ed6672947433d256278635f4f382c3bd0d5cd74a36",
+  "r_f7x2_19a_0": "bac601a43b3900e4f5da0a33624ec19155eb88a903151115d156160111340a17",
+  "r_f7x2_19a_1": "fbee6aa1a5727736c3bfa90d3fbad0370e99bfecbe77797552530d1a87d865fc",
+  "r_f7x2_19a_2": "f6c83a8f4a59390975249dc63849ac2f7422c961784eb217119854e065c35a08",
+  "r_f7x2_19a_3": "750aee7c4a1d5cf8d6a85e431844b37676eef9b01ffbfb83e460c715babc4a59",
+  "r_f7x2_19a_4": "918c02f6ab8a99263b941192d857e413df18d28e3969270431b5dde59f7281a0",
+  "r_f7x2_19b_0": "6207f1b33bea22d0dc38e4761e93e108e33b5f0aca49be8f01db0ff139f0f6c3",
+  "r_f7x2_19b_1": "27fad8b29bcd655920369af6a09f22f02b30e4015486eaa4bc5b2dd458e7dbe1",
+  "r_f7x2_19b_2": "0f4e7cba9ecb1f79879b1fb3ac4ffff0c7ef18ea118ecebd67c372fcedeae10a",
+  "r_f7x2_19b_3": "6744b7e9b183a2ad4302d7890018d23a0c1fa34e18d768aa88b1c313d385106c",
+  "r_f7x2_19b_4": "c3b49cf1c6eb2387a9004967a42875c6cd41dd08ca6ff1efef55d4766a338382",
+  "r_f7x2_20a_0": "daae124e68389e38c2a5604f7a56b79c56d4e863f7fde0f45edaca2650a7c71e",
+  "r_f7x2_20a_1": "8136ef2581784dd59267a59914e110e10a28ba3e7b15f01e04a935e22540b320",
+  "r_f7x2_20a_2": "a7abe243c8d2dca40cf6dfa52fd58a1b007ee13995a26a8653e68f83d953c1f2",
+  "r_f7x2_20a_3": "d5c8ab9e8e36ed25eabdc8f7af0460c7b0a467b8de59cda66d705cb004921210",
+  "r_f7x2_20a_4": "e82ad9367b03fe153b643cd6fce42a6db68e61b8f275e236263003ea80aed5e3",
+  "r_f7x2_20b_0": "6306601232319dd9d9a3b6ead1644195cabbf3ad59460240f999f3496ca20793",
+  "r_f7x2_20b_1": "17ec9fa4a31ce96b0207a660cedca377db345a866f77b625f6c65d758ecfa20a",
+  "r_f7x2_20b_2": "823b9afc03b5df0cc5b15916dfcda2b33c4ef897ea88e9068f93b471c63123ad",
+  "r_f7x2_20b_3": "39b78d0b09b01698f2fd7b0cf4a24c66f71ab6fab99f6316c6438da61accb44f",
+  "r_f7x2_20b_4": "f95c32e4b2197363617d16230c90a16eb0d229c92a84c546ad53f55c81b20dc8",
+  "r_f7x2_21a_0": "fda446dd8d34b33d4545bd94e58e01fc45daa0c35b7c2b6c66da0603d2fbda66",
+  "r_f7x2_21a_1": "44c12f04539685a00d0adab0eb89bf89ac9c016b94215bc15944d302f61747f1",
+  "r_f7x2_21a_2": "63731add605128e135d8c0f95a29e459d3896ffaf4057b74624939cca2d8ea81",
+  "r_f7x2_21a_3": "c0d42378a8036f48a8240ed23aa74091e84faea8002284600cf2f9f51a21f823",
+  "r_f7x2_21a_4": "cc9f083373c09ae26c716c15569eb8bc8961648eb7a5047ffcd58896b49a4ca2",
+  "r_f7x2_21b_0": "8b32320933a15b8e98971c3efb687fe0b4bfea036e17ad34f3c2479261bbe549",
+  "r_f7x2_21b_1": "3f6cb0dbe3c4d3a6013a5cf98ddd65e4be04ebaecd35118cfaeefac99e414a35",
+  "r_f7x2_21b_2": "bc98210ba3a2b8dc98b6822571b1dee171c9d56ff991cc942f304ee58c3a2975",
+  "r_f7x2_21b_3": "722ac1aa01e3ee13f338c2e376f223365c06141827004759028aa16bb4778bee",
+  "r_f7x2_21b_4": "e7676c0a7ef8ea17b9bd65b37251391d25c40d3cab668411954ff7237c70d721",
+  "r_f7x2_22a_0": "10d634972ce2da86f75ed123a3f3cb711d725dd0173c7148f8c988410db201b7",
+  "r_f7x2_22a_1": "c57c4663089a73183331b116cad3b3b923ed5b38fa486fd840bf3a14ec027edf",
+  "r_f7x2_22a_2": "6e7194e74640da6ed2da96f8ba95579cbf930fe5866b372bff5dae83903e21d1",
+  "r_f7x2_22a_3": "e8afeaf2187fe7a10a10568eecc2ba2ee77d52f824a3f6406c4f3f5a99313521",
+  "r_f7x2_22a_4": "fe152e16e6b388885ffa72902654789c5f5befb1fe77a085fc6bffbaf5691263",
+  "r_f7x2_22b_0": "83618bb75d6de5a3e55ff5f8e1c5af4e4b30230706c15eaa62d39ac6be0b7342",
+  "r_f7x2_22b_1": "9935c6c5824735c92b7957890ea2fa83fb94940dcb603006489c618ffb8d1e8e",
+  "r_f7x2_22b_2": "545947309d11d6949e6ec5700902cf01822a174091695a25e7c5e3259d8f1ca8",
+  "r_f7x2_22b_3": "14dce8bd8dfcd2dd241081dcf24a253c253feabd3309dad3854cfd4bdf43566d",
+  "r_f7x2_22b_4": "17cbe368249bd101bc5d8859184750026f94e833ed7ecb260a5f507f088b58c6"
+ }
+}

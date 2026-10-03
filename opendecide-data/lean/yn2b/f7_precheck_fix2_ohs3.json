@@ -1,0 +1,321 @@
+{
+ "tool": "yn2b/f7_precheck.py",
+ "checklist": "yn2b/F7_COVERAGE_CHECKLIST.md",
+ "generated_utc": "2026-10-03T01:12:11Z",
+ "args": {
+  "train": "data/v14_parts/f7fix2_train.jsonl",
+  "probe": "data/v14_parts/f7_probe.jsonl",
+  "devx": "data/v14_parts/f7_devx.jsonl",
+  "train_rel": "data/v14_parts/f7fix2_relations.jsonl",
+  "probe_rel": null,
+  "devx_rel": null,
+  "meta": [
+   "data/v14_parts/f7fix2_meta.jsonl",
+   "data/v14_parts/f7_probe_meta.jsonl",
+   "data/v14_parts/f7_devx_meta.jsonl"
+  ],
+  "fast": false,
+  "budget": "full",
+  "decide2_preds": null,
+  "decide2_code": [],
+  "decide2_independent": "unknown",
+  "generator_code": [
+   "golden_src/gen3/gen3_nested_negation.py",
+   "golden_src/gen3/nn_lexicon.py"
+  ],
+  "blind_read": null,
+  "write_blind_sample": null,
+  "holdout_spec": null,
+  "lexicon": null,
+  "golden_train": "data/v14_parts/golden_train.jsonl",
+  "neg_manifest": "yn2b/decontam_only/negation_benchmarks.json",
+  "no_unseen": false,
+  "ohs3_blind": true,
+  "only": [
+   "8"
+  ],
+  "out": "yn2b/f7_precheck_fix2_ohs3.json"
+ },
+ "inputs_sha256": {
+  "data/v14_parts/f7fix2_train.jsonl": "ffa5cecacde7ed65f0b8a105784eae3fae62007650eefd7aff7d8df5197b601c",
+  "data/v14_parts/f7fix2_relations.jsonl": "895fab57e5db294ea89d638f37555f9438d2cb1685b6b6418a5f3dd37397a1a3",
+  "data/v14_parts/f7_probe.jsonl": "e715fbd054bf2846410ce9034fe8c9f1b4f384efa853f9e2dd5a3d5d0d7d0710",
+  "data/v14_parts/f7_probe_relations.jsonl": "eda2e82450c9b6dcd14eb141887160249f21eb9c83b1524873d17de626684d04",
+  "data/v14_parts/f7_devx.jsonl": "b5579786954652c201d9871a2d4e8a16c23340d4cad0254c1e5e84f8a4d34168",
+  "data/v14_parts/f7_devx_relations.jsonl": "74cb00c9918959480caed38a1eb409974e7284578bde125f484994dc4c7da9d2",
+  "data/v14_parts/f7fix2_meta.jsonl": "b632cc2d702792cd94e6a24eb06eeeb32f589413eb9cc09935a04972ee34e598",
+  "data/v14_parts/f7_probe_meta.jsonl": "f4c8c3357730b34616e735e093d4d59ee11628ce1f6baaf65abc0634a57330d4",
+  "data/v14_parts/f7_devx_meta.jsonl": "bc22f752d2e917f333401bfad926dfddfcf41a9d48ace2de156f6b10a11e5ac2"
+ },
+ "seconds": 57.6,
+ "rows": {
+  "train": 12768,
+  "probe": 2416,
+  "devx": 220
+ },
+ "rows_with_valid_meta": 15404,
+ "verdict": "PASS",
+ "status_counts": {
+  "PASS": 15
+ },
+ "checks": {
+  "8": {
+   "name": "decontamination",
+   "status": "PASS",
+   "seconds": 56.4,
+   "subs": [
+    {
+     "id": "8.7",
+     "name": "SPEC 4.7 banned judge words: 0 in instructions / options / yes-no lines",
+     "status": "PASS",
+     "value": 0,
+     "target": 0,
+     "cite": "CL:286-287, SPEC 4.7",
+     "detail": {
+      "words": {},
+      "card_definition_lines_report_only": 0
+     }
+    },
+    {
+     "id": "8.9",
+     "name": "SPEC 7.3 cue-share rule: no instruction word with >= 30 rows has an odd-parity share > 60%",
+     "status": "PASS",
+     "value": {
+      "F7": {
+       "word": "groundless",
+       "share": 0.6,
+       "count": 40,
+       "pass": true
+      }
+     },
+     "target": "<= 0.6",
+     "cite": "SPEC 7.3",
+     "detail": null
+    },
+    {
+     "id": "8.15",
+     "name": "no F7 source is a dev source (dev source list re-derived by program; gate_dev.source_seen both ways + name containment)",
+     "status": "PASS",
+     "value": {
+      "clashes": {},
+      "dev_sources": 61,
+      "checklist_named_found": [
+       "banking77",
+       "clinc150",
+       "tb_label_nli"
+      ],
+      "checklist_named_missing": [
+       "gd_ghc_hate",
+       "std_hate"
+      ]
+     },
+     "target": "0 clashes",
+     "cite": "CL:221-223",
+     "detail": null
+    },
+    {
+     "id": "8.1",
+     "name": "12-gram vs held-out (OHS-1/2, eval*, JevBench public) + every dev / eval split (strict)",
+     "status": "PASS",
+     "value": 0,
+     "target": 0,
+     "cite": "CL:441, SPEC 7.1-7.2",
+     "detail": null
+    },
+    {
+     "id": "8.2",
+     "name": "12-gram vs in-family devs: yn2b devs strict; golden_dev / breadth_dev strict for F7 text, report-only where the row copies golden_train text",
+     "status": "PASS",
+     "value": {
+      "yn2b_dev": 0,
+      "golden_dev_in_f7_text": 0,
+      "golden_dev_source_text_not_inherited": 0,
+      "report_only_inherited_from_golden_train": 969
+     },
+     "target": 0,
+     "cite": "SPEC 7.2",
+     "detail": null
+    },
+    {
+     "id": "8.3",
+     "name": "6-word runs (instructions, options, yes/no lines) vs ship-split instructions, dialogue_rebuttal, OHS-1/2, eval injected spans, v11 templates",
+     "status": "PASS",
+     "value": {
+      "dev": 0,
+      "v11": 0
+     },
+     "target": 0,
+     "cite": "CL:442, SPEC 7.3",
+     "detail": {
+      "examples": []
+     }
+    },
+    {
+     "id": "8.4",
+     "name": "6-word runs vs public negation-benchmark frames (decontam-only manifest)",
+     "status": "PASS",
+     "value": 0,
+     "target": "0 hits, every listed source loaded",
+     "cite": "CL:284, CL:288, CL:442",
+     "detail": {
+      "sources": {
+       "ScoNe (tasksource/scone, HF cache)": {
+        "files": 2,
+        "texts": 3222,
+        "new_runs": 9767
+       },
+       "ScoNe (official repo files, OHS-1 build cache)": {
+        "files": 6,
+        "texts": 636,
+        "new_runs": 7
+       },
+       "CONDAQA questions and negated sentences (lasha-nlp/CONDAQA)": {
+        "files": 3,
+        "texts": 5127,
+        "new_runs": 91834
+       },
+       "CONDAQA (hub json copy)": {
+        "files": 3,
+        "texts": 5127,
+        "new_runs": 0
+       },
+       "NaN-NLI (joey234/nan-nli)": {
+        "files": 1,
+        "texts": 299,
+        "new_runs": 621
+       },
+       "This is not a Dataset (HiTZ)": {
+        "files": 3,
+        "texts": 379519,
+        "new_runs": 575736
+       },
+       "MoNLI (tasksource/monli)": {
+        "files": 2,
+        "texts": 642,
+        "new_runs": 132
+       },
+       "HateCheck (Paul/hatecheck)": {
+        "files": 1,
+        "texts": 4544,
+        "new_runs": 10238
+       },
+       "Recalled public templates (NOT verified against the original files; CheckList, NeQA, BLiMP, Thunder-NUBench, NegBench, IMPPRES style frames)": {
+        "files": 1,
+        "texts": 9,
+        "new_runs": 25
+       }
+      },
+      "missing": [],
+      "examples": []
+     }
+    },
+    {
+     "id": "8.5",
+     "name": "measured-failure frame: no 6-word run of the failing devp_card questions; no dev / eval frame",
+     "status": "PASS",
+     "value": {
+      "failure_questions": 90,
+      "run_hits": 0,
+      "dev_eval_frame_hits": 0
+     },
+     "target": 0,
+     "cite": "CL:285, CL:442",
+     "detail": {
+      "examples": []
+     }
+    },
+    {
+     "id": "8.6",
+     "name": "OHS-3 negation frames (read from build_ohs3.py TEXT): no frame match, no 5-word run of their fixed text",
+     "status": "PASS",
+     "value": {
+      "frames_read": 6,
+      "rows_hit": 0
+     },
+     "target": 0,
+     "cite": "SPEC 7 (held-out protection)",
+     "detail": {
+      "examples": []
+     }
+    },
+    {
+     "id": "8.8",
+     "name": "no row id and no (state, instruction) pair of a reference row",
+     "status": "PASS",
+     "value": {
+      "ids": 0,
+      "pairs": 0
+     },
+     "target": 0,
+     "cite": "SPEC 7 / build_fix1",
+     "detail": null
+    },
+    {
+     "id": "8.10",
+     "name": "SPEC 7.4 unseen set unchanged with the F7 train file (check_unseen)",
+     "status": "PASS",
+     "value": {
+      "unseen_sources": 17,
+      "unseen_rows": 3847
+     },
+     "target": "17 / 3,847, no problem",
+     "cite": "SPEC 7.4",
+     "detail": []
+    },
+    {
+     "id": "8.11",
+     "name": "SPEC 7.5 dedupe: no repeated (state, instruction) across ladders; no byte-identical row inside a ladder; none equal to a golden_train row",
+     "status": "PASS",
+     "value": {
+      "within_f7": 0,
+      "identical_row_in_same_ladder": 0,
+      "equal_to_golden_train": 0
+     },
+     "target": 0,
+     "cite": "SPEC 7.5 (+ F7_OBJECTIONS.md A2)",
+     "detail": {
+      "examples": []
+     }
+    },
+    {
+     "id": "8.12",
+     "name": "SPEC 7.7 / 4.11 names: pool names not in JevBench public or OHS-1/2 text; each part uses its own pool",
+     "status": "PASS",
+     "value": {
+      "names_used": 3584,
+      "found_in_heldout_text": 0,
+      "wrong_pool": 0
+     },
+     "target": "0 / 0",
+     "cite": "SPEC 7.7, SPEC 4.11",
+     "detail": {
+      "examples": [
+       []
+      ]
+     }
+    },
+    {
+     "id": "8.13",
+     "name": "SPEC 7.1 OHS-3 12-gram check (counts only)",
+     "status": "PASS",
+     "value": {
+      "hit_units": 0,
+      "loaded": true
+     },
+     "target": "0 hit units",
+     "cite": "SPEC 7.1",
+     "detail": null
+    },
+    {
+     "id": "8.14",
+     "name": "ladders that a decontamination hit would drop",
+     "status": "PASS",
+     "value": 0,
+     "target": 0,
+     "cite": "CL:444",
+     "detail": {}
+    }
+   ]
+  }
+ }
+}

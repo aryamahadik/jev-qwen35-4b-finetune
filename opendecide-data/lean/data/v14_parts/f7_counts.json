@@ -1,0 +1,1508 @@
+{
+ "generator": "golden_src/gen3/gen3_nested_negation.py",
+ "version": "v2",
+ "revision": "r6",
+ "seed": 20261071,
+ "golden_train_sha256": "ff7a395bc9b501ac27949ed7265b771e720406fa96f0e296700c2c101f62a2a9",
+ "repair": {
+  "tool": "golden_src/gen3/f7_repair_r6.py",
+  "from_revision": "r5",
+  "r5_train_sha256": "018798bce6d804872fd1e6fdbcd400d8f6ac71ffe4d44222de16399f9de45d8f",
+  "r5_probe_sha256": "f16c05a1749ce27ffd072dcbbab8697ca509d8e08fd544b85d6efa396fc17d0f",
+  "drops_sha256": "364f3c6a37505e88a71d845675234acd380b08bcc226c1b559ca3dfa6f430709",
+  "r5_pairs_lost": [],
+  "lost_reasons": {},
+  "added_pairs": [
+   "f7v2-tr-00158",
+   "f7v2-tr-00324",
+   "f7v2-tr-01753",
+   "f7v2-tr-01901",
+   "f7v2-tr-00896",
+   "f7v2-tr-00454",
+   "f7v2-tr-01837",
+   "f7v2-tr-00369",
+   "f7v2-tr-02246",
+   "f7v2-tr-00021",
+   "f7v2-tr-00247",
+   "f7v2-tr-00621",
+   "f7v2-tr-00594",
+   "f7v2-tr-01411",
+   "f7v2-tr-02566",
+   "f7v2-tr-00286",
+   "f7v2-tr-02335",
+   "f7v2-tr-01550"
+  ],
+  "swaps": [],
+  "new_pairs": [
+   "f7v2-tr-00021",
+   "f7v2-tr-00158",
+   "f7v2-tr-00247",
+   "f7v2-tr-00286",
+   "f7v2-tr-00324",
+   "f7v2-tr-00369",
+   "f7v2-tr-00454",
+   "f7v2-tr-00594",
+   "f7v2-tr-00621",
+   "f7v2-tr-00896",
+   "f7v2-tr-01411",
+   "f7v2-tr-01550",
+   "f7v2-tr-01753",
+   "f7v2-tr-01837",
+   "f7v2-tr-01901",
+   "f7v2-tr-02246",
+   "f7v2-tr-02335",
+   "f7v2-tr-02566"
+  ],
+  "forbidden_candidates": 128,
+  "hard": 0.36,
+  "penalty": 470.3757,
+  "audit_fails": [],
+  "hard_residual_note": "the residual is the generator's 0.59 instruction-word margin only: [{'word': 'kit', 'rows': 98, 'odd_rows': 58, 'odd_share': 0.5918}, {'word': 'portable', 'rows': 98, 'odd_rows': 58, 'odd_share': 0.5918}]; every word stays within SPEC 7.3's 60% (precheck 8.9)",
+  "items_depth1": {
+   "28": 154,
+   "30": 154
+  },
+  "relations_inv_to_equiv_in_r5_ladders": 470,
+  "probe_trim": {
+   "dropped_rows": [
+    "r_f7nn2_f7v2_ho_00002a_3",
+    "r_f7nn2_f7v2_ho_00002b_3",
+    "r_f7nn2_f7v2_ho_00022a_1",
+    "r_f7nn2_f7v2_ho_00022a_2",
+    "r_f7nn2_f7v2_ho_00022b_1",
+    "r_f7nn2_f7v2_ho_00022b_2",
+    "r_f7nn2_f7v2_ho_00112a_3",
+    "r_f7nn2_f7v2_ho_00112b_3",
+    "r_f7nn2_f7v2_ho_00122a_4",
+    "r_f7nn2_f7v2_ho_00122b_4",
+    "r_f7nn2_f7v2_ho_00135a_3",
+    "r_f7nn2_f7v2_ho_00135b_3",
+    "r_f7nn2_f7v2_ho_00178a_1",
+    "r_f7nn2_f7v2_ho_00178a_2",
+    "r_f7nn2_f7v2_ho_00178b_1",
+    "r_f7nn2_f7v2_ho_00178b_2",
+    "r_f7nn2_f7v2_ho_00194a_3",
+    "r_f7nn2_f7v2_ho_00194b_3",
+    "r_f7nn2_f7v2_ho_00425a_2",
+    "r_f7nn2_f7v2_ho_00425a_3",
+    "r_f7nn2_f7v2_ho_00425b_2",
+    "r_f7nn2_f7v2_ho_00425b_3",
+    "r_f7nn2_f7v2_ho_00477a_2",
+    "r_f7nn2_f7v2_ho_00477b_2",
+    "r_f7nn2_f7v2_ho_00572a_2",
+    "r_f7nn2_f7v2_ho_00572b_2",
+    "r_f7nn2_f7v2_ii_00016a_2",
+    "r_f7nn2_f7v2_ii_00016a_4",
+    "r_f7nn2_f7v2_ii_00016b_2",
+    "r_f7nn2_f7v2_ii_00016b_4",
+    "r_f7nn2_f7v2_ii_00019a_1",
+    "r_f7nn2_f7v2_ii_00019b_1",
+    "r_f7nn2_f7v2_ii_00041a_3",
+    "r_f7nn2_f7v2_ii_00041a_4",
+    "r_f7nn2_f7v2_ii_00041b_3",
+    "r_f7nn2_f7v2_ii_00041b_4",
+    "r_f7nn2_f7v2_ii_00103a_2",
+    "r_f7nn2_f7v2_ii_00103b_2",
+    "r_f7nn2_f7v2_ii_00152a_2",
+    "r_f7nn2_f7v2_ii_00152b_2",
+    "r_f7nn2_f7v2_ii_00168a_2",
+    "r_f7nn2_f7v2_ii_00168b_2",
+    "r_f7nn2_f7v2_ii_00201a_2",
+    "r_f7nn2_f7v2_ii_00201b_2",
+    "r_f7nn2_f7v2_ii_00232a_4",
+    "r_f7nn2_f7v2_ii_00232b_4",
+    "r_f7nn2_f7v2_ii_00241a_2",
+    "r_f7nn2_f7v2_ii_00241b_2",
+    "r_f7nn2_f7v2_ii_00278a_1",
+    "r_f7nn2_f7v2_ii_00278a_2",
+    "r_f7nn2_f7v2_ii_00278b_1",
+    "r_f7nn2_f7v2_ii_00278b_2",
+    "r_f7nn2_f7v2_ii_00289a_1",
+    "r_f7nn2_f7v2_ii_00289a_4",
+    "r_f7nn2_f7v2_ii_00289b_1",
+    "r_f7nn2_f7v2_ii_00289b_4",
+    "r_f7nn2_f7v2_ii_00318a_1",
+    "r_f7nn2_f7v2_ii_00318a_2",
+    "r_f7nn2_f7v2_ii_00318b_1",
+    "r_f7nn2_f7v2_ii_00318b_2",
+    "r_f7nn2_f7v2_ii_00343a_1",
+    "r_f7nn2_f7v2_ii_00343a_2",
+    "r_f7nn2_f7v2_ii_00343b_1",
+    "r_f7nn2_f7v2_ii_00343b_2",
+    "r_f7nn2_f7v2_ii_00362a_2",
+    "r_f7nn2_f7v2_ii_00362b_2",
+    "r_f7nn2_f7v2_ii_00408a_2",
+    "r_f7nn2_f7v2_ii_00408a_4",
+    "r_f7nn2_f7v2_ii_00408b_2",
+    "r_f7nn2_f7v2_ii_00408b_4",
+    "r_f7nn2_f7v2_ii_00423a_1",
+    "r_f7nn2_f7v2_ii_00423a_4",
+    "r_f7nn2_f7v2_ii_00423b_1",
+    "r_f7nn2_f7v2_ii_00423b_4",
+    "r_f7nn2_f7v2_ii_00474a_1",
+    "r_f7nn2_f7v2_ii_00474a_2",
+    "r_f7nn2_f7v2_ii_00474b_1",
+    "r_f7nn2_f7v2_ii_00474b_2",
+    "r_f7nn2_f7v2_ii_00493a_4",
+    "r_f7nn2_f7v2_ii_00493b_4",
+    "r_f7nn2_f7v2_ii_00515a_2",
+    "r_f7nn2_f7v2_ii_00515b_2"
+   ],
+   "depth4_iid": 46,
+   "depth4_holdout": 26,
+   "odd_rows": 10,
+   "odd_rows_ids": [
+    "r_f7nn2_f7v2_ii_00016a_2",
+    "r_f7nn2_f7v2_ii_00016a_4",
+    "r_f7nn2_f7v2_ii_00016b_2",
+    "r_f7nn2_f7v2_ii_00016b_4",
+    "r_f7nn2_f7v2_ii_00019a_1",
+    "r_f7nn2_f7v2_ii_00019b_1",
+    "r_f7nn2_f7v2_ii_00103a_2",
+    "r_f7nn2_f7v2_ii_00103b_2",
+    "r_f7nn2_f7v2_ii_00168a_2",
+    "r_f7nn2_f7v2_ii_00168b_2"
+   ],
+   "frozen_pairs_touched": 26,
+   "rule": "fewest depth-4 rows to reach <= 3% (CL:61, >= 40 left CL:374); chosen by a deterministic local search that keeps precheck 6.CSb, 4.6b, the per-depth yes share and 6.C1-C6 on the dev passing; odd-depth iid rows (never in an aff/dneg pair) added only to rebalance a lexeme's parity; rows always dropped with their twin row (same rung of the twin ladder, opposite gold)",
+   "depth4_before": [
+    144,
+    2498
+   ],
+   "depth4_after": [
+    72,
+    2416
+   ]
+  },
+  "new_unaudited_source_rows": {}
+ },
+ "r5_repair": {
+  "tool": "golden_src/gen3/f7_repair_r5.py",
+  "from_revision": "r4",
+  "r4_train_sha256": "6e560988104c1e12aa4b8b52f1ebab7d68691f407908b1c951b34da6971c536e",
+  "drops_sha256": "2a1c31ee7e868cafb4553c8a6069cc2e10f23541078f9fa01334f88dc9989e7a",
+  "r4_pairs_lost": [
+   "f7v2-tr-00015",
+   "f7v2-tr-00020",
+   "f7v2-tr-00022",
+   "f7v2-tr-00031",
+   "f7v2-tr-00033",
+   "f7v2-tr-00045",
+   "f7v2-tr-00050",
+   "f7v2-tr-00080",
+   "f7v2-tr-00101",
+   "f7v2-tr-00107",
+   "f7v2-tr-00121",
+   "f7v2-tr-00142",
+   "f7v2-tr-00227",
+   "f7v2-tr-00234",
+   "f7v2-tr-00263",
+   "f7v2-tr-00292",
+   "f7v2-tr-00319",
+   "f7v2-tr-00338",
+   "f7v2-tr-00344",
+   "f7v2-tr-00351",
+   "f7v2-tr-00387",
+   "f7v2-tr-00410",
+   "f7v2-tr-00430",
+   "f7v2-tr-00448",
+   "f7v2-tr-00476",
+   "f7v2-tr-00486",
+   "f7v2-tr-00499",
+   "f7v2-tr-00514",
+   "f7v2-tr-00527",
+   "f7v2-tr-00530",
+   "f7v2-tr-00563",
+   "f7v2-tr-00567",
+   "f7v2-tr-00599",
+   "f7v2-tr-00605",
+   "f7v2-tr-00656",
+   "f7v2-tr-00664",
+   "f7v2-tr-00671",
+   "f7v2-tr-00795",
+   "f7v2-tr-00828",
+   "f7v2-tr-00850",
+   "f7v2-tr-00860",
+   "f7v2-tr-00922",
+   "f7v2-tr-00938",
+   "f7v2-tr-00971",
+   "f7v2-tr-00994",
+   "f7v2-tr-00997",
+   "f7v2-tr-01005",
+   "f7v2-tr-01010",
+   "f7v2-tr-01026",
+   "f7v2-tr-01061",
+   "f7v2-tr-01094",
+   "f7v2-tr-01125",
+   "f7v2-tr-01156",
+   "f7v2-tr-01189",
+   "f7v2-tr-01203",
+   "f7v2-tr-01223",
+   "f7v2-tr-01315",
+   "f7v2-tr-01328",
+   "f7v2-tr-01339",
+   "f7v2-tr-01362",
+   "f7v2-tr-01367",
+   "f7v2-tr-01481",
+   "f7v2-tr-01565",
+   "f7v2-tr-01582",
+   "f7v2-tr-01663",
+   "f7v2-tr-01686",
+   "f7v2-tr-01708",
+   "f7v2-tr-01709",
+   "f7v2-tr-01739",
+   "f7v2-tr-01750",
+   "f7v2-tr-01781",
+   "f7v2-tr-01788",
+   "f7v2-tr-01805",
+   "f7v2-tr-01885",
+   "f7v2-tr-01943",
+   "f7v2-tr-01969",
+   "f7v2-tr-02151",
+   "f7v2-tr-02198",
+   "f7v2-tr-02217",
+   "f7v2-tr-02285",
+   "f7v2-tr-02370",
+   "f7v2-tr-02447",
+   "f7v2-tr-02458",
+   "f7v2-tr-02465",
+   "f7v2-tr-02485",
+   "f7v2-tr-02499",
+   "f7v2-tr-02525",
+   "f7v2-tr-02539",
+   "f7v2-tr-02581",
+   "f7v2-tr-02658",
+   "f7v2-tr-02664",
+   "f7v2-tr-02667",
+   "f7v2-tr-02668",
+   "f7v2-tr-02701",
+   "f7v2-tr-02703",
+   "f7v2-tr-02717",
+   "f7v2-tr-02752",
+   "f7v2-tr-02864",
+   "f7v2-tr-02870",
+   "f7v2-tr-02871",
+   "f7v2-tr-02902",
+   "f7v2-tr-02903",
+   "f7v2-tr-02908"
+  ],
+  "lost_reasons": {
+   "f7v2-tr-00015": [
+    "derived_from_bad_source_row"
+   ],
+   "f7v2-tr-00020": [
+    "derived_from_bad_source_row"
+   ],
+   "f7v2-tr-00022": [
+    "derived_from_bad_source_row"
+   ],
+   "f7v2-tr-00031": [
+    "derived_from_bad_source_row"
+   ],
+   "f7v2-tr-00033": [
+    "derived_from_bad_source_row"
+   ],
+   "f7v2-tr-00045": [
+    "derived_from_bad_source_row"
+   ],
+   "f7v2-tr-00050": [
+    "derived_from_bad_source_row"
+   ],
+   "f7v2-tr-00080": [
+    "derived_from_bad_source_row"
+   ],
+   "f7v2-tr-00101": [
+    "derived_from_bad_source_row"
+   ],
+   "f7v2-tr-00107": [
+    "derived_from_bad_source_row"
+   ],
+   "f7v2-tr-00121": [
+    "derived_from_bad_source_row"
+   ],
+   "f7v2-tr-00142": [
+    "derived_from_bad_source_row"
+   ],
+   "f7v2-tr-00227": [
+    "derived_from_bad_source_row"
+   ],
+   "f7v2-tr-00234": [
+    "derived_from_bad_source_row"
+   ],
+   "f7v2-tr-00263": [
+    "derived_from_bad_source_row"
+   ],
+   "f7v2-tr-00292": [
+    "derived_from_bad_source_row"
+   ],
+   "f7v2-tr-00319": [
+    "derived_from_bad_source_row"
+   ],
+   "f7v2-tr-00338": [
+    "derived_from_bad_source_row"
+   ],
+   "f7v2-tr-00344": [
+    "derived_from_bad_source_row"
+   ],
+   "f7v2-tr-00351": [
+    "derived_from_bad_source_row"
+   ],
+   "f7v2-tr-00387": [
+    "derived_from_bad_source_row"
+   ],
+   "f7v2-tr-00410": [
+    "derived_from_bad_source_row"
+   ],
+   "f7v2-tr-00430": [
+    "derived_from_bad_source_row"
+   ],
+   "f7v2-tr-00448": [
+    "derived_from_bad_source_row"
+   ],
+   "f7v2-tr-00476": [
+    "derived_from_bad_source_row"
+   ],
+   "f7v2-tr-00486": [
+    "derived_from_bad_source_row"
+   ],
+   "f7v2-tr-00499": [
+    "derived_from_bad_source_row"
+   ],
+   "f7v2-tr-00514": [
+    "derived_from_bad_source_row"
+   ],
+   "f7v2-tr-00527": [
+    "derived_from_bad_source_row"
+   ],
+   "f7v2-tr-00530": [
+    "derived_from_bad_source_row"
+   ],
+   "f7v2-tr-00563": [
+    "derived_from_bad_source_row"
+   ],
+   "f7v2-tr-00567": [
+    "derived_from_bad_source_row"
+   ],
+   "f7v2-tr-00599": [
+    "derived_from_bad_source_row"
+   ],
+   "f7v2-tr-00605": [
+    "probe_12gram"
+   ],
+   "f7v2-tr-00656": [
+    "derived_from_bad_source_row"
+   ],
+   "f7v2-tr-00664": [
+    "derived_from_bad_source_row"
+   ],
+   "f7v2-tr-00671": [
+    "derived_from_bad_source_row"
+   ],
+   "f7v2-tr-00795": [
+    "derived_from_bad_source_row"
+   ],
+   "f7v2-tr-00828": [
+    "derived_from_bad_source_row"
+   ],
+   "f7v2-tr-00850": [
+    "probe_12gram"
+   ],
+   "f7v2-tr-00860": [
+    "derived_from_bad_source_row"
+   ],
+   "f7v2-tr-00922": [
+    "derived_from_bad_source_row"
+   ],
+   "f7v2-tr-00938": [
+    "derived_from_bad_source_row"
+   ],
+   "f7v2-tr-00971": [
+    "derived_from_bad_source_row"
+   ],
+   "f7v2-tr-00994": [
+    "derived_from_bad_source_row"
+   ],
+   "f7v2-tr-00997": [
+    "derived_from_bad_source_row"
+   ],
+   "f7v2-tr-01005": [
+    "derived_from_bad_source_row"
+   ],
+   "f7v2-tr-01010": [
+    "derived_from_bad_source_row"
+   ],
+   "f7v2-tr-01026": [
+    "probe_12gram"
+   ],
+   "f7v2-tr-01061": [
+    "derived_from_bad_source_row"
+   ],
+   "f7v2-tr-01094": [
+    "derived_from_bad_source_row"
+   ],
+   "f7v2-tr-01125": [
+    "derived_from_bad_source_row"
+   ],
+   "f7v2-tr-01156": [
+    "derived_from_bad_source_row"
+   ],
+   "f7v2-tr-01189": [
+    "derived_from_bad_source_row"
+   ],
+   "f7v2-tr-01203": [
+    "probe_12gram"
+   ],
+   "f7v2-tr-01223": [
+    "derived_from_bad_source_row"
+   ],
+   "f7v2-tr-01315": [
+    "derived_from_bad_source_row"
+   ],
+   "f7v2-tr-01328": [
+    "derived_from_bad_source_row"
+   ],
+   "f7v2-tr-01339": [
+    "derived_from_bad_source_row"
+   ],
+   "f7v2-tr-01362": [
+    "derived_from_bad_source_row"
+   ],
+   "f7v2-tr-01367": [
+    "probe_12gram"
+   ],
+   "f7v2-tr-01481": [
+    "derived_from_bad_source_row"
+   ],
+   "f7v2-tr-01565": [
+    "derived_from_bad_source_row",
+    "drop_list_pair"
+   ],
+   "f7v2-tr-01582": [
+    "derived_from_bad_source_row"
+   ],
+   "f7v2-tr-01663": [
+    "derived_from_bad_source_row"
+   ],
+   "f7v2-tr-01686": [
+    "derived_from_bad_source_row"
+   ],
+   "f7v2-tr-01708": [
+    "probe_12gram"
+   ],
+   "f7v2-tr-01709": [
+    "derived_from_bad_source_row"
+   ],
+   "f7v2-tr-01739": [
+    "derived_from_bad_source_row"
+   ],
+   "f7v2-tr-01750": [
+    "derived_from_bad_source_row"
+   ],
+   "f7v2-tr-01781": [
+    "probe_12gram"
+   ],
+   "f7v2-tr-01788": [
+    "derived_from_bad_source_row"
+   ],
+   "f7v2-tr-01805": [
+    "derived_from_bad_source_row"
+   ],
+   "f7v2-tr-01885": [
+    "derived_from_bad_source_row"
+   ],
+   "f7v2-tr-01943": [
+    "derived_from_bad_source_row"
+   ],
+   "f7v2-tr-01969": [
+    "probe_12gram"
+   ],
+   "f7v2-tr-02151": [
+    "derived_from_bad_source_row"
+   ],
+   "f7v2-tr-02198": [
+    "derived_from_bad_source_row"
+   ],
+   "f7v2-tr-02217": [
+    "derived_from_bad_source_row"
+   ],
+   "f7v2-tr-02285": [
+    "derived_from_bad_source_row"
+   ],
+   "f7v2-tr-02370": [
+    "derived_from_bad_source_row"
+   ],
+   "f7v2-tr-02447": [
+    "derived_from_bad_source_row"
+   ],
+   "f7v2-tr-02458": [
+    "derived_from_bad_source_row"
+   ],
+   "f7v2-tr-02465": [
+    "probe_12gram"
+   ],
+   "f7v2-tr-02485": [
+    "derived_from_bad_source_row"
+   ],
+   "f7v2-tr-02499": [
+    "derived_from_bad_source_row",
+    "drop_list_pair"
+   ],
+   "f7v2-tr-02525": [
+    "derived_from_bad_source_row",
+    "drop_list_pair"
+   ],
+   "f7v2-tr-02539": [
+    "probe_12gram"
+   ],
+   "f7v2-tr-02581": [
+    "derived_from_bad_source_row"
+   ],
+   "f7v2-tr-02658": [
+    "derived_from_bad_source_row"
+   ],
+   "f7v2-tr-02664": [
+    "derived_from_bad_source_row"
+   ],
+   "f7v2-tr-02667": [
+    "probe_12gram"
+   ],
+   "f7v2-tr-02668": [
+    "derived_from_bad_source_row"
+   ],
+   "f7v2-tr-02701": [
+    "derived_from_bad_source_row"
+   ],
+   "f7v2-tr-02703": [
+    "derived_from_bad_source_row"
+   ],
+   "f7v2-tr-02717": [
+    "derived_from_bad_source_row"
+   ],
+   "f7v2-tr-02752": [
+    "derived_from_bad_source_row"
+   ],
+   "f7v2-tr-02864": [
+    "derived_from_bad_source_row"
+   ],
+   "f7v2-tr-02870": [
+    "probe_12gram"
+   ],
+   "f7v2-tr-02871": [
+    "derived_from_bad_source_row"
+   ],
+   "f7v2-tr-02902": [
+    "derived_from_bad_source_row"
+   ],
+   "f7v2-tr-02903": [
+    "derived_from_bad_source_row"
+   ],
+   "f7v2-tr-02908": [
+    "derived_from_bad_source_row"
+   ]
+  },
+  "added_pairs": [
+   "f7v2-tr-01749",
+   "f7v2-tr-00659",
+   "f7v2-tr-01176",
+   "f7v2-tr-00312",
+   "f7v2-tr-00168",
+   "f7v2-tr-00885",
+   "f7v2-tr-01295",
+   "f7v2-tr-00028",
+   "f7v2-tr-00298",
+   "f7v2-tr-01609",
+   "f7v2-tr-01453",
+   "f7v2-tr-02067",
+   "f7v2-tr-00939",
+   "f7v2-tr-02504",
+   "f7v2-tr-00395",
+   "f7v2-tr-01118",
+   "f7v2-tr-00327",
+   "f7v2-tr-01402",
+   "f7v2-tr-01838",
+   "f7v2-tr-00690",
+   "f7v2-tr-01158",
+   "f7v2-tr-00663",
+   "f7v2-tr-01864",
+   "f7v2-tr-01730",
+   "f7v2-tr-00657",
+   "f7v2-tr-00119",
+   "f7v2-tr-00041",
+   "f7v2-tr-02425",
+   "f7v2-tr-01095",
+   "f7v2-tr-00721",
+   "f7v2-tr-01997",
+   "f7v2-tr-00084",
+   "f7v2-tr-01226",
+   "f7v2-tr-02279",
+   "f7v2-tr-02139",
+   "f7v2-tr-00179",
+   "f7v2-tr-02813",
+   "f7v2-tr-00654",
+   "f7v2-tr-00371",
+   "f7v2-tr-02603",
+   "f7v2-tr-01457",
+   "f7v2-tr-02348",
+   "f7v2-tr-01846",
+   "f7v2-tr-00467",
+   "f7v2-tr-02305",
+   "f7v2-tr-01600",
+   "f7v2-tr-02031",
+   "f7v2-tr-02632",
+   "f7v2-tr-02169",
+   "f7v2-tr-01532",
+   "f7v2-tr-00328",
+   "f7v2-tr-00800",
+   "f7v2-tr-02605",
+   "f7v2-tr-00446",
+   "f7v2-tr-01429",
+   "f7v2-tr-01198",
+   "f7v2-tr-00856",
+   "f7v2-tr-00009",
+   "f7v2-tr-00095",
+   "f7v2-tr-01612",
+   "f7v2-tr-01331",
+   "f7v2-tr-01149",
+   "f7v2-tr-00268",
+   "f7v2-tr-02797",
+   "f7v2-tr-01949",
+   "f7v2-tr-02120",
+   "f7v2-tr-01259",
+   "f7v2-tr-00051",
+   "f7v2-tr-00632",
+   "f7v2-tr-02168",
+   "f7v2-tr-00442",
+   "f7v2-tr-02444",
+   "f7v2-tr-01245",
+   "f7v2-tr-00628",
+   "f7v2-tr-00016",
+   "f7v2-tr-02188",
+   "f7v2-tr-00522",
+   "f7v2-tr-02256",
+   "f7v2-tr-00730",
+   "f7v2-tr-00404",
+   "f7v2-tr-02018",
+   "f7v2-tr-00237",
+   "f7v2-tr-01463",
+   "f7v2-tr-01607",
+   "f7v2-tr-02093",
+   "f7v2-tr-01998",
+   "f7v2-tr-02875",
+   "f7v2-tr-01559",
+   "f7v2-tr-00947",
+   "f7v2-tr-00895",
+   "f7v2-tr-00183",
+   "f7v2-tr-01456",
+   "f7v2-tr-02003",
+   "f7v2-tr-01850",
+   "f7v2-tr-02360",
+   "f7v2-tr-00501",
+   "f7v2-tr-02782",
+   "f7v2-tr-00202",
+   "f7v2-tr-00976",
+   "f7v2-tr-00397",
+   "f7v2-tr-02623",
+   "f7v2-tr-00189",
+   "f7v2-tr-00867"
+  ],
+  "swaps": [
+   [
+    "f7v2-tr-00095",
+    "f7v2-tr-02423"
+   ]
+  ],
+  "new_pairs": [
+   "f7v2-tr-00009",
+   "f7v2-tr-00016",
+   "f7v2-tr-00028",
+   "f7v2-tr-00041",
+   "f7v2-tr-00051",
+   "f7v2-tr-00084",
+   "f7v2-tr-00119",
+   "f7v2-tr-00168",
+   "f7v2-tr-00179",
+   "f7v2-tr-00183",
+   "f7v2-tr-00189",
+   "f7v2-tr-00202",
+   "f7v2-tr-00237",
+   "f7v2-tr-00268",
+   "f7v2-tr-00298",
+   "f7v2-tr-00312",
+   "f7v2-tr-00327",
+   "f7v2-tr-00328",
+   "f7v2-tr-00371",
+   "f7v2-tr-00395",
+   "f7v2-tr-00397",
+   "f7v2-tr-00404",
+   "f7v2-tr-00442",
+   "f7v2-tr-00446",
+   "f7v2-tr-00467",
+   "f7v2-tr-00501",
+   "f7v2-tr-00522",
+   "f7v2-tr-00628",
+   "f7v2-tr-00632",
+   "f7v2-tr-00654",
+   "f7v2-tr-00657",
+   "f7v2-tr-00659",
+   "f7v2-tr-00663",
+   "f7v2-tr-00690",
+   "f7v2-tr-00721",
+   "f7v2-tr-00730",
+   "f7v2-tr-00800",
+   "f7v2-tr-00856",
+   "f7v2-tr-00867",
+   "f7v2-tr-00885",
+   "f7v2-tr-00895",
+   "f7v2-tr-00939",
+   "f7v2-tr-00947",
+   "f7v2-tr-00976",
+   "f7v2-tr-01095",
+   "f7v2-tr-01118",
+   "f7v2-tr-01149",
+   "f7v2-tr-01158",
+   "f7v2-tr-01176",
+   "f7v2-tr-01198",
+   "f7v2-tr-01226",
+   "f7v2-tr-01245",
+   "f7v2-tr-01259",
+   "f7v2-tr-01295",
+   "f7v2-tr-01331",
+   "f7v2-tr-01402",
+   "f7v2-tr-01429",
+   "f7v2-tr-01453",
+   "f7v2-tr-01456",
+   "f7v2-tr-01457",
+   "f7v2-tr-01463",
+   "f7v2-tr-01532",
+   "f7v2-tr-01559",
+   "f7v2-tr-01600",
+   "f7v2-tr-01607",
+   "f7v2-tr-01609",
+   "f7v2-tr-01612",
+   "f7v2-tr-01730",
+   "f7v2-tr-01749",
+   "f7v2-tr-01838",
+   "f7v2-tr-01846",
+   "f7v2-tr-01850",
+   "f7v2-tr-01864",
+   "f7v2-tr-01949",
+   "f7v2-tr-01997",
+   "f7v2-tr-01998",
+   "f7v2-tr-02003",
+   "f7v2-tr-02018",
+   "f7v2-tr-02031",
+   "f7v2-tr-02067",
+   "f7v2-tr-02093",
+   "f7v2-tr-02120",
+   "f7v2-tr-02139",
+   "f7v2-tr-02168",
+   "f7v2-tr-02169",
+   "f7v2-tr-02188",
+   "f7v2-tr-02256",
+   "f7v2-tr-02279",
+   "f7v2-tr-02305",
+   "f7v2-tr-02348",
+   "f7v2-tr-02360",
+   "f7v2-tr-02423",
+   "f7v2-tr-02425",
+   "f7v2-tr-02444",
+   "f7v2-tr-02504",
+   "f7v2-tr-02603",
+   "f7v2-tr-02605",
+   "f7v2-tr-02623",
+   "f7v2-tr-02632",
+   "f7v2-tr-02782",
+   "f7v2-tr-02797",
+   "f7v2-tr-02813",
+   "f7v2-tr-02875"
+  ],
+  "forbidden_candidates": 126,
+  "hard": 0.0,
+  "penalty": 96.3262,
+  "audit_fails": [],
+  "new_unaudited_source_rows": {}
+ },
+ "parts": {
+  "train": {
+   "pairs": 1278,
+   "ladders": 2556,
+   "rows": 12768,
+   "selection": {
+    "pool_pairs": 2898,
+    "kept_pairs": 1278,
+    "repair": "r6",
+    "hard": 0.36
+   },
+   "depth": {
+    "0": [
+     2220,
+     0.1739
+    ],
+    "1": [
+     3272,
+     0.2563
+    ],
+    "2": [
+     4032,
+     0.3158
+    ],
+    "3": [
+     2906,
+     0.2276
+    ],
+    "4": [
+     338,
+     0.0265
+    ]
+   },
+   "kinds_pairs": {
+    "card": 643,
+    "record": 459,
+    "multitext": 176
+   },
+   "ptypes_pairs": {
+    "card:excl": 38,
+    "card:group": 41,
+    "card:label": 312,
+    "card:ordinal": 108,
+    "card:prop": 74,
+    "card:residual": 70,
+    "multitext:ALL": 22,
+    "multitext:BOTH": 18,
+    "multitext:COUNT": 24,
+    "multitext:EITHER": 14,
+    "multitext:EXCEPT": 17,
+    "multitext:FEW": 11,
+    "multitext:SOME": 70,
+    "record:pack": 459
+   },
+   "sources_pairs": {
+    "gd_nhtsa_complaints": 185,
+    "gd_storm_ef": 170,
+    "gd_smcalflow_action": 113,
+    "gd_medquad_qtype": 81,
+    "f7_record:deontic": 68,
+    "gd_drugprot": 64,
+    "gd_edgar_10k_item": 55,
+    "gd_ncbi_disease": 54,
+    "gd_sd311_routing": 44,
+    "gd_oiics_event": 29,
+    "f7_record:triage": 28,
+    "f7_record:applications": 26,
+    "f7_record:parcels": 25,
+    "f7_record:roads": 24,
+    "f7_record:devices": 22,
+    "f7_record:guests": 20,
+    "f7_record:rooms": 20,
+    "f7_record:lines": 20,
+    "f7_record:menu": 19,
+    "f7_record:routes": 19,
+    "f7_record:bundles": 19,
+    "f7_record:tickets": 17,
+    "f7_record:parking": 16,
+    "f7_record:invoices": 16,
+    "f7_record:inspections": 16,
+    "f7_record:sessions": 16,
+    "f7_record:accounts": 16,
+    "f7_record:lockers": 15,
+    "f7_record:requests": 15,
+    "gd_faithdial": 14,
+    "f7_record:orders": 12,
+    "gd_multiwoz21_sysacts": 10,
+    "f7_record:staff": 10
+   },
+   "items": {
+    "1": 2180,
+    "2": 528,
+    "3": 474,
+    "4": 682,
+    "5": 464,
+    "6": 2532,
+    "7": 390,
+    "8": 2620,
+    "9": 338,
+    "10": 2850,
+    "11": 2948,
+    "12": 6238,
+    "13": 778,
+    "14": 380,
+    "15": 6378,
+    "16": 4878,
+    "17": 186,
+    "18": 2344,
+    "19": 3684,
+    "20": 5290,
+    "21": 454,
+    "22": 700,
+    "23": 320,
+    "24": 428,
+    "25": 344,
+    "26": 410,
+    "27": 446,
+    "28": 154,
+    "29": 108,
+    "30": 154,
+    "31": 170,
+    "32": 164,
+    "33": 436,
+    "34": 294,
+    "35": 230,
+    "36": 1344,
+    "37": 198,
+    "38": 214
+   },
+   "class_tokens": {
+    "syntactic": 9132,
+    "affixal": 5664,
+    "lexical": 7122,
+    "truth_frame": 2848,
+    "cross+answer": 2606
+   },
+   "position_tokens": {
+    "inner_claim": 6948,
+    "outer_frame": 6110,
+    "card_def": 3286,
+    "separate_sentence": 1448,
+    "yn_key+answer_map": 1158,
+    "choice_option": 1632
+   },
+   "choice_rows": 2548,
+   "choice_negsel": 1344,
+   "choice_even_depth": 1248,
+   "lexeme_rows": {
+    "-free": 698,
+    "-less": 162,
+    "absent": 306,
+    "answer no if": 272,
+    "avoid": 64,
+    "baseless": 150,
+    "cannot": 476,
+    "contradict": 220,
+    "decline": 90,
+    "deny": 60,
+    "dis-": 128,
+    "dismiss": 52,
+    "displayed": 790,
+    "dispute": 578,
+    "exclude": 146,
+    "fail": 2206,
+    "fails to hold": 212,
+    "false": 1418,
+    "few": 86,
+    "forbid": 68,
+    "il-": 654,
+    "im-": 164,
+    "in-": 1392,
+    "is false of": 168,
+    "lack": 764,
+    "leave out": 48,
+    "miss": 854,
+    "must not": 262,
+    "n't": 2194,
+    "need not": 218,
+    "negation": 506,
+    "neither": 80,
+    "never": 282,
+    "no": 872,
+    "no exactly when": 214,
+    "no more than": 110,
+    "no one": 54,
+    "nobody": 46,
+    "non-": 1216,
+    "none": 370,
+    "nonetheless": 948,
+    "not": 2164,
+    "not a single": 66,
+    "not all": 108,
+    "not every": 166,
+    "not the case": 252,
+    "notably": 974,
+    "nothing": 434,
+    "omit": 112,
+    "opposite": 394,
+    "refuse": 282,
+    "refute": 250,
+    "reject": 102,
+    "reverse": 548,
+    "rule out": 154,
+    "say no when": 292,
+    "skip": 214,
+    "un-": 1138,
+    "under": 820,
+    "unfounded": 196,
+    "uniform": 884,
+    "unit": 874,
+    "unless": 394,
+    "unsupported": 82,
+    "untrue": 750,
+    "withhold": 50,
+    "without": 252
+   },
+   "rejects": {
+    "no text with the wanted gold": 507,
+    "residual: fewer than two labels far from the left-off label": 34,
+    "no matched twin text": 15,
+    "X:X8:n't fit  QUOTED  no": 6,
+    "X:X8:n't count as  QUOTED  no": 4,
+    "frame needs an inner-negative interrogative": 3,
+    "decon:tmpl6_v11": 3,
+    "X:X12:2 affixal cues on one word: unrelated": 2,
+    "multi pool ('card', 'sd311', 'train') too small": 2,
+    "multi pool ('oiics', 'oiics', 'train') too small": 2,
+    "X:X8:n't disconnected no": 1,
+    "X:X12:2 affixal cues on one word: non-standard": 1,
+    "X:X8:never paid no": 1,
+    "multi pool ('prop', 'injury', 'train') too small": 1,
+    "multi pool ('prop', 'fire', 'train') too small": 1,
+    "X:X12:2 affixal cues on one word: informal": 1,
+    "multi pool ('prop', 'crash', 'train') too small": 1
+   }
+  },
+  "iid": {
+   "pairs": 120,
+   "ladders": 240,
+   "rows": 1142,
+   "selection": {
+    "pool_pairs": 540,
+    "kept_pairs": 120,
+    "repair": "kept r5 (= r4) minus the depth-4 trim"
+   },
+   "depth": {
+    "0": [
+     257,
+     0.225
+    ],
+    "1": [
+     317,
+     0.2776
+    ],
+    "2": [
+     304,
+     0.2662
+    ],
+    "3": [
+     240,
+     0.2102
+    ],
+    "4": [
+     24,
+     0.021
+    ]
+   },
+   "kinds_pairs": {
+    "multitext": 20,
+    "card": 62,
+    "record": 38
+   },
+   "ptypes_pairs": {
+    "card:excl": 3,
+    "card:group": 3,
+    "card:label": 29,
+    "card:ordinal": 7,
+    "card:prop": 11,
+    "card:residual": 9,
+    "multitext:ALL": 1,
+    "multitext:BOTH": 2,
+    "multitext:COUNT": 3,
+    "multitext:EITHER": 1,
+    "multitext:EXCEPT": 4,
+    "multitext:FEW": 2,
+    "multitext:SOME": 7,
+    "record:pack": 38
+   },
+   "sources_pairs": {
+    "gd_nhtsa_complaints": 24,
+    "gd_storm_ef": 12,
+    "gd_smcalflow_action": 11,
+    "gd_drugprot": 8,
+    "gd_edgar_10k_item": 6,
+    "gd_medquad_qtype": 5,
+    "gd_ncbi_disease": 5,
+    "gd_sd311_routing": 5,
+    "f7_record:tickets": 4,
+    "f7_record:invoices": 4,
+    "f7_record:parcels": 3,
+    "f7_record:routes": 3,
+    "gd_multiwoz21_sysacts": 3,
+    "f7_record:deontic": 3,
+    "gd_oiics_event": 2,
+    "f7_record:devices": 2,
+    "f7_record:bundles": 2,
+    "f7_record:sessions": 2,
+    "f7_record:rooms": 2,
+    "f7_record:triage": 2,
+    "f7_record:staff": 2,
+    "f7_record:inspections": 2,
+    "f7_record:accounts": 1,
+    "f7_record:menu": 1,
+    "f7_record:lines": 1,
+    "f7_record:lockers": 1,
+    "gd_faithdial": 1,
+    "f7_record:requests": 1,
+    "f7_record:orders": 1,
+    "f7_record:parking": 1
+   },
+   "items": {
+    "1": 254,
+    "2": 42,
+    "3": 38,
+    "4": 74,
+    "5": 32,
+    "6": 188,
+    "7": 14,
+    "8": 232,
+    "9": 24,
+    "10": 192,
+    "11": 222,
+    "12": 494,
+    "13": 152,
+    "14": 16,
+    "15": 558,
+    "16": 382,
+    "17": 12,
+    "18": 206,
+    "19": 304,
+    "20": 480,
+    "21": 30,
+    "22": 80,
+    "23": 22,
+    "24": 32,
+    "25": 24,
+    "26": 48,
+    "27": 20,
+    "28": 16,
+    "29": 20,
+    "30": 12,
+    "31": 38,
+    "32": 22,
+    "33": 18,
+    "34": 16,
+    "35": 14,
+    "36": 118,
+    "37": 14,
+    "38": 14
+   },
+   "class_tokens": {
+    "syntactic": 722,
+    "affixal": 476,
+    "lexical": 516,
+    "truth_frame": 224,
+    "cross+answer": 262
+   },
+   "position_tokens": {
+    "inner_claim": 488,
+    "outer_frame": 486,
+    "card_def": 282,
+    "separate_sentence": 94,
+    "yn_key+answer_map": 168,
+    "choice_option": 88
+   },
+   "choice_rows": 226,
+   "choice_negsel": 118,
+   "choice_even_depth": 111,
+   "lexeme_rows": {
+    "-free": 122,
+    "-less": 14,
+    "absent": 8,
+    "answer no if": 20,
+    "avoid": 2,
+    "baseless": 20,
+    "cannot": 36,
+    "contradict": 28,
+    "decline": 4,
+    "deny": 4,
+    "dis-": 124,
+    "dismiss": 12,
+    "displayed": 64,
+    "dispute": 12,
+    "exclude": 32,
+    "fail": 162,
+    "fails to hold": 2,
+    "false": 138,
+    "few": 16,
+    "forbid": 4,
+    "il-": 2,
+    "im-": 2,
+    "in-": 50,
+    "is false of": 14,
+    "lack": 68,
+    "miss": 20,
+    "must not": 14,
+    "n't": 178,
+    "need not": 18,
+    "negation": 36,
+    "neither": 8,
+    "never": 16,
+    "no": 88,
+    "no exactly when": 60,
+    "no more than": 6,
+    "no one": 16,
+    "non-": 100,
+    "none": 58,
+    "nonetheless": 98,
+    "not": 162,
+    "not a single": 16,
+    "not all": 2,
+    "not every": 8,
+    "not the case": 14,
+    "notably": 90,
+    "nothing": 28,
+    "omit": 32,
+    "opposite": 34,
+    "refuse": 6,
+    "refute": 12,
+    "reject": 20,
+    "reverse": 24,
+    "rule out": 18,
+    "say no when": 72,
+    "skip": 24,
+    "un-": 56,
+    "under": 86,
+    "unfounded": 10,
+    "uniform": 62,
+    "unit": 80,
+    "unless": 28,
+    "unsupported": 6,
+    "untrue": 36,
+    "withhold": 6,
+    "without": 12
+   },
+   "rejects": {
+    "no text with the wanted gold": 231,
+    "no matched twin text": 25,
+    "decon:tmpl6_v11": 12,
+    "residual: fewer than two labels far from the left-off label": 8,
+    "multi pool ('card', 'sd311', 'dev') too small": 2,
+    "multi pool ('oiics', 'oiics', 'dev') too small": 2,
+    "X:X8:n't count as  QUOTED  no": 1
+   }
+  },
+  "holdout": {
+   "pairs": 130,
+   "ladders": 260,
+   "rows": 1274,
+   "selection": {
+    "pool_pairs": 585,
+    "kept_pairs": 130,
+    "repair": "kept r5 (= r4) minus the depth-4 trim"
+   },
+   "depth": {
+    "0": [
+     287,
+     0.2253
+    ],
+    "1": [
+     399,
+     0.3132
+    ],
+    "2": [
+     326,
+     0.2559
+    ],
+    "3": [
+     214,
+     0.168
+    ],
+    "4": [
+     48,
+     0.0377
+    ]
+   },
+   "kinds_pairs": {
+    "record": 61,
+    "card": 52,
+    "multitext": 17
+   },
+   "ptypes_pairs": {
+    "card:excl": 2,
+    "card:group": 5,
+    "card:label": 26,
+    "card:ordinal": 12,
+    "card:prop": 4,
+    "card:residual": 3,
+    "multitext:ALL": 1,
+    "multitext:BOTH": 2,
+    "multitext:COUNT": 3,
+    "multitext:EITHER": 2,
+    "multitext:EXCEPT": 3,
+    "multitext:FEW": 2,
+    "multitext:SOME": 4,
+    "record:pack": 61
+   },
+   "sources_pairs": {
+    "gd_saferproducts_severity": 28,
+    "gd_wiki_help_routing": 23,
+    "civil_comments+toxic_conv": 18,
+    "f7_record:triage": 15,
+    "f7_record:deontic_h": 13,
+    "f7_record:patients": 10,
+    "f7_record:ballots": 8,
+    "f7_record:licences": 6,
+    "f7_record:grants": 5,
+    "f7_record:plans": 4
+   },
+   "items": {
+    "1": 268,
+    "2": 86,
+    "3": 42,
+    "4": 64,
+    "5": 38,
+    "6": 186,
+    "7": 26,
+    "8": 198,
+    "9": 48,
+    "10": 244,
+    "11": 234,
+    "12": 550,
+    "13": 124,
+    "14": 16,
+    "15": 592,
+    "16": 408,
+    "17": 16,
+    "18": 202,
+    "19": 650,
+    "20": 482,
+    "21": 52,
+    "22": 24,
+    "23": 16,
+    "24": 30,
+    "25": 34,
+    "26": 32,
+    "27": 24,
+    "28": 16,
+    "29": 20,
+    "30": 16,
+    "31": 30,
+    "32": 18,
+    "33": 72,
+    "34": 34,
+    "35": 118,
+    "36": 140,
+    "37": 18,
+    "38": 22
+   },
+   "class_tokens": {
+    "syntactic": 822,
+    "affixal": 606,
+    "lexical": 486,
+    "truth_frame": 250,
+    "cross+answer": 258
+   },
+   "position_tokens": {
+    "inner_claim": 556,
+    "outer_frame": 528,
+    "card_def": 282,
+    "separate_sentence": 118,
+    "yn_key+answer_map": 140,
+    "choice_option": 178
+   },
+   "choice_rows": 280,
+   "choice_negsel": 140,
+   "choice_even_depth": 141,
+   "lexeme_rows": {
+    "-free": 154,
+    "-less": 18,
+    "a-": 36,
+    "absent": 2,
+    "abstain": 30,
+    "at no point": 32,
+    "baseless": 4,
+    "cannot": 52,
+    "contradict": 10,
+    "contrary": 70,
+    "deny": 2,
+    "dis-": 108,
+    "dismiss": 2,
+    "displayed": 76,
+    "dispute": 22,
+    "enter no if": 22,
+    "erroneous": 12,
+    "exclude": 24,
+    "fail": 192,
+    "fails to hold": 12,
+    "false": 92,
+    "far from true": 28,
+    "few": 12,
+    "forbid": 14,
+    "forgo": 6,
+    "groundless": 40,
+    "im-": 4,
+    "in-": 44,
+    "ir-": 14,
+    "is false of": 4,
+    "lack": 28,
+    "leave out": 2,
+    "mark no if": 30,
+    "miss": 4,
+    "must not": 8,
+    "n't": 154,
+    "need not": 50,
+    "negation": 10,
+    "neither": 6,
+    "never": 4,
+    "no": 44,
+    "no exactly when": 34,
+    "no longer": 16,
+    "no more than": 6,
+    "nobody": 2,
+    "non-": 162,
+    "none": 30,
+    "nonetheless": 82,
+    "not": 204,
+    "not a single": 10,
+    "not all": 4,
+    "not every": 12,
+    "not one": 8,
+    "not the case": 6,
+    "notably": 80,
+    "nothing": 56,
+    "omit": 2,
+    "opposite": 16,
+    "overturn": 8,
+    "rebut": 28,
+    "refute": 18,
+    "reject": 2,
+    "reverse": 22,
+    "rule out": 22,
+    "say no when": 38,
+    "skip": 2,
+    "turn down": 6,
+    "un-": 60,
+    "under": 88,
+    "unfounded": 6,
+    "uniform": 80,
+    "unit": 76,
+    "unless": 44,
+    "unsupported": 2,
+    "untrue": 60,
+    "veto": 32,
+    "without": 6
+   },
+   "rejects": {
+    "no text with the wanted gold": 3228,
+    "residual: fewer than two labels far from the left-off label": 200,
+    "every multi-text source is used up": 190,
+    "X:X2:not irregular": 13,
+    "X:X8:n't count as  QUOTED  no": 4,
+    "no matched twin text": 3,
+    "frame needs an inner-negative interrogative": 1,
+    "X:X12:2 affixal cues on one word: informal": 1,
+    "multi pool ('card', 'wiki', 'dev') too small": 1,
+    "X:X8:n't fit  QUOTED  no": 1,
+    "multi pool ('prop', 'toxic', 'dev') too small": 1,
+    "X:X12:2 affixal cues on one word: jargon-free": 1
+   }
+  }
+ },
+ "files": {
+  "v14_parts/f7_train.jsonl": "ffa5cecacde7ed65f0b8a105784eae3fae62007650eefd7aff7d8df5197b601c",
+  "v14_parts/f7_relations.jsonl": "895fab57e5db294ea89d638f37555f9438d2cb1685b6b6418a5f3dd37397a1a3",
+  "v14_parts/f7_meta.jsonl": "b632cc2d702792cd94e6a24eb06eeeb32f589413eb9cc09935a04972ee34e598",
+  "v14_parts/f7_probe.jsonl": "e715fbd054bf2846410ce9034fe8c9f1b4f384efa853f9e2dd5a3d5d0d7d0710",
+  "v14_parts/f7_probe_relations.jsonl": "eda2e82450c9b6dcd14eb141887160249f21eb9c83b1524873d17de626684d04",
+  "v14_parts/f7_probe_meta.jsonl": "f4c8c3357730b34616e735e093d4d59ee11628ce1f6baaf65abc0634a57330d4",
+  "v14_parts/f7_defs.json": "9e5df37bc469e47cfa78f89816df8f3c6256f9edf8858eb5a2cf0fc702972696",
+  "v14_parts/f7_lexicon.json": "bc32ec4c0e4989467cecd136a492ca0495efa175c74bddce5c28a45fdab25675",
+  "v14_parts/f7_holdout_spec.json": "ab2fe8539ba8dd850ba467de45729fe01b7f5de6d07f0c3dc335eb42b8f8fbd8"
+ }
+}

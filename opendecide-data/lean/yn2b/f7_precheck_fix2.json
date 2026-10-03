@@ -1,0 +1,2906 @@
+{
+ "tool": "yn2b/f7_precheck.py",
+ "checklist": "yn2b/F7_COVERAGE_CHECKLIST.md",
+ "generated_utc": "2026-10-03T01:22:40Z",
+ "args": {
+  "train": "data/v14_parts/f7fix2_train.jsonl",
+  "probe": "data/v14_parts/f7_probe.jsonl",
+  "devx": "data/v14_parts/f7_devx.jsonl",
+  "train_rel": "data/v14_parts/f7fix2_relations.jsonl",
+  "probe_rel": null,
+  "devx_rel": null,
+  "meta": [
+   "data/v14_parts/f7fix2_meta.jsonl",
+   "data/v14_parts/f7_probe_meta.jsonl",
+   "data/v14_parts/f7_devx_meta.jsonl"
+  ],
+  "fast": false,
+  "budget": "full",
+  "decide2_preds": "yn2b/f7_decide2_preds.jsonl",
+  "decide2_code": [
+   "golden_src/gen3/v3_nested_negation.py"
+  ],
+  "decide2_independent": "yes",
+  "generator_code": [
+   "golden_src/gen3/gen3_nested_negation.py",
+   "golden_src/gen3/nn_lexicon.py"
+  ],
+  "blind_read": "yn2b/f7_blind_read_4_verdicts.json",
+  "write_blind_sample": null,
+  "holdout_spec": "data/v14_parts/f7_holdout_spec.json",
+  "lexicon": "data/v14_parts/f7_lexicon.json",
+  "golden_train": "data/v14_parts/golden_train.jsonl",
+  "neg_manifest": "yn2b/decontam_only/negation_benchmarks.json",
+  "no_unseen": false,
+  "ohs3_blind": false,
+  "only": null,
+  "out": "yn2b/f7_precheck_fix2.json"
+ },
+ "inputs_sha256": {
+  "data/v14_parts/f7fix2_train.jsonl": "ffa5cecacde7ed65f0b8a105784eae3fae62007650eefd7aff7d8df5197b601c",
+  "data/v14_parts/f7fix2_relations.jsonl": "895fab57e5db294ea89d638f37555f9438d2cb1685b6b6418a5f3dd37397a1a3",
+  "data/v14_parts/f7_probe.jsonl": "e715fbd054bf2846410ce9034fe8c9f1b4f384efa853f9e2dd5a3d5d0d7d0710",
+  "data/v14_parts/f7_probe_relations.jsonl": "eda2e82450c9b6dcd14eb141887160249f21eb9c83b1524873d17de626684d04",
+  "data/v14_parts/f7_devx.jsonl": "b5579786954652c201d9871a2d4e8a16c23340d4cad0254c1e5e84f8a4d34168",
+  "data/v14_parts/f7_devx_relations.jsonl": "74cb00c9918959480caed38a1eb409974e7284578bde125f484994dc4c7da9d2",
+  "data/v14_parts/f7fix2_meta.jsonl": "b632cc2d702792cd94e6a24eb06eeeb32f589413eb9cc09935a04972ee34e598",
+  "data/v14_parts/f7_probe_meta.jsonl": "f4c8c3357730b34616e735e093d4d59ee11628ce1f6baaf65abc0634a57330d4",
+  "data/v14_parts/f7_devx_meta.jsonl": "bc22f752d2e917f333401bfad926dfddfcf41a9d48ace2de156f6b10a11e5ac2",
+  "yn2b/f7_decide2_preds.jsonl": "97e7b22a1613a5de2991ca4331835f4b9c467fdc5307caa3d7cde3f6f46a4520"
+ },
+ "seconds": 183.3,
+ "rows": {
+  "train": 12768,
+  "probe": 2416,
+  "devx": 220
+ },
+ "rows_with_valid_meta": 15404,
+ "verdict": "PENDING",
+ "status_counts": {
+  "PASS": 112,
+  "PENDING": 1
+ },
+ "checks": {
+  "1": {
+   "name": "schema",
+   "status": "PASS",
+   "seconds": 1.9,
+   "subs": [
+    {
+     "id": "1.1",
+     "name": "sidecar <-> rows join by id (no missing, orphan or duplicate id)",
+     "status": "PASS",
+     "value": {
+      "rows": 15404,
+      "sidecar": 15404,
+      "rows_without_meta": 0,
+      "orphan_meta": 0,
+      "duplicate_row_ids": 0,
+      "duplicate_meta_ids": 0
+     },
+     "target": "all 0",
+     "cite": "CL:385-392",
+     "detail": {
+      "examples": []
+     }
+    },
+    {
+     "id": "1.2",
+     "name": "required fields, types and enums (+ antonym_gold on item-21 rows)",
+     "status": "PASS",
+     "value": 0,
+     "target": 0,
+     "cite": "CL:385-392",
+     "detail": {
+      "by_error": {},
+      "examples": []
+     }
+    },
+    {
+     "id": "1.3",
+     "name": "LF well-formed (ops, one CORE, cue indices, no cue inside CORE, choice options)",
+     "status": "PASS",
+     "value": 0,
+     "target": 0,
+     "cite": "task LF contract",
+     "detail": {
+      "by_error": {},
+      "examples": []
+     }
+    },
+    {
+     "id": "1.4",
+     "name": "cue <-> LF consistency (scoping flags, n_cues, n_distractor, depth, truth_P, gold field)",
+     "status": "PASS",
+     "value": 0,
+     "target": 0,
+     "cite": "CL:200-201, CL:386-388",
+     "detail": {
+      "by_error": {},
+      "examples": []
+     }
+    },
+    {
+     "id": "1.5",
+     "name": "dev_kind matches the file (train / probe: iid|holdout / devx)",
+     "status": "PASS",
+     "value": 0,
+     "target": 0,
+     "cite": "CL:390",
+     "detail": {
+      "examples": []
+     }
+    },
+    {
+     "id": "1.6",
+     "name": "row format (SPEC 4.5: qtype / options / gold / card; no meta.teacher)",
+     "status": "PASS",
+     "value": 0,
+     "target": 0,
+     "cite": "SPEC 4.5",
+     "detail": {
+      "examples": []
+     }
+    },
+    {
+     "id": "1.7",
+     "name": "train_decoder.check_rows on every file",
+     "status": "PASS",
+     "value": 0,
+     "target": 0,
+     "cite": "task: train rows must pass check_rows",
+     "detail": []
+    }
+   ]
+  },
+  "2": {
+   "name": "gold",
+   "status": "PASS",
+   "seconds": 0.6,
+   "subs": [
+    {
+     "id": "2.1",
+     "name": "own LF evaluator: eval(lf) == gold",
+     "status": "PASS",
+     "value": "15404/15404",
+     "target": "100%",
+     "cite": "CL:393-394",
+     "detail": {
+      "examples": []
+     }
+    },
+    {
+     "id": "2.2",
+     "name": "distractor-deletion test (each DIST node deleted, re-evaluated with the distractor's own semantics: gold unchanged and defined)",
+     "status": "PASS",
+     "value": "8088/8088",
+     "target": "100%",
+     "cite": "CL:234-236, CL:395",
+     "detail": {
+      "examples": [],
+      "info_distractors_that_would_flip_gold_if_read_as_negation": "8088/8088"
+     }
+    },
+    {
+     "id": "2.3",
+     "name": "independent decide2 parse-back agreement",
+     "status": "PASS",
+     "value": {
+      "agree": 15404,
+      "rows": 15404,
+      "disagree": 0,
+      "unparsed": 0,
+      "generator_bug": false
+     },
+     "target": "100% (bug if > 1% off)",
+     "cite": "CL:202-204, CL:396",
+     "detail": {
+      "examples": []
+     }
+    },
+    {
+     "id": "2.3b",
+     "name": "decide2 independence (separate author; no generator import)",
+     "status": "PASS",
+     "value": "declared independent",
+     "target": "independent author",
+     "cite": "CL:202, SPEC 8.1",
+     "detail": {
+      "code_scanned": [
+       "golden_src/gen3/v3_nested_negation.py"
+      ]
+     }
+    },
+    {
+     "id": "2.4",
+     "name": "bivalence stated: rows with refute / unsupported / fails-to-show frames have a 'settles' card line",
+     "status": "PASS",
+     "value": "1712/1712",
+     "target": "100%",
+     "cite": "CL:280-281",
+     "detail": {
+      "examples": []
+     }
+    },
+    {
+     "id": "2.5",
+     "name": "distractor clauses never presuppose a fact (whether or not / even if / format lines only)",
+     "status": "PASS",
+     "value": 0,
+     "target": 0,
+     "cite": "CL:237-238",
+     "detail": {
+      "rows_with_distractor": 7610,
+      "examples": []
+     }
+    },
+    {
+     "id": "2.6",
+     "name": "choice rows: exactly one option lf evaluates to select, and it is the gold option",
+     "status": "PASS",
+     "value": "3098/3098",
+     "target": "100%",
+     "cite": "task LF contract",
+     "detail": {
+      "examples": []
+     }
+    }
+   ]
+  },
+  "3": {
+   "name": "coverage",
+   "status": "PASS",
+   "seconds": 0.3,
+   "subs": [
+    {
+     "id": "3.1",
+     "name": "checklist items 1-38 at their floors (train/dev/holdout, budget=full; items 28/30 count only rows with a scoping negation)",
+     "status": "PASS",
+     "value": "38/38 items",
+     "target": "all items",
+     "cite": "CL:302-308, CL:136, CL:141",
+     "detail": {
+      "below_floor": [],
+      "table": {
+       "1": {
+        "priority": "MUST",
+        "train": 2180,
+        "dev": 522,
+        "holdout": 268,
+        "floor": [
+         400,
+         40,
+         20
+        ],
+        "ok": true,
+        "cite": "CL:39"
+       },
+       "2": {
+        "priority": "MUST",
+        "train": 528,
+        "dev": 128,
+        "holdout": 86,
+        "floor": [
+         400,
+         40,
+         20
+        ],
+        "ok": true,
+        "cite": "CL:41"
+       },
+       "3": {
+        "priority": "MUST",
+        "train": 474,
+        "dev": 80,
+        "holdout": 42,
+        "floor": [
+         400,
+         40,
+         20
+        ],
+        "ok": true,
+        "cite": "CL:43"
+       },
+       "4": {
+        "priority": "MUST",
+        "train": 682,
+        "dev": 138,
+        "holdout": 64,
+        "floor": [
+         400,
+         40,
+         20
+        ],
+        "ok": true,
+        "cite": "CL:45"
+       },
+       "5": {
+        "priority": "MUST",
+        "train": 464,
+        "dev": 70,
+        "holdout": 38,
+        "floor": [
+         400,
+         40,
+         20
+        ],
+        "ok": true,
+        "cite": "CL:49"
+       },
+       "6": {
+        "priority": "MUST",
+        "train": 2532,
+        "dev": 374,
+        "holdout": 186,
+        "floor": [
+         400,
+         40,
+         20
+        ],
+        "ok": true,
+        "cite": "CL:53"
+       },
+       "7": {
+        "priority": "SHOULD",
+        "train": 390,
+        "dev": 40,
+        "holdout": 26,
+        "floor": [
+         150,
+         20,
+         10
+        ],
+        "ok": true,
+        "cite": "CL:56"
+       },
+       "8": {
+        "priority": "MUST",
+        "train": 2620,
+        "dev": 430,
+        "holdout": 198,
+        "floor": [
+         400,
+         40,
+         20
+        ],
+        "ok": true,
+        "cite": "CL:58"
+       },
+       "9": {
+        "priority": "NICE",
+        "train": 338,
+        "dev": 72,
+        "holdout": 48,
+        "floor": [
+         40,
+         10,
+         5
+        ],
+        "ok": true,
+        "cite": "CL:61"
+       },
+       "10": {
+        "priority": "MUST",
+        "train": 2850,
+        "dev": 436,
+        "holdout": 244,
+        "floor": [
+         400,
+         40,
+         20
+        ],
+        "ok": true,
+        "cite": "CL:64"
+       },
+       "11": {
+        "priority": "MUST",
+        "train": 2948,
+        "dev": 456,
+        "holdout": 234,
+        "floor": [
+         400,
+         40,
+         20
+        ],
+        "ok": true,
+        "cite": "CL:68"
+       },
+       "12": {
+        "priority": "MUST",
+        "train": 6238,
+        "dev": 1044,
+        "holdout": 550,
+        "floor": [
+         400,
+         40,
+         20
+        ],
+        "ok": true,
+        "cite": "CL:71"
+       },
+       "13": {
+        "priority": "MUST",
+        "train": 778,
+        "dev": 276,
+        "holdout": 124,
+        "floor": [
+         400,
+         40,
+         20
+        ],
+        "ok": true,
+        "cite": "CL:76"
+       },
+       "14": {
+        "priority": "SHOULD",
+        "train": 380,
+        "dev": 32,
+        "holdout": 16,
+        "floor": [
+         150,
+         20,
+         10
+        ],
+        "ok": true,
+        "cite": "CL:79"
+       },
+       "15": {
+        "priority": "MUST",
+        "train": 6378,
+        "dev": 1150,
+        "holdout": 592,
+        "floor": [
+         400,
+         40,
+         20
+        ],
+        "ok": true,
+        "cite": "CL:86"
+       },
+       "16": {
+        "priority": "MUST",
+        "train": 4878,
+        "dev": 790,
+        "holdout": 408,
+        "floor": [
+         400,
+         40,
+         20
+        ],
+        "ok": true,
+        "cite": "CL:89"
+       },
+       "17": {
+        "priority": "SHOULD",
+        "train": 186,
+        "dev": 28,
+        "holdout": 16,
+        "floor": [
+         150,
+         20,
+         10
+        ],
+        "ok": true,
+        "cite": "CL:93"
+       },
+       "18": {
+        "priority": "SHOULD",
+        "train": 2344,
+        "dev": 408,
+        "holdout": 202,
+        "floor": [
+         150,
+         20,
+         10
+        ],
+        "ok": true,
+        "cite": "CL:96"
+       },
+       "19": {
+        "priority": "SHOULD",
+        "train": 3684,
+        "dev": 954,
+        "holdout": 650,
+        "floor": [
+         150,
+         20,
+         10
+        ],
+        "ok": true,
+        "cite": "CL:99"
+       },
+       "20": {
+        "priority": "SHOULD",
+        "train": 5290,
+        "dev": 962,
+        "holdout": 482,
+        "floor": [
+         150,
+         20,
+         10
+        ],
+        "ok": true,
+        "cite": "CL:103"
+       },
+       "21": {
+        "priority": "MUST",
+        "train": 454,
+        "dev": 82,
+        "holdout": 52,
+        "floor": [
+         400,
+         40,
+         20
+        ],
+        "ok": true,
+        "cite": "CL:113"
+       },
+       "22": {
+        "priority": "MUST",
+        "train": 700,
+        "dev": 104,
+        "holdout": 24,
+        "floor": [
+         400,
+         40,
+         20
+        ],
+        "ok": true,
+        "cite": "CL:117"
+       },
+       "23": {
+        "priority": "SHOULD",
+        "train": 320,
+        "dev": 38,
+        "holdout": 16,
+        "floor": [
+         150,
+         20,
+         10
+        ],
+        "ok": true,
+        "cite": "CL:119"
+       },
+       "24": {
+        "priority": "MUST",
+        "train": 428,
+        "dev": 62,
+        "holdout": 30,
+        "floor": [
+         400,
+         40,
+         20
+        ],
+        "ok": true,
+        "cite": "CL:122"
+       },
+       "25": {
+        "priority": "NICE",
+        "train": 344,
+        "dev": 58,
+        "holdout": 34,
+        "floor": [
+         40,
+         10,
+         5
+        ],
+        "ok": true,
+        "cite": "CL:125"
+       },
+       "26": {
+        "priority": "SHOULD",
+        "train": 410,
+        "dev": 80,
+        "holdout": 32,
+        "floor": [
+         150,
+         20,
+         10
+        ],
+        "ok": true,
+        "cite": "CL:131"
+       },
+       "27": {
+        "priority": "MUST",
+        "train": 446,
+        "dev": 44,
+        "holdout": 24,
+        "floor": [
+         400,
+         40,
+         20
+        ],
+        "ok": true,
+        "cite": "CL:133"
+       },
+       "28": {
+        "priority": "SHOULD",
+        "train": 154,
+        "dev": 32,
+        "holdout": 16,
+        "floor": [
+         150,
+         20,
+         10
+        ],
+        "ok": true,
+        "cite": "CL:136"
+       },
+       "29": {
+        "priority": "NICE",
+        "train": 108,
+        "dev": 40,
+        "holdout": 20,
+        "floor": [
+         40,
+         10,
+         5
+        ],
+        "ok": true,
+        "cite": "CL:138"
+       },
+       "30": {
+        "priority": "SHOULD",
+        "train": 154,
+        "dev": 28,
+        "holdout": 16,
+        "floor": [
+         150,
+         20,
+         10
+        ],
+        "ok": true,
+        "cite": "CL:141"
+       },
+       "31": {
+        "priority": "SHOULD",
+        "train": 170,
+        "dev": 68,
+        "holdout": 30,
+        "floor": [
+         150,
+         20,
+         10
+        ],
+        "ok": true,
+        "cite": "CL:143"
+       },
+       "32": {
+        "priority": "SHOULD",
+        "train": 164,
+        "dev": 40,
+        "holdout": 18,
+        "floor": [
+         150,
+         20,
+         10
+        ],
+        "ok": true,
+        "cite": "CL:145"
+       },
+       "33": {
+        "priority": "SHOULD",
+        "train": 436,
+        "dev": 90,
+        "holdout": 72,
+        "floor": [
+         150,
+         20,
+         10
+        ],
+        "ok": true,
+        "cite": "CL:151"
+       },
+       "34": {
+        "priority": "SHOULD",
+        "train": 294,
+        "dev": 50,
+        "holdout": 34,
+        "floor": [
+         150,
+         20,
+         10
+        ],
+        "ok": true,
+        "cite": "CL:155"
+       },
+       "35": {
+        "priority": "SHOULD",
+        "train": 230,
+        "dev": 132,
+        "holdout": 118,
+        "floor": [
+         150,
+         20,
+         10
+        ],
+        "ok": true,
+        "cite": "CL:158"
+       },
+       "36": {
+        "priority": "MUST",
+        "train": 1344,
+        "dev": 258,
+        "holdout": 140,
+        "floor": [
+         400,
+         40,
+         20
+        ],
+        "ok": true,
+        "cite": "CL:166"
+       },
+       "37": {
+        "priority": "SHOULD",
+        "train": 198,
+        "dev": 32,
+        "holdout": 18,
+        "floor": [
+         150,
+         20,
+         10
+        ],
+        "ok": true,
+        "cite": "CL:169"
+       },
+       "38": {
+        "priority": "SHOULD",
+        "train": 214,
+        "dev": 36,
+        "holdout": 22,
+        "floor": [
+         150,
+         20,
+         10
+        ],
+        "ok": true,
+        "cite": "CL:172"
+       }
+      },
+      "depth0_rows_not_counted": {
+       "28": 42,
+       "30": 70
+      }
+     }
+    },
+    {
+     "id": "3.2",
+     "name": "item caps (9 <= 3%, 14 <= 10%, 38 <= 5% of train rows and of dev rows; devx reported)",
+     "status": "PASS",
+     "value": "ok",
+     "target": "within caps",
+     "cite": "CL:61, CL:80, CL:172, CL:374",
+     "detail": {
+      "rows_share": {
+       "9|train": [
+        338,
+        12768,
+        0.0265
+       ],
+       "9|dev": [
+        72,
+        2416,
+        0.0298
+       ],
+       "9|devx_report_only": [
+        2,
+        220,
+        0.0091
+       ],
+       "14|train": [
+        380,
+        12768,
+        0.0298
+       ],
+       "14|dev": [
+        32,
+        2416,
+        0.0132
+       ],
+       "14|devx_report_only": [
+        4,
+        220,
+        0.0182
+       ],
+       "38|train": [
+        214,
+        12768,
+        0.0168
+       ],
+       "38|dev": [
+        36,
+        2416,
+        0.0149
+       ],
+       "38|devx_report_only": [
+        2,
+        220,
+        0.0091
+       ]
+      }
+     }
+    },
+    {
+     "id": "3.3",
+     "name": "tag consistency: every phen tag matches the row's LF / cues / ladder kind",
+     "status": "PASS",
+     "value": 0,
+     "target": 0,
+     "cite": "CL:385-392 (tool rule per item)",
+     "detail": {
+      "mismatch_by_item": {},
+      "examples": {}
+     }
+    },
+    {
+     "id": "3.4",
+     "name": "depth x cue position x cue class cells (depth 1-3) with >= 30 train rows",
+     "status": "PASS",
+     "value": "45/45",
+     "target": ">= 30 each",
+     "cite": "CL:398-400",
+     "detail": {
+      "below": [],
+      "all_cells": {
+       "d0|choice_option|syntactic": 40,
+       "d1|answer_map|answer_mapping": 44,
+       "d1|card_def|affixal": 156,
+       "d1|card_def|lexical": 324,
+       "d1|card_def|syntactic": 50,
+       "d1|choice_option|affixal": 120,
+       "d1|choice_option|lexical": 180,
+       "d1|choice_option|syntactic": 40,
+       "d1|inner_claim|affixal": 186,
+       "d1|inner_claim|lexical": 76,
+       "d1|inner_claim|syntactic": 528,
+       "d1|outer_frame|affixal": 2,
+       "d1|outer_frame|lexical": 168,
+       "d1|outer_frame|syntactic": 82,
+       "d1|outer_frame|truth_frame": 474,
+       "d1|separate_sentence|cross_sentence": 84,
+       "d1|yn_key|answer_mapping": 46,
+       "d2|answer_map|answer_mapping": 328,
+       "d2|card_def|affixal": 132,
+       "d2|card_def|lexical": 258,
+       "d2|card_def|syntactic": 694,
+       "d2|choice_option|affixal": 86,
+       "d2|choice_option|lexical": 84,
+       "d2|choice_option|syntactic": 154,
+       "d2|inner_claim|affixal": 368,
+       "d2|inner_claim|lexical": 996,
+       "d2|inner_claim|syntactic": 942,
+       "d2|outer_frame|lexical": 496,
+       "d2|outer_frame|syntactic": 810,
+       "d2|outer_frame|truth_frame": 1092,
+       "d2|separate_sentence|cross_sentence": 640,
+       "d2|yn_key|answer_mapping": 168,
+       "d3|answer_map|answer_mapping": 406,
+       "d3|card_def|affixal": 398,
+       "d3|card_def|lexical": 374,
+       "d3|card_def|syntactic": 632,
+       "d3|choice_option|affixal": 50,
+       "d3|choice_option|lexical": 58,
+       "d3|choice_option|syntactic": 60,
+       "d3|inner_claim|affixal": 534,
+       "d3|inner_claim|lexical": 840,
+       "d3|inner_claim|syntactic": 2016,
+       "d3|outer_frame|lexical": 638,
+       "d3|outer_frame|syntactic": 428,
+       "d3|outer_frame|truth_frame": 986,
+       "d3|separate_sentence|cross_sentence": 724,
+       "d3|yn_key|answer_mapping": 166,
+       "d4|card_def|affixal": 24,
+       "d4|card_def|lexical": 72,
+       "d4|card_def|syntactic": 172,
+       "d4|inner_claim|affixal": 18,
+       "d4|inner_claim|lexical": 262,
+       "d4|inner_claim|syntactic": 124,
+       "d4|outer_frame|lexical": 148,
+       "d4|outer_frame|syntactic": 190,
+       "d4|outer_frame|truth_frame": 296
+      }
+     }
+    },
+    {
+     "id": "3.5",
+     "name": "lexicon: >= 60 train lexemes over 5 classes, each in >= 30 rows",
+     "status": "PASS",
+     "value": {
+      "lexemes": 61,
+      "classes": {
+       "lexical": 20,
+       "syntactic": 19,
+       "cross+answer": 8,
+       "truth_frame": 6,
+       "affixal": 8
+      },
+      "lexemes_below_30_rows": 0
+     },
+     "target": ">= 60, 5 classes, 0 thin",
+     "cite": "CL:258-261, CL:349, CL:368",
+     "detail": {
+      "thin": {},
+      "rows_per_lexeme": {
+       "fail": 2206,
+       "n't": 2194,
+       "not": 2164,
+       "false": 1418,
+       "in-": 1392,
+       "non-": 1216,
+       "un-": 1138,
+       "no": 872,
+       "miss": 854,
+       "lack": 764,
+       "untrue": 750,
+       "-free": 698,
+       "il-": 654,
+       "dispute": 578,
+       "reverse": 548,
+       "negation": 506,
+       "cannot": 476,
+       "nothing": 434,
+       "unless": 394,
+       "opposite": 394,
+       "none": 370,
+       "absent": 306,
+       "say no when": 292,
+       "never": 282,
+       "refuse": 282,
+       "answer no if": 272,
+       "must not": 262,
+       "not the case": 252,
+       "without": 252,
+       "refute": 250,
+       "contradict": 220,
+       "need not": 218,
+       "skip": 214,
+       "no exactly when": 214,
+       "fails to hold": 212,
+       "unfounded": 196,
+       "is false of": 168,
+       "not every": 166,
+       "im-": 164,
+       "-less": 162,
+       "rule out": 154,
+       "baseless": 150,
+       "exclude": 146,
+       "dis-": 128,
+       "omit": 112,
+       "no more than": 110,
+       "not all": 108,
+       "reject": 102,
+       "decline": 90,
+       "few": 86,
+       "unsupported": 82,
+       "neither": 80,
+       "forbid": 68,
+       "not a single": 66,
+       "avoid": 64,
+       "deny": 60,
+       "no one": 54,
+       "dismiss": 52,
+       "withhold": 50,
+       "leave out": 48,
+       "nobody": 46
+      }
+     }
+    },
+    {
+     "id": "3.5b",
+     "name": "every cue lexeme of a generator row (train, probe) is drawn from the curated lexicon file (with its class)",
+     "status": "PASS",
+     "value": 0,
+     "target": 0,
+     "cite": "CL:258-261",
+     "detail": {
+      "off_lexicon": {},
+      "devx_rows_not_checked": 220
+     }
+    },
+    {
+     "id": "3.6",
+     "name": "frames: >= 12 families x >= 4 frames; frame <= 4%, carrier <= 3% of train rows",
+     "status": "PASS",
+     "value": {
+      "families": 16,
+      "families_with_4_frames": 16,
+      "top_frame": [
+       "chs4",
+       0.037
+      ],
+      "top_carrier_share": 0.0075
+     },
+     "target": "12 x 4; <= 0.04; <= 0.03",
+     "cite": "CL:263-265, CL:367-370",
+     "detail": {
+      "frames_per_family": {
+       "answermap": 6,
+       "choice": 30,
+       "direct": 5,
+       "double": 7,
+       "failshow": 4,
+       "falsity": 7,
+       "key": 4,
+       "nosupport": 5,
+       "note": 8,
+       "polar_inner": 4,
+       "reader": 6,
+       "refute": 5,
+       "reverse": 6,
+       "support": 5,
+       "truth": 5,
+       "unfounded": 6
+      },
+      "rows_per_frame": {
+       "chs4": 472,
+       "key2": 444,
+       "chs6": 434,
+       "chs7": 392,
+       "chs8": 390,
+       "rev3": 336,
+       "rea4": 324,
+       "dbl5": 308,
+       "rev6": 304,
+       "amp4": 292,
+       "amp2": 272,
+       "dbl6": 254,
+       "rev1": 244,
+       "dbl4": 244,
+       "rev4": 244,
+       "chs1": 224,
+       "not3": 222,
+       "sup5": 218,
+       "sup1": 218,
+       "amp6": 214,
+       "key3": 208,
+       "key1": 208,
+       "tru4": 206,
+       "rea6": 204,
+       "key4": 202,
+       "sup3": 200,
+       "tru1": 192,
+       "not6": 182,
+       "not1": 174,
+       "chs2": 172,
+       "rev5": 170,
+       "fal3": 166,
+       "chs3": 158,
+       "fal1": 156,
+       "dir4": 152,
+       "chs5": 150,
+       "rev2": 150,
+       "fal4": 150,
+       "tru5": 138,
+       "amp3": 136
+      },
+      "top_carrier": "label definitions: ef0 means the survey's estimated peak wind is 0 to 0 mph (light damage: shingles or siding peeled, gutters bent, branches broken and shallow-rooted trees pushed over); ef0 means the"
+     }
+    },
+    {
+     "id": "3.7",
+     "name": "size: >= 1000 train ladders and >= 10000 train rows",
+     "status": "PASS",
+     "value": {
+      "train_ladders": 2556,
+      "train_rows": 12768
+     },
+     "target": {
+      "ladders": 1000,
+      "rows": 10000,
+      "plan_ladders": 2500,
+      "research_rows": [
+       10000,
+       25000
+      ]
+     },
+     "cite": "CL:297-300",
+     "detail": null
+    },
+    {
+     "id": "3.8",
+     "name": "depth mix 18/25/30/24/<=3 (+- 2 pts) and parity about 50/50 (train)",
+     "status": "PASS",
+     "value": {
+      "shares": {
+       "0": 0.1739,
+       "1": 0.2563,
+       "2": 0.3158,
+       "3": 0.2276,
+       "4": 0.0265
+      },
+      "odd_share": 0.4839
+     },
+     "target": {
+      "mix": {
+       "0": 0.18,
+       "1": 0.25,
+       "2": 0.3,
+       "3": 0.24
+      },
+      "depth4_max": 0.03,
+      "tol": 0.02,
+      "odd": [
+       0.45,
+       0.55
+      ]
+     },
+     "cite": "CL:311-317",
+     "detail": {
+      "off_target_depths": []
+     }
+    },
+    {
+     "id": "3.9",
+     "name": "dev size: >= 150 iid + 150 holdout ladders, >= 1,300 rows, >= 200 rows per depth 0-3, >= 40 at depth 4, devx >= 100 rows",
+     "status": "PASS",
+     "value": {
+      "iid_ladders": 240,
+      "holdout_ladders": 260,
+      "dev_rows": 2416,
+      "dev_rows_by_depth": {
+       "0": 544,
+       "1": 716,
+       "2": 630,
+       "3": 454,
+       "4": 72
+      },
+      "devx_rows": 220
+     },
+     "target": {
+      "iid": 150,
+      "holdout": 150,
+      "rows": 1300,
+      "per_depth": 200,
+      "depth4": 40,
+      "devx": 100
+     },
+     "cite": "CL:372-376, CL:274",
+     "detail": {
+      "thin_depths": []
+     }
+    },
+    {
+     "id": "3.10",
+     "name": "ladder kinds: card >= 50%, multi-text 10-20%, rest records (train ladders)",
+     "status": "PASS",
+     "value": {
+      "record": 0.3592,
+      "card": 0.5031,
+      "multitext": 0.1377
+     },
+     "target": {
+      "card": ">= 0.5",
+      "multitext": [
+       0.1,
+       0.2
+      ]
+     },
+     "cite": "CL:220, CL:364-365",
+     "detail": null
+    },
+    {
+     "id": "3.11",
+     "name": "distance bins: every bin has >= 30 train rows with a scoping cue at that distance",
+     "status": "PASS",
+     "value": {
+      "same_clause": 6500,
+      "other_field": 4874,
+      "next_sentence": 1070,
+      "same_sentence": 3868,
+      "far": 884
+     },
+     "target": ">= 30 per bin",
+     "cite": "CL:71-73, CL:257",
+     "detail": {
+      "thin": {}
+     }
+    },
+    {
+     "id": "3.12",
+     "name": "clause-embedding depth 0-3 each in >= 30 train rows (meta embed_depth, else that/whether count)",
+     "status": "PASS",
+     "value": {
+      "0": 4512,
+      "1": 4952,
+      "2": 2836,
+      "3": 468
+     },
+     "target": ">= 30 per level",
+     "cite": "CL:257",
+     "detail": {
+      "thin": {}
+     }
+    }
+   ]
+  },
+  "4": {
+   "name": "balance",
+   "status": "PASS",
+   "seconds": 0.3,
+   "subs": [
+    {
+     "id": "4.1a",
+     "name": "[train] yes share 48-52% in every (depth x total cue count) cell and rung",
+     "status": "PASS",
+     "value": {
+      "bad_cells": 0,
+      "cells": 20,
+      "bad_rungs": 0,
+      "yes_no_rows": 10220
+     },
+     "target": "48-52%",
+     "cite": "CL:323",
+     "detail": {
+      "bad_cells": {},
+      "bad_rungs": {}
+     }
+    },
+    {
+     "id": "4.2a",
+     "name": "[train] yes share 45-55% in every other stratum (SPEC 4.6 + cue class / position / lexeme / family / frame / source / label / card style / length / state negation)",
+     "status": "PASS",
+     "value": {
+      "bad_strata": 0,
+      "strata": 5160
+     },
+     "target": "45-55%",
+     "cite": "CL:324, SPEC 4.6",
+     "detail": {
+      "worst_by_size": {}
+     }
+    },
+    {
+     "id": "4.1b",
+     "name": "[dev] yes share 48-52% in every (depth x total cue count) cell and rung",
+     "status": "PASS",
+     "value": {
+      "bad_cells": 0,
+      "cells": 18,
+      "bad_rungs": 0,
+      "yes_no_rows": 1910
+     },
+     "target": "48-52%",
+     "cite": "CL:323",
+     "detail": {
+      "bad_cells": {},
+      "bad_rungs": {}
+     }
+    },
+    {
+     "id": "4.2b",
+     "name": "[dev] yes share 45-55% in every other stratum (SPEC 4.6 + cue class / position / lexeme / family / frame / source / label / card style / length / state negation)",
+     "status": "PASS",
+     "value": {
+      "bad_strata": 0,
+      "strata": 1295
+     },
+     "target": "45-55%",
+     "cite": "CL:324, SPEC 4.6",
+     "detail": {
+      "worst_by_size": {}
+     }
+    },
+    {
+     "id": "4.1c",
+     "name": "[devx] yes share 48-52% in every (depth x total cue count) cell and rung",
+     "status": "PASS",
+     "value": {
+      "bad_cells": 0,
+      "cells": 12,
+      "bad_rungs": 0,
+      "yes_no_rows": 176
+     },
+     "target": "48-52%",
+     "cite": "CL:323",
+     "detail": {
+      "bad_cells": {},
+      "bad_rungs": {}
+     }
+    },
+    {
+     "id": "4.2c",
+     "name": "[devx] yes share 45-55% in every other stratum (SPEC 4.6 + cue class / position / lexeme / family / frame / source / label / card style / length / state negation)",
+     "status": "PASS",
+     "value": {
+      "bad_strata": 0,
+      "strata": 277
+     },
+     "target": "45-55%",
+     "cite": "CL:324, SPEC 4.6",
+     "detail": {
+      "worst_by_size": {}
+     }
+    },
+    {
+     "id": "4.3",
+     "name": "truth(P) 48-52% per rung (all rows) and per depth (yes/no rows) (train, dev)",
+     "status": "PASS",
+     "value": 0,
+     "target": "48-52%",
+     "cite": "CL:325 (+ F7_OBJECTIONS.md O1)",
+     "detail": {
+      "info_choice_rows_breaking_truthP_eq_depth_even": 0
+     }
+    },
+    {
+     "id": "4.4",
+     "name": "truth(P) 45-55% per quoted label (train, dev)",
+     "status": "PASS",
+     "value": 0,
+     "target": "45-55%",
+     "cite": "CL:326",
+     "detail": {}
+    },
+    {
+     "id": "4.5",
+     "name": "choice rows: 20% +- 3 of rows; 3-5 options; gold position uniform +- 3 pts per option count; negated selection ~50%",
+     "status": "PASS",
+     "value": {
+      "train": {
+       "choice_share": 0.1996,
+       "option_counts": {
+        "5": 624,
+        "4": 726,
+        "3": 1198
+       },
+       "negated_selection": 0.5275
+      },
+      "dev": {
+       "choice_share": 0.2094,
+       "option_counts": {
+        "3": 280,
+        "5": 110,
+        "4": 116
+       },
+       "negated_selection": 0.5099
+      }
+     },
+     "target": {
+      "share": [
+       0.17,
+       0.23
+      ],
+      "options": [
+       3,
+       5
+      ],
+      "pos_tol": 0.03,
+      "negsel": [
+       0.45,
+       0.55
+      ]
+     },
+     "cite": "CL:327, CL:166",
+     "detail": []
+    },
+    {
+     "id": "4.6",
+     "name": "card-less rows only with 'Is it true/false that' frames; card-less share equal (+- 2 pts) at every depth and both golds",
+     "status": "PASS",
+     "value": {
+      "bad_frame_rows": 0,
+      "bad_share_groups": 0
+     },
+     "target": "0 / 0",
+     "cite": "CL:231-232",
+     "detail": {
+      "examples": [],
+      "groups": {}
+     }
+    },
+    {
+     "id": "4.6b",
+     "name": "card style share equal (+- 2 pts) per depth and per gold",
+     "status": "PASS",
+     "value": 0,
+     "target": "0",
+     "cite": "CL:229-232, CL:403",
+     "detail": {}
+    },
+    {
+     "id": "4.7",
+     "name": "distractors: >= 35% of rows, >= 25% within each depth 0-3 (train)",
+     "status": "PASS",
+     "value": {
+      "overall": 0.4995,
+      "per_depth": {
+       "0": 0.6757,
+       "1": 0.2983,
+       "2": 0.6944,
+       "3": 0.2966
+      }
+     },
+     "target": {
+      "overall": 0.35,
+      "per_depth": 0.25
+     },
+     "cite": "CL:239, CL:333",
+     "detail": null
+    },
+    {
+     "id": "4.8",
+     "name": "rows where parity(all cues) != parity(scoping cues) >= 30% (train)",
+     "status": "PASS",
+     "value": 0.4997,
+     "target": ">= 0.3",
+     "cite": "CL:334",
+     "detail": null
+    },
+    {
+     "id": "4.9",
+     "name": "AR rows + lexical-only flips >= 15% of odd-parity rows (train)",
+     "status": "PASS",
+     "value": 0.158,
+     "target": ">= 0.15",
+     "cite": "CL:335",
+     "detail": null
+    },
+    {
+     "id": "4.10",
+     "name": "cue mix by class (share of cue tokens, train)",
+     "status": "PASS",
+     "value": {
+      "syntactic": 0.3336,
+      "lexical": 0.2602,
+      "cross+answer": 0.0952,
+      "truth_frame": 0.104,
+      "affixal": 0.2069
+     },
+     "target": {
+      "syntactic": [
+       0.25,
+       0.35
+      ],
+      "affixal": [
+       0.2,
+       0.3
+      ],
+      "lexical": [
+       0.2,
+       0.3
+      ],
+      "truth_frame": [
+       0.1,
+       0.15
+      ],
+      "cross+answer": [
+       0.05,
+       0.1
+      ]
+     },
+     "cite": "CL:337-345",
+     "detail": {
+      "off": {}
+     }
+    },
+    {
+     "id": "4.11",
+     "name": "'not' + \"n't\" <= 20% of cue tokens; no lexeme > 10%",
+     "status": "PASS",
+     "value": {
+      "not_nt": 0.1713,
+      "top_lexeme": [
+       "not",
+       0.0897
+      ]
+     },
+     "target": {
+      "not_nt": 0.2,
+      "lexeme": 0.1
+     },
+     "cite": "CL:348",
+     "detail": null
+    },
+    {
+     "id": "4.12",
+     "name": "every lexeme: share of its rows with odd parity 40-60% (train)",
+     "status": "PASS",
+     "value": {
+      "bad_lexemes": 0,
+      "lexemes": 67
+     },
+     "target": "40-60%",
+     "cite": "CL:246, CL:350",
+     "detail": {}
+    },
+    {
+     "id": "4.13",
+     "name": "a lexeme that can serve as a distractor does so in >= 10% of its uses (train)",
+     "status": "PASS",
+     "value": {
+      "capable": 39,
+      "below": 0
+     },
+     "target": ">= 0.1",
+     "cite": "CL:351",
+     "detail": {}
+    },
+    {
+     "id": "4.14",
+     "name": "scoping cue positions (share of scoping cue tokens, train); no scoping cue in the state",
+     "status": "PASS",
+     "value": {
+      "inner_claim": 0.3376,
+      "yn_key+answer_map": 0.0563,
+      "outer_frame": 0.2969,
+      "card_def": 0.1597,
+      "separate_sentence": 0.0704,
+      "choice_option": 0.0793
+     },
+     "target": {
+      "inner_claim": [
+       0.25,
+       0.35
+      ],
+      "outer_frame": [
+       0.2,
+       0.3
+      ],
+      "card_def": [
+       0.15,
+       0.25
+      ],
+      "separate_sentence": [
+       0.05,
+       0.1
+      ],
+      "yn_key+answer_map": [
+       0.05,
+       0.1
+      ],
+      "choice_option": [
+       0.05,
+       0.1
+      ]
+     },
+     "cite": "CL:247-257, CL:353-362",
+     "detail": {
+      "off": {},
+      "scoping_cues_in_state": 0
+     }
+    },
+    {
+     "id": "4.15",
+     "name": "yes share equal (+- 2 pts) for states with and without negation (item 19)",
+     "status": "PASS",
+     "value": {
+      "train": {
+       "with": [
+        0.5,
+        3250
+       ],
+       "without": [
+        0.5,
+        6970
+       ],
+       "ok": true
+      },
+      "dev": {
+       "with": [
+        0.5,
+        808
+       ],
+       "without": [
+        0.5,
+        1102
+       ],
+       "ok": true
+      }
+     },
+     "target": "|diff| <= 0.02",
+     "cite": "CL:99-101, CL:324",
+     "detail": null
+    }
+   ]
+  },
+  "5": {
+   "name": "surface shortcut probes",
+   "status": "PASS",
+   "seconds": 42.5,
+   "subs": [
+    {
+     "id": "5.a1",
+     "name": "probe a1 always yes",
+     "status": "PASS",
+     "value": {
+      "train_cv": 0.5,
+      "dev": 0.5,
+      "worst_stratum_train": [
+       "depth=0",
+       0.5,
+       2060
+      ],
+      "worst_stratum_dev": [
+       "depth=0",
+       0.5,
+       500
+      ]
+     },
+     "target": "<= 0.55 overall, <= 0.6 per stratum >= 100",
+     "cite": "CL:405-418",
+     "detail": null
+    },
+    {
+     "id": "5.a2",
+     "name": "probe a2 always no",
+     "status": "PASS",
+     "value": {
+      "train_cv": 0.5,
+      "dev": 0.5,
+      "worst_stratum_train": [
+       "depth=0",
+       0.5,
+       2060
+      ],
+      "worst_stratum_dev": [
+       "depth=0",
+       0.5,
+       500
+      ]
+     },
+     "target": "<= 0.55 overall, <= 0.6 per stratum >= 100",
+     "cite": "CL:405-418",
+     "detail": null
+    },
+    {
+     "id": "5.b1",
+     "name": "probe b1 any cue -> no",
+     "status": "PASS",
+     "value": {
+      "train_cv": 0.5,
+      "dev": 0.5,
+      "worst_stratum_train": [
+       "depth=0",
+       0.5,
+       2060
+      ],
+      "worst_stratum_dev": [
+       "depth=0",
+       0.5,
+       500
+      ]
+     },
+     "target": "<= 0.55 overall, <= 0.6 per stratum >= 100",
+     "cite": "CL:405-418",
+     "detail": null
+    },
+    {
+     "id": "5.b2",
+     "name": "probe b2 any cue -> yes",
+     "status": "PASS",
+     "value": {
+      "train_cv": 0.5,
+      "dev": 0.5,
+      "worst_stratum_train": [
+       "depth=0",
+       0.5,
+       2060
+      ],
+      "worst_stratum_dev": [
+       "depth=0",
+       0.5,
+       500
+      ]
+     },
+     "target": "<= 0.55 overall, <= 0.6 per stratum >= 100",
+     "cite": "CL:405-418",
+     "detail": null
+    },
+    {
+     "id": "5.c",
+     "name": "probe c 'not' present -> no",
+     "status": "PASS",
+     "value": {
+      "train_cv": 0.5,
+      "dev": 0.5,
+      "worst_stratum_train": [
+       "depth=0",
+       0.5,
+       2060
+      ],
+      "worst_stratum_dev": [
+       "depth=0",
+       0.5,
+       500
+      ]
+     },
+     "target": "<= 0.55 overall, <= 0.6 per stratum >= 100",
+     "cite": "CL:405-418",
+     "detail": null
+    },
+    {
+     "id": "5.d",
+     "name": "probe d even narrow cue count -> yes",
+     "status": "PASS",
+     "value": {
+      "train_cv": 0.5,
+      "dev": 0.5,
+      "worst_stratum_train": [
+       "depth=0",
+       0.5,
+       2060
+      ],
+      "worst_stratum_dev": [
+       "depth=0",
+       0.5,
+       500
+      ]
+     },
+     "target": "<= 0.55 overall, <= 0.6 per stratum >= 100",
+     "cite": "CL:405-418",
+     "detail": null
+    },
+    {
+     "id": "5.e",
+     "name": "probe e even full-lexicon cue count -> yes",
+     "status": "PASS",
+     "value": {
+      "train_cv": 0.5,
+      "dev": 0.5,
+      "worst_stratum_train": [
+       "depth=0",
+       0.5,
+       2060
+      ],
+      "worst_stratum_dev": [
+       "depth=0",
+       0.5,
+       500
+      ]
+     },
+     "target": "<= 0.55 overall, <= 0.6 per stratum >= 100",
+     "cite": "CL:405-418",
+     "detail": null
+    },
+    {
+     "id": "5.f",
+     "name": "probe f per-lexeme majority",
+     "status": "PASS",
+     "value": {
+      "train_cv": 0.4569,
+      "dev": 0.5,
+      "worst_stratum_train": [
+       "source=gd_multiwoz21_sysacts",
+       0.6,
+       100
+      ],
+      "worst_stratum_dev": [
+       "depth=0",
+       0.5,
+       500
+      ]
+     },
+     "target": "<= 0.55 overall, <= 0.6 per stratum >= 100",
+     "cite": "CL:405-418",
+     "detail": null
+    },
+    {
+     "id": "5.g1",
+     "name": "probe g1 per-frame majority",
+     "status": "PASS",
+     "value": {
+      "train_cv": 0.4254,
+      "dev": 0.5,
+      "worst_stratum_train": [
+       "source=f7_record:tickets",
+       0.5645,
+       124
+      ],
+      "worst_stratum_dev": [
+       "depth=0",
+       0.5,
+       500
+      ]
+     },
+     "target": "<= 0.55 overall, <= 0.6 per stratum >= 100",
+     "cite": "CL:405-418",
+     "detail": null
+    },
+    {
+     "id": "5.g2",
+     "name": "probe g2 per-template majority",
+     "status": "PASS",
+     "value": {
+      "train_cv": 0.0134,
+      "dev": 0.5,
+      "worst_stratum_train": [
+       "depth_x_ncues=0x1",
+       0.0524,
+       1050
+      ],
+      "worst_stratum_dev": [
+       "depth=0",
+       0.5,
+       500
+      ]
+     },
+     "target": "<= 0.55 overall, <= 0.6 per stratum >= 100",
+     "cite": "CL:405-418",
+     "detail": null
+    },
+    {
+     "id": "5.h",
+     "name": "probe h bag-of-words + bigrams LR",
+     "status": "PASS",
+     "value": {
+      "train_cv": 0.0669,
+      "dev": 0.5,
+      "worst_stratum_train": [
+       "frame_id=tru1",
+       0.1458,
+       192
+      ],
+      "worst_stratum_dev": [
+       "depth=0",
+       0.5,
+       500
+      ]
+     },
+     "target": "<= 0.55 overall, <= 0.6 per stratum >= 100",
+     "cite": "CL:405-418",
+     "detail": null
+    },
+    {
+     "id": "5.i",
+     "name": "probe i length / count LR",
+     "status": "PASS",
+     "value": {
+      "train_cv": 0.4731,
+      "dev": 0.5,
+      "worst_stratum_train": [
+       "source=f7_record:guests",
+       0.5811,
+       148
+      ],
+      "worst_stratum_dev": [
+       "depth=0",
+       0.5,
+       500
+      ]
+     },
+     "target": "<= 0.55 overall, <= 0.6 per stratum >= 100",
+     "cite": "CL:405-418",
+     "detail": null
+    },
+    {
+     "id": "5.j",
+     "name": "probe (j) choice rows: position majority, longest option, most / fewest cues, most overlap",
+     "status": "PASS",
+     "value": {
+      "train": {
+       "position majority": [
+        0.2892,
+        [
+         "depth_x_ncues=2x4",
+         0.3681,
+         182
+        ]
+       ],
+       "longest option": [
+        0.3132,
+        [
+         "cue_lexeme=miss",
+         0.4652,
+         230
+        ]
+       ],
+       "most cues": [
+        0.283,
+        [
+         "cue_lexeme=miss",
+         0.4696,
+         230
+        ]
+       ],
+       "fewest cues": [
+        0.2461,
+        [
+         "source=gd_ncbi_disease",
+         0.3258,
+         132
+        ]
+       ],
+       "most question overlap": [
+        0.314,
+        [
+         "cue_lexeme=miss",
+         0.4652,
+         230
+        ]
+       ]
+      },
+      "dev": {
+       "position majority": [
+        0.2885,
+        [
+         "state_neg=True",
+         0.3288,
+         146
+        ]
+       ],
+       "longest option": [
+        0.2905,
+        [
+         "ladder_kind=card",
+         0.3929,
+         168
+        ]
+       ],
+       "most cues": [
+        0.2964,
+        [
+         "cue_position=choice_option",
+         0.3707,
+         116
+        ]
+       ],
+       "fewest cues": [
+        0.2747,
+        [
+         "state_neg=True",
+         0.3151,
+         146
+        ]
+       ],
+       "most question overlap": [
+        0.3123,
+        [
+         "state_neg=True",
+         0.3767,
+         146
+        ]
+       ]
+      }
+     },
+     "target": "<= 0.55 (no choice rows = FAIL: item 36 / CL:327 need them)",
+     "cite": "CL:417",
+     "detail": []
+    },
+    {
+     "id": "5.k",
+     "name": "|r| < 0.05 between gold and cue count / parity / has not / affix / lexical / distractor / card style / length bin; choice gold position",
+     "status": "PASS",
+     "value": {
+      "train": {
+       "cue_count": 0.0,
+       "cue_count_parity": 0.0,
+       "has_not": 0.0,
+       "has_affix": 0.0,
+       "has_lexical": 0.0,
+       "has_distractor": 0.0,
+       "length_bin": 0.0,
+       "card_style=YN": 0.0,
+       "card_style=defs": 0.0,
+       "card_style=yn": 0.0,
+       "choice_gold_position~negated_selection": 0.033,
+       "choice_gold_position~cue_count": 0.0274,
+       "choice_gold_position~option_count": -0.0265,
+       "choice_gold_position~depth": 0.0324
+      },
+      "dev": {
+       "cue_count": 0.0,
+       "cue_count_parity": 0.0,
+       "has_not": 0.0,
+       "has_affix": 0.0,
+       "has_lexical": 0.0,
+       "has_distractor": 0.0,
+       "length_bin": 0.0,
+       "card_style=YN": 0.0,
+       "card_style=defs": 0.0,
+       "card_style=yn": 0.0,
+       "choice_gold_position~negated_selection": -0.0003,
+       "choice_gold_position~cue_count": -0.0142,
+       "choice_gold_position~option_count": 0.0062,
+       "choice_gold_position~depth": -0.0054
+      }
+     },
+     "target": "|r| < 0.05",
+     "cite": "CL:419-421",
+     "detail": []
+    },
+    {
+     "id": "5.l",
+     "name": "yes/no card lines restate the question with the same cues (no simplified form)",
+     "status": "PASS",
+     "value": "6712/6712",
+     "target": "100%",
+     "cite": "CL:228-230",
+     "detail": {
+      "examples": []
+     }
+    },
+    {
+     "id": "5.m",
+     "name": "SPEC 8.4 TF-IDF train -> dev (question <= 55%, state + question <= 60%)",
+     "status": "PASS",
+     "value": {
+      "question": [
+       0.5,
+       0.55
+      ],
+      "state+question": [
+       0.5042,
+       0.6
+      ]
+     },
+     "target": "<= 0.55 / <= 0.60",
+     "cite": "SPEC 8.4",
+     "detail": null
+    }
+   ]
+  },
+  "6": {
+   "name": "composition probes",
+   "status": "PASS",
+   "seconds": 0.2,
+   "subs": [
+    {
+     "id": "6.C1a",
+     "name": "[train] C1 ignore negation: gold = truth(P)",
+     "status": "PASS",
+     "value": 0.5227,
+     "target": "45-55%",
+     "cite": "CL:426",
+     "detail": null
+    },
+    {
+     "id": "6.C2a",
+     "name": "[train] C2 truth(P) XOR parity(all cues)",
+     "status": "PASS",
+     "value": {
+      "overall": 0.5761,
+      "per_depth": {
+       "0": 0.4903,
+       "1": 0.6831,
+       "2": 0.6406,
+       "3": 0.506,
+       "4": 0.4852
+      }
+     },
+     "target": "<= 70% overall, <= 75% per depth",
+     "cite": "CL:427",
+     "detail": null
+    },
+    {
+     "id": "6.C3a",
+     "name": "[train] C3 truth(P) XOR parity(syntactic cues)",
+     "status": "PASS",
+     "value": 0.5331,
+     "target": "<= 65%",
+     "cite": "CL:428",
+     "detail": null
+    },
+    {
+     "id": "6.C4a",
+     "name": "[train] C4 truth(P) XOR (outer cue present)",
+     "status": "PASS",
+     "value": 0.5225,
+     "target": "<= 60%",
+     "cite": "CL:429",
+     "detail": null
+    },
+    {
+     "id": "6.C5a",
+     "name": "[train] C5 truth(P) XOR (inner cue present)",
+     "status": "PASS",
+     "value": 0.5873,
+     "target": "<= 60%",
+     "cite": "CL:430",
+     "detail": null
+    },
+    {
+     "id": "6.C6a",
+     "name": "[train] C6 cue counter ignoring one class (affixal / lexical / cross-sentence)",
+     "status": "PASS",
+     "value": {
+      "C6 counter ignoring affixal": 0.4959,
+      "C6i scope reader ignoring affixal": 0.8223,
+      "C6 counter ignoring lexical": 0.5068,
+      "C6i scope reader ignoring lexical": 0.6849,
+      "C6 counter ignoring cross-sentence": 0.5313,
+      "C6i scope reader ignoring cross-sentence": 0.745
+     },
+     "target": "<= 60% each (C6i scope-reader variant: info)",
+     "cite": "CL:431",
+     "detail": null
+    },
+    {
+     "id": "6.C7a",
+     "name": "[train] C7 antonym reading wrong on >= 30% of item-21 rows",
+     "status": "PASS",
+     "value": 0.4648,
+     "target": ">= 30%",
+     "cite": "CL:432",
+     "detail": {
+      "rows": 454
+     }
+    },
+    {
+     "id": "6.CSa",
+     "name": "[train] cue share: odd-parity share 40-60% for every lexeme with >= 30 rows",
+     "status": "PASS",
+     "value": {
+      "bad": 0,
+      "lexemes_ge30": 67
+     },
+     "target": "40-60%",
+     "cite": "CL:433",
+     "detail": {}
+    },
+    {
+     "id": "6.C1b",
+     "name": "[dev] C1 ignore negation: gold = truth(P)",
+     "status": "PASS",
+     "value": 0.5204,
+     "target": "45-55%",
+     "cite": "CL:426",
+     "detail": null
+    },
+    {
+     "id": "6.C2b",
+     "name": "[dev] C2 truth(P) XOR parity(all cues)",
+     "status": "PASS",
+     "value": {
+      "overall": 0.5874,
+      "per_depth": {
+       "0": 0.48,
+       "1": 0.6926,
+       "2": 0.7014,
+       "3": 0.5198,
+       "4": 0.4167
+      }
+     },
+     "target": "<= 70% overall, <= 75% per depth",
+     "cite": "CL:427",
+     "detail": null
+    },
+    {
+     "id": "6.C3b",
+     "name": "[dev] C3 truth(P) XOR parity(syntactic cues)",
+     "status": "PASS",
+     "value": 0.5445,
+     "target": "<= 65%",
+     "cite": "CL:428",
+     "detail": null
+    },
+    {
+     "id": "6.C4b",
+     "name": "[dev] C4 truth(P) XOR (outer cue present)",
+     "status": "PASS",
+     "value": 0.5351,
+     "target": "<= 60%",
+     "cite": "CL:429",
+     "detail": null
+    },
+    {
+     "id": "6.C5b",
+     "name": "[dev] C5 truth(P) XOR (inner cue present)",
+     "status": "PASS",
+     "value": 0.5979,
+     "target": "<= 60%",
+     "cite": "CL:430",
+     "detail": null
+    },
+    {
+     "id": "6.C6b",
+     "name": "[dev] C6 cue counter ignoring one class (affixal / lexical / cross-sentence)",
+     "status": "PASS",
+     "value": {
+      "C6 counter ignoring affixal": 0.5162,
+      "C6i scope reader ignoring affixal": 0.8618,
+      "C6 counter ignoring lexical": 0.511,
+      "C6i scope reader ignoring lexical": 0.7058,
+      "C6 counter ignoring cross-sentence": 0.5246,
+      "C6i scope reader ignoring cross-sentence": 0.7277
+     },
+     "target": "<= 60% each (C6i scope-reader variant: info)",
+     "cite": "CL:431",
+     "detail": null
+    },
+    {
+     "id": "6.C7b",
+     "name": "[dev] C7 antonym reading wrong on >= 30% of item-21 rows",
+     "status": "PASS",
+     "value": 0.4268,
+     "target": ">= 30%",
+     "cite": "CL:432",
+     "detail": {
+      "rows": 82
+     }
+    },
+    {
+     "id": "6.CSb",
+     "name": "[dev] cue share: odd-parity share 40-60% for every lexeme with >= 30 rows",
+     "status": "PASS",
+     "value": {
+      "bad": 0,
+      "lexemes_ge30": 40
+     },
+     "target": "40-60%",
+     "cite": "CL:433",
+     "detail": {}
+    }
+   ]
+  },
+  "7": {
+   "name": "EXCLUDE scan",
+   "status": "PASS",
+   "seconds": 13.9,
+   "subs": [
+    {
+     "id": "7.1",
+     "name": "EXCLUDE X1-X12: 0 rows with a hit in instructions, cards or options",
+     "status": "PASS",
+     "value": {
+      "X1": 0,
+      "X2": 0,
+      "X3": 0,
+      "X4": 0,
+      "X5": 0,
+      "X6": 0,
+      "X7": 0,
+      "X8": 0,
+      "X9": 0,
+      "X10": 0,
+      "X11": 0,
+      "X12": 0
+     },
+     "target": "0 each",
+     "cite": "CL:176-191, CL:435-439",
+     "detail": {
+      "examples": {},
+      "state_hits_tagged_not_counted": {
+       "X11": 45,
+       "X4": 95,
+       "X9": 90,
+       "X8": 10,
+       "X5": 15,
+       "X7": 15,
+       "X6": 72,
+       "X2": 5
+      }
+     }
+    }
+   ]
+  },
+  "8": {
+   "name": "decontamination",
+   "status": "PENDING",
+   "seconds": 117.7,
+   "subs": [
+    {
+     "id": "8.7",
+     "name": "SPEC 4.7 banned judge words: 0 in instructions / options / yes-no lines",
+     "status": "PASS",
+     "value": 0,
+     "target": 0,
+     "cite": "CL:286-287, SPEC 4.7",
+     "detail": {
+      "words": {},
+      "card_definition_lines_report_only": 0
+     }
+    },
+    {
+     "id": "8.9",
+     "name": "SPEC 7.3 cue-share rule: no instruction word with >= 30 rows has an odd-parity share > 60%",
+     "status": "PASS",
+     "value": {
+      "F7": {
+       "word": "groundless",
+       "share": 0.6,
+       "count": 40,
+       "pass": true
+      }
+     },
+     "target": "<= 0.6",
+     "cite": "SPEC 7.3",
+     "detail": null
+    },
+    {
+     "id": "8.15",
+     "name": "no F7 source is a dev source (dev source list re-derived by program; gate_dev.source_seen both ways + name containment)",
+     "status": "PASS",
+     "value": {
+      "clashes": {},
+      "dev_sources": 61,
+      "checklist_named_found": [
+       "banking77",
+       "clinc150",
+       "tb_label_nli"
+      ],
+      "checklist_named_missing": [
+       "gd_ghc_hate",
+       "std_hate"
+      ]
+     },
+     "target": "0 clashes",
+     "cite": "CL:221-223",
+     "detail": null
+    },
+    {
+     "id": "8.1",
+     "name": "12-gram vs held-out (OHS-1/2, eval*, JevBench public) + every dev / eval split (strict)",
+     "status": "PASS",
+     "value": 0,
+     "target": 0,
+     "cite": "CL:441, SPEC 7.1-7.2",
+     "detail": null
+    },
+    {
+     "id": "8.2",
+     "name": "12-gram vs in-family devs: yn2b devs strict; golden_dev / breadth_dev strict for F7 text, report-only where the row copies golden_train text",
+     "status": "PASS",
+     "value": {
+      "yn2b_dev": 0,
+      "golden_dev_in_f7_text": 0,
+      "golden_dev_source_text_not_inherited": 0,
+      "report_only_inherited_from_golden_train": 969
+     },
+     "target": 0,
+     "cite": "SPEC 7.2",
+     "detail": null
+    },
+    {
+     "id": "8.3",
+     "name": "6-word runs (instructions, options, yes/no lines) vs ship-split instructions, dialogue_rebuttal, OHS-1/2, eval injected spans, v11 templates",
+     "status": "PASS",
+     "value": {
+      "dev": 0,
+      "v11": 0
+     },
+     "target": 0,
+     "cite": "CL:442, SPEC 7.3",
+     "detail": {
+      "examples": []
+     }
+    },
+    {
+     "id": "8.4",
+     "name": "6-word runs vs public negation-benchmark frames (decontam-only manifest)",
+     "status": "PASS",
+     "value": 0,
+     "target": "0 hits, every listed source loaded",
+     "cite": "CL:284, CL:288, CL:442",
+     "detail": {
+      "sources": {
+       "ScoNe (tasksource/scone, HF cache)": {
+        "files": 2,
+        "texts": 3222,
+        "new_runs": 9767
+       },
+       "ScoNe (official repo files, OHS-1 build cache)": {
+        "files": 6,
+        "texts": 636,
+        "new_runs": 7
+       },
+       "CONDAQA questions and negated sentences (lasha-nlp/CONDAQA)": {
+        "files": 3,
+        "texts": 5127,
+        "new_runs": 91834
+       },
+       "CONDAQA (hub json copy)": {
+        "files": 3,
+        "texts": 5127,
+        "new_runs": 0
+       },
+       "NaN-NLI (joey234/nan-nli)": {
+        "files": 1,
+        "texts": 299,
+        "new_runs": 621
+       },
+       "This is not a Dataset (HiTZ)": {
+        "files": 3,
+        "texts": 379519,
+        "new_runs": 575736
+       },
+       "MoNLI (tasksource/monli)": {
+        "files": 2,
+        "texts": 642,
+        "new_runs": 132
+       },
+       "HateCheck (Paul/hatecheck)": {
+        "files": 1,
+        "texts": 4544,
+        "new_runs": 10238
+       },
+       "Recalled public templates (NOT verified against the original files; CheckList, NeQA, BLiMP, Thunder-NUBench, NegBench, IMPPRES style frames)": {
+        "files": 1,
+        "texts": 9,
+        "new_runs": 25
+       }
+      },
+      "missing": [],
+      "examples": []
+     }
+    },
+    {
+     "id": "8.5",
+     "name": "measured-failure frame: no 6-word run of the failing devp_card questions; no dev / eval frame",
+     "status": "PASS",
+     "value": {
+      "failure_questions": 90,
+      "run_hits": 0,
+      "dev_eval_frame_hits": 0
+     },
+     "target": 0,
+     "cite": "CL:285, CL:442",
+     "detail": {
+      "examples": []
+     }
+    },
+    {
+     "id": "8.6",
+     "name": "OHS-3 negation frames (read from build_ohs3.py TEXT): no frame match, no 5-word run of their fixed text",
+     "status": "PASS",
+     "value": {
+      "frames_read": 6,
+      "rows_hit": 0
+     },
+     "target": 0,
+     "cite": "SPEC 7 (held-out protection)",
+     "detail": {
+      "examples": []
+     }
+    },
+    {
+     "id": "8.8",
+     "name": "no row id and no (state, instruction) pair of a reference row",
+     "status": "PASS",
+     "value": {
+      "ids": 0,
+      "pairs": 0
+     },
+     "target": 0,
+     "cite": "SPEC 7 / build_fix1",
+     "detail": null
+    },
+    {
+     "id": "8.10",
+     "name": "SPEC 7.4 unseen set unchanged with the F7 train file (check_unseen)",
+     "status": "PASS",
+     "value": {
+      "unseen_sources": 17,
+      "unseen_rows": 3847
+     },
+     "target": "17 / 3,847, no problem",
+     "cite": "SPEC 7.4",
+     "detail": []
+    },
+    {
+     "id": "8.11",
+     "name": "SPEC 7.5 dedupe: no repeated (state, instruction) across ladders; no byte-identical row inside a ladder; none equal to a golden_train row",
+     "status": "PASS",
+     "value": {
+      "within_f7": 0,
+      "identical_row_in_same_ladder": 0,
+      "equal_to_golden_train": 0
+     },
+     "target": 0,
+     "cite": "SPEC 7.5 (+ F7_OBJECTIONS.md A2)",
+     "detail": {
+      "examples": []
+     }
+    },
+    {
+     "id": "8.12",
+     "name": "SPEC 7.7 / 4.11 names: pool names not in JevBench public or OHS-1/2 text; each part uses its own pool",
+     "status": "PASS",
+     "value": {
+      "names_used": 3584,
+      "found_in_heldout_text": 0,
+      "wrong_pool": 0
+     },
+     "target": "0 / 0",
+     "cite": "SPEC 7.7, SPEC 4.11",
+     "detail": {
+      "examples": [
+       []
+      ]
+     }
+    },
+    {
+     "id": "8.13",
+     "name": "SPEC 7.1 OHS-3 12-gram check (counts only)",
+     "status": "PENDING",
+     "value": null,
+     "target": "0 hit units",
+     "cite": "SPEC 7.1",
+     "detail": "owner step: the build agents never open OHS-3; the owner runs --ohs3-blind"
+    },
+    {
+     "id": "8.14",
+     "name": "ladders that a decontamination hit would drop",
+     "status": "PASS",
+     "value": 0,
+     "target": 0,
+     "cite": "CL:444",
+     "detail": {}
+    }
+   ]
+  },
+  "9": {
+   "name": "ladder integrity",
+   "status": "PASS",
+   "seconds": 0.1,
+   "subs": [
+    {
+     "id": "9.1",
+     "name": "every ladder: byte-identical state, one call_id, call_id not shared with another ladder",
+     "status": "PASS",
+     "value": {
+      "state": 0,
+      "call_ids": 0,
+      "shared_calls": 0
+     },
+     "target": "0 / 0 / 0",
+     "cite": "CL:205-207, CL:446",
+     "detail": {
+      "examples": []
+     }
+    },
+    {
+     "id": "9.2",
+     "name": "ladder size: <= 5 rows (<= 3 if a state > 6K chars); unit state total <= 24K chars",
+     "status": "PASS",
+     "value": 0,
+     "target": 0,
+     "cite": "CL:206-207, CL:447, SPEC 4.9",
+     "detail": {
+      "examples": []
+     }
+    },
+    {
+     "id": "9.3",
+     "name": "relations match parity (equiv / inv = same parity and gold, complement = opposite), same core claim, same ladder, <= 1 complement per row",
+     "status": "PASS",
+     "value": {
+      "relations": 7506,
+      "bad": {}
+     },
+     "target": "0 bad",
+     "cite": "CL:217-218, CL:448",
+     "detail": {
+      "examples": []
+     }
+    },
+    {
+     "id": "9.4",
+     "name": "R0 anchor in >= 80% of train ladders and 100% of dev ladders",
+     "status": "PASS",
+     "value": {
+      "train": [
+       2060,
+       2556,
+       0.8059,
+       0.8
+      ],
+      "dev": [
+       500,
+       500,
+       1.0,
+       1.0
+      ]
+     },
+     "target": {
+      "train": 0.8,
+      "dev": 1.0
+     },
+     "cite": "CL:215, CL:449",
+     "detail": null
+    },
+    {
+     "id": "9.5",
+     "name": "every ladder has a yes row and a no row",
+     "status": "PASS",
+     "value": 0,
+     "target": 0,
+     "cite": "CL:219, CL:450",
+     "detail": {
+      "examples": []
+     }
+    },
+    {
+     "id": "9.6",
+     "name": "rung semantics: R0 / N1-N4 depth, D has a distractor and its twin, AR cue-less odd flip with an odd sibling, CH = choice",
+     "status": "PASS",
+     "value": {},
+     "target": "0",
+     "cite": "CL:208-214",
+     "detail": {
+      "examples": []
+     }
+    },
+    {
+     "id": "9.7",
+     "name": "all rows of a ladder on one side of the split (one dev_kind)",
+     "status": "PASS",
+     "value": 0,
+     "target": 0,
+     "cite": "SPEC 4.2",
+     "detail": null
+    },
+    {
+     "id": "9.8",
+     "name": "no curriculum: depth shares per file decile (info; train_decoder shuffles units)",
+     "status": "PASS",
+     "value": [
+      {
+       "0": 0.1771,
+       "1": 0.2884,
+       "2": 0.3229,
+       "3": 0.1865,
+       "4": 0.0251
+      },
+      {
+       "0": 0.1926,
+       "1": 0.2529,
+       "2": 0.3101,
+       "3": 0.2279,
+       "4": 0.0164
+      },
+      {
+       "0": 0.1887,
+       "1": 0.2968,
+       "2": 0.3031,
+       "3": 0.1903,
+       "4": 0.0211
+      },
+      {
+       "0": 0.1801,
+       "1": 0.2968,
+       "2": 0.3007,
+       "3": 0.1989,
+       "4": 0.0235
+      },
+      {
+       "0": 0.1738,
+       "1": 0.3375,
+       "2": 0.2811,
+       "3": 0.1887,
+       "4": 0.0188
+      },
+      {
+       "0": 0.1575,
+       "1": 0.3284,
+       "2": 0.3033,
+       "3": 0.1826,
+       "4": 0.0282
+      },
+      {
+       "0": 0.1574,
+       "1": 0.3109,
+       "2": 0.3031,
+       "3": 0.2114,
+       "4": 0.0172
+      },
+      {
+       "0": 0.1597,
+       "1": 0.1206,
+       "2": 0.3336,
+       "3": 0.3375,
+       "4": 0.0486
+      },
+      {
+       "0": 0.1801,
+       "1": 0.1206,
+       "2": 0.3602,
+       "3": 0.3109,
+       "4": 0.0282
+      },
+      {
+       "0": 0.1715,
+       "1": 0.2099,
+       "2": 0.3399,
+       "3": 0.2412,
+       "4": 0.0376
+      }
+     ],
+     "target": "mixed",
+     "cite": "CL:291",
+     "detail": "information only: the trainer shuffles units every epoch"
+    }
+   ]
+  },
+  "10": {
+   "name": "hold-out integrity",
+   "status": "PASS",
+   "seconds": 3.4,
+   "subs": [
+    {
+     "id": "10.1",
+     "name": "held-out lexemes (with inflections) in 0 train rows (meta and F7-authored text)",
+     "status": "PASS",
+     "value": {
+      "meta": 0,
+      "text_rows": 0
+     },
+     "target": 0,
+     "cite": "CL:268-270, CL:452",
+     "detail": {
+      "meta": [],
+      "text": {},
+      "examples": []
+     }
+    },
+    {
+     "id": "10.2",
+     "name": "held-out frame families and frames in 0 train rows",
+     "status": "PASS",
+     "value": 0,
+     "target": 0,
+     "cite": "CL:269, CL:452",
+     "detail": null
+    },
+    {
+     "id": "10.3",
+     "name": "held-out depth-3 cue-class combinations never occur together in a train row",
+     "status": "PASS",
+     "value": 0,
+     "target": 0,
+     "cite": "CL:271, CL:452",
+     "detail": {
+      "held_out_combos": [
+       [
+        "affixal",
+        "cross+answer",
+        "truth_frame"
+       ],
+       [
+        "cross+answer",
+        "lexical",
+        "truth_frame"
+       ],
+       [
+        "cross+answer",
+        "syntactic",
+        "truth_frame"
+       ],
+       [
+        "cross+answer",
+        "truth_frame"
+       ]
+      ]
+     }
+    },
+    {
+     "id": "10.4",
+     "name": "held-out sources in 0 train rows",
+     "status": "PASS",
+     "value": 0,
+     "target": 0,
+     "cite": "CL:272, CL:452",
+     "detail": null
+    },
+    {
+     "id": "10.5",
+     "name": "hold-out size: >= 3 families, >= 15 lexemes = >= 20% (>= 1 per class), >= 2 depth-3 combinations, >= 2 whole sources",
+     "status": "PASS",
+     "value": {
+      "families": 3,
+      "lexemes": 17,
+      "lexeme_share": 0.2179,
+      "lexeme_classes": {
+       "cross+answer": 3,
+       "affixal": 2,
+       "syntactic": 3,
+       "lexical": 6,
+       "truth_frame": 3
+      },
+      "combos": 4,
+      "sources": 3
+     },
+     "target": {
+      "families": 3,
+      "lexemes": 15,
+      "share": 0.2,
+      "combos": 2,
+      "sources": 2
+     },
+     "cite": "CL:268-272, CL:369",
+     "detail": {
+      "H_families": [
+       "audit",
+       "contrary",
+       "verdict"
+      ],
+      "H_lexemes": [
+       "a-",
+       "abstain",
+       "at no point",
+       "contrary",
+       "enter no if",
+       "erroneous",
+       "far from true",
+       "forgo",
+       "groundless",
+       "ir-",
+       "mark no if",
+       "no longer",
+       "not one",
+       "overturn",
+       "rebut",
+       "turn down",
+       "veto"
+      ],
+      "H_sources": [
+       "civil_comments+toxic_conv",
+       "gd_saferproducts_severity",
+       "gd_wiki_help_routing"
+      ]
+     }
+    },
+    {
+     "id": "10.6",
+     "name": "holdout / devx states share <= 20% of their 12-grams with train states (union)",
+     "status": "PASS",
+     "value": {
+      "rows_over": 0,
+      "max_share": 0.0,
+      "checked": 1494
+     },
+     "target": "<= 0.2",
+     "cite": "CL:453, SPEC 7.6",
+     "detail": {
+      "examples": []
+     }
+    },
+    {
+     "id": "10.7",
+     "name": "no iid dev state equals a train state; dev / devx group-disjoint from train",
+     "status": "PASS",
+     "value": {
+      "iid_state_equal": 0,
+      "group_overlap_rows": 0
+     },
+     "target": "0 / 0",
+     "cite": "CL:376, CL:454",
+     "detail": null
+    },
+    {
+     "id": "10.8",
+     "name": "dev / devx states are not golden_train states (golden_train is in the fix2 mix)",
+     "status": "PASS",
+     "value": 0,
+     "target": 0,
+     "cite": "CL:376 (train = the fix2 training mix)",
+     "detail": null
+    },
+    {
+     "id": "10.9",
+     "name": "every holdout ladder carries at least one held-out element",
+     "status": "PASS",
+     "value": 0,
+     "target": 0,
+     "cite": "CL:268-272",
+     "detail": {
+      "examples": []
+     }
+    }
+   ]
+  },
+  "11": {
+   "name": "blind read",
+   "status": "PASS",
+   "seconds": 0.0,
+   "subs": [
+    {
+     "id": "11.1",
+     "name": "blind read: 0 wrong gold, unreadable + ambiguous <= 3% (100 random + 10 per MUST item)",
+     "status": "PASS",
+     "value": {
+      "rows": 300,
+      "verdicts": {
+       "ok": 296,
+       "ambiguous": 4
+      },
+      "bad_share": 0.0133,
+      "must_items_short": {}
+     },
+     "target": "0 wrong, <= 3%",
+     "cite": "CL:455-458",
+     "detail": null
+    }
+   ]
+  }
+ }
+}

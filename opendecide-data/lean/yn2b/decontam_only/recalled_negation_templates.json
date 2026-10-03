@@ -1,0 +1,14 @@
+{
+ "_about": "DECONTAM-ONLY. Frames recalled from memory of public negation benchmarks (CheckList negation tests, NeQA, BLiMP NPI paradigms, Thunder-NUBench, ScoNe-NLG). They were NOT copied from the original files and may differ from them; the local files in negation_benchmarks.json are the authoritative part of check 8.4. Only the 6-word runs of each template's fixed text are used ({x} is a slot that breaks a run); no slot regex is built, so a template never bans a whole construction.",
+ "templates": [
+  "I don't think this {x} is {x}.",
+  "I would never say that I {x} this {x}.",
+  "It isn't true that I {x} this {x}.",
+  "I thought the {x} would be {x}, but it wasn't.",
+  "The following are multiple choice questions (with answers) about common sense.",
+  "Is the following sentence true or false?",
+  "Choose the sentence that is the standard negation of the given sentence.",
+  "Which sentence is the negation of the following sentence?",
+  "Which of the following sentences negates the given sentence?"
+ ]
+}

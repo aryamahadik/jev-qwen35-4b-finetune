@@ -1,0 +1,14 @@
+{
+ "_about": "DECONTAM-ONLY reference list for yn2b/f7_precheck.py check 8.4 (F7_COVERAGE_CHECKLIST.md 2.13: a 6-word-run ban against the frames of the public negation benchmarks). Only the audit reads these files; no generator may read this folder or the files it lists. Paths are local copies already on this machine (HF cache and the OHS-1 build cache). OHS-3 files are never listed here. Each entry: path (glob, ~ expanded), format (csv | json_lines | arrow), fields (text columns used), name.",
+ "sources": [
+  {"name": "ScoNe (tasksource/scone, HF cache)", "path": "~/.cache/huggingface/datasets/tasksource___scone/**/*.arrow", "format": "arrow", "fields": ["sentence1_edited", "sentence2_edited"]},
+  {"name": "ScoNe (official repo files, OHS-1 build cache)", "path": "ohs/_cache/scone/*.csv", "format": "csv", "fields": ["sentence1", "sentence2", "sentence1_edited", "sentence2_edited"]},
+  {"name": "CONDAQA questions and negated sentences (lasha-nlp/CONDAQA)", "path": "~/.cache/huggingface/datasets/lasha-nlp___condaqa/**/*.arrow", "format": "arrow", "fields": ["sentence2", "original sentence"]},
+  {"name": "CONDAQA (hub json copy)", "path": "~/.cache/huggingface/hub/datasets--lasha-nlp--CONDAQA/snapshots/*/*.json", "format": "json_lines", "fields": ["sentence2", "original sentence"]},
+  {"name": "NaN-NLI (joey234/nan-nli)", "path": "~/.cache/huggingface/hub/datasets--joey234--nan-nli/snapshots/*/nan.csv", "format": "csv", "fields": ["premise", "hypothesis"]},
+  {"name": "This is not a Dataset (HiTZ)", "path": "~/.cache/huggingface/datasets/HiTZ___this-is-not-a-dataset/**/*.arrow", "format": "arrow", "fields": ["sentence"]},
+  {"name": "MoNLI (tasksource/monli)", "path": "~/.cache/huggingface/datasets/tasksource___monli/**/*.arrow", "format": "arrow", "fields": ["sentence1", "sentence2"]},
+  {"name": "HateCheck (Paul/hatecheck)", "path": "~/.cache/huggingface/hub/datasets--Paul--hatecheck/snapshots/*/test.csv", "format": "csv", "fields": ["test_case", "case_templ"]},
+  {"name": "Recalled public templates (NOT verified against the original files; CheckList, NeQA, BLiMP, Thunder-NUBench, NegBench, IMPPRES style frames)", "path": "yn2b/decontam_only/recalled_negation_templates.json", "format": "template_list", "fields": ["templates"]}
+ ]
+}

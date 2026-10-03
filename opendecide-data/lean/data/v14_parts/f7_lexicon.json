@@ -1,0 +1,761 @@
+{
+ "about": "F7 v2 curated cue lexicon (golden_src/gen3/nn_lexicon.py LEXICON); the builder draws every cue from it",
+ "lexemes": {
+  "not": {
+   "cls": "syntactic",
+   "split": "train",
+   "can_distract": true,
+   "forms": [
+    "not"
+   ]
+  },
+  "n't": {
+   "cls": "syntactic",
+   "split": "train",
+   "can_distract": true,
+   "forms": [
+    "n't",
+    "doesn't",
+    "isn't",
+    "hasn't",
+    "didn't",
+    "wasn't",
+    "aren't",
+    "don't"
+   ]
+  },
+  "no": {
+   "cls": "syntactic",
+   "split": "train",
+   "can_distract": true,
+   "forms": [
+    "no"
+   ]
+  },
+  "never": {
+   "cls": "syntactic",
+   "split": "train",
+   "can_distract": true,
+   "forms": [
+    "never"
+   ]
+  },
+  "none": {
+   "cls": "syntactic",
+   "split": "train",
+   "can_distract": true,
+   "forms": [
+    "none"
+   ]
+  },
+  "nothing": {
+   "cls": "syntactic",
+   "split": "train",
+   "can_distract": true,
+   "forms": [
+    "nothing"
+   ]
+  },
+  "nobody": {
+   "cls": "syntactic",
+   "split": "train",
+   "can_distract": true,
+   "forms": [
+    "nobody"
+   ]
+  },
+  "no one": {
+   "cls": "syntactic",
+   "split": "train",
+   "can_distract": true,
+   "forms": [
+    "no one"
+   ]
+  },
+  "without": {
+   "cls": "syntactic",
+   "split": "train",
+   "can_distract": true,
+   "forms": [
+    "without"
+   ]
+  },
+  "cannot": {
+   "cls": "syntactic",
+   "split": "train",
+   "can_distract": true,
+   "forms": [
+    "cannot",
+    "can't"
+   ]
+  },
+  "neither": {
+   "cls": "syntactic",
+   "split": "train",
+   "can_distract": true,
+   "forms": [
+    "neither",
+    "nor"
+   ]
+  },
+  "not a single": {
+   "cls": "syntactic",
+   "split": "train",
+   "can_distract": true,
+   "forms": [
+    "not a single"
+   ]
+  },
+  "not every": {
+   "cls": "syntactic",
+   "split": "train",
+   "can_distract": true,
+   "forms": [
+    "not every"
+   ]
+  },
+  "not all": {
+   "cls": "syntactic",
+   "split": "train",
+   "can_distract": true,
+   "forms": [
+    "not all"
+   ]
+  },
+  "no more than": {
+   "cls": "syntactic",
+   "split": "train",
+   "can_distract": true,
+   "forms": [
+    "no more than"
+   ]
+  },
+  "few": {
+   "cls": "syntactic",
+   "split": "train",
+   "can_distract": true,
+   "forms": [
+    "few"
+   ]
+  },
+  "unless": {
+   "cls": "syntactic",
+   "split": "train",
+   "can_distract": true,
+   "forms": [
+    "unless"
+   ]
+  },
+  "need not": {
+   "cls": "syntactic",
+   "split": "train",
+   "can_distract": true,
+   "forms": [
+    "need not"
+   ]
+  },
+  "must not": {
+   "cls": "syntactic",
+   "split": "train",
+   "can_distract": true,
+   "forms": [
+    "must not"
+   ]
+  },
+  "non-": {
+   "cls": "affixal",
+   "split": "train",
+   "can_distract": true,
+   "forms": [
+    "non-"
+   ]
+  },
+  "un-": {
+   "cls": "affixal",
+   "split": "train",
+   "can_distract": true,
+   "forms": [
+    "un-"
+   ]
+  },
+  "in-": {
+   "cls": "affixal",
+   "split": "train",
+   "can_distract": true,
+   "forms": [
+    "in-"
+   ]
+  },
+  "im-": {
+   "cls": "affixal",
+   "split": "train",
+   "can_distract": true,
+   "forms": [
+    "im-"
+   ]
+  },
+  "il-": {
+   "cls": "affixal",
+   "split": "train",
+   "can_distract": true,
+   "forms": [
+    "il-"
+   ]
+  },
+  "dis-": {
+   "cls": "affixal",
+   "split": "train",
+   "can_distract": true,
+   "forms": [
+    "dis-"
+   ]
+  },
+  "-less": {
+   "cls": "affixal",
+   "split": "train",
+   "can_distract": true,
+   "forms": [
+    "-less"
+   ]
+  },
+  "-free": {
+   "cls": "affixal",
+   "split": "train",
+   "can_distract": true,
+   "forms": [
+    "-free"
+   ]
+  },
+  "fail": {
+   "cls": "lexical",
+   "split": "train",
+   "can_distract": true,
+   "forms": [
+    "fail",
+    "fails",
+    "failed",
+    "failing"
+   ]
+  },
+  "lack": {
+   "cls": "lexical",
+   "split": "train",
+   "can_distract": true,
+   "forms": [
+    "lack",
+    "lacks",
+    "lacked",
+    "lacking"
+   ]
+  },
+  "deny": {
+   "cls": "lexical",
+   "split": "train",
+   "can_distract": false,
+   "forms": [
+    "deny",
+    "denies",
+    "denied",
+    "denying"
+   ]
+  },
+  "refute": {
+   "cls": "lexical",
+   "split": "train",
+   "can_distract": false,
+   "forms": [
+    "refute",
+    "refutes",
+    "refuted",
+    "refuting"
+   ]
+  },
+  "reject": {
+   "cls": "lexical",
+   "split": "train",
+   "can_distract": false,
+   "forms": [
+    "reject",
+    "rejects",
+    "rejected",
+    "rejecting"
+   ]
+  },
+  "dispute": {
+   "cls": "lexical",
+   "split": "train",
+   "can_distract": false,
+   "forms": [
+    "dispute",
+    "disputes",
+    "disputed",
+    "disputing"
+   ]
+  },
+  "dismiss": {
+   "cls": "lexical",
+   "split": "train",
+   "can_distract": false,
+   "forms": [
+    "dismiss",
+    "dismisses",
+    "dismissed",
+    "dismissing"
+   ]
+  },
+  "contradict": {
+   "cls": "lexical",
+   "split": "train",
+   "can_distract": false,
+   "forms": [
+    "contradict",
+    "contradicts",
+    "contradicted",
+    "contradicting"
+   ]
+  },
+  "omit": {
+   "cls": "lexical",
+   "split": "train",
+   "can_distract": true,
+   "forms": [
+    "omit",
+    "omits",
+    "omitted",
+    "omitting"
+   ]
+  },
+  "exclude": {
+   "cls": "lexical",
+   "split": "train",
+   "can_distract": false,
+   "forms": [
+    "exclude",
+    "excludes",
+    "excluded",
+    "excluding"
+   ]
+  },
+  "refuse": {
+   "cls": "lexical",
+   "split": "train",
+   "can_distract": true,
+   "forms": [
+    "refuse",
+    "refuses",
+    "refused",
+    "refusing"
+   ]
+  },
+  "decline": {
+   "cls": "lexical",
+   "split": "train",
+   "can_distract": true,
+   "forms": [
+    "decline",
+    "declines",
+    "declined",
+    "declining"
+   ]
+  },
+  "avoid": {
+   "cls": "lexical",
+   "split": "train",
+   "can_distract": true,
+   "forms": [
+    "avoid",
+    "avoids",
+    "avoided",
+    "avoiding"
+   ]
+  },
+  "miss": {
+   "cls": "lexical",
+   "split": "train",
+   "can_distract": true,
+   "forms": [
+    "miss",
+    "misses",
+    "missed",
+    "missing"
+   ]
+  },
+  "rule out": {
+   "cls": "lexical",
+   "split": "train",
+   "can_distract": false,
+   "forms": [
+    "rule out",
+    "rules out",
+    "ruled out",
+    "ruling out"
+   ]
+  },
+  "withhold": {
+   "cls": "lexical",
+   "split": "train",
+   "can_distract": true,
+   "forms": [
+    "withhold",
+    "withholds",
+    "withheld",
+    "withholding"
+   ]
+  },
+  "absent": {
+   "cls": "lexical",
+   "split": "train",
+   "can_distract": true,
+   "forms": [
+    "absent"
+   ]
+  },
+  "skip": {
+   "cls": "lexical",
+   "split": "train",
+   "can_distract": true,
+   "forms": [
+    "skip",
+    "skips",
+    "skipped",
+    "skipping"
+   ]
+  },
+  "forbid": {
+   "cls": "lexical",
+   "split": "train",
+   "can_distract": true,
+   "forms": [
+    "forbid",
+    "forbids",
+    "forbade",
+    "forbidden"
+   ]
+  },
+  "leave out": {
+   "cls": "lexical",
+   "split": "train",
+   "can_distract": true,
+   "forms": [
+    "leave out",
+    "leaves out",
+    "left out",
+    "leaving out"
+   ]
+  },
+  "false": {
+   "cls": "truth_frame",
+   "split": "train",
+   "can_distract": false,
+   "forms": [
+    "false"
+   ]
+  },
+  "untrue": {
+   "cls": "truth_frame",
+   "split": "train",
+   "can_distract": false,
+   "forms": [
+    "untrue"
+   ]
+  },
+  "not the case": {
+   "cls": "truth_frame",
+   "split": "train",
+   "can_distract": false,
+   "forms": [
+    "not the case"
+   ]
+  },
+  "unsupported": {
+   "cls": "truth_frame",
+   "split": "train",
+   "can_distract": false,
+   "forms": [
+    "unsupported"
+   ]
+  },
+  "unfounded": {
+   "cls": "truth_frame",
+   "split": "train",
+   "can_distract": false,
+   "forms": [
+    "unfounded"
+   ]
+  },
+  "baseless": {
+   "cls": "truth_frame",
+   "split": "train",
+   "can_distract": false,
+   "forms": [
+    "baseless"
+   ]
+  },
+  "reverse": {
+   "cls": "cross_sentence",
+   "split": "train",
+   "can_distract": false,
+   "forms": [
+    "reverse"
+   ]
+  },
+  "opposite": {
+   "cls": "cross_sentence",
+   "split": "train",
+   "can_distract": false,
+   "forms": [
+    "opposite"
+   ]
+  },
+  "negation": {
+   "cls": "cross_sentence",
+   "split": "train",
+   "can_distract": false,
+   "forms": [
+    "negation"
+   ]
+  },
+  "answer no if": {
+   "cls": "answer_mapping",
+   "split": "train",
+   "can_distract": false,
+   "forms": [
+    "answer no if"
+   ]
+  },
+  "say no when": {
+   "cls": "answer_mapping",
+   "split": "train",
+   "can_distract": false,
+   "forms": [
+    "say no when"
+   ]
+  },
+  "no exactly when": {
+   "cls": "answer_mapping",
+   "split": "train",
+   "can_distract": false,
+   "forms": [
+    "no exactly when"
+   ]
+  },
+  "fails to hold": {
+   "cls": "answer_mapping",
+   "split": "train",
+   "can_distract": false,
+   "forms": [
+    "fails to hold"
+   ]
+  },
+  "is false of": {
+   "cls": "answer_mapping",
+   "split": "train",
+   "can_distract": false,
+   "forms": [
+    "is false of"
+   ]
+  },
+  "not one": {
+   "cls": "syntactic",
+   "split": "holdout",
+   "can_distract": true,
+   "forms": [
+    "not one"
+   ]
+  },
+  "at no point": {
+   "cls": "syntactic",
+   "split": "holdout",
+   "can_distract": true,
+   "forms": [
+    "at no point"
+   ]
+  },
+  "no longer": {
+   "cls": "syntactic",
+   "split": "holdout",
+   "can_distract": true,
+   "forms": [
+    "no longer"
+   ]
+  },
+  "ir-": {
+   "cls": "affixal",
+   "split": "holdout",
+   "can_distract": false,
+   "forms": [
+    "ir-"
+   ]
+  },
+  "a-": {
+   "cls": "affixal",
+   "split": "holdout",
+   "can_distract": false,
+   "forms": [
+    "a-"
+   ]
+  },
+  "overturn": {
+   "cls": "lexical",
+   "split": "holdout",
+   "can_distract": false,
+   "forms": [
+    "overturn",
+    "overturns",
+    "overturned",
+    "overturning"
+   ]
+  },
+  "rebut": {
+   "cls": "lexical",
+   "split": "holdout",
+   "can_distract": false,
+   "forms": [
+    "rebut",
+    "rebuts",
+    "rebutted",
+    "rebutting"
+   ]
+  },
+  "veto": {
+   "cls": "lexical",
+   "split": "holdout",
+   "can_distract": false,
+   "forms": [
+    "veto",
+    "vetoes",
+    "vetoed",
+    "vetoing"
+   ]
+  },
+  "forgo": {
+   "cls": "lexical",
+   "split": "holdout",
+   "can_distract": false,
+   "forms": [
+    "forgo",
+    "forgoes",
+    "forwent",
+    "forgone"
+   ]
+  },
+  "abstain": {
+   "cls": "lexical",
+   "split": "holdout",
+   "can_distract": false,
+   "forms": [
+    "abstain",
+    "abstains",
+    "abstained",
+    "abstaining"
+   ]
+  },
+  "turn down": {
+   "cls": "lexical",
+   "split": "holdout",
+   "can_distract": false,
+   "forms": [
+    "turn down",
+    "turns down",
+    "turned down",
+    "turning down"
+   ]
+  },
+  "groundless": {
+   "cls": "truth_frame",
+   "split": "holdout",
+   "can_distract": false,
+   "forms": [
+    "groundless"
+   ]
+  },
+  "erroneous": {
+   "cls": "truth_frame",
+   "split": "holdout",
+   "can_distract": false,
+   "forms": [
+    "erroneous"
+   ]
+  },
+  "far from true": {
+   "cls": "truth_frame",
+   "split": "holdout",
+   "can_distract": false,
+   "forms": [
+    "far from true"
+   ]
+  },
+  "contrary": {
+   "cls": "cross_sentence",
+   "split": "holdout",
+   "can_distract": false,
+   "forms": [
+    "contrary"
+   ]
+  },
+  "mark no if": {
+   "cls": "answer_mapping",
+   "split": "holdout",
+   "can_distract": false,
+   "forms": [
+    "mark no if"
+   ]
+  },
+  "enter no if": {
+   "cls": "answer_mapping",
+   "split": "holdout",
+   "can_distract": false,
+   "forms": [
+    "enter no if"
+   ]
+  },
+  "under": {
+   "cls": "lookalike",
+   "split": "train",
+   "can_distract": false,
+   "forms": [
+    "under"
+   ]
+  },
+  "displayed": {
+   "cls": "lookalike",
+   "split": "train",
+   "can_distract": false,
+   "forms": [
+    "displayed"
+   ]
+  },
+  "uniform": {
+   "cls": "lookalike",
+   "split": "train",
+   "can_distract": false,
+   "forms": [
+    "uniform"
+   ]
+  },
+  "unit": {
+   "cls": "lookalike",
+   "split": "train",
+   "can_distract": false,
+   "forms": [
+    "unit"
+   ]
+  },
+  "notably": {
+   "cls": "lookalike",
+   "split": "train",
+   "can_distract": false,
+   "forms": [
+    "notably"
+   ]
+  },
+  "nonetheless": {
+   "cls": "lookalike",
+   "split": "train",
+   "can_distract": false,
+   "forms": [
+    "nonetheless"
+   ]
+  }
+ }
+}

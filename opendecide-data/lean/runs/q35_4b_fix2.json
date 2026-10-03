@@ -1,0 +1,42 @@
+{
+  "name": "q35_4b_main500k_fix2",
+  "base": "Qwen/Qwen3.5-4B",
+  "base_revision": "851bf6e806efd8d0a36b00ddf55e13ccb7b8cd0a",
+  "recipe": "A3",
+  "train_file": "v14_parts/fix2_train.jsonl",
+  "rel_file": "v14_parts/fix2_relations.jsonl",
+  "init_adapter": "/vol/models/q35_4b_main500k_init",
+  "epochs": 0.9442277874359818,
+  "lr": 2e-05,
+  "batch": 16,
+  "r": 16,
+  "alpha": 32,
+  "dropout": 0.05,
+  "lam": 1.0,
+  "beta": 1.0,
+  "kd": 0.5,
+  "kd_skip_src": [
+    "blend50"
+  ],
+  "kd_full_src": [
+    "gd_gen2_probability"
+  ],
+  "lam_inv": 1.0,
+  "sym_cons": true,
+  "perm_twin": 0.3,
+  "lam_p": 0.5,
+  "aux_norm": "batch",
+  "seed": 20261002,
+  "grad_ckpt": true,
+  "style": "cygnet",
+  "layout": "schema_branch_mark",
+  "micro_tokens": 8192,
+  "targets": "QWEN35",
+  "snap_every": 0,
+  "snap_fracs": [],
+  "expect_trainable": 32464896,
+  "expect_kd_targets": 1198,
+  "expect_kd_full": 16,
+  "ckpt_every_min": 10,
+  "log_every": 25
+}

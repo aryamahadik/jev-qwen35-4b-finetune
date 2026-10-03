@@ -41,3 +41,32 @@ whether to install causal-conv1d.
 - **base_revision:** 15852e8c…, the L4 cache snapshot that arm I and E_L4 used.
 - **Still FILL:** `epochs` (replay on the built 2B file), `expect_trainable` (2B smoke), `expect_kd_targets` (the
   build_2b_kd print). The trainer refuses to run until these are filled.
+
+## q35_4b_fix2.json: the 4B top-up C4 = q35_4b_main500k_fix2 (draft amendment A8-prime, 2 Oct)
+One pass over `v14_parts/fix2_train.jsonl` (42,570 rows: F7 nested negation, v2 r6, and a 70% stratified replay of
+C1's own golden_train rows; no part (ii); `extra/build_fix2.py`, `data/v14_parts/fix2_counts.json`),
+continued from C1's adapter (`q35_4b_main500k`, adapter_model.safetensors sha256 507d1c29…), uploaded to the Volume
+folder `models/q35_4b_main500k_init` (`extra/fix2_spawn.py::fix2_upload_init`).
+
+**Same as the main run** (checked by `extra/fix2_spawn.py`, key by key): base and revision, recipe A3, batch 16,
+r16 / alpha 32 / dropout 0.05, QWEN35 targets, lam 1, beta 1, kd 0.5, `kd_skip_src` ["blend50"], `kd_full_src`,
+lam_inv 1.0, sym_cons, perm_twin 0.3, lam_p 0.5, aux_norm "batch", grad_ckpt, style cygnet, layout E
+(`schema_branch_mark`), micro_tokens 8192, `expect_trainable`, ckpt_every_min 10. The code is the main run's frozen
+code (train_decoder, decoder_io, prism_x, writeblock sha256 = C1's train_meta "code").
+
+**Different, and why:**
+- `init_adapter`: C1, byte-identical to the gated read (A8-prime B). The optimizer is fresh (C1's AdamW moments are
+  not carried over).
+- `lr` 2e-5 peak (the main run peaked at 7e-5): a short top-up of a trained adapter, the owner's setting.
+- **Warm-up: the trainer's fixed 5% linear warm-up, 125 steps, then cosine to 0.** It is not a free key (the
+  trainer computes `int(0.05 * n_steps)`), and it is the right shape here: a fresh AdamW has no second-moment estimate
+  yet, so its first updates are as large as lr allows; ramping lr from 0 over the first 125 steps keeps those
+  first steps from pushing C1's adapter around before the moments settle. The consistency losses ramp to full weight
+  by 20% of the run (step 503), as in every run of this trainer.
+- `epochs` 0.9452666196852243: exactly one pass, 2,515 steps (`replay_steps.py --config runs/q35_4b_fix2.json`:
+  `config_is_one_pass` true).
+- `seed` 20261002: a new data order for new data.
+- `snap_every` 0, `snap_fracs` []: no snapshots, so no dev-selected weights; C4 is the last step's adapter.
+- `expect_kd_targets` 1,369 / `expect_kd_full` 16: the builder's counts for this file (the trainer refuses to
+  start on any other count).
+- `log_every` 25 (shorter run).
