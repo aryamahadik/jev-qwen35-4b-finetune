@@ -1086,3 +1086,37 @@ This agrees with the earlier decision not to use TTA (X19).
 >   generator, pack, style or public row exists (G14). Scoring prints aggregates only. Nobody inspects per-item failures.
 >   Looks follow recipe 6.2: the scorer logs and refuses any look not in the table. Jev is read once, at the C look,
 >   after the ship verdict.
+
+> **Amendment A15 (3 Oct 2026, 20:45 UTC; before any C data, generator, pack, style, public row or commit row exists, and
+> before any model has read the suite): the sealed new-domains dev suite is FROZEN (G14).**
+> - **Files** (git-ignored, under `lean/sealed_nd/`; never opened by C builders):
+>   - suite `suite_v2.jsonl`, sha256 `f4ae863720535b6ba27acad51917fe07b4d31344228a1dddb9d98bc3a4deac68`;
+>   - scorer `score_nd.py`, sha256 `953a3363c6b8d103d32a4c34bdda735c2a34bb5278cbffd27f292ec41841cfd7`. It verifies the
+>     suite sha before every look and prints aggregates only, including the B3 yes-share block. It logs every look in
+>     `looks.jsonl` and refuses any look not in recipe 6.2: S1, S2, C once, and J (Jev) once, only after a C look with a
+>     recorded ship verdict.
+> - **Counts.** 7,302 items in total; 2,988 select and 4,314 confirm (sha256("ndsel:" + group_id) mod 5).
+>   - **Part A (headline):** 6,205 items in 8 domains, split 2,542 select / 3,663 confirm.
+>     - Non-adjacent: D1, D10, D11, D12, holding 3,446 items (55.5%).
+>     - Adjacent: D2, D3, D4, D5, holding 2,759 items.
+>     - The largest domain is 16.1%.
+>   - **Other parts:** P 600 (3 x 200); B1 298 (2 within-B1 near-duplicate groups dropped from 300); B2 199 (1
+>     decontamination drop from 200; 4,148-7,718 tokens).
+>   - **Item balance:** yes/no 46.5% of items, gold yes 50.0%; 58.2% card-free; 2-8 options.
+> - **Adjacency labels** were fixed at pick time, before any model read, and never change. The non-adjacent ids are
+>   listed above.
+> - **Build history (disclosed):**
+>   - v1 (9 domains, only 1 non-adjacent) failed the >= 4 non-adjacent / >= 50% rule. It was never read by a model.
+>     No waiver was used: 3 new non-adjacent domains were built, and whole adjacent domains were dropped from the bottom
+>     of the v1 priority list.
+>   - Counts-only 12-gram decontamination against C1's training file (501,732 rows) dropped 43 v1 items and 18 new
+>     items, whole groups each time.
+>   - Noise-floor reads were flag-only, at most 1.5% clearly wrong per domain, and no domain was dropped.
+> - **Isolation incident (disclosed):** sealed item text had spilled into shared session temp folders (tool-results,
+>   task outputs, scratchpad). With the owner's OK, the 31 flagged files were deleted and the sealed workflows'
+>   transcripts were moved into `sealed_nd/`. A re-scan (12-gram hashes) found 0 files with >= 3 hits outside
+>   `sealed_nd/`. C builders may not open session folders (spec v4 "Who may read what").
+> - **Orchestrator access:** the orchestrator has seen this suite only as counts by domain id. It has never seen any
+>   domain, source or theme name, or any item.
+> - **Jev read:** once, at the C look, after the ship verdict is logged, through the OHS Jev harness. The OpenRouter
+>   spend is an owner GO point. The result is report-only.
