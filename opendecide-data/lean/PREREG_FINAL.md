@@ -1243,3 +1243,13 @@ This agrees with the earlier decision not to use TTA (X19).
 > - **Overlap check:** a counts-only 12-gram check against C1's training file runs before the read. Overlapping items
 >   are reported, and the clean group is shown with and without them.
 > - **Use:** report-only. It never chooses data, weights or models, and no per-item results go to builders.
+
+> **Amendment A18.1 (4 Oct 2026, 17:05 UTC; owner request; before any read): add the Nimble frozen holdout to the A18
+> report-only run.**
+> - **Holdout:** bespokelabsai/nimble `data/eval.jsonl`, 324 records, sha256 `8e9e48b8de52...`. The labels are synthetic
+>   and model-checked, not human.
+> - **Jev number:** published in the repo README, 302/324 = 93.21%. Bespoke-Nimble-9B is 90.12% and the untuned
+>   Qwen3.5-4B is 61.42%.
+> - **Same rules as A18:** same mapping, same readout, report-only, plus a counts-only overlap check.
+> - **AutoTrust's "Nimble 282" fixed subset** is not published as an id list, so the full 324 is reported. The
+>   difference is disclosed.
