@@ -1224,3 +1224,22 @@ This agrees with the earlier decision not to use TTA (X19).
 > - **Round-1 crowd scoring (owner GO, ~$15)** runs on a Modal H100 instead of the free L4.
 >   - One view per read: difficulty needs no 2-view readout.
 >   - Same three models (C1, 4B-E, base 4B), same G9 rules otherwise.
+
+> **Amendment A18 (4 Oct 2026, 15:00 UTC; owner request; before any of these items is read by a model): a report-only run of C1 on
+> the Bespoke "Nimble" public decision suite, against Jev 1.13's published numbers.**
+> - **Suite:** github.com/bespokelabsai/nimble at 62076b4, docs/PUBLIC_BENCHMARKS.md. 13 human-labelled subsets with
+>   3,880 records in total. Each subset is rebuilt with the repo's own converter and seeds, and must match the manifest's
+>   `dataset_sha256`; a subset that does not match is not scored.
+> - **Jev numbers:** the ones published in that document. We make no Jev calls.
+> - **Model and readout:** C1 = `q35_4b_main500k`, with the shipped A5 readout on the free L4.
+> - **Format:** the records are mapped to our row format. The state fields become the text, each label's criteria
+>   become `- option: definition` card lines, and the repo's instruction text plus question become the instructions.
+>   This mapping is fixed before any read.
+> - **Scoring:** accuracy against the human reference label, plus Brier and ECE, using the repo's definitions.
+> - **Report groups:**
+>   - CLEAN, never trained on: vitaminc-dev, paws, pubmedqa, squad2, summeval-consistency, summeval-relevance.
+>   - SEEN-TASK, where C1 trained on that dataset's train split (disclosed): boolq, civil_comments, massive-en-US,
+>     massive-de-DE, multinli, aegis2, helpsteer2.
+> - **Overlap check:** a counts-only 12-gram check against C1's training file runs before the read. Overlapping items
+>   are reported, and the clean group is shown with and without them.
+> - **Use:** report-only. It never chooses data, weights or models, and no per-item results go to builders.
