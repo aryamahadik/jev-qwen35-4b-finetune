@@ -52,12 +52,13 @@ for b in range(0, len(items), a.bs):
     for x, s in zip(batch, ans):
         m = re.search(r"\b([A-Z])\b", s); L = m.group(1) if m else None; opt = x["letters"].get(L)
         if x["kind"] == "noul":
-            pred = None if opt is None else (opt.strip().lower().startswith("yes"))
+            yes_letter = next((k for k, v in x["letters"].items() if v.strip().lower().startswith("yes")), None)
+            pred = None if L is None or opt is None else (L == yes_letter)
             ok = pred is not None and pred == bool(x["gold"])
         else:
-            keys, opts = x["info"]["keys"], x["info"]["options"]
-            pred = keys[opts.index(opt)] if opt in opts else None; ok = pred == x["gold"]
-        out.write(json.dumps({"sub": x["sub"], "id": x["id"], "ok": bool(ok), "parsed": opt is not None, "think_tokens": x["think_tokens"],
+            keys = x["info"]["keys"]; idx = (ord(L) - 65) if L else -1
+            pred = keys[idx] if 0 <= idx < len(keys) else None; ok = pred == x["gold"]
+        out.write(json.dumps({"sub": x["sub"], "id": x["id"], "ok": bool(ok), "parsed": opt is not None, "letter": L, "pred": pred, "think_tokens": x["think_tokens"],
                               "capped": x["capped"], "sec_per_item": round(dt, 2)}) + "\n")
     out.flush(); print(json.dumps({"done": b + len(batch), "of": len(items), "sec_batch": round(time.time() - t0, 1)}), flush=True)
 print("THINK DONE", round(time.time() - t_all), flush=True)

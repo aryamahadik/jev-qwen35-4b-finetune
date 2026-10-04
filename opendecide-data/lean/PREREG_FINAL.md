@@ -1271,3 +1271,22 @@ This agrees with the earlier decision not to use TTA (X19).
 > - **Report:** accuracy versus the base and C1 one-pass results (A18, A18.2) and Jev's published numbers, plus the
 >   mean thinking tokens, the share hitting the cap, and seconds per item on the L4.
 > - Nothing here is tuned on these items, and it never chooses data or models. The A17 B1/B2 pass rules are unchanged.
+
+> **Amendment A17-B0b (4 Oct 2026, 20:30 UTC; owner request, "tune, don't train"; free L4; report-only): the C1 +
+> think-mode system, with every setting fixed now, before any read.**
+> - **Router:** C1's one-pass answer is kept when C1's top probability is >= 0.8. Otherwise the question goes to the
+>   think path. The threshold 0.8 is fixed a priori and never tuned.
+> - **Think path:** the base Qwen3.5-4B (LoRA off) with thinking on.
+>   - Budget: 1,024 tokens.
+>   - Sampling: T 0.6, top_p 0.95, top_k 20 (Qwen's recommended settings), seed 0.
+>   - After the budget, `</think>` is forced and the answer letter is read.
+>   - For the routed squad2/paws/pubmedqa items, the A17-B0 answers (768 tokens) are reused.
+>   - If the answer letter cannot be parsed, the system falls back to C1's answer.
+> - **Sets:**
+>   - Nimble public suite (13 subsets) and the holdout, scored against Jev's published numbers.
+>   - Decision Index sample, knowledge questions only: MMLU, GPQA Diamond, GSM8K, CRUXEval and CLadder, 1,344
+>     questions.
+>     - "Knowledge route": every question of these five is sent to think.
+>     - The new answers are merged into C1's results and re-scored with the harness's own scorer.
+>     - Labelled "DI-informed design, prototype system".
+> - **Use:** report-only. Nothing is tuned on these items. The A17 B1/B2 pass rules are unchanged.
