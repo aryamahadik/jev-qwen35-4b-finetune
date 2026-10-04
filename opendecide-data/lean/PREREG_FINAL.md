@@ -1253,3 +1253,11 @@ This agrees with the earlier decision not to use TTA (X19).
 > - **Same rules as A18:** same mapping, same readout, report-only, plus a counts-only overlap check.
 > - **AutoTrust's "Nimble 282" fixed subset** is not published as an id list, so the full 324 is reported. The
 >   difference is disclosed.
+
+> **Amendment A18.2 (4 Oct 2026, 17:50 UTC; owner OK; report-only): a forgetting check.**
+> - **Model:** the base Qwen3.5-4B, run through the exact same prompt and readout as C1, using C1's adapter with every
+>   lora_B set to 0 (= the base weights, with C1's layout/style metadata).
+> - **Data:** the same 13 Nimble subsets and the holdout as in A18/A18.1.
+> - **Reading the result:** a subset where C1 is below base by more than the CI suggests that fine-tuning caused
+>   forgetting. That would argue for adding generic replay in round 2 (a decision that needs its own amendment).
+> - **Use:** report-only; it never chooses data for round 1.
