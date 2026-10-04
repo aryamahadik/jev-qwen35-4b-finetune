@@ -1182,3 +1182,20 @@ This agrees with the earlier decision not to use TTA (X19).
 >   - (g) On choice rows, everything a row needs goes in `instructions`, `state` or `- option: definition` card lines.
 >     The `schema_branch_mark` layout shows only option-definition lines from the card on choice rows. Every family
 >     must pass `loader_check` on every row. Token caps count `instructions` twice, because the layout repeats them.
+
+> **Amendment A16.2 (4 Oct 2026, 02:30 UTC; before any C candidate exists): the round-1 launcher is pinned, and the plan
+> files are committed.**
+> - Pinned: `modal_od.py` `c25e4f38781242f0`. It uploads only `c_parts/c_train_r1.jsonl` and `c_rel_r1.jsonl` (plus the
+>   r2 pair). It never uploads `*_shards` or `ohs3` paths, and its `_launch_checks` refuse `FILL` values and missing
+>   data files.
+> - Unchanged pins: trainer `c2c2d1d6...`, readout `908c08d7...`, config `f3bb379e...`, spec v4 `4ca12996...`, recipe
+>   v4 `f4b79150...`.
+> - Committed alongside this amendment: the plan, tools and tests. Not committed: REVIEW_* and LICENCE_CHECK_*, which
+>   name sealed-suite candidates.
+> - F2 prompt identity passes on od-l4b and on the Mac (same 6 view hashes). The Modal record is added at the smoke
+>   run.
+> - **Owner-facing correction:** recipe v4's own projection, not the earlier chat estimate, is the registered
+>   expectation for OHS-3:
+>   - median -0.8 vs Jev;
+>   - P(>= Jev - 1) 56%, P(>= Jev) 31%, P(>= Jev + 1) 14%;
+>   - C ships in about 22% of simulated runs.

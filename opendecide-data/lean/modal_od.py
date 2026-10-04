@@ -54,23 +54,44 @@ threadpoolctl==3.7.0 tokenizers==0.23.2 torch==2.14.0 tqdm==4.70.1 transformers=
 typing-extensions==4.16.0 urllib3==2.8.0 xxhash==4.0.1 yarl==1.25.1""".split()
 V14_KEEP = {"golden_train.jsonl", "golden_relations.jsonl", "golden_dev.jsonl", "golden_dev_relations.jsonl",
             "train_2b_golden_kd.jsonl"}  # the 2B's train_file (FINETUNE_PLAN.md 3.5; build_2b_kd.py --out default)
+# C rounds (C_TRAIN_RECIPE.md v4 config sketch): the mixer's final files only, never its family parts, audits or reports
+C_KEEP = {"c_train_r1.jsonl", "c_rel_r1.jsonl", "c_train_r2.jsonl", "c_rel_r2.jsonl"}
+PARTS_KEEP = {"v14_parts": V14_KEEP, "c_parts": C_KEEP}  # the same set objects (extra/fix1_spawn.py edits V14_KEEP)
+# Frozen configs whose runs were launched only by their own spawn script, which swaps in a mount filter that uploads
+# exactly that run's two files. The default image does not carry them, so _launch_checks refuses them here.
+SPAWN_LAUNCHED = {"runs/q35_4b_fix1.json": "extra/fix1_spawn.py", "runs/q35_4b_fix2.json": "extra/fix2_spawn.py"}
 
 
 def _data_ignore(p: Path) -> bool:
-    """Upload only what runs read: top-level split and train files, plus the v14 golden files (not the raw parts,
-    audits, definitions or pre-gap-fill copies, about 2 GB and 15K files), and never a *_label_shards directory
-    (shard_golden.py / od_gcp.py label: about 1 GB of shard copies and labels_* that no run reads). p is relative to
-    data/."""
+    """Upload only what runs read: top-level split and train files, plus the files of PARTS_KEEP (v14 golden files,
+    C round files; not the raw parts, audits, definitions or pre-gap-fill copies, about 2 GB and 15K files). Never
+    uploaded: any *_shards directory (shard_golden.py / od_gcp.py label / C replay reads: shard copies and labels_*
+    that no Modal run reads) and anything OHS-3 (sealed). p is relative to data/."""
     parts = p.parts
     if not parts:
         return False
-    if parts[0].endswith("_label_shards"):
+    if parts[0].endswith("_shards") or "ohs3" in parts[0].lower():
         return True
     if not parts[0].endswith("_parts"):
         return False
-    if parts[0] != "v14_parts":
+    keep = PARTS_KEEP.get(parts[0])
+    if keep is None:
         return True
-    return len(parts) > 1 and not (len(parts) == 2 and parts[1] in V14_KEEP)
+    return len(parts) > 1 and not (len(parts) == 2 and parts[1] in keep)
+
+
+def _launch_checks(config: str, cfg: dict):
+    """Refuses, on the laptop before any container starts, a frozen config that cannot run in this image: a value
+    still marked FILL (a draft), or a train_file / rel_file that the image's data mount does not upload (the run would
+    stop on Modal with a missing file)."""
+    fill = sorted(k for k, v in cfg.items() if isinstance(v, str) and v.startswith("FILL"))
+    if fill:
+        raise SystemExit(f"{config}: {fill} still FILL (draft config)")
+    lost = [cfg[k] for k in ("train_file", "rel_file") if cfg.get(k) and _data_ignore(Path(cfg[k]))]
+    if lost:
+        how = (f"it launches only through {SPAWN_LAUNCHED[config]}" if config in SPAWN_LAUNCHED else
+               "add the file to modal_od.PARTS_KEEP or write it to the top level of data/")
+        raise SystemExit(f"{config}: data/{lost} is not uploaded by the image's data mount; {how}")
 
 
 image35 = (
@@ -507,6 +528,7 @@ def relay(config: str, expect_resume: bool = False, stop_after_min: float = 0.0,
     missing = [k for k in RELAY_REQUIRED if k not in cfg]
     if missing:
         raise SystemExit(f"{config}: missing keys {missing} (every key must be written out)")
+    _launch_checks(config, cfg)
     name = cfg.pop("name")
     if name_suffix:
         if not re.fullmatch(r"_[A-Za-z0-9_]+", name_suffix):
@@ -532,7 +554,7 @@ def relay(config: str, expect_resume: bool = False, stop_after_min: float = 0.0,
 # ---------------------------------------------------------------- pilot runs (FINETUNE_PLAN.md 2.4 and 4.2; pilot/RUNBOOK.md)
 PILOT_CONFIG = "runs/q35_4b_main.json"
 # checks tied to the full golden file: a smoke on a mini file drops them (they would fail) and never snapshots
-SMOKE_DROP = ("expect_kd_targets", "expect_kd_full", "snap_every", "snap_fracs")
+SMOKE_DROP = ("expect_kd_targets", "expect_kd_full", "expect_ord_rows", "snap_every", "snap_fracs")
 H100_USD_H = 3.95
 
 
@@ -542,6 +564,7 @@ def _frozen(config: str) -> tuple:
     missing = [k for k in RELAY_REQUIRED if k not in cfg]
     if missing:
         raise SystemExit(f"{config}: missing keys {missing} (every key must be written out)")
+    _launch_checks(config, cfg)
     name = cfg.pop("name")
     if cfg["targets"] == "QWEN35":
         cfg["targets"] = QWEN35_TARGETS
@@ -807,13 +830,45 @@ def _speed_impl(cfg: dict, steps: int, data_dir: Path, out_dir: Path, on_ckpt=No
 # peak memory and PYTORCH_CUDA_ALLOC_CONF, so its memory numbers would be wrong); with_options cannot set this
 @app.function(image=image35, gpu="H100!", volumes={"/vol": vol}, secrets=SECRETS, timeout=2 * 3600,
               single_use_containers=True)
-def smoke_heavy_remote(cfg: dict, spec: dict, alloc_conf: str = "") -> dict:
-    """Pilot: the smoke script of one micro_tokens value (see smoke_heavy). Its mini files and adapter stay in /tmp."""
+def smoke_heavy_remote(cfg: dict, spec: dict, alloc_conf: str = "", f2_adapter: str = "") -> dict:
+    """Pilot: the smoke script of one micro_tokens value (see smoke_heavy). Its mini files and adapter stay in /tmp.
+    First (CPU, seconds) the F2 record of this image (recipe v4 pre-flight 9), so the smoke carries it."""
     alloc = _alloc_conf(alloc_conf)
+    f2 = _f2_here(cfg, f2_adapter, "modal-image35")
     import decoder_io
     decoder_io.STYLE = cfg.get("style", "od")
     work = Path(f"/tmp/pilot/smoke_mt{spec['micro_tokens']}")
-    return {**_smoke_heavy_impl(cfg, spec, Path("/root/data"), work, on_ckpt=vol.commit), "alloc_conf": alloc}
+    return {**_smoke_heavy_impl(cfg, spec, Path("/root/data"), work, on_ckpt=vol.commit), "alloc_conf": alloc, "f2": f2}
+
+
+def _f2_here(cfg: dict, adapter: str, where: str) -> dict:
+    """This machine's F2 record (train_decoder.f2_record): the rendered-prompt sha256 of the 6 F2 views on the training
+    path of cfg (and on the adapter-load path when an adapter folder with train_meta.json is given). Never raises: an
+    error comes back in the record, so the smoke's memory result still arrives."""
+    import train_decoder as td
+    try:
+        return td.f2_record(td.f2_preflight(cfg, adapter or None), where)
+    except Exception as e:  # noqa: BLE001
+        return {"error": f"{type(e).__name__}: {str(e)[:500]}"}
+
+
+def _f2_check(res: dict, tag: str, ref: str, out_dir: Path) -> dict | None:
+    """Writes the smoke's F2 record to out_dir/f2_<tag>.json and compares it with the reference record `ref` (a file
+    written by `train_decoder.py f2 --out`, e.g. on the L4 gate VM). Returns the verdict (None if the result has no
+    F2 record)."""
+    rec = res.get("f2")
+    if rec is None:
+        return None
+    (out_dir / f"f2_{tag}.json").write_text(json.dumps(rec, indent=1))
+    if "error" in rec:
+        return {"f2": "ERROR", "detail": rec["error"]}
+    if not ref or not (HERE / ref).exists():
+        return {"f2": "recorded (no reference to compare)", "file": f"f2_{tag}.json"}
+    import train_decoder as td
+    try:
+        return td.f2_compare({ref: json.loads((HERE / ref).read_text()), tag: rec})
+    except RuntimeError as e:
+        return {"f2": "FAIL", "detail": str(e)[:800]}
 
 
 @app.function(image=image35, gpu="H100!", volumes={"/vol": vol}, secrets=SECRETS, timeout=2 * 3600,
@@ -870,14 +925,18 @@ def _override(override: str) -> tuple:
 
 @app.local_entrypoint()
 def smoke_heavy(micro_tokens: str = "0,10240,16384,24576", gpu: str = "H100!", config: str = PILOT_CONFIG,
-                heavy: str = "pilot/heavy_batches.json", alloc_conf: str = "", ordinary: int = 20, override: str = ""):
+                heavy: str = "pilot/heavy_batches.json", alloc_conf: str = "", ordinary: int = 20, override: str = "",
+                f2_adapter: str = "", f2_ref: str = ""):
     """Pilot memory test (FINETUNE_PLAN.md 2.4): for each micro_tokens value, one container trains the frozen config
     for `ordinary` real steps, then one step per heavy batch of pilot/heavy_batches.json (rank_microbatches.py).
     Pass: no out-of-memory and max_memory_reserved <= 90% of the card on every step. Nothing is written to the Volume
     except the Hugging Face / Triton caches.
       MODAL_PROFILE=jaypatil-duke modal run modal_od.py::smoke_heavy --micro-tokens 0,10240,16384,24576
       MODAL_PROFILE=jaypatil-duke modal run modal_od.py::smoke_heavy --micro-tokens 10240 --gpu L4
-    Writes logs/pilot/smoke_heavy_<gpu>_mt<N>.json."""
+    Writes logs/pilot/smoke_heavy_<gpu>_mt<N>.json.
+    F2 (recipe v4 pre-flight 9) rides along: each container first records the rendered-prompt sha256 of the F2 views
+    in this image (logs/pilot/f2_<tag>.json; --f2-adapter /vol/models/<dir with train_meta.json> adds the adapter-load
+    path) and compares them with --f2-ref (a record from `train_decoder.py f2 --out`, e.g. the L4 gate VM's)."""
     _, cfg = _frozen(config)
     ov, ovtag = _override(override)  # pilot-only config changes, e.g. '{"grad_ckpt": false}'
     cfg = {**cfg, **ov}
@@ -887,12 +946,15 @@ def smoke_heavy(micro_tokens: str = "0,10240,16384,24576", gpu: str = "H100!", c
     out = HERE / "logs/pilot"
     out.mkdir(parents=True, exist_ok=True)
     fn = smoke_heavy_remote.with_options(gpu=gpu, **_alloc_env(alloc_conf))
-    for spec, res in zip(specs, _run_all(fn, [(cfg, s, alloc_conf) for s in specs])):
+    for spec, res in zip(specs, _run_all(fn, [(cfg, s, alloc_conf, f2_adapter) for s in specs])):
         tag = "smoke_heavy_" + _pilot_tag(gpu, spec["micro_tokens"], alloc_conf) + ovtag
         if isinstance(res, BaseException):
             print(json.dumps({"run": tag, "error": repr(res)[:500]}))
             continue
         (out / f"{tag}.json").write_text(json.dumps(res, indent=1))
+        f2 = _f2_check(res, tag, f2_ref, out)
+        if f2 is not None:
+            print(json.dumps({"run": tag, **{k: v for k, v in f2.items() if k != "records"}}))
         print(json.dumps({"run": tag, **{k: res.get(k) for k in ("gpu", "pass_memory", "max_frac", "max_reserved_gb",
                                                                   "oom", "oom_step", "steps_run", "steps_planned",
                                                                   "s_per_step_ordinary_median", "peak_rss_gb")}}))

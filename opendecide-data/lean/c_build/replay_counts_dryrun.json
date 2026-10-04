@@ -1,0 +1,1743 @@
+{
+ "spec": "C_DATA_SPEC.md v4 section 5 / 3.H.3",
+ "seed": 20261003,
+ "pool_rows": 501732,
+ "pool_sources": 204,
+ "pool_units": 427638,
+ "drops": {
+  "rows_dropped": 83807,
+  "rows_dropped_by_rule": {
+   "VERIFY (HF card only)": 35152,
+   "VERIFY": 14749,
+   "A8' OHS-3 hit source": 11348,
+   "DROP": 9085,
+   "DROP (default)": 8607,
+   "DROP (default, forbidden list)": 4866
+  },
+  "rows_dropped_with_their_unit": 0,
+  "sources_dropped": {
+   "amazon_polarity": [
+    754,
+    "DROP: Forbidden list; terms unclear; read from a test split"
+   ],
+   "arc": [
+    414,
+    "VERIFY: not verified"
+   ],
+   "banking77": [
+    2300,
+    "DROP (default, forbidden list): Forbidden list (banking77); also a dev source and DI test. Owner may grandfather"
+   ],
+   "binj_adult": [
+    213,
+    "DROP (default): Claude-written golds"
+   ],
+   "binj_consistency": [
+    226,
+    "DROP (default): Claude-written golds"
+   ],
+   "binj_intent": [
+    212,
+    "DROP (default): Claude-written golds"
+   ],
+   "binj_offensive": [
+    203,
+    "DROP (default): Claude-written golds"
+   ],
+   "boolq": [
+    896,
+    "DROP (default, forbidden list): Forbidden list (super_glue/boolq). Owner may grandfather"
+   ],
+   "br_congress_policy": [
+    699,
+    "VERIFY (HF card only): not verified"
+   ],
+   "br_newsmtsc": [
+    607,
+    "DROP: Source text POLUSA is non-commercial (zenodo.org/records/3946057); C1 trained on it: disclose"
+   ],
+   "br_steam_aspect": [
+    200,
+    "VERIFY (HF card only): not verified"
+   ],
+   "civil_comments": [
+    364,
+    "DROP: Jigsaw-derived (MBIB 040_Jigsaw in forbidden mbib-base); not grandfatherable"
+   ],
+   "clinc150": [
+    2651,
+    "VERIFY: not verified"
+   ],
+   "clothing": [
+    211,
+    "VERIFY: not verified"
+   ],
+   "condaqa": [
+    788,
+    "DROP (default, forbidden list): Forbidden list (CONDAQA). Owner may grandfather"
+   ],
+   "copa": [
+    243,
+    "VERIFY: not verified"
+   ],
+   "csqa": [
+    478,
+    "VERIFY: not verified"
+   ],
+   "dbpedia": [
+    882,
+    "DROP (default, forbidden list): Forbidden list (dbpedia_14). Owner may grandfather"
+   ],
+   "fld": [
+    574,
+    "VERIFY: not verified"
+   ],
+   "gd_aegis_prompts": [
+    1887,
+    "VERIFY (HF card only): not verified"
+   ],
+   "gd_bbh_mistake": [
+    905,
+    "DROP: Reuses BBH inputs (DI test)"
+   ],
+   "gd_climate_targets": [
+    1071,
+    "VERIFY (HF card only): not verified"
+   ],
+   "gd_edgar_10k_item": [
+    6070,
+    "VERIFY (HF card only): not verified"
+   ],
+   "gd_faithdial": [
+    2963,
+    "VERIFY (HF card only): not verified"
+   ],
+   "gd_finqa": [
+    4970,
+    "VERIFY: not verified"
+   ],
+   "gd_helpsteer2_attr": [
+    2729,
+    "VERIFY (HF card only): not verified"
+   ],
+   "gd_helpsteer3_pref": [
+    3369,
+    "A8' OHS-3 hit source: whole source left out (extra/build_fix2.py OHS3_HIT_SOURCES); also VERIFY (HF card only): not verified"
+   ],
+   "gd_mfrc": [
+    8254,
+    "VERIFY (HF card only): not verified"
+   ],
+   "gd_mtbench_human": [
+    970,
+    "VERIFY (HF card only): not verified"
+   ],
+   "gd_qasc": [
+    6107,
+    "VERIFY (HF card only): not verified"
+   ],
+   "gd_quartz": [
+    1798,
+    "VERIFY (HF card only): not verified"
+   ],
+   "gd_redocred": [
+    7979,
+    "A8' OHS-3 hit source: whole source left out (extra/build_fix2.py OHS3_HIT_SOURCES)"
+   ],
+   "gd_ropes_sci": [
+    941,
+    "VERIFY (HF card only): not verified"
+   ],
+   "gd_spiced": [
+    1002,
+    "VERIFY (HF card only): not verified"
+   ],
+   "hard_affect": [
+    292,
+    "DROP (default): Claude-written golds"
+   ],
+   "hard_affect_c": [
+    109,
+    "DROP (default): Claude-written golds"
+   ],
+   "hard_clinical": [
+    242,
+    "DROP (default): Claude-written golds"
+   ],
+   "hard_codebook_c": [
+    150,
+    "DROP (default): Claude-written golds"
+   ],
+   "hard_contracts": [
+    252,
+    "DROP (default): Claude-written golds"
+   ],
+   "hard_evidence_a": [
+    254,
+    "DROP (default): Claude-written golds"
+   ],
+   "hard_evidence_b": [
+    250,
+    "DROP (default): Claude-written golds"
+   ],
+   "hard_evidence_claims_a": [
+    268,
+    "DROP (default): Claude-written golds"
+   ],
+   "hard_evidence_claims_b": [
+    242,
+    "DROP (default): Claude-written golds"
+   ],
+   "hard_intent_c": [
+    114,
+    "DROP (default): Claude-written golds"
+   ],
+   "hard_nli_a": [
+    234,
+    "DROP (default): Claude-written golds"
+   ],
+   "hard_nli_b": [
+    276,
+    "DROP (default): Claude-written golds"
+   ],
+   "hard_nli_c": [
+    126,
+    "DROP (default): Claude-written golds"
+   ],
+   "hard_policy_a": [
+    274,
+    "DROP (default): Claude-written golds"
+   ],
+   "hard_policy_b": [
+    256,
+    "DROP (default): Claude-written golds"
+   ],
+   "hard_policy_c": [
+    127,
+    "DROP (default): Claude-written golds"
+   ],
+   "hard_reason_c": [
+    137,
+    "DROP (default): Claude-written golds"
+   ],
+   "hard_scales": [
+    272,
+    "DROP (default): Claude-written golds"
+   ],
+   "judge_helpsteer2": [
+    461,
+    "VERIFY (HF card only): not verified"
+   ],
+   "logiqa2": [
+    441,
+    "DROP: CC BY-NC-SA 4.0 upstream (github.com/csitfun/LogiQA2.0)"
+   ],
+   "massive": [
+    1703,
+    "VERIFY: not verified"
+   ],
+   "mnli": [
+    661,
+    "VERIFY: not verified"
+   ],
+   "mnli3": [
+    1090,
+    "VERIFY: not verified"
+   ],
+   "mnli_neutral": [
+    164,
+    "VERIFY: not verified"
+   ],
+   "mrpc": [
+    632,
+    "DROP: GLUE licence unknown; glue/mrpc forbidden"
+   ],
+   "musr_murder_mysteries": [
+    111,
+    "DROP: DI test items (MuSR has no train split)"
+   ],
+   "musr_object_placements": [
+    96,
+    "DROP: DI test items (MuSR has no train split)"
+   ],
+   "musr_team_allocation": [
+    91,
+    "DROP: DI test items (MuSR has no train split)"
+   ],
+   "planted_a": [
+    448,
+    "DROP (default): Claude-written golds"
+   ],
+   "planted_b": [
+    442,
+    "DROP (default): Claude-written golds"
+   ],
+   "proc_adversarial": [
+    186,
+    "DROP (default): Claude-written golds"
+   ],
+   "proc_evidence": [
+    165,
+    "DROP (default): Claude-written golds"
+   ],
+   "proc_longpolicy": [
+    150,
+    "DROP (default): Claude-written golds"
+   ],
+   "proc_multihop": [
+    152,
+    "DROP (default): Claude-written golds"
+   ],
+   "proc_routing": [
+    157,
+    "DROP (default): Claude-written golds"
+   ],
+   "proc_rubric": [
+    128,
+    "DROP (default): Claude-written golds"
+   ],
+   "proc_temporal": [
+    188,
+    "DROP (default): Claude-written golds"
+   ],
+   "proc_tradeoff": [
+    155,
+    "DROP (default): Claude-written golds"
+   ],
+   "proc_trap": [
+    169,
+    "DROP (default): Claude-written golds"
+   ],
+   "proofwriter": [
+    687,
+    "VERIFY: not verified"
+   ],
+   "qnli": [
+    903,
+    "VERIFY: not verified"
+   ],
+   "rte": [
+    952,
+    "DROP: GLUE licence unknown"
+   ],
+   "std_evidence": [
+    444,
+    "DROP (default): Claude-written golds"
+   ],
+   "std_hate": [
+    378,
+    "DROP (default): Claude-written golds"
+   ],
+   "std_hearsay": [
+    276,
+    "DROP (default): Claude-written golds"
+   ],
+   "std_trademark": [
+    440,
+    "DROP (default): Claude-written golds"
+   ],
+   "tb_label_nli": [
+    1288,
+    "DROP: Forbidden label-NLI set; licence 'other'"
+   ],
+   "toxic_conv": [
+    729,
+    "DROP: Jigsaw-derived (SetFit/toxic_conversations_50k); no licence; not grandfatherable"
+   ],
+   "wiki_stance_afd": [
+    901,
+    "DROP: No licence on the card; AfD is a JevBench jagged source"
+   ],
+   "yahoo": [
+    538,
+    "DROP: Licence unknown (Webscope); forbidden list; read from a test split"
+   ],
+   "yelp": [
+    303,
+    "DROP: Yelp agreement non-commercial; read from a test split"
+   ],
+   "yelp5": [
+    373,
+    "DROP: Yelp agreement non-commercial; read from a test split"
+   ]
+  },
+  "provisional_forbidden_name_hits_exact_dropped": {},
+  "provisional_forbidden_name_hits_substring_report_only": {},
+  "denylist_3H": "applied",
+  "denylist_verdicts": {
+   "path": "c_build/replay_denylist_verdicts.json",
+   "sha256": "0f8c5579b81ceda550504901c2ac9b73f52a37100a5f6d8587348736261fe1df",
+   "program_sha256": "e268d5667f181bbab47428df2b8e2ee6126a5091dc93e12b0a5f7acd09d6e1c6",
+   "program_sha256_now": "e268d5667f181bbab47428df2b8e2ee6126a5091dc93e12b0a5f7acd09d6e1c6",
+   "aliases_sha256": "40eeb47e2f379ea8bcde4e6f562a1e1869e35af8d80773d3f7e16ba874d4479b",
+   "aliases_sha256_now": "40eeb47e2f379ea8bcde4e6f562a1e1869e35af8d80773d3f7e16ba874d4479b",
+   "denylist_sha256": "52b91ef3799c393cdb0ece5ee1b7df25c53ef09bff52fab147271f77d707ef88",
+   "platform_rule": "RULED (PREREG_FINAL.md A16 a): a bare platform word (Wikipedia, Reddit, GitHub, arXiv, Zenodo, PubMed, ...) never matches on its own; real text overlap is caught by the counts-only n-gram decontamination before every freeze",
+   "query_sha256": "469ee6598dd83b231160b4c5aa1747c56752a56e3282b5dc4f65bb1fcf41f31d",
+   "query_sha256_now": "469ee6598dd83b231160b4c5aa1747c56752a56e3282b5dc4f65bb1fcf41f31d",
+   "canonical": true,
+   "counts": {
+    "sources": 204,
+    "hit": 89,
+    "taint_hit": 48,
+    "no_new_rows_only": 41,
+    "drop_whole": 21,
+    "drop_part": 5,
+    "keep_dev_seen": 22,
+    "no_hit": 115,
+    "ohs3_hit": 1,
+    "sealed_hit": 0
+   },
+   "provisional": [],
+   "blockers": []
+  },
+  "split_scope_train_provenance": {
+   "rule": "3.H.3 split-scope taint: a row is kept only if proven to be from a train split (group_id split token, meta.dataset train-split marker, or a builder-declared split re-checked in the builder source); every other row is dropped (fail closed)",
+   "declared": {
+    "arc": "build_train_v06.py:55"
+   },
+   "sources": {
+    "arc": {
+     "status drop": 414
+    },
+    "binj_offensive": {
+     "status drop": 203
+    },
+    "clinc150": {
+     "status drop": 2651
+    },
+    "gd_ragtruth_summary": {
+     "status keep": 953,
+     "meta.dataset train-split marker": 953
+    },
+    "gd_winogrande": {
+     "status keep": 4734,
+     "group_id split token": 4734
+    }
+   }
+  },
+  "ohs3_hit_sources_A8prime": {
+   "rule": "whole source dropped (PREREG_FINAL.md A8-prime; replaces the A10 7-unit ids; extra/build_fix2.py OHS3_HIT_SOURCES)",
+   "sources": {
+    "gd_redocred": {
+     "rows": 7979,
+     "status_before": "keep"
+    },
+    "gd_helpsteer3_pref": {
+     "rows": 3369,
+     "status_before": "drop: VERIFY (HF card only): not verified"
+    }
+   }
+  },
+  "verified_sources": [],
+  "duplicate_text_rows_dropped": 1,
+  "conflicting_gold_duplicate_rows_dropped": 0
+ },
+ "eligible_before_old_slice": {
+  "rows": 417924,
+  "units": 357997,
+  "sources": 118
+ },
+ "old_slice": {
+  "rows": 2000,
+  "sources": 118,
+  "groups": 2000,
+  "states": 2000,
+  "replay_rows_held_out_with_it": 3154,
+  "hard_yes_rate": 0.485
+ },
+ "eligible": {
+  "rows": 414770,
+  "units": 355302,
+  "sources": 118
+ },
+ "quota": {
+  "r2_total": 180000,
+  "r1_total": 90000,
+  "cap": 7200,
+  "sources_at_cap": [],
+  "sources_at_floor_all_rows": [
+   "br_sarcasm_headlines",
+   "gd_gen2_long_policy",
+   "gd_gen2_tool_selection",
+   "gd_meganegraising"
+  ],
+  "r2_over_eligible": 0.434
+ },
+ "e2": {
+  "rule": "cells re-derived on the final set; start cells (>= 50 rows at the start) also scored on their own rate at any size",
+  "round1_draw": {
+   "before": {
+    "hard_yn_rows": 58139,
+    "yes_rate": 0.4989,
+    "cells_checked": 193,
+    "wording_cells_checked": 155,
+    "family_cells_checked": 38,
+    "cells_out_of_band": 30,
+    "rows_in_out_of_band_cells": 2799,
+    "small_pooled_cells_under_50": 1121,
+    "rows_in_small_cells": 4796,
+    "worst": [
+     {
+      "cell": "f:aff|are <e> both",
+      "n": 208,
+      "yes_rate": 0.644
+     },
+     {
+      "cell": "w:according to the assistant's last message, is <q> confirmed for the customer's car repair appointment?",
+      "n": 50,
+      "yes_rate": 0.8
+     },
+     {
+      "cell": "w:according to the assistant's last message, is <q> confirmed for the customer's pizza order?",
+      "n": 84,
+      "yes_rate": 0.31
+     },
+     {
+      "cell": "w:in the customer's last message, is <q> a mention of the title of a specific movie for this movie search?",
+      "n": 51,
+      "yes_rate": 0.314
+     },
+     {
+      "cell": "w:does the table show that the statement is false?",
+      "n": 52,
+      "yes_rate": 0.635
+     },
+     {
+      "cell": "f:aff|is the conclusion",
+      "n": 71,
+      "yes_rate": 0.606
+     },
+     {
+      "cell": "w:does this paragraph make the contrarian climate claim that climate impacts are not bad or are beneficial?",
+      "n": 236,
+      "yes_rate": 0.436
+     },
+     {
+      "cell": "w:based only on the story, answer this question: <e> in the kitchen?",
+      "n": 53,
+      "yes_rate": 0.396
+     },
+     {
+      "cell": "f:aff|is it established",
+      "n": 115,
+      "yes_rate": 0.426
+     },
+     {
+      "cell": "w:how is the potential slur in this comment used?\nis the correct answer <q>?",
+      "n": 66,
+      "yes_rate": 0.409
+     },
+     {
+      "cell": "f:aff|given the policy",
+      "n": 72,
+      "yes_rate": 0.583
+     },
+     {
+      "cell": "w:does the response contain at least one substantive error or miss an explicit requirement?",
+      "n": 63,
+      "yes_rate": 0.413
+     },
+     {
+      "cell": "w:how is the potential slur in this comment used?\nis it wrong to answer <q>?",
+      "n": 60,
+      "yes_rate": 0.583
+     },
+     {
+      "cell": "w:which option best describes this post?\nis the correct answer <q>?",
+      "n": 62,
+      "yes_rate": 0.581
+     },
+     {
+      "cell": "w:according to the assistant's last message, is <q> confirmed for the customer's coffee order?",
+      "n": 73,
+      "yes_rate": 0.575
+     }
+    ]
+   },
+   "swaps": 100,
+   "stuck_cells": [],
+   "n_stuck": 0,
+   "after": {
+    "hard_yn_rows": 58139,
+    "yes_rate": 0.4985,
+    "cells_checked": 192,
+    "wording_cells_checked": 154,
+    "family_cells_checked": 38,
+    "cells_out_of_band": 0,
+    "rows_in_out_of_band_cells": 0,
+    "small_pooled_cells_under_50": 1121,
+    "rows_in_small_cells": 4800,
+    "worst": [],
+    "start_cells": {
+     "n": 155,
+     "now_under_50": 1,
+     "emptied": 0,
+     "out_of_band_own_rate": 0,
+     "rows_out_of_band_own_rate": 0,
+     "worst": []
+    }
+   }
+  },
+  "round2_draw": {
+   "before": {
+    "hard_yn_rows": 116138,
+    "yes_rate": 0.4991,
+    "cells_checked": 283,
+    "wording_cells_checked": 220,
+    "family_cells_checked": 63,
+    "cells_out_of_band": 56,
+    "rows_in_out_of_band_cells": 5806,
+    "small_pooled_cells_under_50": 1505,
+    "rows_in_small_cells": 7463,
+    "worst": [
+     {
+      "cell": "f:aff|are <e> both",
+      "n": 437,
+      "yes_rate": 0.641
+     },
+     {
+      "cell": "w:according to the assistant's last message, is <q> confirmed for the customer's car repair appointment?",
+      "n": 106,
+      "yes_rate": 0.802
+     },
+     {
+      "cell": "w:according to the assistant's last message, is <q> confirmed for the customer's pizza order?",
+      "n": 163,
+      "yes_rate": 0.319
+     },
+     {
+      "cell": "w:in the customer's last message, is <q> a mention of the title of a specific movie for this movie search?",
+      "n": 94,
+      "yes_rate": 0.309
+     },
+     {
+      "cell": "w:in the customer's last message, does <q> give the make or model of the vehicle for this car repair appointment?",
+      "n": 73,
+      "yes_rate": 0.288
+     },
+     {
+      "cell": "f:aff|in the customer's",
+      "n": 552,
+      "yes_rate": 0.571
+     },
+     {
+      "cell": "f:attacked|do the stated",
+      "n": 103,
+      "yes_rate": 0.35
+     },
+     {
+      "cell": "f:aff|were <e> both",
+      "n": 59,
+      "yes_rate": 0.695
+     },
+     {
+      "cell": "w:in the customer's last message, is <q> a mention of the number of rooms for this hotel search?",
+      "n": 62,
+      "yes_rate": 0.323
+     },
+     {
+      "cell": "w:in the customer's last message, does <q> give the name of the movie theater for this movie ticket order?",
+      "n": 72,
+      "yes_rate": 0.347
+     },
+     {
+      "cell": "w:which occupation performs all of the listed duties?\nis it wrong to answer <q>?",
+      "n": 67,
+      "yes_rate": 0.657
+     },
+     {
+      "cell": "w:which occupation performs all of the listed duties?\nis the correct answer <q>?",
+      "n": 74,
+      "yes_rate": 0.365
+     },
+     {
+      "cell": "w:in the customer's last message, is <q> a mention of the destination (where the customer wants to fly to) for this flight search?",
+      "n": 79,
+      "yes_rate": 0.38
+     },
+     {
+      "cell": "w:in the customer's last message, does <q> give the customer's own name for this car repair appointment?",
+      "n": 63,
+      "yes_rate": 0.365
+     },
+     {
+      "cell": "w:in the customer's last message, is <q> a mention of the genre or kind of movie for this movie search?",
+      "n": 58,
+      "yes_rate": 0.638
+     }
+    ]
+   },
+   "swaps": 240,
+   "stuck_cells": [
+    "f:aff|output <n> if",
+    "f:aff|reply <n> (yes)",
+    "w:which negotiation strategy does the <e> use?\nis it wrong to answer <q>?",
+    "w:which negotiation strategy does the <e> use?\nis the correct answer <q>?"
+   ],
+   "n_stuck": 4,
+   "after": {
+    "hard_yn_rows": 116138,
+    "yes_rate": 0.4991,
+    "cells_checked": 281,
+    "wording_cells_checked": 219,
+    "family_cells_checked": 62,
+    "cells_out_of_band": 4,
+    "rows_in_out_of_band_cells": 219,
+    "small_pooled_cells_under_50": 1506,
+    "rows_in_small_cells": 7513,
+    "worst": [
+     {
+      "cell": "f:aff|output <n> if",
+      "n": 61,
+      "yes_rate": 0.377
+     },
+     {
+      "cell": "f:aff|reply <n> (yes)",
+      "n": 50,
+      "yes_rate": 0.4
+     },
+     {
+      "cell": "w:which negotiation strategy does the <e> use?\nis it wrong to answer <q>?",
+      "n": 54,
+      "yes_rate": 0.426
+     },
+     {
+      "cell": "w:which negotiation strategy does the <e> use?\nis the correct answer <q>?",
+      "n": 54,
+      "yes_rate": 0.574
+     }
+    ],
+    "start_cells": {
+     "n": 220,
+     "now_under_50": 1,
+     "emptied": 0,
+     "out_of_band_own_rate": 2,
+     "rows_out_of_band_own_rate": 108,
+     "worst": [
+      {
+       "cell": "w:which negotiation strategy does the <e> use?\nis it wrong to answer <q>?",
+       "n": 54,
+       "yes_rate": 0.426
+      },
+      {
+       "cell": "w:which negotiation strategy does the <e> use?\nis the correct answer <q>?",
+       "n": 54,
+       "yes_rate": 0.574
+      }
+     ]
+    }
+   }
+  }
+ },
+ "round1_draw": {
+  "name": "round 1 draw (90,000 + 10% margin)",
+  "rows": 99069,
+  "units": 85352,
+  "sources": 118,
+  "choice_rows": 34956,
+  "yesno_rows": 64113,
+  "hard_yesno_rows": 58139,
+  "hard_yesno_yes_rate": 0.4985,
+  "vote_share_rows": 8454,
+  "gold_probs_rows": 103,
+  "blend50_only_rows": 5670,
+  "attacked_rows": 6469,
+  "rows_in_units_by_relation": {
+   "complement": 14998,
+   "inv": 13440
+  },
+  "dup_option_rows": 0,
+  "ordinal_option_level_rows": 0,
+  "duplicate_row_keys": 0,
+  "reads_A5": 134025,
+  "reads_A5_without_own_target_rows": 122885,
+  "chars_total": 175128638,
+  "chars_weighted_by_reads": 267605404,
+  "by_family": {
+   "nli_logic_reasoning": 14407,
+   "fact_tables": 9329,
+   "qa_decisions": 8430,
+   "intent_business_support": 7139,
+   "moral_social_norms": 5928,
+   "large_labelsets": 5727,
+   "none": 5518,
+   "routing_dialogue": 5138,
+   "ordinal_scales": 4948,
+   "relations_entities": 4819,
+   "science_health_claims": 4793,
+   "domain_classification": 4498,
+   "mcq_exams": 4403,
+   "safety_policy_moderation": 4124,
+   "calibration_distributions": 3538,
+   "judge_verifier": 2845,
+   "numeric_temporal": 2115,
+   "numeric": 203,
+   "evidence": 200,
+   "multihop": 200,
+   "routing": 194,
+   "temporal": 192,
+   "policy": 191,
+   "conflict": 190
+  },
+  "by_qtype_role": {
+   "noul/aff": 52862,
+   "choice/choice": 31891,
+   "noul/neg": 7248,
+   "noul/attacked": 4003,
+   "choice/attacked": 2466,
+   "choice/defswap": 599
+  },
+  "by_source": {
+   "gd_gen_tables": 2123,
+   "gd_gen_logic_negation": 2121,
+   "gd_gen_evidence_conflict": 2115,
+   "gd_gen_numeric_dates": 2115,
+   "gd_gen_ranking": 2112,
+   "gd_gen_policy_exceptions": 2107,
+   "gd_gen_routing": 2106,
+   "gd_gen_constraints": 2095,
+   "gd_boardgameqa": 1857,
+   "gd_uscg_mariner": 1756,
+   "gd_drugprot": 1753,
+   "gd_msha_injury": 1737,
+   "gd_feverous": 1688,
+   "gd_medqa_yn": 1681,
+   "gd_sc101": 1680,
+   "gd_gen_msn_rules": 1675,
+   "gd_medmcqa_subject": 1637,
+   "gd_cards": 1511,
+   "gd_infotabs_nli": 1498,
+   "gd_oiics_event": 1473,
+   "gd_tatqa": 1457,
+   "gd_wiki_help_routing": 1411,
+   "gd_totto_claims": 1379,
+   "gd_smcalflow_action": 1374,
+   "gd_gen_msn_fault": 1369,
+   "gd_sd311_routing": 1308,
+   "gd_medquad_qtype": 1306,
+   "gd_logicinference": 1275,
+   "gd_comve": 1250,
+   "gd_storm_ef": 1249,
+   "gd_prm800k_steps": 1235,
+   "gd_saferproducts_severity": 1231,
+   "gd_wtq": 1212,
+   "gd_gen_msn_consent": 1204,
+   "gd_opentdb": 1202,
+   "gd_gen_nlr_heuristics": 1171,
+   "gd_winogrande": 1138,
+   "gd_dstc9_track1": 1119,
+   "gd_clickbait17": 1091,
+   "gd_druglabel_section": 1058,
+   "gd_babi_logic": 1055,
+   "gd_tathqa": 1038,
+   "gd_semtabfacts_sci": 1019,
+   "gd_casehold_yn": 1017,
+   "gd_uds_ordinal": 1010,
+   "gd_ncbi_disease": 989,
+   "gd_taskmaster1": 955,
+   "gd_east_asian_prejudice": 939,
+   "gd_webred": 927,
+   "gd_slur_usage": 915,
+   "gd_edos_sexism": 907,
+   "gd_vader_intensity": 898,
+   "gd_star_next_action": 888,
+   "gd_hotpotqa_yesno": 878,
+   "gd_nrc_gfe": 853,
+   "gd_naics_subsector": 805,
+   "gd_nhtsa_complaints": 798,
+   "gd_answer_equiv": 793,
+   "gd_multiwoz21_sysacts": 768,
+   "gd_hatemoji_build_v14": 736,
+   "gd_taskmaster2": 700,
+   "gd_taskmaster3": 693,
+   "gd_codah": 671,
+   "gd_wands_product": 654,
+   "gd_ncvec_ham": 592,
+   "gd_csc_sarcasm": 565,
+   "gd_onestop_level": 560,
+   "gd_conditionalqa": 557,
+   "gd_onet_occupation": 538,
+   "gd_wnut17": 533,
+   "gd_politeness_votes": 494,
+   "gd_prontoqa": 492,
+   "gd_megaveridicality": 490,
+   "gd_ghc_hate": 453,
+   "gd_usb_factuality": 448,
+   "gd_tabmcq": 432,
+   "gd_crowdtruth_mre": 372,
+   "gd_crossner": 369,
+   "gd_ragtruth_summary": 369,
+   "judge_prm800k": 334,
+   "br_topv2": 318,
+   "br_wos46985": 315,
+   "br_mnds": 306,
+   "gd_check_covid": 302,
+   "br_abcd": 302,
+   "br_infotabs": 294,
+   "br_cfpb": 288,
+   "br_emobank": 288,
+   "gd_gen2_json_fields": 286,
+   "br_star": 281,
+   "gd_mediqa_qa": 280,
+   "br_edos": 274,
+   "br_newsgroups20": 264,
+   "gd_biored": 248,
+   "br_xed_en": 235,
+   "br_politeness_wiki": 232,
+   "br_casino": 232,
+   "judge_mathderiv": 228,
+   "gd_gen2_probability": 227,
+   "br_claimbuster": 226,
+   "br_ghc": 226,
+   "gd_clickbait16": 217,
+   "pg_numeric": 203,
+   "pg_evidence": 200,
+   "pg_multihop": 200,
+   "br_convabuse": 200,
+   "br_mams_acsa": 197,
+   "pg_routing": 194,
+   "pg_temporal": 192,
+   "pg_policy": 191,
+   "pg_conflict": 190,
+   "br_hatemoji_build": 188,
+   "br_fm2": 185,
+   "gd_misogyny_reddit": 174,
+   "gd_gen2_long_policy": 159,
+   "gd_gen2_tool_selection": 157,
+   "br_sarcasm_headlines": 105,
+   "gd_meganegraising": 82
+  },
+  "per_source_hard_yes_rate_outside_45_55": {
+   "gd_east_asian_prejudice": [
+    47,
+    0.553
+   ],
+   "gd_megaveridicality": [
+    36,
+    0.389
+   ],
+   "gd_politeness_votes": [
+    45,
+    0.578
+   ]
+  },
+  "human_labelled_hard_rows_pg_rule_applies": 63172
+ },
+ "round2_draw": {
+  "name": "round 2 superset draw (180,000 + 10% margin)",
+  "rows": 197824,
+  "units": 170373,
+  "sources": 118,
+  "choice_rows": 69766,
+  "yesno_rows": 128058,
+  "hard_yesno_rows": 116138,
+  "hard_yesno_yes_rate": 0.4991,
+  "vote_share_rows": 16869,
+  "gold_probs_rows": 190,
+  "blend50_only_rows": 11179,
+  "attacked_rows": 12930,
+  "rows_in_units_by_relation": {
+   "complement": 30037,
+   "inv": 26855
+  },
+  "dup_option_rows": 0,
+  "ordinal_option_level_rows": 0,
+  "duplicate_row_keys": 0,
+  "reads_A5": 267590,
+  "reads_A5_without_own_target_rows": 245392,
+  "chars_total": 349519921,
+  "chars_weighted_by_reads": 533917935,
+  "by_family": {
+   "nli_logic_reasoning": 28780,
+   "fact_tables": 18653,
+   "qa_decisions": 16859,
+   "intent_business_support": 14272,
+   "moral_social_norms": 11851,
+   "large_labelsets": 11451,
+   "none": 10944,
+   "routing_dialogue": 10247,
+   "ordinal_scales": 9898,
+   "relations_entities": 9635,
+   "science_health_claims": 9583,
+   "domain_classification": 8998,
+   "mcq_exams": 8802,
+   "safety_policy_moderation": 8219,
+   "calibration_distributions": 7054,
+   "judge_verifier": 5688,
+   "numeric_temporal": 4230,
+   "numeric": 400,
+   "multihop": 392,
+   "evidence": 391,
+   "routing": 374,
+   "temporal": 371,
+   "policy": 367,
+   "conflict": 365
+  },
+  "by_qtype_role": {
+   "noul/aff": 105464,
+   "choice/choice": 63685,
+   "noul/neg": 14521,
+   "noul/attacked": 8073,
+   "choice/attacked": 4857,
+   "choice/defswap": 1224
+  },
+  "by_source": {
+   "gd_gen_tables": 4248,
+   "gd_gen_logic_negation": 4243,
+   "gd_gen_numeric_dates": 4230,
+   "gd_gen_evidence_conflict": 4228,
+   "gd_gen_ranking": 4223,
+   "gd_gen_policy_exceptions": 4213,
+   "gd_gen_routing": 4208,
+   "gd_gen_constraints": 4190,
+   "gd_boardgameqa": 3715,
+   "gd_uscg_mariner": 3510,
+   "gd_drugprot": 3505,
+   "gd_msha_injury": 3474,
+   "gd_feverous": 3375,
+   "gd_medqa_yn": 3363,
+   "gd_sc101": 3359,
+   "gd_gen_msn_rules": 3348,
+   "gd_medmcqa_subject": 3275,
+   "gd_cards": 3022,
+   "gd_infotabs_nli": 2996,
+   "gd_oiics_event": 2945,
+   "gd_tatqa": 2914,
+   "gd_wiki_help_routing": 2819,
+   "gd_totto_claims": 2756,
+   "gd_smcalflow_action": 2750,
+   "gd_gen_msn_fault": 2737,
+   "gd_sd311_routing": 2617,
+   "gd_medquad_qtype": 2614,
+   "gd_logicinference": 2551,
+   "gd_comve": 2500,
+   "gd_storm_ef": 2498,
+   "gd_prm800k_steps": 2467,
+   "gd_saferproducts_severity": 2463,
+   "gd_wtq": 2423,
+   "gd_gen_msn_consent": 2407,
+   "gd_opentdb": 2403,
+   "gd_gen_nlr_heuristics": 2340,
+   "gd_winogrande": 2274,
+   "gd_dstc9_track1": 2238,
+   "gd_clickbait17": 2180,
+   "gd_druglabel_section": 2115,
+   "gd_babi_logic": 2108,
+   "gd_tathqa": 2075,
+   "gd_semtabfacts_sci": 2038,
+   "gd_casehold_yn": 2034,
+   "gd_uds_ordinal": 2020,
+   "gd_ncbi_disease": 1978,
+   "gd_taskmaster1": 1910,
+   "gd_east_asian_prejudice": 1877,
+   "gd_webred": 1853,
+   "gd_slur_usage": 1829,
+   "gd_edos_sexism": 1814,
+   "gd_vader_intensity": 1797,
+   "gd_star_next_action": 1777,
+   "gd_hotpotqa_yesno": 1756,
+   "gd_nrc_gfe": 1706,
+   "gd_naics_subsector": 1610,
+   "gd_nhtsa_complaints": 1596,
+   "gd_answer_equiv": 1586,
+   "gd_multiwoz21_sysacts": 1535,
+   "gd_hatemoji_build_v14": 1470,
+   "gd_taskmaster2": 1400,
+   "gd_taskmaster3": 1385,
+   "gd_codah": 1342,
+   "gd_wands_product": 1307,
+   "gd_ncvec_ham": 1183,
+   "gd_csc_sarcasm": 1127,
+   "gd_onestop_level": 1120,
+   "gd_conditionalqa": 1113,
+   "gd_onet_occupation": 1075,
+   "gd_wnut17": 1067,
+   "gd_politeness_votes": 989,
+   "gd_prontoqa": 985,
+   "gd_megaveridicality": 980,
+   "gd_ghc_hate": 905,
+   "gd_usb_factuality": 896,
+   "gd_tabmcq": 862,
+   "gd_crowdtruth_mre": 744,
+   "gd_ragtruth_summary": 739,
+   "gd_crossner": 736,
+   "judge_prm800k": 667,
+   "br_topv2": 636,
+   "br_wos46985": 630,
+   "br_mnds": 612,
+   "gd_check_covid": 602,
+   "br_abcd": 600,
+   "br_infotabs": 588,
+   "br_emobank": 576,
+   "br_cfpb": 575,
+   "gd_gen2_json_fields": 574,
+   "br_star": 559,
+   "gd_mediqa_qa": 558,
+   "br_edos": 548,
+   "br_newsgroups20": 527,
+   "gd_biored": 496,
+   "br_xed_en": 468,
+   "br_casino": 463,
+   "br_politeness_wiki": 461,
+   "judge_mathderiv": 456,
+   "gd_gen2_probability": 453,
+   "br_claimbuster": 452,
+   "br_ghc": 452,
+   "gd_clickbait16": 433,
+   "pg_numeric": 400,
+   "pg_multihop": 392,
+   "pg_evidence": 391,
+   "br_convabuse": 391,
+   "br_mams_acsa": 383,
+   "pg_routing": 374,
+   "pg_temporal": 371,
+   "pg_policy": 367,
+   "pg_conflict": 365,
+   "br_hatemoji_build": 358,
+   "br_fm2": 353,
+   "gd_misogyny_reddit": 324,
+   "gd_gen2_long_policy": 288,
+   "gd_gen2_tool_selection": 284,
+   "br_sarcasm_headlines": 189,
+   "gd_meganegraising": 148
+  },
+  "per_source_hard_yes_rate_outside_45_55": {
+   "gd_clickbait16": [
+    37,
+    0.378
+   ],
+   "gd_crowdtruth_mre": [
+    56,
+    0.554
+   ],
+   "gd_east_asian_prejudice": [
+    88,
+    0.557
+   ],
+   "gd_ghc_hate": [
+    46,
+    0.37
+   ],
+   "gd_megaveridicality": [
+    93,
+    0.441
+   ],
+   "pg_multihop": [
+    101,
+    0.446
+   ],
+   "pg_routing": [
+    75,
+    0.413
+   ],
+   "pg_temporal": [
+    78,
+    0.436
+   ]
+  }
+ },
+ "l4_estimate_round1_read": {
+  "ref": "data/v14_audit_shards shard_000: 15,590 rows, 4,491 s, NVIDIA L4, 4B merged, 1 view",
+  "ref_rows": 15590,
+  "ref_chars_per_row": 1814,
+  "draw_chars_per_read": 1997,
+  "reads": 134025,
+  "est_hours_char_scaled": 11.8,
+  "est_hours_rows_scaled": 10.7
+ },
+ "l4_estimate_old_slice": null,
+ "quota_by_source": {
+  "gd_gen_tables": {
+   "eligible": 11501,
+   "q2": 3861,
+   "q1": 1930
+  },
+  "gd_gen_logic_negation": {
+   "eligible": 11481,
+   "q2": 3857,
+   "q1": 1928
+  },
+  "gd_gen_numeric_dates": {
+   "eligible": 11426,
+   "q2": 3844,
+   "q1": 1922
+  },
+  "gd_gen_evidence_conflict": {
+   "eligible": 11423,
+   "q2": 3843,
+   "q1": 1922
+  },
+  "gd_gen_ranking": {
+   "eligible": 11405,
+   "q2": 3839,
+   "q1": 1920
+  },
+  "gd_gen_policy_exceptions": {
+   "eligible": 11369,
+   "q2": 3830,
+   "q1": 1915
+  },
+  "gd_gen_routing": {
+   "eligible": 11346,
+   "q2": 3825,
+   "q1": 1913
+  },
+  "gd_gen_constraints": {
+   "eligible": 11279,
+   "q2": 3809,
+   "q1": 1904
+  },
+  "gd_boardgameqa": {
+   "eligible": 9492,
+   "q2": 3376,
+   "q1": 1688
+  },
+  "gd_uscg_mariner": {
+   "eligible": 8753,
+   "q2": 3190,
+   "q1": 1595
+  },
+  "gd_drugprot": {
+   "eligible": 8739,
+   "q2": 3186,
+   "q1": 1593
+  },
+  "gd_msha_injury": {
+   "eligible": 8629,
+   "q2": 3158,
+   "q1": 1579
+  },
+  "gd_feverous": {
+   "eligible": 8282,
+   "q2": 3068,
+   "q1": 1534
+  },
+  "gd_medqa_yn": {
+   "eligible": 8238,
+   "q2": 3057,
+   "q1": 1528
+  },
+  "gd_sc101": {
+   "eligible": 8224,
+   "q2": 3053,
+   "q1": 1527
+  },
+  "gd_gen_msn_rules": {
+   "eligible": 8183,
+   "q2": 3043,
+   "q1": 1522
+  },
+  "gd_medmcqa_subject": {
+   "eligible": 7929,
+   "q2": 2976,
+   "q1": 1488
+  },
+  "gd_cards": {
+   "eligible": 7066,
+   "q2": 2746,
+   "q1": 1373
+  },
+  "gd_infotabs_nli": {
+   "eligible": 6983,
+   "q2": 2723,
+   "q1": 1361
+  },
+  "gd_oiics_event": {
+   "eligible": 6814,
+   "q2": 2677,
+   "q1": 1338
+  },
+  "gd_tatqa": {
+   "eligible": 6708,
+   "q2": 2648,
+   "q1": 1324
+  },
+  "gd_wiki_help_routing": {
+   "eligible": 6400,
+   "q2": 2562,
+   "q1": 1281
+  },
+  "gd_totto_claims": {
+   "eligible": 6197,
+   "q2": 2505,
+   "q1": 1253
+  },
+  "gd_smcalflow_action": {
+   "eligible": 6176,
+   "q2": 2499,
+   "q1": 1249
+  },
+  "gd_gen_msn_fault": {
+   "eligible": 6138,
+   "q2": 2488,
+   "q1": 1244
+  },
+  "gd_sd311_routing": {
+   "eligible": 5759,
+   "q2": 2379,
+   "q1": 1189
+  },
+  "gd_medquad_qtype": {
+   "eligible": 5744,
+   "q2": 2375,
+   "q1": 1187
+  },
+  "gd_logicinference": {
+   "eligible": 5550,
+   "q2": 2319,
+   "q1": 1159
+  },
+  "gd_comve": {
+   "eligible": 5390,
+   "q2": 2272,
+   "q1": 1136
+  },
+  "gd_storm_ef": {
+   "eligible": 5384,
+   "q2": 2270,
+   "q1": 1135
+  },
+  "gd_prm800k_steps": {
+   "eligible": 5290,
+   "q2": 2242,
+   "q1": 1121
+  },
+  "gd_saferproducts_severity": {
+   "eligible": 5277,
+   "q2": 2238,
+   "q1": 1119
+  },
+  "gd_wtq": {
+   "eligible": 5154,
+   "q2": 2202,
+   "q1": 1101
+  },
+  "gd_gen_msn_consent": {
+   "eligible": 5110,
+   "q2": 2188,
+   "q1": 1094
+  },
+  "gd_opentdb": {
+   "eligible": 5096,
+   "q2": 2184,
+   "q1": 1092
+  },
+  "gd_gen_nlr_heuristics": {
+   "eligible": 4905,
+   "q2": 2127,
+   "q1": 1064
+  },
+  "gd_winogrande": {
+   "eligible": 4711,
+   "q2": 2067,
+   "q1": 1034
+  },
+  "gd_dstc9_track1": {
+   "eligible": 4604,
+   "q2": 2034,
+   "q1": 1017
+  },
+  "gd_clickbait17": {
+   "eligible": 4434,
+   "q2": 1981,
+   "q1": 991
+  },
+  "gd_druglabel_section": {
+   "eligible": 4246,
+   "q2": 1922,
+   "q1": 961
+  },
+  "gd_babi_logic": {
+   "eligible": 4226,
+   "q2": 1916,
+   "q1": 958
+  },
+  "gd_tathqa": {
+   "eligible": 4131,
+   "q2": 1886,
+   "q1": 943
+  },
+  "gd_semtabfacts_sci": {
+   "eligible": 4026,
+   "q2": 1852,
+   "q1": 926
+  },
+  "gd_casehold_yn": {
+   "eligible": 4016,
+   "q2": 1849,
+   "q1": 924
+  },
+  "gd_uds_ordinal": {
+   "eligible": 3975,
+   "q2": 1836,
+   "q1": 918
+  },
+  "gd_ncbi_disease": {
+   "eligible": 3856,
+   "q2": 1797,
+   "q1": 899
+  },
+  "gd_taskmaster1": {
+   "eligible": 3671,
+   "q2": 1736,
+   "q1": 868
+  },
+  "gd_east_asian_prejudice": {
+   "eligible": 3579,
+   "q2": 1706,
+   "q1": 853
+  },
+  "gd_webred": {
+   "eligible": 3516,
+   "q2": 1684,
+   "q1": 842
+  },
+  "gd_slur_usage": {
+   "eligible": 3450,
+   "q2": 1662,
+   "q1": 831
+  },
+  "gd_edos_sexism": {
+   "eligible": 3411,
+   "q2": 1649,
+   "q1": 824
+  },
+  "gd_vader_intensity": {
+   "eligible": 3361,
+   "q2": 1632,
+   "q1": 816
+  },
+  "gd_star_next_action": {
+   "eligible": 3312,
+   "q2": 1615,
+   "q1": 807
+  },
+  "gd_hotpotqa_yesno": {
+   "eligible": 3254,
+   "q2": 1596,
+   "q1": 798
+  },
+  "gd_nrc_gfe": {
+   "eligible": 3123,
+   "q2": 1550,
+   "q1": 775
+  },
+  "gd_naics_subsector": {
+   "eligible": 2874,
+   "q2": 1463,
+   "q1": 731
+  },
+  "gd_nhtsa_complaints": {
+   "eligible": 2839,
+   "q2": 1450,
+   "q1": 725
+  },
+  "gd_answer_equiv": {
+   "eligible": 2814,
+   "q2": 1441,
+   "q1": 720
+  },
+  "gd_multiwoz21_sysacts": {
+   "eligible": 2687,
+   "q2": 1395,
+   "q1": 698
+  },
+  "gd_hatemoji_build_v14": {
+   "eligible": 2526,
+   "q2": 1336,
+   "q1": 668
+  },
+  "gd_taskmaster2": {
+   "eligible": 2355,
+   "q2": 1272,
+   "q1": 636
+  },
+  "gd_taskmaster3": {
+   "eligible": 2321,
+   "q2": 1259,
+   "q1": 630
+  },
+  "gd_codah": {
+   "eligible": 2217,
+   "q2": 1220,
+   "q1": 610
+  },
+  "gd_wands_product": {
+   "eligible": 2136,
+   "q2": 1188,
+   "q1": 594
+  },
+  "gd_ncvec_ham": {
+   "eligible": 1852,
+   "q2": 1075,
+   "q1": 538
+  },
+  "gd_csc_sarcasm": {
+   "eligible": 1726,
+   "q2": 1024,
+   "q1": 512
+  },
+  "gd_onestop_level": {
+   "eligible": 1713,
+   "q2": 1018,
+   "q1": 509
+  },
+  "gd_conditionalqa": {
+   "eligible": 1696,
+   "q2": 1011,
+   "q1": 506
+  },
+  "gd_onet_occupation": {
+   "eligible": 1614,
+   "q2": 977,
+   "q1": 489
+  },
+  "gd_wnut17": {
+   "eligible": 1596,
+   "q2": 969,
+   "q1": 484
+  },
+  "gd_politeness_votes": {
+   "eligible": 1433,
+   "q2": 899,
+   "q1": 449
+  },
+  "gd_prontoqa": {
+   "eligible": 1424,
+   "q2": 895,
+   "q1": 447
+  },
+  "gd_megaveridicality": {
+   "eligible": 1414,
+   "q2": 890,
+   "q1": 445
+  },
+  "gd_ghc_hate": {
+   "eligible": 1261,
+   "q2": 822,
+   "q1": 411
+  },
+  "gd_usb_factuality": {
+   "eligible": 1244,
+   "q2": 814,
+   "q1": 407
+  },
+  "gd_tabmcq": {
+   "eligible": 1177,
+   "q2": 783,
+   "q1": 392
+  },
+  "gd_crowdtruth_mre": {
+   "eligible": 955,
+   "q2": 676,
+   "q1": 338
+  },
+  "gd_ragtruth_summary": {
+   "eligible": 945,
+   "q2": 671,
+   "q1": 335
+  },
+  "gd_crossner": {
+   "eligible": 941,
+   "q2": 669,
+   "q1": 335
+  },
+  "judge_prm800k": {
+   "eligible": 817,
+   "q2": 606,
+   "q1": 303
+  },
+  "br_topv2": {
+   "eligible": 762,
+   "q2": 578,
+   "q1": 289
+  },
+  "br_wos46985": {
+   "eligible": 752,
+   "q2": 572,
+   "q1": 286
+  },
+  "br_mnds": {
+   "eligible": 721,
+   "q2": 556,
+   "q1": 278
+  },
+  "gd_check_covid": {
+   "eligible": 706,
+   "q2": 547,
+   "q1": 274
+  },
+  "br_abcd": {
+   "eligible": 701,
+   "q2": 545,
+   "q1": 273
+  },
+  "br_infotabs": {
+   "eligible": 681,
+   "q2": 534,
+   "q1": 267
+  },
+  "br_emobank": {
+   "eligible": 661,
+   "q2": 523,
+   "q1": 261
+  },
+  "br_cfpb": {
+   "eligible": 660,
+   "q2": 522,
+   "q1": 261
+  },
+  "gd_gen2_json_fields": {
+   "eligible": 658,
+   "q2": 521,
+   "q1": 260
+  },
+  "br_star": {
+   "eligible": 634,
+   "q2": 508,
+   "q1": 254
+  },
+  "gd_mediqa_qa": {
+   "eligible": 632,
+   "q2": 507,
+   "q1": 254
+  },
+  "br_edos": {
+   "eligible": 616,
+   "q2": 498,
+   "q1": 249
+  },
+  "br_newsgroups20": {
+   "eligible": 584,
+   "q2": 479,
+   "q1": 239
+  },
+  "gd_biored": {
+   "eligible": 534,
+   "q2": 450,
+   "q1": 225
+  },
+  "br_xed_en": {
+   "eligible": 492,
+   "q2": 425,
+   "q1": 213
+  },
+  "br_casino": {
+   "eligible": 484,
+   "q2": 420,
+   "q1": 210
+  },
+  "br_politeness_wiki": {
+   "eligible": 481,
+   "q2": 419,
+   "q1": 210
+  },
+  "judge_mathderiv": {
+   "eligible": 473,
+   "q2": 414,
+   "q1": 207
+  },
+  "gd_gen2_probability": {
+   "eligible": 468,
+   "q2": 411,
+   "q1": 206
+  },
+  "br_claimbuster": {
+   "eligible": 467,
+   "q2": 410,
+   "q1": 205
+  },
+  "br_ghc": {
+   "eligible": 467,
+   "q2": 410,
+   "q1": 205
+  },
+  "gd_clickbait16": {
+   "eligible": 439,
+   "q2": 393,
+   "q1": 197
+  },
+  "pg_numeric": {
+   "eligible": 400,
+   "q2": 368,
+   "q1": 184
+  },
+  "pg_multihop": {
+   "eligible": 392,
+   "q2": 363,
+   "q1": 181
+  },
+  "pg_evidence": {
+   "eligible": 391,
+   "q2": 362,
+   "q1": 181
+  },
+  "br_convabuse": {
+   "eligible": 391,
+   "q2": 362,
+   "q1": 181
+  },
+  "br_mams_acsa": {
+   "eligible": 383,
+   "q2": 357,
+   "q1": 179
+  },
+  "pg_routing": {
+   "eligible": 374,
+   "q2": 351,
+   "q1": 176
+  },
+  "pg_temporal": {
+   "eligible": 371,
+   "q2": 349,
+   "q1": 174
+  },
+  "pg_policy": {
+   "eligible": 367,
+   "q2": 346,
+   "q1": 173
+  },
+  "pg_conflict": {
+   "eligible": 365,
+   "q2": 345,
+   "q1": 172
+  },
+  "br_hatemoji_build": {
+   "eligible": 358,
+   "q2": 340,
+   "q1": 170
+  },
+  "br_fm2": {
+   "eligible": 353,
+   "q2": 337,
+   "q1": 168
+  },
+  "gd_misogyny_reddit": {
+   "eligible": 324,
+   "q2": 317,
+   "q1": 158
+  },
+  "gd_gen2_long_policy": {
+   "eligible": 288,
+   "q2": 288,
+   "q1": 144
+  },
+  "gd_gen2_tool_selection": {
+   "eligible": 284,
+   "q2": 284,
+   "q1": 142
+  },
+  "br_sarcasm_headlines": {
+   "eligible": 189,
+   "q2": 189,
+   "q1": 95
+  },
+  "gd_meganegraising": {
+   "eligible": 148,
+   "q2": 148,
+   "q1": 74
+  }
+ },
+ "sec": 59
+}

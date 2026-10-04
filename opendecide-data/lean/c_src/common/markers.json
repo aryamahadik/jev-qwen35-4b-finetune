@@ -1,0 +1,679 @@
+{
+ "name": "XF06 cross-family missing-value marker table",
+ "version": "1.1",
+ "date": "2026-10-03",
+ "owner": "orchestrator (c_src/common/); no family builder edits it; parsers load it as a named input (path + sha256, F8-R2-19)",
+ "source_rule": "XF06 and every marker, blank and missing-key reference in every c_src/*/G0_SPEC.md (COMMIT, F1-F13), re-read on 3 Oct 2026 at about 20:20 UTC; the specs read are pinned by sha256 under built_from. Human-readable copy: c_src/common/MARKERS.md",
+ "status": "G0 closed lexicon (XF17): it passes the 7.2 Claude-seed decontamination and the counts-only sealed template compare before any use",
+ "built_from": {
+  "read_utc": "2026-10-03T20:24:32Z",
+  "rule": "each spec's sha256 when its XF06 / marker / blank / missing-key references were last re-read for this table. test_markers.py fails when a spec has changed since: re-read that spec's references, update the table and MARKERS.md, then record the new sha256 (never refresh the sha256 alone)",
+  "specs": {
+   "COMMIT": {
+    "path": "c_src/COMMIT/G0_SPEC.md",
+    "sha256": "60ec1cd3c1c597f3c4bcf045afc81776c7fe95e70af5e1fb999fcc23d8ca6bcf"
+   },
+   "F1": {
+    "path": "c_src/F1/G0_SPEC.md",
+    "sha256": "81232e7980288f9cf7e719ef0a10b57e18b71be7c5105eb0c3bcd72cf8d6225e"
+   },
+   "F2": {
+    "path": "c_src/F2/G0_SPEC.md",
+    "sha256": "f141af7193dd7ef3c870aca57c2bab54fd64c3a6dd302dd2dc34c9049122dda4"
+   },
+   "F3": {
+    "path": "c_src/F3/G0_SPEC.md",
+    "sha256": "d7c2ca44549678a9f90898ec2e4ad49e8c0de2831d933118945f8fb8e519a223"
+   },
+   "F4": {
+    "path": "c_src/F4/G0_SPEC.md",
+    "sha256": "304bb8c3386445049a87b710dea6358047746afdbd20c101a4b56088f9d06ef2"
+   },
+   "F5": {
+    "path": "c_src/F5/G0_SPEC.md",
+    "sha256": "a0f9ece6129fc38ea1568f4fb511e9fce69566e0be548c78efd11edd5e989132"
+   },
+   "F6": {
+    "path": "c_src/F6/G0_SPEC.md",
+    "sha256": "c7eb745980427873ebbf525896b843eba003d0398406647e2079dab6d97f19c0"
+   },
+   "F7": {
+    "path": "c_src/F7/G0_SPEC.md",
+    "sha256": "0bef296cb4189a045474c7db5f249469a9c7c719a21af83a8ca10547f4952b5e"
+   },
+   "F8": {
+    "path": "c_src/F8/G0_SPEC.md",
+    "sha256": "59ec35ea02a8214caf34f27e662c653b43b3661e0b736a21f4a1b2bb1a03e44e"
+   },
+   "F9": {
+    "path": "c_src/F9/G0_SPEC.md",
+    "sha256": "43dc574595431eef0362d22978263a5989fc71f8ccc635d668b8f34c1503da80"
+   },
+   "F10": {
+    "path": "c_src/F10/G0_SPEC.md",
+    "sha256": "35367834f89ece1503a091e0d5a7911b15829541e427b036dbe037ab2f092e9c"
+   },
+   "F11": {
+    "path": "c_src/F11/G0_SPEC.md",
+    "sha256": "573381defe4dcc9160c55f6030fd228f673f8b79724cd670fa9b9640e0680317"
+   },
+   "F12": {
+    "path": "c_src/F12/G0_SPEC.md",
+    "sha256": "a6b63a327f701ceda33a1138e12e139d1abc9db9266b4cb1b5f0eb452aa666c3"
+   },
+   "F13": {
+    "path": "c_src/F13/G0_SPEC.md",
+    "sha256": "81227432a3c4903505f441decfc56c4b5192700fad8e09335b31fb37c2a90182"
+   }
+  }
+ },
+ "matching": {
+  "unit": "the whole cell, field or value after trimming outer whitespace; a marker is never matched as a substring of a longer value",
+  "case": "insensitive for word markers ('Not recorded', 'NOT RECORDED' and 'not recorded' are one marker; 'N/A' and 'n/a' are one banned marker)",
+  "typed": "JSON/YAML null and false are typed values (JSON null / false in this file); a quoted string 'null' or 'false' is not the typed value",
+  "phrase_forms": "a word marker may also sit in a sentence that states it of one value, e.g. '<fact> was not recorded' (F8 SEM-03, F11 SEM-04)"
+ },
+ "classes": {
+  "unknown": {
+   "meaning": "the value exists but the record does not give it; never decisive unless the card says how to decide (default, NEI, exclusion)",
+   "words": [
+    "not recorded",
+    "unknown"
+   ],
+   "typed": [
+    null
+   ],
+   "containers": {
+    "prose, key-value, markdown, CSV, HTML, fixed-width": [
+     "not recorded",
+     "unknown"
+    ],
+    "JSON, YAML": [
+     null
+    ]
+   }
+  },
+  "zero_or_absent": {
+   "meaning": "zero, no item, or a Boolean fact recorded as not holding",
+   "words": [
+    "0",
+    "none",
+    "no"
+   ],
+   "typed": [
+    false
+   ]
+  },
+  "banned": {
+   "meaning": "never a value in any family, in any container (G3 / lint reject)",
+   "words": [
+    "-",
+    "n/a",
+    "N/A",
+    "TBD",
+    "?"
+   ],
+   "same_marker_forms": [
+    "–",
+    "—",
+    "−",
+    "--",
+    "---",
+    "N/a",
+    "n/A",
+    "tbd",
+    "Tbd",
+    "??"
+   ],
+   "note": "same_marker_forms are the case and dash variants of the XF06 words (F6: 'any dash'); they add no new class"
+  }
+ },
+ "blank": {
+  "what": "an empty cell, an empty string, or a key-value line with nothing after ': '",
+  "rule": "card-defined only: a blank appears only on rows whose card states what it means (a definition-following contrast)",
+  "closed_or_local_cards": "a blank is never an unknown; unknowns use a word marker or null, so a blank on a complete record means none/no (or another card-stated value that is not an unknown: 'no change', '<default>', 'no edge')",
+  "open_world_cards": "a blank may mean unknown if the card says so"
+ },
+ "missing_key": {
+  "rule": "XF06 is silent; a left-out JSON/YAML key or record field is card-defined per family, as listed under families (open item M4 in MARKERS.md, narrowed in v1.1)"
+ },
+ "rendering": {
+  "json_null": "null",
+  "yaml_null": "null (never '~' and never an empty scalar; F9 1.6, F7 3.1)",
+  "yaml_strings": "every word marker that YAML 1.1 would coerce ('no', 'yes', 'on', 'off', 'none' stays a string only if quoted) is quoted, or written as the typed value it means (F9 1.6)"
+ },
+ "families": {
+  "COMMIT": {
+   "uses": [
+    "0"
+   ],
+   "uses_notes": "'0' added and '0' removed for a binary or mode-only file in the numstat, never git's '-' (1.3)",
+   "local": {},
+   "local_notes": "",
+   "blank": "none (commit rows carry no missing-value markers)",
+   "card_defined_blank": [],
+   "missing_key": "not used (no records with optional keys)",
+   "stricter_bans": [],
+   "refs": [
+    "1.3 numstat: binary and mode-only files show 0 / 0, never '-'",
+    "XF06 effect: the parser enforces the shared table on any rendered stats or record field"
+   ]
+  },
+  "F1": {
+   "uses": [
+    "not recorded",
+    "no",
+    false
+   ],
+   "uses_notes": "'not recorded' only on listed non-Boolean fields of missing-field cards, <= 2 per case, in its Unknown class (A10, F1R3-K4); 'no' / false for a known-false Boolean in tables, forms and key-value records on closed-world and missing-field cards",
+   "local": {},
+   "local_notes": "",
+   "blank": "never: open-world case files are prose only, so an open-world unknown is simply not mentioned (F1R3-K3)",
+   "card_defined_blank": [],
+   "missing_key": "never an unknown: on closed-world and missing-field cards a record leaves out a key only for a false Boolean (= false, row 1); non-Boolean keys are never left out (F1R3-K3; F1's answer to M4, X6)",
+   "stricter_bans": [
+    "unknown",
+    null,
+    "blank (any form)"
+   ],
+   "refs": [
+    "2 case: missing values per case (0-2; F1R2-K3), known-false Booleans, left-out keys (F1R3-K3)",
+    "row 1 closed world",
+    "row 2 open world (prose only)",
+    "row 3 / A10 missing-field cards (F1R3-K4)",
+    "F1R2-A01",
+    "F1R3-K3",
+    "F1R3-K4",
+    "X6 (answer to M4)",
+    "4 parser",
+    "XF06 effect"
+   ]
+  },
+  "F2": {
+   "uses": [
+    "not recorded",
+    "0",
+    "no",
+    false
+   ],
+   "uses_notes": "'not recorded': exactly one rule-read field per open-world row, the literal text in every container (JSON and YAML: the string); closed world: an absent value is left out or printed as '0', 'no' or false (R3-11)",
+   "local": {},
+   "local_notes": "",
+   "blank": "card-defined only: M3 blank amounts (closed-world cards, the named amount column, on a line with no quantity and no rate) and B1 edge blanks; open-world cards have no blank amount cell (R3-07, R3-11)",
+   "card_defined_blank": [
+    "M3 (closed world only): 'A blank cell in the <amount> column means nothing was charged on that line' (= 0)",
+    "B1: 'A blank edge cell means the band has no edge on that side'"
+   ],
+   "other_card_markers": [
+    "<computed-cell marker> (M4: a computed amount, not a missing value; never blank, never read as 0)"
+   ],
+   "missing_key": "closed world: an absent line item, condition or W3 field is left out (JSON/YAML: no key) = absent (W1: 0 or false) or the W3 default; open world: never for a field a rule reads (W2, R3-11)",
+   "stricter_bans": [
+    null,
+    "unknown",
+    "'not recorded' on a closed-world card",
+    "a blank other than M3 or B1"
+   ],
+   "refs": [
+    "2.1 rendering of absent and unknown values (R3-11)",
+    "W1",
+    "W2",
+    "W3",
+    "M3",
+    "M4",
+    "B1",
+    "R1-01",
+    "R1-05",
+    "R3-07",
+    "R3-11",
+    "9 item 9 (request for this row)",
+    "XF06 effect"
+   ]
+  },
+  "F3": {
+   "uses": [
+    "0"
+   ],
+   "uses_notes": "'0' only for a zero <quantity> (rule 20; T17, T39)",
+   "local": {},
+   "local_notes": "an unknown arises only from open-world gaps (T2), never from a marker; no pack value (status, code, meaning, swapped word, name, ID) is or contains an XF06 marker word (rule 5, F3-R3-07)",
+   "blank": "card-defined only (T8: no change; T9 / T42 / B17: a creation blank starts as '<default>'), on rows whose card states it (short cards always do; no-card rows show no blank); tables write an empty cell, JSON / YAML / key-value a left-out key; the opening register has no blank (rule 20; R3-06, R3-C1)",
+   "card_defined_blank": [
+    "T8: 'An entry changes only the fields it names. A blank field means \"no change\".' (JSON, YAML, key-value: 'A field left out of an entry is a blank field.')",
+    "T9 / B17: a field a creation leaves blank starts as '<default>'",
+    "T42: 'A blank cell means no change; in a creation row it means the starting value \"<default>\".'"
+   ],
+   "other_card_markers": [
+    "<gap marker> (T3: one or more missing log entries; open explicit-marker cards)"
+   ],
+   "missing_key": "JSON, YAML and key-value entries: a left-out key is a blank, as the card's T8 sentence states (no change, or '<default>' in a creation; rule 20, F3-R3-06)",
+   "stricter_bans": [
+    null,
+    "~",
+    "empty string",
+    "empty 'key:' value",
+    "unknown",
+    "not recorded",
+    "none",
+    "no",
+    false
+   ],
+   "refs": [
+    "rule 5 (R3-07)",
+    "rule 20 (R3-06, R3-C1)",
+    "2.1 blanks",
+    "T2",
+    "T3",
+    "T8",
+    "T9",
+    "T42",
+    "B17",
+    "F3-R3-06",
+    "F3-R3-07",
+    "F3-R3-C1",
+    "XF06 effect"
+   ]
+  },
+  "F4": {
+   "uses": [
+    "not recorded",
+    null,
+    "no",
+    false
+   ],
+   "uses_notes": "OW tables and CSV write an unknown cell as 'not recorded' (legend 2); OW JSON and YAML use null or a missing key (legend 3); never a blank (R4-C3)",
+   "local": {
+    "present": [
+     "yes"
+    ]
+   },
+   "typed_local": {
+    "present": [
+     true
+    ]
+   },
+   "local_notes": "",
+   "blank": "only in a column that a record line declares complete (column closure, clause 18c), where it means No; an unknown cell is never blank; CW tables have no blanks (R4-C3)",
+   "card_defined_blank": [
+    "column closure (a record line next to its table, never a card line; 18c): 'the <C> column is complete: a blank <C> cell means No'"
+   ],
+   "missing_key": "OW JSON/YAML: a missing key or null = not recorded (unknown) (clause 18 legend 3); CW containers: none that a rule reads",
+   "stricter_bans": [
+    "empty string",
+    "empty 'key:' line",
+    "a blank cell outside a closed column",
+    "'not recorded' in a closed column"
+   ],
+   "refs": [
+    "clause 18 legends (1)-(4)",
+    "18c local closures",
+    "section 4 G3 rejects incl. X11",
+    "F4-A09",
+    "F4-R1-09 (R10 scope)",
+    "F4-R3-06",
+    "R4-C3",
+    "X18 (closure_toggle twins)",
+    "12.11 (request for this row)",
+    "XF06 effect"
+   ]
+  },
+  "F5": {
+   "uses": [
+    "not recorded",
+    null,
+    "no"
+   ],
+   "uses_notes": "'not recorded' or null = some value the record does not give, on a complete record too (SEM-04); 'no' for a yes/no entry",
+   "local": {},
+   "local_notes": "",
+   "blank": "card-defined (SEM-04): on an open card a blank entry = unknown; on a complete record only a yes/no blank, = no; a number, date or category is never blank on a closed card",
+   "card_defined_blank": [
+    "SEM-04 open card: a blank entry means the same as 'not recorded' (unknown)",
+    "SEM-04 complete record: a blank yes/no entry means no"
+   ],
+   "missing_key": "closed cards: never (every key, field and number / date / category attribute is rendered; G3 rejects an omission; F5-R3-07); open cards: an attribute the text does not mention is unstated, so unknown (SEM-03)",
+   "stricter_bans": [],
+   "refs": [
+    "SEM-02 (F5-R3-07)",
+    "SEM-03",
+    "SEM-04 (XF06)",
+    "3.2 trigger line",
+    "F5-A11",
+    "F5-R2-01",
+    "F5-R3-07",
+    "10 item 12 (request for this row)",
+    "XF06 effect"
+   ]
+  },
+  "F6": {
+   "uses": [
+    "not recorded",
+    "unknown",
+    null
+   ],
+   "local": {
+    "unknown": [
+     "don't know",
+     "declined to answer",
+     "can't recall"
+    ]
+   },
+   "local_notes": "S5 dialogue only: the markers its card lists, matched whole",
+   "blank": "a blank cell = unknown on open-world tables only; closed and local cards print no blank cell",
+   "card_defined_blank": [],
+   "missing_key": "JSON/YAML: a missing key = no entry (closes where the card closes that fact type, unknown otherwise); banned inside row-42 tables and member lists",
+   "stricter_bans": [
+    "none (as a marker)",
+    "pending",
+    "0 used as a marker",
+    "any marker containing a plan word ('will check')"
+   ],
+   "refs": [
+    "row 2 closed world",
+    "row 4 explicit unknown markers",
+    "row 6 default",
+    "row 42 entity closure",
+    "3.1 markers row",
+    "S5 dialogue markers",
+    "F6-A16",
+    "F6-A17",
+    "F6-A18",
+    "F6-R1-04",
+    "F6-R2-05",
+    "F6-R2-21",
+    "F6-R3-SC1",
+    "XF06 effect (cites table v1.0)"
+   ]
+  },
+  "F7": {
+   "uses": [
+    "no",
+    false
+   ],
+   "local": {
+    "present": [
+     "yes",
+     "y",
+     "present",
+     "x"
+    ],
+    "absent": [
+     "n",
+     "absent"
+    ]
+   },
+   "typed_local": {
+    "present": [
+     true
+    ]
+   },
+   "local_notes": "'x' on checklists only",
+   "blank": "card-defined: not present (= absent), Boolean fields only (C15)",
+   "card_defined_blank": [
+    "C15: a blank cell, an empty string or a left-out key counts as not present (0 points); Boolean fields only"
+   ],
+   "other_card_markers": [
+    "'not required' (GRID note, written instead of '-')"
+   ],
+   "missing_key": "not present (C15, card-stated)",
+   "stricter_bans": [
+    "unknown",
+    "pending",
+    "none",
+    "maybe",
+    "partial",
+    null,
+    "~"
+   ],
+   "refs": [
+    "3.1 sheet markers (C15; XF06)",
+    "C15",
+    "A15",
+    "GRID note"
+   ]
+  },
+  "F8": {
+   "uses": [
+    "not recorded",
+    "0",
+    "none"
+   ],
+   "local": {},
+   "local_notes": "",
+   "blank": "never (no empty cells, in either world)",
+   "card_defined_blank": [],
+   "missing_key": "only for a Boolean factor in a closed-world row, where it means absent; never for numbers",
+   "stricter_bans": [
+    "unknown",
+    null,
+    "not stated",
+    "pending",
+    "empty cell",
+    "a missing key for a number",
+    "a record-status word ('record' or 'log' in any form, 'on file', 'documented', 'registered', 'reported') outside the two 'not recorded' marker forms and the SEM-01 to SEM-03 card lines that define them (F8-R4-06)"
+   ],
+   "refs": [
+    "5 missing-value lexicon (closed; F8-AMB-07)",
+    "5 record-status words (F8-R4-06)",
+    "SEM-01",
+    "SEM-02",
+    "SEM-03",
+    "F8-R2-19 named input (path + sha256)",
+    "XF06 effect"
+   ]
+  },
+  "F9": {
+   "uses": [
+    "not recorded",
+    "unknown",
+    null,
+    "0",
+    false
+   ],
+   "uses_notes": "UNKNOWN (T3 null token): 'not recorded' or 'unknown' in table, CSV, fixed-width and key-value containers, null in JSON / YAML; '0' is a real zero",
+   "local": {},
+   "local_notes": "",
+   "boolean_tokens": {
+    "true": [
+     "true",
+     "1",
+     true
+    ],
+    "false": [
+     "false",
+     "0",
+     false
+    ],
+    "note": "T34 closed set (R3-SC1): true / false (typed in JSON / YAML, the words elsewhere) or '1' / '0' (non-JSON / YAML only). The false tokens are the zero-or-absent class; 'true' and '1' are in no marker class. F9 registers no family-local marker"
+   },
+   "blank": "never (no blank cells, empty CSV fields, empty strings or empty 'key:')",
+   "card_defined_blank": [],
+   "missing_key": "never an unknown: non-T6 cards: never used (every record shows every field; G3 rejects a missing key); T6 cards (S4): the field's stated default (T3, T6; R3-SC3, X6)",
+   "stricter_bans": [
+    "none",
+    "empty string",
+    "blank cell",
+    "empty CSV field",
+    "'Y' / 'N', 'T' / 'F' or 'yes' / 'no' as Boolean tokens"
+   ],
+   "refs": [
+    "T3 UNKNOWN tokens (XF06)",
+    "T6",
+    "T34 (R3-SC1)",
+    "1.6 containers",
+    "F9-A07",
+    "F9-A09",
+    "F9-A26",
+    "F9-A51",
+    "R3-SC1",
+    "R3-SC3",
+    "X6 (request for this row)",
+    "XF06 effect"
+   ]
+  },
+  "F10": {
+   "uses": [
+    "not recorded",
+    "unknown",
+    null,
+    "0",
+    "no",
+    "none",
+    false
+   ],
+   "uses_notes": "open world: one omission marker per format style ('not recorded', 'unknown', null, or a left-out key), named in the card's ST5 sentence; '0', 'no', 'none' and false are stated values (ST6); closed world states false flags ('no') and empty tag sets ('none')",
+   "local": {
+    "absent": [
+     "not listed"
+    ]
+   },
+   "local_notes": "'not listed' (ST4) only inside a stated tag list",
+   "blank": "never (table containers use a word marker)",
+   "card_defined_blank": [],
+   "missing_key": "open world, key-value / JSON / YAML / prose containers only: a left-out key can be the style's one omission marker (unknown), named in ST5; never in table containers",
+   "stricter_bans": [
+    "blank cell"
+   ],
+   "refs": [
+    "2 Case record (omission markers)",
+    "ST4",
+    "ST5",
+    "ST6",
+    "A12",
+    "XF06 effect"
+   ]
+  },
+  "F11": {
+   "uses": [
+    "not recorded",
+    "unknown",
+    null,
+    "no",
+    "none",
+    false
+   ],
+   "uses_notes": "not stated in records = a missing key or column, null, 'unknown' or 'not recorded', only on cards with a missing rule for that attribute (SEM-50, S4 renders)",
+   "local": {
+    "unknown": [
+     "not checked"
+    ],
+    "present": [
+     "yes",
+     "true"
+    ],
+    "absent": [
+     "false"
+    ]
+   },
+   "typed_local": {
+    "present": [
+     true
+    ]
+   },
+   "local_notes": "'not checked' (with 'not recorded', 'unknown') = not stated only in report text on SEM-03/04 cards (SEM-05, A19); never a field value or a value term (R35, F11-R3-13). Record fields (SEM-50): 'yes', 'true', true or one of the attribute's listed terms = present; 'no', 'false', false or 'none' = absent; 'none' in a set field = the empty set (SEM-47, F11-R2-04). 'present', 'absent' and 'not stated' are card words or statuses only, never written in a report or record (SEM-43, R35, F11-R3-07). Absence cue forms ('no <X>', 'without <X>', 'lacks <X>', 'failed to <X>') are card-quoted report phrases, not field markers",
+   "blank": "never (no empty value, empty string or empty 'key:'; SEM-50, A15, S4 renders; X17)",
+   "card_defined_blank": [],
+   "missing_key": "not stated (SEM-50): a missing key or column, only on cards with a missing rule for that attribute",
+   "stricter_bans": [
+    "empty value",
+    "empty string",
+    "[], null, 'unknown' or 'not recorded' in a set field",
+    "missing (as a field value)"
+   ],
+   "refs": [
+    "SEM-03",
+    "SEM-04",
+    "SEM-05",
+    "SEM-43",
+    "SEM-47",
+    "SEM-50",
+    "A15",
+    "A19",
+    "R35",
+    "F11-R2-04",
+    "F11-R3-07",
+    "F11-R3-13",
+    "X17 / K29 (request for this row; closes M2)",
+    "XF06 effect"
+   ]
+  },
+  "F12": {
+   "uses": [
+    "not recorded",
+    "unknown"
+   ],
+   "uses_notes": "SEM-31: 'A field of a record or tool output marked \"not recorded\" or \"unknown\" gives no value'; never on a decisive precondition field (NG-03)",
+   "local": {},
+   "local_notes": "'0', 'no' and false are ordinary values, not missing-value markers; 'not given' (SEM-02) is a parameter status, not a rendered marker",
+   "blank": "never (records and tool outputs are closed: no empty cell, empty string or key with nothing after it; NG-04, R3-SC1)",
+   "card_defined_blank": [],
+   "missing_key": "a field that is not shown gives no value (SEM-02 field-name rule; not a marker)",
+   "stricter_bans": [
+    null,
+    "not available",
+    "none (as a field value)",
+    "empty string",
+    "blank field",
+    "empty list"
+   ],
+   "refs": [
+    "SEM-02",
+    "SEM-25",
+    "SEM-31 (XF06, R3-SC1)",
+    "NG-03",
+    "NG-04",
+    "F12-A11",
+    "F12-R2-14",
+    "F12-R3-SC1 (closes M1)",
+    "XF06 effect"
+   ]
+  },
+  "F13": {
+   "uses": [
+    "0",
+    "none"
+   ],
+   "local": {
+    "unknown": [
+     "[not provided]",
+     "[not provided in this copy]",
+     "[illegible in this copy]"
+    ]
+   },
+   "local_notes": "one value marker per card, quoted in its SEM-01/02 world line; part trace form '<part label> (<scope label>): not included in this copy.'",
+   "blank": "never (no empty fields)",
+   "card_defined_blank": [],
+   "missing_key": "not used (every attribute a rule reads is stated or traced, F13R1-07)",
+   "stricter_bans": [
+    "unknown",
+    "not recorded",
+    null,
+    "empty field",
+    "'pending' or 'not yet received' as a trace (statuses, SEM-48)"
+   ],
+   "refs": [
+    "2.4 trace list TR (one value marker per card)",
+    "SEM-01",
+    "SEM-02",
+    "SEM-40",
+    "A02",
+    "A03",
+    "F13R1-07",
+    "F13R1-28",
+    "7 lint",
+    "XF06 effect"
+   ]
+  }
+ },
+ "open_items": [
+  "M3",
+  "M4",
+  "N3"
+ ],
+ "closed_items": {
+  "N1": "closed by PREREG_FINAL.md amendment A16: a matched 'neither ... nor' pair counts k_syn 1 (one syntactic negation; k_all unchanged); negcount.py v1.1",
+  "M1": "closed by F12 (R3-SC1, SEM-31, NG-04): unknown = 'not recorded' or 'unknown'; F12 renders no blank field and no 'not available'",
+  "M2": "closed as moot by F11 (X17, K29; SEM-50): F11 never writes an empty value; not stated = a missing key or column, null, 'unknown' or 'not recorded'",
+  "N2": "closed by F6 (3.1 negation cues row): every gate count is negcount's k_syn / k_all; quotas are planned with L_core cues only ('not' in S, the 'Is it not the case that' frame, 'no <member>')"
+ }
+}

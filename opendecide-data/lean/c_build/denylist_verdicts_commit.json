@@ -1,0 +1,83 @@
+{
+ "program": "c_src/common/denylist.py",
+ "version": "1.2",
+ "program_sha256": "e268d5667f181bbab47428df2b8e2ee6126a5091dc93e12b0a5f7acd09d6e1c6",
+ "aliases_sha256": "40eeb47e2f379ea8bcde4e6f562a1e1869e35af8d80773d3f7e16ba874d4479b",
+ "denylist": "lean/c_build/denylist.json",
+ "denylist_sha256": "52b91ef3799c393cdb0ece5ee1b7df25c53ef09bff52fab147271f77d707ef88",
+ "run": "commit",
+ "query": "lean/c_build/denylist_query_commit.json",
+ "query_sha256": "eb1650830f3f858577513663d52158db9edfb290bf3300fa16032cbf5c6e2025",
+ "created_utc": "2026-10-03T20:47:50Z",
+ "canonical": true,
+ "ohs3_part": "checked in-process (selection avoid_or_locked; matches shown only as 'ohs3-avoid')",
+ "ohs3_platform_alias_suppressed_entries": 1,
+ "platform_rule": "RULED (PREREG_FINAL.md A16 a): a bare platform word (Wikipedia, Reddit, GitHub, arXiv, Zenodo, PubMed, ...) never matches on its own; real text overlap is caught by the counts-only n-gram decontamination before every freeze",
+ "rulings": {
+  "platform_words": "RULED (PREREG_FINAL.md A16 a): a bare platform word (Wikipedia, Reddit, GitHub, arXiv, Zenodo, PubMed, ...) never matches on its own; real text overlap is caught by the counts-only n-gram decontamination before every freeze",
+  "selection": "RULED (PREREG_FINAL.md A16 c): 'locked' counts as 'avoid'",
+  "label_quality": "RULED (PREREG_FINAL.md A16 b): an entry rejected only for label quality (silver or noisy labels) is no_new_rows (category label_quality); contamination, licence, forbidden-task, dev and eval entries stay taint"
+ },
+ "sealed_blocklist": "not supplied",
+ "provisional": [],
+ "notes": [
+  "sealed block-list not supplied (--sealed-blocklist): sealed-suite text overlap is caught by the counts-only n-gram decontamination against the sealed exports before every freeze (A16 a)"
+ ],
+ "rules": "taint on the dataset or any declared parent (recursive) -> deny; no_new_rows on the dataset -> no new rows (a builder emitting rows from it refuses); no_new_rows on a parent -> pass",
+ "counts": {
+  "datasets": 2,
+  "hit": 2,
+  "deny_taint": 0,
+  "no_new_rows": 0,
+  "pass": 2,
+  "pass_with_parent_no_new_rows": 2,
+  "ohs3_hit": 0,
+  "sealed_hit": 0
+ },
+ "verdicts": {
+  "CommitChronicle": {
+   "hit": true,
+   "verdict": "pass",
+   "class": "no_new_rows",
+   "entry": "O*NET alternate titles / BLS SOC Direct Match Title File",
+   "taint_hits": 0,
+   "parent_no_new_rows_pass": [
+    "O*NET occupation titles (persona seeds)"
+   ],
+   "matches": [
+    {
+     "entry": "O*NET alternate titles / BLS SOC Direct Match Title File",
+     "id": "rej:large_labelsets#9.0",
+     "class": "no_new_rows",
+     "cat": "duplicate_taxonomy",
+     "scope": "dataset",
+     "field": "name",
+     "alias": "o*net",
+     "via": "O*NET occupation titles (persona seeds)"
+    }
+   ]
+  },
+  "CommitPackFT": {
+   "hit": true,
+   "verdict": "pass",
+   "class": "no_new_rows",
+   "entry": "O*NET alternate titles / BLS SOC Direct Match Title File",
+   "taint_hits": 0,
+   "parent_no_new_rows_pass": [
+    "O*NET occupation titles (persona seeds)"
+   ],
+   "matches": [
+    {
+     "entry": "O*NET alternate titles / BLS SOC Direct Match Title File",
+     "id": "rej:large_labelsets#9.0",
+     "class": "no_new_rows",
+     "cat": "duplicate_taxonomy",
+     "scope": "dataset",
+     "field": "name",
+     "alias": "o*net",
+     "via": "O*NET occupation titles (persona seeds)"
+    }
+   ]
+  }
+ }
+}

@@ -21,6 +21,15 @@ permutation undone, so two views of the same question are comparable outcome by 
             + lam_p * JS(canonical view 1, canonical view 2). Twins are picked with their own RNG, so batches and first
             permutations are identical to a run without twins.
 All consistency terms (cons, inv, perm) share the 20% warm-up ramp. Every term is logged; a non-finite term aborts the run.
+Recipe v4 A4 (off by default; lam_ord 0 or unset leaves the loss, the data order and the log exactly as before):
+  lam_ord   ordinal rows (choice rows with meta.option_level = {option text: level 0..K-1}): + lam_ord * ramp *
+            ((E - y) * 4 / (K - 1))^2, E = sum over the displayed letters of p(letter) * level(option shown there), after
+            the option re-shuffle (a permutation twin uses its own order; a row's term is the mean over its views),
+            y = the gold option's level. Summed over ordinal rows and divided by the batch's row count, like the task CE
+            it is added to (TRACT's per-example CE + lambda * squared error).
+  expect_ord_rows  the mixer's ordinal row count: before the model loads it must equal the ordinal rows in the training
+            file exactly (as expect_kd_targets), and a dry run of the data order must draw that many within 1% (at
+            least batch - 1 rows: one pass drops its trailing partial batch).
 kd: only a dict meta.teacher is a distillation target (a string teacher is provenance, e.g. on LAH rows, and is ignored).
 Rows the loss cannot score (gold not an option, gold_probs with no mass, >255 options, ...) fail before the model loads.
 """
@@ -48,6 +57,8 @@ EPS = {"mnli": 0.08}
 # v0.11 loss knobs; these defaults reproduce the v0.10 loss exactly.
 LOSS_DEFAULTS = {"lam_inv": 0.0, "sym_cons": False, "perm_twin": 0.0, "lam_p": 0.5}
 TERMS = ("loss", "task", "cons", "cons_comp", "cons_equiv", "inv", "perm", "kl")
+ORD_TERM = "ord"  # logged (an extra TERMS entry) only when lam_ord > 0
+ORD_TOL = 0.01    # allowed relative difference between the ordinal rows the run draws and those in the file
 
 
 def read_jsonl(p):
@@ -217,6 +228,9 @@ def batches(units, batch_size):
                 cur = []
 
 
+_BATCHES = batches  # the real batch stream: the A4 dry run uses it even while a pilot probe wraps td.batches
+
+
 # ---------------------------------------------------------------- loss
 
 def kd_target(r):
@@ -236,6 +250,8 @@ def check_rows(rows, kd=0.0, max_options=decoder_io.MAX_OPTIONS):
             g = r.get("gold")
             if not isinstance(g, (int, float)) or not 0 <= g <= 1:
                 bad.append((rid, f"noul gold {g!r} not in [0, 1]"))
+            if meta.get("option_level") is not None:
+                bad.append((rid, ordinal_problem(r)))
             t = kd_target(r) if kd > 0 else None
             if t is not None and "yes" not in t:
                 bad.append((rid, "noul meta.teacher has no 'yes'"))
@@ -246,6 +262,11 @@ def check_rows(rows, kd=0.0, max_options=decoder_io.MAX_OPTIONS):
         if not 1 <= len(o) <= max_options:
             bad.append((rid, f"{len(o)} options (allowed 1..{max_options})"))
             continue
+        if meta.get("option_level") is not None:  # A4 ordinal row (recipe v4)
+            why = ordinal_problem(r)
+            if why:
+                bad.append((rid, why))
+                continue
         gp = meta.get("gold_probs")
         if gp:
             if not sum(float(gp.get(x, 0.0)) for x in o) > 0:
@@ -282,6 +303,181 @@ def sharpen(p, T):
     return q / q.sum()
 
 
+# ---------------------------------------------------------------- A4 ordinal mean term (recipe v4)
+
+def is_ordinal(r) -> bool:
+    """An ordinal row: a choice row whose options are the levels of one ordered scale (meta.option_level set)."""
+    ol = (r.get("meta") or {}).get("option_level")
+    return r.get("qtype") == "choice" and isinstance(ol, dict) and bool(ol)
+
+
+def ordinal_problem(r):
+    """Why an ordinal row cannot be scored by the A4 term (None if it can). option_level keys the canonical option text
+    and must give the row's K options the levels 0..K-1 exactly once; the gold must be one of the options."""
+    ol = (r.get("meta") or {}).get("option_level")
+    if r.get("qtype") != "choice":
+        return f"meta.option_level on a {r.get('qtype')!r} row (ordinal rows are choice rows)"
+    if not isinstance(ol, dict) or not ol:
+        return "meta.option_level is not a non-empty dict"
+    o = r.get("options") or []
+    if len(o) < 2 or len(set(o)) != len(o):
+        return f"{len(o)} options (or repeated options); an ordinal row needs >= 2 distinct levels"
+    if set(ol) != set(o):
+        return f"meta.option_level keys {sorted(ol)[:6]} differ from the options {o[:6]}"
+    lv = [ol[x] for x in o]
+    if any(isinstance(v, bool) or not isinstance(v, int) for v in lv) or sorted(lv) != list(range(len(o))):
+        return f"meta.option_level values {lv} are not the levels 0..{len(o) - 1}, each once"
+    if r.get("gold") not in o:
+        return f"gold {r.get('gold')!r} is not among the options (y = the gold level)"
+    return None
+
+
+def ord_term(r, logits, perm=None):
+    """((E - y) * 4 / (K - 1))^2 for one view of an ordinal row. `logits` are over the displayed letters, in the order
+    `perm` (perm[j] = canonical option shown at position j; None = as given); E = sum_j softmax(logits)_j *
+    level(options[perm[j]]). E and y are on 0..K-1, so the term is in [0, 16] (TRACT's 1-5 range for every K)."""
+    ol, o = r["meta"]["option_level"], r["options"]
+    k = len(o)
+    perm = list(range(k)) if perm is None else perm
+    if len(perm) != k or logits.shape[-1] != k:
+        raise ValueError(f"ord_term: row {r.get('id')} has {k} options, perm {len(perm)}, logits {tuple(logits.shape)}")
+    lev = torch.tensor([float(ol[o[i]]) for i in perm], device=logits.device)
+    e = (torch.softmax(logits.float(), -1) * lev).sum()
+    return ((e - float(ol[r["gold"]])) * (4.0 / (k - 1))) ** 2
+
+
+def ord_rows_drawn(units, batch_size, n_steps, cyg):
+    """Ordinal rows the run will draw in n_steps, by a dry run of train()'s exact data order (batches() on a copy of the
+    units, the same option and Yes/No draws per step; twins use their own RNG and are not drawn here). The global random
+    state is restored afterwards, so the run's batches and permutations are unchanged."""
+    st = random.getstate()
+    try:
+        gen, n = _BATCHES(list(units), batch_size), 0
+        for _ in range(n_steps):
+            b = next(gen)
+            for r in b:  # same draws, same order as the training loop
+                if r["qtype"] == "choice":
+                    random.sample(range(len(r["options"])), len(r["options"]))
+                elif cyg:
+                    random.sample([0, 1], 2)
+            n += sum(1 for r in b if is_ordinal(r))
+        return n
+    finally:
+        random.setstate(st)
+
+
+def check_ord_count(in_file: int, drawn, expect, tol: float = ORD_TOL, tail: int = 0):
+    """expect_ord_rows (the mixer's count) must equal the ordinal rows in the training file exactly, as expect_kd_targets
+    does: one row that lost meta.option_level (a mixer or format-augmentation bug) fails the run. Separately, the
+    ordinal rows the run draws (the dry run of the data order; None = not computed) must cover the file: within
+    max(tol x the file's count, tail) rows, where tail = batch - 1 (one pass of batches() drops its trailing partial
+    batch, fewer than `batch` rows; at C's size, about 4,350 ordinal rows and batch 16, the 1% bound is the larger)."""
+    if expect is None:
+        return
+    if in_file != int(expect):
+        raise ValueError(f"expect_ord_rows: expected {int(expect)}, the training file has {in_file} ordinal rows")
+    allowed = max(tol * in_file, tail)
+    if drawn is not None and abs(drawn - in_file) > allowed:
+        raise ValueError(f"expect_ord_rows: the run draws {drawn} ordinal rows, the file has {in_file} "
+                         f"(allowed +-{allowed:g})")
+
+
+def ord_finite_check(rows, perms=None, twins=(), probes=None) -> dict:
+    """CPU check for the memory pre-flight dry run (recipe v4 pre-flight 11): on every ordinal row view (perms: the
+    displayed order of each row, e.g. one step of replay_steps.stream; None = given order; twins: that step's
+    [(i, perm2)] second views), the term and its gradient are finite and the term is in [0, 16] for fixed probe logits
+    (flat, steep toward either end, +-1e4 one-hot, a seeded random draw). Raises on the first failure; returns counts."""
+    gen = torch.Generator().manual_seed(20261003)
+    n_rows = n_eval = 0
+    views = [(r, None if perms is None else perms[i]) for i, r in enumerate(rows)] + [(rows[i], p2) for i, p2 in twins]
+    for r, perm in views:
+        if not is_ordinal(r):
+            continue
+        why = ordinal_problem(r)
+        if why:
+            raise ValueError(f"ord_finite_check: row {r.get('id')}: {why}")
+        k = len(r["options"])
+        zs = probes(k) if probes else [torch.zeros(k), torch.linspace(-30, 30, k), torch.linspace(30, -30, k),
+                                       1e4 * F.one_hot(torch.tensor(0), k).float(), 1e4 * F.one_hot(torch.tensor(k - 1), k).float(),
+                                       torch.randn(k, generator=gen) * 8]
+        for z in zs:
+            z = z.detach().clone().requires_grad_(True)
+            t = ord_term(r, z, perm)
+            t.backward()
+            tv = float(t.detach())
+            if not (math.isfinite(tv) and 0.0 <= tv <= 16.0 + 1e-4 and bool(torch.isfinite(z.grad).all())):
+                raise FloatingPointError(f"ord_finite_check: row {r.get('id')} perm {perm}: term {tv}, "
+                                         f"grad finite {bool(torch.isfinite(z.grad).all())}")
+            n_eval += 1
+        n_rows += 1
+    return {"ordinal_views": n_rows, "evaluations": n_eval}
+
+
+def _ord_hand(levels_shown, z, y):
+    """Hand computation (plain floats) of the term and its gradient over the displayed logits z:
+    T = ((E - y) s)^2, s = 4 / (K - 1), dT/dz_j = 2 (E - y) s^2 p_j (level_j - E)."""
+    k, m = len(z), max(z)
+    ex = [math.exp(v - m) for v in z]
+    p = [v / sum(ex) for v in ex]
+    e = sum(pj * lj for pj, lj in zip(p, levels_shown))
+    s = 4.0 / (k - 1)
+    return ((e - y) * s) ** 2, [2 * (e - y) * s * s * pj * (lj - e) for pj, lj in zip(p, levels_shown)], e
+
+
+def a4_selftest(n_random: int = 50, seed: int = 20261003) -> dict:
+    """Recipe v4 pre-flight 10 (CPU): ord_term and its gradient match a hand computation on fixed logits for K = 3, 4, 5,
+    under a shuffled option order and on a permutation twin, plus the recipe's example (K = 4, uniform p, y = 0:
+    E = 1.5, term 4.0) and a random-logit gradient check against central finite differences. Raises AssertionError on
+    any mismatch (then the A4 fallback applies: lam_ord 0); returns what was checked."""
+    def row(k, gold_level, scramble):
+        names = [f"level{j}" for j in range(k)]
+        opts = [names[j] for j in scramble]  # canonical option order differs from the level order
+        return {"id": f"selftest_k{k}", "qtype": "choice", "options": opts, "gold": names[gold_level],
+                "meta": {"option_level": {n: j for j, n in enumerate(names)}}}
+
+    # the recipe's example
+    r4 = row(4, 0, [2, 0, 3, 1])
+    for perm in (None, [3, 1, 0, 2]):
+        t = float(ord_term(r4, torch.zeros(4), perm))
+        assert abs(t - 4.0) < 1e-6, f"K=4 uniform y=0: term {t} != 4.0"
+    checked = ["K4 uniform y0 -> 4.0"]
+    fixed = {3: ([0.7, -1.1, 0.2], [2, 0, 1], 2, [1, 2, 0], [2, 1, 0]),
+             4: ([0.3, -1.2, 2.0, 0.5], [2, 0, 3, 1], 1, [3, 1, 0, 2], [1, 3, 2, 0]),
+             5: ([1.5, -0.4, 0.0, -2.2, 0.9], [4, 1, 0, 3, 2], 3, [2, 4, 1, 0, 3], [0, 3, 4, 2, 1])}
+    for k, (zc, scramble, gold, perm, perm2) in fixed.items():
+        r = row(k, gold, scramble)
+        ol = r["meta"]["option_level"]
+        vals = []
+        for p in (perm, perm2):  # first view and its permutation twin: displayed logits = canonical logits reordered
+            zd = torch.tensor([zc[i] for i in p], dtype=torch.float64, requires_grad=True)
+            tt = ord_term(r, zd, p)
+            tt.backward()
+            t = float(tt.detach())
+            th, gh, _ = _ord_hand([ol[r["options"][i]] for i in p], [zc[i] for i in p], gold)
+            assert abs(t - th) < 1e-5 * max(1.0, th), f"K={k} perm {p}: term {t} vs hand {th}"
+            assert all(abs(a - b) < 1e-5 for a, b in zip(zd.grad.tolist(), gh)), f"K={k} perm {p}: grad {zd.grad.tolist()} vs hand {gh}"
+            vals.append(t)
+        assert abs(vals[0] - vals[1]) < 1e-6, f"K={k}: the twin's term {vals[1]} differs from the first view's {vals[0]}"
+        checked.append(f"K{k} shuffled + twin")
+    g = torch.Generator().manual_seed(seed)
+    rng = random.Random(seed)
+    for _ in range(n_random):
+        k = rng.choice([2, 3, 4, 5, 7])
+        r = row(k, rng.randrange(k), rng.sample(range(k), k))
+        p = rng.sample(range(k), k)
+        z = (torch.randn(k, generator=g, dtype=torch.float64) * 3).requires_grad_(True)
+        ord_term(r, z, p).backward()
+        h = 1e-3
+        for j in range(k):
+            zp, zm = z.detach().clone(), z.detach().clone()
+            zp[j] += h
+            zm[j] -= h
+            fd = (float(ord_term(r, zp, p)) - float(ord_term(r, zm, p))) / (2 * h)
+            assert abs(fd - float(z.grad[j])) < 2e-3 * max(1.0, abs(fd)), f"K={k}: finite difference {fd} vs grad {float(z.grad[j])}"
+    checked.append(f"{n_random} random-logit gradient checks")
+    return {"ok": True, "checked": checked}
+
+
 def compute_loss(c, batch, perms, lg, rel_by_row, step, n_steps, dev, kl=None, twins=(), cyg=None, norm=None):
     """Loss of one step. lg[i] = candidate logits of batch[i] in its displayed order perms[i]; kl = anchor KL (or None);
     twins = [(i, perm2, logits2)]: second views of choice rows (perm_twin).
@@ -291,6 +487,7 @@ def compute_loss(c, batch, perms, lg, rel_by_row, step, n_steps, dev, kl=None, t
     if cyg is None:
         cyg = decoder_io.STYLE == "cygnet"
     lam_inv, sym = float(c.get("lam_inv", 0.0) or 0.0), bool(c.get("sym_cons", False))
+    lam_ord = float(c.get("lam_ord", 0.0) or 0.0)
     ls = c.get("label_smooth")        # None: the old per-source smoothing (0.05, MNLI 0.08); a number overrides it
     tT = c.get("teacher_T") or {}     # {"noul": T, "choice": T}: sharpen (T < 1) the teacher's KD targets
     full = set(c.get("kd_full_src") or ())  # yes/no sources whose teacher value is the exact probability (no smoothing)
@@ -334,7 +531,7 @@ def compute_loss(c, batch, perms, lg, rel_by_row, step, n_steps, dev, kl=None, t
                                             label_smoothing=0.05 if ls is None else float(ls)))
     loss_task = red(task, "rows")
     loss = loss_task
-    terms = dict.fromkeys(TERMS)
+    terms = dict.fromkeys(TERMS + ((ORD_TERM,) if lam_ord > 0 else ()))
     terms["task"] = loss_task
     counts = {"cons": 0, "inv": 0, "twin": len(twins), "rel_skipped": 0}
     ramp = min(1.0, step / max(1, 0.2 * n_steps))
@@ -404,9 +601,109 @@ def compute_loss(c, batch, perms, lg, rel_by_row, step, n_steps, dev, kl=None, t
         pt = [js_div(ci(i), canon_logp(batch[i], l2, p2, cyg)) for i, p2, l2 in twins]
         terms["perm"] = red(pt, "twin")
         loss = loss + float(c.get("lam_p", 0.5)) * ramp * terms["perm"]
+    if lam_ord > 0:  # A4 ordinal mean term (recipe v4): per ordinal row, the mean over its views; normalised like the CE
+        tw_by = defaultdict(list)
+        for i, p2, l2 in twins:
+            if is_ordinal(batch[i]):
+                tw_by[i].append(ord_term(batch[i], l2, p2))
+        ords = [torch.stack([ord_term(r, l, perm)] + tw_by.get(i, [])).mean()
+                for i, (r, perm, l) in enumerate(zip(batch, perms, lg)) if is_ordinal(r)]
+        counts["ord"] = len(ords)
+        if ords:
+            terms[ORD_TERM] = torch.stack(ords).sum() / (norm["rows"] if norm else len(batch))
+            loss = loss + lam_ord * ramp * terms[ORD_TERM]
     terms["loss"] = loss
     check_finite(terms, step, batch)
     return loss, terms, counts
+
+
+# ---------------------------------------------------------------- F2 rendered-prompt identity (recipe v4 pre-flight 9)
+
+def train_prompt_path(cfg: dict) -> dict:
+    """The tokenizer, layout and style train() renders prompts with for this config, without loading the model:
+    load(cfg base at base_revision) (an init_adapter is loaded on top, so the base tokenizer is used), LAYOUT = cfg
+    layout (PRISM-X's when it is on and no layout is given, else text_first), STYLE = cfg style."""
+    layout = cfg["layout"] if cfg.get("layout") else (prism_x.LAYOUT if prism_x.resolve(cfg.get("prism_x")) else "text_first")
+    return {"tok": decoder_io.load_tokenizer(cfg["base"], revision=cfg.get("base_revision")), "layout": layout,
+            "style": cfg.get("style") or decoder_io.STYLE, "src": f"{cfg['base']}@{cfg.get('base_revision')}"}
+
+
+def f2_preflight(cfg: dict, adapter=None, gate_style=None) -> dict:
+    """Recipe v4 F2 on THIS machine: the sha256 of the rendered prompt of the 3 fixed rows (decoder_io.F2_ROWS, given
+    and reversed order: 6 views) is identical on every prompt path this machine can render. Paths:
+      "train"      this config as train() renders it (base tokenizer at base_revision, cfg layout and style);
+      "gate_serve" with an adapter: decoder_io.load(base, adapter=...) with STYLE cygnet. This is both the dev gate
+                   read (od_gcp.py predict: STYLE preset to --style or cygnet) and serving (di_engine / serve_tunnel:
+                   STYLE cygnet). Both make the same call, so they are one path, not two;
+      "gate"       only with gate_style (od_gcp.py predict --style S): the gate read with that preset.
+    Within one process this proves only that the tokenizer files, layout and style agree: every path renders with this
+    machine's transformers / jinja2. A difference between the training image, the L4 gate VM and the serving host
+    shows up only when their f2_record files are compared (f2_compare; `train_decoder.py f2 --out` on each machine).
+    Raises RuntimeError on any difference; returns the per-path report."""
+    saved = (decoder_io.LAYOUT, decoder_io.STYLE)
+    try:
+        paths = {"train": train_prompt_path(cfg)}
+        if adapter:
+            decoder_io.LAYOUT, decoder_io.STYLE = saved[0], "cygnet"
+            paths["gate_serve"] = decoder_io.adapter_prompt_path(cfg["base"], str(adapter))
+            if gate_style and gate_style != "cygnet":
+                decoder_io.LAYOUT, decoder_io.STYLE = saved[0], gate_style
+                paths["gate"] = decoder_io.adapter_prompt_path(cfg["base"], str(adapter), style=gate_style)
+        return decoder_io.assert_prompt_identity(paths)
+    finally:
+        decoder_io.LAYOUT, decoder_io.STYLE = saved
+
+
+def f2_record(rep: dict, where: str) -> dict:
+    """One machine's F2 record (what `train_decoder.py f2 --out` writes): the 6 per-view sha256 (one set: f2_preflight
+    has checked that every path of rep renders them identically), each path's layout, style, template sha and source,
+    and the software that rendered them."""
+    import importlib.metadata as md
+    import platform
+    env = {"python": platform.python_version(), "host": platform.node()}
+    for pkg in ("transformers", "tokenizers", "jinja2"):
+        try:
+            env[pkg] = md.version(pkg)
+        except md.PackageNotFoundError:
+            env[pkg] = None
+    first = next(iter(rep.values()))
+    return {"f2_record": 1, "where": where, "env": env, "views": list(first["views"]),
+            "sha": dict(zip(first["views"], first["sha"])),
+            "paths": {k: {f: v[f] for f in ("layout", "style", "chat_template_sha", "src", "qwen35", "chat_kwargs")}
+                      for k, v in rep.items()}}
+
+
+def f2_compare(records: dict) -> dict:
+    """Recipe v4 F2 across machines: every record ({label: f2_record}) has the same 6 views and the same sha256 per
+    view as the first one (the reference), and every Qwen3.5 path renders with thinking off. Raises RuntimeError on
+    any difference (before the GO); returns the summary to write to the look log."""
+    names = list(records)
+    if len(names) < 2:
+        raise ValueError("f2_compare needs a reference record and at least one other")
+    ref = records[names[0]]
+    bad = []
+    for n in names:
+        rec = records[n]
+        if rec.get("f2_record") != 1 or len(rec.get("sha") or {}) != 6:
+            bad.append(f"{n}: not an F2 record with 6 views")
+            continue
+        for k, p in rec["paths"].items():
+            if p["qwen35"] and (p.get("chat_kwargs") or {}).get("enable_thinking") is not False:
+                bad.append(f"{n}/{k}: Qwen3.5 path without enable_thinking=False")
+        if n == names[0]:
+            continue
+        if rec["views"] != ref["views"]:
+            bad.append(f"{n}: views {rec['views']} != {ref['views']}")
+            continue
+        for v in ref["views"]:
+            if rec["sha"][v] != ref["sha"][v]:
+                bad.append(f"{n} {v}: {rec['sha'][v][:12]} != {names[0]} {ref['sha'][v][:12]} (transformers "
+                           f"{rec['env'].get('transformers')} vs {ref['env'].get('transformers')}, jinja2 "
+                           f"{rec['env'].get('jinja2')} vs {ref['env'].get('jinja2')})")
+    if bad:
+        raise RuntimeError("F2 cross-machine rendered-prompt identity failed: " + "; ".join(bad[:10]))
+    return {"f2_cross": "pass", "reference": names[0], "records": {n: {"where": records[n]["where"],
+            "env": records[n]["env"], "paths": sorted(records[n]["paths"])} for n in names}, "sha": ref["sha"]}
 
 
 # ---------------------------------------------------------------- training
@@ -452,7 +749,7 @@ def _micro_groups(batch: list, uid: dict, tw: list, budget: int) -> list:
 # or Modal accounts (a relay) resumes although these differ between segments.
 RUN_KEYS = ("resume", "ckpt_every_min", "log_every", "expect_resume", "stop_after_min", "stop_at_step",
             "allow_code_change", "allow_env_change", "fresh_start", "stop_at_unix", "snap_every", "snap_fracs",
-            "expect_trainable", "expect_kd_targets", "expect_kd_full")
+            "expect_trainable", "expect_kd_targets", "expect_kd_full", "expect_ord_rows")
 # Every config key the trainer (or its launchers) reads; train() refuses any other key, so a key whose code is missing
 # fails loudly instead of being silently ignored.
 GOOD_EVERY, GOOD_QUIET = 2000, 400  # _ckpt_good refresh: every ~2,000 steps, only if no alert in the last 400 steps
@@ -460,7 +757,7 @@ KNOWN_KEYS = frozenset(RUN_KEYS) | {
     "base", "base_revision", "recipe", "epochs", "lr", "batch", "lam", "r", "alpha", "dropout", "beta", "seed",
     "train_file", "rel_file", "grad_ckpt", "lam_inv", "sym_cons", "perm_twin", "lam_p", "style", "layout", "targets",
     "kd", "kd_skip_src", "kd_full_src", "label_smooth", "teacher_T", "micro_tokens", "aux_norm", "init_adapter",
-    "prism_x", "px_selfcheck", "writeblock_frac", "ablate_splits", "no_overwrite"}
+    "prism_x", "px_selfcheck", "writeblock_frac", "ablate_splits", "no_overwrite", "lam_ord"}
 CODE_MODULES = ("train_decoder", "decoder_io", "prism_x", "writeblock")
 ENV_PACKAGES = ("torch", "transformers", "peft", "accelerate", "triton", "fla-core", "flash-linear-attention",
                 "tokenizers", "safetensors", "huggingface-hub", "numpy")
@@ -665,6 +962,14 @@ def train(cfg: dict, data_dir: Path, out_dir: Path, dev="cuda", on_ckpt=None) ->
     unknown = sorted(set(cfg) - KNOWN_KEYS)
     if unknown:
         raise ValueError(f"train_decoder: unknown config key(s) {unknown} (nothing reads them; typo or missing code?)")
+    lam_ord, expect_ord = c.get("lam_ord", 0.0), c.get("expect_ord_rows")
+    if lam_ord is not None and (isinstance(lam_ord, bool) or not isinstance(lam_ord, (int, float))
+                                or not math.isfinite(lam_ord) or lam_ord < 0):
+        raise ValueError(f"lam_ord must be a finite number >= 0 (0 = off, the A4 fallback), got {lam_ord!r}")
+    if expect_ord is not None and (isinstance(expect_ord, bool) or not isinstance(expect_ord, int) or expect_ord < 0):
+        raise ValueError(f"expect_ord_rows must be an integer >= 0, got {expect_ord!r}")
+    lam_ord = float(lam_ord or 0.0)
+    ord_track = lam_ord > 0 or expect_ord is not None  # off: nothing below runs, the run is exactly as before
     aux_norm = c.get("aux_norm", "micro")
     if aux_norm not in ("micro", "batch"):
         raise ValueError(f"aux_norm must be 'micro' or 'batch', got {aux_norm!r}")
@@ -711,6 +1016,18 @@ def train(cfg: dict, data_dir: Path, out_dir: Path, dev="cuda", on_ckpt=None) ->
     for key, got in (("expect_kd_targets", n_kd), ("expect_kd_full", n_full)):
         if c.get(key) is not None and int(c[key]) != got:
             raise ValueError(f"{key}: expected {c[key]}, the data gives {got}")
+    ord_info = None
+    if ord_track:  # A4 (recipe v4): counted before the model loads
+        ord_info = {"lam_ord": lam_ord, "rows_in_file": sum(1 for r in rows if is_ordinal(r)),
+                    "rows_drawn_planned": None, "expect_ord_rows": expect_ord, "tol": ORD_TOL}
+        if expect_ord is not None:  # the dry run leaves the random state exactly as it found it
+            ord_info["rows_drawn_planned"] = ord_rows_drawn(units, c["batch"], n_steps, decoder_io.STYLE == "cygnet")
+        print(json.dumps({"ordinal": ord_info}), flush=True)
+        if expect_ord is not None:
+            check_ord_count(ord_info["rows_in_file"], ord_info["rows_drawn_planned"], expect_ord, tail=c["batch"] - 1)
+        elif lam_ord > 0:
+            print(json.dumps({"warning": "lam_ord > 0 without expect_ord_rows: the ordinal row count is not checked"}),
+                  flush=True)
 
     from peft import LoraConfig, get_peft_model
     # base_revision pins the exact Hugging Face commit of the base model (every Modal account downloads its own copy)
@@ -762,6 +1079,8 @@ def train(cfg: dict, data_dir: Path, out_dir: Path, dev="cuda", on_ckpt=None) ->
     log, t0, gen = [], time.time(), batches(units, c["batch"])
     # training monitor (gradient norm, loss trend, alerts); saved in checkpoints so a resumed run logs identically
     mon = {"gn": [], "task": [], "streak": 0, "best": None, "last_alert": None, "last_good": 0, "good_frozen": False}
+    if ord_track:
+        mon["ord_seen"] = 0  # ordinal rows drawn so far (checked against the dry run at the end)
     # Save-and-resume (Spot VMs, auto-stop timers): every ckpt_every_min minutes the adapter, optimizer, scheduler,
     # step, log and RNG states go to out_dir/_ckpt. A rerun of the same config resumes exactly: the finished steps'
     # random-number use (batch order, option permutations, twin picks) is replayed without GPU work, then the torch
@@ -831,6 +1150,8 @@ def train(cfg: dict, data_dir: Path, out_dir: Path, dev="cuda", on_ckpt=None) ->
                 torch.cuda.set_rng_state_all(st["cuda_rng"])
             start, log, t0 = st["step"], st["log"], time.time() - 60 * st["minutes"]
             mon.update(st.get("mon") or {})
+            if ord_track and "ord_seen" not in (st.get("mon") or {}):
+                mon["ord_seen"] = None  # a checkpoint from before the count existed: the end-of-run check is skipped
             print(json.dumps({"resumed_at_step": start, "of": n_steps, "checks": "manifest, config, data, env, code, "
                               "tensors, optimizer order, data order: all match"}), flush=True)
     elif c.get("expect_resume"):
@@ -944,7 +1265,12 @@ def train(cfg: dict, data_dir: Path, out_dir: Path, dev="cuda", on_ckpt=None) ->
             if norm and (counts["cons"] != norm["cons"] or counts["inv"] != norm["inv"]):
                 print(json.dumps({"warning": "a relation spans micro-batches", "step": step, "cons": [counts["cons"],
                                   norm["cons"]], "inv": [counts["inv"], norm["inv"]]}), flush=True)
-            terms = {k: (torch.tensor(agg[k] / wsum[k]) if wsum[k] > 0 else None) for k in TERMS}
+            terms = {k: (torch.tensor(agg[k] / wsum[k]) if wsum[k] > 0 else None)
+                     for k in TERMS + ((ORD_TERM,) if lam_ord > 0 else ())}
+            if ord_track:
+                n_ord_b = sum(1 for r in batch if is_ordinal(r))
+                if mon["ord_seen"] is not None:
+                    mon["ord_seen"] += n_ord_b
             gn_px = float(torch.norm(torch.stack([q.grad.detach().float().norm() for q in px_params
                                                   if q.grad is not None]))) if px_params else None
             gn = float(torch.nn.utils.clip_grad_norm_(params, 1.0))
@@ -971,7 +1297,7 @@ def train(cfg: dict, data_dir: Path, out_dir: Path, dev="cuda", on_ckpt=None) ->
                 rec = {"step": step, "of": n_steps,
                        **{k: (round(v.item(), 4) if v is not None else None) for k, v in terms.items()},
                        "n_cons": counts["cons"], "n_inv": counts["inv"], "n_twin": counts["twin"],
-                       "n_rel_skipped": counts["rel_skipped"],
+                       "n_rel_skipped": counts["rel_skipped"], **({"n_ord": n_ord_b} if ord_track else {}),
                        "lr": sched.get_last_lr()[0], "gn": round(gn, 4), "gn_med": round(gn_med, 4),
                        "clip_frac": round(sum(g > 1.0 for g in mon["gn"]) / len(mon["gn"]), 3),
                        **({"gn_px": round(gn_px, 4)} if gn_px is not None else {}),
@@ -1009,6 +1335,12 @@ def train(cfg: dict, data_dir: Path, out_dir: Path, dev="cuda", on_ckpt=None) ->
         meta = {"cfg": c, "rows": len(rows), "relations": len(rels), "relation_types": rel_types, "inv_merged": inv_merged,
                 "steps": n_steps, "minutes": round((time.time() - t0) / 60, 2), "log": log, "env": env, "code": code,
                 "data": list(data_hashes), **({"prism_x": {**prism_x.PX.meta(), "final": prism_x.stats()}} if px_cfg else {})}
+        if ord_track:
+            meta["ordinal"] = {**ord_info, "rows_drawn": mon["ord_seen"]}
+            if (mon["ord_seen"] is not None and ord_info["rows_drawn_planned"] is not None
+                    and mon["ord_seen"] != ord_info["rows_drawn_planned"]):
+                print(json.dumps({"ALERT": "ordinal rows drawn differ from the dry run", "drawn": mon["ord_seen"],
+                                  "planned": ord_info["rows_drawn_planned"]}), flush=True)
         (out_dir / "train_meta.json").write_text(json.dumps(meta, indent=2))  # written last: marks a finished model
         if on_ckpt is not None:
             on_ckpt()  # the final adapter is durable before the checkpoint goes
@@ -1032,3 +1364,31 @@ def train(cfg: dict, data_dir: Path, out_dir: Path, dev="cuda", on_ckpt=None) ->
             signal.signal(s_, h)
     model.eval()
     return {"model": model, "tok": tok, "meta": meta}
+
+
+if __name__ == "__main__":  # CPU pre-flights of recipe v4: item 10 (A4 unit test) and item 9 (F2 rendered-prompt identity)
+    import argparse
+    ap = argparse.ArgumentParser(description="python train_decoder.py a4 | f2 --config runs/<c>.json [--adapter <C1 dir>] "
+                                 "[--where L --out f2_L.json] [--ref f2_ref.json] | f2cmp REF.json OTHER.json ...")
+    ap.add_argument("check", choices=["a4", "f2", "f2cmp"])
+    ap.add_argument("records", nargs="*", help="f2cmp: F2 record files; the first is the reference")
+    ap.add_argument("--config")
+    ap.add_argument("--adapter", default="", help="adds the gate/serve adapter-load path (od_gcp.py predict, di_engine)")
+    ap.add_argument("--gate-style", default="", help="od_gcp.py predict --style, when the gate read presets one")
+    ap.add_argument("--where", default="", help="label of this machine in the record (e.g. modal-image35, l4-gate)")
+    ap.add_argument("--out", default="", help="write this machine's F2 record (6 per-view sha256 + software) here")
+    ap.add_argument("--ref", default="", help="an F2 record to compare this machine's record with")
+    a = ap.parse_args()
+    if a.check == "a4":
+        print(json.dumps(a4_selftest()))
+    elif a.check == "f2":
+        import platform
+        rec = f2_record(f2_preflight(json.loads(Path(a.config).read_text()), a.adapter or None, a.gate_style or None),
+                        a.where or platform.node())
+        if a.out:
+            Path(a.out).write_text(json.dumps(rec, indent=1))
+        print(json.dumps({"f2": "pass", **rec}))
+        if a.ref:
+            print(json.dumps(f2_compare({a.ref: json.loads(Path(a.ref).read_text()), a.out or "this machine": rec})))
+    else:
+        print(json.dumps(f2_compare({p: json.loads(Path(p).read_text()) for p in a.records})))

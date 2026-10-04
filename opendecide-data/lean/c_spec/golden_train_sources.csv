@@ -1,0 +1,205 @@
+source,rows,fam,yn,nopt,tok50,tok90,card,ren,tch,fmt,nei,insd,jtype,domain
+gd_gen_tables,11605,fact_tables,79.0,3.0,591.0,777.0,100.0,6.0,0.0,table,10.0,570,table/numeric reasoning,program-generated business/HR/ops scenarios
+gd_gen_ranking,11544,qa_decisions,36.0,7.0,877.0,1165.0,100.0,19.0,0.0,table,43.0,2370,policy/rule application,program-generated business/HR/ops scenarios
+gd_gen_evidence_conflict,11536,nli_logic_reasoning,71.0,4.0,740.0,976.0,100.0,8.0,0.0,kv,13.0,6678,NLI/fact verification,program-generated business/HR/ops scenarios
+gd_gen_numeric_dates,11531,numeric_temporal,77.0,4.0,448.0,588.0,100.0,7.0,0.0,bullets,11.0,3377,table/numeric reasoning,program-generated business/HR/ops scenarios
+gd_gen_logic_negation,11526,nli_logic_reasoning,100.0,,312.0,332.0,100.0,0.0,0.0,prose,0.0,6538,NLI/fact verification,synthetic logic/puzzles
+gd_gen_routing,11496,intent_business_support,37.0,14.0,777.0,1036.0,100.0,19.0,0.0,prose,0.0,3245,intent/routing,program-generated business/HR/ops scenarios
+gd_gen_policy_exceptions,11463,nli_logic_reasoning,78.0,3.0,576.0,699.0,100.0,7.0,0.0,kv,23.0,4559,policy/rule application,program-generated business/HR/ops scenarios
+gd_gen_constraints,11426,qa_decisions,37.0,8.0,1071.0,1527.0,100.0,19.0,0.0,table,33.0,2261,policy/rule application,program-generated business/HR/ops scenarios
+gd_boardgameqa,9550,nli_logic_reasoning,29.0,3.0,592.0,829.0,100.0,20.0,0.0,kv,100.0,3,logic/rule reasoning,synthetic logic/puzzles
+gd_uscg_mariner,8810,mcq_exams,29.0,4.0,474.5,569.0,100.0,21.0,0.0,prose,0.0,19,knowledge MC (exams/trivia),government safety/incident reports
+gd_drugprot,8794,relations_entities,30.0,13.0,890.0,936.0,100.0,20.0,0.0,prose,0.0,3,relation/entity typing,medical/health
+gd_msha_injury,8683,large_labelsets,29.0,20.0,806.0,1151.0,100.0,22.0,0.0,prose,0.0,12,topic/domain classification,government safety/incident reports
+gd_feverous,8318,fact_tables,100.0,,389.0,527.0,100.0,0.0,0.0,table,100.0,2,NLI/fact verification,encyclopedia/general knowledge
+gd_medqa_yn,8274,science_health_claims,100.0,,511.0,623.0,100.0,0.0,0.0,prose,0.0,1,knowledge MC (exams/trivia),medical/health
+gd_sc101,8261,moral_social_norms,100.0,,326.0,339.0,100.0,0.0,0.0,prose,0.0,3,moral/social norms,everyday/commonsense
+gd_mfrc,8254,moral_social_norms,100.0,,364.0,418.0,100.0,0.0,92.0,prose,0.0,7,moral/social norms,social media/online comments
+gd_gen_msn_rules,8253,moral_social_norms,100.0,,375.0,400.0,100.0,0.0,0.0,bullets,29.0,3332,policy/rule application,program-generated business/HR/ops scenarios
+gd_redocred,7979,relations_entities,30.0,8.0,603.0,743.0,100.0,20.0,0.0,prose,0.0,30,relation/entity typing,encyclopedia/general knowledge
+gd_medmcqa_subject,7977,domain_classification,30.0,19.0,1024.0,1071.0,100.0,20.0,0.0,prose,0.0,3,topic/domain classification,medical/health
+gd_cards,7096,science_health_claims,100.0,,423.0,490.0,100.0,0.0,0.0,prose,0.0,5,NLI/fact verification,science/climate
+gd_infotabs_nli,7024,nli_logic_reasoning,59.0,3.0,468.5,605.0,100.0,12.0,0.0,kv,0.0,5,NLI/fact verification,encyclopedia/general knowledge
+gd_oiics_event,6872,large_labelsets,30.0,21.0,1150.0,1566.0,100.0,21.0,0.0,prose,30.0,3,topic/domain classification,government safety/incident reports
+gd_tatqa,6740,fact_tables,100.0,,819.0,1275.0,100.0,0.0,0.0,table,0.0,2,table/numeric reasoning,finance/business filings
+gd_wiki_help_routing,6440,routing_dialogue,31.0,6.0,517.0,696.0,100.0,21.0,0.0,prose,0.0,6,intent/routing,encyclopedia/general knowledge
+gd_totto_claims,6226,fact_tables,100.0,,575.0,958.0,100.0,0.0,0.0,table,0.0,2,NLI/fact verification,encyclopedia/general knowledge
+gd_smcalflow_action,6220,routing_dialogue,30.0,29.0,1492.0,1549.0,100.0,21.0,0.0,dialogue,27.0,3,dialogue state/next action,customer support/assistants
+gd_gen_msn_fault,6197,moral_social_norms,100.0,,409.0,442.0,100.0,0.0,0.0,bullets,17.0,645,policy/rule application,program-generated business/HR/ops scenarios
+gd_qasc,6107,qa_decisions,53.0,8.0,556.0,648.0,100.0,14.0,0.0,kv,0.0,11,commonsense,science/climate
+gd_edgar_10k_item,6070,domain_classification,43.0,14.0,894.0,1085.0,100.0,17.0,0.0,prose,0.0,17,topic/domain classification,finance/business filings
+gd_sd311_routing,5799,routing_dialogue,30.0,25.0,1321.0,1358.0,100.0,20.0,0.0,prose,0.0,6,intent/routing,government safety/incident reports
+gd_medquad_qtype,5781,domain_classification,30.0,13.0,776.0,1028.0,100.0,21.0,0.0,prose,82.0,3,topic/domain classification,medical/health
+gd_logicinference,5587,nli_logic_reasoning,54.0,3.0,387.0,420.0,100.0,13.0,0.0,bullets,46.0,4,logic/rule reasoning,synthetic logic/puzzles
+gd_storm_ef,5427,ordinal_scales,30.0,7.0,677.0,822.0,100.0,21.0,0.0,prose,0.0,3,ordinal/score,government safety/incident reports
+gd_comve,5419,qa_decisions,100.0,,289.0,300.0,100.0,0.0,0.0,prose,0.0,1,commonsense,everyday/commonsense
+gd_prm800k_steps,5317,judge_verifier,100.0,,639.0,935.0,100.0,0.0,3.0,kv,0.0,2,judge/verifier,AI outputs (judging)
+gd_saferproducts_severity,5314,ordinal_scales,30.0,8.0,726.0,950.0,100.0,20.0,0.0,prose,0.0,3,ordinal/score,government safety/incident reports
+gd_wtq,5183,fact_tables,100.0,,854.0,1893.0,100.0,0.0,0.0,table,0.0,2,table/numeric reasoning,encyclopedia/general knowledge
+gd_gen_msn_consent,5161,moral_social_norms,100.0,,404.0,433.0,100.0,0.0,0.0,prose,9.0,1328,policy/rule application,program-generated business/HR/ops scenarios
+gd_opentdb,5139,mcq_exams,30.0,4.0,412.0,436.0,100.0,21.0,0.0,prose,1.0,11,knowledge MC (exams/trivia),encyclopedia/general knowledge
+gd_finqa,4970,fact_tables,100.0,,1305.0,1686.0,100.0,0.0,0.0,table,0.0,2,table/numeric reasoning,finance/business filings
+gd_gen_nlr_heuristics,4930,nli_logic_reasoning,100.0,,316.0,320.0,100.0,0.0,0.0,prose,0.0,1,NLI/fact verification,synthetic logic/puzzles
+gd_winogrande,4734,qa_decisions,100.0,,314.0,323.0,100.0,0.0,0.0,prose,0.0,1,commonsense,everyday/commonsense
+gd_dstc9_track1,4631,intent_business_support,100.0,,540.0,581.0,100.0,0.0,0.0,dialogue,72.0,2,dialogue state/next action,customer support/assistants
+gd_clickbait17,4461,calibration_distributions,100.0,,353.0,363.0,100.0,0.0,93.0,prose,0.0,1,topic/domain classification,social media/online comments
+gd_druglabel_section,4284,large_labelsets,29.0,21.0,950.5,1233.0,100.0,21.0,0.0,prose,0.0,3,topic/domain classification,medical/health
+gd_babi_logic,4249,nli_logic_reasoning,61.0,3.0,354.0,396.0,100.0,12.0,0.0,prose,0.0,278,logic/rule reasoning,synthetic logic/puzzles
+gd_tathqa,4154,fact_tables,100.0,,831.0,1279.0,100.0,0.0,0.0,table,0.0,2,table/numeric reasoning,finance/business filings
+gd_semtabfacts_sci,4048,science_health_claims,100.0,,624.0,1136.0,100.0,0.0,0.0,table,0.0,1,NLI/fact verification,science/climate
+gd_casehold_yn,4039,domain_classification,100.0,,578.0,642.0,100.0,0.0,0.0,prose,0.0,1,knowledge MC (exams/trivia),legal/regulatory
+gd_uds_ordinal,4009,ordinal_scales,29.0,11.0,450.0,610.0,100.0,21.0,92.0,prose,0.0,1430,ordinal/score,everyday/commonsense
+gd_ncbi_disease,3880,relations_entities,30.0,4.0,472.0,499.0,100.0,19.0,0.0,prose,0.0,3,relation/entity typing,medical/health
+gd_taskmaster1,3692,intent_business_support,100.0,,331.0,360.0,100.0,0.0,0.0,dialogue,0.0,31,dialogue state/next action,customer support/assistants
+gd_east_asian_prejudice,3600,safety_policy_moderation,65.0,5.0,478.0,561.0,100.0,10.0,92.0,prose,0.0,4,moderation/safety,social media/online comments
+gd_webred,3548,relations_entities,30.0,3.0,442.0,487.0,100.0,20.0,0.0,prose,0.0,3,relation/entity typing,encyclopedia/general knowledge
+gd_slur_usage,3477,safety_policy_moderation,66.0,4.0,384.0,443.0,100.0,10.0,0.0,prose,0.0,4,moderation/safety,social media/online comments
+gd_edos_sexism,3433,safety_policy_moderation,80.0,11.0,311.0,709.0,100.0,6.0,92.0,prose,0.0,4,moderation/safety,social media/online comments
+gd_vader_intensity,3389,ordinal_scales,30.0,5.0,459.0,478.0,100.0,22.0,92.0,prose,0.0,3,sentiment/ABSA,reviews
+gd_helpsteer3_pref,3369,judge_verifier,100.0,,1261.0,2062.0,100.0,0.0,92.0,kv,0.0,1,judge/verifier,AI outputs (judging)
+gd_star_next_action,3339,routing_dialogue,28.0,15.0,930.0,1241.0,100.0,21.0,0.0,dialogue,0.0,48,dialogue state/next action,customer support/assistants
+gd_hotpotqa_yesno,3274,qa_decisions,100.0,,557.0,831.0,100.0,0.0,0.0,prose,0.0,3024,commonsense,encyclopedia/general knowledge
+gd_nrc_gfe,3152,mcq_exams,30.0,4.0,519.0,627.0,100.0,20.0,0.0,prose,1.0,3,knowledge MC (exams/trivia),government safety/incident reports
+gd_faithdial,2963,judge_verifier,100.0,,485.0,582.0,100.0,0.0,0.0,kv,0.0,2,judge/verifier,AI outputs (judging)
+gd_naics_subsector,2904,large_labelsets,29.0,22.0,940.0,1300.0,100.0,21.0,0.0,prose,0.0,3,topic/domain classification,finance/business filings
+gd_nhtsa_complaints,2856,intent_business_support,100.0,,416.0,618.0,100.0,0.0,0.0,prose,0.0,3,topic/domain classification,government safety/incident reports
+gd_answer_equiv,2832,judge_verifier,100.0,,528.0,627.0,100.0,0.0,0.0,kv,0.0,2,judge/verifier,AI outputs (judging)
+gd_helpsteer2_attr,2729,judge_verifier,100.0,,690.0,1149.0,100.0,0.0,91.0,prose,9.0,3,judge/verifier,AI outputs (judging)
+gd_multiwoz21_sysacts,2703,intent_business_support,100.0,,323.0,340.0,100.0,0.0,0.0,dialogue,0.0,2,dialogue state/next action,customer support/assistants
+clinc150,2651,(v13 replay),15.0,10.0,254.0,314.0,0.0,0.0,100.0,prose,0.0,219,intent/routing,customer support/assistants
+gd_hatemoji_build_v14,2541,safety_policy_moderation,79.0,5.0,296.0,403.0,100.0,6.0,0.0,prose,0.0,4,moderation/safety,social media/online comments
+gd_taskmaster2,2370,intent_business_support,100.0,,348.0,374.0,100.0,0.0,0.0,dialogue,0.0,21,dialogue state/next action,customer support/assistants
+gd_taskmaster3,2335,intent_business_support,100.0,,570.0,702.0,100.0,0.0,0.0,dialogue,0.0,1,dialogue state/next action,customer support/assistants
+banking77,2300,(v13 replay),18.0,9.0,263.0,335.0,0.0,0.0,100.0,prose,0.0,237,intent/routing,finance/business filings
+gd_codah,2235,qa_decisions,72.0,4.0,388.0,454.0,100.0,8.0,0.0,prose,0.0,10,commonsense,everyday/commonsense
+gd_wands_product,2152,large_labelsets,30.0,20.0,784.0,1037.0,100.0,22.0,0.0,prose,0.0,3,topic/domain classification,customer support/assistants
+gd_aegis_prompts,1887,safety_policy_moderation,80.0,12.0,326.0,647.0,100.0,7.0,35.0,prose,0.0,4,moderation/safety,AI outputs (judging)
+gd_ncvec_ham,1870,mcq_exams,30.0,4.0,481.0,558.0,100.0,21.0,0.0,kv,1.0,3,knowledge MC (exams/trivia),government safety/incident reports
+gd_quartz,1798,qa_decisions,100.0,,340.0,360.0,100.0,0.0,0.0,kv,0.0,2,commonsense,science/climate
+gd_csc_sarcasm,1739,calibration_distributions,100.0,,390.0,420.0,100.0,0.0,92.0,prose,0.0,1,sarcasm/irony,social media/online comments
+gd_onestop_level,1731,ordinal_scales,27.0,3.0,475.0,526.0,100.0,22.0,0.0,prose,0.0,3,ordinal/score,education/reading
+gd_conditionalqa,1713,nli_logic_reasoning,30.0,4.0,1822.0,3331.0,100.0,18.0,0.0,kv,73.0,3,policy/rule application,legal/regulatory
+massive,1703,(v13 replay),14.0,9.0,251.0,314.0,0.0,0.0,100.0,prose,0.0,209,intent/routing,customer support/assistants
+gd_onet_occupation,1629,domain_classification,74.0,4.0,344.0,514.0,100.0,7.0,0.0,bullets,0.0,4,topic/domain classification,education/reading
+gd_wnut17,1616,relations_entities,29.0,6.0,548.0,571.0,100.0,20.0,0.0,prose,0.0,8,relation/entity typing,social media/online comments
+gd_politeness_votes,1444,calibration_distributions,100.0,,325.0,353.0,100.0,0.0,93.0,prose,0.0,2,commonsense,social media/online comments
+gd_prontoqa,1434,nli_logic_reasoning,100.0,,398.0,487.0,100.0,0.0,0.0,prose,0.0,1,logic/rule reasoning,synthetic logic/puzzles
+gd_megaveridicality,1424,calibration_distributions,100.0,,327.0,338.0,100.0,0.0,91.0,prose,0.0,6,NLI/fact verification,everyday/commonsense
+tb_label_nli,1288,(v13 replay),36.0,5.0,449.0,1052.0,100.0,29.0,100.0,prose,15.0,468,topic/domain classification,general NLI/paraphrase corpora
+gd_ghc_hate,1273,safety_policy_moderation,77.0,8.0,351.0,527.0,100.0,5.0,92.0,prose,0.0,5,moderation/safety,social media/online comments
+gd_usb_factuality,1253,judge_verifier,100.0,,394.0,495.0,100.0,0.0,0.0,prose,0.0,2,judge/verifier,AI outputs (judging)
+gd_tabmcq,1188,fact_tables,100.0,,600.5,894.0,100.0,0.0,0.0,table,0.0,2,table/numeric reasoning,encyclopedia/general knowledge
+mnli3,1090,(v13 replay),76.0,3.0,316.0,363.0,52.0,0.0,100.0,prose,60.0,371,NLI/fact verification,general NLI/paraphrase corpora
+gd_climate_targets,1071,science_health_claims,100.0,,507.0,750.0,100.0,0.0,0.0,prose,0.0,3,topic/domain classification,science/climate
+gd_spiced,1002,science_health_claims,100.0,,361.0,398.0,100.0,0.0,93.0,prose,0.0,1,NLI/fact verification,science/climate
+gd_mtbench_human,970,judge_verifier,100.0,,874.5,1661.0,100.0,0.0,92.0,kv,0.0,2,judge/verifier,AI outputs (judging)
+gd_crowdtruth_mre,963,calibration_distributions,100.0,,419.0,455.0,100.0,0.0,93.0,prose,0.0,3,relation/entity typing,medical/health
+gd_ragtruth_summary,953,judge_verifier,100.0,,983.0,1707.0,100.0,0.0,0.0,prose,0.0,2,judge/verifier,news/politics
+rte,952,(v13 replay),71.0,2.0,305.0,383.0,54.0,0.0,100.0,prose,0.0,287,NLI/fact verification,general NLI/paraphrase corpora
+gd_crossner,950,relations_entities,30.0,13.0,574.0,764.0,100.0,25.0,0.0,prose,0.0,15,relation/entity typing,science/climate
+gd_ropes_sci,941,science_health_claims,100.0,,511.0,607.0,100.0,0.0,0.0,kv,0.0,1,commonsense,science/climate
+gd_bbh_mistake,905,judge_verifier,100.0,,575.0,834.0,100.0,0.0,0.0,kv,0.0,2,judge/verifier,AI outputs (judging)
+qnli,903,(v13 replay),70.0,2.0,275.0,320.0,48.0,0.0,100.0,prose,0.0,294,NLI/fact verification,general NLI/paraphrase corpora
+wiki_stance_afd,901,(v13 replay),100.0,,523.0,900.0,0.0,0.0,100.0,json,0.0,3,stance,encyclopedia/general knowledge
+boolq,896,(v13 replay),100.0,,311.5,389.0,0.0,0.0,100.0,prose,0.0,523,commonsense,encyclopedia/general knowledge
+dbpedia,882,(v13 replay),0.0,9.0,391.0,733.0,48.0,0.0,100.0,prose,0.0,4,topic/domain classification,news/politics
+judge_prm800k,826,(v13 replay),100.0,,568.0,1044.0,0.0,0.0,100.0,prose,0.0,6,judge/verifier,AI outputs (judging)
+condaqa,788,(v13 replay),100.0,,384.0,483.0,0.0,0.0,100.0,prose,0.0,475,NLI/fact verification,general NLI/paraphrase corpora
+br_topv2,770,(v13 replay),25.0,10.0,501.0,678.0,100.0,22.0,100.0,prose,0.0,21,intent/routing,customer support/assistants
+br_wos46985,758,(v13 replay),29.0,7.0,714.5,961.0,100.0,23.0,100.0,prose,0.0,21,topic/domain classification,science/climate
+amazon_polarity,754,(v13 replay),74.0,2.0,312.0,390.0,50.0,0.0,100.0,prose,0.0,244,sentiment/ABSA,reviews
+toxic_conv,729,(v13 replay),76.0,2.0,280.0,355.0,49.0,0.0,100.0,prose,0.0,265,moderation/safety,social media/online comments
+br_mnds,729,(v13 replay),26.0,17.0,1066.0,1533.0,100.0,22.0,100.0,prose,0.0,6,topic/domain classification,news/politics
+gd_check_covid,713,science_health_claims,100.0,,371.0,431.0,100.0,0.0,0.0,prose,0.0,2,NLI/fact verification,medical/health
+br_abcd,707,(v13 replay),25.0,55.0,642.0,1643.0,100.0,8.0,100.0,dialogue,46.0,6,intent/routing,customer support/assistants
+br_congress_policy,699,(v13 replay),29.0,31.0,1387.0,1523.0,100.0,24.0,100.0,prose,0.0,3,topic/domain classification,legal/regulatory
+br_infotabs,689,(v13 replay),28.0,3.0,483.0,624.0,100.0,20.0,100.0,kv,0.0,3,NLI/fact verification,encyclopedia/general knowledge
+proofwriter,687,(v13 replay),0.0,3.0,439.0,487.0,100.0,0.0,100.0,prose,100.0,399,logic/rule reasoning,synthetic logic/puzzles
+br_emobank,671,(v13 replay),27.0,2.0,294.0,322.0,100.0,0.0,100.0,prose,0.0,9,emotion,everyday/commonsense
+gd_gen2_json_fields,670,qa_decisions,57.0,5.0,491.0,656.0,100.0,11.0,0.0,prose,35.0,193,table/numeric reasoning,program-generated business/HR/ops scenarios
+br_cfpb,668,(v13 replay),21.0,8.0,725.0,1042.0,100.0,23.0,100.0,prose,7.0,24,topic/domain classification,finance/business filings
+mnli,661,(v13 replay),100.0,,241.0,280.0,0.0,0.0,100.0,prose,0.0,497,NLI/fact verification,general NLI/paraphrase corpora
+br_star,642,(v13 replay),29.0,24.0,1133.0,1156.0,100.0,20.0,100.0,prose,78.0,3,intent/routing,customer support/assistants
+gd_mediqa_qa,639,science_health_claims,100.0,,505.0,1002.0,100.0,0.0,0.0,prose,0.0,1,knowledge MC (exams/trivia),medical/health
+mrpc,632,(v13 replay),71.0,2.0,294.5,342.0,49.0,0.0,100.0,prose,0.0,208,NLI/fact verification,general NLI/paraphrase corpora
+br_edos,624,(v13 replay),47.0,11.0,465.5,770.0,100.0,15.0,100.0,prose,0.0,7,moderation/safety,social media/online comments
+br_newsmtsc,607,(v13 replay),26.0,3.0,361.0,387.0,100.0,22.0,100.0,prose,0.0,11,sentiment/ABSA,news/politics
+br_newsgroups20,591,(v13 replay),23.0,20.0,1177.0,1435.0,100.0,20.0,100.0,prose,0.0,3,topic/domain classification,news/politics
+fld,574,(v13 replay),0.0,3.0,581.0,824.0,100.0,0.0,100.0,kv,100.0,574,logic/rule reasoning,synthetic logic/puzzles
+gd_biored,539,relations_entities,30.0,8.0,970.0,1134.0,100.0,18.0,0.0,prose,0.0,31,relation/entity typing,medical/health
+yahoo,538,(v13 replay),75.0,8.0,243.5,325.0,0.0,0.0,100.0,prose,0.0,302,topic/domain classification,news/politics
+br_xed_en,499,(v13 replay),32.0,8.0,482.0,504.0,100.0,20.0,100.0,prose,0.0,11,emotion,everyday/commonsense
+br_casino,489,(v13 replay),35.0,10.0,558.0,608.0,100.0,21.0,100.0,prose,0.0,4,intent/routing,everyday/commonsense
+br_politeness_wiki,488,(v13 replay),25.0,3.0,449.0,479.0,100.0,23.0,100.0,prose,100.0,3,commonsense,social media/online comments
+judge_mathderiv,479,(v13 replay),100.0,,271.0,331.0,0.0,0.0,100.0,prose,0.0,6,judge/verifier,AI outputs (judging)
+csqa,478,(v13 replay),0.0,5.0,229.0,261.0,0.0,0.0,100.0,prose,0.0,1,commonsense,encyclopedia/general knowledge
+gd_gen2_probability,478,calibration_distributions,69.0,5.0,358.0,515.0,100.0,8.0,50.0,prose,0.0,203,risk/forecast,program-generated business/HR/ops scenarios
+br_claimbuster,474,(v13 replay),22.0,3.0,347.0,372.0,100.0,22.0,100.0,prose,0.0,3,topic/domain classification,news/politics
+br_ghc,472,(v13 replay),70.0,8.0,473.0,554.0,100.0,10.0,100.0,prose,0.0,6,moderation/safety,social media/online comments
+judge_helpsteer2,461,(v13 replay),100.0,,509.0,765.0,0.0,0.0,100.0,prose,0.0,6,judge/verifier,AI outputs (judging)
+planted_a,448,(v13 replay),100.0,,334.0,347.0,100.0,0.0,100.0,prose,0.0,8,moderation/safety,AI outputs (judging)
+std_evidence,444,(v13 replay),0.0,3.0,464.0,487.0,100.0,0.0,100.0,prose,100.0,9,NLI/fact verification,general NLI/paraphrase corpora
+gd_clickbait16,444,calibration_distributions,100.0,,345.0,356.0,100.0,0.0,91.0,prose,0.0,1,topic/domain classification,social media/online comments
+planted_b,442,(v13 replay),100.0,,329.0,350.0,100.0,0.0,100.0,prose,0.0,9,moderation/safety,AI outputs (judging)
+logiqa2,441,(v13 replay),0.0,4.0,432.0,536.0,0.0,0.0,100.0,prose,1.0,421,logic/rule reasoning,synthetic logic/puzzles
+std_trademark,440,(v13 replay),14.0,5.0,483.0,498.0,100.0,0.0,100.0,kv,0.0,26,ordinal/score,legal/regulatory
+arc,414,(v13 replay),0.0,4.0,259.5,323.0,0.0,0.0,100.0,prose,0.0,1,knowledge MC (exams/trivia),encyclopedia/general knowledge
+pg_numeric,404,numeric,21.0,4.0,730.0,1393.0,4.0,0.0,100.0,kv,0.0,148,table/numeric reasoning,program-generated business/HR/ops scenarios
+br_convabuse,397,(v13 replay),41.0,5.0,407.0,489.0,100.0,17.0,100.0,dialogue,63.0,10,moderation/safety,social media/online comments
+pg_multihop,396,multihop,26.0,3.0,894.5,1890.0,7.0,0.0,100.0,kv,0.0,347,policy/rule application,program-generated business/HR/ops scenarios
+pg_evidence,395,evidence,17.0,4.0,670.0,1519.0,14.0,0.0,100.0,prose,0.0,259,risk/forecast,program-generated business/HR/ops scenarios
+br_mams_acsa,389,(v13 replay),51.0,7.0,619.0,675.0,100.0,12.0,100.0,prose,0.0,22,sentiment/ABSA,reviews
+std_hate,378,(v13 replay),30.0,2.0,310.0,385.0,100.0,0.0,100.0,prose,0.0,58,moderation/safety,social media/online comments
+pg_routing,378,routing,20.0,4.0,733.5,1456.0,0.0,0.0,100.0,table,0.0,203,intent/routing,program-generated business/HR/ops scenarios
+pg_temporal,375,temporal,21.0,3.0,571.0,1478.0,16.0,0.0,100.0,dialogue,0.0,309,policy/rule application,program-generated business/HR/ops scenarios
+yelp5,373,(v13 replay),0.0,5.0,402.0,473.0,49.0,0.0,100.0,prose,0.0,1,sentiment/ABSA,reviews
+pg_policy,371,policy,24.0,3.0,856.0,1246.0,14.0,0.0,100.0,prose,0.0,298,policy/rule application,program-generated business/HR/ops scenarios
+pg_conflict,369,conflict,18.0,4.0,792.0,1608.0,4.0,0.0,100.0,prose,32.0,304,policy/rule application,program-generated business/HR/ops scenarios
+civil_comments,364,(v13 replay),71.0,2.0,290.5,375.0,54.0,0.0,100.0,prose,0.0,161,moderation/safety,social media/online comments
+br_hatemoji_build,362,(v13 replay),57.0,5.0,534.0,550.0,100.0,12.0,100.0,prose,64.0,4,moderation/safety,social media/online comments
+br_fm2,357,(v13 replay),100.0,,330.0,369.0,100.0,0.0,100.0,kv,0.0,1,NLI/fact verification,general NLI/paraphrase corpora
+gd_misogyny_reddit,328,safety_policy_moderation,100.0,,355.5,512.0,100.0,0.0,93.0,prose,0.0,1,moderation/safety,social media/online comments
+yelp,303,(v13 replay),73.0,2.0,299.0,383.0,52.0,0.0,100.0,prose,0.0,140,sentiment/ABSA,reviews
+gd_gen2_long_policy,294,nli_logic_reasoning,50.0,5.0,2630.5,3225.0,100.0,14.0,0.0,kv,0.0,120,policy/rule application,program-generated business/HR/ops scenarios
+hard_affect,292,(v13 replay),8.0,9.0,580.5,1097.0,100.0,0.0,100.0,prose,0.0,103,emotion,program-generated business/HR/ops scenarios
+gd_gen2_tool_selection,290,routing_dialogue,0.0,9.0,853.0,979.0,100.0,30.0,0.0,bullets,0.0,8,tools/function calling,customer support/assistants
+std_hearsay,276,(v13 replay),100.0,,416.0,439.0,100.0,0.0,100.0,prose,0.0,35,policy/rule application,legal/regulatory
+hard_nli_b,276,(v13 replay),37.0,3.0,450.0,581.0,100.0,0.0,100.0,kv,41.0,105,NLI/fact verification,program-generated business/HR/ops scenarios
+hard_policy_a,274,(v13 replay),39.0,7.0,569.0,968.0,100.0,0.0,100.0,kv,0.0,101,policy/rule application,program-generated business/HR/ops scenarios
+hard_scales,272,(v13 replay),21.0,5.0,587.0,724.0,100.0,0.0,100.0,kv,0.0,104,ordinal/score,program-generated business/HR/ops scenarios
+hard_evidence_claims_a,268,(v13 replay),34.0,3.0,638.0,694.0,100.0,0.0,100.0,prose,78.0,74,NLI/fact verification,program-generated business/HR/ops scenarios
+hard_policy_b,256,(v13 replay),39.0,4.0,463.0,604.0,100.0,0.0,100.0,prose,0.0,97,policy/rule application,program-generated business/HR/ops scenarios
+hard_evidence_a,254,(v13 replay),40.0,6.0,801.0,1095.0,100.0,0.0,100.0,prose,0.0,100,policy/rule application,legal/regulatory
+hard_contracts,252,(v13 replay),25.0,8.5,727.5,938.0,100.0,0.0,100.0,prose,0.0,87,topic/domain classification,legal/regulatory
+hard_evidence_b,250,(v13 replay),38.0,5.0,489.0,624.0,100.0,0.0,100.0,prose,0.0,95,policy/rule application,legal/regulatory
+copa,243,(v13 replay),0.0,2.0,213.0,247.0,0.0,0.0,100.0,prose,0.0,2,commonsense,everyday/commonsense
+hard_clinical,242,(v13 replay),27.0,5.0,765.0,1270.0,100.0,0.0,100.0,kv,0.0,97,policy/rule application,medical/health
+hard_evidence_claims_b,242,(v13 replay),26.0,5.0,498.0,725.0,100.0,0.0,100.0,kv,28.0,92,NLI/fact verification,program-generated business/HR/ops scenarios
+hard_nli_a,234,(v13 replay),53.0,5.0,588.0,636.0,100.0,0.0,100.0,kv,0.0,88,NLI/fact verification,program-generated business/HR/ops scenarios
+binj_consistency,226,(v13 replay),26.0,2.0,625.0,686.0,100.0,0.0,100.0,prose,0.0,34,judge/verifier,AI outputs (judging)
+binj_adult,213,(v13 replay),19.0,2.0,516.0,584.0,100.0,0.0,100.0,prose,0.0,21,moderation/safety,social media/online comments
+binj_intent,212,(v13 replay),22.0,2.0,473.5,517.0,100.0,0.0,100.0,prose,0.0,43,moderation/safety,social media/online comments
+clothing,211,(v13 replay),88.0,2.0,313.0,380.0,55.0,0.0,100.0,prose,0.0,70,sentiment/ABSA,reviews
+binj_offensive,203,(v13 replay),17.0,2.0,401.0,481.0,100.0,0.0,100.0,prose,0.0,91,moderation/safety,social media/online comments
+br_steam_aspect,200,(v13 replay),100.0,,471.0,870.0,100.0,0.0,100.0,prose,0.0,8,sentiment/ABSA,reviews
+br_sarcasm_headlines,191,(v13 replay),100.0,,305.0,311.0,100.0,0.0,100.0,prose,0.0,1,sarcasm/irony,social media/online comments
+proc_temporal,188,(v13 replay),0.0,4.0,584.0,649.0,100.0,0.0,100.0,kv,0.0,94,policy/rule application,program-generated business/HR/ops scenarios
+proc_adversarial,186,(v13 replay),0.0,4.0,534.0,604.0,100.0,0.0,100.0,kv,0.0,95,policy/rule application,program-generated business/HR/ops scenarios
+proc_trap,169,(v13 replay),0.0,4.0,543.0,635.0,100.0,0.0,100.0,kv,0.0,103,policy/rule application,program-generated business/HR/ops scenarios
+proc_evidence,165,(v13 replay),0.0,3.0,538.0,617.0,100.0,0.0,100.0,kv,1.0,86,policy/rule application,program-generated business/HR/ops scenarios
+mnli_neutral,164,(v13 replay),100.0,,232.0,266.0,0.0,0.0,100.0,prose,0.0,163,NLI/fact verification,general NLI/paraphrase corpora
+proc_routing,157,(v13 replay),0.0,4.0,708.0,833.0,100.0,0.0,100.0,kv,1.0,95,intent/routing,program-generated business/HR/ops scenarios
+proc_tradeoff,155,(v13 replay),0.0,3.0,544.0,614.0,100.0,0.0,100.0,table,0.0,94,policy/rule application,program-generated business/HR/ops scenarios
+proc_multihop,152,(v13 replay),0.0,3.0,504.0,607.0,100.0,0.0,100.0,table,1.0,95,policy/rule application,program-generated business/HR/ops scenarios
+proc_longpolicy,150,(v13 replay),0.0,4.0,1033.0,1125.0,100.0,0.0,100.0,bullets,3.0,81,policy/rule application,program-generated business/HR/ops scenarios
+hard_codebook_c,150,(v13 replay),18.0,7.0,589.0,747.0,100.0,0.0,100.0,kv,8.0,91,topic/domain classification,government safety/incident reports
+gd_meganegraising,150,calibration_distributions,100.0,,344.0,351.0,100.0,0.0,93.0,prose,0.0,1,NLI/fact verification,everyday/commonsense
+hard_reason_c,137,(v13 replay),26.0,6.0,527.0,603.0,100.0,0.0,100.0,kv,0.0,69,policy/rule application,program-generated business/HR/ops scenarios
+proc_rubric,128,(v13 replay),23.0,4.0,515.0,588.0,100.0,0.0,100.0,kv,0.0,87,policy/rule application,program-generated business/HR/ops scenarios
+hard_policy_c,127,(v13 replay),36.0,5.0,516.0,643.0,100.0,0.0,100.0,kv,0.0,64,policy/rule application,program-generated business/HR/ops scenarios
+hard_nli_c,126,(v13 replay),35.0,5.0,555.0,627.0,100.0,0.0,100.0,prose,0.0,62,NLI/fact verification,program-generated business/HR/ops scenarios
+hard_intent_c,114,(v13 replay),37.0,8.0,594.0,691.0,100.0,0.0,100.0,kv,0.0,58,intent/routing,program-generated business/HR/ops scenarios
+musr_murder_mysteries,111,(v13 replay),0.0,2.0,1330.0,1494.0,0.0,0.0,100.0,prose,0.0,1,logic/rule reasoning,synthetic logic/puzzles
+hard_affect_c,109,(v13 replay),26.0,10.0,563.0,673.0,100.0,0.0,100.0,prose,1.0,65,emotion,program-generated business/HR/ops scenarios
+musr_object_placements,96,(v13 replay),0.0,4.0,1170.0,1358.0,0.0,0.0,100.0,prose,0.0,95,logic/rule reasoning,synthetic logic/puzzles
+musr_team_allocation,91,(v13 replay),0.0,3.0,870.0,940.0,0.0,0.0,100.0,prose,0.0,1,logic/rule reasoning,synthetic logic/puzzles

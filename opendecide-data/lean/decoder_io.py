@@ -126,6 +126,55 @@ def user_msg(row, perm=None) -> str:
     return head + f"OPTIONS:\n{lines}\nAnswer with the letter of the best option."
 
 
+def _template_text(tok) -> str:
+    t = getattr(tok, "chat_template", None) or ""
+    return " ".join(str(v) for v in t.values()) if isinstance(t, dict) else str(t)
+
+
+def is_qwen35(tok) -> bool:
+    """A Qwen3.5 tokenizer: by its name, or (an adapter folder's copy, whose name is the folder) by its chat template
+    (ChatML with the enable_thinking switch and the vision tokens, which the Qwen3 instruct templates lack)."""
+    name = str(getattr(tok, "name_or_path", "") or "").lower().replace("_", ".")
+    t = _template_text(tok)
+    return "qwen3.5" in name or ("<|im_start|>" in t and "enable_thinking" in t and "<|vision_start|>" in t)
+
+
+def chat_kwargs(tok) -> dict:
+    """apply_chat_template switches: thinking is always off (recipe v4 F2). Any other server that applies this chat
+    template itself must pass the same switch (e.g. an OpenAI-compatible server: chat_template_kwargs below)."""
+    return {"enable_thinking": False} if ("enable_thinking" in (tok.chat_template or "") or is_qwen35(tok)) else {}
+
+
+SERVER_CHAT_TEMPLATE_KWARGS = {"enable_thinking": False}  # for any external server call (recipe v4 F2)
+
+
+def render_chat(tok, system: str, user: str) -> str:
+    """The rendered prompt string (chat template applied, before tokenization) of one system + user turn. Templates
+    without a system role fold it into the user turn; for Qwen3.5, whose template has a system role, that fallback would
+    silently render a DIFFERENT prompt than training, so it raises instead (recipe v4 F2)."""
+    kw = chat_kwargs(tok)
+    msgs = [{"role": "system", "content": system}, {"role": "user", "content": user}]
+    try:
+        return tok.apply_chat_template(msgs, tokenize=False, add_generation_prompt=True, **kw)
+    except Exception as e:  # templates without a system role: fold it into the user turn
+        if is_qwen35(tok):
+            raise RuntimeError(f"decoder_io.render_chat: the Qwen3.5 chat template failed ({type(e).__name__}: {e}); "
+                               f"refusing the fold-system-into-user fallback (it renders a different prompt)") from e
+        msgs = [{"role": "user", "content": system + "\n\n" + user}]
+        return tok.apply_chat_template(msgs, tokenize=False, add_generation_prompt=True, **kw)
+
+
+def prompt_texts(ro, rows, perms=None) -> list:
+    """The exact strings cand_logits (eager and CUDA-graph paths) tokenizes: a row's own `_prompt` (caller-built chat
+    text) or ro.prompt(row, perm)."""
+    perms = perms or [None] * len(rows)
+    return [r.get("_prompt") or ro.prompt(r, p) for r, p in zip(rows, perms)]
+
+
+def prompt_sha256(text: str) -> str:
+    return hashlib.sha256(text.encode("utf-8")).hexdigest()
+
+
 class Readout:
     """Candidate tokens per answer. Every vocabulary token that decodes (whitespace-stripped) to the answer string is
     kept, e.g. Gemma-4 has 'A', '▁A' and the byte token '<0x41>'; the answer's logit is the logsumexp over them.
@@ -165,13 +214,7 @@ class Readout:
 
     def prompt(self, row, perm=None) -> str:
         system = CYGNET_SYSTEM if STYLE == "cygnet" else SYSTEM
-        msgs = [{"role": "system", "content": system}, {"role": "user", "content": user_msg(row, perm)}]
-        kw = {"enable_thinking": False} if "enable_thinking" in (self.tok.chat_template or "") else {}
-        try:
-            return self.tok.apply_chat_template(msgs, tokenize=False, add_generation_prompt=True, **kw)
-        except Exception:  # templates without a system role: fold it into the user turn
-            msgs = [{"role": "user", "content": system + "\n\n" + user_msg(row, perm)}]
-            return self.tok.apply_chat_template(msgs, tokenize=False, add_generation_prompt=True, **kw)
+        return render_chat(self.tok, system, user_msg(row, perm))
 
     def cand(self, row):
         row = as_letter_row(row)
@@ -238,6 +281,106 @@ def resolve_prompt(adapters, base=None, layout=None, style=None, revision=None, 
     return info
 
 
+def load_tokenizer(path_or_id, adapter=None, revision=None):
+    """The tokenizer load() uses: the adapter folder's own copy when it has one, else the base at `revision`."""
+    from transformers import AutoTokenizer
+    rev = {"revision": revision} if revision else {}
+    tok_src = adapter if adapter and (Path(adapter) / "tokenizer_config.json").exists() else None
+    tok = AutoTokenizer.from_pretrained(tok_src) if tok_src else AutoTokenizer.from_pretrained(path_or_id, **rev)
+    tok.padding_side = "right"
+    if tok.pad_token is None:
+        tok.pad_token = tok.eos_token
+    return tok
+
+
+def adapter_prompt_path(path_or_id, adapter, revision=None, layout=None, style=None, force=False) -> dict:
+    """What load(path_or_id, adapter=adapter, ...) would render prompts with, without loading the model: the tokenizer
+    and the resolved layout and style (the dev gate read `od_gcp.py predict` and the serving paths both load this way)."""
+    info = resolve_prompt([adapter] if adapter else [], path_or_id, layout, style, revision, force)
+    return {"tok": load_tokenizer(path_or_id, adapter=adapter, revision=info["revision"]),
+            "layout": info["layout"] if info["layout"] is not None else LAYOUT,
+            "style": info["style"] if info["style"] is not None else STYLE, "src": str(adapter or path_or_id)}
+
+
+# Recipe v4 F2: three fixed rows (one choice, one yes/no, one Score), each rendered in its given and its reversed order.
+F2_ROWS = (
+    {"id": "f2_choice", "qtype": "choice", "state": "Ticket 4411: the customer was charged twice for one order and asks "
+     "for the extra charge back.", "instructions": "Which team should handle this ticket?",
+     "options": ["Billing", "Shipping", "Technical support", "Account security"], "gold": "Billing",
+     "card": "- Billing: charges, refunds and invoices\n- Shipping: delivery and tracking"},
+    {"id": "f2_yesno", "qtype": "noul", "state": "Policy: refunds are allowed within 30 days of purchase. The item was "
+     "bought 12 days ago.", "instructions": "Is the customer eligible for a refund?", "options": None, "gold": 1,
+     "card": "- Yes: the request meets every condition of the policy\n- No: at least one condition fails"},
+    {"id": "f2_score", "qtype": "choice", "state": "Commit: bump lockfile and change the auth middleware.\n"
+     " 3 files changed, 41 insertions(+), 7 deletions(-)", "instructions": "Which risk level applies under this rubric?",
+     "options": ["none", "low", "medium", "high", "critical"], "gold": "medium",
+     "meta": {"option_level": {"none": 0, "low": 1, "medium": 2, "high": 3, "critical": 4}}},
+)
+
+
+def f2_views(rows=F2_ROWS):
+    """(rows, perms): every row in its given order and in the exact reversal (yes/no: the Yes/No letters swapped in
+    cygnet style; the od style shows no letters, so None)."""
+    out_r, out_p = [], []
+    for r in rows:
+        n = len(r["options"]) if r["qtype"] == "choice" else 2
+        for rev in (False, True):
+            if r["qtype"] == "noul" and STYLE != "cygnet":
+                if rev:
+                    continue
+                p = None
+            else:
+                p = list(range(n))[::-1] if rev else list(range(n))
+            out_r.append(r)
+            out_p.append(p)
+    return out_r, out_p
+
+
+def rendered_prompt_shas(path: dict, rows=F2_ROWS) -> dict:
+    """sha256 of the rendered prompt (chat template applied, before tokenization) of each F2 view, rendered by
+    prompt_texts (the cand_logits text path) with this path's tokenizer, layout and style. The module's LAYOUT and
+    STYLE are restored afterwards."""
+    global LAYOUT, STYLE
+    saved = (LAYOUT, STYLE)
+    try:
+        LAYOUT, STYLE = path["layout"], path["style"]
+        vr, vp = f2_views(rows)
+        ro = Readout.__new__(Readout)  # Readout.prompt needs only the tokenizer (skips the vocabulary scan)
+        ro.tok = path["tok"]
+        texts = prompt_texts(ro, vr, vp)
+        return {"layout": LAYOUT, "style": STYLE, "qwen35": is_qwen35(path["tok"]), "chat_kwargs": chat_kwargs(path["tok"]),
+                "chat_template_sha": hashlib.sha256(_template_text(path["tok"]).encode()).hexdigest(),
+                "src": path.get("src"), "views": [f"{r['id']}:{'rev' if p and p != sorted(p) else 'given'}"
+                                                  for r, p in zip(vr, vp)],
+                "sha": [prompt_sha256(t) for t in texts]}
+    finally:
+        LAYOUT, STYLE = saved
+
+
+def assert_prompt_identity(paths: dict, rows=F2_ROWS) -> dict:
+    """Recipe v4 F2 pre-flight: the rendered prompt of every F2 view has the same sha256 on every path
+    ({name: {"tok", "layout", "style"}}, e.g. train / gate / serve). Qwen3.5 paths must also run with thinking off.
+    Raises RuntimeError on any difference; returns the per-path report."""
+    rep = {k: rendered_prompt_shas(p, rows) for k, p in paths.items()}
+    bad = []
+    names = list(rep)
+    for k in names[1:]:
+        if rep[k]["views"] != rep[names[0]]["views"]:
+            bad.append(f"{k}: views {rep[k]['views']} != {rep[names[0]]['views']}")
+            continue
+        for v, a, b in zip(rep[k]["views"], rep[names[0]]["sha"], rep[k]["sha"]):
+            if a != b:
+                bad.append(f"{v}: {names[0]} {a[:12]} != {k} {b[:12]} (layout {rep[names[0]]['layout']}/{rep[k]['layout']}, "
+                           f"style {rep[names[0]]['style']}/{rep[k]['style']}, template "
+                           f"{rep[names[0]]['chat_template_sha'][:12]}/{rep[k]['chat_template_sha'][:12]})")
+    for k, r in rep.items():
+        if r["qwen35"] and r["chat_kwargs"].get("enable_thinking") is not False:
+            bad.append(f"{k}: Qwen3.5 tokenizer without enable_thinking=False")
+    if bad:
+        raise RuntimeError("F2 rendered-prompt identity failed: " + "; ".join(bad[:10]))
+    return rep
+
+
 def load(path_or_id, dev="cuda", adapter=None, dtype=torch.bfloat16, revision=None, layout=None, style=None,
          force=False, return_info=False):
     """With an adapter, LAYOUT, STYLE and the base revision come from its saved training cfg (resolve_prompt); an
@@ -246,7 +389,7 @@ def load(path_or_id, dev="cuda", adapter=None, dtype=torch.bfloat16, revision=No
     control plane re-installed; it survives merge_and_unload (its hooks sit on the decoder layers). LOAD_INFO (and the
     third return value with return_info=True) records what was resolved, for the preds meta."""
     global LAYOUT, STYLE, LOAD_INFO, _SET_BY
-    from transformers import AutoModelForCausalLM, AutoTokenizer
+    from transformers import AutoModelForCausalLM
     pxm = _prism_x()
     if pxm is not None:
         pxm.uninstall()  # a previous model's control plane (and the layout it set) never carries over
@@ -264,11 +407,7 @@ def load(path_or_id, dev="cuda", adapter=None, dtype=torch.bfloat16, revision=No
                                               "set; pass layout= to be explicit", **_SET_BY}}), flush=True)
     revision = info["revision"]
     rev = {"revision": revision} if revision else {}  # an exact Hugging Face commit of the base (relay runs pin it)
-    tok_src = adapter if adapter and (Path(adapter) / "tokenizer_config.json").exists() else None
-    tok = AutoTokenizer.from_pretrained(tok_src) if tok_src else AutoTokenizer.from_pretrained(path_or_id, **rev)
-    tok.padding_side = "right"
-    if tok.pad_token is None:
-        tok.pad_token = tok.eos_token
+    tok = load_tokenizer(path_or_id, adapter=adapter, revision=revision)
     try:
         model = AutoModelForCausalLM.from_pretrained(path_or_id, dtype=dtype, attn_implementation="sdpa", **rev)
     except (ValueError, KeyError):  # vision-language checkpoints (e.g. Qwen3.5): use the text path of the full model
@@ -349,7 +488,7 @@ class GraphRunner:
     @torch.no_grad()
     def cand_logits(self, ro, rows, perms=None):
         perms = perms or [None] * len(rows)
-        texts = [r.get("_prompt") or ro.prompt(r, p) for r, p in zip(rows, perms)]
+        texts = prompt_texts(ro, rows, perms)
         ids = [torch.tensor(x, dtype=torch.long) for x in self.tok(texts, add_special_tokens=False)["input_ids"]]
         n = [len(x) for x in ids]
         B = next((b for b in self.batches if b >= len(rows)), None)
@@ -437,7 +576,7 @@ def cand_logits(model, ro, rows, dev, perms=None):
                 null = cand_logits(model, ro, prism_x.null_rows(rows), dev, perms=perms)
         finally:
             prism_x.STATE["in_null"] = False
-    texts = [r.get("_prompt") or ro.prompt(r, p) for r, p in zip(rows, perms)]  # _prompt: caller-built chat text
+    texts = prompt_texts(ro, rows, perms)  # _prompt: caller-built chat text
     enc = ro.tok(texts, add_special_tokens=False, truncation=True, max_length=MAX_LEN, padding="longest",
                  pad_to_multiple_of=PAD_MULTIPLE, return_tensors="pt", return_offsets_mapping=WRITEBLOCK or px)
     off = enc.pop("offset_mapping") if (WRITEBLOCK or px) else None

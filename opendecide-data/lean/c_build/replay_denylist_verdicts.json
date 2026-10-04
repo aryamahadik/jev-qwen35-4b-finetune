@@ -1,0 +1,4067 @@
+{
+ "program": "c_src/common/denylist.py",
+ "version": "1.2",
+ "program_sha256": "e268d5667f181bbab47428df2b8e2ee6126a5091dc93e12b0a5f7acd09d6e1c6",
+ "aliases_sha256": "40eeb47e2f379ea8bcde4e6f562a1e1869e35af8d80773d3f7e16ba874d4479b",
+ "denylist": "lean/c_build/denylist.json",
+ "denylist_sha256": "52b91ef3799c393cdb0ece5ee1b7df25c53ef09bff52fab147271f77d707ef88",
+ "run": "replay",
+ "query": "lean/c_build/replay_denylist_query.json",
+ "query_sha256": "469ee6598dd83b231160b4c5aa1747c56752a56e3282b5dc4f65bb1fcf41f31d",
+ "created_utc": "2026-10-03T20:47:37Z",
+ "canonical": true,
+ "ohs3_part": "checked in-process (selection avoid_or_locked; matches shown only as 'ohs3-avoid')",
+ "ohs3_platform_alias_suppressed_entries": 1,
+ "platform_rule": "RULED (PREREG_FINAL.md A16 a): a bare platform word (Wikipedia, Reddit, GitHub, arXiv, Zenodo, PubMed, ...) never matches on its own; real text overlap is caught by the counts-only n-gram decontamination before every freeze",
+ "rulings": {
+  "platform_words": "RULED (PREREG_FINAL.md A16 a): a bare platform word (Wikipedia, Reddit, GitHub, arXiv, Zenodo, PubMed, ...) never matches on its own; real text overlap is caught by the counts-only n-gram decontamination before every freeze",
+  "selection": "RULED (PREREG_FINAL.md A16 c): 'locked' counts as 'avoid'",
+  "label_quality": "RULED (PREREG_FINAL.md A16 b): an entry rejected only for label quality (silver or noisy labels) is no_new_rows (category label_quality); contamination, licence, forbidden-task, dev and eval entries stay taint"
+ },
+ "sealed_blocklist": "not supplied",
+ "provisional": [],
+ "notes": [
+  "sealed block-list not supplied (--sealed-blocklist): sealed-suite text overlap is caught by the counts-only n-gram decontamination against the sealed exports before every freeze (A16 a)"
+ ],
+ "rules": "taint (scope dataset) -> drop the source; taint on one of several meta.dataset/domain values -> part (drop only those rows); scope split -> part 'split' (the sampler keeps only rows it proves are from a train split, fail closed); every element of `parts` applies; dev seen-source name hit only -> keep (dev_seen_exception); no_new_rows (incl. label_quality, A16 b) -> keep (section 5 licence rules still apply); a bare platform word never matches (A16 a)",
+ "counts": {
+  "sources": 204,
+  "hit": 89,
+  "taint_hit": 48,
+  "no_new_rows_only": 41,
+  "drop_whole": 21,
+  "drop_part": 5,
+  "keep_dev_seen": 22,
+  "no_hit": 115,
+  "ohs3_hit": 1,
+  "sealed_hit": 0
+ },
+ "verdicts": {
+  "amazon_polarity": {
+   "hit": true,
+   "verdict": "drop",
+   "class": "taint",
+   "entry": "amazon_polarity/amazon_polarity",
+   "part": null,
+   "parts": [],
+   "dev_seen_exception": false,
+   "matches": [
+    {
+     "entry": "amazon_polarity/amazon_polarity",
+     "id": "forbidden:amazon_polarity/amazon_polarity",
+     "class": "taint",
+     "cat": "forbidden_task",
+     "scope": "dataset",
+     "field": "name",
+     "alias": "amazon polarity"
+    }
+   ]
+  },
+  "arc": {
+   "hit": true,
+   "verdict": "drop_part",
+   "class": "taint",
+   "entry": "Decision Index test: ARC-Easy",
+   "part": {
+    "field": "split",
+    "values": [
+     "test",
+     "validation",
+     "valid",
+     "dev",
+     "eval"
+    ],
+    "rule": "train_provenance",
+    "note": "only test/dev/eval items are tainted. Fail closed: the sampler keeps a row only if it proves the row comes from a train split (a group_id split token, a train-split marker in meta.dataset, or a builder-declared split it re-checks in the builder source) and drops every other row (RUNBOOK_replay_reads.md 3.2)"
+   },
+   "parts": [
+    {
+     "field": "split",
+     "values": [
+      "test",
+      "validation",
+      "valid",
+      "dev",
+      "eval"
+     ],
+     "rule": "train_provenance",
+     "note": "only test/dev/eval items are tainted. Fail closed: the sampler keeps a row only if it proves the row comes from a train split (a group_id split token, a train-split marker in meta.dataset, or a builder-declared split it re-checks in the builder source) and drops every other row (RUNBOOK_replay_reads.md 3.2)"
+    }
+   ],
+   "dev_seen_exception": false,
+   "matches": [
+    {
+     "entry": "ARC",
+     "id": "rej:mcq_exams#10.0",
+     "class": "no_new_rows",
+     "cat": "already_used",
+     "scope": "dataset",
+     "field": "name",
+     "alias": "arc"
+    },
+    {
+     "entry": "Decision Index test: ARC-Easy",
+     "id": "di:ARC-Easy",
+     "class": "taint",
+     "cat": "di_test",
+     "scope": "split",
+     "field": "name",
+     "alias": "arc"
+    },
+    {
+     "entry": "Decision Index test: ARC-Challenge",
+     "id": "di:ARC-Challenge",
+     "class": "taint",
+     "cat": "di_test",
+     "scope": "split",
+     "field": "name",
+     "alias": "arc"
+    }
+   ]
+  },
+  "banking77": {
+   "hit": true,
+   "verdict": "drop",
+   "class": "taint",
+   "entry": "Banking77",
+   "part": null,
+   "parts": [],
+   "dev_seen_exception": false,
+   "matches": [
+    {
+     "entry": "Banking77 extra train rows",
+     "id": "rej:intent_business_support#3.1",
+     "class": "no_new_rows",
+     "cat": "extra_rows",
+     "scope": "dataset",
+     "field": "name",
+     "alias": "banking 77"
+    },
+    {
+     "entry": "Banking77 (in used_sources)",
+     "id": "rej:large_labelsets#2.6",
+     "class": "no_new_rows",
+     "cat": "already_used",
+     "scope": "dataset",
+     "field": "name",
+     "alias": "banking77"
+    },
+    {
+     "entry": "Banking77",
+     "id": "3G#15.20",
+     "class": "taint",
+     "cat": "forbidden_task",
+     "scope": "dataset",
+     "field": "name",
+     "alias": "banking 77"
+    },
+    {
+     "entry": "BANKING77 (dev source, DI test)",
+     "id": "3G#20.0",
+     "class": "taint",
+     "cat": "dev_eval",
+     "scope": "split",
+     "field": "name",
+     "alias": "banking77"
+    },
+    {
+     "entry": "banking77",
+     "id": "forbidden:banking77",
+     "class": "taint",
+     "cat": "forbidden_task",
+     "scope": "dataset",
+     "field": "name",
+     "alias": "banking 77"
+    },
+    {
+     "entry": "CLINC150 and Banking77 test splits (GOLDEN_SPEC 'also forbidden')",
+     "id": "golden_spec:CLINC150 and Banking77 test splits",
+     "class": "taint",
+     "cat": "dev_eval",
+     "scope": "split",
+     "field": "name",
+     "alias": "banking77"
+    },
+    {
+     "entry": "Decision Index test: BANKING77",
+     "id": "di:BANKING77",
+     "class": "taint",
+     "cat": "di_test",
+     "scope": "split",
+     "field": "name",
+     "alias": "BANKING77"
+    },
+    {
+     "entry": "dev source banking77 (dev, dev_claims, dev_negwords, devp_card)",
+     "id": "dev:banking77",
+     "class": "taint",
+     "cat": "dev_eval",
+     "scope": "dataset",
+     "field": "name",
+     "alias": "dev:banking77"
+    },
+    {
+     "entry": "eval source banking77 (eval, eval_card, eval_hc, eval_long, eval_multi)",
+     "id": "eval:banking77",
+     "class": "taint",
+     "cat": "dev_eval",
+     "scope": "split",
+     "field": "name",
+     "alias": "dev:banking77"
+    }
+   ]
+  },
+  "binj_adult": {
+   "hit": false,
+   "verdict": "keep",
+   "class": null,
+   "entry": null,
+   "part": null,
+   "parts": [],
+   "dev_seen_exception": false,
+   "matches": []
+  },
+  "binj_consistency": {
+   "hit": false,
+   "verdict": "keep",
+   "class": null,
+   "entry": null,
+   "part": null,
+   "parts": [],
+   "dev_seen_exception": false,
+   "matches": []
+  },
+  "binj_intent": {
+   "hit": false,
+   "verdict": "keep",
+   "class": null,
+   "entry": null,
+   "part": null,
+   "parts": [],
+   "dev_seen_exception": false,
+   "matches": []
+  },
+  "binj_offensive": {
+   "hit": true,
+   "verdict": "drop_part",
+   "class": "taint",
+   "entry": "eval source offensive (eval_opi)",
+   "part": {
+    "field": "split",
+    "values": [
+     "test",
+     "validation",
+     "valid",
+     "dev",
+     "eval"
+    ],
+    "rule": "train_provenance",
+    "note": "only test/dev/eval items are tainted. Fail closed: the sampler keeps a row only if it proves the row comes from a train split (a group_id split token, a train-split marker in meta.dataset, or a builder-declared split it re-checks in the builder source) and drops every other row (RUNBOOK_replay_reads.md 3.2)"
+   },
+   "parts": [
+    {
+     "field": "split",
+     "values": [
+      "test",
+      "validation",
+      "valid",
+      "dev",
+      "eval"
+     ],
+     "rule": "train_provenance",
+     "note": "only test/dev/eval items are tainted. Fail closed: the sampler keeps a row only if it proves the row comes from a train split (a group_id split token, a train-split marker in meta.dataset, or a builder-declared split it re-checks in the builder source) and drops every other row (RUNBOOK_replay_reads.md 3.2)"
+    }
+   ],
+   "dev_seen_exception": false,
+   "matches": [
+    {
+     "entry": "eval source offensive (eval_opi)",
+     "id": "eval:offensive",
+     "class": "taint",
+     "cat": "dev_eval",
+     "scope": "split",
+     "field": "name",
+     "alias": "dev:offensive"
+    }
+   ]
+  },
+  "boolq": {
+   "hit": true,
+   "verdict": "drop",
+   "class": "taint",
+   "entry": "BoolQ",
+   "part": null,
+   "parts": [],
+   "dev_seen_exception": false,
+   "matches": [
+    {
+     "entry": "BoolQ",
+     "id": "3G#15.15",
+     "class": "taint",
+     "cat": "forbidden_task",
+     "scope": "dataset",
+     "field": "name",
+     "alias": "boolq"
+    },
+    {
+     "entry": "boolq-natural-perturbations",
+     "id": "forbidden:boolq-natural-perturbations",
+     "class": "taint",
+     "cat": "forbidden_task",
+     "scope": "dataset",
+     "field": "name",
+     "alias": "boolq"
+    },
+    {
+     "entry": "super_glue/boolq",
+     "id": "forbidden:super_glue/boolq",
+     "class": "taint",
+     "cat": "forbidden_task",
+     "scope": "dataset",
+     "field": "name",
+     "alias": "boolq"
+    },
+    {
+     "entry": "ohs3-avoid",
+     "class": "taint"
+    }
+   ]
+  },
+  "br_abcd": {
+   "hit": true,
+   "verdict": "keep_no_new_rows",
+   "class": "no_new_rows",
+   "entry": "ABCD extra rows",
+   "part": null,
+   "parts": [],
+   "dev_seen_exception": false,
+   "matches": [
+    {
+     "entry": "ABCD extra rows",
+     "id": "rej:intent_business_support#17.0",
+     "class": "no_new_rows",
+     "cat": "extra_rows",
+     "scope": "dataset",
+     "field": "name",
+     "alias": "abcd"
+    },
+    {
+     "entry": "ABCD next action",
+     "id": "rej:routing_dialogue#7.0",
+     "class": "no_new_rows",
+     "cat": "already_used",
+     "scope": "dataset",
+     "field": "name",
+     "alias": "abcd"
+    },
+    {
+     "entry": "ABCD next action",
+     "id": "rej:routing_dialogue#7.0",
+     "class": "no_new_rows",
+     "cat": "already_used",
+     "scope": "dataset",
+     "field": "dataset",
+     "alias": "action based conversations"
+    },
+    {
+     "entry": "ABCD extra rows",
+     "id": "rej:intent_business_support#17.0",
+     "class": "no_new_rows",
+     "cat": "extra_rows",
+     "scope": "dataset",
+     "field": "dataset",
+     "alias": "action based conversations dataset"
+    },
+    {
+     "entry": "ABCD extra rows",
+     "id": "rej:intent_business_support#17.0",
+     "class": "no_new_rows",
+     "cat": "extra_rows",
+     "scope": "dataset",
+     "field": "domain",
+     "alias": "abcd"
+    },
+    {
+     "entry": "ABCD next action",
+     "id": "rej:routing_dialogue#7.0",
+     "class": "no_new_rows",
+     "cat": "already_used",
+     "scope": "dataset",
+     "field": "domain",
+     "alias": "abcd"
+    }
+   ]
+  },
+  "br_casino": {
+   "hit": true,
+   "verdict": "keep_no_new_rows",
+   "class": "no_new_rows",
+   "entry": "CaSiNo",
+   "part": null,
+   "parts": [],
+   "dev_seen_exception": false,
+   "matches": [
+    {
+     "entry": "CaSiNo",
+     "id": "rej:routing_dialogue#7.4",
+     "class": "no_new_rows",
+     "cat": "already_used",
+     "scope": "dataset",
+     "field": "name",
+     "alias": "casino"
+    },
+    {
+     "entry": "CaSiNo",
+     "id": "rej:routing_dialogue#7.4",
+     "class": "no_new_rows",
+     "cat": "already_used",
+     "scope": "dataset",
+     "field": "dataset",
+     "alias": "campsite negotiation"
+    },
+    {
+     "entry": "CaSiNo",
+     "id": "rej:routing_dialogue#7.4",
+     "class": "no_new_rows",
+     "cat": "already_used",
+     "scope": "dataset",
+     "field": "domain",
+     "alias": "casino"
+    }
+   ]
+  },
+  "br_cfpb": {
+   "hit": true,
+   "verdict": "keep_no_new_rows",
+   "class": "no_new_rows",
+   "entry": "CFPB consumer complaints",
+   "part": null,
+   "parts": [],
+   "dev_seen_exception": false,
+   "matches": [
+    {
+     "entry": "CFPB consumer complaints",
+     "id": "rej:routing_dialogue#6.0",
+     "class": "no_new_rows",
+     "cat": "already_used",
+     "scope": "dataset",
+     "field": "name",
+     "alias": "cfpb"
+    },
+    {
+     "entry": "CFPB consumer complaints",
+     "id": "rej:routing_dialogue#6.0",
+     "class": "no_new_rows",
+     "cat": "already_used",
+     "scope": "dataset",
+     "field": "dataset",
+     "alias": "consumer finance complaints"
+    },
+    {
+     "entry": "CFPB consumer complaints",
+     "id": "rej:routing_dialogue#6.0",
+     "class": "no_new_rows",
+     "cat": "already_used",
+     "scope": "dataset",
+     "field": "domain",
+     "alias": "cfpb"
+    }
+   ]
+  },
+  "br_claimbuster": {
+   "hit": false,
+   "verdict": "keep",
+   "class": null,
+   "entry": null,
+   "part": null,
+   "parts": [],
+   "dev_seen_exception": false,
+   "matches": []
+  },
+  "br_congress_policy": {
+   "hit": false,
+   "verdict": "keep",
+   "class": null,
+   "entry": null,
+   "part": null,
+   "parts": [],
+   "dev_seen_exception": false,
+   "matches": []
+  },
+  "br_convabuse": {
+   "hit": true,
+   "verdict": "keep_no_new_rows",
+   "class": "no_new_rows",
+   "entry": "ConvAbuse severity",
+   "part": null,
+   "parts": [],
+   "dev_seen_exception": false,
+   "matches": [
+    {
+     "entry": "ConvAbuse severity",
+     "id": "rej:ordinal_scales#10.1",
+     "class": "no_new_rows",
+     "cat": "already_used",
+     "scope": "dataset",
+     "field": "name",
+     "alias": "conv abuse"
+    },
+    {
+     "entry": "ConvAbuse severity",
+     "id": "3G#7.1",
+     "class": "no_new_rows",
+     "cat": "already_used",
+     "scope": "dataset",
+     "field": "name",
+     "alias": "convabuse"
+    },
+    {
+     "entry": "ConvAbuse severity",
+     "id": "rej:ordinal_scales#10.1",
+     "class": "no_new_rows",
+     "cat": "already_used",
+     "scope": "dataset",
+     "field": "dataset",
+     "alias": "conv abuse"
+    },
+    {
+     "entry": "ConvAbuse severity",
+     "id": "3G#7.1",
+     "class": "no_new_rows",
+     "cat": "already_used",
+     "scope": "dataset",
+     "field": "dataset",
+     "alias": "convabuse"
+    },
+    {
+     "entry": "ConvAbuse severity",
+     "id": "rej:ordinal_scales#10.1",
+     "class": "no_new_rows",
+     "cat": "already_used",
+     "scope": "dataset",
+     "field": "domain",
+     "alias": "conv abuse"
+    },
+    {
+     "entry": "ConvAbuse severity",
+     "id": "3G#7.1",
+     "class": "no_new_rows",
+     "cat": "already_used",
+     "scope": "dataset",
+     "field": "domain",
+     "alias": "convabuse"
+    }
+   ]
+  },
+  "br_edos": {
+   "hit": false,
+   "verdict": "keep",
+   "class": null,
+   "entry": null,
+   "part": null,
+   "parts": [],
+   "dev_seen_exception": false,
+   "matches": []
+  },
+  "br_emobank": {
+   "hit": true,
+   "verdict": "keep_no_new_rows",
+   "class": "no_new_rows",
+   "entry": "EmoBank per-rater votes",
+   "part": null,
+   "parts": [],
+   "dev_seen_exception": false,
+   "matches": [
+    {
+     "entry": "EmoBank per-rater votes",
+     "id": "rej:calibration_distributions#24.0",
+     "class": "no_new_rows",
+     "cat": "already_used",
+     "scope": "dataset",
+     "field": "name",
+     "alias": "emobank"
+    },
+    {
+     "entry": "EmoBank",
+     "id": "rej:ordinal_scales#10.0",
+     "class": "no_new_rows",
+     "cat": "already_used",
+     "scope": "dataset",
+     "field": "name",
+     "alias": "emobank"
+    },
+    {
+     "entry": "EmoBank",
+     "id": "3G#7.0",
+     "class": "no_new_rows",
+     "cat": "already_used",
+     "scope": "dataset",
+     "field": "name",
+     "alias": "emobank"
+    },
+    {
+     "entry": "EmoBank per-rater votes",
+     "id": "rej:calibration_distributions#24.0",
+     "class": "no_new_rows",
+     "cat": "already_used",
+     "scope": "dataset",
+     "field": "dataset",
+     "alias": "julielab/emobank"
+    },
+    {
+     "entry": "EmoBank",
+     "id": "rej:ordinal_scales#10.0",
+     "class": "no_new_rows",
+     "cat": "already_used",
+     "scope": "dataset",
+     "field": "dataset",
+     "alias": "emobank"
+    },
+    {
+     "entry": "EmoBank",
+     "id": "3G#7.0",
+     "class": "no_new_rows",
+     "cat": "already_used",
+     "scope": "dataset",
+     "field": "dataset",
+     "alias": "emobank"
+    },
+    {
+     "entry": "EmoBank per-rater votes",
+     "id": "rej:calibration_distributions#24.0",
+     "class": "no_new_rows",
+     "cat": "already_used",
+     "scope": "dataset",
+     "field": "domain",
+     "alias": "emobank"
+    },
+    {
+     "entry": "EmoBank",
+     "id": "rej:ordinal_scales#10.0",
+     "class": "no_new_rows",
+     "cat": "already_used",
+     "scope": "dataset",
+     "field": "domain",
+     "alias": "emobank"
+    },
+    {
+     "entry": "EmoBank",
+     "id": "3G#7.0",
+     "class": "no_new_rows",
+     "cat": "already_used",
+     "scope": "dataset",
+     "field": "domain",
+     "alias": "emobank"
+    }
+   ]
+  },
+  "br_fm2": {
+   "hit": false,
+   "verdict": "keep",
+   "class": null,
+   "entry": null,
+   "part": null,
+   "parts": [],
+   "dev_seen_exception": false,
+   "matches": []
+  },
+  "br_ghc": {
+   "hit": false,
+   "verdict": "keep",
+   "class": null,
+   "entry": null,
+   "part": null,
+   "parts": [],
+   "dev_seen_exception": false,
+   "matches": []
+  },
+  "br_hatemoji_build": {
+   "hit": false,
+   "verdict": "keep",
+   "class": null,
+   "entry": null,
+   "part": null,
+   "parts": [],
+   "dev_seen_exception": false,
+   "matches": []
+  },
+  "br_infotabs": {
+   "hit": false,
+   "verdict": "keep",
+   "class": null,
+   "entry": null,
+   "part": null,
+   "parts": [],
+   "dev_seen_exception": false,
+   "matches": []
+  },
+  "br_mams_acsa": {
+   "hit": false,
+   "verdict": "keep",
+   "class": null,
+   "entry": null,
+   "part": null,
+   "parts": [],
+   "dev_seen_exception": false,
+   "matches": []
+  },
+  "br_mnds": {
+   "hit": false,
+   "verdict": "keep",
+   "class": null,
+   "entry": null,
+   "part": null,
+   "parts": [],
+   "dev_seen_exception": false,
+   "matches": []
+  },
+  "br_newsgroups20": {
+   "hit": false,
+   "verdict": "keep",
+   "class": null,
+   "entry": null,
+   "part": null,
+   "parts": [],
+   "dev_seen_exception": false,
+   "matches": []
+  },
+  "br_newsmtsc": {
+   "hit": true,
+   "verdict": "drop",
+   "class": "taint",
+   "entry": "NewsMTSC",
+   "part": null,
+   "parts": [],
+   "dev_seen_exception": false,
+   "matches": [
+    {
+     "entry": "NewsMTSC",
+     "id": "3G#5.0",
+     "class": "taint",
+     "cat": "licence",
+     "scope": "dataset",
+     "field": "name",
+     "alias": "news mtsc"
+    },
+    {
+     "entry": "NewsMTSC",
+     "id": "3G#5.0",
+     "class": "taint",
+     "cat": "licence",
+     "scope": "dataset",
+     "field": "dataset",
+     "alias": "fhamborg/newsmtsc"
+    },
+    {
+     "entry": "NewsMTSC",
+     "id": "3G#5.0",
+     "class": "taint",
+     "cat": "licence",
+     "scope": "dataset",
+     "field": "domain",
+     "alias": "news mtsc"
+    }
+   ]
+  },
+  "br_politeness_wiki": {
+   "hit": true,
+   "verdict": "keep_no_new_rows",
+   "class": "no_new_rows",
+   "entry": "Stanford Politeness",
+   "part": null,
+   "parts": [],
+   "dev_seen_exception": false,
+   "matches": [
+    {
+     "entry": "Stanford Politeness",
+     "id": "rej:ordinal_scales#10.2",
+     "class": "no_new_rows",
+     "cat": "already_used",
+     "scope": "dataset",
+     "field": "dataset",
+     "alias": "wikipedia politeness"
+    }
+   ]
+  },
+  "br_sarcasm_headlines": {
+   "hit": false,
+   "verdict": "keep",
+   "class": null,
+   "entry": null,
+   "part": null,
+   "parts": [],
+   "dev_seen_exception": false,
+   "matches": []
+  },
+  "br_star": {
+   "hit": true,
+   "verdict": "keep_no_new_rows",
+   "class": "no_new_rows",
+   "entry": "STAR search / trivia / weather / directions and MultiTask dialogues",
+   "part": null,
+   "parts": [],
+   "dev_seen_exception": false,
+   "matches": [
+    {
+     "entry": "STAR search / trivia / weather / directions and MultiTask dialogues",
+     "id": "rej:routing_dialogue#17.0",
+     "class": "no_new_rows",
+     "cat": "other_subset_used",
+     "scope": "dataset",
+     "field": "name",
+     "alias": "star"
+    },
+    {
+     "entry": "STAR search / trivia / weather / directions and MultiTask dialogues",
+     "id": "rej:routing_dialogue#17.0",
+     "class": "no_new_rows",
+     "cat": "other_subset_used",
+     "scope": "dataset",
+     "field": "dataset",
+     "alias": "rasahq/star"
+    },
+    {
+     "entry": "STAR search / trivia / weather / directions and MultiTask dialogues",
+     "id": "rej:routing_dialogue#17.0",
+     "class": "no_new_rows",
+     "cat": "other_subset_used",
+     "scope": "dataset",
+     "field": "domain",
+     "alias": "star"
+    }
+   ]
+  },
+  "br_steam_aspect": {
+   "hit": true,
+   "verdict": "drop",
+   "class": "taint",
+   "entry": "Steam Review Aspect",
+   "part": null,
+   "parts": [],
+   "dev_seen_exception": false,
+   "matches": [
+    {
+     "entry": "Steam Review Aspect",
+     "id": "3G#8.0",
+     "class": "taint",
+     "cat": "licence",
+     "scope": "dataset",
+     "field": "name",
+     "alias": "steam aspect"
+    },
+    {
+     "entry": "Steam Review Aspect",
+     "id": "3G#8.0",
+     "class": "taint",
+     "cat": "licence",
+     "scope": "dataset",
+     "field": "dataset",
+     "alias": "ilos-vigil/steam-review-aspect-dataset"
+    },
+    {
+     "entry": "Steam Review Aspect",
+     "id": "3G#8.0",
+     "class": "taint",
+     "cat": "licence",
+     "scope": "dataset",
+     "field": "domain",
+     "alias": "steam aspect"
+    }
+   ]
+  },
+  "br_topv2": {
+   "hit": true,
+   "verdict": "keep_no_new_rows",
+   "class": "no_new_rows",
+   "entry": "TOPv2",
+   "part": null,
+   "parts": [],
+   "dev_seen_exception": false,
+   "matches": [
+    {
+     "entry": "TOPv2",
+     "id": "rej:routing_dialogue#7.5",
+     "class": "no_new_rows",
+     "cat": "already_used",
+     "scope": "dataset",
+     "field": "name",
+     "alias": "top v2"
+    },
+    {
+     "entry": "TOPv2",
+     "id": "rej:routing_dialogue#7.5",
+     "class": "no_new_rows",
+     "cat": "already_used",
+     "scope": "dataset",
+     "field": "dataset",
+     "alias": "top v2"
+    },
+    {
+     "entry": "TOPv2",
+     "id": "rej:routing_dialogue#7.5",
+     "class": "no_new_rows",
+     "cat": "already_used",
+     "scope": "dataset",
+     "field": "domain",
+     "alias": "top v2"
+    }
+   ]
+  },
+  "br_wos46985": {
+   "hit": false,
+   "verdict": "keep",
+   "class": null,
+   "entry": null,
+   "part": null,
+   "parts": [],
+   "dev_seen_exception": false,
+   "matches": []
+  },
+  "br_xed_en": {
+   "hit": false,
+   "verdict": "keep",
+   "class": null,
+   "entry": null,
+   "part": null,
+   "parts": [],
+   "dev_seen_exception": false,
+   "matches": []
+  },
+  "civil_comments": {
+   "hit": true,
+   "verdict": "drop",
+   "class": "taint",
+   "entry": "Civil Comments",
+   "part": null,
+   "parts": [],
+   "dev_seen_exception": false,
+   "matches": [
+    {
+     "entry": "Civil Comments",
+     "id": "3G#17.2",
+     "class": "taint",
+     "cat": "forbidden_task",
+     "scope": "dataset",
+     "field": "name",
+     "alias": "civil comments"
+    }
+   ]
+  },
+  "clinc150": {
+   "hit": true,
+   "verdict": "drop_part",
+   "class": "taint",
+   "entry": "CLINC150 (dev source, DI test)",
+   "part": {
+    "field": "split",
+    "values": [
+     "test",
+     "validation",
+     "valid",
+     "dev",
+     "eval"
+    ],
+    "rule": "train_provenance",
+    "note": "only test/dev/eval items are tainted. Fail closed: the sampler keeps a row only if it proves the row comes from a train split (a group_id split token, a train-split marker in meta.dataset, or a builder-declared split it re-checks in the builder source) and drops every other row (RUNBOOK_replay_reads.md 3.2)"
+   },
+   "parts": [
+    {
+     "field": "split",
+     "values": [
+      "test",
+      "validation",
+      "valid",
+      "dev",
+      "eval"
+     ],
+     "rule": "train_provenance",
+     "note": "only test/dev/eval items are tainted. Fail closed: the sampler keeps a row only if it proves the row comes from a train split (a group_id split token, a train-split marker in meta.dataset, or a builder-declared split it re-checks in the builder source) and drops every other row (RUNBOOK_replay_reads.md 3.2)"
+    }
+   ],
+   "dev_seen_exception": false,
+   "matches": [
+    {
+     "entry": "CLINC150 extra train rows",
+     "id": "rej:intent_business_support#3.0",
+     "class": "no_new_rows",
+     "cat": "extra_rows",
+     "scope": "dataset",
+     "field": "name",
+     "alias": "clinc 150"
+    },
+    {
+     "entry": "CLINC150 (in used_sources)",
+     "id": "rej:large_labelsets#2.5",
+     "class": "no_new_rows",
+     "cat": "already_used",
+     "scope": "dataset",
+     "field": "name",
+     "alias": "clinc150"
+    },
+    {
+     "entry": "CLINC150 (dev source, DI test)",
+     "id": "3G#20.1",
+     "class": "taint",
+     "cat": "dev_eval",
+     "scope": "split",
+     "field": "name",
+     "alias": "clinc150"
+    },
+    {
+     "entry": "CLINC150 and Banking77 test splits (GOLDEN_SPEC 'also forbidden')",
+     "id": "golden_spec:CLINC150 and Banking77 test splits",
+     "class": "taint",
+     "cat": "dev_eval",
+     "scope": "split",
+     "field": "name",
+     "alias": "clinc150"
+    },
+    {
+     "entry": "Decision Index test: CLINC150+OOS",
+     "id": "di:CLINC150+OOS",
+     "class": "taint",
+     "cat": "di_test",
+     "scope": "split",
+     "field": "name",
+     "alias": "clinc150"
+    },
+    {
+     "entry": "dev source clinc150 (dev, dev_claims, dev_negwords, devp_card)",
+     "id": "dev:clinc150",
+     "class": "taint",
+     "cat": "dev_eval",
+     "scope": "dataset",
+     "field": "name",
+     "alias": "dev:clinc150"
+    },
+    {
+     "entry": "eval source clinc150 (eval, eval_card, eval_hc, eval_long, eval_multi)",
+     "id": "eval:clinc150",
+     "class": "taint",
+     "cat": "dev_eval",
+     "scope": "split",
+     "field": "name",
+     "alias": "dev:clinc150"
+    }
+   ]
+  },
+  "clothing": {
+   "hit": false,
+   "verdict": "keep",
+   "class": null,
+   "entry": null,
+   "part": null,
+   "parts": [],
+   "dev_seen_exception": false,
+   "matches": []
+  },
+  "condaqa": {
+   "hit": true,
+   "verdict": "drop",
+   "class": "taint",
+   "entry": "QuaRel, CLUTRR, SpartQA-yn, CONDAQA, PARARULE-Plus, CLadder",
+   "part": null,
+   "parts": [],
+   "dev_seen_exception": false,
+   "matches": [
+    {
+     "entry": "QuaRel, CLUTRR, SpartQA-yn, CONDAQA, PARARULE-Plus, CLadder",
+     "id": "rej:nli_logic_reasoning#26.0",
+     "class": "taint",
+     "cat": "forbidden_task",
+     "scope": "dataset",
+     "field": "name",
+     "alias": "condaqa"
+    },
+    {
+     "entry": "CondaQA",
+     "id": "3G#15.14",
+     "class": "taint",
+     "cat": "forbidden_task",
+     "scope": "dataset",
+     "field": "name",
+     "alias": "condaqa"
+    },
+    {
+     "entry": "CONDAQA",
+     "id": "forbidden:CONDAQA",
+     "class": "taint",
+     "cat": "forbidden_task",
+     "scope": "dataset",
+     "field": "name",
+     "alias": "CONDAQA"
+    }
+   ]
+  },
+  "copa": {
+   "hit": true,
+   "verdict": "keep_no_new_rows",
+   "class": "no_new_rows",
+   "entry": "COPA-style sets",
+   "part": null,
+   "parts": [],
+   "dev_seen_exception": false,
+   "matches": [
+    {
+     "entry": "COPA-style sets",
+     "id": "rej:mcq_exams#12.2",
+     "class": "no_new_rows",
+     "cat": "too_few_options",
+     "scope": "dataset",
+     "field": "name",
+     "alias": "copa"
+    },
+    {
+     "entry": "COPA-style sets",
+     "id": "3G#6.2",
+     "class": "no_new_rows",
+     "cat": "too_few_options",
+     "scope": "dataset",
+     "field": "name",
+     "alias": "copa"
+    }
+   ]
+  },
+  "csqa": {
+   "hit": true,
+   "verdict": "keep_no_new_rows",
+   "class": "no_new_rows",
+   "entry": "CommonsenseQA",
+   "part": null,
+   "parts": [],
+   "dev_seen_exception": false,
+   "matches": [
+    {
+     "entry": "CommonsenseQA",
+     "id": "rej:mcq_exams#10.1",
+     "class": "no_new_rows",
+     "cat": "already_used",
+     "scope": "dataset",
+     "field": "name",
+     "alias": "csqa"
+    }
+   ]
+  },
+  "dbpedia": {
+   "hit": true,
+   "verdict": "drop",
+   "class": "taint",
+   "entry": "DBpedia-14",
+   "part": null,
+   "parts": [],
+   "dev_seen_exception": false,
+   "matches": [
+    {
+     "entry": "DBpedia-14",
+     "id": "3G#15.19",
+     "class": "taint",
+     "cat": "forbidden_task",
+     "scope": "dataset",
+     "field": "name",
+     "alias": "dbpedia"
+    },
+    {
+     "entry": "dbpedia_14/dbpedia_14",
+     "id": "forbidden:dbpedia_14/dbpedia_14",
+     "class": "taint",
+     "cat": "forbidden_task",
+     "scope": "dataset",
+     "field": "name",
+     "alias": "dbpedia"
+    }
+   ]
+  },
+  "fld": {
+   "hit": false,
+   "verdict": "keep",
+   "class": null,
+   "entry": null,
+   "part": null,
+   "parts": [],
+   "dev_seen_exception": false,
+   "matches": []
+  },
+  "gd_aegis_prompts": {
+   "hit": true,
+   "verdict": "drop",
+   "class": "taint",
+   "entry": "Anthropic/hh-rlhf",
+   "part": null,
+   "parts": [],
+   "dev_seen_exception": false,
+   "matches": [
+    {
+     "entry": "Anthropic/hh-rlhf",
+     "id": "rej:judge_verifier#18.0",
+     "class": "taint",
+     "cat": "gold_noise",
+     "scope": "dataset",
+     "field": "dataset",
+     "alias": "anthropic/hh-rlhf"
+    }
+   ]
+  },
+  "gd_answer_equiv": {
+   "hit": false,
+   "verdict": "keep",
+   "class": null,
+   "entry": null,
+   "part": null,
+   "parts": [],
+   "dev_seen_exception": false,
+   "matches": []
+  },
+  "gd_babi_logic": {
+   "hit": false,
+   "verdict": "keep",
+   "class": null,
+   "entry": null,
+   "part": null,
+   "parts": [],
+   "dev_seen_exception": false,
+   "matches": []
+  },
+  "gd_bbh_mistake": {
+   "hit": true,
+   "verdict": "drop",
+   "class": "taint",
+   "entry": "Decision Index test: BBH / BIG-Bench Hard inputs (LICENCE_REGISTER 5)",
+   "part": null,
+   "parts": [],
+   "dev_seen_exception": false,
+   "matches": [
+    {
+     "entry": "Decision Index test: BBH / BIG-Bench Hard inputs (LICENCE_REGISTER 5)",
+     "id": "di:BBH / BIG-Bench Hard inputs (LICENCE_REGISTER 5)",
+     "class": "taint",
+     "cat": "di_test",
+     "scope": "dataset",
+     "field": "name",
+     "alias": "bbh"
+    },
+    {
+     "entry": "MMLU / MMLU-Pro / GPQA / AGIEval / TruthfulQA / BIG-bench MC",
+     "id": "rej:mcq_exams#13.0",
+     "class": "taint",
+     "cat": "test_split",
+     "scope": "dataset",
+     "field": "dataset",
+     "alias": "big bench"
+    },
+    {
+     "entry": "BIG-bench logic tasks (formal_fallacies, logical_deduction)",
+     "id": "rej:nli_logic_reasoning#22.0",
+     "class": "taint",
+     "cat": "test_split",
+     "scope": "dataset",
+     "field": "dataset",
+     "alias": "big bench"
+    },
+    {
+     "entry": "Decision Index test: BBH / BIG-Bench Hard inputs (LICENCE_REGISTER 5)",
+     "id": "di:BBH / BIG-Bench Hard inputs (LICENCE_REGISTER 5)",
+     "class": "taint",
+     "cat": "di_test",
+     "scope": "dataset",
+     "field": "dataset",
+     "alias": "big bench hard"
+    },
+    {
+     "entry": "Decision Index test: BBH / BIG-Bench Hard inputs (LICENCE_REGISTER 5)",
+     "id": "di:BBH / BIG-Bench Hard inputs (LICENCE_REGISTER 5)",
+     "class": "taint",
+     "cat": "di_test",
+     "scope": "dataset",
+     "field": "domain",
+     "alias": "bbh"
+    }
+   ]
+  },
+  "gd_biored": {
+   "hit": false,
+   "verdict": "keep",
+   "class": null,
+   "entry": null,
+   "part": null,
+   "parts": [],
+   "dev_seen_exception": false,
+   "matches": []
+  },
+  "gd_boardgameqa": {
+   "hit": false,
+   "verdict": "keep",
+   "class": null,
+   "entry": null,
+   "part": null,
+   "parts": [],
+   "dev_seen_exception": false,
+   "matches": []
+  },
+  "gd_cards": {
+   "hit": false,
+   "verdict": "keep",
+   "class": null,
+   "entry": null,
+   "part": null,
+   "parts": [],
+   "dev_seen_exception": false,
+   "matches": []
+  },
+  "gd_casehold_yn": {
+   "hit": false,
+   "verdict": "keep",
+   "class": null,
+   "entry": null,
+   "part": null,
+   "parts": [],
+   "dev_seen_exception": false,
+   "matches": []
+  },
+  "gd_check_covid": {
+   "hit": false,
+   "verdict": "keep",
+   "class": null,
+   "entry": null,
+   "part": null,
+   "parts": [],
+   "dev_seen_exception": false,
+   "matches": []
+  },
+  "gd_clickbait16": {
+   "hit": true,
+   "verdict": "keep_no_new_rows",
+   "class": "no_new_rows",
+   "entry": "Webis-Clickbait-17",
+   "part": null,
+   "parts": [],
+   "dev_seen_exception": false,
+   "matches": [
+    {
+     "entry": "Webis-Clickbait-17",
+     "id": "rej:ordinal_scales#10.3",
+     "class": "no_new_rows",
+     "cat": "already_used",
+     "scope": "dataset",
+     "field": "dataset",
+     "alias": "webis clickbait"
+    }
+   ]
+  },
+  "gd_clickbait17": {
+   "hit": true,
+   "verdict": "keep_no_new_rows",
+   "class": "no_new_rows",
+   "entry": "Webis-Clickbait-17",
+   "part": null,
+   "parts": [],
+   "dev_seen_exception": false,
+   "matches": [
+    {
+     "entry": "Webis-Clickbait-17",
+     "id": "rej:ordinal_scales#10.3",
+     "class": "no_new_rows",
+     "cat": "already_used",
+     "scope": "dataset",
+     "field": "name",
+     "alias": "clickbait17"
+    },
+    {
+     "entry": "Webis-Clickbait-17",
+     "id": "rej:ordinal_scales#10.3",
+     "class": "no_new_rows",
+     "cat": "already_used",
+     "scope": "dataset",
+     "field": "dataset",
+     "alias": "webis clickbait"
+    },
+    {
+     "entry": "Webis-Clickbait-17",
+     "id": "rej:ordinal_scales#10.3",
+     "class": "no_new_rows",
+     "cat": "already_used",
+     "scope": "dataset",
+     "field": "domain",
+     "alias": "clickbait17"
+    }
+   ]
+  },
+  "gd_climate_targets": {
+   "hit": false,
+   "verdict": "keep",
+   "class": null,
+   "entry": null,
+   "part": null,
+   "parts": [],
+   "dev_seen_exception": false,
+   "matches": []
+  },
+  "gd_codah": {
+   "hit": true,
+   "verdict": "keep_no_new_rows",
+   "class": "no_new_rows",
+   "entry": "CODAH",
+   "part": null,
+   "parts": [],
+   "dev_seen_exception": false,
+   "matches": [
+    {
+     "entry": "CODAH",
+     "id": "rej:mcq_exams#10.2",
+     "class": "no_new_rows",
+     "cat": "already_used",
+     "scope": "dataset",
+     "field": "name",
+     "alias": "codah"
+    },
+    {
+     "entry": "CODAH",
+     "id": "rej:mcq_exams#10.2",
+     "class": "no_new_rows",
+     "cat": "already_used",
+     "scope": "dataset",
+     "field": "dataset",
+     "alias": "codah"
+    },
+    {
+     "entry": "CODAH",
+     "id": "rej:mcq_exams#10.2",
+     "class": "no_new_rows",
+     "cat": "already_used",
+     "scope": "dataset",
+     "field": "domain",
+     "alias": "codah"
+    }
+   ]
+  },
+  "gd_comve": {
+   "hit": false,
+   "verdict": "keep",
+   "class": null,
+   "entry": null,
+   "part": null,
+   "parts": [],
+   "dev_seen_exception": false,
+   "matches": []
+  },
+  "gd_conditionalqa": {
+   "hit": false,
+   "verdict": "keep",
+   "class": null,
+   "entry": null,
+   "part": null,
+   "parts": [],
+   "dev_seen_exception": false,
+   "matches": []
+  },
+  "gd_crossner": {
+   "hit": false,
+   "verdict": "keep",
+   "class": null,
+   "entry": null,
+   "part": null,
+   "parts": [],
+   "dev_seen_exception": false,
+   "matches": []
+  },
+  "gd_crowdtruth_mre": {
+   "hit": false,
+   "verdict": "keep",
+   "class": null,
+   "entry": null,
+   "part": null,
+   "parts": [],
+   "dev_seen_exception": false,
+   "matches": []
+  },
+  "gd_csc_sarcasm": {
+   "hit": false,
+   "verdict": "keep",
+   "class": null,
+   "entry": null,
+   "part": null,
+   "parts": [],
+   "dev_seen_exception": false,
+   "matches": []
+  },
+  "gd_druglabel_section": {
+   "hit": false,
+   "verdict": "keep",
+   "class": null,
+   "entry": null,
+   "part": null,
+   "parts": [],
+   "dev_seen_exception": false,
+   "matches": []
+  },
+  "gd_drugprot": {
+   "hit": false,
+   "verdict": "keep",
+   "class": null,
+   "entry": null,
+   "part": null,
+   "parts": [],
+   "dev_seen_exception": false,
+   "matches": []
+  },
+  "gd_dstc9_track1": {
+   "hit": true,
+   "verdict": "keep_no_new_rows",
+   "class": "no_new_rows",
+   "entry": "DSTC9 Track 1",
+   "part": null,
+   "parts": [],
+   "dev_seen_exception": false,
+   "matches": [
+    {
+     "entry": "DSTC9 Track 1",
+     "id": "rej:routing_dialogue#7.3",
+     "class": "no_new_rows",
+     "cat": "already_used",
+     "scope": "dataset",
+     "field": "name",
+     "alias": "dstc9"
+    },
+    {
+     "entry": "DSTC9 Track 1",
+     "id": "rej:routing_dialogue#7.3",
+     "class": "no_new_rows",
+     "cat": "already_used",
+     "scope": "dataset",
+     "field": "dataset",
+     "alias": "dstc9"
+    },
+    {
+     "entry": "MultiWOZ dialogue acts",
+     "id": "rej:routing_dialogue#7.1",
+     "class": "no_new_rows",
+     "cat": "already_used",
+     "scope": "dataset",
+     "field": "dataset",
+     "alias": "multiwoz"
+    },
+    {
+     "entry": "DSTC9 Track 1",
+     "id": "rej:routing_dialogue#7.3",
+     "class": "no_new_rows",
+     "cat": "already_used",
+     "scope": "dataset",
+     "field": "domain",
+     "alias": "dstc9"
+    }
+   ]
+  },
+  "gd_east_asian_prejudice": {
+   "hit": false,
+   "verdict": "keep",
+   "class": null,
+   "entry": null,
+   "part": null,
+   "parts": [],
+   "dev_seen_exception": false,
+   "matches": []
+  },
+  "gd_edgar_10k_item": {
+   "hit": false,
+   "verdict": "keep",
+   "class": null,
+   "entry": null,
+   "part": null,
+   "parts": [],
+   "dev_seen_exception": false,
+   "matches": []
+  },
+  "gd_edos_sexism": {
+   "hit": false,
+   "verdict": "keep",
+   "class": null,
+   "entry": null,
+   "part": null,
+   "parts": [],
+   "dev_seen_exception": false,
+   "matches": []
+  },
+  "gd_faithdial": {
+   "hit": false,
+   "verdict": "keep",
+   "class": null,
+   "entry": null,
+   "part": null,
+   "parts": [],
+   "dev_seen_exception": false,
+   "matches": []
+  },
+  "gd_feverous": {
+   "hit": false,
+   "verdict": "keep",
+   "class": null,
+   "entry": null,
+   "part": null,
+   "parts": [],
+   "dev_seen_exception": false,
+   "matches": []
+  },
+  "gd_finqa": {
+   "hit": true,
+   "verdict": "drop",
+   "class": "taint",
+   "entry": "FinTabNet report text (FinQA, MultiHiertt, ConvFinQA; replay gd_finqa)",
+   "part": null,
+   "parts": [],
+   "dev_seen_exception": false,
+   "matches": [
+    {
+     "entry": "FinTabNet report text (FinQA, MultiHiertt, ConvFinQA; replay gd_finqa)",
+     "id": "3G#12.2",
+     "class": "taint",
+     "cat": "licence",
+     "scope": "dataset",
+     "field": "name",
+     "alias": "finqa"
+    },
+    {
+     "entry": "FinTabNet report text (FinQA, MultiHiertt, ConvFinQA; replay gd_finqa)",
+     "id": "3G#12.2",
+     "class": "taint",
+     "cat": "licence",
+     "scope": "dataset",
+     "field": "dataset",
+     "alias": "czyssrs/finqa"
+    },
+    {
+     "entry": "FinTabNet report text (FinQA, MultiHiertt, ConvFinQA; replay gd_finqa)",
+     "id": "3G#12.2",
+     "class": "taint",
+     "cat": "licence",
+     "scope": "dataset",
+     "field": "domain",
+     "alias": "finqa"
+    }
+   ]
+  },
+  "gd_gen2_json_fields": {
+   "hit": false,
+   "verdict": "keep",
+   "class": null,
+   "entry": null,
+   "part": null,
+   "parts": [],
+   "dev_seen_exception": false,
+   "matches": []
+  },
+  "gd_gen2_long_policy": {
+   "hit": false,
+   "verdict": "keep",
+   "class": null,
+   "entry": null,
+   "part": null,
+   "parts": [],
+   "dev_seen_exception": false,
+   "matches": []
+  },
+  "gd_gen2_probability": {
+   "hit": false,
+   "verdict": "keep",
+   "class": null,
+   "entry": null,
+   "part": null,
+   "parts": [],
+   "dev_seen_exception": false,
+   "matches": []
+  },
+  "gd_gen2_tool_selection": {
+   "hit": false,
+   "verdict": "keep",
+   "class": null,
+   "entry": null,
+   "part": null,
+   "parts": [],
+   "dev_seen_exception": false,
+   "matches": []
+  },
+  "gd_gen_constraints": {
+   "hit": false,
+   "verdict": "keep",
+   "class": null,
+   "entry": null,
+   "part": null,
+   "parts": [],
+   "dev_seen_exception": false,
+   "matches": []
+  },
+  "gd_gen_evidence_conflict": {
+   "hit": false,
+   "verdict": "keep",
+   "class": null,
+   "entry": null,
+   "part": null,
+   "parts": [],
+   "dev_seen_exception": false,
+   "matches": []
+  },
+  "gd_gen_logic_negation": {
+   "hit": false,
+   "verdict": "keep",
+   "class": null,
+   "entry": null,
+   "part": null,
+   "parts": [],
+   "dev_seen_exception": false,
+   "matches": []
+  },
+  "gd_gen_msn_consent": {
+   "hit": false,
+   "verdict": "keep",
+   "class": null,
+   "entry": null,
+   "part": null,
+   "parts": [],
+   "dev_seen_exception": false,
+   "matches": []
+  },
+  "gd_gen_msn_fault": {
+   "hit": false,
+   "verdict": "keep",
+   "class": null,
+   "entry": null,
+   "part": null,
+   "parts": [],
+   "dev_seen_exception": false,
+   "matches": []
+  },
+  "gd_gen_msn_rules": {
+   "hit": false,
+   "verdict": "keep",
+   "class": null,
+   "entry": null,
+   "part": null,
+   "parts": [],
+   "dev_seen_exception": false,
+   "matches": []
+  },
+  "gd_gen_nlr_heuristics": {
+   "hit": false,
+   "verdict": "keep",
+   "class": null,
+   "entry": null,
+   "part": null,
+   "parts": [],
+   "dev_seen_exception": false,
+   "matches": []
+  },
+  "gd_gen_numeric_dates": {
+   "hit": false,
+   "verdict": "keep",
+   "class": null,
+   "entry": null,
+   "part": null,
+   "parts": [],
+   "dev_seen_exception": false,
+   "matches": []
+  },
+  "gd_gen_policy_exceptions": {
+   "hit": false,
+   "verdict": "keep",
+   "class": null,
+   "entry": null,
+   "part": null,
+   "parts": [],
+   "dev_seen_exception": false,
+   "matches": []
+  },
+  "gd_gen_ranking": {
+   "hit": false,
+   "verdict": "keep",
+   "class": null,
+   "entry": null,
+   "part": null,
+   "parts": [],
+   "dev_seen_exception": false,
+   "matches": []
+  },
+  "gd_gen_routing": {
+   "hit": false,
+   "verdict": "keep",
+   "class": null,
+   "entry": null,
+   "part": null,
+   "parts": [],
+   "dev_seen_exception": false,
+   "matches": []
+  },
+  "gd_gen_tables": {
+   "hit": false,
+   "verdict": "keep",
+   "class": null,
+   "entry": null,
+   "part": null,
+   "parts": [],
+   "dev_seen_exception": false,
+   "matches": []
+  },
+  "gd_ghc_hate": {
+   "hit": true,
+   "verdict": "keep_dev_seen",
+   "class": "taint",
+   "entry": "dev source hate (dev_claims, dev_negwords, devp_card)",
+   "part": null,
+   "parts": [],
+   "dev_seen_exception": true,
+   "matches": [
+    {
+     "entry": "dev source hate (dev_claims, dev_negwords, devp_card)",
+     "id": "dev:hate",
+     "class": "taint",
+     "cat": "dev_eval",
+     "scope": "dataset",
+     "field": "name",
+     "alias": "dev:hate"
+    }
+   ]
+  },
+  "gd_hatemoji_build_v14": {
+   "hit": false,
+   "verdict": "keep",
+   "class": null,
+   "entry": null,
+   "part": null,
+   "parts": [],
+   "dev_seen_exception": false,
+   "matches": []
+  },
+  "gd_helpsteer2_attr": {
+   "hit": false,
+   "verdict": "keep",
+   "class": null,
+   "entry": null,
+   "part": null,
+   "parts": [],
+   "dev_seen_exception": false,
+   "matches": []
+  },
+  "gd_helpsteer3_pref": {
+   "hit": false,
+   "verdict": "keep",
+   "class": null,
+   "entry": null,
+   "part": null,
+   "parts": [],
+   "dev_seen_exception": false,
+   "matches": []
+  },
+  "gd_hotpotqa_yesno": {
+   "hit": false,
+   "verdict": "keep",
+   "class": null,
+   "entry": null,
+   "part": null,
+   "parts": [],
+   "dev_seen_exception": false,
+   "matches": []
+  },
+  "gd_infotabs_nli": {
+   "hit": false,
+   "verdict": "keep",
+   "class": null,
+   "entry": null,
+   "part": null,
+   "parts": [],
+   "dev_seen_exception": false,
+   "matches": []
+  },
+  "gd_logicinference": {
+   "hit": false,
+   "verdict": "keep",
+   "class": null,
+   "entry": null,
+   "part": null,
+   "parts": [],
+   "dev_seen_exception": false,
+   "matches": []
+  },
+  "gd_mediqa_qa": {
+   "hit": false,
+   "verdict": "keep",
+   "class": null,
+   "entry": null,
+   "part": null,
+   "parts": [],
+   "dev_seen_exception": false,
+   "matches": []
+  },
+  "gd_medmcqa_subject": {
+   "hit": true,
+   "verdict": "keep_no_new_rows",
+   "class": "no_new_rows",
+   "entry": "MedMCQA",
+   "part": null,
+   "parts": [],
+   "dev_seen_exception": false,
+   "matches": [
+    {
+     "entry": "MedMCQA",
+     "id": "rej:mcq_exams#1.0",
+     "class": "no_new_rows",
+     "cat": "already_used",
+     "scope": "dataset",
+     "field": "name",
+     "alias": "medmcqa"
+    },
+    {
+     "entry": "MedMCQA",
+     "id": "rej:mcq_exams#1.0",
+     "class": "no_new_rows",
+     "cat": "already_used",
+     "scope": "dataset",
+     "field": "dataset",
+     "alias": "medmcqa"
+    },
+    {
+     "entry": "MedMCQA",
+     "id": "rej:mcq_exams#1.0",
+     "class": "no_new_rows",
+     "cat": "already_used",
+     "scope": "dataset",
+     "field": "domain",
+     "alias": "medmcqa"
+    }
+   ]
+  },
+  "gd_medqa_yn": {
+   "hit": true,
+   "verdict": "keep_no_new_rows",
+   "class": "no_new_rows",
+   "entry": "MedQA",
+   "part": null,
+   "parts": [],
+   "dev_seen_exception": false,
+   "matches": [
+    {
+     "entry": "MedQA",
+     "id": "rej:mcq_exams#10.4",
+     "class": "no_new_rows",
+     "cat": "already_used",
+     "scope": "dataset",
+     "field": "name",
+     "alias": "med qa"
+    },
+    {
+     "entry": "MedQA",
+     "id": "rej:mcq_exams#10.4",
+     "class": "no_new_rows",
+     "cat": "already_used",
+     "scope": "dataset",
+     "field": "dataset",
+     "alias": "med qa"
+    },
+    {
+     "entry": "MedQA",
+     "id": "rej:mcq_exams#10.4",
+     "class": "no_new_rows",
+     "cat": "already_used",
+     "scope": "dataset",
+     "field": "domain",
+     "alias": "med qa"
+    }
+   ]
+  },
+  "gd_medquad_qtype": {
+   "hit": false,
+   "verdict": "keep",
+   "class": null,
+   "entry": null,
+   "part": null,
+   "parts": [],
+   "dev_seen_exception": false,
+   "matches": []
+  },
+  "gd_meganegraising": {
+   "hit": false,
+   "verdict": "keep",
+   "class": null,
+   "entry": null,
+   "part": null,
+   "parts": [],
+   "dev_seen_exception": false,
+   "matches": []
+  },
+  "gd_megaveridicality": {
+   "hit": false,
+   "verdict": "keep",
+   "class": null,
+   "entry": null,
+   "part": null,
+   "parts": [],
+   "dev_seen_exception": false,
+   "matches": []
+  },
+  "gd_mfrc": {
+   "hit": false,
+   "verdict": "keep",
+   "class": null,
+   "entry": null,
+   "part": null,
+   "parts": [],
+   "dev_seen_exception": false,
+   "matches": []
+  },
+  "gd_misogyny_reddit": {
+   "hit": false,
+   "verdict": "keep",
+   "class": null,
+   "entry": null,
+   "part": null,
+   "parts": [],
+   "dev_seen_exception": false,
+   "matches": []
+  },
+  "gd_msha_injury": {
+   "hit": true,
+   "verdict": "keep_no_new_rows",
+   "class": "no_new_rows",
+   "entry": "MSHA accident type / occupation / activity codes",
+   "part": null,
+   "parts": [],
+   "dev_seen_exception": false,
+   "matches": [
+    {
+     "entry": "MSHA accident type / occupation / activity codes",
+     "id": "rej:large_labelsets#10.0",
+     "class": "no_new_rows",
+     "cat": "duplicate_taxonomy",
+     "scope": "dataset",
+     "field": "name",
+     "alias": "msha"
+    },
+    {
+     "entry": "MSHA accident type / occupation / activity codes",
+     "id": "rej:large_labelsets#10.0",
+     "class": "no_new_rows",
+     "cat": "duplicate_taxonomy",
+     "scope": "dataset",
+     "field": "domain",
+     "alias": "msha"
+    }
+   ]
+  },
+  "gd_mtbench_human": {
+   "hit": false,
+   "verdict": "keep",
+   "class": null,
+   "entry": null,
+   "part": null,
+   "parts": [],
+   "dev_seen_exception": false,
+   "matches": []
+  },
+  "gd_multiwoz21_sysacts": {
+   "hit": true,
+   "verdict": "keep_no_new_rows",
+   "class": "no_new_rows",
+   "entry": "MultiWOZ dialogue acts",
+   "part": null,
+   "parts": [],
+   "dev_seen_exception": false,
+   "matches": [
+    {
+     "entry": "MultiWOZ dialogue acts",
+     "id": "rej:routing_dialogue#7.1",
+     "class": "no_new_rows",
+     "cat": "already_used",
+     "scope": "dataset",
+     "field": "dataset",
+     "alias": "multiwoz"
+    }
+   ]
+  },
+  "gd_naics_subsector": {
+   "hit": false,
+   "verdict": "keep",
+   "class": null,
+   "entry": null,
+   "part": null,
+   "parts": [],
+   "dev_seen_exception": false,
+   "matches": []
+  },
+  "gd_ncbi_disease": {
+   "hit": false,
+   "verdict": "keep",
+   "class": null,
+   "entry": null,
+   "part": null,
+   "parts": [],
+   "dev_seen_exception": false,
+   "matches": []
+  },
+  "gd_ncvec_ham": {
+   "hit": false,
+   "verdict": "keep",
+   "class": null,
+   "entry": null,
+   "part": null,
+   "parts": [],
+   "dev_seen_exception": false,
+   "matches": []
+  },
+  "gd_nhtsa_complaints": {
+   "hit": false,
+   "verdict": "keep",
+   "class": null,
+   "entry": null,
+   "part": null,
+   "parts": [],
+   "dev_seen_exception": false,
+   "matches": []
+  },
+  "gd_nrc_gfe": {
+   "hit": false,
+   "verdict": "keep",
+   "class": null,
+   "entry": null,
+   "part": null,
+   "parts": [],
+   "dev_seen_exception": false,
+   "matches": []
+  },
+  "gd_oiics_event": {
+   "hit": true,
+   "verdict": "keep_no_new_rows",
+   "class": "no_new_rows",
+   "entry": "OSHA Severe Injury Reports (OIICS)",
+   "part": null,
+   "parts": [],
+   "dev_seen_exception": false,
+   "matches": [
+    {
+     "entry": "OSHA Severe Injury Reports (OIICS)",
+     "id": "rej:large_labelsets#11.0",
+     "class": "no_new_rows",
+     "cat": "duplicate_taxonomy",
+     "scope": "dataset",
+     "field": "name",
+     "alias": "oiics"
+    },
+    {
+     "entry": "OSHA Severe Injury Reports (OIICS)",
+     "id": "rej:large_labelsets#11.0",
+     "class": "no_new_rows",
+     "cat": "duplicate_taxonomy",
+     "scope": "dataset",
+     "field": "dataset",
+     "alias": "oiics"
+    },
+    {
+     "entry": "OSHA Severe Injury Reports (OIICS)",
+     "id": "rej:large_labelsets#11.0",
+     "class": "no_new_rows",
+     "cat": "duplicate_taxonomy",
+     "scope": "dataset",
+     "field": "domain",
+     "alias": "oiics"
+    }
+   ]
+  },
+  "gd_onestop_level": {
+   "hit": false,
+   "verdict": "keep",
+   "class": null,
+   "entry": null,
+   "part": null,
+   "parts": [],
+   "dev_seen_exception": false,
+   "matches": []
+  },
+  "gd_onet_occupation": {
+   "hit": true,
+   "verdict": "keep_no_new_rows",
+   "class": "no_new_rows",
+   "entry": "O*NET alternate titles / BLS SOC Direct Match Title File",
+   "part": null,
+   "parts": [],
+   "dev_seen_exception": false,
+   "matches": [
+    {
+     "entry": "O*NET alternate titles / BLS SOC Direct Match Title File",
+     "id": "rej:large_labelsets#9.0",
+     "class": "no_new_rows",
+     "cat": "duplicate_taxonomy",
+     "scope": "dataset",
+     "field": "name",
+     "alias": "o*net"
+    },
+    {
+     "entry": "O*NET alternate titles / BLS SOC Direct Match Title File",
+     "id": "rej:large_labelsets#9.0",
+     "class": "no_new_rows",
+     "cat": "duplicate_taxonomy",
+     "scope": "dataset",
+     "field": "domain",
+     "alias": "o*net"
+    }
+   ]
+  },
+  "gd_opentdb": {
+   "hit": false,
+   "verdict": "keep",
+   "class": null,
+   "entry": null,
+   "part": null,
+   "parts": [],
+   "dev_seen_exception": false,
+   "matches": []
+  },
+  "gd_politeness_votes": {
+   "hit": true,
+   "verdict": "keep_no_new_rows",
+   "class": "no_new_rows",
+   "entry": "Stanford Politeness",
+   "part": null,
+   "parts": [],
+   "dev_seen_exception": false,
+   "matches": [
+    {
+     "entry": "Stanford Politeness",
+     "id": "rej:ordinal_scales#10.2",
+     "class": "no_new_rows",
+     "cat": "already_used",
+     "scope": "dataset",
+     "field": "dataset",
+     "alias": "stanford politeness"
+    }
+   ]
+  },
+  "gd_prm800k_steps": {
+   "hit": false,
+   "verdict": "keep",
+   "class": null,
+   "entry": null,
+   "part": null,
+   "parts": [],
+   "dev_seen_exception": false,
+   "matches": []
+  },
+  "gd_prontoqa": {
+   "hit": false,
+   "verdict": "keep",
+   "class": null,
+   "entry": null,
+   "part": null,
+   "parts": [],
+   "dev_seen_exception": false,
+   "matches": []
+  },
+  "gd_qasc": {
+   "hit": true,
+   "verdict": "keep_no_new_rows",
+   "class": "no_new_rows",
+   "entry": "QASC",
+   "part": null,
+   "parts": [],
+   "dev_seen_exception": false,
+   "matches": [
+    {
+     "entry": "QASC",
+     "id": "rej:mcq_exams#10.3",
+     "class": "no_new_rows",
+     "cat": "already_used",
+     "scope": "dataset",
+     "field": "name",
+     "alias": "qasc"
+    },
+    {
+     "entry": "QASC",
+     "id": "rej:mcq_exams#10.3",
+     "class": "no_new_rows",
+     "cat": "already_used",
+     "scope": "dataset",
+     "field": "dataset",
+     "alias": "allenai/qasc"
+    },
+    {
+     "entry": "QASC",
+     "id": "rej:mcq_exams#10.3",
+     "class": "no_new_rows",
+     "cat": "already_used",
+     "scope": "dataset",
+     "field": "domain",
+     "alias": "qasc"
+    }
+   ]
+  },
+  "gd_quartz": {
+   "hit": true,
+   "verdict": "keep_no_new_rows",
+   "class": "no_new_rows",
+   "entry": "QuaRTz",
+   "part": null,
+   "parts": [],
+   "dev_seen_exception": false,
+   "matches": [
+    {
+     "entry": "QuaRTz",
+     "id": "rej:mcq_exams#10.7",
+     "class": "no_new_rows",
+     "cat": "already_used",
+     "scope": "dataset",
+     "field": "name",
+     "alias": "quartz"
+    },
+    {
+     "entry": "QuaRTz",
+     "id": "rej:mcq_exams#10.7",
+     "class": "no_new_rows",
+     "cat": "already_used",
+     "scope": "dataset",
+     "field": "dataset",
+     "alias": "allenai/quartz"
+    },
+    {
+     "entry": "QuaRTz",
+     "id": "rej:mcq_exams#10.7",
+     "class": "no_new_rows",
+     "cat": "already_used",
+     "scope": "dataset",
+     "field": "domain",
+     "alias": "quartz"
+    }
+   ]
+  },
+  "gd_ragtruth_summary": {
+   "hit": true,
+   "verdict": "drop_part",
+   "class": "taint",
+   "entry": "Decision Index test: RAGTruth (DI #59, LICENCE_REGISTER 6)",
+   "part": {
+    "field": "split",
+    "values": [
+     "test",
+     "validation",
+     "valid",
+     "dev",
+     "eval"
+    ],
+    "rule": "train_provenance",
+    "note": "only test/dev/eval items are tainted. Fail closed: the sampler keeps a row only if it proves the row comes from a train split (a group_id split token, a train-split marker in meta.dataset, or a builder-declared split it re-checks in the builder source) and drops every other row (RUNBOOK_replay_reads.md 3.2)"
+   },
+   "parts": [
+    {
+     "field": "split",
+     "values": [
+      "test",
+      "validation",
+      "valid",
+      "dev",
+      "eval"
+     ],
+     "rule": "train_provenance",
+     "note": "only test/dev/eval items are tainted. Fail closed: the sampler keeps a row only if it proves the row comes from a train split (a group_id split token, a train-split marker in meta.dataset, or a builder-declared split it re-checks in the builder source) and drops every other row (RUNBOOK_replay_reads.md 3.2)"
+    }
+   ],
+   "dev_seen_exception": false,
+   "matches": [
+    {
+     "entry": "Decision Index test: RAGTruth (DI #59, LICENCE_REGISTER 6)",
+     "id": "di:RAGTruth (DI #59, LICENCE_REGISTER 6)",
+     "class": "taint",
+     "cat": "di_test",
+     "scope": "split",
+     "field": "name",
+     "alias": "ragtruth"
+    },
+    {
+     "entry": "Decision Index test: RAGTruth (DI #59, LICENCE_REGISTER 6)",
+     "id": "di:RAGTruth (DI #59, LICENCE_REGISTER 6)",
+     "class": "taint",
+     "cat": "di_test",
+     "scope": "split",
+     "field": "dataset",
+     "alias": "ragtruth"
+    },
+    {
+     "entry": "Decision Index test: RAGTruth (DI #59, LICENCE_REGISTER 6)",
+     "id": "di:RAGTruth (DI #59, LICENCE_REGISTER 6)",
+     "class": "taint",
+     "cat": "di_test",
+     "scope": "split",
+     "field": "domain",
+     "alias": "ragtruth"
+    }
+   ]
+  },
+  "gd_redocred": {
+   "hit": true,
+   "verdict": "keep_no_new_rows",
+   "class": "no_new_rows",
+   "entry": "DocRED original annotations",
+   "part": null,
+   "parts": [],
+   "dev_seen_exception": false,
+   "matches": [
+    {
+     "entry": "DocRED original annotations",
+     "id": "rej:relations_entities#23.0",
+     "class": "no_new_rows",
+     "cat": "other_subset_used",
+     "scope": "dataset",
+     "field": "dataset",
+     "alias": "docred"
+    }
+   ]
+  },
+  "gd_ropes_sci": {
+   "hit": false,
+   "verdict": "keep",
+   "class": null,
+   "entry": null,
+   "part": null,
+   "parts": [],
+   "dev_seen_exception": false,
+   "matches": []
+  },
+  "gd_saferproducts_severity": {
+   "hit": true,
+   "verdict": "keep_no_new_rows",
+   "class": "no_new_rows",
+   "entry": "CPSC SaferProducts.gov incident reports",
+   "part": null,
+   "parts": [],
+   "dev_seen_exception": false,
+   "matches": [
+    {
+     "entry": "CPSC SaferProducts.gov incident reports",
+     "id": "rej:routing_dialogue#9.0",
+     "class": "no_new_rows",
+     "cat": "overlap_own_sets",
+     "scope": "dataset",
+     "field": "name",
+     "alias": "saferproducts"
+    },
+    {
+     "entry": "CPSC SaferProducts.gov incident reports",
+     "id": "rej:routing_dialogue#9.0",
+     "class": "no_new_rows",
+     "cat": "overlap_own_sets",
+     "scope": "dataset",
+     "field": "dataset",
+     "alias": "cpsc saferproducts"
+    },
+    {
+     "entry": "CPSC SaferProducts.gov incident reports",
+     "id": "rej:routing_dialogue#9.0",
+     "class": "no_new_rows",
+     "cat": "overlap_own_sets",
+     "scope": "dataset",
+     "field": "domain",
+     "alias": "saferproducts"
+    }
+   ]
+  },
+  "gd_sc101": {
+   "hit": true,
+   "verdict": "keep_no_new_rows",
+   "class": "no_new_rows",
+   "entry": "Social-Chem-101",
+   "part": null,
+   "parts": [],
+   "dev_seen_exception": false,
+   "matches": [
+    {
+     "entry": "Social-Chem-101",
+     "id": "rej:ordinal_scales#10.4",
+     "class": "no_new_rows",
+     "cat": "already_used",
+     "scope": "dataset",
+     "field": "name",
+     "alias": "sc101"
+    },
+    {
+     "entry": "Social-Chem-101",
+     "id": "rej:ordinal_scales#10.4",
+     "class": "no_new_rows",
+     "cat": "already_used",
+     "scope": "dataset",
+     "field": "dataset",
+     "alias": "social chem 101"
+    },
+    {
+     "entry": "Social-Chem-101",
+     "id": "rej:ordinal_scales#10.4",
+     "class": "no_new_rows",
+     "cat": "already_used",
+     "scope": "dataset",
+     "field": "domain",
+     "alias": "sc101"
+    }
+   ]
+  },
+  "gd_sd311_routing": {
+   "hit": true,
+   "verdict": "keep_no_new_rows",
+   "class": "no_new_rows",
+   "entry": "San Diego 311 encampment / utility referrals",
+   "part": null,
+   "parts": [],
+   "dev_seen_exception": false,
+   "matches": [
+    {
+     "entry": "San Diego 311 encampment / utility referrals",
+     "id": "rej:routing_dialogue#18.0",
+     "class": "no_new_rows",
+     "cat": "other_subset_used",
+     "scope": "dataset",
+     "field": "name",
+     "alias": "sd311"
+    },
+    {
+     "entry": "San Diego 311 encampment / utility referrals",
+     "id": "rej:routing_dialogue#18.0",
+     "class": "no_new_rows",
+     "cat": "other_subset_used",
+     "scope": "dataset",
+     "field": "dataset",
+     "alias": "get it done 311"
+    },
+    {
+     "entry": "San Diego 311 encampment / utility referrals",
+     "id": "rej:routing_dialogue#18.0",
+     "class": "no_new_rows",
+     "cat": "other_subset_used",
+     "scope": "dataset",
+     "field": "domain",
+     "alias": "sd311"
+    }
+   ]
+  },
+  "gd_semtabfacts_sci": {
+   "hit": false,
+   "verdict": "keep",
+   "class": null,
+   "entry": null,
+   "part": null,
+   "parts": [],
+   "dev_seen_exception": false,
+   "matches": []
+  },
+  "gd_slur_usage": {
+   "hit": false,
+   "verdict": "keep",
+   "class": null,
+   "entry": null,
+   "part": null,
+   "parts": [],
+   "dev_seen_exception": false,
+   "matches": []
+  },
+  "gd_smcalflow_action": {
+   "hit": false,
+   "verdict": "keep",
+   "class": null,
+   "entry": null,
+   "part": null,
+   "parts": [],
+   "dev_seen_exception": false,
+   "matches": []
+  },
+  "gd_spiced": {
+   "hit": false,
+   "verdict": "keep",
+   "class": null,
+   "entry": null,
+   "part": null,
+   "parts": [],
+   "dev_seen_exception": false,
+   "matches": []
+  },
+  "gd_star_next_action": {
+   "hit": true,
+   "verdict": "keep_no_new_rows",
+   "class": "no_new_rows",
+   "entry": "STAR search / trivia / weather / directions and MultiTask dialogues",
+   "part": null,
+   "parts": [],
+   "dev_seen_exception": false,
+   "matches": [
+    {
+     "entry": "STAR search / trivia / weather / directions and MultiTask dialogues",
+     "id": "rej:routing_dialogue#17.0",
+     "class": "no_new_rows",
+     "cat": "other_subset_used",
+     "scope": "dataset",
+     "field": "name",
+     "alias": "star"
+    },
+    {
+     "entry": "STAR search / trivia / weather / directions and MultiTask dialogues",
+     "id": "rej:routing_dialogue#17.0",
+     "class": "no_new_rows",
+     "cat": "other_subset_used",
+     "scope": "dataset",
+     "field": "dataset",
+     "alias": "rasahq/star"
+    },
+    {
+     "entry": "STAR search / trivia / weather / directions and MultiTask dialogues",
+     "id": "rej:routing_dialogue#17.0",
+     "class": "no_new_rows",
+     "cat": "other_subset_used",
+     "scope": "dataset",
+     "field": "domain",
+     "alias": "star"
+    }
+   ]
+  },
+  "gd_storm_ef": {
+   "hit": false,
+   "verdict": "keep",
+   "class": null,
+   "entry": null,
+   "part": null,
+   "parts": [],
+   "dev_seen_exception": false,
+   "matches": []
+  },
+  "gd_tabmcq": {
+   "hit": false,
+   "verdict": "keep",
+   "class": null,
+   "entry": null,
+   "part": null,
+   "parts": [],
+   "dev_seen_exception": false,
+   "matches": []
+  },
+  "gd_taskmaster1": {
+   "hit": true,
+   "verdict": "keep_no_new_rows",
+   "class": "no_new_rows",
+   "entry": "Taskmaster 1-3",
+   "part": null,
+   "parts": [],
+   "dev_seen_exception": false,
+   "matches": [
+    {
+     "entry": "Taskmaster 1-3",
+     "id": "rej:routing_dialogue#7.2",
+     "class": "no_new_rows",
+     "cat": "already_used",
+     "scope": "dataset",
+     "field": "name",
+     "alias": "taskmaster 1"
+    },
+    {
+     "entry": "Taskmaster 1-3",
+     "id": "rej:routing_dialogue#7.2",
+     "class": "no_new_rows",
+     "cat": "already_used",
+     "scope": "dataset",
+     "field": "dataset",
+     "alias": "taskmaster"
+    },
+    {
+     "entry": "Taskmaster 1-3",
+     "id": "rej:routing_dialogue#7.2",
+     "class": "no_new_rows",
+     "cat": "already_used",
+     "scope": "dataset",
+     "field": "domain",
+     "alias": "taskmaster 1"
+    }
+   ]
+  },
+  "gd_taskmaster2": {
+   "hit": true,
+   "verdict": "keep_no_new_rows",
+   "class": "no_new_rows",
+   "entry": "Taskmaster 1-3",
+   "part": null,
+   "parts": [],
+   "dev_seen_exception": false,
+   "matches": [
+    {
+     "entry": "Taskmaster 1-3",
+     "id": "rej:routing_dialogue#7.2",
+     "class": "no_new_rows",
+     "cat": "already_used",
+     "scope": "dataset",
+     "field": "name",
+     "alias": "taskmaster 2"
+    },
+    {
+     "entry": "Taskmaster 1-3",
+     "id": "rej:routing_dialogue#7.2",
+     "class": "no_new_rows",
+     "cat": "already_used",
+     "scope": "dataset",
+     "field": "dataset",
+     "alias": "taskmaster"
+    },
+    {
+     "entry": "Taskmaster 1-3",
+     "id": "rej:routing_dialogue#7.2",
+     "class": "no_new_rows",
+     "cat": "already_used",
+     "scope": "dataset",
+     "field": "domain",
+     "alias": "taskmaster 2"
+    }
+   ]
+  },
+  "gd_taskmaster3": {
+   "hit": true,
+   "verdict": "keep_no_new_rows",
+   "class": "no_new_rows",
+   "entry": "Taskmaster 1-3",
+   "part": null,
+   "parts": [],
+   "dev_seen_exception": false,
+   "matches": [
+    {
+     "entry": "Taskmaster 1-3",
+     "id": "rej:routing_dialogue#7.2",
+     "class": "no_new_rows",
+     "cat": "already_used",
+     "scope": "dataset",
+     "field": "name",
+     "alias": "taskmaster 3"
+    },
+    {
+     "entry": "Taskmaster 1-3",
+     "id": "rej:routing_dialogue#7.2",
+     "class": "no_new_rows",
+     "cat": "already_used",
+     "scope": "dataset",
+     "field": "dataset",
+     "alias": "taskmaster"
+    },
+    {
+     "entry": "Taskmaster 1-3",
+     "id": "rej:routing_dialogue#7.2",
+     "class": "no_new_rows",
+     "cat": "already_used",
+     "scope": "dataset",
+     "field": "domain",
+     "alias": "taskmaster 3"
+    }
+   ]
+  },
+  "gd_tathqa": {
+   "hit": false,
+   "verdict": "keep",
+   "class": null,
+   "entry": null,
+   "part": null,
+   "parts": [],
+   "dev_seen_exception": false,
+   "matches": []
+  },
+  "gd_tatqa": {
+   "hit": false,
+   "verdict": "keep",
+   "class": null,
+   "entry": null,
+   "part": null,
+   "parts": [],
+   "dev_seen_exception": false,
+   "matches": []
+  },
+  "gd_totto_claims": {
+   "hit": false,
+   "verdict": "keep",
+   "class": null,
+   "entry": null,
+   "part": null,
+   "parts": [],
+   "dev_seen_exception": false,
+   "matches": []
+  },
+  "gd_uds_ordinal": {
+   "hit": false,
+   "verdict": "keep",
+   "class": null,
+   "entry": null,
+   "part": null,
+   "parts": [],
+   "dev_seen_exception": false,
+   "matches": []
+  },
+  "gd_usb_factuality": {
+   "hit": false,
+   "verdict": "keep",
+   "class": null,
+   "entry": null,
+   "part": null,
+   "parts": [],
+   "dev_seen_exception": false,
+   "matches": []
+  },
+  "gd_uscg_mariner": {
+   "hit": false,
+   "verdict": "keep",
+   "class": null,
+   "entry": null,
+   "part": null,
+   "parts": [],
+   "dev_seen_exception": false,
+   "matches": []
+  },
+  "gd_vader_intensity": {
+   "hit": false,
+   "verdict": "keep",
+   "class": null,
+   "entry": null,
+   "part": null,
+   "parts": [],
+   "dev_seen_exception": false,
+   "matches": []
+  },
+  "gd_wands_product": {
+   "hit": true,
+   "verdict": "keep_no_new_rows",
+   "class": "no_new_rows",
+   "entry": "WANDS query classes",
+   "part": null,
+   "parts": [],
+   "dev_seen_exception": false,
+   "matches": [
+    {
+     "entry": "WANDS query classes",
+     "id": "rej:large_labelsets#20.0",
+     "class": "no_new_rows",
+     "cat": "low_value",
+     "scope": "dataset",
+     "field": "dataset",
+     "alias": "wayfair annotation dataset"
+    }
+   ]
+  },
+  "gd_webred": {
+   "hit": false,
+   "verdict": "keep",
+   "class": null,
+   "entry": null,
+   "part": null,
+   "parts": [],
+   "dev_seen_exception": false,
+   "matches": []
+  },
+  "gd_wiki_help_routing": {
+   "hit": true,
+   "verdict": "keep_no_new_rows",
+   "class": "no_new_rows",
+   "entry": "Wikipedia Reference Desk Miscellaneous, Teahouse, Village pump, AN3",
+   "part": null,
+   "parts": [],
+   "dev_seen_exception": false,
+   "matches": [
+    {
+     "entry": "Wikipedia Reference Desk Miscellaneous, Teahouse, Village pump, AN3",
+     "id": "rej:routing_dialogue#19.0",
+     "class": "no_new_rows",
+     "cat": "other_subset_used",
+     "scope": "dataset",
+     "field": "dataset",
+     "alias": "wikipedia help desk"
+    }
+   ]
+  },
+  "gd_winogrande": {
+   "hit": true,
+   "verdict": "drop_part",
+   "class": "taint",
+   "entry": "Decision Index test: WinoGrande",
+   "part": {
+    "field": "split",
+    "values": [
+     "test",
+     "validation",
+     "valid",
+     "dev",
+     "eval"
+    ],
+    "rule": "train_provenance",
+    "note": "only test/dev/eval items are tainted. Fail closed: the sampler keeps a row only if it proves the row comes from a train split (a group_id split token, a train-split marker in meta.dataset, or a builder-declared split it re-checks in the builder source) and drops every other row (RUNBOOK_replay_reads.md 3.2)"
+   },
+   "parts": [
+    {
+     "field": "split",
+     "values": [
+      "test",
+      "validation",
+      "valid",
+      "dev",
+      "eval"
+     ],
+     "rule": "train_provenance",
+     "note": "only test/dev/eval items are tainted. Fail closed: the sampler keeps a row only if it proves the row comes from a train split (a group_id split token, a train-split marker in meta.dataset, or a builder-declared split it re-checks in the builder source) and drops every other row (RUNBOOK_replay_reads.md 3.2)"
+    }
+   ],
+   "dev_seen_exception": false,
+   "matches": [
+    {
+     "entry": "Winogrande",
+     "id": "rej:mcq_exams#10.6",
+     "class": "no_new_rows",
+     "cat": "already_used",
+     "scope": "dataset",
+     "field": "name",
+     "alias": "winogrande"
+    },
+    {
+     "entry": "Decision Index test: WinoGrande",
+     "id": "di:WinoGrande",
+     "class": "taint",
+     "cat": "di_test",
+     "scope": "split",
+     "field": "name",
+     "alias": "WinoGrande"
+    },
+    {
+     "entry": "Winogrande",
+     "id": "rej:mcq_exams#10.6",
+     "class": "no_new_rows",
+     "cat": "already_used",
+     "scope": "dataset",
+     "field": "dataset",
+     "alias": "allenai/winogrande"
+    },
+    {
+     "entry": "Decision Index test: WinoGrande",
+     "id": "di:WinoGrande",
+     "class": "taint",
+     "cat": "di_test",
+     "scope": "split",
+     "field": "dataset",
+     "alias": "WinoGrande"
+    },
+    {
+     "entry": "Winogrande",
+     "id": "rej:mcq_exams#10.6",
+     "class": "no_new_rows",
+     "cat": "already_used",
+     "scope": "dataset",
+     "field": "domain",
+     "alias": "winogrande"
+    },
+    {
+     "entry": "Decision Index test: WinoGrande",
+     "id": "di:WinoGrande",
+     "class": "taint",
+     "cat": "di_test",
+     "scope": "split",
+     "field": "domain",
+     "alias": "WinoGrande"
+    }
+   ]
+  },
+  "gd_wnut17": {
+   "hit": false,
+   "verdict": "keep",
+   "class": null,
+   "entry": null,
+   "part": null,
+   "parts": [],
+   "dev_seen_exception": false,
+   "matches": []
+  },
+  "gd_wtq": {
+   "hit": false,
+   "verdict": "keep",
+   "class": null,
+   "entry": null,
+   "part": null,
+   "parts": [],
+   "dev_seen_exception": false,
+   "matches": []
+  },
+  "hard_affect": {
+   "hit": true,
+   "verdict": "keep_dev_seen",
+   "class": "taint",
+   "entry": "dev source hard_affect (hard_dev)",
+   "part": null,
+   "parts": [],
+   "dev_seen_exception": true,
+   "matches": [
+    {
+     "entry": "dev source hard_affect (hard_dev)",
+     "id": "dev:hard_affect",
+     "class": "taint",
+     "cat": "dev_eval",
+     "scope": "dataset",
+     "field": "name",
+     "alias": "dev:hard_affect"
+    }
+   ]
+  },
+  "hard_affect_c": {
+   "hit": true,
+   "verdict": "keep_dev_seen",
+   "class": "taint",
+   "entry": "dev source hard_affect (hard_dev)",
+   "part": null,
+   "parts": [],
+   "dev_seen_exception": true,
+   "matches": [
+    {
+     "entry": "dev source hard_affect (hard_dev)",
+     "id": "dev:hard_affect",
+     "class": "taint",
+     "cat": "dev_eval",
+     "scope": "dataset",
+     "field": "name",
+     "alias": "dev:hard_affect"
+    }
+   ]
+  },
+  "hard_clinical": {
+   "hit": true,
+   "verdict": "keep_dev_seen",
+   "class": "taint",
+   "entry": "dev source hard_clinical (hard_dev)",
+   "part": null,
+   "parts": [],
+   "dev_seen_exception": true,
+   "matches": [
+    {
+     "entry": "dev source hard_clinical (hard_dev)",
+     "id": "dev:hard_clinical",
+     "class": "taint",
+     "cat": "dev_eval",
+     "scope": "dataset",
+     "field": "name",
+     "alias": "dev:hard_clinical"
+    }
+   ]
+  },
+  "hard_codebook_c": {
+   "hit": false,
+   "verdict": "keep",
+   "class": null,
+   "entry": null,
+   "part": null,
+   "parts": [],
+   "dev_seen_exception": false,
+   "matches": []
+  },
+  "hard_contracts": {
+   "hit": true,
+   "verdict": "keep_dev_seen",
+   "class": "taint",
+   "entry": "dev source hard_contracts (hard_dev)",
+   "part": null,
+   "parts": [],
+   "dev_seen_exception": true,
+   "matches": [
+    {
+     "entry": "dev source hard_contracts (hard_dev)",
+     "id": "dev:hard_contracts",
+     "class": "taint",
+     "cat": "dev_eval",
+     "scope": "dataset",
+     "field": "name",
+     "alias": "dev:hard_contracts"
+    }
+   ]
+  },
+  "hard_evidence_a": {
+   "hit": true,
+   "verdict": "keep_dev_seen",
+   "class": "taint",
+   "entry": "dev source hard_evidence_a (hard_dev)",
+   "part": null,
+   "parts": [],
+   "dev_seen_exception": true,
+   "matches": [
+    {
+     "entry": "dev source hard_evidence_a (hard_dev)",
+     "id": "dev:hard_evidence_a",
+     "class": "taint",
+     "cat": "dev_eval",
+     "scope": "dataset",
+     "field": "name",
+     "alias": "dev:hard_evidence_a"
+    }
+   ]
+  },
+  "hard_evidence_b": {
+   "hit": true,
+   "verdict": "keep_dev_seen",
+   "class": "taint",
+   "entry": "dev source hard_evidence_b (hard_dev)",
+   "part": null,
+   "parts": [],
+   "dev_seen_exception": true,
+   "matches": [
+    {
+     "entry": "dev source hard_evidence_b (hard_dev)",
+     "id": "dev:hard_evidence_b",
+     "class": "taint",
+     "cat": "dev_eval",
+     "scope": "dataset",
+     "field": "name",
+     "alias": "dev:hard_evidence_b"
+    }
+   ]
+  },
+  "hard_evidence_claims_a": {
+   "hit": true,
+   "verdict": "keep_dev_seen",
+   "class": "taint",
+   "entry": "dev source hard_evidence_claims_a (hard_dev)",
+   "part": null,
+   "parts": [],
+   "dev_seen_exception": true,
+   "matches": [
+    {
+     "entry": "dev source hard_evidence_claims_a (hard_dev)",
+     "id": "dev:hard_evidence_claims_a",
+     "class": "taint",
+     "cat": "dev_eval",
+     "scope": "dataset",
+     "field": "name",
+     "alias": "dev:hard_evidence_claims_a"
+    }
+   ]
+  },
+  "hard_evidence_claims_b": {
+   "hit": true,
+   "verdict": "keep_dev_seen",
+   "class": "taint",
+   "entry": "dev source hard_evidence_claims_b (hard_dev)",
+   "part": null,
+   "parts": [],
+   "dev_seen_exception": true,
+   "matches": [
+    {
+     "entry": "dev source hard_evidence_claims_b (hard_dev)",
+     "id": "dev:hard_evidence_claims_b",
+     "class": "taint",
+     "cat": "dev_eval",
+     "scope": "dataset",
+     "field": "name",
+     "alias": "dev:hard_evidence_claims_b"
+    }
+   ]
+  },
+  "hard_intent_c": {
+   "hit": false,
+   "verdict": "keep",
+   "class": null,
+   "entry": null,
+   "part": null,
+   "parts": [],
+   "dev_seen_exception": false,
+   "matches": []
+  },
+  "hard_nli_a": {
+   "hit": true,
+   "verdict": "keep_dev_seen",
+   "class": "taint",
+   "entry": "dev source hard_nli_a (hard_dev)",
+   "part": null,
+   "parts": [],
+   "dev_seen_exception": true,
+   "matches": [
+    {
+     "entry": "dev source hard_nli_a (hard_dev)",
+     "id": "dev:hard_nli_a",
+     "class": "taint",
+     "cat": "dev_eval",
+     "scope": "dataset",
+     "field": "name",
+     "alias": "dev:hard_nli_a"
+    }
+   ]
+  },
+  "hard_nli_b": {
+   "hit": true,
+   "verdict": "keep_dev_seen",
+   "class": "taint",
+   "entry": "dev source hard_nli_b (hard_dev)",
+   "part": null,
+   "parts": [],
+   "dev_seen_exception": true,
+   "matches": [
+    {
+     "entry": "dev source hard_nli_b (hard_dev)",
+     "id": "dev:hard_nli_b",
+     "class": "taint",
+     "cat": "dev_eval",
+     "scope": "dataset",
+     "field": "name",
+     "alias": "dev:hard_nli_b"
+    }
+   ]
+  },
+  "hard_nli_c": {
+   "hit": false,
+   "verdict": "keep",
+   "class": null,
+   "entry": null,
+   "part": null,
+   "parts": [],
+   "dev_seen_exception": false,
+   "matches": []
+  },
+  "hard_policy_a": {
+   "hit": true,
+   "verdict": "keep_dev_seen",
+   "class": "taint",
+   "entry": "dev source hard_policy_a (hard_dev)",
+   "part": null,
+   "parts": [],
+   "dev_seen_exception": true,
+   "matches": [
+    {
+     "entry": "dev source hard_policy_a (hard_dev)",
+     "id": "dev:hard_policy_a",
+     "class": "taint",
+     "cat": "dev_eval",
+     "scope": "dataset",
+     "field": "name",
+     "alias": "dev:hard_policy_a"
+    }
+   ]
+  },
+  "hard_policy_b": {
+   "hit": true,
+   "verdict": "keep_dev_seen",
+   "class": "taint",
+   "entry": "dev source hard_policy_b (hard_dev)",
+   "part": null,
+   "parts": [],
+   "dev_seen_exception": true,
+   "matches": [
+    {
+     "entry": "dev source hard_policy_b (hard_dev)",
+     "id": "dev:hard_policy_b",
+     "class": "taint",
+     "cat": "dev_eval",
+     "scope": "dataset",
+     "field": "name",
+     "alias": "dev:hard_policy_b"
+    }
+   ]
+  },
+  "hard_policy_c": {
+   "hit": false,
+   "verdict": "keep",
+   "class": null,
+   "entry": null,
+   "part": null,
+   "parts": [],
+   "dev_seen_exception": false,
+   "matches": []
+  },
+  "hard_reason_c": {
+   "hit": false,
+   "verdict": "keep",
+   "class": null,
+   "entry": null,
+   "part": null,
+   "parts": [],
+   "dev_seen_exception": false,
+   "matches": []
+  },
+  "hard_scales": {
+   "hit": true,
+   "verdict": "keep_dev_seen",
+   "class": "taint",
+   "entry": "dev source hard_scales (hard_dev)",
+   "part": null,
+   "parts": [],
+   "dev_seen_exception": true,
+   "matches": [
+    {
+     "entry": "dev source hard_scales (hard_dev)",
+     "id": "dev:hard_scales",
+     "class": "taint",
+     "cat": "dev_eval",
+     "scope": "dataset",
+     "field": "name",
+     "alias": "dev:hard_scales"
+    }
+   ]
+  },
+  "judge_helpsteer2": {
+   "hit": false,
+   "verdict": "keep",
+   "class": null,
+   "entry": null,
+   "part": null,
+   "parts": [],
+   "dev_seen_exception": false,
+   "matches": []
+  },
+  "judge_mathderiv": {
+   "hit": false,
+   "verdict": "keep",
+   "class": null,
+   "entry": null,
+   "part": null,
+   "parts": [],
+   "dev_seen_exception": false,
+   "matches": []
+  },
+  "judge_prm800k": {
+   "hit": false,
+   "verdict": "keep",
+   "class": null,
+   "entry": null,
+   "part": null,
+   "parts": [],
+   "dev_seen_exception": false,
+   "matches": []
+  },
+  "logiqa2": {
+   "hit": true,
+   "verdict": "keep_no_new_rows",
+   "class": "no_new_rows",
+   "entry": "LogiQA 2.0 / 1.0",
+   "part": null,
+   "parts": [],
+   "dev_seen_exception": false,
+   "matches": [
+    {
+     "entry": "LogiQA 2.0 / 1.0",
+     "id": "rej:mcq_exams#10.5",
+     "class": "no_new_rows",
+     "cat": "already_used",
+     "scope": "dataset",
+     "field": "name",
+     "alias": "logiqa2"
+    }
+   ]
+  },
+  "massive": {
+   "hit": true,
+   "verdict": "keep_no_new_rows",
+   "class": "no_new_rows",
+   "entry": "MASSIVE extra train rows",
+   "part": null,
+   "parts": [],
+   "dev_seen_exception": false,
+   "matches": [
+    {
+     "entry": "MASSIVE extra train rows",
+     "id": "rej:intent_business_support#3.2",
+     "class": "no_new_rows",
+     "cat": "extra_rows",
+     "scope": "dataset",
+     "field": "name",
+     "alias": "massive"
+    },
+    {
+     "entry": "MASSIVE (in used_sources)",
+     "id": "rej:large_labelsets#2.7",
+     "class": "no_new_rows",
+     "cat": "already_used",
+     "scope": "dataset",
+     "field": "name",
+     "alias": "massive"
+    }
+   ]
+  },
+  "mnli": {
+   "hit": true,
+   "verdict": "keep_no_new_rows",
+   "class": "no_new_rows",
+   "entry": "MultiNLI",
+   "part": null,
+   "parts": [],
+   "dev_seen_exception": false,
+   "matches": [
+    {
+     "entry": "MultiNLI",
+     "id": "rej:nli_logic_reasoning#17.0",
+     "class": "no_new_rows",
+     "cat": "already_used",
+     "scope": "dataset",
+     "field": "name",
+     "alias": "mnli"
+    }
+   ]
+  },
+  "mnli3": {
+   "hit": true,
+   "verdict": "keep_no_new_rows",
+   "class": "no_new_rows",
+   "entry": "MultiNLI",
+   "part": null,
+   "parts": [],
+   "dev_seen_exception": false,
+   "matches": [
+    {
+     "entry": "MultiNLI",
+     "id": "rej:nli_logic_reasoning#17.0",
+     "class": "no_new_rows",
+     "cat": "already_used",
+     "scope": "dataset",
+     "field": "name",
+     "alias": "mnli3"
+    }
+   ]
+  },
+  "mnli_neutral": {
+   "hit": true,
+   "verdict": "keep_no_new_rows",
+   "class": "no_new_rows",
+   "entry": "MultiNLI",
+   "part": null,
+   "parts": [],
+   "dev_seen_exception": false,
+   "matches": [
+    {
+     "entry": "MultiNLI",
+     "id": "rej:nli_logic_reasoning#17.0",
+     "class": "no_new_rows",
+     "cat": "already_used",
+     "scope": "dataset",
+     "field": "name",
+     "alias": "mnli"
+    }
+   ]
+  },
+  "mrpc": {
+   "hit": true,
+   "verdict": "drop",
+   "class": "taint",
+   "entry": "glue/mrpc",
+   "part": null,
+   "parts": [],
+   "dev_seen_exception": false,
+   "matches": [
+    {
+     "entry": "glue/mrpc",
+     "id": "forbidden:glue/mrpc",
+     "class": "taint",
+     "cat": "forbidden_task",
+     "scope": "dataset",
+     "field": "name",
+     "alias": "mrpc"
+    }
+   ]
+  },
+  "musr_murder_mysteries": {
+   "hit": true,
+   "verdict": "drop",
+   "class": "taint",
+   "entry": "Decision Index test: MuSR",
+   "part": null,
+   "parts": [],
+   "dev_seen_exception": false,
+   "matches": [
+    {
+     "entry": "Decision Index test: MuSR",
+     "id": "di:MuSR",
+     "class": "taint",
+     "cat": "di_test",
+     "scope": "dataset",
+     "field": "name",
+     "alias": "MuSR"
+    }
+   ]
+  },
+  "musr_object_placements": {
+   "hit": true,
+   "verdict": "drop",
+   "class": "taint",
+   "entry": "Decision Index test: MuSR",
+   "part": null,
+   "parts": [],
+   "dev_seen_exception": false,
+   "matches": [
+    {
+     "entry": "Decision Index test: MuSR",
+     "id": "di:MuSR",
+     "class": "taint",
+     "cat": "di_test",
+     "scope": "dataset",
+     "field": "name",
+     "alias": "MuSR"
+    }
+   ]
+  },
+  "musr_team_allocation": {
+   "hit": true,
+   "verdict": "drop",
+   "class": "taint",
+   "entry": "Decision Index test: MuSR",
+   "part": null,
+   "parts": [],
+   "dev_seen_exception": false,
+   "matches": [
+    {
+     "entry": "Decision Index test: MuSR",
+     "id": "di:MuSR",
+     "class": "taint",
+     "cat": "di_test",
+     "scope": "dataset",
+     "field": "name",
+     "alias": "MuSR"
+    }
+   ]
+  },
+  "pg_conflict": {
+   "hit": true,
+   "verdict": "keep_dev_seen",
+   "class": "taint",
+   "entry": "dev source pg_conflict (pg_dev)",
+   "part": null,
+   "parts": [],
+   "dev_seen_exception": true,
+   "matches": [
+    {
+     "entry": "dev source pg_conflict (pg_dev)",
+     "id": "dev:pg_conflict",
+     "class": "taint",
+     "cat": "dev_eval",
+     "scope": "dataset",
+     "field": "name",
+     "alias": "dev:pg_conflict"
+    }
+   ]
+  },
+  "pg_evidence": {
+   "hit": true,
+   "verdict": "keep_dev_seen",
+   "class": "taint",
+   "entry": "dev source pg_evidence (pg_dev)",
+   "part": null,
+   "parts": [],
+   "dev_seen_exception": true,
+   "matches": [
+    {
+     "entry": "dev source pg_evidence (pg_dev)",
+     "id": "dev:pg_evidence",
+     "class": "taint",
+     "cat": "dev_eval",
+     "scope": "dataset",
+     "field": "name",
+     "alias": "dev:pg_evidence"
+    }
+   ]
+  },
+  "pg_multihop": {
+   "hit": true,
+   "verdict": "keep_dev_seen",
+   "class": "taint",
+   "entry": "dev source pg_multihop (pg_dev)",
+   "part": null,
+   "parts": [],
+   "dev_seen_exception": true,
+   "matches": [
+    {
+     "entry": "dev source pg_multihop (pg_dev)",
+     "id": "dev:pg_multihop",
+     "class": "taint",
+     "cat": "dev_eval",
+     "scope": "dataset",
+     "field": "name",
+     "alias": "dev:pg_multihop"
+    }
+   ]
+  },
+  "pg_numeric": {
+   "hit": true,
+   "verdict": "keep_dev_seen",
+   "class": "taint",
+   "entry": "dev source pg_numeric (pg_dev)",
+   "part": null,
+   "parts": [],
+   "dev_seen_exception": true,
+   "matches": [
+    {
+     "entry": "dev source pg_numeric (pg_dev)",
+     "id": "dev:pg_numeric",
+     "class": "taint",
+     "cat": "dev_eval",
+     "scope": "dataset",
+     "field": "name",
+     "alias": "dev:pg_numeric"
+    }
+   ]
+  },
+  "pg_policy": {
+   "hit": true,
+   "verdict": "keep_dev_seen",
+   "class": "taint",
+   "entry": "dev source pg_policy (pg_dev)",
+   "part": null,
+   "parts": [],
+   "dev_seen_exception": true,
+   "matches": [
+    {
+     "entry": "dev source pg_policy (pg_dev)",
+     "id": "dev:pg_policy",
+     "class": "taint",
+     "cat": "dev_eval",
+     "scope": "dataset",
+     "field": "name",
+     "alias": "dev:pg_policy"
+    }
+   ]
+  },
+  "pg_routing": {
+   "hit": true,
+   "verdict": "keep_dev_seen",
+   "class": "taint",
+   "entry": "dev source pg_routing (pg_dev)",
+   "part": null,
+   "parts": [],
+   "dev_seen_exception": true,
+   "matches": [
+    {
+     "entry": "dev source pg_routing (pg_dev)",
+     "id": "dev:pg_routing",
+     "class": "taint",
+     "cat": "dev_eval",
+     "scope": "dataset",
+     "field": "name",
+     "alias": "dev:pg_routing"
+    }
+   ]
+  },
+  "pg_temporal": {
+   "hit": true,
+   "verdict": "keep_dev_seen",
+   "class": "taint",
+   "entry": "dev source pg_temporal (pg_dev)",
+   "part": null,
+   "parts": [],
+   "dev_seen_exception": true,
+   "matches": [
+    {
+     "entry": "dev source pg_temporal (pg_dev)",
+     "id": "dev:pg_temporal",
+     "class": "taint",
+     "cat": "dev_eval",
+     "scope": "dataset",
+     "field": "name",
+     "alias": "dev:pg_temporal"
+    }
+   ]
+  },
+  "planted_a": {
+   "hit": false,
+   "verdict": "keep",
+   "class": null,
+   "entry": null,
+   "part": null,
+   "parts": [],
+   "dev_seen_exception": false,
+   "matches": []
+  },
+  "planted_b": {
+   "hit": false,
+   "verdict": "keep",
+   "class": null,
+   "entry": null,
+   "part": null,
+   "parts": [],
+   "dev_seen_exception": false,
+   "matches": []
+  },
+  "proc_adversarial": {
+   "hit": false,
+   "verdict": "keep",
+   "class": null,
+   "entry": null,
+   "part": null,
+   "parts": [],
+   "dev_seen_exception": false,
+   "matches": []
+  },
+  "proc_evidence": {
+   "hit": false,
+   "verdict": "keep",
+   "class": null,
+   "entry": null,
+   "part": null,
+   "parts": [],
+   "dev_seen_exception": false,
+   "matches": []
+  },
+  "proc_longpolicy": {
+   "hit": false,
+   "verdict": "keep",
+   "class": null,
+   "entry": null,
+   "part": null,
+   "parts": [],
+   "dev_seen_exception": false,
+   "matches": []
+  },
+  "proc_multihop": {
+   "hit": false,
+   "verdict": "keep",
+   "class": null,
+   "entry": null,
+   "part": null,
+   "parts": [],
+   "dev_seen_exception": false,
+   "matches": []
+  },
+  "proc_routing": {
+   "hit": false,
+   "verdict": "keep",
+   "class": null,
+   "entry": null,
+   "part": null,
+   "parts": [],
+   "dev_seen_exception": false,
+   "matches": []
+  },
+  "proc_rubric": {
+   "hit": false,
+   "verdict": "keep",
+   "class": null,
+   "entry": null,
+   "part": null,
+   "parts": [],
+   "dev_seen_exception": false,
+   "matches": []
+  },
+  "proc_temporal": {
+   "hit": false,
+   "verdict": "keep",
+   "class": null,
+   "entry": null,
+   "part": null,
+   "parts": [],
+   "dev_seen_exception": false,
+   "matches": []
+  },
+  "proc_tradeoff": {
+   "hit": false,
+   "verdict": "keep",
+   "class": null,
+   "entry": null,
+   "part": null,
+   "parts": [],
+   "dev_seen_exception": false,
+   "matches": []
+  },
+  "proc_trap": {
+   "hit": false,
+   "verdict": "keep",
+   "class": null,
+   "entry": null,
+   "part": null,
+   "parts": [],
+   "dev_seen_exception": false,
+   "matches": []
+  },
+  "proofwriter": {
+   "hit": true,
+   "verdict": "keep_no_new_rows",
+   "class": "no_new_rows",
+   "entry": "ProofWriter / RuleTaker",
+   "part": null,
+   "parts": [],
+   "dev_seen_exception": false,
+   "matches": [
+    {
+     "entry": "ProofWriter / RuleTaker",
+     "id": "rej:nli_logic_reasoning#8.0",
+     "class": "no_new_rows",
+     "cat": "already_used",
+     "scope": "dataset",
+     "field": "name",
+     "alias": "proofwriter"
+    }
+   ]
+  },
+  "qnli": {
+   "hit": true,
+   "verdict": "keep_no_new_rows",
+   "class": "no_new_rows",
+   "entry": "QNLI",
+   "part": null,
+   "parts": [],
+   "dev_seen_exception": false,
+   "matches": [
+    {
+     "entry": "QNLI",
+     "id": "rej:nli_logic_reasoning#17.2",
+     "class": "no_new_rows",
+     "cat": "already_used",
+     "scope": "dataset",
+     "field": "name",
+     "alias": "qnli"
+    }
+   ]
+  },
+  "rte": {
+   "hit": true,
+   "verdict": "keep_no_new_rows",
+   "class": "no_new_rows",
+   "entry": "GLUE RTE",
+   "part": null,
+   "parts": [],
+   "dev_seen_exception": false,
+   "matches": [
+    {
+     "entry": "GLUE RTE",
+     "id": "rej:nli_logic_reasoning#17.1",
+     "class": "no_new_rows",
+     "cat": "already_used",
+     "scope": "dataset",
+     "field": "name",
+     "alias": "rte"
+    }
+   ]
+  },
+  "std_evidence": {
+   "hit": false,
+   "verdict": "keep",
+   "class": null,
+   "entry": null,
+   "part": null,
+   "parts": [],
+   "dev_seen_exception": false,
+   "matches": []
+  },
+  "std_hate": {
+   "hit": true,
+   "verdict": "keep_dev_seen",
+   "class": "taint",
+   "entry": "dev source hate (dev_claims, dev_negwords, devp_card)",
+   "part": null,
+   "parts": [],
+   "dev_seen_exception": true,
+   "matches": [
+    {
+     "entry": "dev source hate (dev_claims, dev_negwords, devp_card)",
+     "id": "dev:hate",
+     "class": "taint",
+     "cat": "dev_eval",
+     "scope": "dataset",
+     "field": "name",
+     "alias": "dev:hate"
+    }
+   ]
+  },
+  "std_hearsay": {
+   "hit": false,
+   "verdict": "keep",
+   "class": null,
+   "entry": null,
+   "part": null,
+   "parts": [],
+   "dev_seen_exception": false,
+   "matches": []
+  },
+  "std_trademark": {
+   "hit": false,
+   "verdict": "keep",
+   "class": null,
+   "entry": null,
+   "part": null,
+   "parts": [],
+   "dev_seen_exception": false,
+   "matches": []
+  },
+  "tb_label_nli": {
+   "hit": true,
+   "verdict": "drop",
+   "class": "taint",
+   "entry": "tasksource/zero-shot-label-nli (aggregate)",
+   "part": null,
+   "parts": [],
+   "dev_seen_exception": false,
+   "matches": [
+    {
+     "entry": "tasksource/zero-shot-label-nli (aggregate)",
+     "id": "forbidden:_aggregate",
+     "class": "taint",
+     "cat": "forbidden_task",
+     "scope": "dataset",
+     "field": "name",
+     "alias": "tb_label_nli"
+    },
+    {
+     "entry": "tasksource zero-shot-label-nli (the 152-task aggregate)",
+     "id": "extra:5",
+     "class": "taint",
+     "cat": "forbidden_task",
+     "scope": "dataset",
+     "field": "name",
+     "alias": "tb_label_nli"
+    },
+    {
+     "entry": "dev source tb_label_nli (taskbank_dev)",
+     "id": "dev:tb_label_nli",
+     "class": "taint",
+     "cat": "dev_eval",
+     "scope": "dataset",
+     "field": "name",
+     "alias": "dev:tb_label_nli"
+    },
+    {
+     "entry": "dev source tb_label_nli (eval_redef)",
+     "id": "dev:redef:tb_label_nli",
+     "class": "taint",
+     "cat": "dev_eval",
+     "scope": "dataset",
+     "field": "name",
+     "alias": "dev:tb_label_nli"
+    }
+   ]
+  },
+  "toxic_conv": {
+   "hit": true,
+   "verdict": "drop",
+   "class": "taint",
+   "entry": "toxic_conversations",
+   "part": null,
+   "parts": [],
+   "dev_seen_exception": false,
+   "matches": [
+    {
+     "entry": "toxic_conversations",
+     "id": "3G#17.3",
+     "class": "taint",
+     "cat": "forbidden_task",
+     "scope": "dataset",
+     "field": "name",
+     "alias": "toxic_conv"
+    }
+   ]
+  },
+  "wiki_stance_afd": {
+   "hit": true,
+   "verdict": "drop",
+   "class": "taint",
+   "entry": "Articles for Deletion (JevBench jagged, wiki-stance)",
+   "part": null,
+   "parts": [],
+   "dev_seen_exception": false,
+   "matches": [
+    {
+     "entry": "Articles for Deletion (JevBench jagged, wiki-stance)",
+     "id": "rej:routing_dialogue#19.1",
+     "class": "taint",
+     "cat": "jev",
+     "scope": "dataset",
+     "field": "name",
+     "alias": "afd"
+    },
+    {
+     "entry": "JevBench jagged source afd",
+     "id": "eval:afd",
+     "class": "taint",
+     "cat": "jev",
+     "scope": "dataset",
+     "field": "name",
+     "alias": "dev:afd"
+    }
+   ]
+  },
+  "yahoo": {
+   "hit": true,
+   "verdict": "drop",
+   "class": "taint",
+   "entry": "Yahoo Answers",
+   "part": null,
+   "parts": [],
+   "dev_seen_exception": false,
+   "matches": [
+    {
+     "entry": "Yahoo Answers",
+     "id": "3G#15.18",
+     "class": "taint",
+     "cat": "forbidden_task",
+     "scope": "dataset",
+     "field": "name",
+     "alias": "yahoo"
+    },
+    {
+     "entry": "yahoo_answers_topics",
+     "id": "forbidden:yahoo_answers_topics",
+     "class": "taint",
+     "cat": "forbidden_task",
+     "scope": "dataset",
+     "field": "name",
+     "alias": "yahoo"
+    }
+   ]
+  },
+  "yelp": {
+   "hit": true,
+   "verdict": "drop",
+   "class": "taint",
+   "entry": "Yelp review full",
+   "part": null,
+   "parts": [],
+   "dev_seen_exception": false,
+   "matches": [
+    {
+     "entry": "Yelp review full",
+     "id": "rej:ordinal_scales#9.0",
+     "class": "taint",
+     "cat": "forbidden_task",
+     "scope": "dataset",
+     "field": "name",
+     "alias": "yelp"
+    },
+    {
+     "entry": "Yelp",
+     "id": "3G#15.17",
+     "class": "taint",
+     "cat": "forbidden_task",
+     "scope": "dataset",
+     "field": "name",
+     "alias": "yelp"
+    },
+    {
+     "entry": "yelp_review_full/yelp_review_full",
+     "id": "forbidden:yelp_review_full/yelp_review_full",
+     "class": "taint",
+     "cat": "forbidden_task",
+     "scope": "dataset",
+     "field": "name",
+     "alias": "yelp"
+    }
+   ]
+  },
+  "yelp5": {
+   "hit": true,
+   "verdict": "drop",
+   "class": "taint",
+   "entry": "Yelp review full",
+   "part": null,
+   "parts": [],
+   "dev_seen_exception": false,
+   "matches": [
+    {
+     "entry": "Yelp review full",
+     "id": "rej:ordinal_scales#9.0",
+     "class": "taint",
+     "cat": "forbidden_task",
+     "scope": "dataset",
+     "field": "name",
+     "alias": "yelp5"
+    },
+    {
+     "entry": "Yelp",
+     "id": "3G#15.17",
+     "class": "taint",
+     "cat": "forbidden_task",
+     "scope": "dataset",
+     "field": "name",
+     "alias": "yelp5"
+    },
+    {
+     "entry": "yelp_review_full/yelp_review_full",
+     "id": "forbidden:yelp_review_full/yelp_review_full",
+     "class": "taint",
+     "cat": "forbidden_task",
+     "scope": "dataset",
+     "field": "name",
+     "alias": "yelp5"
+    }
+   ]
+  }
+ }
+}

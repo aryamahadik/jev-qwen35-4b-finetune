@@ -1,0 +1,49 @@
+{
+  "name": "q35_4b_c_r1",
+  "base": "Qwen/Qwen3.5-4B",
+  "base_revision": "851bf6e806efd8d0a36b00ddf55e13ccb7b8cd0a",
+  "recipe": "A3",
+  "init_adapter": "/vol/models/q35_4b_main500k_init",
+  "train_file": "c_parts/c_train_r1.jsonl",
+  "rel_file": "c_parts/c_rel_r1.jsonl",
+  "epochs": "FILL_FROM_the_batches_dry_run_16_over_measured_rows_per_step",
+  "lr": 5e-05,
+  "batch": 16,
+  "r": 16,
+  "alpha": 32,
+  "dropout": 0.05,
+  "lam": 1.0,
+  "beta": 0.0,
+  "kd": 0.5,
+  "kd_skip_src": [
+    "blend50"
+  ],
+  "kd_full_src": [
+    "gd_gen2_probability"
+  ],
+  "lam_inv": 1.0,
+  "sym_cons": true,
+  "perm_twin": 0.3,
+  "lam_p": 0.5,
+  "lam_ord": 1.0,
+  "expect_ord_rows": "FILL_FROM_mixer_ordinal_row_count",
+  "aux_norm": "batch",
+  "seed": "FILL_NEW_SEED",
+  "grad_ckpt": true,
+  "style": "cygnet",
+  "layout": "schema_branch_mark",
+  "micro_tokens": 8192,
+  "targets": "QWEN35",
+  "snap_every": 2500,
+  "snap_fracs": [
+    0.25,
+    0.5,
+    0.75
+  ],
+  "expect_trainable": 32464896,
+  "expect_kd_targets": "FILL_FROM_mixer_kd_count",
+  "expect_kd_full": "FILL_FROM_mixer_kd_full_count",
+  "ckpt_every_min": 10,
+  "log_every": 50,
+  "no_overwrite": true
+}

@@ -648,19 +648,51 @@ def test_data_ignore_uploads_run_files_and_skips_label_shards():
     """The image's data/ upload keeps every file a run config trains on (including the 2B's KD file) and never the
     ~1 GB label-shard directory (review item 13). Paths are relative to data/, as Modal passes them."""
     wanted = {"v14_parts/train_2b_golden_kd.jsonl", "v14_parts/golden_dev.jsonl", "v14_parts/golden_dev_relations.jsonl",
-              "dev.jsonl", "train_2b_kd.jsonl"}
+              "dev.jsonl", "train_2b_kd.jsonl",
+              # C rounds (C_TRAIN_RECIPE.md v4 config sketch), checked even before a round's config exists
+              "c_parts/c_train_r1.jsonl", "c_parts/c_rel_r1.jsonl", "c_parts/c_train_r2.jsonl", "c_parts/c_rel_r2.jsonl"}
+    # configs the default image never launches (runs/README.md): each must be refused on the laptop by _launch_checks
+    not_default = {**modal_od.SPAWN_LAUNCHED,
+                   "runs/q35_2b_main.json": "2B paused; add its train file to V14_KEEP when it resumes"}
     runs = sorted((ROOT / "runs").glob("*.json"))
-    assert runs
+    assert runs and "runs/q35_4b_c_r1.json" in {f"runs/{p.name}" for p in runs}  # the C config is checked here
     for p in runs:
         cfg = json.loads(p.read_text())
-        wanted |= {cfg[k] for k in ("train_file", "rel_file") if cfg.get(k)}
+        files = {cfg[k] for k in ("train_file", "rel_file") if cfg.get(k)}
+        if f"runs/{p.name}" in not_default:
+            if all(not modal_od._data_ignore(Path(f)) for f in files):
+                continue  # the file was allow-listed since; nothing to refuse
+            with pytest.raises(SystemExit, match="not uploaded"):
+                modal_od._launch_checks(f"runs/{p.name}", {k: cfg[k] for k in ("train_file", "rel_file")})
+            continue
+        wanted |= files
+    for name, script in modal_od.SPAWN_LAUNCHED.items():  # the spawn script exists and uploads that run's files
+        cfg, src = json.loads((ROOT / name).read_text()), (ROOT / script).read_text()
+        assert all(Path(cfg[k]).name in src for k in ("train_file", "rel_file")), name
     for f in sorted(wanted):
         assert not modal_od._data_ignore(Path(f)), f
     for f in ("v14_label_shards", "v14_label_shards/shard_000.jsonl", "v14_label_shards/shards.json",
               "v14_label_shards/labels_q35_4b_pxE/shard_000.jsonl", "x_label_shards/shard_001.meta.json",
-              "v14_parts/raw/gd_x.jsonl", "v14_parts/golden_train_pregap.jsonl", "v13_parts/golden_train.jsonl"):
+              "v14_parts/raw/gd_x.jsonl", "v14_parts/golden_train_pregap.jsonl", "v13_parts/golden_train.jsonl",
+              "c_parts/c_mix_report.json", "c_parts/f7/rows.jsonl", "c_parts/c_train_r1_pre_lint.jsonl",
+              "c_replay_r1_shards/shard_000.jsonl", "c_old_slice_shards/labels_q35_4b_main500k/shard_000.jsonl",
+              "ohs3_parts/x.jsonl", "ohs3_x.jsonl"):
         assert modal_od._data_ignore(Path(f)), f
-    assert not modal_od._data_ignore(Path("v14_parts")) and not modal_od._data_ignore(Path(""))
+    for d in ("v14_parts", "c_parts", ""):
+        assert not modal_od._data_ignore(Path(d)), d
+
+
+def test_launch_checks_refuse_fill_and_unmounted_files():
+    ok = {"train_file": "c_parts/c_train_r1.jsonl", "rel_file": "c_parts/c_rel_r1.jsonl", "epochs": 0.97}
+    modal_od._launch_checks("runs/x.json", ok)
+    with pytest.raises(SystemExit, match="FILL"):
+        modal_od._launch_checks("runs/x.json", {**ok, "epochs": "FILL_FROM_dry_run"})
+    with pytest.raises(SystemExit, match="PARTS_KEEP"):
+        modal_od._launch_checks("runs/x.json", {**ok, "train_file": "c_parts/c_train_r3.jsonl"})
+    with pytest.raises(SystemExit, match="fix2_spawn"):
+        modal_od._launch_checks("runs/q35_4b_fix2.json", {"train_file": "v14_parts/fix2_train.jsonl"})
+    with pytest.raises(SystemExit, match="FILL"):  # the C draft cannot launch until the build fills it
+        modal_od._launch_checks("runs/q35_4b_c_r1.json", json.loads((ROOT / "runs/q35_4b_c_r1.json").read_text()))
 
 
 def test_compare_relay_check_mode_and_trend(tmp_path, capsys):
@@ -673,3 +705,27 @@ def test_compare_relay_check_mode_and_trend(tmp_path, capsys):
     assert any("missing or changed" in p for p in cr.check_ckpt(str(tmp_path / "A2"), 300))
     with pytest.raises(SystemExit):
         cr.main(["--a1", str(tmp_path / "A1")])
+
+
+def test_smoke_f2_ride_along_record_and_compare(tmp_path, monkeypatch):
+    """The Modal smoke's F2 record (recipe v4 pre-flight 9) is written next to the smoke result and compared with the
+    reference record from another machine (e.g. the L4 gate VM)."""
+    from test_ordinal_a4 import Q35_TMPL, TemplTok, _f2_rec
+    monkeypatch.setattr(modal_od, "HERE", tmp_path)
+    rec = _f2_rec("modal-image35")
+    (tmp_path / "f2_l4.json").write_text(json.dumps({**rec, "where": "l4-gate"}))
+    out = tmp_path / "logs"
+    out.mkdir()
+    v = modal_od._f2_check({"ok": True, "f2": rec}, "smoke_heavy_h100_mt8192", "f2_l4.json", out)
+    assert v["f2_cross"] == "pass" and json.loads((out / "f2_smoke_heavy_h100_mt8192.json").read_text()) == rec
+    other = {**rec, "sha": {**rec["sha"], rec["views"][1]: "f" * 64}}
+    assert modal_od._f2_check({"f2": other}, "t2", "f2_l4.json", out)["f2"] == "FAIL"
+    assert modal_od._f2_check({"f2": {"error": "OSError: x"}}, "t3", "f2_l4.json", out)["f2"] == "ERROR"
+    assert modal_od._f2_check({"f2": rec}, "t4", "", out)["f2"].startswith("recorded")
+    assert modal_od._f2_check({"ok": True}, "t5", "f2_l4.json", out) is None
+    # inside the container: the training path of a config (no adapter); an error is returned, never raised
+    monkeypatch.setattr(td, "train_prompt_path", lambda cfg: {"tok": TemplTok("Qwen/Qwen3.5-4B", Q35_TMPL),
+                                                             "layout": cfg["layout"], "style": cfg["style"], "src": "x"})
+    here = modal_od._f2_here({"base": "Qwen/Qwen3.5-4B", "layout": "schema_branch_mark", "style": "cygnet"}, "", "m")
+    assert here["sha"] == rec["sha"] and set(here["paths"]) == {"train"}
+    assert "error" in modal_od._f2_here({}, "", "m")
