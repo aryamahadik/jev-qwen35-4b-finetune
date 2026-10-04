@@ -1,0 +1,58 @@
+{
+ "train_rows": 501732,
+ "boilerplate_grams": 109,
+ "per_subset": {
+  "aegis2": {
+   "items": 250,
+   "overlapping_items": 4
+  },
+  "boolq": {
+   "items": 300,
+   "overlapping_items": 8
+  },
+  "civil_comments": {
+   "items": 300,
+   "overlapping_items": 0
+  },
+  "helpsteer2": {
+   "items": 249,
+   "overlapping_items": 22
+  },
+  "massive-de-DE": {
+   "items": 350,
+   "overlapping_items": 0
+  },
+  "massive-en-US": {
+   "items": 350,
+   "overlapping_items": 0
+  },
+  "multinli": {
+   "items": 299,
+   "overlapping_items": 0
+  },
+  "paws": {
+   "items": 250,
+   "overlapping_items": 0
+  },
+  "pubmedqa": {
+   "items": 250,
+   "overlapping_items": 0
+  },
+  "squad2": {
+   "items": 299,
+   "overlapping_items": 0
+  },
+  "summeval-consistency": {
+   "items": 144,
+   "overlapping_items": 16
+  },
+  "summeval-relevance": {
+   "items": 240,
+   "overlapping_items": 16
+  },
+  "vitaminc-dev": {
+   "items": 599,
+   "overlapping_items": 10
+  }
+ }
+}
