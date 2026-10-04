@@ -1261,3 +1261,13 @@ This agrees with the earlier decision not to use TTA (X19).
 > - **Reading the result:** a subset where C1 is below base by more than the CI suggests that fine-tuning caused
 >   forgetting. That would argue for adding generic replay in round 2 (a decision that needs its own amendment).
 > - **Use:** report-only; it never chooses data for round 1.
+
+> **Amendment A17-B0 (4 Oct 2026, 19:10 UTC; owner request; free L4, report-only): think-mode feasibility pilot, with no
+> tuning.**
+> - **Model and inputs:** the base Qwen3.5-4B with thinking ON (LoRA off) on the clean Nimble subsets squad2, paws and
+>   pubmedqa. The question text is the same as the C1 runs (`build_row` + `user_msg`).
+> - **Settings:** thinking capped at 768 tokens, sampling at T 0.6 / top_p 0.95 / top_k 20, seed 0, then a forced
+>   `</think>` and a parsed answer letter.
+> - **Report:** accuracy versus the base and C1 one-pass results (A18, A18.2) and Jev's published numbers, plus the
+>   mean thinking tokens, the share hitting the cap, and seconds per item on the L4.
+> - Nothing here is tuned on these items, and it never chooses data or models. The A17 B1/B2 pass rules are unchanged.
