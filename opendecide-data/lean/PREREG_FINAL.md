@@ -1199,3 +1199,28 @@ This agrees with the earlier decision not to use TTA (X19).
 >   - median -0.8 vs Jev;
 >   - P(>= Jev - 1) 56%, P(>= Jev) 31%, P(>= Jev + 1) 14%;
 >   - C ships in about 22% of simulated runs.
+
+> **Amendment A17 (4 Oct 2026, 07:00 UTC; owner direction "best optimal plan", before any think-mode code, read or
+> spend): phase B, the fast think mode, runs in parallel with round 1. Plus the round-1 crowd-scoring compute.**
+> - **Design:** `reports/FINAL_ARCHITECTURE.md` section 3 and `reports/fast_think/FAST_THINK_PLAN.md`.
+>   - Think path: the same Qwen3.5-4B, LoRA OFF, thinking ON, one generic think prompt.
+>   - Policies: short step-by-step capped at 300 tokens (4 tries plus a vote), and capped thinking with DEER early
+>     exit.
+>   - Serving: an H100 with vLLM or SGLang, the `z-lab/Qwen3.5-4B-DFlash` drafter (Apache-2.0), and FP8 at most.
+>   - The router uses fast-pass confidence and question type, and is learned only on clean practice sets.
+> - **Clean sets only:** public TRAIN or validation splits that share no item with the Decision Index test items, OHS-1/2/3,
+>   ejs-5, JevBench or the sealed suite. Overlap is checked counts-only before any read.
+>   - Results on the Decision Index after think mode are labelled "DI-informed design".
+>   - The Decision Index is read once per shipped system.
+> - **Paid steps** (each needs its own owner GO; phase-B cap ~$30):
+>   - B1: H100 serving, speed proof, FP8 check and router/policy tuning (~$10-15).
+>   - B2: concise-thinking self-distillation on our own 4B's shortest correct answers (~$10-15). No bigger teacher.
+> - **Pass rules** (written before any result):
+>   - **B1:** fast-path p50 <= 50 ms compute on the H100. On clean math sets, the think path keeps >= 85% of
+>     full-thinking accuracy at <= 1 s median. FP8 loses <= 1 pt.
+>   - **B2:** >= 25% fewer think tokens at >= 98% of B1's accuracy.
+>   - A step that fails is not shipped.
+> - **Dropped for speed** (owner): the looped-layer pilot. The plan assumes no round 2 unless round 1 clearly wins.
+> - **Round-1 crowd scoring (owner GO, ~$15)** runs on a Modal H100 instead of the free L4.
+>   - One view per read: difficulty needs no 2-view readout.
+>   - Same three models (C1, 4B-E, base 4B), same G9 rules otherwise.
