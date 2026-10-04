@@ -10,10 +10,11 @@ ap = argparse.ArgumentParser()
 ap.add_argument("--data", default="data"); ap.add_argument("--out", default="preds"); ap.add_argument("--fake", action="store_true")
 ap.add_argument("--adapter", default=os.path.expanduser("~/lean/models/q35_4b_main500k")); ap.add_argument("--lean", default=os.path.expanduser("~/lean"))
 ap.add_argument("--limit", type=int, default=0)
+ap.add_argument("--adapter-sha", default="507d1c29690579f928a265713cd14b9c54a34baa8b74abd1e641560d987db078")
 a = ap.parse_args()
 from od_engine import ODEngine
 opts = dict(base="Qwen/Qwen3.5-4B", revision="851bf6e806efd8d0a36b00ddf55e13ccb7b8cd0a", adapter=a.adapter, lean=a.lean,
-            adapter_sha256="507d1c29690579f928a265713cd14b9c54a34baa8b74abd1e641560d987db078")
+            adapter_sha256=a.adapter_sha)
 if a.fake: opts["fake"] = True
 eng = ODEngine(**opts)
 def to_di(q):
