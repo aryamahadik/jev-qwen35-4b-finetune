@@ -1303,3 +1303,21 @@ This agrees with the earlier decision not to use TTA (X19).
 >   - Brier is reported but not comparable, because the think path gives no calibrated probabilities.
 > - **Use:** OHS-1/2 are practice sets (A12). Nothing is tuned on them and OHS-3 stays sealed. This only estimates
 >   whether think mode moves the OHS-like gap.
+
+> **Amendment A17-B1 (5 Oct 2026, 06:50 UTC; owner authorised autonomous paid steps within the goal's ~$100; rulings
+> made by the orchestrator before any spend): phase-B rulings and the speed-proof session.**
+> - **Session B1a, now:** a speed proof only. Configs `bf16_dflash` and `bf16_nospec` on one H100 each, run with
+>   `think/modal_think.py` on profile `aryamhd`.
+>   - Cost cap: $5 per launch. Expected cost ~$2.6, worst case $4.5.
+>   - It measures the C1 fast-path p50/p95 on the H100 and think-path tokens/s and wall time at 300/1,024/5,000 tokens,
+>     with and without the drafter.
+>   - The parity check on the 100 SQuAD2 items is report-only. It decides nothing.
+> - **Deferred to session B1b,** after the policy step exists on SGLang: FP8, DEER and the maths-rule accuracy, all on
+>   clean rows.
+> - **Clean maths set for the B1/B2 rules:** GSM8K TRAIN, a seeded 500 items, frozen now. The deny-list blocks only
+>   GSM8K test, and the Decision Index uses test items.
+>   - MMLU-val and SuperGPQA are excluded from every decision (DI-adjacent / a benchmark).
+>   - The counts-only overlap check against the public test sets and the A16(a) list runs before B1b.
+> - **The think-path policy counted by the maths rule:** `short_cot`, i.e. at most 300 tokens, 4 tries and a vote.
+> - **Router:** it targets at most 5% routed, per the plan, and is fitted on the `gate_dev.SPLITS` dev splits only.
+> - **Phase-B budget:** at most $30 cumulative, tracked in `logs/budget_ledger.md`.
