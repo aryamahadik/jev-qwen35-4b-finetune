@@ -1290,3 +1290,16 @@ This agrees with the earlier decision not to use TTA (X19).
 >     - The new answers are merged into C1's results and re-scored with the harness's own scorer.
 >     - Labelled "DI-informed design, prototype system".
 > - **Use:** report-only. Nothing is tuned on these items. The A17 B1/B2 pass rules are unchanged.
+
+> **Amendment A17-B0c (5 Oct 2026, 01:30 UTC; owner request; free L4; report-only): the same C1 + think-mode system as
+> A17-B0b on the practice sets OHS-1 and OHS-2.**
+> - **Settings:** the same router (C1 top probability < 0.8 goes to think), the same 1,024-token budget, the same
+>   sampling and the same fallback, all fixed in A17-B0b.
+> - **Rows:** the scored base rows only, as `score_ohs.py` defines them: OHS-1 1,847 rows, 694 of them routed; OHS-2
+>   1,320 rows, 415 routed.
+> - **Scoring:**
+>   - A think answer becomes probability 0.9 on the chosen option.
+>   - Scored with `score_ohs.py` against `jev_guard` and `jev_r2_guard`.
+>   - Brier is reported but not comparable, because the think path gives no calibrated probabilities.
+> - **Use:** OHS-1/2 are practice sets (A12). Nothing is tuned on them and OHS-3 stays sealed. This only estimates
+>   whether think mode moves the OHS-like gap.
