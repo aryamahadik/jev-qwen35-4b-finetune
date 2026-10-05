@@ -83,8 +83,8 @@ def main():
         eager = [dio.cand_logits(model, ro, [r], "cuda")[0].float().softmax(-1) for r in rows[:16]]
         t1 = time.perf_counter()
         dio.warmup(model, ro, max_tokens=a.max_tokens, batch_sizes=(1, 4, 8, 16))
-        dio.GRAPHS = dio.GraphRunner(model, tok, batches=(1, 2, 4, 8, 16), max_len=a.max_tokens)
-        dio.GRAPHS.capture_all(max_tokens=2048)
+        dio.GRAPHS = dio.GraphRunner(model, tok, batches=(1, 8), max_len=a.max_tokens)  # A17-B1: 160 graphs took 46 GB; serve sizes only
+        dio.GRAPHS.capture_all(max_tokens=1536, batches=(1, 8))
         res["warmup_capture_s"] = round(time.perf_counter() - t1, 1)
         graph = [dio.cand_logits(model, ro, [r], "cuda")[0].float().softmax(-1) for r in rows[:16]]
         res["graph_vs_eager_max_abs_dprob"] = max(float((g - e).abs().max()) for g, e in zip(graph, eager))

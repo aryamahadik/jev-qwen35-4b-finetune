@@ -187,3 +187,20 @@ planned; the next steps are in FREEZE.md for the $30 account.
 | P2 | **Pilot step 2: speed** (H100!, jaypatil-duke, 100 real packed steps of the frozen config) | grad_ckpt ON: **8192 = 2.77 s/step (full pass about $113 at x1.21)**, 10240 = 2.91 s/step (about $121); memory about 22-23%. grad_ckpt OFF: OOM at both 8192 and 10240 (99% memory), so ruled out. The smoke's 4.26 s/step was inflated by heavy-only batches. **A full 4B pass fits under the $135 cap.** Data-stream note: the GPU last_batch at step 100 (a47518dc…) differs from the CPU replay (a2792225…) but is identical across the two GPU runs. Likely model load consumes Python `random`; the relay test checks determinism. |
 | P3 | **Pilot step 3: relay proof** (frozen config at micro_tokens 10240; A1 = 300 straight on jaypatil-duke; A2 = 300 straight on arya-mahadik-ai; B = 150 on aryamhd -> checkpoint moved -> 150 on jaypatil-duke) | **PASS.** B resumed at exactly 150 with "manifest, config, data, env, code, tensors, optimizer order, data order: all match". Weight distance d(A1,B) 0.00991 vs d(A1,A2) 0.01046 (B is closer to A1 than a second straight run is); loss g(A1,B) 0.0121 vs g(A1,A2) 0.0132; all exact checks pass; A1 and A2 used the identical data stream (same last-batch hash at step 300) on different accounts; the loss fell from 0.977 to 0.720. The first download of A1's trainable.safetensors was corrupted in transit; the manifest check caught it, and a re-download matched. |
 | – | **PILOT RESULT: all pass.** Memory: 8192 / 10240 / 16384 / 24576 fit (8192 at 36% on the heaviest batches); no packing OOMs; grad_ckpt off OOMs. Speed: **8192 = 2.77 s/step, full 4B pass about $113**. The relay is proven on the real GPU. **Final config micro_tokens = 8192.** Pilot billed about $8 so far (about $10-11 expected once the last hour posts). | |
+
+## 4B ship gate, job 1 (1 Oct 2026, 17:58-21:12 UTC, Google L4 od-l4 us-central1-a; about 3.3 L4-hours, Google credit)
+| Look | Result |
+|---|---|
+| refparity1 | **PASS**: q35_4b_pxE_fresh vs stored q35_4b_pxE_parity: agree 100.00%, mean/max \|dp\| 0.0000, accuracy 80.72 vs 80.72 |
+| c3trigger | no trigger (C1 passes (b), (c), (d), (g) on dev-select) |
+| replacement | C2 (snapshot cat average) vs C1: dev-select +0.20 pp, confirm +0.05 → does not replace; chosen C1 = q35_4b_main500k |
+| **ship1** | **DO NOT SHIP (FINAL)**. Primary (unseen sources, n=3,847): 83.99 vs 81.52, **+2.47 pp [+1.31, +3.70] PASS**. (a) +1.19 [+0.17, +2.23] PASS; (a2) select +1.83 / confirm +0.54 PASS; (b) yes/no +1.40 PASS; (c) choice +0.94 PASS; (d) Brier 0.1099 vs 0.1184 PASS; **(e) equivalence flip rate 8.86% vs 5.68% (limit REF + 2 pp) FAIL**; (f) permutation flips 2.43% vs 3.78% PASS; (g) jagged 0.0% vs 0.6% PASS, OPI 1.3% vs 1.8% PASS |
+| Outcome | FALLBACK: 4B-E (q35_4b_pxE) stays the shipped 4B (PREREG 5.7). Teacher rule (b) fails, so the teacher stays 4B-E and the memorisation read was skipped |
+- **Where the (e) failure comes from** (analysis after the look; it cannot change the verdict):
+  - all of it is devp_card's 372 double-negation equivalence pairs, e.g. "Can we conclude X?" vs "Should the statement
+    that not-X be rejected?": new model 12.1% flips vs 4.8%;
+  - devzs and dev equivalence flips are equal or better.
+
+| B1a | 5 Oct 2026, Modal aryamhd, H100: bf16_nospec (383 s + 81 s engine start) OK; bf16_dflash container died ("Server has lost track of input", Modal internal) | ~$0.6 [E]; re-run of bf16_dflash launched (cap $5) |
+| B1a retries | 5 Oct, aryamhd H100. bf16_dflash failed 3x at init: SGLang 0.5.20 DFlash KV-pool accounting bug on Qwen3.5, "draft weights are now counted" (mem 0.55 and 0.85). nospec re-run (412 s) OK. Fast path failed: C1 final files were missing on aryamhd /vol; uploaded from the Mac backup (sha 507d1c29); re-run launched | ~$1.5 [E] cumulative for B1a so far |
+| B1a fast path | 5 Oct, aryamhd H100, bf16_nospec + C1 fast path (794 s). Two OOM attempts before it (SGLang at 55% plus 160 CUDA graphs at 46 GB); fixed with mem 0.25 and graphs at (1, 8) up to 1,536 tokens | ~$1.0 [E]; B1a total ≈ $3 |

@@ -246,7 +246,7 @@ def run_config(config: str, plan: dict, run: str) -> dict:
     for b in plan["e2e_caps"]:
         step(f"e2e_bs1_cap{b}", lambda b=b: tp.run(sub, b, batch=1))
     step(f"e2e_bs1_deer{plan['deer_budget']}", lambda: tp.run(sub, plan["deer_budget"], deer=te.DEER, batch=1))
-    if plan["fast"] and config == "bf16_dflash":
+    if plan["fast"] and config == plan.get("fast_config", "bf16_dflash"):
         step("fast_path", lambda: _fast_path(plan, deadline - time.time() - 30), need_s=300)
     for b in plan["parity_budgets"][1:]:
         step(f"parity_{b}", lambda b=b: tp.run(items, b, batch=0))
@@ -281,7 +281,7 @@ def estimate(plan: dict, configs: list) -> dict:
         s += sum(n * (b / r1 + 0.2) for b in plan["e2e_caps"]) + n * (plan["deer_budget"] / r1 + 1.0)
         s += sum(P * b / rb + 5 for b in plan["parity_budgets"]) + 1.5 * P * plan["deer_budget"] / rb
         s += sum(cc * plan["conc_tokens"] / rb + 5 for cc in plan["concurrency"])
-        s += FAST_S if plan["fast"] and c == "bf16_dflash" else 0
+        s += FAST_S if plan["fast"] and c == plan.get("fast_config", "bf16_dflash") else 0
         per[c] = round(min(s * SAFETY, min(plan["max_minutes"], HARD_MAX_MIN) * 60 + 300), 1)
     usd_s = PRICE_GPU_H * OVERHEAD / 3600
     exp = sum(per.values()) * usd_s
@@ -415,9 +415,11 @@ def _b1_checks(out: dict, acc_ok: dict) -> dict:
 # ----------------------------------------------------------------------------------------------- entry points
 @app.local_entrypoint()
 def bench(configs: str = ",".join(CONFIGS), max_minutes: int = 25, max_usd: float = 15.0, n_speed: int = 10,
-          block: int = 16, fast: bool = True, run: str = "", force: bool = False):
+          block: int = 16, fast: bool = True, run: str = "", force: bool = False, mem_fraction: float = 0.55,
+          fast_config: str = "bf16_dflash"):
     """The B1 benchmark: one H100 container per config, run one after another (the first fills the HF cache)."""
     plan = make_plan(max_minutes=max_minutes, n_speed=n_speed, block=block, fast=fast)
+    plan["mem_fraction"] = mem_fraction; plan["fast_config"] = fast_config  # A17-B1: DFlash needs more KV headroom
     cfgs = [c for c in configs.split(",") if c]
     bad = [c for c in cfgs if c not in CONFIGS]
     if bad:

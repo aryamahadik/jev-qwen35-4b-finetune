@@ -1,0 +1,194 @@
+{
+ "run": "b1_20261005_025702",
+ "l4_768": {
+  "acc": 92.0,
+  "n": 100
+ },
+ "configs": {
+  "bf16_dflash": {
+   "engine_start_s": null,
+   "skipped": [
+    "all"
+   ],
+   "errors": {
+    "container": "InternalFailure('Server has lost track of input')"
+   },
+   "speed_bs1": {},
+   "e2e_bs1_s_p50": {},
+   "batched": {},
+   "parity": {}
+  },
+  "bf16_nospec": {
+   "engine_start_s": 96.2,
+   "skipped": [],
+   "errors": {},
+   "speed_bs1": {
+    "300": {
+     "decode_tok_s_p50": 241.1,
+     "ttft_s_p50": 0.0406,
+     "wall_s_p50": 1.293,
+     "wall_at_budget_est_s": 1.285,
+     "tokens_p50": 300,
+     "accept_len_p50": null,
+     "n": 10,
+     "partial": false
+    },
+    "1024": {
+     "decode_tok_s_p50": 242.2,
+     "ttft_s_p50": 0.0323,
+     "wall_s_p50": 4.2563,
+     "wall_at_budget_est_s": 4.26,
+     "tokens_p50": 1024,
+     "accept_len_p50": null,
+     "n": 10,
+     "partial": false
+    },
+    "5000": {
+     "decode_tok_s_p50": 241.6,
+     "ttft_s_p50": 0.0324,
+     "wall_s_p50": 5.8709,
+     "wall_at_budget_est_s": 20.728,
+     "tokens_p50": 1412,
+     "accept_len_p50": null,
+     "n": 10,
+     "partial": false
+    }
+   },
+   "e2e_bs1_s_p50": {
+    "cap300": 1.3254,
+    "cap1024": 4.2932,
+    "deer1024": 2.7582
+   },
+   "batched": {
+    "batched_c8": {
+     "agg_tok_s": 1401.7,
+     "per_request_tok_s": 175.2,
+     "accept_len_p50": null
+    },
+    "batched_c32": {
+     "agg_tok_s": 4269.6,
+     "per_request_tok_s": 133.4,
+     "accept_len_p50": null
+    }
+   },
+   "parity": {
+    "parity_768": {
+     "n": 100,
+     "acc": 87.0,
+     "parsed": 1.0,
+     "think_tokens_mean": 715.1,
+     "capped_share": 0.63,
+     "exit": {
+      "natural": 37,
+      "budget": 63,
+      "deer": 0
+     },
+     "probes_mean": 0.0,
+     "vs_l4_768": {
+      "n": 100,
+      "diff_pts": -5.0,
+      "a_only": 0,
+      "b_only": 5,
+      "mcnemar_p": 0.0625
+     }
+    },
+    "parity_1024": {
+     "n": 100,
+     "acc": 88.0,
+     "parsed": 1.0,
+     "think_tokens_mean": 831.0,
+     "capped_share": 0.4,
+     "exit": {
+      "natural": 60,
+      "budget": 40,
+      "deer": 0
+     },
+     "probes_mean": 0.0,
+     "vs_l4_768": {
+      "n": 100,
+      "diff_pts": -4.0,
+      "a_only": 1,
+      "b_only": 5,
+      "mcnemar_p": 0.2188
+     }
+    },
+    "parity_deer1024": {
+     "n": 100,
+     "acc": 92.0,
+     "parsed": 1.0,
+     "think_tokens_mean": 518.5,
+     "capped_share": 0.13,
+     "exit": {
+      "natural": 1,
+      "budget": 13,
+      "deer": 86
+     },
+     "probes_mean": 3.99,
+     "vs_l4_768": {
+      "n": 100,
+      "diff_pts": 0.0,
+      "a_only": 1,
+      "b_only": 1,
+      "mcnemar_p": 1.0
+     }
+    }
+   },
+   "fast_path": {
+    "batch1": {
+     "p50_ms": 14.13,
+     "p95_ms": 19.23,
+     "mean_ms": 14.93,
+     "n": 200
+    },
+    "batched": {
+     "4": {
+      "call_p50_ms": 74.74,
+      "call_p95_ms": 171.14,
+      "per_decision_p50_ms": 18.68,
+      "calls": 75
+     },
+     "8": {
+      "call_p50_ms": 79.27,
+      "call_p95_ms": 204.16,
+      "per_decision_p50_ms": 9.91,
+      "calls": 37
+     },
+     "16": {
+      "call_p50_ms": 250.03,
+      "call_p95_ms": 606.9,
+      "per_decision_p50_ms": 15.63,
+      "calls": 18
+     }
+    },
+    "per_state": {
+     "p50_ms": 17.95,
+     "p95_ms": 73.71,
+     "n_states": 125,
+     "questions_mean": 1.6
+    },
+    "graph_vs_eager_max_abs_dprob": 0.0,
+    "b1_rule_fast_p50_le_50ms": true,
+    "error": null,
+    "stderr_tail": null
+   }
+  }
+ },
+ "b1_checks": {
+  "bf16_dflash_speedup_vs_nospec": {},
+  "bf16_dflash_e2e_median_le_1s": {},
+  "bf16_nospec_e2e_median_le_1s": {
+   "cap300": false,
+   "cap1024": false,
+   "deer1024": false
+  },
+  "bf16_nospec_deer_vs_cap1024": {
+   "n": 100,
+   "diff_pts": 4.0,
+   "a_only": 4,
+   "b_only": 0,
+   "mcnemar_p": 0.125,
+   "tokens_ratio": 0.624
+  },
+  "not_covered": "B1 math-set rule (>= 85% of full-thinking accuracy at <= 1 s median on clean math sets) and the FP8 dev-set check: need clean math dev items, not part of this app"
+ }
+}
