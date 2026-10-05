@@ -1,0 +1,198 @@
+{
+ "nimble": {
+  "aegis2": {
+   "n": 250,
+   "c1": 78.8,
+   "c1_think": 82.4,
+   "jev": 80.4,
+   "routed_pct": 25.6,
+   "think_answers_used": 64
+  },
+  "boolq": {
+   "n": 300,
+   "c1": 85.66666666666667,
+   "c1_think": 85.0,
+   "jev": 89.7,
+   "routed_pct": 19.0,
+   "think_answers_used": 57
+  },
+  "civil_comments": {
+   "n": 300,
+   "c1": 85.66666666666667,
+   "c1_think": 81.33333333333333,
+   "jev": 81.0,
+   "routed_pct": 25.666666666666668,
+   "think_answers_used": 77
+  },
+  "helpsteer2": {
+   "n": 249,
+   "c1": 38.55421686746988,
+   "c1_think": 42.16867469879518,
+   "jev": 34.1,
+   "routed_pct": 85.5421686746988,
+   "think_answers_used": 213
+  },
+  "massive-de-DE": {
+   "n": 350,
+   "c1": 86.0,
+   "c1_think": 85.14285714285714,
+   "jev": 86.9,
+   "routed_pct": 21.428571428571427,
+   "think_answers_used": 75
+  },
+  "massive-en-US": {
+   "n": 350,
+   "c1": 86.85714285714286,
+   "c1_think": 86.28571428571429,
+   "jev": 87.4,
+   "routed_pct": 15.142857142857142,
+   "think_answers_used": 53
+  },
+  "multinli": {
+   "n": 299,
+   "c1": 81.27090301003345,
+   "c1_think": 80.60200668896321,
+   "jev": 82.9,
+   "routed_pct": 44.81605351170568,
+   "think_answers_used": 134
+  },
+  "paws": {
+   "n": 250,
+   "c1": 84.8,
+   "c1_think": 86.4,
+   "jev": 89.2,
+   "routed_pct": 27.2,
+   "think_answers_used": 68
+  },
+  "pubmedqa": {
+   "n": 250,
+   "c1": 71.2,
+   "c1_think": 68.0,
+   "jev": 77.2,
+   "routed_pct": 52.8,
+   "think_answers_used": 132
+  },
+  "squad2": {
+   "n": 299,
+   "c1": 75.25083612040133,
+   "c1_think": 86.2876254180602,
+   "jev": 82.9,
+   "routed_pct": 28.42809364548495,
+   "think_answers_used": 85
+  },
+  "summeval-consistency": {
+   "n": 144,
+   "c1": 73.61111111111111,
+   "c1_think": 85.41666666666667,
+   "jev": 81.2,
+   "routed_pct": 44.44444444444444,
+   "think_answers_used": 64
+  },
+  "summeval-relevance": {
+   "n": 240,
+   "c1": 37.083333333333336,
+   "c1_think": 43.75,
+   "jev": 35.0,
+   "routed_pct": 99.58333333333333,
+   "think_answers_used": 239
+  },
+  "vitaminc-dev": {
+   "n": 599,
+   "c1": 80.30050083472455,
+   "c1_think": 80.46744574290484,
+   "jev": 80.1,
+   "routed_pct": 21.368948247078464,
+   "think_answers_used": 128
+  },
+  "nimble-holdout": {
+   "n": 324,
+   "c1": 79.93827160493827,
+   "c1_think": 83.95061728395062,
+   "jev": 93.21,
+   "routed_pct": 14.814814814814815,
+   "think_answers_used": 48
+  }
+ },
+ "summary": {
+  "clean": {
+   "c1": 70.37429689992838,
+   "c1_think": 75.05362297127196,
+   "jev": 74.26666666666667
+  },
+  "seen": {
+   "c1": 77.5450851525685,
+   "c1_think": 77.56179802138045,
+   "jev": 77.48571428571428
+  },
+  "all13": {
+   "c1": 74.2354905744269,
+   "c1_think": 76.40417876748423,
+   "jev": 76.0
+  }
+ },
+ "di": {
+  "answers_replaced": 1288,
+  "index_c1": 54.83,
+  "index_c1_think": 57.74,
+  "jev": 59.51,
+  "benchmarks": {
+   "MMLU": {
+    "c1_think": 86.8,
+    "jev": 92.0
+   },
+   "GPQA Diamond": {
+    "c1_think": 43.9,
+    "jev": 78.6
+   },
+   "GSM8K": {
+    "c1_think": 98.3,
+    "jev": 79.9
+   },
+   "CRUXEval": {
+    "c1_think": 82.5,
+    "jev": 73.0
+   },
+   "CLadder": {
+    "c1_think": 71.6,
+    "jev": 72.6
+   }
+  },
+  "areas": [
+   {
+    "area": "knowledge",
+    "ours_raw": 0.6581,
+    "jev_raw": 0.6888,
+    "diff_pp": -3.07,
+    "ours_coverage": 1.0
+   },
+   {
+    "area": "language",
+    "ours_raw": 0.6049,
+    "jev_raw": 0.6228,
+    "diff_pp": -1.79,
+    "ours_coverage": 1.0
+   },
+   {
+    "area": "retrieval",
+    "ours_raw": 0.3416,
+    "jev_raw": 0.3701,
+    "diff_pp": -2.85,
+    "ours_coverage": 0.9978
+   },
+   {
+    "area": "tools",
+    "ours_raw": 0.7338,
+    "jev_raw": 0.7343,
+    "diff_pp": -0.05,
+    "ours_coverage": 1.0
+   },
+   {
+    "area": "arts",
+    "ours_raw": 0.5488,
+    "jev_raw": 0.5595,
+    "diff_pp": -1.07,
+    "ours_coverage": 0.9991
+   }
+  ]
+ }
+}

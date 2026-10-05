@@ -1,0 +1,813 @@
+{
+  "name": "think10k",
+  "engine": "opendecide_c1",
+  "report_only": "PREREG_FINAL A13: never used to choose data, families, weights or models",
+  "sample": {
+    "seed": 20260919,
+    "sample_sha256": "70386e7bef9fa1d4fc8e7f056a9aa4b5d84ef08162a27d091d42c7de2cb6c362",
+    "requests": 10001,
+    "questions": 82939
+  },
+  "ours": {
+    "index": 57.74,
+    "scores": {
+      "balanced_raw": 57.74,
+      "balanced_skill": 44.47,
+      "breadth_skill": 42.89
+    },
+    "counts": {
+      "ok": 9999,
+      "unsupported": 2
+    }
+  },
+  "jev_published_v01_full_suite": {
+    "index": 59.51,
+    "scores": {
+      "balanced_raw": 59.51,
+      "balanced_skill": 46.26,
+      "breadth_skill": 44.79
+    }
+  },
+  "board_v01_top5": [
+    [
+      "Jevfire",
+      55.74
+    ],
+    [
+      "JoshuaSP diffusiongemma (open-jev)",
+      55.56
+    ],
+    [
+      "Decider 35B-A3B",
+      54.34
+    ],
+    [
+      "razorback16 openjev diffusiongemma (NVFP4, vLLM)",
+      51.52
+    ],
+    [
+      "Kev 9B",
+      50.48
+    ]
+  ],
+  "areas": [
+    {
+      "area": "knowledge",
+      "ours_raw": 0.6581,
+      "jev_raw": 0.6888,
+      "diff_pp": -3.07,
+      "ours_coverage": 1.0
+    },
+    {
+      "area": "language",
+      "ours_raw": 0.6049,
+      "jev_raw": 0.6228,
+      "diff_pp": -1.79,
+      "ours_coverage": 1.0
+    },
+    {
+      "area": "retrieval",
+      "ours_raw": 0.3416,
+      "jev_raw": 0.3701,
+      "diff_pp": -2.85,
+      "ours_coverage": 0.9978
+    },
+    {
+      "area": "tools",
+      "ours_raw": 0.7338,
+      "jev_raw": 0.7343,
+      "diff_pp": -0.05,
+      "ours_coverage": 1.0
+    },
+    {
+      "area": "arts",
+      "ours_raw": 0.5488,
+      "jev_raw": 0.5595,
+      "diff_pp": -1.07,
+      "ours_coverage": 0.9991
+    }
+  ],
+  "index_benchmarks": [
+    {
+      "catalog_id": 1,
+      "dataset": "BFCL",
+      "ours_raw": 0.9609,
+      "jev_raw": 0.9575,
+      "diff_pp": 0.34,
+      "ours_coverage": 1.0,
+      "sample_requests": 230,
+      "full_requests": 1694
+    },
+    {
+      "catalog_id": 2,
+      "dataset": "ToolRet",
+      "ours_raw": 0.465,
+      "jev_raw": 0.4461,
+      "diff_pp": 1.89,
+      "ours_coverage": 1.0,
+      "sample_requests": 230,
+      "full_requests": 7704
+    },
+    {
+      "catalog_id": 6,
+      "dataset": "RouterBench",
+      "ours_raw": 0.7754,
+      "jev_raw": 0.7992,
+      "diff_pp": -2.38,
+      "ours_coverage": 1.0,
+      "sample_requests": 462,
+      "full_requests": 10000
+    },
+    {
+      "catalog_id": 7,
+      "dataset": null,
+      "ours_raw": 0.0,
+      "jev_raw": 1.0,
+      "diff_pp": -100.0,
+      "ours_coverage": 0.0,
+      "sample_requests": null,
+      "full_requests": null
+    },
+    {
+      "catalog_id": 11,
+      "dataset": "ContractNLI",
+      "ours_raw": 0.7398,
+      "jev_raw": 0.7169,
+      "diff_pp": 2.29,
+      "ours_coverage": 1.0,
+      "sample_requests": 123,
+      "full_requests": 123
+    },
+    {
+      "catalog_id": 13,
+      "dataset": null,
+      "ours_raw": 0.0,
+      "jev_raw": 0.0,
+      "diff_pp": 0.0,
+      "ours_coverage": 0.0,
+      "sample_requests": null,
+      "full_requests": null
+    },
+    {
+      "catalog_id": 15,
+      "dataset": null,
+      "ours_raw": 0.0,
+      "jev_raw": 0.17,
+      "diff_pp": -17.0,
+      "ours_coverage": 0.0,
+      "sample_requests": null,
+      "full_requests": null
+    },
+    {
+      "catalog_id": 16,
+      "dataset": null,
+      "ours_raw": 0.0,
+      "jev_raw": 0.067,
+      "diff_pp": -6.7,
+      "ours_coverage": 0.0,
+      "sample_requests": null,
+      "full_requests": null
+    },
+    {
+      "catalog_id": 17,
+      "dataset": null,
+      "ours_raw": 0.0,
+      "jev_raw": 0.0,
+      "diff_pp": 0.0,
+      "ours_coverage": 0.0,
+      "sample_requests": null,
+      "full_requests": null
+    },
+    {
+      "catalog_id": 19,
+      "dataset": null,
+      "ours_raw": 0.0,
+      "jev_raw": 0.0,
+      "diff_pp": 0.0,
+      "ours_coverage": 0.0,
+      "sample_requests": null,
+      "full_requests": null
+    },
+    {
+      "catalog_id": 20,
+      "dataset": "BPoMP",
+      "ours_raw": 0.9353,
+      "jev_raw": 0.9092,
+      "diff_pp": 2.61,
+      "ours_coverage": 1.0,
+      "sample_requests": 1273,
+      "full_requests": 5000
+    },
+    {
+      "catalog_id": 21,
+      "dataset": "Humicroedit",
+      "ours_raw": 0.6522,
+      "jev_raw": 0.6187,
+      "diff_pp": 3.35,
+      "ours_coverage": 1.0,
+      "sample_requests": 230,
+      "full_requests": 2628
+    },
+    {
+      "catalog_id": 22,
+      "dataset": "POP909-CL",
+      "ours_raw": 0.0846,
+      "jev_raw": 0.1658,
+      "diff_pp": -8.12,
+      "ours_coverage": 0.9957,
+      "sample_requests": 230,
+      "full_requests": 2000
+    },
+    {
+      "catalog_id": 23,
+      "dataset": "cfcolor",
+      "ours_raw": 0.6569,
+      "jev_raw": 0.6441,
+      "diff_pp": 1.28,
+      "ours_coverage": 1.0,
+      "sample_requests": 230,
+      "full_requests": 5000
+    },
+    {
+      "catalog_id": 24,
+      "dataset": "MMLU",
+      "ours_raw": 0.8681,
+      "jev_raw": 0.9199,
+      "diff_pp": -5.18,
+      "ours_coverage": 1.0,
+      "sample_requests": 230,
+      "full_requests": 14033
+    },
+    {
+      "catalog_id": 25,
+      "dataset": "GPQA Diamond",
+      "ours_raw": 0.4388,
+      "jev_raw": 0.7857,
+      "diff_pp": -34.69,
+      "ours_coverage": 1.0,
+      "sample_requests": 196,
+      "full_requests": 196
+    },
+    {
+      "catalog_id": 30,
+      "dataset": "GSM8K",
+      "ours_raw": 0.9826,
+      "jev_raw": 0.7987,
+      "diff_pp": 18.39,
+      "ours_coverage": 1.0,
+      "sample_requests": 460,
+      "full_requests": 2638
+    },
+    {
+      "catalog_id": 31,
+      "dataset": "ChessBench",
+      "ours_raw": 0.1174,
+      "jev_raw": 0.1722,
+      "diff_pp": -5.48,
+      "ours_coverage": 1.0,
+      "sample_requests": 230,
+      "full_requests": 5000
+    },
+    {
+      "catalog_id": 36,
+      "dataset": "BRIGHT",
+      "ours_raw": 0.1616,
+      "jev_raw": 0.1881,
+      "diff_pp": -2.65,
+      "ours_coverage": 0.9957,
+      "sample_requests": 230,
+      "full_requests": 1297
+    },
+    {
+      "catalog_id": 37,
+      "dataset": "Amazon ESCI",
+      "ours_raw": 0.5216,
+      "jev_raw": 0.5521,
+      "diff_pp": -3.05,
+      "ours_coverage": 1.0,
+      "sample_requests": 230,
+      "full_requests": 5000
+    },
+    {
+      "catalog_id": 40,
+      "dataset": "iSarcasmEval",
+      "ours_raw": 0.4444,
+      "jev_raw": 0.5051,
+      "diff_pp": -6.07,
+      "ours_coverage": 1.0,
+      "sample_requests": 229,
+      "full_requests": 4600
+    },
+    {
+      "catalog_id": 41,
+      "dataset": "VAST",
+      "ours_raw": 0.6305,
+      "jev_raw": 0.6463,
+      "diff_pp": -1.58,
+      "ours_coverage": 1.0,
+      "sample_requests": 229,
+      "full_requests": 3006
+    },
+    {
+      "catalog_id": 43,
+      "dataset": "CRUXEval",
+      "ours_raw": 0.8253,
+      "jev_raw": 0.7298,
+      "diff_pp": 9.55,
+      "ours_coverage": 1.0,
+      "sample_requests": 229,
+      "full_requests": 570
+    },
+    {
+      "catalog_id": 44,
+      "dataset": "CLadder",
+      "ours_raw": 0.7162,
+      "jev_raw": 0.7264,
+      "diff_pp": -1.02,
+      "ours_coverage": 1.0,
+      "sample_requests": 229,
+      "full_requests": 5000
+    },
+    {
+      "catalog_id": 50,
+      "dataset": "Habermas Machine",
+      "ours_raw": 0.4148,
+      "jev_raw": 0.4594,
+      "diff_pp": -4.46,
+      "ours_coverage": 1.0,
+      "sample_requests": 229,
+      "full_requests": 1676
+    }
+  ],
+  "all_benchmarks": [
+    {
+      "catalog_id": 1,
+      "dataset": "BFCL",
+      "metric": "case exact accuracy",
+      "ours": 0.9609,
+      "jev": 0.9575,
+      "in_index": true,
+      "requests": 230,
+      "answered": 230,
+      "unsupported": 0,
+      "errors": 0,
+      "median_ms": 749.8
+    },
+    {
+      "catalog_id": 2,
+      "dataset": "ToolRet",
+      "metric": "nDCG@10",
+      "ours": 0.465,
+      "jev": 0.4502,
+      "in_index": true,
+      "requests": 230,
+      "answered": 230,
+      "unsupported": 0,
+      "errors": 0,
+      "median_ms": 8020.5
+    },
+    {
+      "catalog_id": 3,
+      "dataset": "API-Bank",
+      "metric": "accuracy",
+      "ours": 0.6348,
+      "jev": 0.8819,
+      "in_index": false,
+      "requests": 230,
+      "answered": 230,
+      "unsupported": 0,
+      "errors": 0,
+      "median_ms": 6797.4
+    },
+    {
+      "catalog_id": 4,
+      "dataset": "BANKING77",
+      "metric": "macro-F1",
+      "ours": 0.7886,
+      "jev": 0.7974,
+      "in_index": false,
+      "requests": 230,
+      "answered": 230,
+      "unsupported": 0,
+      "errors": 0,
+      "median_ms": 629.7
+    },
+    {
+      "catalog_id": 5,
+      "dataset": "CLINC150+OOS",
+      "metric": "macro-F1",
+      "ours": 0.8116,
+      "jev": 0.8927,
+      "in_index": false,
+      "requests": 230,
+      "answered": 230,
+      "unsupported": 0,
+      "errors": 0,
+      "median_ms": 848.2
+    },
+    {
+      "catalog_id": 6,
+      "dataset": "RouterBench",
+      "metric": "selected quality (quality objective)",
+      "ours": 0.7754,
+      "jev": 0.7992,
+      "in_index": true,
+      "requests": 462,
+      "answered": 462,
+      "unsupported": 0,
+      "errors": 0,
+      "median_ms": 3045.3
+    },
+    {
+      "catalog_id": 9,
+      "dataset": "Home appliance simulator",
+      "metric": "case exact accuracy",
+      "ours": 0.1875,
+      "jev": 0.525,
+      "in_index": false,
+      "requests": 160,
+      "answered": 160,
+      "unsupported": 0,
+      "errors": 0,
+      "median_ms": 17033.8
+    },
+    {
+      "catalog_id": 10,
+      "dataset": "SGD/SGD-X",
+      "metric": "macro-F1",
+      "ours": 0.0665,
+      "jev": 0.4295,
+      "in_index": false,
+      "requests": 230,
+      "answered": 230,
+      "unsupported": 0,
+      "errors": 0,
+      "median_ms": 961.1
+    },
+    {
+      "catalog_id": 11,
+      "dataset": "ContractNLI",
+      "metric": "macro-F1",
+      "ours": 0.7398,
+      "jev": 0.7169,
+      "in_index": true,
+      "requests": 123,
+      "answered": 123,
+      "unsupported": 0,
+      "errors": 0,
+      "median_ms": 20977.4
+    },
+    {
+      "catalog_id": 12,
+      "dataset": "ANLI",
+      "metric": "macro-F1",
+      "ours": 0.6955,
+      "jev": 0.7479,
+      "in_index": false,
+      "requests": 230,
+      "answered": 230,
+      "unsupported": 0,
+      "errors": 0,
+      "median_ms": 245.5
+    },
+    {
+      "catalog_id": 20,
+      "dataset": "BPoMP",
+      "metric": "accuracy",
+      "ours": 0.9364,
+      "jev": 0.906,
+      "in_index": true,
+      "requests": 1273,
+      "answered": 1273,
+      "unsupported": 0,
+      "errors": 0,
+      "median_ms": 245.1
+    },
+    {
+      "catalog_id": 21,
+      "dataset": "Humicroedit",
+      "metric": "accuracy",
+      "ours": 0.6522,
+      "jev": 0.6187,
+      "in_index": true,
+      "requests": 230,
+      "answered": 230,
+      "unsupported": 0,
+      "errors": 0,
+      "median_ms": 182.4
+    },
+    {
+      "catalog_id": 22,
+      "dataset": "POP909-CL",
+      "metric": "accuracy",
+      "ours": 0.0873,
+      "jev": 0.181,
+      "in_index": true,
+      "requests": 230,
+      "answered": 229,
+      "unsupported": 1,
+      "errors": 0,
+      "median_ms": 4470.4
+    },
+    {
+      "catalog_id": 23,
+      "dataset": "cfcolor",
+      "metric": "accuracy",
+      "ours": 0.6609,
+      "jev": 0.6474,
+      "in_index": true,
+      "requests": 230,
+      "answered": 230,
+      "unsupported": 0,
+      "errors": 0,
+      "median_ms": 457.4
+    },
+    {
+      "catalog_id": 24,
+      "dataset": "MMLU",
+      "metric": "accuracy",
+      "ours": 0.8435,
+      "jev": 0.9173,
+      "in_index": true,
+      "requests": 230,
+      "answered": 230,
+      "unsupported": 0,
+      "errors": 0,
+      "median_ms": 242.4
+    },
+    {
+      "catalog_id": 25,
+      "dataset": "GPQA Diamond",
+      "metric": "accuracy",
+      "ours": 0.4388,
+      "jev": 0.7828,
+      "in_index": true,
+      "requests": 196,
+      "answered": 196,
+      "unsupported": 0,
+      "errors": 0,
+      "median_ms": 262.0
+    },
+    {
+      "catalog_id": 26,
+      "dataset": "ARC-Easy",
+      "metric": "accuracy",
+      "ours": 0.9913,
+      "jev": 0.9933,
+      "in_index": false,
+      "requests": 230,
+      "answered": 230,
+      "unsupported": 0,
+      "errors": 0,
+      "median_ms": 184.8
+    },
+    {
+      "catalog_id": 27,
+      "dataset": "ARC-Challenge",
+      "metric": "accuracy",
+      "ours": 0.9609,
+      "jev": 0.9778,
+      "in_index": false,
+      "requests": 230,
+      "answered": 230,
+      "unsupported": 0,
+      "errors": 0,
+      "median_ms": 233.2
+    },
+    {
+      "catalog_id": 28,
+      "dataset": "WinoGrande",
+      "metric": "accuracy",
+      "ours": 0.7826,
+      "jev": 0.9195,
+      "in_index": false,
+      "requests": 230,
+      "answered": 230,
+      "unsupported": 0,
+      "errors": 0,
+      "median_ms": 182.2
+    },
+    {
+      "catalog_id": 29,
+      "dataset": "HellaSwag",
+      "metric": "accuracy",
+      "ours": 0.8565,
+      "jev": 0.9452,
+      "in_index": false,
+      "requests": 230,
+      "answered": 230,
+      "unsupported": 0,
+      "errors": 0,
+      "median_ms": 351.3
+    },
+    {
+      "catalog_id": 30,
+      "dataset": "GSM8K",
+      "metric": "accuracy",
+      "ours": 0.9826,
+      "jev": 0.7987,
+      "in_index": true,
+      "requests": 460,
+      "answered": 460,
+      "unsupported": 0,
+      "errors": 0,
+      "median_ms": 248.0
+    },
+    {
+      "catalog_id": 31,
+      "dataset": "ChessBench",
+      "metric": "accuracy",
+      "ours": 0.1174,
+      "jev": 0.1722,
+      "in_index": true,
+      "requests": 230,
+      "answered": 230,
+      "unsupported": 0,
+      "errors": 0,
+      "median_ms": 624.5
+    },
+    {
+      "catalog_id": 32,
+      "dataset": "MuSR",
+      "metric": "accuracy",
+      "ours": 0.7174,
+      "jev": 0.6601,
+      "in_index": false,
+      "requests": 230,
+      "answered": 230,
+      "unsupported": 0,
+      "errors": 0,
+      "median_ms": 1114.9
+    },
+    {
+      "catalog_id": 33,
+      "dataset": "SATA-Bench",
+      "metric": "case exact accuracy",
+      "ours": 0.287,
+      "jev": 0.2642,
+      "in_index": false,
+      "requests": 230,
+      "answered": 230,
+      "unsupported": 0,
+      "errors": 0,
+      "median_ms": 1556.5
+    },
+    {
+      "catalog_id": 34,
+      "dataset": "SimpleBench",
+      "metric": "accuracy",
+      "ours": 0,
+      "jev": 0.5,
+      "in_index": false,
+      "requests": 10,
+      "answered": 10,
+      "unsupported": 0,
+      "errors": 0,
+      "median_ms": 251.2
+    },
+    {
+      "catalog_id": 36,
+      "dataset": "BRIGHT",
+      "metric": "nDCG@10",
+      "ours": 0.1623,
+      "jev": 0.1869,
+      "in_index": true,
+      "requests": 230,
+      "answered": 229,
+      "unsupported": 1,
+      "errors": 0,
+      "median_ms": 10623.4
+    },
+    {
+      "catalog_id": 37,
+      "dataset": "Amazon ESCI",
+      "metric": "macro-F1",
+      "ours": 0.5216,
+      "jev": 0.5521,
+      "in_index": true,
+      "requests": 230,
+      "answered": 230,
+      "unsupported": 0,
+      "errors": 0,
+      "median_ms": 352.0
+    },
+    {
+      "catalog_id": 38,
+      "dataset": "ACOS",
+      "metric": "case exact accuracy",
+      "ours": 0,
+      "jev": 0.0558,
+      "in_index": false,
+      "requests": 885,
+      "answered": 885,
+      "unsupported": 0,
+      "errors": 0,
+      "median_ms": 8382.4
+    },
+    {
+      "catalog_id": 39,
+      "dataset": "FinEntity",
+      "metric": "macro-F1",
+      "ours": 0.8764,
+      "jev": 0.8698,
+      "in_index": false,
+      "requests": 229,
+      "answered": 229,
+      "unsupported": 0,
+      "errors": 0,
+      "median_ms": 452.0
+    },
+    {
+      "catalog_id": 40,
+      "dataset": "iSarcasmEval",
+      "metric": "Sarcasm F1 \u00b7 track A, English",
+      "ours": 0.4444,
+      "jev": 0.5051,
+      "in_index": true,
+      "requests": 229,
+      "answered": 229,
+      "unsupported": 0,
+      "errors": 0,
+      "median_ms": 92.2
+    },
+    {
+      "catalog_id": 41,
+      "dataset": "VAST",
+      "metric": "macro-F1",
+      "ours": 0.6305,
+      "jev": 0.6463,
+      "in_index": true,
+      "requests": 229,
+      "answered": 229,
+      "unsupported": 0,
+      "errors": 0,
+      "median_ms": 244.9
+    },
+    {
+      "catalog_id": 42,
+      "dataset": "NLI4CT",
+      "metric": "macro-F1",
+      "ours": 0.7569,
+      "jev": 0.8406,
+      "in_index": false,
+      "requests": 229,
+      "answered": 229,
+      "unsupported": 0,
+      "errors": 0,
+      "median_ms": 370.4
+    },
+    {
+      "catalog_id": 43,
+      "dataset": "CRUXEval",
+      "metric": "accuracy",
+      "ours": 0.8253,
+      "jev": 0.7298,
+      "in_index": true,
+      "requests": 229,
+      "answered": 229,
+      "unsupported": 0,
+      "errors": 0,
+      "median_ms": 243.5
+    },
+    {
+      "catalog_id": 44,
+      "dataset": "CLadder",
+      "metric": "accuracy",
+      "ours": 0.7162,
+      "jev": 0.7264,
+      "in_index": true,
+      "requests": 229,
+      "answered": 229,
+      "unsupported": 0,
+      "errors": 0,
+      "median_ms": 245.3
+    },
+    {
+      "catalog_id": 48,
+      "dataset": "ForecastBench",
+      "metric": "Brier (lower is better)",
+      "ours": 0.186,
+      "jev": 0.1736,
+      "in_index": false,
+      "requests": 229,
+      "answered": 229,
+      "unsupported": 0,
+      "errors": 0,
+      "median_ms": 235.7
+    },
+    {
+      "catalog_id": 50,
+      "dataset": "Habermas Machine",
+      "metric": "accuracy",
+      "ours": 0.4148,
+      "jev": 0.4594,
+      "in_index": true,
+      "requests": 229,
+      "answered": 229,
+      "unsupported": 0,
+      "errors": 0,
+      "median_ms": 721.4
+    }
+  ],
+  "caveat": "ours = the ~10K stratified SAMPLE scored by the harness against the sample; Jev = its published full-suite v0.1 numbers (not paired items). Retrieval nDCG, RouterBench and macro metrics on a sample are noisier than accuracy."
+}
