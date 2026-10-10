@@ -610,7 +610,10 @@ def _wait_url(q, call, wait_s, what):
         try:
             res = call.get(timeout=0)  # returned (or raised) before publishing a URL
             raise SystemExit(f"{what} returned before publishing a URL: {res}")
-        except modal.exception.TimeoutError:
+        # Modal currently raises the built-in TimeoutError for a zero-timeout
+        # poll with no output, while older SDKs used modal.exception.TimeoutError.
+        # Either case means the server is still booting, not that the launch failed.
+        except (modal.exception.TimeoutError, TimeoutError):
             pass
         if time.time() - t0 > wait_s:
             raise SystemExit(f"{what}: no URL after {wait_s} s (GPU queue or boot problem); stopping")
