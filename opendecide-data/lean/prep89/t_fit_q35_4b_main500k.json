@@ -1,0 +1,241 @@
+{
+ "rule": "A5 item 4 (yes/no) + READOUT_DEV.md choice rule; grid 0.50-2.00; fit on pooled dev-select",
+ "noul": {
+  "read": "q35_4b_main500k_pre",
+  "metric": "brier",
+  "n_select": 2172,
+  "n_confirm": 2157,
+  "T_fit_select": 0.95,
+  "confirm_raw": 0.1080044778083048,
+  "confirm_T": 0.10820045310179073,
+  "pooled_gain": -0.000195975293485931,
+  "worst_split_worsening": 0.0017408092377721729,
+  "min_gain": 0.002,
+  "max_split_worsening": 0.003,
+  "per_split": {
+   "taskbank_dev": {
+    "n": 255,
+    "raw": 0.13641828291469588,
+    "T": 0.13815909215246805
+   },
+   "hard_dev": {
+    "n": 53,
+    "raw": 0.06823827458715814,
+    "T": 0.06738619405206302
+   },
+   "dev_negwords": {
+    "n": 412,
+    "raw": 0.09089106289546608,
+    "T": 0.0909876009716337
+   },
+   "dev_claims": {
+    "n": 234,
+    "raw": 0.10479340715733752,
+    "T": 0.10454670568665446
+   },
+   "pg_dev": {
+    "n": 144,
+    "raw": 0.1835608528367357,
+    "T": 0.1837888469678397
+   },
+   "devzs": {
+    "n": 285,
+    "raw": 0.11631403010538167,
+    "T": 0.11660212194585379
+   },
+   "devp_card": {
+    "n": 540,
+    "raw": 0.09749860581835247,
+    "T": 0.09723394814535982
+   },
+   "dev": {
+    "n": 234,
+    "raw": 0.08701745392292105,
+    "T": 0.0873161927756502
+   }
+  },
+  "ship_T": 1.0
+ },
+ "choice": {
+  "read": "q35_4b_main500k_pre_served",
+  "metric": "nll",
+  "n_select": 1930,
+  "n_confirm": 1884,
+  "T_fit_select": 1.05,
+  "confirm_raw": 0.5998462423501096,
+  "confirm_T": 0.6016338036574983,
+  "pooled_gain": -0.0017875613073886631,
+  "worst_split_worsening": 0.012213328119811184,
+  "min_gain": 0.002,
+  "max_split_worsening": 0.005,
+  "per_split": {
+   "dev_nc": {
+    "n": 533,
+    "raw": 0.7616423080428073,
+    "T": 0.7623956758672228
+   },
+   "taskbank_dev": {
+    "n": 327,
+    "raw": 0.5122050553312161,
+    "T": 0.5089743830535317
+   },
+   "hard_dev": {
+    "n": 55,
+    "raw": 0.6863805682645616,
+    "T": 0.6887157699850092
+   },
+   "dev_claims": {
+    "n": 150,
+    "raw": 0.2537900964145761,
+    "T": 0.2638741948273936
+   },
+   "pg_dev": {
+    "n": 342,
+    "raw": 0.8334826578215175,
+    "T": 0.8344261053967313
+   },
+   "devzs": {
+    "n": 95,
+    "raw": 0.8172051070459172,
+    "T": 0.8096611205196781
+   },
+   "devp_card": {
+    "n": 304,
+    "raw": 0.31386660949798073,
+    "T": 0.3198632525469491
+   },
+   "dev": {
+    "n": 78,
+    "raw": 0.2915829251158736,
+    "T": 0.30379625323568477
+   }
+  },
+  "ship_T": 1.0
+ },
+ "choice_single": {
+  "read": "q35_4b_main500k_pre",
+  "metric": "nll",
+  "n_select": 1930,
+  "n_confirm": 1884,
+  "T_fit_select": 1.05,
+  "confirm_raw": 0.6092757153875769,
+  "confirm_T": 0.6103699407368313,
+  "pooled_gain": -0.0010942253492544074,
+  "worst_split_worsening": 0.011598315732216202,
+  "min_gain": 0.002,
+  "max_split_worsening": 0.005,
+  "per_split": {
+   "dev_nc": {
+    "n": 533,
+    "raw": 0.7698416871944409,
+    "T": 0.7700511219164597
+   },
+   "taskbank_dev": {
+    "n": 327,
+    "raw": 0.5152777674289718,
+    "T": 0.5117846010912401
+   },
+   "hard_dev": {
+    "n": 55,
+    "raw": 0.7408353485503533,
+    "T": 0.7386182666802394
+   },
+   "dev_claims": {
+    "n": 150,
+    "raw": 0.25076226185591516,
+    "T": 0.2609596649217271
+   },
+   "pg_dev": {
+    "n": 342,
+    "raw": 0.8508806564025684,
+    "T": 0.8505968038236802
+   },
+   "devzs": {
+    "n": 95,
+    "raw": 0.8194343365162853,
+    "T": 0.8115531371055663
+   },
+   "devp_card": {
+    "n": 304,
+    "raw": 0.32332933690609317,
+    "T": 0.3286767355424979
+   },
+   "dev": {
+    "n": 78,
+    "raw": 0.30197628512114644,
+    "T": 0.31357460085336264
+   }
+  },
+  "ship_T": 1.0
+ },
+ "ship": {
+  "T_noul": 1.0,
+  "T_choice": 1.0,
+  "T_choice_single": 1.0
+ },
+ "args": {
+  "model": "q35_4b_main500k",
+  "noul": "q35_4b_main500k_pre",
+  "choice": "q35_4b_main500k_pre_served",
+  "choice_lt10": null,
+  "choice_single": "q35_4b_main500k_pre"
+ },
+ "provenance": {
+  "model": "q35_4b_main500k",
+  "reads": {
+   "q35_4b_main500k_pre": {
+    "sha256": {
+     "dev_nc": "176863a29d96f3b3655baa045ca2e11d0f6ad599187779a2733293c6ed858198",
+     "taskbank_dev": "81c3be9994c5eaf38881e380007dc306c2c4124efd70fb32ffd135cc8a8fa373",
+     "hard_dev": "d6e0c2ca895bbe1128cb0f8d16e40adba98abc64075c258e2f0a01d7100d0cc9",
+     "dev_negwords": "c3ded77b8590861cbea101ca6c78145ae4083a796ac6ef67544e2eccbd33d4a2",
+     "dev_claims": "9d55eb473204f2cef151691431f9472de1035ea3f3128050705c39ef6f43fe51",
+     "pg_dev": "01c80572da73f537c90a831c9679b81568d790ea0bb1d37aec842f4866e480ad",
+     "devzs": "92e009bb9cbbf5f1b1a8f70c632304092997c7e8bbf3f43864aa51da42b370cb",
+     "devp_card": "07b59f8da488ff8886a1f068952ed39d9a095a88319d8391a587d11d47001e1a",
+     "dev": "2517a9e8b4c4c4ecdb7218bab9bc45754e33a93ff7c32a0faa7abce46f0cf0ea"
+    },
+    "adapter": "q35_4b_main500k",
+    "view": "single",
+    "noul_view": "single"
+   },
+   "q35_4b_main500k_pre_served": {
+    "sha256": {
+     "dev_nc": "5c8f154b9bf227185434eb31df74f83d69136a3701d92f3093a77d74dc41e6ed",
+     "taskbank_dev": "2dacbee6b04df233bd55453217542ed84e0c773a61ae4d0c40d16a98e2225ae9",
+     "hard_dev": "7e89a41a6a290cfd51794bc0a66ddd95265e30fe22e0c50e2527fc8b3ccfe11d",
+     "dev_negwords": "a324a27df49b07f783e3fc5b51a814e5d108016ff9534226c38552332067c90e",
+     "dev_claims": "62bbab427022682090f18b986d7d38b1aed4cf9818a9319e492f834d2e8dcd1f",
+     "pg_dev": "bc4d92fe3411714be9d498beaa3d9c13e86ba4b54964582dccb7ab88adec8cbb",
+     "devzs": "c05d538e93f92b6d9734bfae0fa76da98bc82b6f5da9d40b7836ddf8d653e0ea",
+     "devp_card": "c91617812481b49755d549cc2882ec02f71bd3c6993e290f3aed8821f5d062b7",
+     "dev": "beb2acbf00cda97cbedde3e1f2b0315870fe357cf06bee6c0476ba7edb95aa72"
+    },
+    "adapter": "q35_4b_main500k",
+    "view": "2view",
+    "noul_view": "single"
+   }
+  },
+  "choice_readout": "2view",
+  "noul_read": "q35_4b_main500k_pre",
+  "noul_read_view": "single",
+  "choice_single_read": "q35_4b_main500k_pre",
+  "choice_single_view": "single",
+  "splits": [
+   "dev_nc",
+   "taskbank_dev",
+   "hard_dev",
+   "dev_negwords",
+   "dev_claims",
+   "pg_dev",
+   "devzs",
+   "devp_card",
+   "dev"
+  ],
+  "dev_only": true,
+  "tool": {
+   "path": "prep89/t_rule_check.py",
+   "sha256": "0225cad2fc717e12ea3ba78792f7a283f07c51989b9ba6b760930f1bed317509"
+  }
+ }
+}

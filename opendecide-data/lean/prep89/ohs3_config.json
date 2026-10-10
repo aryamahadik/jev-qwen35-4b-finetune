@@ -1,0 +1,94 @@
+{
+  "_doc": "Prepared C1 OHS-3 run configuration. This file must be committed with the required harness and model amendment before any OHS-3 call.",
+  "_sources": {
+    "ship": "Round-1 C look 2 has recorded no_ship for q35_4b_c_r1; C1 remains the shipped decision model.",
+    "T_fit": "prep89/t_fit_q35_4b_main500k.json, generated from C1's nine development splits only."
+  },
+  "models": {
+    "4b": {
+      "_note": "C1 is the fixed shipped decision model after the recorded Round-1 no_ship verdict.",
+      "_candidates": {
+        "q35_4b_pxE": {"role": "4B-E reference", "adapter_sha256": "1bbd8a79143f7ab5d6fd538c870ded0605120ab777c97d38ca3384b26c31a3f9", "backup": "backups/gcp_models/q35_4b_pxE"},
+        "q35_4b_main500k": {"role": "C1 shipped decision model", "adapter_sha256": "507d1c29690579f928a265713cd14b9c54a34baa8b74abd1e641560d987db078", "backup": "backups/modal_models/q35_4b_main500k"},
+        "q35_4b_main500k_fix2": {"role": "not selected", "adapter_sha256": "not-run", "backup": "backups/modal_models/q35_4b_main500k_fix2"}
+      },
+      "run_on_ohs3": true,
+      "name": "q35_4b_main500k",
+      "base": "Qwen/Qwen3.5-4B",
+      "revision": "851bf6e806efd8d0a36b00ddf55e13ccb7b8cd0a",
+      "layout": "schema_branch_mark",
+      "style": "cygnet",
+      "adapter_sha256": "507d1c29690579f928a265713cd14b9c54a34baa8b74abd1e641560d987db078",
+      "readout_choice": "2view",
+      "readout_noul": "single",
+      "T_primary": {"noul": 1.0, "choice": 1.0},
+      "T_single": {"noul": 1.0, "choice": 1.0},
+      "T_fit_log": "prep89/t_fit_q35_4b_main500k.json",
+      "cuda_graphs": true,
+      "prism_x": null
+    },
+    "2b": {
+      "_note": "Not part of this final OHS-3 run.",
+      "run_on_ohs3": false,
+      "name": "not-run",
+      "base": "Qwen/Qwen3.5-2B",
+      "revision": "not-run",
+      "layout": "schema_branch_mark",
+      "style": "cygnet",
+      "adapter_sha256": "not-run",
+      "prism_x_sha256": "not-run",
+      "readout_choice": "not-run",
+      "readout_noul": "single",
+      "T_primary": {"noul": 1.0, "choice": 1.0},
+      "T_single": {"noul": 1.0, "choice": 1.0},
+      "T_fit_log": "not-run",
+      "cuda_graphs": false,
+      "prism_x": "I"
+    }
+  },
+  "cascade": {
+    "_note": "Not run: this final evaluation scores the shipped 4B only.",
+    "run": false,
+    "name": "not-run",
+    "small": "2b",
+    "big": "4b",
+    "tau": 1.0,
+    "w_big": 1.0,
+    "route_on": "primary",
+    "tau_fit_log": "not-run"
+  },
+  "decisions": {"od_scored_run": "served_h100", "jev_timing": "extra_pass"},
+  "hosting": {
+    "endpoint": "modal_forward_tunnel",
+    "gpu": "H100",
+    "region": "us-east",
+    "cuda_graphs": true,
+    "graph_cfg": {"batches": [1], "max_tokens": 2048, "extra_batches": [], "extra_max": 64, "long1_max": 3072, "reserve_gb": 8.0, "bucket": 64, "max_graph_tokens": 8192},
+    "customer_usable": "yes"
+  },
+  "speed": {
+    "rule_S1": "p50 CI (Jev - OD) entirely above 0 AND p95 point estimate lower",
+    "timeout_s": 30,
+    "max_attempts": 3,
+    "warmup_dev_calls": 20,
+    "concurrency": 1,
+    "interleave_seed": "ohs3-timing-v1",
+    "n_boot": 10000,
+    "seed": 0,
+    "headline_system": "4b"
+  },
+  "cost": {
+    "od_usd_per_hour": 4.31,
+    "od_rate_source": "modal_direct_host.GPU_RATE_USD_H: H100 all-in rate plus reserved host resources",
+    "od_decisions_per_hour_sustained": "load_test",
+    "load_test": {"levels": [1, 2, 4, 8, 16], "seconds_per_level": 60, "warmup_s": 10, "seed": 0, "token_check_calls": 20, "timeout_s": 30, "splits": ["dev_nc", "pg_dev", "taskbank_dev", "devp_card", "hard_dev", "dev_claims", "devzs", "dev", "dev_negwords"], "match_bar": {"ks_max": 0.05, "mean_ratio_tol": 0.02}, "sustained_rule": "max throughput over levels with 0 failed calls", "routed_share_tol": 0.05},
+    "utilisation_for_claim": 0.4,
+    "l4_usd_per_hour": 0.85,
+    "jev_usd_per_m_input": 0.042,
+    "jev_usd_per_m_output": 0.0,
+    "c3_od_usd_per_1k": 0.039,
+    "c3_jev_usd_per_1k": 0.0384,
+    "c3_source": "bench/runs/scores_v154_all.json"
+  },
+  "jev": {"request_model": "jev-1.13", "pinned_response_model": "typesafe/jev-1.13-20260917", "scored_tags": ["jev_guard", "jev_r2_guard"], "timing_tag": "jev_timing_guard", "route": "openrouter", "cost_cap_usd": 3.0}
+}
