@@ -204,3 +204,67 @@ planned; the next steps are in FREEZE.md for the $30 account.
 | B1a | 5 Oct 2026, Modal aryamhd, H100: bf16_nospec (383 s + 81 s engine start) OK; bf16_dflash container died ("Server has lost track of input", Modal internal) | ~$0.6 [E]; re-run of bf16_dflash launched (cap $5) |
 | B1a retries | 5 Oct, aryamhd H100. bf16_dflash failed 3x at init: SGLang 0.5.20 DFlash KV-pool accounting bug on Qwen3.5, "draft weights are now counted" (mem 0.55 and 0.85). nospec re-run (412 s) OK. Fast path failed: C1 final files were missing on aryamhd /vol; uploaded from the Mac backup (sha 507d1c29); re-run launched | ~$1.5 [E] cumulative for B1a so far |
 | B1a fast path | 5 Oct, aryamhd H100, bf16_nospec + C1 fast path (794 s). Two OOM attempts before it (SGLang at 55% plus 160 CUDA graphs at 46 GB); fixed with mem 0.25 and graphs at (1, 8) up to 1,536 tokens | ~$1.0 [E]; B1a total ≈ $3 |
+| B1a ACTUAL (billing, 5 Oct 23:00 UTC) | `modal billing report` on aryamhd, hourly: opendecide-think 02:00-05:00 EDT on 5 Oct = $0.19 + $3.55 + $1.84 = **$5.57** (7 app runs). The ~$3 estimate above was low. Nothing has run on any of the 7 profiles since then | **$5.57 [A]** |
+| Card charge | aryamhd October: metered $32.12 (1 Oct `opendecide` run $26.31 + B1a $5.57 + volumes $0.24, free), $30.00 monthly credit used up → **$1.88 billed to the card**. From now on every aryamhd run is paid in full | $1.88 real |
+| rrun running total | mahadikarya44 CPU (app od-rrun, A20 a), updated 7 Oct 01:01 UTC: 29 runs in c_build/rrun_ledger.jsonl est $11.12 + 0 open reservations $0.00; modal billing report $9.51 this month; hard CPU/mem limits = request; auto-stop $15. Running total, rewritten in place on every run (the milestone rows are not additive) | ~$11.12 [E] |                                                  
+| A20 rrun (to 6 Oct 01:40 UTC) | Modal CPU runner on jaypatil-duke: adoption tests + first lane jobs. Billing: $1.68 of the monthly credit used, $0 billed. Self-stop at $15 | $1.68 credit |
+| A20 c parity | 6 Oct 01:31-01:35 UTC, jaypatil-duke (credit): DDP parity, 1×H100 (A, B) vs 4×H100 (C), 50 steps. Verdict **FAIL** under the pre-set rule. Loss: max 6.7% > 5% gross bar, but the 1-GPU noise arm B itself shows 10.3%. Tiny aux terms: cons max rel 9.3 vs B 3.3; perm 1.37 vs 0.79. Mean loss deviation C 0.0198 vs B 0.0200. Weights C 0.0178 vs B 0.0168 (pass). s/step: A 2.75, B 3.05, C 1.08 (2.56x, efficiency 0.64). Projected round 1: 1×H100 6.8 h $27.8; 4×H100 2.7 h **$43.5** (> $35 hard stop) | $1.14 credit |
+| rrun milestone $5 | 6 Oct 02:51 UTC: jaypatil-duke od-rrun spend passed $5 (~$5.03 at 68 runs); auto-stop at $15 | marker only: amount is in the rrun running total row |
+| rrun milestone $10 | 6 Oct 03:51 UTC: jaypatil-duke od-rrun spend passed $10 (~$11.05 at 84 runs); auto-stop at $15 | marker only: amount is in the rrun running total row |
+| Owner decision 6 Oct ~04:50 UTC | Free credit first, then aryamhd card. Crowd on atmosphor credit; pre-reads, pre-smoke and final tests on jaypatil-duke credit; round 1 (~$30) on aryamhd card. Round 1 auto-starts when ready | — |
+| Billing snapshot 6 Oct 05:15 UTC | `modal billing summary --for "this month"`: atmosphor metered $17.01, credit used $14.78 → **$15.22 credit left**; jaypatil-duke metered $20.01, credit used $19.82 → **$10.18 left** (rrun still running 2 jobs, ~$8.3 after it self-stops at $15) — already **below the owner's $12 final-test reserve**; aryamhd metered $32.12, card billed $1.88 (every new aryamhd run is card) | — |
+| Endgame prep, volume copies (6 Oct 05:15-05:22 UTC) | free Volume get/put only, no compute: `q35_4b_main500k_init` jaypatil-duke → **aryamhd**; `q35_4b_pxE` aryamhd → **atmosphor**; `q35_4b_base0` (make-base0, A18.2 form, local CPU) → **atmosphor + aryamhd**. Read-back sha256 all match (init/C1 507d1c29…, pxE 1bbd8a79…, base0 d92d259f…): `c_build/endgame/COPY_RECORD.json` | $0 |
+| C1 pre-reads (A21 d) + pipeline pre-smoke (A20 d): NOT RUN (6 Oct 05:25 UTC) | jaypatil-duke is below the $12 reserve (any spend breaks the owner guard); the aryamhd-card launch (cap $2.90) was refused by the permission system (card spend needs the owner). Tools + inputs ready: `c_build/endgame/RUNBOOK.md` P1/P2 (P2-L4 on Google credit recommended) | $0 |
+| Crowd budget check (6 Oct 05:35 UTC) | ~80K candidate rows over 13 families + COMMIT ≈ 240K reads ≈ $25-31 at the assumed 10.4 reads/s/H100 vs atmosphor $15.22: about half will not fit; `crowd_cap.py` REFUSES even F1-F8 (needs 76.5 min/container, credit pays 72). Owner: spill to aryamhd card or wait; measure the real rate on the first launch | — |
+| Billing re-check + discrepancy (6 Oct 05:42-05:48 UTC) | free billing/app-list calls only. jaypatil-duke: 05:42 metered $16.83, credit left **$13.36**; 05:48 metered $17.41, credit left **$12.78** (falling: rrun `od-rrun` still running, 1 task). This does NOT match the 05:15 line above (metered $20.01, $10.18 left); the newer reads are used. atmosphor 05:42: metered $17.01, credit left $15.22 (unchanged). aryamhd 05:42: metered $32.12, billed (card) $1.88, credit 0. P1 pre-smoke NOT run: `spend_guard.py check jaypatil-duke --cap-usd 1 --reserve 12` REFUSED (unexplained running app rrun; $12.78 − $12 = $0.78 < $1 cap). Owner guard at risk: rrun stops itself at $15 of rrun spend, not at the $12 reserve (RUNBOOK B7) | $0 |
+| rrun switch 6 Oct ~05:30 UTC | jaypatil-duke od-rrun ≈ $18 of credit (billing ~$19.7 total incl. parity $1.14), $0 billed; ~$12.8 credit left, reserved for the final tests. rrun now rotates mahadikarya2/3/44 credit, $12 cap each, default 8 cores | — |
+| crowd F3,F6: BEFORE launch (cap 39 min x 3 H100) | 06 Oct 12:12 UTC, atmosphor | metered $17.01, billed $0.00, credit left $15.22 | credit |
+| crowd F9: BEFORE launch (cap 18 min x 3 H100) | 06 Oct 12:42 UTC, atmosphor | metered $17.02, billed $0.00, credit left $15.21 | credit |
+| crowd F3,F6: BEFORE launch (cap 31 min x 3 H100) | 06 Oct 13:45 UTC, atmosphor | metered $17.48, billed $0.00, credit left $15.19 | credit |
+| crowd F9: BEFORE launch (cap 17 min x 3 H100) | 06 Oct 14:11 UTC, atmosphor | metered $20.95, billed $0.00, credit left $11.72 | credit |
+| crowd F5: BEFORE launch (cap 17 min x 3 H100) | 06 Oct 16:57 UTC, atmosphor | metered $22.38, billed $0.00, credit left $10.29 | credit |
+| crowd F5: AFTER | 06 Oct 17:03 UTC, atmosphor | metered $23.04, billed $0.00, credit left $9.63 | credit |
+| P1 pre-smoke (A20 d): BEFORE (cap 14 min, <= $0.95) | 06 Oct 17:31 UTC, jaypatil-duke | metered $17.17, billed $0.00, credit left $13.07 | credit |
+| P1 pre-smoke (A20 d): AFTER (client exit 0) | 06 Oct 17:36 UTC, jaypatil-duke | metered $17.17, billed $0.00, credit left $13.07 | credit |
+| crowd F4: BEFORE launch (cap 11 min x 3 H100) | 06 Oct 19:36 UTC, atmosphor | metered $23.68, billed $0.00, credit left $8.99 | credit |
+| crowd F4: AFTER | 06 Oct 19:42 UTC, atmosphor | metered $25.19, billed $0.00, credit left $7.48 | credit |
+| crowd F11: BEFORE launch (cap 11 min x 3 H100) | 07 Oct 00:35 UTC, atmosphor | metered $25.21, billed $0.00, credit left $7.46 | credit |
+| crowd F11: AFTER | 07 Oct 00:47 UTC, atmosphor | metered $27.86, billed $0.00, credit left $4.81 | credit |
+| crowd F11: BEFORE launch (cap 7 min x 3 H100) | 07 Oct 00:48 UTC, atmosphor | metered $27.86, billed $0.00, credit left $4.81 | credit |
+| crowd F11: AFTER | 07 Oct 00:56 UTC, atmosphor | metered $30.12, billed $0.00, credit left $2.55 | credit |
+| crowd F11: BEFORE launch (cap 27 min x 3 H100) | 07 Oct 01:27 UTC, mahadikarya44 | metered $12.94, billed $0.00, credit left $17.42 | credit |
+| crowd F11: AFTER | 07 Oct 01:39 UTC, mahadikarya44 | metered $13.59, billed $0.00, credit left $16.77 | credit |
+| crowd F7: BEFORE launch (cap 23 min x 3 H100) | 07 Oct 04:56 UTC, mahadikarya44 | metered $12.91, billed $0.00, credit left $17.45 | credit |
+| crowd F7: AFTER | 07 Oct 05:01 UTC, mahadikarya44 | metered $13.93, billed $0.00, credit left $16.43 | credit |
+| crowd F5: BEFORE launch (cap 26 min x 3 H100) | 07 Oct 05:50 UTC, mahadikarya44 | metered $14.32, billed $0.00, credit left $16.04 | credit |
+| crowd F5 (A32 regen): AFTER | 07 Oct 05:50 UTC, mahadikarya44 | metered $14.32, billed $0.00, credit left $16.04 | credit |
+| crowd F6: BEFORE launch (cap 26 min x 3 H100) | 07 Oct 06:39 UTC, mahadikarya44 | metered $15.28, billed $0.00, credit left $15.08 | credit |
+| crowd F6 (A32 regen): AFTER | 07 Oct 06:39 UTC, mahadikarya44 | metered $15.28, billed $0.00, credit left $15.08 | credit |
+| crowd F5 (A32 regen): AFTER (refetch) | 07 Oct 06:40 UTC, mahadikarya44 | metered $15.28, billed $0.00, credit left $15.08 | credit |
+| crowd F6 (A32 regen): AFTER (refetch) | 07 Oct 06:45 UTC, mahadikarya44 | metered $16.83, billed $0.00, credit left $13.53 | credit |
+| crowd F5: BEFORE launch (cap 26 min x 3 H100) | 08 Oct 05:32 UTC, mahadikarya44 | metered $15.52, billed $0.00, credit left $14.90 | credit |
+| crowd F5 (wording rebuild): AFTER | 08 Oct 05:38 UTC, mahadikarya44 | metered $17.02, billed $0.00, credit left $13.40 | credit |
+| crowd F9: BEFORE launch (cap 28 min x 3 H100) | 08 Oct 05:44 UTC, mahadikarya44 | metered $16.86, billed $0.00, credit left $13.56 | credit |
+| crowd F9 (wording rebuild): AFTER | 08 Oct 05:53 UTC, mahadikarya44 | metered $19.26, billed $0.00, credit left $11.16 | credit |
+| crowd F3 (wording rebuild): AFTER | 08 Oct 06:36 UTC, mahadikarya44 | metered $21.46, billed $0.00, credit left $8.96 | credit |
+| crowd F4: BEFORE launch (cap 27 min x 3 H100) | 08 Oct 07:25 UTC, mahadikarya44 | metered $18.39, billed $0.00, credit left $12.03 | credit |
+| crowd F4 (wording rebuild): AFTER | 08 Oct 07:31 UTC, mahadikarya44 | metered $19.93, billed $0.00, credit left $10.49 | credit |
+| crowd F4 (wording rebuild): AFTER | 08 Oct 07:31 UTC, mahadikarya44 | metered $19.93, billed $0.00, credit left $10.49 | credit |
+| crowd F3: BEFORE launch (cap 34 min x 3 H100) | 08 Oct 08:53 UTC, mahadikarya44 | metered $19.63, billed $0.00, credit left $10.79 | credit |
+| crowd F3 (wording rebuild): AFTER | 08 Oct 09:03 UTC, mahadikarya44 | metered $21.07, billed $0.00, credit left $9.35 | credit |
+| round 1 (C r1): D2 seg1 0-100: BEFORE (cap 30 min) | 09 Oct 19:53 UTC, aryamhd | metered $32.34, billed $1.88, credit left $0.00 | card |
+| round 1 (C r1): D2 seg1: AFTER | 09 Oct 20:02 UTC, aryamhd | metered $32.99, billed $2.53, credit left $0.00 | card |
+| round 1 (C r1): D4 seg2 100-300: AFTER | 09 Oct 20:15 UTC, aryamhd | metered $34.20, billed $3.74, credit left $0.00 | card |
+| round 1 (C r1): D5 seg3 to the end: BEFORE (cap 540 min) | 09 Oct 20:16 UTC, aryamhd | metered $34.20, billed $3.74, credit left $0.00 | card |
+| round 1 (C r1): D5 seg3: AFTER | 09 Oct 21:44 UTC, aryamhd | metered $40.71, billed $10.25, credit left $0.00 | card |
+| OHS-3 C1 scored/timed pass: BEFORE (owner GO; Modal cap $9) | 10 Oct 15:41 UTC, jaypatil-duke | metered $18.61, billed $0.00, credit left $11.79 | credit |
+| OHS-3 C1 scored/timed pass: AFTER | 10 Oct 18:00 UTC, jaypatil-duke | metered $21.43, billed $0.00, credit left $8.97 | credit |
+| C2 training: seg1 0-100: BEFORE (cap 30 min) | 18 Oct 06:45 UTC, mahadikarya2 | metered $18.18, billed $0.00, credit left $19.10 | free credit |
+| C2 training: STOPPED: seg1 client exit 1 (see c2_build/train/logs/c2_seg1.log) | 18 Oct 07:03 UTC, mahadikarya2 | metered $18.18, billed $0.00, credit left $19.10 | free credit |
+| C2 training: seg1 0-100: BEFORE (cap 30 min) | 18 Oct 07:03 UTC, mahadikarya2 | metered $18.18, billed $0.00, credit left $19.10 | free credit |
+| C2 training: seg1: AFTER | 18 Oct 07:13 UTC, mahadikarya2 | metered $19.04, billed $0.00, credit left $18.26 | free credit |
+| C2 training: STOPPED: first100 ABORT (A37 k: non-finite loss, or the chain guards); owner review | 18 Oct 07:13 UTC, mahadikarya2 | metered $19.04, billed $0.00, credit left $18.26 | free credit |
+| C2 training: seg2 100-300: AFTER | 18 Oct 07:33 UTC, mahadikarya2 | metered $19.72, billed $0.00, credit left $17.58 | free credit |
+| C2 training: seg3_mahadikarya2 to the end/cap: BEFORE (cap 221 min, limited by credit) | 18 Oct 07:34 UTC, mahadikarya2 | metered $19.79, billed $0.00, credit left $17.51 | free credit |
+| C2 training: seg3_mahadikarya2: AFTER (client exit 0) | 18 Oct 10:24 UTC, mahadikarya2 | metered $31.33, billed $0.00, credit left $5.97 | free credit |
+| C2 training: C2 FINAL | 18 Oct 10:24 UTC, mahadikarya2 | metered $31.33, billed $0.00, credit left $5.97 | free credit |

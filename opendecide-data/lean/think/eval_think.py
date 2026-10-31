@@ -176,6 +176,46 @@ def rule_b2(rows, b1, b2) -> dict:
             "pass": tok_ok and acc_ok}
 
 
+SPEC_PTS, DEER_PTS, DEER_MIN_EXITS = 2.0, 2.0, 20  # A30 (FAST_THINK_PLAN 4a S1 / T1)
+
+
+def rule_spec_acc(rows, spec, ref) -> dict:
+    """A30 S1 accuracy part: a speculation arm's short_cot answers (batch 1) are within +-2 pts of the no-spec arm's
+    short_cot answers (batched) on the same rows, every row present (speculation is lossless; a gap means a bug)."""
+    if not rows:
+        return {"status": "no_rows", "pass": False}
+    ms, mr = _missing(rows, spec), _missing(rows, ref)
+    if ms or mr:
+        return {"status": "incomplete", "n": len(rows), "missing_spec": ms, "missing_ref": mr, "pass": False}
+    cs = int(sum(ok(rows[i], spec[i]) for i in rows))
+    cr = int(sum(ok(rows[i], ref[i]) for i in rows))
+    return {"status": "measured", "n": len(rows), "acc_spec": round(100 * cs / len(rows), 2),
+            "acc_nospec": round(100 * cr / len(rows), 2), "diff_pts": round(100 * (cs - cr) / len(rows), 2),
+            "max_abs_pts": SPEC_PTS, "spec_minus_nospec_ci95": paired_ci(rows, spec, ref),
+            "pass": 100 * abs(cs - cr) <= SPEC_PTS * len(rows)}  # exact: |diff| in points <= 2.0
+
+
+def rule_deer(rows, deer, plain) -> dict:
+    """A30 (FAST_THINK_PLAN 4a T1): on the rows where DEER exited early, acc(DEER) >= acc(same rows, full 1,024 budget
+    without DEER) - 2 pts; at least 20 early exits. Pass = DEER stays on in capped_think; else capped_think runs plain."""
+    if not rows:
+        return {"status": "no_rows", "pass": False}
+    md, mp = _missing(rows, deer), _missing(rows, plain)
+    if md or mp:
+        return {"status": "incomplete", "n": len(rows), "missing_deer": md, "missing_plain": mp, "pass": False}
+    ex = [i for i in rows if deer[i].get("exit") == "deer"]
+    tok = lambda d: statistics.mean(float(d[i].get("think_tokens", 0)) for i in rows)  # noqa: E731
+    rep = {"n": len(rows), "early_exits": len(ex), "acc_deer_all": round(_acc(rows, deer), 2),
+           "acc_plain_all": round(_acc(rows, plain), 2), "tokens_ratio": round(tok(deer) / max(1e-9, tok(plain)), 4),
+           "min_exits": DEER_MIN_EXITS, "max_loss_pts": DEER_PTS}
+    if len(ex) < DEER_MIN_EXITS:
+        return {**rep, "status": "too_few_early_exits", "pass": False}
+    cd = int(sum(ok(rows[i], deer[i]) for i in ex))
+    cp = int(sum(ok(rows[i], plain[i]) for i in ex))
+    return {**rep, "status": "measured", "acc_deer_exited": round(100 * cd / len(ex), 2),
+            "acc_plain_same_rows": round(100 * cp / len(ex), 2), "pass": 100 * cd >= 100 * cp - DEER_PTS * len(ex)}
+
+
 def fast_p50(a):
     if a.fast_p50_ms is not None:
         return a.fast_p50_ms, "flag"

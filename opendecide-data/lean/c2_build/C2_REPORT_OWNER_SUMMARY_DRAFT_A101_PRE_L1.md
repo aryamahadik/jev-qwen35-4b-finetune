@@ -1,0 +1,12 @@
+# C2: owner summary (Sun 18 Oct, US Eastern). DRAFT: the OHS-4 look (L1) and the Jev read (J) are still pending
+
+1. **Your override (A100, 3:20 PM):** you waived pre-gate (b), the transfer rule, after seeing the result. (b) still failed: final step -4.83 points [-8.59, -1.02] on 600 transfer rows (bar +3.0); all 18 candidates failed it (best -1.33, highest upper bound +1.65). Every other check binds as before.
+2. **History:** without the waiver there was no eligible candidate and no OHS-4 look for C2 (A98, confirmed by three checkers in A99). With it, the pick is final_a10, the C2 final step (A101, 3:58 PM; it tied with last3_a09 and the tie goes to the final step).
+3. **Training:** finished 6:24 AM. 3,673 steps on 59,340 rows (23,736 new, 35,604 replay), $13.14 of free credit; the card was never used.
+4. **Data:** 18 blocks went in (10 program families, agent core 4 of 6 under your A80 ruling). Left out: T33, T12, T24 (selection rules), T27 and RTW (QC), T07 (bad gold), T32 (no equiv twins), T35/T37b/T46 (moved to C3), T40-T45 (not ready), MD (source hits), all DI blocks.
+5. **Forgetting check passed:** on old skills C2 was 1.80, 1.15 and 0.50 points below C1 at 25%, 50% and 75% (the stop line was 1.5 at both 25% and 50%).
+6. **Pre-gate (4:07 PM): PASS except the waived (b).** Trained families +12.31 [+10.47, +14.15]; general dev -0.48 [-1.14, +0.16] pooled over 8,143 rows, -0.60 [-1.31, +0.15] on the D1 check (7,056 rows); latency 30.9 vs 31.6 ms; all other checks pass. H100 parity passed (99.9% agreement; the 0.02 check is exactly at its 99% bar).
+7. **Why (b) fails:** on dev, C2 loses 11.3 points on one unseen family (T19), mostly because it answers "cannot be determined" on 76 of 98 verdict questions (truth 26; C1 54). That is an orchestrator dev analysis, not a pre-registered test.
+8. **OHS-4 (S1-S6) and Jev:** not run yet. L1 will read C1 and C2 together in one job; J reads Jev once afterwards. The L1 runner is under review. Nothing is decided about shipping until they are logged.
+9. **Money:** $21.15 so far (training $13.14, grid $7.49, parity $0.52); the H100 lines are at $8.01 of the $15 cap, and the total is far under $40. All 19 models were read the same way on the H100; the one reference-check miss (1 row of 8,143) is the one you accepted (A95).
+10. **For C2.1:** judge transfer family by family from the start and watch "cannot be determined" answers; blending toward C1 cannot fix it. The init (R14) choice is computed from the L1 results once they exist.

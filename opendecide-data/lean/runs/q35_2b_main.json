@@ -3,9 +3,9 @@
   "base": "Qwen/Qwen3.5-2B",
   "base_revision": "15852e8c16360a2fea060d615a32b45270f8a8fc",
   "recipe": "A3",
-  "train_file": "v14_parts/train_2b_golden_kd.jsonl",
+  "train_file": "v14_parts/train_2b_golden_kd_2view.jsonl",
   "rel_file": "v14_parts/golden_relations.jsonl",
-  "epochs": "FILL_FROM_replay_steps.py_on_the_2B_file",
+  "epochs": 0.9712363276890207,
   "lr": 0.0001,
   "batch": 16,
   "r": 32,
@@ -38,8 +38,8 @@
     0.9,
     0.95
   ],
-  "expect_trainable": "FILL_FROM_2B_SMOKE_PRINT",
-  "expect_kd_targets": "FILL_FROM_build_2b_kd_PRINT",
+  "expect_trainable": 33638400,
+  "expect_kd_targets": 450170,
   "expect_kd_full": 238,
   "ablate_splits": [
     "eval_jagged",

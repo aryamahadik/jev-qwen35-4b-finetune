@@ -45,3 +45,13 @@ bench/nimble_suite/data_holdout/
 bench/nimble_suite/preds_holdout/
 bench/nimble_suite/preds_base/
 bench/nimble_suite/preds_holdout_base/
+bench/think_check/tasks_*.jsonl
+bench/think_check/out_*.jsonl
+bench/think_check/tasks_ohs*.jsonl
+
+# OHS-4 sealed suite (A37 f): never committed
+opendecide-data/lean/ohs4_sealed/
+opendecide-data/lean/ohs_ac_sealed/
+
+# OHS-5 sealed test (C2.1): never committed, never opened by the orchestrator
+opendecide-data/lean/ohs5_sealed/

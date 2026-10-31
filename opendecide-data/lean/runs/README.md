@@ -70,3 +70,23 @@ code (train_decoder, decoder_io, prism_x, writeblock sha256 = C1's train_meta "c
 - `expect_kd_targets` 1,369 / `expect_kd_full` 16: the builder's counts for this file (the trainer refuses to
   start on any other count).
 - `log_every` 25 (shorter run).
+
+## q35_4b_c_r1.json: DRAFT. C round 1 (C_TRAIN_RECIPE.md v4, config sketch in section 3)
+Every value is the recipe's, except the ones the build fills. They are written `FILL_...`, and
+`modal_od._launch_checks` refuses the config until they are filled:
+- `epochs`: 16 / the measured rows per step from the `batches()` dry run (pre-flight 7).
+- `expect_ord_rows`: the mixer's ordinal row count. The trainer requires it to equal the ordinal rows in the file
+  exactly, and the planned draw to cover them within 1%.
+- `expect_kd_targets` / `expect_kd_full`: the mixer's counts.
+- `seed`: a new seed.
+
+`init_adapter` is C1's adapter on the account's Volume (`models/q35_4b_main500k_init`, as for fix1 and fix2).
+`train_file` / `rel_file` sit in `data/c_parts/`. They are in `modal_od.C_KEEP`, so the default image uploads them
+(`tests/test_pilot_tools.py::test_data_ignore_uploads_run_files_and_skips_label_shards` checks this).
+
+## Configs the default image cannot launch
+- `q35_4b_fix1.json`, `q35_4b_fix2.json`: finished top-ups. Each was launched by its own spawn script
+  (`extra/fix1_spawn.py`, `extra/fix2_spawn.py`), which uploads only that run's two files (`modal_od.SPAWN_LAUNCHED`).
+- `q35_2b_main.json`: the 2B is paused. Its train file `v14_parts/train_2b_golden_kd_2view.jsonl` (1.4 GB) is not in
+  `V14_KEEP`, so 4B launches do not upload it. `relay` refuses this config until the file is added to `V14_KEEP`
+  when the 2B resumes.

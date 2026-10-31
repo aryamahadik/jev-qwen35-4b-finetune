@@ -169,3 +169,20 @@ Open points for the orchestrator:
 - The clean maths rows are only 720 (k_mmlu 138, k_sci 582), and SuperGPQA maths is graduate level. The plan's primary clean maths set (K-Math, Claude-written) is not built yet: add it with `clean_sets.py build --extra k_math=<file>`.
 - There is no DI default (review 5 Oct: the quarantine is never opened, PLAN_knowledge_gap 4). The public full test sets (MMLU test, GPQA, GSM8K test, ...) must be fetched into a git-ignored folder by the orchestrator and passed with `--ref`. The embedding rule (>= 0.92) is not run.
 - `policies.py` measures latency only with a timing backend at batch 1 (`--batch 1`). The B1 maths rule needs H100 numbers, so `modal_think.py` would need a policies step (a paid run).
+
+## Session B1b (PREREG A30; free credit; launch held until Mon 12 Oct 07:00 UTC by the owner's "Data first")
+
+```bash
+cd /Users/aryamahadik/Documents/jev/opendecide-data/lean
+../.venv/bin/python think/modal_think.py --b1b-dry-run        # CPU: inputs, configs, state budget, all roles on fakes, scoring
+bash think/b1b_copy.sh mahadikarya3                            # free: C1 adapter + sha read-back; base/drafter come from HF
+bash think/b1b_launch.sh mahadikarya3                          # guarded detached launch -> LAUNCHED ... | REFUSED ...
+bash think/b1b_fetch.sh mahadikarya3 b1b_YYYYMMDD_HHMMSS       # after the driver is done: fetch, score, AFTER ledger lines
+```
+- Roles (one H100 at a time, one 90-min server-side deadline): ref (no spec: speed, short_cot batched, full_think),
+  spec_dflash (`bf16_dflash_m16`), spec_mtp (`bf16_mtp`, NEXTN 3/1/4), fp8 (twin of the gold-free pick), deer.
+- B1a's DFlash failure: SGLang 0.5.20 reserves GDN speculative states for (max_running_requests + 1) x draft tokens
+  (99 GB at 128 x 16); `_m16` caps it at 13 GB. `spec_state_gb()` and the dry run check every config.
+- Clean set: `b1b_sets.py` (GSM8K TRAIN 500, overlap counts in `data/clean_b1b/overlap_report.json`; public refs in the
+  git-ignored `data/public_refs/`). Rules: `eval_think.rule_math / rule_fp8 / rule_spec_acc / rule_deer`.
+- Cost: expected ~$5.1, worst case $7.92, cap $8 per launch; Phase B cumulative <= $30 (launcher checks the ledger).

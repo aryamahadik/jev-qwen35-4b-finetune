@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+<!--     <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@qi2peng2">
+    <meta name="twitter:creator" content="@qi2peng2">
+    <meta name="twitter:title" content="HotpotQA: A Dataset for Diverse, Explainable Multi-hop Question Answering">
+    <meta name="twitter:description" content="HotpotQA is a question answering dataset featuring natural, multi-hop questions, with strong supervision for supporting facts to enable more explainable question answering systems. It is collected by a team of NLP researchers at Carnegie Mellon University, Stanford University, and Université de Montréal.">
+    <meta name="twitter:image" content="https://hotpotqa.github.io/img/question_types.png">
+    <meta property="og:image" content="https://hotpotqa.github.io/img/question_types.png"> -->
+
+    <title>HoVer Homepage</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom fonts for this template -->
+    <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+    <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+
+    <!-- Custom styles for this template -->
+    <link href="css/clean-blog.min.css" rel="stylesheet">
+    <link href="css/hover.css" rel="stylesheet">
+    
+<meta name="google-site-verification" content="h3zCtOJy9KzG1XWf5-3ppU1liaJ8NkpGvK_BbOOq3-4" />
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org/",
+  "@type":"Dataset",
+  "name":"HoVer: A Dataset for Many-Hop Fact Extraction And Claim Verification",
+  "description":"HotpotQA is a question answering dataset featuring natural, multi-hop questions, with strong supervision for supporting facts to enable more explainable question answering systems built based on Wikipedia.",
+  "url":"https://hover-nlp.github.io/",
+  "keywords":[
+     "Fact checking",
+     "Information Retrieval",
+     "Natural Language Processing",
+     "Multi-hop Reasoning",
+     "Explainable Artificial Intelligence"
+  ],
+  "creator":{
+     "@type":"Organization",
+     "url": "https://hover-nlp.github.io/",
+     "name":"University of North Carolina at Chapel Hill",
+     "contactPoint":{
+        "@type":"ContactPoint",
+        "contactType": "customer service",
+        "url":"https://https://www.jiang-yichen.io/",
+        "email":"yichenj@cs.unc.edu"
+     }
+  },
+  "distribution":[
+     {
+        "@type":"DataDownload",
+        "encodingFormat":"JSON",
+        "contentUrl":"http://curtis.ml.cmu.edu/datasets/hotpot/hotpot_train_v1.1.json"
+     },
+     {
+        "@type":"DataDownload",
+        "encodingFormat":"JSON",
+        "contentUrl":"http://curtis.ml.cmu.edu/datasets/hotpot/hotpot_dev_distractor_v1.json"
+     },
+     {
+        "@type":"DataDownload",
+        "encodingFormat":"JSON",
+        "contentUrl":"http://curtis.ml.cmu.edu/datasets/hotpot/hotpot_dev_fullwiki_v1.json"
+     },
+     {
+        "@type":"DataDownload",
+        "encodingFormat":"JSON",
+        "contentUrl":"http://curtis.ml.cmu.edu/datasets/hotpot/hotpot_test_fullwiki_v1.json"
+     }
+  ]
+}
+</script>
+
+  </head>
+
+  <body>
+<nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+  <div class="container">
+    <a class="navbar-brand" href="index.html">HoVer</a>
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+      Menu
+      <i class="fa fa-bars"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav ml-auto">
+<!--         <li class="nav-item">
+          <a class="nav-link" href="blog.html">Blog</a>
+        </li> -->
+<!--         <li class="nav-item">
+          <a class="nav-link" href="explorer.html">Explorer</a>
+        </li> -->
+      </ul>
+    </div>
+  </div>
+</nav>
+<!-- Page Header -->
+<header class="masthead" style="background-image: url('img/004D92.jpeg')">
+  <div class="container" style="height:400px">
+    <div class="row ">
+      <div class="col-lg-8 col-md-10 mx-auto">
+        <div class="site-heading">
+          <div class="logo">
+            <img src="img/hover-logo-2.png" alt="logo" style="height:250px;top:-100px;"/>
+          </div>
+<!--           <h1>HoVer</h1>
+ -->          <span class="subheading logo">A Dataset for <span class="line">Many-Hop</span> <span class="line">Fact Extraction</span> And <span class="line">Claim Verification</span></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+    
+<!-- Main Content -->
+<div class="container" id="main">
+  <div class="row">
+    <div class="col-lg-5">
+      <div class="list-group">
+        <div class="list-group-item"><h4>What is HoVer?</h4>
+        <p>HoVer is an open-domain, many-hop fact extraction and claim verification dataset built upon the Wikipedia corpus. The original 2-hop claims are adapted from question-answer pairs from <a href="https://hotpotqa.github.io/">HotpotQA</a>. It is collected by a team of NLP researchers at <a href="https://murgelab.cs.unc.edu/">UNC Chapel Hill</a> and <a href="https://www.verisk.com/">Verisk Analytics</a>.</p>
+        <p>For more details about HoVer, please refer to our EMNLP 2020 paper:</p>
+        <p class="text-center">
+          <a href="https://arxiv.org/abs/2011.03088"><button type="button" class="btn btn-info">(Jiang, Bordia, et al. 2020)</button></a>
+        </p>
+        </div>
+        <div class="list-group-item"><h4>Getting started</h4>
+        <p>HoVer is distributed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0 License</a>. The training, development, and test sets can be downloaded below. The test set only has the claims.</p>
+        <p class="text-center">
+          <a href="https://github.com/hover-nlp/hover/blob/main/data/hover/hover_train_release_v1.1.json"><button type="button" class="btn btn-success">Training set (9.2MB)</button></a>
+        </p>
+        <p class="text-center">
+          <a href="https://github.com/hover-nlp/hover/blob/main/data/hover/hover_dev_release_v1.1.json"><button type="button" class="btn btn-secondary">Dev set (2.2MB)</button></a>
+        </p>
+        <p class="text-center">
+          <a href="https://github.com/hover-nlp/hover/blob/main/data/hover/hover_test_release_v1.1.json"><button type="button" class="btn btn-secondary">Test set (claim only) (899KB)</button></a>
+        </p>
+<!--         <p>A more comprehensive summary about data download, preprocessing, baseline model training, and evaluation is included in our <a href="https://github.com/hover-nlp/hover">GitHub repository</a>, and linked below.
+        <p class="text-center">
+          <a href="https://github.com/hotpotqa/hotpot/blob/master/README.md"><button type="button" class="btn btn-secondary">Getting started guide</button></a>
+        </p> -->
+        <!-- <p>
+        Once you have built your model, you can use the evaluation script we provide below to evaluate model performance by running <code>python hotpot_evaluate_v1.py &lt;path_to_prediction&gt; &lt;path_to_gold&gt;</code>
+        </p>
+        <p class="text-center">
+          <a href="https://raw.githubusercontent.com/hotpotqa/hotpot/master/hotpot_evaluate_v1.py"><button type="button" class="btn btn-secondary">Evaluation script (4.2KB)</button></a>
+        </p> -->
+        
+        <p>To evaluate your model on the test set, submit your model predictions to hover.nlp.dataset@gmail.com. Please Refer to the sample prediction format below.</p>
+        <p class="text-center">
+          <a href="https://hover-nlp.github.io/data/hover/sample_dev_pred.json"><button type="button" class="btn btn-secondary">Sample dev prediction (1.2MB)</button></a>
+        </p>
+<!--         <p class="text-center">
+          <a href="https://worksheets.codalab.org/worksheets/0xa8718c1a5e9e470e84a7d5fb3ab1dde2/"><button type="button" class="btn btn-info">Submission Guide</button></a>
+        </p> -->
+        <p>
+        We use the Wikipedia data processed by the HotpotQA team to construct the dataset. Please use it as the corpus for the document retrieval as other versions of Wikipedia might have different content.
+        <!-- We also release the processed Wikipedia used in the process of creating HotpotQA (also under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0 License</a>), serving both as the corpus for the <em>fullwiki</em> setting in our evaluation, and hopefully as a standalone resource for future researches involving processed text on Wikipedia. Below please find the link to the documentation for this corpus. -->
+        </p>
+        <p class="text-center">
+          <a href="https://hotpotqa.github.io/wiki-readme.html"><button type="button" class="btn btn-info">Processed Wikipedia README</button></a>
+        </p>
+        </div>
+        <div class="list-group-item"><h4>Evaluation</h4>
+          As explained in the Sec 5.5 of the paper, the HoVer score is the percentage of examples where the model must retrieve at least one supporting fact from every supporting document and predict the correct label. However, this doesn't mean submitting a large number of supporting facts can boost up the score. When calculating the HoVer score for a k-hop example, we are only gonna consider supporting facts (sentences) from the first k+1 documents retrieved by your model. For each document considered, we are only gonna evaluate the top-2 selected sentences. So remember to rank your retrieved supporting facts!
+
+          Please refer to our evaluation script provided below for calculating the supporting-fact F1 score and HoVer score (Coming Soon).
+        <p class="text-center">
+          <a href="https://hover-nlp.github.io/data/hover/evaluation.py"><button type="button" class="btn btn-secondary">Evaluation script</button></a>
+        </p>
+        </div>
+        <div class="list-group-item"><h4>Citation</h4>
+<!--         <p>Join our <a href="https://groups.google.com/d/forum/hotpotqa">Google group</a> to receive updates or initiate discussions about HotpotQA!</p>
+ -->        <p>If you use HoVer in your research, please cite our paper with the following BibTeX entry</p>
+        <pre>
+@inproceedings{jiang2020hover,
+  title={{HoVer}: A Dataset for Many-Hop Fact Extraction And Claim Verification},
+  author={Yichen Jiang and Shikha Bordia and Zheng Zhong and Charles Dognin and Maneesh Singh and Mohit Bansal.},
+  booktitle={Findings of the Conference on Empirical Methods in Natural Language Processing ({EMNLP})},
+  year={2020}
+}</pre>
+    </div>
+  </div>
+</div>
+
+<div class="col-lg-7">
+  <div class="card card-outline-secondary">
+    <div class="card-header">
+      Leaderboard 
+    </div>
+    <div class="card-body">
+      In order to solve a HoVer example, the system must first retrieve the supporting facts from the entire Wikipedia and predict whether the claim is supported or not. The retrieved facts are evaluated against the ground-truth to yield the exact-match and F1 scores. The HoVer score represents the percentage of total examples where at least one supporting fact from every supporting document is retrieved and the correct label is predicted.
+      <table class="table table-responsive">
+        <thead class="thead-light">
+          <tr>
+            <th scope="col" rowspan=2 style="width: 7%;"></th>
+            <th scope="col" rowspan=2 style="width: 50%;" class="align-middle text-center">Model</th>
+            <th scope="col" rowspan=2 style="width: 10%;" class="align-middle text-center">Code</th>
+<!--             <th scope="col" colspan=2 class='text-center'>Ans</th>
+ -->            <th scope="col" colspan=2 style="width: 18%;" class='text-center'>Fact Extraction</th>
+            <th scope="col" colspan=2 style="width: 15%;" class='text-center'>HoVer Score</th>
+          </tr>
+          <tr>
+            <!-- <th scope="col" class='text-center'>EM</th>
+            <th scope="col" class='text-center'>F<sub>1</sub></th> -->
+            <th scope="col" class='text-center'>EM</th>
+            <th scope="col" class='text-center'>F<sub>1</sub></th>
+            <th scope="col" class='text-center'>Acc</th>
+<!--             <th scope="col" class='text-center'>F<sub>1</sub></th>
+ -->          </tr>
+        </thead>
+        <tbody>
+          <tr style="background:#f4f4f4">
+            <td scope="row" class='align-middle text-center'>1<br>
+              <span class="badge badge-secondary">May 24, 2021</span></td>
+            <td class='align-middle text-center'>Baleen<br/>
+              <span class="affiliation">Stanford University</span><br/><a href="https://arxiv.org/abs/2101.00436" class="paperlink">(Khattab et al., 2021)</a></td>
+            <td class='align-middle text-center'><a href="https://github.com/stanford-futuredata/Baleen"><i class="far fa-file-alt"></i></a></td>
+            <td class='align-middle text-center'>39.78</td>
+            <td class='align-middle text-center'>80.41</td>
+            <td class='align-middle text-center'>57.53</td>
+          </tr>
+          <tr style="background:#f4f4f4">
+            <td scope="row" class='align-middle text-center'>2<br>
+              <span class="badge badge-secondary">Oct 13, 2020</span></td>
+            <td class='align-middle text-center'>Baseline Model (single model)<br/>
+              <span class="affiliation">UNC Chapel Hill & Verisk Analytics</span><br/><a href="https://arxiv.org/abs/2011.03088" class="paperlink">(Jiang, Bordia, et al. 2020)</a></td>
+            <td class='align-middle text-center'><a href="https://github.com/hover-nlp/hover"><i class="far fa-file-alt"></i></a></td>
+            <td class='align-middle text-center'>4.5</td>
+            <td class='align-middle text-center'>49.5</td>
+            <td class='align-middle text-center'>15.32</td>
+          </tr>
+
+        </tbody>
+      </table>
+    </div>
+  </div>
+  </div>
+</div>
+</div>
+
+
+    <hr>
+    <!-- Footer -->
+    <footer>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-md-10 mx-auto">
+            <p class="copyright text-muted">Copyright &copy; HoVer Team, 2020.</p>
+            <p class="copyright text-muted">Theme adapted from Start Bootstrap's <a href="https://startbootstrap.com/template-overviews/clean-blog/">Clean Blog</a> template and <a href="https://hotpotqa.github.io/">HotpotQA</a> home page.
+            </p>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Custom scripts for this template -->
+    <script src="js/clean-blog.min.js"></script>
+    
+
+  </body>
+
+</html>

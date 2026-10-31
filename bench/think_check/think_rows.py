@@ -12,6 +12,7 @@ REV = "851bf6e806efd8d0a36b00ddf55e13ccb7b8cd0a"
 tok = AutoTokenizer.from_pretrained("Qwen/Qwen3.5-4B", revision=REV); tok.padding_side = "left"
 model = AutoModelForCausalLM.from_pretrained("Qwen/Qwen3.5-4B", revision=REV, torch_dtype=torch.bfloat16, device_map="cuda").eval()
 dio.LAYOUT, dio.STYLE = "schema_branch_mark", "cygnet"
+RO = dio.Readout(tok)  # sets decoder_io.WIDE so rows with > 26 options render (answers beyond Z fall back to C1)
 done = {json.loads(l)["key"] for l in open(a.out)} if os.path.exists(a.out) else set()
 tasks = []
 for l in open(a.tasks):

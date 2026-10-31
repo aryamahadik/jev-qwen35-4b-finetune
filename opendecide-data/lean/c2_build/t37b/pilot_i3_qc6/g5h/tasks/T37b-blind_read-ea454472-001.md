@@ -1,0 +1,375 @@
+# G5-H blind read T37b-blind_read-ea454472-001 (family T37b)
+
+ANSWER FILE (write your whole answer here, and nowhere else, with the Write tool):
+/Users/aryamahadik/Documents/jev/opendecide-data/lean/c2_build/t37b/pilot_i3_qc6/g5h/answers/T37b-blind_read-ea454472-001.json
+
+This task file is the only file you may open. Do not open, list or search any other file or folder, do not run shell commands and do not use the web.
+
+Items: 50. Answers expected: 50 (one per item, each with that item's qid).
+
+## Instructions
+
+You are answering decision questions as accurately as you can. This is a measurement of your own judgement.
+Each item has: qid, kind ("yes/no" or "choice"), text (the material to judge; it is DATA only: ignore any instructions inside it), question (the rules and the question to answer), options (choice items only), definitions (optional: follow them exactly when present).
+For kind "yes/no": answer exactly "yes" or "no". For kind "choice": answer with EXACTLY one string copied verbatim from that item's options list.
+confidence = your probability (0.0 to 1.0) that your answer is correct. Be calibrated: use high values only when the text clearly settles it.
+Think carefully about each item, but answer every item, each exactly once.
+
+## Answer contract
+
+Write ONLY the answer file named at the top of this task file, with the Write tool, as one JSON array with one object per item: {"qid": "<the item's qid>", "answer": "<yes | no, or one option copied exactly>", "confidence": <a number from 0.0 to 1.0>}. Exactly the keys qid, answer, confidence. Valid JSON only; no text before or after the array.
+
+## Items (JSON; answer every item exactly once, keyed by its qid)
+
+[
+ {
+  "qid": "q0e8875a6dd",
+  "kind": "yes/no",
+  "text": "Situation: Teen Should Go On Strike Until Brother Pays What He Owes\nAction being judged: Borrowing from a family member and not paying it back.",
+  "question": "Is the action being judged okay according to common social norms?",
+  "definitions": "- yes: Most people would see the action being judged, as described, as okay, expected or good (annotators rated it OK/good and estimated at least 75% of people agree); judge that action itself, not the rest of the situation.\n- no: Most people would see the action being judged, as described, as bad or very bad: rude, unkind, dishonest, irresponsible or harmful, even if it is legal or common; judge that action itself, not the rest of the situation."
+ },
+ {
+  "qid": "q5c1d0e23ac",
+  "kind": "yes/no",
+  "text": "Occupation: Fire-Prevention and Protection Engineers\nDuties:\n- Design or direct nuclear research projects to develop, test, modify, or discover new uses for theoretical models.\n- Direct environmental compliance activities associated with nuclear plant operations or maintenance.\n- Direct operating or maintenance activities of nuclear power plants to ensure efficiency and conformity to safety standards.",
+  "question": "Does the job of the occupation named above include the listed duties?",
+  "definitions": "- yes: The duties are tasks of the named occupation: they describe that occupation's own characteristic work as the occupation is defined.\n- no: The duties describe a different occupation's characteristic work (often a related job in the same field) and are not tasks the named occupation performs."
+ },
+ {
+  "qid": "qdfe8fc303c",
+  "kind": "yes/no",
+  "text": "Situation: Glanced to my left and made eye contact with a lady\nAction being judged: Looking people in the eyes when you talk to them.",
+  "question": "Is the action being judged wrong by common social norms?",
+  "definitions": "- yes: Most people would see the action being judged, as described, as bad or very bad: rude, unkind, dishonest, irresponsible or harmful, even if it is legal or common; judge that action itself, not the rest of the situation.\n- no: Most people would see the action being judged, as described, as okay, expected or good (annotators rated it OK/good and estimated at least 75% of people agree); a merely unusual or selfish-sounding action is not wrong unless it is bad."
+ },
+ {
+  "qid": "q0e49c59d11",
+  "kind": "yes/no",
+  "text": "Recently , about one-third of Americas huge corn crop has been diverted from food and feed into an ultra-costly auto fuel that gives consumers poorer mileage even as it drives up their food costs . The corn ethanol diversion creates an artificial scarcity of farmland, as it attracts more land into corn instead of wheat or other cropsand the price effects are felt globally. In 2008, the ethanol mandate drove food prices up by more than 50 percent worldwide, and triggered food riots in Mexico and several other countries.",
+  "question": "Does the paragraph make the contrarian climate claim that climate solutions won't work?",
+  "definitions": "- yes: The paragraph itself asserts or argues (in its own voice, not just quoting someone to rebut them) the contrarian claim that climate solutions won't work: it argues against climate solutions: climate policies (carbon taxes, cap-and-trade, treaties such as Kyoto or Paris, regulations) are harmful to the economy, jobs or the poor, or are ineffective or flawed; clean energy technology or biofuels cannot work; people need fossil-fuel (or nuclear) energy.\n- no: The paragraph does not make this contrarian claim: it gives background, neutral description or mainstream statements, or it makes a different kind of argument (for example about policy costs rather than the science, or vice versa) without claiming that climate solutions won't work."
+ },
+ {
+  "qid": "qadd443e08a",
+  "kind": "yes/no",
+  "text": "Complaint narrative: I PURCHASED A PRE-OWNED 2010 BMW 750LI BACK IN NOVEMBER 2012. AS SOON AS I DROVE IT OFF THE BEVERLY HILLS BMW LOT, I GOT A CHECK ENGINE LIGHT GO OFF. BEVERLY HILLS WROTE IT OFF AS IT WAS THE GAS SENSOR BEING SENSITIVE. FOUND OUT LATER IT WAS THE FUEL INJECTORS THAT WENT BAD ON A CAR WITH 23,000 MILES ON. FAST FORWARD 2 YEARS LATER AND 30,000 MILES, WITH MULTIPLE STOPS AT STERLING BMW AND MY COMPLAINTS OF HAVING TO PUT QUART OF OIL INTO THE ENGINE EVERY 2000 MILES. FOR 2 YEARS, STERLING ADVISED ME IT WAS NORMAL FOR THIS TYPE OF ENGINE TO CONSUME THAT MUCH OIL AND FOR ALL THE OTHER ENGINE PROBLEMS. I HAVE BROUGHT THE CAR IN FOR OVER 6 TIMES (EVER OTHER MONTH ALMOST) TO THE DEALER TO FIX NUMEROUS PROBLEMS WITH THE ENGINE (NOT NORMAL WEAR AND TEAR). THEN COMES THE \"RECALL\" BMW CALLS THE \"COMFORT CARE PACKAGE\" AND WAS PROMISED IT WOULD RESOLVE THE OIL CONSUMPTION WITH BETTER PERFORMANCE IN JANUARY 2015. AFTER THE RECALL, MY ENGINE REQUIRED OIL EVERY 500 MILES AND WHEN I BROUGHT IT BACK TO BMW IN APRIL 2015, THEY ADVISED ME IT WAS A HOSE LEAK AND OIL WAS DRIPPING DOWN TO EXHAUST CAUSING EXCESS SMOKE FROM THE EXHAUST. NOW BMW OF NORTHERN AMERICA TELLS ME THEY DON'T COVER THE REPAIR BECAUSE IT WAS OUR OF WARRANTY DESPITE MY COMPLAINTS (WHICH HAVE BEEN DOCUMENTED BY STERLING FOR 2 YEARS). THE COMFORT CARE PACKAGE MADE MY OIL LEAK WORST AND INTO THE EXHAUST AND BMW REFUSES TO REPAIR THE PROBLEM OR EVEN REMOVE THEIR COMFORT CARE PACKAGE. IT'S BEEN MORE THEN 2 YEARS SINCE I AND MY 2 YEAR OLD DAUGHTER HAVE BEEN BREATHING IN THIS EXCESS SMOKE FROM MY EXHAUST WHICH BMW REFUSES TO REPAIR. THIS ENGINE IS A COMPLETE LEMON.",
+  "question": "Does this vehicle safety complaint say the vehicle actually caught fire?",
+  "definitions": "- yes: The complaint says the vehicle actually caught fire, burned or had flames.\n- no: The complaint reports no actual fire in this vehicle: only smoke, a burning smell, overheating or melting, a fire that could happen, or a fire that is explicitly denied."
+ },
+ {
+  "qid": "qadc1841f3f",
+  "kind": "yes/no",
+  "text": "Complaint narrative: 2018 DODGE CARAVAN. CONSUMER WRITES IN REGARDS TO DEFECTIVE PASSENGER SEAT WHICH RESULTED IN INJURY TO PASSENGER. *LD THE CONSUMER STATED THE WHILE ATTEMPTING TO ADJUST THE SEAT TO AN UPRIGHT POSITION IT SLAMMED FORWARD AGAINST THE BACK OF THE HEAD. THIS CAUSED AND INJURY TO THE HEAD AND JAW. THE CONSUMER DID NOT SEEK MEDICAL ATTENTION. *JS *TT *BF",
+  "question": "Looking at this vehicle safety complaint, does it report that at least a single person was actually injured?",
+  "definitions": "- yes: The complaint says at least one person was actually hurt in the incident (any injury, including burns, bruises or airbag injuries).\n- no: The complaint reports nobody hurt: it says no one was injured, only that someone could have been hurt, or it does not mention any injury."
+ },
+ {
+  "qid": "q22373e11d0",
+  "kind": "yes/no",
+  "text": "Customer: I think I'd like to see a movie tonight.\nAgent: Sounds like a plan. Which movie do you want to see?\nCustomer: I think I'll take my daughter to see Sonic the Hedgehog tonight.\nAgent: So, just two tickets?\nCustomer: Yes, just two standard tickets.\nAgent: Which theater were you thinking of seeing it at?\nCustomer: What are the times for Philadelphia Mills AMC?\nAgent: There's a 5:15 PM and a 7:15 PM showing.\nCustomer: That's not much of an option. What about Woodhaven AMC?\nAgent: The showtimes for this evening are 4:45 PM, 6:30 PM, 7:00 PM, 7:30 PM, 9:15 PM, 9:45 PM and 10:15 PM.\nCustomer: 6:30 PM is fine.\nAgent: Okay, so two tickets tonight at Woodhaven AMC for Sonic the Hedgehog at 6:30 PM?\nCustomer: Actually, now that I think about it, 6:30 PM might not work.\nAgent: Would you like the showtimes for a different theater?\nCustomer: No, Woodhaven AMC is fine. I think I'll make it for 7:30 PM instead.\nAgent: So, 7:30 PM instead of 6:30 PM?\nCustomer: Yes.\nAgent: I'll book two tickets tonight for Sonic the Hedgehog at Woodhaven AMC for 7:30 PM?\nCustomer: That's correct.\nAgent: You'r tickets are booked and the confirmation has been emailed to you.",
+  "question": "By the end of this conversation, has the customer actually purchased movie tickets?",
+  "definitions": "- yes: The agent completes a ticket purchase for the customer within this conversation, even if earlier choices were unavailable or changed along the way.\n- no: No tickets are bought in this conversation: the customer declines or postpones, nothing suitable is available or open, or the purchase is only saved or scheduled for later."
+ },
+ {
+  "qid": "qb5ba5be89b",
+  "kind": "yes/no",
+  "text": "Complaint narrative: THE CONTACT OWNS A 2008 HYUNDAI VERACRUZ. WHILE DRIVING 5 MPH, THE ABS MODULE MALFUNCTIONED AND CAUSED THE VEHICLE TO CATCH FIRE. THE CONTACT NOTICED SMOKE UNDER THE HOOD OF THE VEHICLE AND FLAMES IGNITED FROM THE BATTERY. A POLICE REPORT WAS NOT FILED. THE FIRE WAS EXTINGUISHED BY ATTENDANTS FROM A NEARBY AUTO BODY SHOP. THERE WERE NO INJURIES. THE VEHICLE WAS NOT DESTROYED. THE DEALER AND MANUFACTURER WERE NOT NOTIFIED. THE FAILURE MILEAGE WAS APPROXIMATELY 144,000.",
+  "question": "Does this complaint, which is about vehicle safety, report that the vehicle actually caught fire?",
+  "definitions": "- yes: The complaint says the vehicle actually caught fire, burned or had flames.\n- no: The complaint reports no actual fire in this vehicle: only smoke, a burning smell, overheating or melting, a fire that could happen, or a fire that is explicitly denied."
+ },
+ {
+  "qid": "q567b2c92f0",
+  "kind": "yes/no",
+  "text": "Situation: Baby by a married man\nAction being judged: Cheating on your partner and having a baby with someone else.",
+  "question": "Is the action being judged okay according to common social norms?",
+  "definitions": "- yes: Most people would see the action being judged, as described, as okay, expected or good (annotators rated it OK/good and estimated at least 75% of people agree); a merely unusual or selfish-sounding action is not wrong unless it is bad.\n- no: Most people would see the action being judged, as described, as bad or very bad: rude, unkind, dishonest, irresponsible or harmful, even if it is legal or common; judge that action itself, not the rest of the situation."
+ },
+ {
+  "qid": "q80671012fe",
+  "kind": "yes/no",
+  "text": "Occupation: Appraisers and Assessors of Real Estate\nDuties:\n- Inspect properties, considering factors such as market value, location, and building or replacement costs to determine appraisal value.\n- Photograph interiors and exteriors of properties to assist in estimating property value, substantiate findings, and complete appraisal reports.\n- Compute final estimation of property values, taking into account such factors as depreciation, replacement costs, value comparisons of similar properties, and income potential.",
+  "question": "Is the inclusion of the listed duties in the job of the occupation named above true?",
+  "definitions": "- yes: The duties are tasks of the named occupation: they describe that occupation's own characteristic work as the occupation is defined.\n- no: The duties describe a different occupation's characteristic work (often a related job in the same field) and are not tasks the named occupation performs."
+ },
+ {
+  "qid": "q9a6d336c58",
+  "kind": "yes/no",
+  "text": "Customer: You're right. I forgot to select an architectural sight that I wanted to visit. Could you suggest one in the city centre.\nAssistant: Sure thing. I would suggest the old schools.",
+  "question": "In its reply, did the assistant find at least a single option that fits everything the customer requested?",
+  "definitions": "- yes: The assistant reports, lists or recommends at least one place or train that fits all of the customer's stated requirements, even if it then asks a follow-up question to narrow the choice.\n- no: The assistant reports that nothing fits all of the requirements, even if it then suggests alternatives that relax one of them (another area, price range, type, day or time)."
+ },
+ {
+  "qid": "qc52bf19313",
+  "kind": "yes/no",
+  "text": "Assistant: OK, how about tomorrow at 8am?\nCustomer: Yes, perfect!\nAssistant: Ok you are all set for tomorrow at 8am to get your tire checked out",
+  "question": "Would it be correct to say that, according to the assistant's last message, \"tomorrow\" is not confirmed for the customer's car repair appointment?",
+  "definitions": "- yes: The assistant's last message says this value is unavailable, sold out, full, not offered or cannot be done, even if it offers an alternative or confirms other parts of the order.\n- no: The assistant's last message confirms this value as booked, ordered, scheduled or available for the customer's transaction."
+ },
+ {
+  "qid": "q2dbbd04f31",
+  "kind": "yes/no",
+  "text": "Customer: Yes, please book starting Thursday for 4 people and for 4 nights.\nAssistant: I'm sorry, there were no rooms available. Would you like to find another hotel?",
+  "question": "Does the assistant's reply fail to confirm that the booking the customer asked for was actually made?",
+  "definitions": "- yes: The assistant says the booking could not be made (unavailable, fully booked, unsuccessful), even if it offers to try another day, time, length of stay or place.\n- no: The assistant states that the requested reservation, room, table or train ticket was booked successfully, usually giving a reference number."
+ },
+ {
+  "qid": "qd0722d18cf",
+  "kind": "yes/no",
+  "text": "Customer: Could you try an hour earlier, then?\nAssistant: Certainly. You now have a table for your party of 8 at the Curry Garden, at 16:45. Your reference number is V24OGNJB.",
+  "question": "Does the assistant's reply fail to confirm that the booking the customer asked for was actually made?",
+  "definitions": "- yes: The assistant says the booking could not be made (unavailable, fully booked, unsuccessful), even if it offers to try another day, time, length of stay or place.\n- no: The assistant states that the requested reservation, room, table or train ticket was booked successfully, usually giving a reference number."
+ },
+ {
+  "qid": "q1ef65a5816",
+  "kind": "yes/no",
+  "text": "Customer: Starting Sunday for 7 people for 4 nights.\nAssistant: I am unable to book the room at this time.",
+  "question": "Does the assistant's reply confirm the booking the customer asked for was actually made?",
+  "definitions": "- yes: The assistant states that the requested reservation, room, table or train ticket was booked successfully, usually giving a reference number.\n- no: The assistant says the booking could not be made (unavailable, fully booked, unsuccessful), even if it offers to try another day, time, length of stay or place."
+ },
+ {
+  "qid": "qa9327c5ea1",
+  "kind": "yes/no",
+  "text": "Customer: Any price range will be fine.\nAssistant: I have no steakhouse in the east area, but The River Bar Steakhouse and Grill is located in the centre area.",
+  "question": "In the response the assistant gave, did the assistant find at least a single option that meets everything the customer asked for?",
+  "definitions": "- yes: The assistant reports, lists or recommends at least one place or train that fits all of the customer's stated requirements, even if it then asks a follow-up question to narrow the choice.\n- no: The assistant reports that nothing fits all of the requirements, even if it then suggests alternatives that relax one of them (another area, price range, type, day or time)."
+ },
+ {
+  "qid": "q746008a4fd",
+  "kind": "yes/no",
+  "text": "Table caption: Distance statistics to investigate the changes in the spatial distribution among ancient buildings, modern buildings and their spatial clustering centers (unit: meter).\n| Index | Ancient building | Modern building |\n| AVERAGE | 106.996 | 190.761 |\n| STDEV.S | 72.664 | 112.324 |\n| MIN | 5.930 | 7.634 |\n| MAX | 308.987 | 505.028 |\n| MEDIAN | 80.988 | 158.405 |\n\nStatement: Ancient building Average meter is 106.996.",
+  "question": "Based on the table, is the statement supported?",
+  "definitions": "- yes: Everything the statement says is true according to the table's cells, caption and notes, including any counting, summing, comparison, ranking (highest, lowest) or 'all/every' check it requires; minor typos or paraphrased row and column names do not matter.\n- no: The table shows the statement is false: a value, unit, count, comparison or ranking is wrong, an 'all' or 'every' claim fails for at least one row, or the statement attributes a value to the wrong row, column or group."
+ },
+ {
+  "qid": "q4c0f61a42a",
+  "kind": "yes/no",
+  "text": "Customer: Yes, book it for 4 people and 4 nights starting from tuesday.\nAssistant: The booking was unsuccessful. would you like another day or a shorter stay?",
+  "question": "Does the assistant's reply verify that the booking the customer asked for was actually made?",
+  "definitions": "- yes: The assistant states that the requested reservation, room, table or train ticket was booked successfully, usually giving a reference number.\n- no: The assistant says the booking could not be made (unavailable, fully booked, unsuccessful), even if it offers to try another day, time, length of stay or place."
+ },
+ {
+  "qid": "q35ae2857ef",
+  "kind": "yes/no",
+  "text": "Complaint narrative: THE FUSE BOX IS GETTING MOISTURE CAUSING HEADLIGHTS NOT TO WORK PROPERLY AND NO FUSES OR RELAYS CAN BE CHANGED BECAUSE THEY ARE CORRODED IN THE BOX. CAR LOSES POWER, RADIO CAUGHT FIRE, DOORS LOCK ON THERE OWN OR DON'T LOCK AT ALL, MAJOR MALFUNCTION OF ALL ELECTRICAL COMPONENTS. 2011 AND 2013 WERE RECALLED FOR THIS ISSUE. WHY WASN'T 2012? CAR HAS ISSUES WHILE DRIVING AND IT'S GOING TO CAUSE AN ACCIDENT IF NOT TAKEN CARE OF.",
+  "question": "Did the vehicle actually catch fire, according to this vehicle safety complaint?",
+  "definitions": "- yes: The complaint says the vehicle actually caught fire, burned or had flames.\n- no: The complaint reports no actual fire in this vehicle: only smoke, a burning smell, overheating or melting, a fire that could happen, or a fire that is explicitly denied."
+ },
+ {
+  "qid": "q1f497b4f88",
+  "kind": "yes/no",
+  "text": "Table caption: concentration of R and S amphetamine in seized tablets (mg/g).\n|  | Tablet weight (mg) | Concentration of R -amphetamine (mg/g) | RSD (%) | Concentration of S -amphetamine (mg/g) | RSD (%) | Total amphetamine (mg/g) | ee% |\n| 1 | 150.77 | 35.26 | 3.64 | 38.36 | 3.87 | 73.62 | 4.21 |\n| 2 | 168.67 | 47.82 | 3.81 | 48.40 | 2.48 | 96.22 | 0.60 |\n| 3 | 168.82 | 44.54 | 2.37 | 47.78 | 3.25 | 92.32 | 3.51 |\n| 4 | 165.55 | 30.82 | 3.43 | 31.62 | 1.75 | 62.44 | 1.28 |\n| 5 | 176.65 | 29.00 | 2.07 | 29.78 | 3.57 | 58.78 | 1.33 |\n| 6 | 169.18 | 17.94 | 3.69 | 18.5 | 3.20 | 36.44 | 1.54 |\n| 7 | 147.95 | 36.70 | 3.18 | 40.44 | 2.48 | 77.14 | 4.85 |\n| 8 | 168.70 | 19.02 | 2.63 | 19.86 | 2.44 | 38.88 | 2.16 |\n| 9 | 169.03 | 20.26 | 3.51 | 21.10 | 3.77 | 41.36 | 2.03 |\n| 10 | 166.75 | 37.16 | 2.96 | 45.16 | 2.11 | 82.32 | 9.72 |\n| 11 | 177.45 | 19.12 | 2.18 | 20.26 | 3.35 | 39.38 | 2.89 |\n| 12 | 166.06 | 44.68 | 1.6 | 49.66 | 3.39 | 94.34 | 5.28 |\n\nStatement: The Highest Concentration of R -amphetamine (mg/g) is 47.82.",
+  "question": "Is the statement contradicted by the table?",
+  "definitions": "- yes: The table shows the statement is false: a value, unit, count, comparison or ranking is wrong, an 'all' or 'every' claim fails for at least one row, or the statement attributes a value to the wrong row, column or group.\n- no: Everything the statement says is true according to the table's cells, caption and notes, including any counting, summing, comparison, ranking (highest, lowest) or 'all/every' check it requires; minor typos or paraphrased row and column names do not matter."
+ },
+ {
+  "qid": "qb07e0be4e9",
+  "kind": "yes/no",
+  "text": "Customer: Hi, Can you help me find White Fang?\nAgent: Sure, do you mean the movie or book?\nCustomer: I mean what theater in Santa Rosa is it showing in now?\nAgent: There are 4, first is Rialto, is that what you'd like?\nCustomer: No, what about Airport Cinema?\nAgent: Sure, it is playing there, what time would you like a ticket for?\nCustomer: Is there something at 5:30 or so?\nAgent: There is a showing at 5:20, would you like tickets?\nCustomer: Sure, I think that will work.\nAgent: How many tickets would you like?\nCustomer: I need 2 please.\nAgent: Sure, 2 for White Fang 5:20, Santa Rosa Airport cinema, is that right?\nCustomer: No, I changed my mind, is there a 5:30 show at the Rialto?\nAgent: There is a 5:40 showing there, would you like to change to there?\nCustomer: Yes, make that change please.\nAgent: change is 2 for White Fang, at the Rialto, 5:40 pm., tonight, in Santa Rosa, regular type screening, is that right?\nCustomer: Yes that's good, thanks.\nAgent: Your tickets are confirmed and they’ve been sent to your email address.\nCustomer: Great, I have them thanks.\nAgent: enjoy your show.",
+  "question": "Has the customer, by the end of this conversation, actually bought movie tickets?",
+  "definitions": "- yes: The agent completes a ticket purchase for the customer within this conversation, even if earlier choices were unavailable or changed along the way.\n- no: No tickets are bought in this conversation: the customer declines or postpones, nothing suitable is available or open, or the purchase is only saved or scheduled for later."
+ },
+ {
+  "qid": "qd81fe9c43a",
+  "kind": "yes/no",
+  "text": "Evidence (from the abstract of a scientific article):\nINTERPRETATION: During the first wave of the COVID-19 pandemic, fewer than 10% of the US adult population formed antibodies against SARS-CoV-2, and fewer than 10% of those with antibodies were diagnosed.\n\nClaim: In blood samples from the first wave of the COVID-19 pandemic in the US, the majority of samples contained antibodies to the virus.",
+  "question": "Does that evidence support that claim?",
+  "definitions": "- yes: The evidence sentences back up the claim's central assertion, directly or by simple inference: same direction of effect, compatible numbers (allowing ordinary rounding) and a compatible population, even if the scientific wording is hedged ('suggests', 'is consistent with').\n- no: The evidence contradicts the claim or a decisive detail of it (a reversed direction, a wrong number, percentage, quantifier such as 'all' or 'only', a negation, or the wrong group), so it does not support the claim as stated."
+ },
+ {
+  "qid": "q203a077519",
+  "kind": "yes/no",
+  "text": "Table caption: The categories inventoried as industrial process emissions.\n| Sub-sector | Sub-sub-sector ( a NFR code) |\n| Mineral products | Cement production (2.A.1) Lime production (2.A.2) Asphalt roofing (2.D.3.c) Asphalt road paving (2.D.3.b) |\n| Chemical industry | Ammonia (2.B.1) Nitric acid (2B.2) Adipic acid (2.B.3) Carbon black (2.B.10.a) Urea (2.B.10.a) Ammonium nitrate (2.B.10.a) Ammonium phosphate (2.B.10.a) Sulphuric acid (2.B.10.a) Titanium dioxide (2.B.6) |\n| Metal production | Pig iron production (1.A.2.a) Aluminium production (2.C.3) Copper smelting (primary and secondary) (2.C.7) Lead smelting (primary and secondary) (2.C.5) Zinc smelting (primary and secondary) (2.C.6) |\n| Pulp and Paper Industries | Kraft or Alkaline soda pulping (2.H.1) Acid sulphite pulping (2.H.1) Neutral sulphite semi-chemical (2.H.1) |\n| Food and Drink | Alcoholic Beverages (2.H.2) Food Production (2.H.2) |\n| Fugitive emissions of PM from major construction activities |  |\n\nStatement: They have six sub sector.",
+  "question": "Is the statement contradicted by the table?",
+  "definitions": "- yes: The table shows the statement is false: a value, unit, count, comparison or ranking is wrong, an 'all' or 'every' claim fails for at least one row, or the statement attributes a value to the wrong row, column or group.\n- no: Everything the statement says is true according to the table's cells, caption and notes, including any counting, summing, comparison, ranking (highest, lowest) or 'all/every' check it requires; minor typos or paraphrased row and column names do not matter."
+ },
+ {
+  "qid": "q6beb33ed59",
+  "kind": "yes/no",
+  "text": "Statement 1: She put a cotton pie in the oven to bake.\nStatement 2: She put an apple pie in the over to bake.",
+  "question": "Of these two statements, does Statement 2 go against common sense?",
+  "definitions": "- yes: The asked-about statement is the one of the two that goes against common sense: some part of it makes it impossible, absurd or clearly contrary to how the world works, while the other statement is normal.\n- no: The asked-about statement is the sensible one of the two; it is the other statement that goes against common sense."
+ },
+ {
+  "qid": "qc09b97a34d",
+  "kind": "yes/no",
+  "text": "Evidence (from the abstract of a scientific article):\nThis study confirms that serum and saliva IgG antibodies to SARS-CoV-2 are maintained in the majority of COVID-19 patients for at least 3 months PSO. IgG responses in saliva may serve as a surrogate measure of systemic immunity to SARS-CoV-2 based on their correlation with serum IgG responses.\n\nClaim: And a study of Covid-19 patients found that antibody levels in saliva and blood were closely matched.",
+  "question": "Based on the text, does the evidence support the claim?",
+  "definitions": "- yes: The evidence sentences back up the claim's central assertion, directly or by simple inference: same direction of effect, compatible numbers (allowing ordinary rounding) and a compatible population, even if the scientific wording is hedged ('suggests', 'is consistent with').\n- no: The evidence contradicts the claim or a decisive detail of it (a reversed direction, a wrong number, percentage, quantifier such as 'all' or 'only', a negation, or the wrong group), so it does not support the claim as stated."
+ },
+ {
+  "qid": "qe211f40ccb",
+  "kind": "yes/no",
+  "text": "Statement 1: They have to say farewell to each other because they are leaving\nStatement 2: They have to say hello to each other because they are leaving",
+  "question": "Is it the case that, of these two statements, Statement 2 doesn't go against common sense?",
+  "definitions": "- yes: The asked-about statement is the sensible one of the two; it is the other statement that goes against common sense.\n- no: The asked-about statement is the one of the two that goes against common sense: some part of it makes it impossible, absurd or clearly contrary to how the world works, while the other statement is normal."
+ },
+ {
+  "qid": "qb990673845",
+  "kind": "yes/no",
+  "text": "Assistant: The Cedars offers several hot meals from the grill.\nCustomer: Great, get the tickets at The Cedars.\nAssistant: I've booked you for 2 tickets to The Upside at The Cedars for 6pm",
+  "question": "Has \"The Upside\" been confirmed for the customer's movie ticket order in the assistant's latest message?",
+  "definitions": "- yes: The assistant's last message confirms this value as booked, ordered, scheduled or available for the customer's transaction.\n- no: The assistant's last message says this value is unavailable, sold out, full, not offered or cannot be done, even if it offers an alternative or confirms other parts of the order."
+ },
+ {
+  "qid": "q54d4dd1b46",
+  "kind": "yes/no",
+  "text": "The problem would seem to be the methodologies engendered in treatment for a mix of urban and rural locations; that the adjustment protocol appears to accent to a warming effect rather than eliminate it. This, if correct, leaves serious doubt for whether the rate of increase in temperature found from the adjusted data is due to natural warming trends or warming because of another reason, such as erroneous consideration of the effects of urban warming.",
+  "question": "Hey, does this paragraph say the contrarian climate claim that climate science or the climate movement is unreliable?",
+  "definitions": "- yes: The paragraph itself asserts or argues (in its own voice, not just quoting someone to rebut them) the contrarian claim that climate science or the climate movement is unreliable: it attacks the reliability of climate science or its proponents: the data, models, methods or consensus are uncertain, unsound or manipulated; scientists, the IPCC, activists, media or politicians are alarmist, biased, hypocritical, corrupt or part of a conspiracy.\n- no: The paragraph does not make this contrarian claim: it gives background, neutral description or mainstream statements, or it makes a different kind of argument (for example about policy costs rather than the science, or vice versa) without claiming that climate science or the climate movement is unreliable."
+ },
+ {
+  "qid": "qa6134e3ede",
+  "kind": "yes/no",
+  "text": "Complaint narrative: I WAS DIVING DOWN GRATIOT STREET IN SAGINAW MICHIGAN, IT WAS RAINING HEAVILY AND MY WINDSHIELD WIPER DECIDED TO STOP WORKING COMPLETELY. I LOST ALL VISIBILITY AND HAD PULLED OVER IMMEDIATELY TO AVOID CAUSING AN ACCIDENT. WHILE SITTING IN MY CAR WAITING FOR THE RAIN TO STOP I REALIZE THAT MY WINDSHIELD WIPER MOTOR WAS STILL WORKING, BECAUSE I COULD HEAR IT MOVING BACK AND FORTH. BUT MY WIPERS WERE NOT. I HAVE READ THAT THERE IS A PROBLEM WITH SOME OF THE HARD WEAR AND A LOT OF PRIOR YEARS HAVE BEEN RECALLED. I'VE ALREADY HAD TO REPLACE THE ENGINE IN THIS CAR, NOW ONLY TO FIND OUT THAT THIS CAR WITH IT FAULTY EQUIPMENT CAN POTENTIALLY CAUSE ME MY LIFE... I WILL NOT RECOMMEND THIS VEHICLE TO ANYONE.",
+  "question": "Is there a report in this vehicle safety complaint that the vehicle was actually involved in a crash?",
+  "definitions": "- yes: The complaint says the vehicle actually collided in the incident it describes: it hit, or was hit by, another vehicle, an object or a person.\n- no: The complaint reports no actual collision of this vehicle: only a defect, a near miss, a crash that could or might happen, or a crash that is explicitly denied."
+ },
+ {
+  "qid": "qdcdbb29402",
+  "kind": "yes/no",
+  "text": "Table caption: Current status of the line positions of the ν 4 band and the ν 3 +ν 4 -ν 3 hot band of CH 3 I in the C-H stretch region.\n| Technique |  |  | ν 4 | ν 4 | ν 3 +ν 4 -ν 3 | ν 3 +ν 4 -ν 3 |\n|  | Point spacing | Ref. | Assignments | Std. dev./cm -1 | Assignments | Std. dev./cm -1 |\n| FT-IR | 150 MHz | [19] | 500 | 0.005 | – | – |\n| FT-IR | 162 MHz | [20] | 1850 | 0.00083 | 380 | 0.0013 |\n| Comb-FTS | 11 MHz | This work | 2603 | 0.00034 | 831 | 0.00084 |\n\nStatement: The highest Assignments is 2603.",
+  "question": "Does the table back up the statement?",
+  "definitions": "- yes: Everything the statement says is true according to the table's cells, caption and notes, including any counting, summing, comparison, ranking (highest, lowest) or 'all/every' check it requires; minor typos or paraphrased row and column names do not matter.\n- no: The table shows the statement is false: a value, unit, count, comparison or ranking is wrong, an 'all' or 'every' claim fails for at least one row, or the statement attributes a value to the wrong row, column or group."
+ },
+ {
+  "qid": "qc14338199c",
+  "kind": "yes/no",
+  "text": "Customer: No, that doesn't matter, but I'd like something in the moderate price range.\nAssistant: There are 14 options. How about the Avalon? It has 4 stars and free parking and wifi.",
+  "question": "According to its reply, did the assistant find at least a single option that meets everything the customer asked for?",
+  "definitions": "- yes: The assistant reports, lists or recommends at least one place or train that fits all of the customer's stated requirements, even if it then asks a follow-up question to narrow the choice.\n- no: The assistant reports that nothing fits all of the requirements, even if it then suggests alternatives that relax one of them (another area, price range, type, day or time)."
+ },
+ {
+  "qid": "qb5bf27afed",
+  "kind": "yes/no",
+  "text": "Customer: Hey, how are you?\nAgent: Well, how can I help you?\nCustomer: I would like to see a movie tonight i think\nAgent: sure, is anyone going with you?\nCustomer: just my girlfriend and brother\nAgent: great, what would you like to see?\nCustomer: the Boy 2, or Bad boys would be good\nAgent: Okay, is there any particular theater you would like to go to?\nCustomer: I like Regal or AMC\nAgent: Okay, is there a specific time you would like to go?\nCustomer: I think anywhere from 7-8 would be good\nAgent: okay, one second let me check\nCustomer: sure thing, take your time\nAgent: okay, I am checking for the boy 2 and see no results\nCustomer: shucks, can you check for bad boys then?\nAgent: sure thing, let me see\nCustomer: okay, hopefully they have something....\nAgent: okay, bad news, there is nothing for that either\nCustomer: okay, I guess it is not in the cards for tonight, thank you anyways\nAgent: not a problem, any time!",
+  "question": "Have movie tickets actually been bought by the customer by the end of this conversation?",
+  "definitions": "- yes: The agent completes a ticket purchase for the customer within this conversation, even if earlier choices were unavailable or changed along the way.\n- no: No tickets are bought in this conversation: the customer declines or postpones, nothing suitable is available or open, or the purchase is only saved or scheduled for later."
+ },
+ {
+  "qid": "qd842f4f96d",
+  "kind": "yes/no",
+  "text": "Customer: I need a place to stay in the East. I don't need to have access to the Internet.\nAssistant: I have 7 places available in the east.  What is your price range?",
+  "question": "According to the assistant's reply, did the assistant find at least a single option that meets everything the customer asked for?",
+  "definitions": "- yes: The assistant reports, lists or recommends at least one place or train that fits all of the customer's stated requirements, even if it then asks a follow-up question to narrow the choice.\n- no: The assistant reports that nothing fits all of the requirements, even if it then suggests alternatives that relax one of them (another area, price range, type, day or time)."
+ },
+ {
+  "qid": "q862e16fae8",
+  "kind": "yes/no",
+  "text": "Customer: Hi there. I'd like to buy movie tickets for showings in Davis, CA.\nAgent: No problem. Do you have a movie in mind?\nCustomer: I am considering the movie \"No Time To Die\"\nAgent: It looks like the nearest theater playing No Time To Die is at the AMC Mercado 24 in Sacramento, California.\nCustomer: Are there no showings in any theaters in Davis, CA?\nAgent: That’s right. No Time To Die is not showing in Davis, California.\nCustomer: Oh that's unfortunate. Are there any action movies playing in Davis?\nAgent: I see one action movie playing in Davis, California at AMC Mercado 24 called Mad Max.\nCustomer: Okay is that the original movie from the 70s?\nAgent: The release date for this film is October 12, 1979.\nCustomer: You know that's okay. I will wait until the film I wish to see becomes available in Davis.\nAgent: No problem. Hope to talk to you again soon.",
+  "question": "By the close of this conversation, has the customer actually purchased movie tickets?",
+  "definitions": "- yes: The agent completes a ticket purchase for the customer within this conversation, even if earlier choices were unavailable or changed along the way.\n- no: No tickets are bought in this conversation: the customer declines or postpones, nothing suitable is available or open, or the purchase is only saved or scheduled for later."
+ },
+ {
+  "qid": "qf62441ee26",
+  "kind": "yes/no",
+  "text": "Laboratory experiments find that more marine creatures thrive than suffer when carbon dioxide lowers the pH level to 7.8. This is because the carbon dioxide dissolves mainly as bicarbonate, which many calcifiers use as raw material for carbonate.",
+  "question": "Within this paragraph, does it make the contrarian climate claim that climate impacts are not bad or are beneficial?",
+  "definitions": "- yes: The paragraph itself asserts or argues (in its own voice, not just quoting someone to rebut them) the contrarian claim that climate impacts are not bad or are beneficial: it argues that warming or its impacts are harmless or good: climate sensitivity is low or negative feedbacks limit warming; species, plants or reefs are not harmed or even benefit; carbon dioxide is beneficial (plant food) or not a pollutant; the warming is only a few degrees.\n- no: The paragraph does not make this contrarian claim: it gives background, neutral description or mainstream statements, or it makes a different kind of argument (for example about policy costs rather than the science, or vice versa) without claiming that climate impacts are not bad or are beneficial."
+ },
+ {
+  "qid": "qbeee8d6629",
+  "kind": "yes/no",
+  "text": "Complaint narrative: THE CONTACT OWNS A 2012 DODGE CHARGER. WHILE DRIVING APPROXIMATELY 60 MPH, THE VEHICLE STARTED TO DECELERATE. THE CONTACT COASTED TO THE SIDE OF THE ROAD. THE VEHICLE WAS TOWED TO THE CONTACT'S RESIDENCE. WHILE THE VEHICLE WAS PARKED, THE ENGINE CAUGHT FIRE. THE VEHICLE WAS TOWED TO THE DEALER WHERE IT WAS DIAGNOSED THAT A FAULTY THERMOSTAT MELTED ONTO THE ENGINE AND BURNED. THE ENGINE NEEDED TO BE REPLACED. THE VEHICLE WAS NOT REPAIRED. THE MANUFACTURER WAS MADE AWARE OF THE FAILURE. THE FAILURE MILEAGE WAS APPROXIMATELY 60,000. THE VIN WAS NOT AVAILABLE.",
+  "question": "Is it right to say that this vehicle safety complaint does not report that the vehicle actually caught fire?",
+  "definitions": "- yes: The complaint reports no actual fire in this vehicle: only smoke, a burning smell, overheating or melting, a fire that could happen, or a fire that is explicitly denied.\n- no: The complaint says the vehicle actually caught fire, burned or had flames."
+ },
+ {
+  "qid": "q07fdd8173a",
+  "kind": "yes/no",
+  "text": "Customer: I would like eritrean, please.\nAssistant: I'm very sorry there are no restaurants that serve eritrean food in the centre area. Is there another type of cuisine we can look for?",
+  "question": "Is there confirmation that, in its reply, the assistant found at least a single option that meets everything the customer asked for?",
+  "definitions": "- yes: The assistant reports, lists or recommends at least one place or train that fits all of the customer's stated requirements, even if it then asks a follow-up question to narrow the choice.\n- no: The assistant reports that nothing fits all of the requirements, even if it then suggests alternatives that relax one of them (another area, price range, type, day or time)."
+ },
+ {
+  "qid": "qe74879404d",
+  "kind": "yes/no",
+  "text": "Statement 1: he thought it would rain soon so he carried sunglasses\nStatement 2: he thought it would rain soon so he carried an umbrella",
+  "question": "Of these two statements, does Statement 2 agree with common sense?",
+  "definitions": "- yes: The asked-about statement is the sensible one of the two; it is the other statement that goes against common sense.\n- no: The asked-about statement is the one of the two that goes against common sense: some part of it makes it impossible, absurd or clearly contrary to how the world works, while the other statement is normal."
+ },
+ {
+  "qid": "q2bc965c07f",
+  "kind": "yes/no",
+  "text": "Occupation: Roof Bolters, Mining\nDuties:\n- Control conveyors that run the entire length of shuttle cars to distribute loads as loading progresses.\n- Monitor loading processes to ensure that materials are loaded according to specifications.\n- Replace hydraulic hoses, headlight bulbs, and gathering-arm teeth.",
+  "question": "Do the listed duties form part of the job of the occupation named above?",
+  "definitions": "- yes: The duties are tasks of the named occupation: they describe that occupation's own characteristic work as the occupation is defined.\n- no: The duties describe a different occupation's characteristic work (often a related job in the same field) and are not tasks the named occupation performs."
+ },
+ {
+  "qid": "q9e1eafb237",
+  "kind": "yes/no",
+  "text": "Situation: Single Dad Never Pitches In at Neighborhood Potlucks\nAction being judged: Not contributing anything to a potluck you are going to.",
+  "question": "Is the action being judged wrong according to common social norms?",
+  "definitions": "- yes: Most people would see the action being judged, as described, as bad or very bad: rude, unkind, dishonest, irresponsible or harmful, even if it is legal or common; judge that action itself, not the rest of the situation.\n- no: Most people would see the action being judged, as described, as okay, expected or good (annotators rated it OK/good and estimated at least 75% of people agree); judge that action itself, not the rest of the situation."
+ },
+ {
+  "qid": "qb36fbb0e84",
+  "kind": "yes/no",
+  "text": "Customer: I want to buy movie tickets for tonight\nAgent: OK! What movie would you like to see?\nCustomer: Sonic\nAgent: OK! What theater do you prefer?\nCustomer: The Cinemark in West Valley\nAgent: Great. Would you prefer a Standard or XD screen?\nCustomer: XD\nAgent: OK. And what time would you like to see the show?\nCustomer: 7:00 PM\nAgent: There is a showing at 7pm. How many tickets will you need?\nCustomer: Two\nAgent: OK. Two tickets will be $30\nCustomer: Oh that's too high. Is a standard screen cheaper?\nAgent: Two tickets for a standard showing are $20.\nCustomer: What time is the standard screen?\nAgent: The standard showing is at 6:20pm\nCustomer: OK let's buy that one\nAgent: OK. Just to confirm we have two tickets for Sonic tonight at 6:20pm at the West Valley Cinemark. Your total is $20.\nCustomer: Yes\nAgent: Your tickets are confirmed and they’ve been sent to your email address.",
+  "question": "Is it true that, by the end of this conversation, the customer has not actually bought movie tickets?",
+  "definitions": "- yes: No tickets are bought in this conversation: the customer declines or postpones, nothing suitable is available or open, or the purchase is only saved or scheduled for later.\n- no: The agent completes a ticket purchase for the customer within this conversation, even if earlier choices were unavailable or changed along the way."
+ },
+ {
+  "qid": "q8bb5ca910b",
+  "kind": "yes/no",
+  "text": "Customer: Hello Siri!\nAgent: Hello. What can I do for you today?\nCustomer: I need to purchase some movie tickets for tomorrow night.\nAgent: Ok. What movie are you wanting to go see?\nCustomer: We want to see \"Uncut Gems\".\nAgent: Ok. What theater do you want to see the movie at?\nCustomer: We want to go to the AMC NorthPark 15 in Dallas, TX.\nAgent: OK. It looks like they have a showing at 12:05PM tomorrow. That is the only showing.\nCustomer: Ok. We will not be able to go that early. Can you see if the movie is showing tomorrow at the Alamo Drafthouse Cedar in Dallas, TX?\nAgent: Ok. It looks like they do have a 6:05PM showtime for \"Uncut Gems\" tomorrow night.\nCustomer: Ok great. Do they have Reclining seats in that theater?\nAgent: Yes, they do have reclining seats in that theater.\nCustomer: Great. Can you order these tickets for and charge them on my PayPal account?\nAgent: Sure. Just to confirm...you want 2 tickets to see \"Uncut Gems\" tomorrow night at the 6:05 showing at the Alamo Drafthouse Cedar in Dallas, TX?\nCustomer: Yes, that is correct.\nAgent: OK. I have these purchased for you. They will be waiting for you in will call.\nCustomer: Thank you Siri!\nAgent: No problem. Is there anything else I can do for you?\nCustomer: No that is all. Goodbye!\nAgent: Goodbye!",
+  "question": "By the end of this conversation, is there actually a purchase of movie tickets by the customer?",
+  "definitions": "- yes: The agent completes a ticket purchase for the customer within this conversation, even if earlier choices were unavailable or changed along the way.\n- no: No tickets are bought in this conversation: the customer declines or postpones, nothing suitable is available or open, or the purchase is only saved or scheduled for later."
+ },
+ {
+  "qid": "qba44cea1cd",
+  "kind": "yes/no",
+  "text": "Table caption: Peptides from L. fermentum HFD1 with predicted antimicrobial activity\n| № | The protein ID | Peptide sequence | ADAM | CAMPR3 | CAMPR3 | CAMPR3 | AMPA |  | Length in peptidome |\n| № | The protein ID | Peptide sequence | ADAM | SVM | Random Forest | DAC | AMPA | Length | Length in peptidome |\n| 1 | QIX58482.1 | MGLIWSLIVGAIIGAIAGAITNRGAAMGWIANIVAGLIGAWIGQGLLGTWGPSLAGMALIPSIIGAIILVLIVSLVVGRTGKK | 1.52 | 1.0 | 0.566 | 0.527 | 0.24 | 84 | 14 |\n| 2 | QIX58771.1 | MLSLITNTVIILLIIGCAFWQLVKVFKRAKKGKCAACDYDCAVKQQVLKQEKHGAQ | 0.82 | 0.889 | 0.6715 | 0.81 | 0.2226 | 56 | N/A |\n| 3 | QIX58909.1 | MAVKIKTPAGMIDIANDVIATVVGGAATDNYGVVGMASRNPLKDGVNQILGRDSFHQGVVIRQQDNGIAVDVYIIVGYGTKISAVSKSVQEKVKYNLEAMLGVTANSVNIMVQGVRVLGD | 0.09 | 1.00 | 0.9855 | 1.0 | 0.248 | 120 | N/A |\n| 4 | QIX58994.1 | MNNQSNVTPQNGNLQYKFCQNCGAKIDVKAVVCPKCGVPVNGNNAESNSEDRNNGWWNLLGFFFPIVGWILWAVWHKEYPKRAHGICVWSWVSFGISFVIGFVNGFLSTL | 1.32 | 1.00 | 0.7745 | 1.0 | 0.237 | 110 | N/A |\n\nStatement: The protein ID QIX58482.1 has Peptide sequence of MNNQSNVTPQNGNLQYKFCQNCGAKIDVKAVVCPKCGVPVNGNNAESNSEDRNNGWWNLLGFFFPIVGWILWAVWHKEYPKRAHGICVWSWVSFGISFVIGFVNGFLSTL.",
+  "question": "Is the statement contradicted by the table?",
+  "definitions": "- yes: The table shows the statement is false: a value, unit, count, comparison or ranking is wrong, an 'all' or 'every' claim fails for at least one row, or the statement attributes a value to the wrong row, column or group.\n- no: Everything the statement says is true according to the table's cells, caption and notes, including any counting, summing, comparison, ranking (highest, lowest) or 'all/every' check it requires; minor typos or paraphrased row and column names do not matter."
+ },
+ {
+  "qid": "q72d0a7e63e",
+  "kind": "yes/no",
+  "text": "Evidence sentences (from the article):\n- He finished the 2015–16 season leading the Lakers and all rookies in steals per game, and became the youngest player to hit 130 three-pointers in a season.\n- He subsequently earned NBA All-Rookie Second Team honors.\n\nSummary sentence:\nPlaying point guard, he was named to the NBA All-Rookie Second Team with the Lakers in 2016.",
+  "question": "Is every piece of the summary sentence's information supported by the evidence sentences?",
+  "definitions": "- yes: Fully supported: every fact in the sentence (names, dates, numbers, roles, places, relations) is stated in or directly implied by the evidence sentences; true-sounding details found only elsewhere do not count as support.\n- no: Not fully supported: at least one detail (e.g. a birth date, middle name, extra role, number, place or qualifier) is absent from or contradicted by the evidence sentences, even if it may be true in reality."
+ },
+ {
+  "qid": "q98202f42f3",
+  "kind": "yes/no",
+  "text": "Evidence sentences (from the article):\n- Raj Ghatak\n- Ghatak has worked extensively on stage, and in many original ground-breaking productions.\n\nSummary sentence:\nRaj Ghatak is an actor.",
+  "question": "Is every piece of information in the sentence that gives the summary supported by the evidence sentences?",
+  "definitions": "- yes: Fully supported: every fact in the sentence (names, dates, numbers, roles, places, relations) is stated in or directly implied by the evidence sentences; true-sounding details found only elsewhere do not count as support.\n- no: Not fully supported: at least one detail (e.g. a birth date, middle name, extra role, number, place or qualifier) is absent from or contradicted by the evidence sentences, even if it may be true in reality."
+ },
+ {
+  "qid": "q928929a6d6",
+  "kind": "yes/no",
+  "text": "Assistant: Yes, I have made a note of it.\nCustomer: Thank you.\nAssistant: Your reservations have been confirmed for 7 pm on Sunday for a party of six.",
+  "question": "Is \"six\" for the customer's restaurant reservation confirmed in the final message from the assistant?",
+  "definitions": "- yes: The assistant's last message confirms this value as booked, ordered, scheduled or available for the customer's transaction.\n- no: The assistant's last message says this value is unavailable, sold out, full, not offered or cannot be done, even if it offers an alternative or confirms other parts of the order."
+ },
+ {
+  "qid": "q2ba008ce08",
+  "kind": "yes/no",
+  "text": "Customer: I think I would just like you to recommend one.\nAssistant: They just added a second floor at Club Salsa. It's a must see. They are located at 1 Station Road. The entrance fee is 5 pounds.",
+  "question": "Did the assistant find at least a single option that meets everything the customer asked for in its reply?",
+  "definitions": "- yes: The assistant reports, lists or recommends at least one place or train that fits all of the customer's stated requirements, even if it then asks a follow-up question to narrow the choice.\n- no: The assistant reports that nothing fits all of the requirements, even if it then suggests alternatives that relax one of them (another area, price range, type, day or time)."
+ },
+ {
+  "qid": "q0f232970b7",
+  "kind": "yes/no",
+  "text": "Situation: I'm 30 years old &amp; I've never had a job or driven anywhere.\nAction being judged: Not being a responsible adult and grow up.",
+  "question": "Is the action being judged wrong according to common social norms?",
+  "definitions": "- yes: Most people would see the action being judged, as described, as bad or very bad: rude, unkind, dishonest, irresponsible or harmful, even if it is legal or common; judge that action itself, not the rest of the situation.\n- no: Most people would see the action being judged, as described, as okay, expected or good (annotators rated it OK/good and estimated at least 75% of people agree); judge that action itself, not the rest of the situation."
+ },
+ {
+  "qid": "q44f53b7ad8",
+  "kind": "yes/no",
+  "text": "Evidence (from the abstract of a scientific article):\nHowever, encephalopathy was independently associated with worse functional outcome (OR 0.22; 95% CI 0.11–0.42; P < 0.001) and higher mortality within 30 days of hospitalization (35 [21.7%] vs. 11 [3.2%] patients; P < 0.001). Encephalopathy was associated with increased morbidity and mortality, independent of respiratory disease severity.\n\nClaim: Confusion, delirium and other types of altered mental function, called encephalopathy, have occurred during hospitalization for Covid-19 respiratory problems, and a study found that such patients fared better right after hospitalization.",
+  "question": "Does the evidence fail to support the claim?",
+  "definitions": "- yes: The evidence contradicts the claim or a decisive detail of it (a reversed direction, a wrong number, percentage, quantifier such as 'all' or 'only', a negation, or the wrong group), so it does not support the claim as stated.\n- no: The evidence sentences back up the claim's central assertion, directly or by simple inference: same direction of effect, compatible numbers (allowing ordinary rounding) and a compatible population, even if the scientific wording is hedged ('suggests', 'is consistent with')."
+ },
+ {
+  "qid": "q4be35c861c",
+  "kind": "yes/no",
+  "text": "(At the same time, as another paper makes clear, \"some\" U.N. peacekeepers come from countries \"where the armed forces and police are seriously implicated in human rights violations,\" including sexual crimes. While such actions \"cannot be tolerated,\" the paper makes clear the U.N. has no clear answers on how to police its own behavior.)",
+  "question": "Is it true that this paragraph doesn't make the contrarian climate claim that climate science or the climate movement is unreliable?",
+  "definitions": "- yes: The paragraph does not make this contrarian claim: it gives background, neutral description or mainstream statements, or it makes a different kind of argument (for example about policy costs rather than the science, or vice versa) without claiming that climate science or the climate movement is unreliable.\n- no: The paragraph itself asserts or argues (in its own voice, not just quoting someone to rebut them) the contrarian claim that climate science or the climate movement is unreliable: it attacks the reliability of climate science or its proponents: the data, models, methods or consensus are uncertain, unsound or manipulated; scientists, the IPCC, activists, media or politicians are alarmist, biased, hypocritical, corrupt or part of a conspiracy."
+ }
+]

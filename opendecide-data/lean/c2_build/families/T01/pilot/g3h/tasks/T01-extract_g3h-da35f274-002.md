@@ -1,0 +1,1072 @@
+# G3-H extraction T01-extract_g3h-da35f274-002 (family T01)
+
+ANSWER FILE (write your whole answer here, and nowhere else, with the Write tool):
+/Users/aryamahadik/Documents/jev/opendecide-data/lean/c2_build/families/T01/pilot/g3h/answers/T01-extract_g3h-da35f274-002.json
+
+This task file is the only file you may open. Do not open, list or search any other file or folder, do not run shell commands and do not use the web.
+
+Items: 50. Answers expected: 50 (one per item, each with that item's qid).
+
+## Instructions
+
+You are reading short free-text passages for a synthetic dataset. Each item gives one passage (text) and a schema: a list of fields, each with a name (field), a type and a short description (describe); some fields list the allowed values (choices).
+For each item, copy out the value of every field in its schema exactly as the passage writes it, with its capitals, spelling and punctuation, and nothing else. For a field with choices, give the one choice the passage states. For a field of type bool, give true or false. For a list type, give a JSON list of strings in the order the passage gives them. If the passage does not state a field, give null. Do not guess beyond the passage, do not answer any question in the passage and do not explain.
+
+## Answer contract
+
+Write ONLY the answer file named at the top of this task file, with the Write tool, as one JSON array with one object per item: {"qid": "<the item's qid>", then exactly the field names of THAT item's schema as keys} (for example {"qid": "q...", "person": <value or null>, "ref": <value or null>, "topic": <value or null>}). Each value is the text exactly as the passage writes it (a JSON string), true / false for bool fields, a JSON list for list fields, or null when the passage does not state it. No other keys. Valid JSON only; no text before or after the array.
+
+## Items (JSON; answer every item exactly once, keyed by its qid)
+
+[
+ {
+  "qid": "qfbafe63e99",
+  "text": "Aiko Brandt: Busy send, NTC-9422 about the reply timing question.\nservice desk: Received, thanks.",
+  "schema": [
+   {
+    "field": "person",
+    "type": "name",
+    "describe": "the person who wrote or is named as the sender, as written"
+   },
+   {
+    "field": "ref",
+    "type": "id",
+    "describe": "the file, case or notice reference, as written"
+   },
+   {
+    "field": "topic",
+    "type": "str",
+    "describe": "what the message is about, as written"
+   }
+  ]
+ },
+ {
+  "qid": "q3d0073a2d7",
+  "text": "Hey there, quick heads up that Freya Holm has sent file NTC-3766 about the notice response to the admin team. Hope everyone is doing well! The file is all tidy and in good shape, so it is easy to pick up. Thanks a lot for keeping things moving along.",
+  "schema": [
+   {
+    "field": "person",
+    "type": "name",
+    "describe": "the person who wrote or is named as the sender, as written"
+   },
+   {
+    "field": "ref",
+    "type": "id",
+    "describe": "the file, case or notice reference, as written"
+   },
+   {
+    "field": "topic",
+    "type": "str",
+    "describe": "what the message is about, as written"
+   }
+  ]
+ },
+ {
+  "qid": "q283faba397",
+  "text": "Dana Okafor: Hey, sending case file POL-5558 about the loss claim, hope it brightens the room.\ndesk: That is a lovely note, thanks!\ndesk: Good fun, I enjoyed reading it.",
+  "schema": [
+   {
+    "field": "person",
+    "type": "name",
+    "describe": "the person who wrote or is named as the sender, as written"
+   },
+   {
+    "field": "ref",
+    "type": "id",
+    "describe": "the file, case or notice reference, as written"
+   },
+   {
+    "field": "topic",
+    "type": "str",
+    "describe": "what the message is about, as written"
+   }
+  ]
+ },
+ {
+  "qid": "q26e9dca228",
+  "text": "Sent by: Bruno Lacerda\nFile: LED-8100\nSent to: records clerk\nLovely to send this over, it is about the branch cash review. The notes are all tidy and sit nicely for the records team.",
+  "schema": [
+   {
+    "field": "person",
+    "type": "name",
+    "describe": "the person who wrote or is named as the sender, as written"
+   },
+   {
+    "field": "ref",
+    "type": "id",
+    "describe": "the file, case or notice reference, as written"
+   },
+   {
+    "field": "topic",
+    "type": "str",
+    "describe": "what the message is about, as written"
+   }
+  ]
+ },
+ {
+  "qid": "qc4abf15078",
+  "text": "Hey there, quick heads up that Freya Holm has sent file NTC-3766 about the notice response to the admin team. Hope everyone is doing well! The file is all tidy and in good shape, so it is easy to pick up. Thanks a lot for keeping things moving along.",
+  "schema": [
+   {
+    "field": "person",
+    "type": "name",
+    "describe": "the person who wrote or is named as the sender, as written"
+   },
+   {
+    "field": "ref",
+    "type": "id",
+    "describe": "the file, case or notice reference, as written"
+   },
+   {
+    "field": "topic",
+    "type": "str",
+    "describe": "what the message is about, as written"
+   }
+  ]
+ },
+ {
+  "qid": "q5bae2be836",
+  "text": "Ravi Anand: File STAY-7220 is sent about the border stay check as normal.\ncase team: Received, thank you.",
+  "schema": [
+   {
+    "field": "person",
+    "type": "name",
+    "describe": "the person who wrote or is named as the sender, as written"
+   },
+   {
+    "field": "ref",
+    "type": "id",
+    "describe": "the file, case or notice reference, as written"
+   },
+   {
+    "field": "topic",
+    "type": "str",
+    "describe": "what the message is about, as written"
+   }
+  ]
+ },
+ {
+  "qid": "q96b3f1de40",
+  "text": "Hi duty clerk,\nTomas Lindqvist here with file POL-8087 about the cover question, and I am so glad it all came together. Hope it makes your work a little easier.\nCheers,",
+  "schema": [
+   {
+    "field": "person",
+    "type": "name",
+    "describe": "the person who wrote or is named as the sender, as written"
+   },
+   {
+    "field": "ref",
+    "type": "id",
+    "describe": "the file, case or notice reference, as written"
+   },
+   {
+    "field": "topic",
+    "type": "str",
+    "describe": "what the message is about, as written"
+   }
+  ]
+ },
+ {
+  "qid": "q678622d17d",
+  "text": "Dear duty clerk,\nSara Ilves is sending file CASE-4251 about the appeal deadline. The file is attached for your desk. Thanks in advance for your help.\nBest,",
+  "schema": [
+   {
+    "field": "person",
+    "type": "name",
+    "describe": "the person who wrote or is named as the sender, as written"
+   },
+   {
+    "field": "ref",
+    "type": "id",
+    "describe": "the file, case or notice reference, as written"
+   },
+   {
+    "field": "topic",
+    "type": "str",
+    "describe": "what the message is about, as written"
+   }
+  ]
+ },
+ {
+  "qid": "q4245727005",
+  "text": "Lena Whitcombe: Hello, I am sending file STAY-6104 about the border stay check to the intake team, with thanks.\nintake: Thank you very much for your message.\nteam: Your kindness is appreciated.",
+  "schema": [
+   {
+    "field": "person",
+    "type": "name",
+    "describe": "the person who wrote or is named as the sender, as written"
+   },
+   {
+    "field": "ref",
+    "type": "id",
+    "describe": "the file, case or notice reference, as written"
+   },
+   {
+    "field": "topic",
+    "type": "str",
+    "describe": "what the message is about, as written"
+   }
+  ]
+ },
+ {
+  "qid": "qa7ad32a230",
+  "text": "Hiya admin team, Maya Lindgren has sent file PO-6581 about the buying request. Hope you are all well and enjoying the work. This is just a simple pass along with every bit in place. Thanks a bunch for taking it in, lovely to share this with you.",
+  "schema": [
+   {
+    "field": "person",
+    "type": "name",
+    "describe": "the person who wrote or is named as the sender, as written"
+   },
+   {
+    "field": "ref",
+    "type": "id",
+    "describe": "the file, case or notice reference, as written"
+   },
+   {
+    "field": "topic",
+    "type": "str",
+    "describe": "what the message is about, as written"
+   }
+  ]
+ },
+ {
+  "qid": "q9917b53c5a",
+  "text": "Priya Raman sends file POL-2070 about the loss claim to the desk. With thanks for your attention, the material is laid out with care. Respectfully yours.",
+  "schema": [
+   {
+    "field": "person",
+    "type": "name",
+    "describe": "the person who wrote or is named as the sender, as written"
+   },
+   {
+    "field": "ref",
+    "type": "id",
+    "describe": "the file, case or notice reference, as written"
+   },
+   {
+    "field": "topic",
+    "type": "str",
+    "describe": "what the message is about, as written"
+   }
+  ]
+ },
+ {
+  "qid": "q1480804b4c",
+  "text": "Malik Osei has sent file LED-7333 about the cash ledger check to the admin team. It is a friendly little bundle for the admin desks. Thanks for the lovely teamwork.",
+  "schema": [
+   {
+    "field": "person",
+    "type": "name",
+    "describe": "the person who wrote or is named as the sender, as written"
+   },
+   {
+    "field": "ref",
+    "type": "id",
+    "describe": "the file, case or notice reference, as written"
+   },
+   {
+    "field": "topic",
+    "type": "str",
+    "describe": "what the message is about, as written"
+   }
+  ]
+ },
+ {
+  "qid": "qd7930845ae",
+  "text": "Hi duty clerk,\nOwen Pryce here with file POL-1787 about the insurance claim, and I am so glad it all came together. Hope it makes your work a little easier.\nCheers,",
+  "schema": [
+   {
+    "field": "person",
+    "type": "name",
+    "describe": "the person who wrote or is named as the sender, as written"
+   },
+   {
+    "field": "ref",
+    "type": "id",
+    "describe": "the file, case or notice reference, as written"
+   },
+   {
+    "field": "topic",
+    "type": "str",
+    "describe": "what the message is about, as written"
+   }
+  ]
+ },
+ {
+  "qid": "q950ff39b3f",
+  "text": "Omar Saleh: sending NTC-3935 about the notice response, in a rush.\nservice desk: got it, thanks.\nservice desk: good work, cheers.",
+  "schema": [
+   {
+    "field": "person",
+    "type": "name",
+    "describe": "the person who wrote or is named as the sender, as written"
+   },
+   {
+    "field": "ref",
+    "type": "id",
+    "describe": "the file, case or notice reference, as written"
+   },
+   {
+    "field": "topic",
+    "type": "str",
+    "describe": "what the message is about, as written"
+   }
+  ]
+ },
+ {
+  "qid": "q1fa67ed5be",
+  "text": "Freya Holm: Hey, sending case file CASE-7698 about the appeal deadline, hope it brightens the room.\ndesk: That is a lovely note, thanks!\ndesk: Good fun, I enjoyed reading it.",
+  "schema": [
+   {
+    "field": "person",
+    "type": "name",
+    "describe": "the person who wrote or is named as the sender, as written"
+   },
+   {
+    "field": "ref",
+    "type": "id",
+    "describe": "the file, case or notice reference, as written"
+   },
+   {
+    "field": "topic",
+    "type": "str",
+    "describe": "what the message is about, as written"
+   }
+  ]
+ },
+ {
+  "qid": "q40d76ae0df",
+  "text": "Theo Kalnins: Hello, I am sending file NTC-7521 about the notice response to the intake team, with thanks.\nintake: Thank you very much for your message.\nteam: Your kindness is appreciated.",
+  "schema": [
+   {
+    "field": "person",
+    "type": "name",
+    "describe": "the person who wrote or is named as the sender, as written"
+   },
+   {
+    "field": "ref",
+    "type": "id",
+    "describe": "the file, case or notice reference, as written"
+   },
+   {
+    "field": "topic",
+    "type": "str",
+    "describe": "what the message is about, as written"
+   }
+  ]
+ },
+ {
+  "qid": "qd509587f77",
+  "text": "Sara Ilves: Sending file NTC-8722 about the notice response, the regular copy.\nteam: Thanks, the copy is in the standard format.\nteam: All of it follows the usual layout.",
+  "schema": [
+   {
+    "field": "person",
+    "type": "name",
+    "describe": "the person who wrote or is named as the sender, as written"
+   },
+   {
+    "field": "ref",
+    "type": "id",
+    "describe": "the file, case or notice reference, as written"
+   },
+   {
+    "field": "topic",
+    "type": "str",
+    "describe": "what the message is about, as written"
+   }
+  ]
+ },
+ {
+  "qid": "q921e69dd86",
+  "text": "Aiko Brandt: Hiya! Sending STAY-7496 about the visa stay count, all good here.\nservice desk: Lovely, thanks for the heads up!",
+  "schema": [
+   {
+    "field": "person",
+    "type": "name",
+    "describe": "the person who wrote or is named as the sender, as written"
+   },
+   {
+    "field": "ref",
+    "type": "id",
+    "describe": "the file, case or notice reference, as written"
+   },
+   {
+    "field": "topic",
+    "type": "str",
+    "describe": "what the message is about, as written"
+   }
+  ]
+ },
+ {
+  "qid": "qa5c1e7b636",
+  "text": "Mira Castell: sending CASE-9161 about the claim deadline question, here it is.\nhelp desk: got it, thanks.\nhelp desk: that is the whole pack.",
+  "schema": [
+   {
+    "field": "person",
+    "type": "name",
+    "describe": "the person who wrote or is named as the sender, as written"
+   },
+   {
+    "field": "ref",
+    "type": "id",
+    "describe": "the file, case or notice reference, as written"
+   },
+   {
+    "field": "topic",
+    "type": "str",
+    "describe": "what the message is about, as written"
+   }
+  ]
+ },
+ {
+  "qid": "q370cd3a54b",
+  "text": "Malik Osei has sent file STAY-2495 about the border stay check to the desk. This is a routine item and the file is attached in full. The desk is copied for completeness. This memo concerns only the sending of the file.",
+  "schema": [
+   {
+    "field": "person",
+    "type": "name",
+    "describe": "the person who wrote or is named as the sender, as written"
+   },
+   {
+    "field": "ref",
+    "type": "id",
+    "describe": "the file, case or notice reference, as written"
+   },
+   {
+    "field": "topic",
+    "type": "str",
+    "describe": "what the message is about, as written"
+   }
+  ]
+ },
+ {
+  "qid": "q01ba0280e5",
+  "text": "Hi front desk,\nOwen Pryce sends file STAY-7995 about the residence day count as a routine copy. The file follows the standard layout and sits with the desk.\nRegards,",
+  "schema": [
+   {
+    "field": "person",
+    "type": "name",
+    "describe": "the person who wrote or is named as the sender, as written"
+   },
+   {
+    "field": "ref",
+    "type": "id",
+    "describe": "the file, case or notice reference, as written"
+   },
+   {
+    "field": "topic",
+    "type": "str",
+    "describe": "what the message is about, as written"
+   }
+  ]
+ },
+ {
+  "qid": "qc127383e86",
+  "text": "Hana Sato: Hello. I am forwarding file POL-1289 about the loss claim. My thanks for your help.\ncase team: Thank you, the file has been received.",
+  "schema": [
+   {
+    "field": "person",
+    "type": "name",
+    "describe": "the person who wrote or is named as the sender, as written"
+   },
+   {
+    "field": "ref",
+    "type": "id",
+    "describe": "the file, case or notice reference, as written"
+   },
+   {
+    "field": "topic",
+    "type": "str",
+    "describe": "what the message is about, as written"
+   }
+  ]
+ },
+ {
+  "qid": "qb12a1d7c26",
+  "text": "Sender: Ana Ruiz\nFile: NTC-6847\nTo: records clerk\nThe file about the notice response is attached. Sending it on in a hurry.",
+  "schema": [
+   {
+    "field": "person",
+    "type": "name",
+    "describe": "the person who wrote or is named as the sender, as written"
+   },
+   {
+    "field": "ref",
+    "type": "id",
+    "describe": "the file, case or notice reference, as written"
+   },
+   {
+    "field": "topic",
+    "type": "str",
+    "describe": "what the message is about, as written"
+   }
+  ]
+ },
+ {
+  "qid": "qa5ed75e5b6",
+  "text": "Iris Vance: file NTC-3047 about the notice response is with you.\nintake team: thanks, that is received.\nintake team: all pages are in, thanks.",
+  "schema": [
+   {
+    "field": "person",
+    "type": "name",
+    "describe": "the person who wrote or is named as the sender, as written"
+   },
+   {
+    "field": "ref",
+    "type": "id",
+    "describe": "the file, case or notice reference, as written"
+   },
+   {
+    "field": "topic",
+    "type": "str",
+    "describe": "what the message is about, as written"
+   }
+  ]
+ },
+ {
+  "qid": "qab4db8f152",
+  "text": "File: PO-5825\nSubject: the purchase request\nSent by: Iris Vance\nHey there, this goes over to the records clerk. Hope everything is going nicely for you!",
+  "schema": [
+   {
+    "field": "person",
+    "type": "name",
+    "describe": "the person who wrote or is named as the sender, as written"
+   },
+   {
+    "field": "ref",
+    "type": "id",
+    "describe": "the file, case or notice reference, as written"
+   },
+   {
+    "field": "topic",
+    "type": "str",
+    "describe": "what the message is about, as written"
+   }
+  ]
+ },
+ {
+  "qid": "q502cb0bac5",
+  "text": "Hi duty clerk,\nEva Marsh sends file POL-4408 about the cover question with a cheerful hello. The file is in the usual layout and is fun to read.\nCheers,",
+  "schema": [
+   {
+    "field": "person",
+    "type": "name",
+    "describe": "the person who wrote or is named as the sender, as written"
+   },
+   {
+    "field": "ref",
+    "type": "id",
+    "describe": "the file, case or notice reference, as written"
+   },
+   {
+    "field": "topic",
+    "type": "str",
+    "describe": "what the message is about, as written"
+   }
+  ]
+ },
+ {
+  "qid": "q863c042fbc",
+  "text": "Hi duty clerk,\nOwen Pryce here with file POL-1787 about the insurance claim, and I am so glad it all came together. Hope it makes your work a little easier.\nCheers,",
+  "schema": [
+   {
+    "field": "person",
+    "type": "name",
+    "describe": "the person who wrote or is named as the sender, as written"
+   },
+   {
+    "field": "ref",
+    "type": "id",
+    "describe": "the file, case or notice reference, as written"
+   },
+   {
+    "field": "topic",
+    "type": "str",
+    "describe": "what the message is about, as written"
+   }
+  ]
+ },
+ {
+  "qid": "qf9ddbe7008",
+  "text": "Theo Kalnins: Hello, I am sending file NTC-7521 about the notice response to the intake team, with thanks.\nintake: Thank you very much for your message.\nteam: Your kindness is appreciated.",
+  "schema": [
+   {
+    "field": "person",
+    "type": "name",
+    "describe": "the person who wrote or is named as the sender, as written"
+   },
+   {
+    "field": "ref",
+    "type": "id",
+    "describe": "the file, case or notice reference, as written"
+   },
+   {
+    "field": "topic",
+    "type": "str",
+    "describe": "what the message is about, as written"
+   }
+  ]
+ },
+ {
+  "qid": "q994dae8059",
+  "text": "Tomas Lindqvist: hi there, here is CASE-2639 about the claim deadline question.\nhelp desk: thanks a bunch, got it.\nhelp desk: take care.",
+  "schema": [
+   {
+    "field": "person",
+    "type": "name",
+    "describe": "the person who wrote or is named as the sender, as written"
+   },
+   {
+    "field": "ref",
+    "type": "id",
+    "describe": "the file, case or notice reference, as written"
+   },
+   {
+    "field": "topic",
+    "type": "str",
+    "describe": "what the message is about, as written"
+   }
+  ]
+ },
+ {
+  "qid": "q9a0acf42c0",
+  "text": "Nadia Kowal: File STAY-7523 is sent about the border stay check as normal.\ncase team: Received, thank you.",
+  "schema": [
+   {
+    "field": "person",
+    "type": "name",
+    "describe": "the person who wrote or is named as the sender, as written"
+   },
+   {
+    "field": "ref",
+    "type": "id",
+    "describe": "the file, case or notice reference, as written"
+   },
+   {
+    "field": "topic",
+    "type": "str",
+    "describe": "what the message is about, as written"
+   }
+  ]
+ },
+ {
+  "qid": "qc2c21f19dc",
+  "text": "Ines Duarte: Hello, I am sending file POL-8458 about the cover question. My thanks in advance.\nintake team: Thank you, this has been received with care.",
+  "schema": [
+   {
+    "field": "person",
+    "type": "name",
+    "describe": "the person who wrote or is named as the sender, as written"
+   },
+   {
+    "field": "ref",
+    "type": "id",
+    "describe": "the file, case or notice reference, as written"
+   },
+   {
+    "field": "topic",
+    "type": "str",
+    "describe": "what the message is about, as written"
+   }
+  ]
+ },
+ {
+  "qid": "qfd5834194d",
+  "text": "Ines Duarte: sending NTC-4132 about the notice response, here it is.\nhelp desk: got it, thanks.\nhelp desk: that is the whole pack.",
+  "schema": [
+   {
+    "field": "person",
+    "type": "name",
+    "describe": "the person who wrote or is named as the sender, as written"
+   },
+   {
+    "field": "ref",
+    "type": "id",
+    "describe": "the file, case or notice reference, as written"
+   },
+   {
+    "field": "topic",
+    "type": "str",
+    "describe": "what the message is about, as written"
+   }
+  ]
+ },
+ {
+  "qid": "q2f9e191c5a",
+  "text": "Eva Marsh sends file POL-1786 about the insurance claim to the admin team. Sending this across quickly because I am tied up with other work. The full file is attached for the team. Thanks for taking it.",
+  "schema": [
+   {
+    "field": "person",
+    "type": "name",
+    "describe": "the person who wrote or is named as the sender, as written"
+   },
+   {
+    "field": "ref",
+    "type": "id",
+    "describe": "the file, case or notice reference, as written"
+   },
+   {
+    "field": "topic",
+    "type": "str",
+    "describe": "what the message is about, as written"
+   }
+  ]
+ },
+ {
+  "qid": "q1ee2301d6a",
+  "text": "Hi duty clerk,\nFreya Holm here with file NTC-4249 about the response deadline, and I am so glad it all came together. Hope it makes your work a little easier.\nCheers,",
+  "schema": [
+   {
+    "field": "person",
+    "type": "name",
+    "describe": "the person who wrote or is named as the sender, as written"
+   },
+   {
+    "field": "ref",
+    "type": "id",
+    "describe": "the file, case or notice reference, as written"
+   },
+   {
+    "field": "topic",
+    "type": "str",
+    "describe": "what the message is about, as written"
+   }
+  ]
+ },
+ {
+  "qid": "q5313045d81",
+  "text": "From: Tomas Lindqvist\nFile: POL-4915\nSent to: records clerk\nThis file about the cover question is sent over in a hurry. Thanks.",
+  "schema": [
+   {
+    "field": "person",
+    "type": "name",
+    "describe": "the person who wrote or is named as the sender, as written"
+   },
+   {
+    "field": "ref",
+    "type": "id",
+    "describe": "the file, case or notice reference, as written"
+   },
+   {
+    "field": "topic",
+    "type": "str",
+    "describe": "what the message is about, as written"
+   }
+  ]
+ },
+ {
+  "qid": "qb3a5ff4e84",
+  "text": "Hi admin team, this is Clara Weiss sharing file CASE-5793 about the appeal deadline. It was a pleasure to pull it together. Thanks for keeping an eye on it.",
+  "schema": [
+   {
+    "field": "person",
+    "type": "name",
+    "describe": "the person who wrote or is named as the sender, as written"
+   },
+   {
+    "field": "ref",
+    "type": "id",
+    "describe": "the file, case or notice reference, as written"
+   },
+   {
+    "field": "topic",
+    "type": "str",
+    "describe": "what the message is about, as written"
+   }
+  ]
+ },
+ {
+  "qid": "q2b75f23d1d",
+  "text": "Hi duty clerk,\nFreya Holm is sending file LED-8984 about the branch cash review, with the main points at the top. Quick note, I am buried under other work.\nBest,",
+  "schema": [
+   {
+    "field": "person",
+    "type": "name",
+    "describe": "the person who wrote or is named as the sender, as written"
+   },
+   {
+    "field": "ref",
+    "type": "id",
+    "describe": "the file, case or notice reference, as written"
+   },
+   {
+    "field": "topic",
+    "type": "str",
+    "describe": "what the message is about, as written"
+   }
+  ]
+ },
+ {
+  "qid": "q44ece87026",
+  "text": "Sender: Ana Ruiz\nFile: NTC-6847\nTo: records clerk\nThe file about the notice response is attached. Sending it on in a hurry.",
+  "schema": [
+   {
+    "field": "person",
+    "type": "name",
+    "describe": "the person who wrote or is named as the sender, as written"
+   },
+   {
+    "field": "ref",
+    "type": "id",
+    "describe": "the file, case or notice reference, as written"
+   },
+   {
+    "field": "topic",
+    "type": "str",
+    "describe": "what the message is about, as written"
+   }
+  ]
+ },
+ {
+  "qid": "qec878954e2",
+  "text": "Sent by: Kofi Mensah\nFile: LED-6808\nSent to: review team\nThis is a standard note about the cash ledger check. The file is laid out as usual.",
+  "schema": [
+   {
+    "field": "person",
+    "type": "name",
+    "describe": "the person who wrote or is named as the sender, as written"
+   },
+   {
+    "field": "ref",
+    "type": "id",
+    "describe": "the file, case or notice reference, as written"
+   },
+   {
+    "field": "topic",
+    "type": "str",
+    "describe": "what the message is about, as written"
+   }
+  ]
+ },
+ {
+  "qid": "q52e54e0665",
+  "text": "Mira Castell: sending POL-8447 about the insurance claim, in a rush.\nservice desk: got it, thanks.\ndesk: that is the full file.",
+  "schema": [
+   {
+    "field": "person",
+    "type": "name",
+    "describe": "the person who wrote or is named as the sender, as written"
+   },
+   {
+    "field": "ref",
+    "type": "id",
+    "describe": "the file, case or notice reference, as written"
+   },
+   {
+    "field": "topic",
+    "type": "str",
+    "describe": "what the message is about, as written"
+   }
+  ]
+ },
+ {
+  "qid": "q525a751b26",
+  "text": "Omar Saleh has sent file POL-8510 about the cover question to the desk. This is a routine item and the file is attached in full. The desk is copied for completeness. This memo concerns only the sending of the file.",
+  "schema": [
+   {
+    "field": "person",
+    "type": "name",
+    "describe": "the person who wrote or is named as the sender, as written"
+   },
+   {
+    "field": "ref",
+    "type": "id",
+    "describe": "the file, case or notice reference, as written"
+   },
+   {
+    "field": "topic",
+    "type": "str",
+    "describe": "what the message is about, as written"
+   }
+  ]
+ },
+ {
+  "qid": "q6463f81611",
+  "text": "Paolo Greco: file NTC-2357 about the response deadline is with you.\nintake team: thanks, that is received.\nintake team: all pages are in, thanks.",
+  "schema": [
+   {
+    "field": "person",
+    "type": "name",
+    "describe": "the person who wrote or is named as the sender, as written"
+   },
+   {
+    "field": "ref",
+    "type": "id",
+    "describe": "the file, case or notice reference, as written"
+   },
+   {
+    "field": "topic",
+    "type": "str",
+    "describe": "what the message is about, as written"
+   }
+  ]
+ },
+ {
+  "qid": "q8f2107dac4",
+  "text": "Internal memo for the desk.\n\nAna Ruiz sends file STAY-6718 about the border stay check to the desk, with the review team copied in. Thank you for your careful work on this matter. I appreciate the effort put into it.",
+  "schema": [
+   {
+    "field": "person",
+    "type": "name",
+    "describe": "the person who wrote or is named as the sender, as written"
+   },
+   {
+    "field": "ref",
+    "type": "id",
+    "describe": "the file, case or notice reference, as written"
+   },
+   {
+    "field": "topic",
+    "type": "str",
+    "describe": "what the message is about, as written"
+   }
+  ]
+ },
+ {
+  "qid": "q335792b70f",
+  "text": "Nadia Kowal: file LED-5281 about the branch cash review is attached.\ncase team: received, thanks.\ncase team: that is the whole file.",
+  "schema": [
+   {
+    "field": "person",
+    "type": "name",
+    "describe": "the person who wrote or is named as the sender, as written"
+   },
+   {
+    "field": "ref",
+    "type": "id",
+    "describe": "the file, case or notice reference, as written"
+   },
+   {
+    "field": "topic",
+    "type": "str",
+    "describe": "what the message is about, as written"
+   }
+  ]
+ },
+ {
+  "qid": "q12dba5f6c3",
+  "text": "Sara Ilves: Sending file NTC-8722 about the notice response, the regular copy.\nteam: Thanks, the copy is in the standard format.\nteam: All of it follows the usual layout.",
+  "schema": [
+   {
+    "field": "person",
+    "type": "name",
+    "describe": "the person who wrote or is named as the sender, as written"
+   },
+   {
+    "field": "ref",
+    "type": "id",
+    "describe": "the file, case or notice reference, as written"
+   },
+   {
+    "field": "topic",
+    "type": "str",
+    "describe": "what the message is about, as written"
+   }
+  ]
+ },
+ {
+  "qid": "q3f8c29da16",
+  "text": "Sara Ilves: sending NTC-3654 about the notice response, fast and short.\nhelp desk: okay, got it.\nhelp desk: thanks, that is the whole thing.",
+  "schema": [
+   {
+    "field": "person",
+    "type": "name",
+    "describe": "the person who wrote or is named as the sender, as written"
+   },
+   {
+    "field": "ref",
+    "type": "id",
+    "describe": "the file, case or notice reference, as written"
+   },
+   {
+    "field": "topic",
+    "type": "str",
+    "describe": "what the message is about, as written"
+   }
+  ]
+ },
+ {
+  "qid": "q04caaeb5e5",
+  "text": "Maya Lindgren: Quick send of CASE-2326 about the complaint filing.\nservice desk: Thanks, that is in.",
+  "schema": [
+   {
+    "field": "person",
+    "type": "name",
+    "describe": "the person who wrote or is named as the sender, as written"
+   },
+   {
+    "field": "ref",
+    "type": "id",
+    "describe": "the file, case or notice reference, as written"
+   },
+   {
+    "field": "topic",
+    "type": "str",
+    "describe": "what the message is about, as written"
+   }
+  ]
+ },
+ {
+  "qid": "q822d432935",
+  "text": "Hi front desk,\nRavi Anand sends file STAY-8384 about the residence day count as a standard copy. The file keeps to the usual format.\nRegards,",
+  "schema": [
+   {
+    "field": "person",
+    "type": "name",
+    "describe": "the person who wrote or is named as the sender, as written"
+   },
+   {
+    "field": "ref",
+    "type": "id",
+    "describe": "the file, case or notice reference, as written"
+   },
+   {
+    "field": "topic",
+    "type": "str",
+    "describe": "what the message is about, as written"
+   }
+  ]
+ },
+ {
+  "qid": "qd18cedd48e",
+  "text": "File: NTC-8310\nSubject: the notice response\nFrom: Freya Holm\nQuick send to the records clerk. The desk is swamped, sorry for the speed.",
+  "schema": [
+   {
+    "field": "person",
+    "type": "name",
+    "describe": "the person who wrote or is named as the sender, as written"
+   },
+   {
+    "field": "ref",
+    "type": "id",
+    "describe": "the file, case or notice reference, as written"
+   },
+   {
+    "field": "topic",
+    "type": "str",
+    "describe": "what the message is about, as written"
+   }
+  ]
+ },
+ {
+  "qid": "q666eabb450",
+  "text": "Felix Ortega: Quick word, here is file NTC-6681 about the notice response, I am swamped.\nservice: Thanks, I see it.\ndesk: Great, shared with the team.",
+  "schema": [
+   {
+    "field": "person",
+    "type": "name",
+    "describe": "the person who wrote or is named as the sender, as written"
+   },
+   {
+    "field": "ref",
+    "type": "id",
+    "describe": "the file, case or notice reference, as written"
+   },
+   {
+    "field": "topic",
+    "type": "str",
+    "describe": "what the message is about, as written"
+   }
+  ]
+ }
+]

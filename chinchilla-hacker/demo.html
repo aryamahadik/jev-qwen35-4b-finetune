@@ -1,0 +1,906 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Chinchilla on a Laptop</title>
+<meta name="description" content="A laptop-scale replication of Hoffmann et al. (2022), Training Compute-Optimal Large Language Models">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>
+:root {
+  --bg: #f4f6fa; --surface: #ffffff; --ink: #1b2230; --muted: #5d6678; --faint: #8b93a3;
+  --rule: #dde2ec; --grid: #e7eaf1; --code-bg: #eef1f7;
+  --accent: #e8590c; --accent-soft: #fde7da; --paperc: #3b5bdb; --kaplan: #8a919e;
+  --a1: #0f9f75; --a3: #7048e8;
+  --b0: #4fb8a7; --b1: #2f8fb0; --b2: #3264b8; --b3: #3f3f9e; --b4: #5a2a86;
+  --good: #0f9f75; --warn: #c2410c;
+  --kw: #7048e8; --str: #0f7d5f; --com: #8b93a3; --num: #c2410c; --fn: #3b5bdb;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0e131d; --surface: #151b28; --ink: #e7eaf2; --muted: #9aa3b5; --faint: #6f788a;
+    --rule: #263045; --grid: #1d2536; --code-bg: #121826;
+    --accent: #ff7b36; --accent-soft: #3a2216; --paperc: #7d95ff; --kaplan: #7c8496;
+    --a1: #3ccf9d; --a3: #a68bff;
+    --b0: #7fe0cf; --b1: #52b6de; --b2: #6f93f2; --b3: #8f86f0; --b4: #c08cf0;
+    --good: #3ccf9d; --warn: #ff9a5c;
+    --kw: #b49cff; --str: #5fd3a5; --com: #6f788a; --num: #ffab70; --fn: #8ea6ff;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0e131d; --surface: #151b28; --ink: #e7eaf2; --muted: #9aa3b5; --faint: #6f788a;
+  --rule: #263045; --grid: #1d2536; --code-bg: #121826;
+  --accent: #ff7b36; --accent-soft: #3a2216; --paperc: #7d95ff; --kaplan: #7c8496;
+  --a1: #3ccf9d; --a3: #a68bff;
+  --b0: #7fe0cf; --b1: #52b6de; --b2: #6f93f2; --b3: #8f86f0; --b4: #c08cf0;
+  --good: #3ccf9d; --warn: #ff9a5c;
+  --kw: #b49cff; --str: #5fd3a5; --com: #6f788a; --num: #ffab70; --fn: #8ea6ff;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; background: var(--bg); color: var(--ink);
+  font: 16px/1.6 "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+.mono, code, pre, .num { font-family: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, monospace; }
+.num { font-variant-numeric: tabular-nums; }
+a { color: var(--paperc); }
+.wrap { max-width: 1120px; margin: 0 auto; padding-inline: clamp(16px, 4vw, 40px); }
+
+/* top bar */
+.bar {
+  position: sticky; top: env(safe-area-inset-top, 0px); z-index: 10;
+  background: color-mix(in srgb, var(--bg) 88%, transparent); backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--rule);
+}
+.bar .wrap { display: flex; align-items: center; gap: 20px; height: 48px; overflow-x: auto; scrollbar-width: none; }
+.bar .brand { font-family: "Bricolage Grotesque", "IBM Plex Sans", sans-serif; font-weight: 700; white-space: nowrap; }
+.bar nav { display: flex; gap: 16px; font-size: 13.5px; white-space: nowrap; }
+.bar nav a { color: var(--muted); text-decoration: none; }
+.bar nav a:hover, .bar nav a:focus-visible { color: var(--ink); }
+
+/* hero */
+.hero { padding-block: clamp(36px, 6vw, 72px) 28px; }
+.eyebrow { font-family: "IBM Plex Mono", monospace; font-size: 12.5px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); }
+h1 {
+  font-family: "Bricolage Grotesque", "IBM Plex Sans", sans-serif; font-weight: 700;
+  font-size: clamp(44px, 8vw, 88px); line-height: 0.98; letter-spacing: -0.025em; margin: 14px 0 18px;
+  text-wrap: balance;
+}
+h1 .at { color: var(--accent); }
+.lede { font-size: clamp(17px, 2vw, 20px); max-width: 62ch; color: var(--ink); margin: 0; }
+.lede em { font-style: normal; background: var(--accent-soft); padding: 0 4px; border-radius: 3px; }
+.verdict { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0; margin-top: 30px; border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); }
+.verdict > div { padding: 16px 18px 16px 0; }
+.verdict > div + div { padding-left: 18px; border-left: 1px solid var(--rule); }
+.verdict .k { font-size: 13px; color: var(--muted); }
+.verdict .v { font-family: "IBM Plex Mono", monospace; font-size: clamp(22px, 3.2vw, 34px); font-weight: 500; line-height: 1.2; margin-top: 4px; }
+.verdict .v sup { font-size: 0.55em; }
+.verdict .ours .v { color: var(--accent); }
+.verdict .paper .v { color: var(--paperc); }
+.verdict .kap .v { color: var(--kaplan); }
+.verdict .s { font-size: 13px; color: var(--muted); margin-top: 2px; }
+
+/* sections */
+section.step { padding-block: 44px; border-top: 1px solid var(--rule); scroll-margin-top: 56px; }
+.step-head { display: grid; grid-template-columns: 64px 1fr; gap: 0 16px; margin-bottom: 20px; }
+.step-no { font-family: "IBM Plex Mono", monospace; font-size: 13px; color: var(--accent); padding-top: 9px; }
+h2 { font-family: "Bricolage Grotesque", "IBM Plex Sans", sans-serif; font-weight: 700; font-size: clamp(26px, 3.4vw, 36px); line-height: 1.1; letter-spacing: -0.015em; margin: 0; text-wrap: balance; }
+.step-head p { grid-column: 2; margin: 10px 0 0; max-width: 68ch; color: var(--muted); }
+.step-head p strong { color: var(--ink); font-weight: 600; }
+.paper-ref { font-family: "IBM Plex Mono", monospace; font-size: 12px; color: var(--paperc); white-space: nowrap; }
+
+.two { display: grid; grid-template-columns: minmax(0, 1fr) 330px; gap: 24px; align-items: start; }
+.pair { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; }
+.chart { position: relative; width: 100%; min-width: 0; }
+.chart svg { display: block; width: 100%; overflow: visible; }
+.chart-title { font-size: 14px; font-weight: 600; margin: 0 0 6px; }
+.chart-note { font-size: 13px; color: var(--muted); margin: 8px 0 0; }
+.legend { display: flex; flex-wrap: wrap; gap: 6px 16px; font-size: 13px; color: var(--muted); margin-top: 8px; }
+.legend span { display: inline-flex; align-items: center; gap: 6px; }
+.legend i { display: inline-block; width: 16px; height: 3px; border-radius: 2px; }
+.legend i.dash { background: repeating-linear-gradient(90deg, var(--kaplan) 0 5px, transparent 5px 8px) !important; }
+
+.attempt { display: grid; gap: 8px; margin-bottom: 14px; }
+.attempt-note { margin: 0; font-size: 14.5px; color: var(--muted); max-width: 90ch; }
+.attempt-note b { color: var(--ink); }
+details.diag { margin-top: 18px; border: 1px solid var(--rule); border-radius: 10px; padding: 10px 14px; background: var(--surface); }
+details.diag summary { cursor: pointer; font-weight: 600; font-size: 14.5px; }
+details.diag td.good { color: var(--good); } details.diag td.flat { color: var(--muted); }
+
+/* control panel */
+.panel { background: var(--surface); border: 1px solid var(--rule); border-radius: 10px; padding: 18px; display: grid; gap: 16px; }
+.panel h3 { font-size: 12.5px; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; color: var(--muted); margin: 0 0 8px; }
+.chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.chip {
+  font: 500 13px "IBM Plex Mono", monospace; padding: 6px 10px; border-radius: 6px; cursor: pointer;
+  border: 1px solid var(--rule); background: transparent; color: var(--ink);
+}
+.chip[aria-pressed="true"] { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+.chip:focus-visible, button:focus-visible, input:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+input[type="range"] { width: 100%; accent-color: var(--accent); margin: 4px 0 0; }
+.slider-ends { display: flex; justify-content: space-between; font-size: 12px; color: var(--faint); }
+.readout { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px 14px; }
+.readout .k { font-size: 12.5px; color: var(--muted); }
+.readout .v { font-family: "IBM Plex Mono", monospace; font-size: 20px; font-variant-numeric: tabular-nums; }
+.status { font-size: 14px; padding: 10px 12px; border-radius: 8px; border: 1px solid var(--rule); }
+.status b { display: block; font-size: 13px; letter-spacing: 0.03em; text-transform: uppercase; }
+.status.ok b { color: var(--good); }
+.status.bad b { color: var(--warn); }
+
+/* approach table */
+.table-wrap { overflow-x: auto; }
+table { border-collapse: collapse; width: 100%; font-size: 14.5px; }
+th, td { text-align: left; padding: 10px 12px; border-bottom: 1px solid var(--rule); vertical-align: top; }
+th { font-size: 12.5px; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; color: var(--muted); }
+td.num, th.num { text-align: right; white-space: nowrap; }
+td .ci { color: var(--faint); font-size: 12.5px; }
+tr.kap td { color: var(--kaplan); }
+.swatch { display: inline-block; width: 10px; height: 10px; border-radius: 50%; margin-right: 8px; vertical-align: 0; }
+.formula { font-family: "IBM Plex Mono", monospace; font-size: clamp(14px, 1.9vw, 18px); padding: 14px 16px; background: var(--code-bg); border-radius: 8px; overflow-x: auto; white-space: nowrap; }
+
+/* head to head */
+.bars { display: grid; gap: 14px; }
+.barrow .top { display: flex; justify-content: space-between; gap: 12px; font-size: 14px; }
+.barrow .top b { font-weight: 600; }
+.barrow .track { height: 14px; background: var(--grid); border-radius: 7px; margin-top: 6px; overflow: hidden; }
+.barrow .fill { height: 100%; border-radius: 7px; }
+.barrow .meta { font-size: 13px; color: var(--muted); margin-top: 4px; }
+.samples { margin-top: 26px; }
+.sample-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; margin-top: 12px; }
+.sample { background: var(--surface); border: 1px solid var(--rule); border-radius: 10px; padding: 16px; }
+.sample h4 { margin: 0 0 8px; font-size: 13px; letter-spacing: 0.04em; text-transform: uppercase; color: var(--muted); }
+.sample p { margin: 0; font-family: "IBM Plex Mono", monospace; font-size: 13.5px; line-height: 1.65; white-space: pre-wrap; overflow-wrap: anywhere; }
+.sample p .prompt { background: var(--accent-soft); color: var(--ink); }
+
+/* paper scale */
+.models { display: flex; flex-wrap: wrap; gap: 6px; }
+
+/* code */
+.tabs { display: flex; gap: 4px; flex-wrap: wrap; border-bottom: 1px solid var(--rule); }
+.tab { font: 500 13px "IBM Plex Mono", monospace; padding: 8px 12px; background: none; border: 0; border-bottom: 2px solid transparent; color: var(--muted); cursor: pointer; margin-bottom: -1px; }
+.tab[aria-selected="true"] { color: var(--ink); border-bottom-color: var(--accent); }
+.code-note { font-size: 14px; color: var(--muted); margin: 12px 0 8px; }
+pre.code { background: var(--code-bg); border-radius: 8px; padding: 16px; overflow-x: auto; font-size: 13px; line-height: 1.55; margin: 0; max-height: 560px; }
+pre.code .kw { color: var(--kw); } pre.code .str { color: var(--str); } pre.code .com { color: var(--com); font-style: italic; }
+pre.code .n { color: var(--num); } pre.code .fn { color: var(--fn); font-weight: 500; }
+.cmds { display: grid; grid-template-columns: minmax(0, 1fr); gap: 6px; margin-top: 18px; }
+.two > *, .pair > *, .panel > *, .readout > *, .cmds > * { min-width: 0; }
+.cmds code { display: block; font-size: 13.5px; background: var(--code-bg); padding: 8px 12px; border-radius: 6px; overflow-x: auto; white-space: nowrap; }
+.cmds code span { color: var(--faint); }
+
+footer { border-top: 1px solid var(--rule); padding-block: 28px 48px; font-size: 13.5px; color: var(--muted); }
+footer .cols { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; }
+footer h4 { margin: 0 0 6px; font-size: 12.5px; letter-spacing: 0.05em; text-transform: uppercase; color: var(--ink); }
+footer ul { margin: 0; padding-left: 18px; }
+
+/* tooltip */
+.tip {
+  position: fixed; z-index: 50; pointer-events: none; background: var(--ink); color: var(--bg);
+  font: 12.5px/1.45 "IBM Plex Mono", monospace; padding: 8px 10px; border-radius: 6px; max-width: 260px;
+  opacity: 0; transition: opacity 0.1s;
+}
+.tip.on { opacity: 1; }
+svg text { font-family: "IBM Plex Sans", system-ui, sans-serif; }
+svg .tick { font-size: 11.5px; fill: var(--muted); font-variant-numeric: tabular-nums; }
+svg .axis-label { font-size: 12.5px; fill: var(--muted); }
+svg .lbl { font-size: 12px; font-weight: 600; }
+.hit { cursor: pointer; }
+
+@media (max-width: 900px) {
+  .two, .pair, .sample-grid, footer .cols { grid-template-columns: minmax(0, 1fr); }
+  .step-head { grid-template-columns: 1fr; }
+  .step-head p { grid-column: 1; }
+  .step-no { padding-top: 0; }
+}
+@media (max-width: 560px) {
+  .verdict { grid-template-columns: minmax(0, 1fr); }
+  .verdict > div + div { padding-left: 0; border-left: 0; border-top: 1px solid var(--rule); }
+}
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+</style>
+</head>
+<body>
+
+
+<header class="bar">
+  <div class="wrap">
+    <span class="brand">Chinchilla on a Laptop</span>
+    <nav aria-label="Sections">
+      <a href="#tradeoff">Trade-off</a><a href="#isoflop">IsoFLOPs</a><a href="#approaches">3 approaches</a>
+      <a href="#headtohead">Gopher vs Chinchilla</a><a href="#schedule">Schedules</a><a href="#paperscale">Paper scale</a><a href="#code">Code</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<div class="wrap">
+  <div class="hero">
+    <div class="eyebrow">Hacker role · Hoffmann et al. 2022 · arXiv 2203.15556</div>
+    <h1>Chinchilla on a <span class="at">Laptop</span></h1>
+    <p class="lede">The paper asks one question. You have a fixed amount of compute: how big should the model be, and how much data should it read? We answered it the paper's way, with <em id="stat-runs">—</em> tiny transformers trained from scratch on a MacBook.</p>
+    <div class="verdict" id="verdict">
+      <div class="ours"><div class="k">Our answer (IsoFLOP fit)</div><div class="v" id="v-ours">—</div><div class="s" id="v-ours-s">—</div></div>
+      <div class="paper"><div class="k">Chinchilla paper</div><div class="v">N<sub>opt</sub> ∝ C<sup>0.49</sup></div><div class="s">model and data grow equally</div></div>
+      <div class="kap"><div class="k">Kaplan et al. 2020</div><div class="v">N<sub>opt</sub> ∝ C<sup>0.73</sup></div><div class="s">mostly grow the model</div></div>
+    </div>
+  </div>
+
+  <section class="step" id="tradeoff">
+    <div class="step-head">
+      <div class="step-no">01</div>
+      <h2>The trade-off: one budget, many ways to spend it</h2>
+      <p>Training compute is about <strong>C ≈ 6 · N · D</strong> (N parameters, D training tokens). With C fixed, every extra parameter means fewer tokens. Pick a budget, slide the model size, and read the loss off our fitted law. The dots are real training runs.</p>
+    </div>
+    <div class="two">
+      <div class="chart" id="ch-explore"></div>
+      <div class="panel">
+        <div>
+          <h3>Compute budget</h3>
+          <div class="chips" id="budget-chips"></div>
+        </div>
+        <div>
+          <h3><label for="n-slider">Model size</label></h3>
+          <input type="range" id="n-slider" min="0" max="1000" value="500">
+          <div class="slider-ends"><span>small model, lots of data</span><span>big model, little data</span></div>
+        </div>
+        <div class="readout">
+          <div><div class="k">Parameters N</div><div class="v" id="r-n">—</div></div>
+          <div><div class="k">Training characters D</div><div class="v" id="r-d">—</div></div>
+          <div><div class="k">Characters per parameter</div><div class="v" id="r-tpp">—</div></div>
+          <div><div class="k">Predicted loss</div><div class="v" id="r-loss">—</div></div>
+        </div>
+        <div class="status" id="r-status"><b>—</b><span></span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="step" id="isoflop">
+    <div class="step-head">
+      <div class="step-no">02</div>
+      <h2>The experiment: IsoFLOP curves <span class="paper-ref">paper §3.2 · Fig. 3</span></h2>
+      <p id="iso-text">For each compute budget we trained several model sizes. Every run in a group used <strong>exactly the same FLOPs</strong>, counted with the paper's Appendix F formula. Each curve dips: too small wastes the data, too big never finishes learning. We fit a parabola to each curve and take its lowest point.</p>
+    </div>
+    <div class="attempt">
+      <div class="chips" id="attempt-chips" role="group" aria-label="Which sweep to show">
+        <button class="chip" type="button" data-att="2" aria-pressed="true">Attempt 2 · best batch size per run</button>
+        <button class="chip" type="button" data-att="1" aria-pressed="false">Attempt 1 · same batch for every run</button>
+      </div>
+      <p class="attempt-note" id="attempt-note"></p>
+    </div>
+    <div class="chart" id="ch-iso"></div>
+    <div class="legend" id="iso-legend"></div>
+    <div class="pair" style="margin-top: 28px">
+      <div><p class="chart-title">Best model size grows with compute</p><div class="chart" id="ch-nopt"></div></div>
+      <div><p class="chart-title">Best amount of data grows with compute</p><div class="chart" id="ch-dopt"></div></div>
+    </div>
+    <div class="legend">
+      <span><i style="background: var(--accent)"></i>our fit</span>
+      <span><i class="dash"></i>Kaplan et al. slope (0.73 / 0.27)</span>
+      <span><i style="background: var(--paperc)"></i>Chinchilla slope (0.49 / 0.51)</span>
+    </div>
+    <details class="diag">
+      <summary>Why attempt 1 was wrong: the diagnostic runs</summary>
+      <p class="chart-note">Same model, same compute, same data. Only the batch changes, so the number of optimizer steps changes.</p>
+      <div class="table-wrap"><table><thead><tr><th>Model</th><th>Budget</th><th class="num">Steps (batch 4,096)</th><th class="num">Loss</th><th class="num">Steps (smaller batch)</th><th class="num">Loss</th><th class="num">Change</th></tr></thead><tbody id="diag-rows"></tbody></table></div>
+    </details>
+  </section>
+
+  <section class="step" id="approaches">
+    <div class="step-head">
+      <div class="step-no">03</div>
+      <h2>Three approaches: two match the paper <span class="paper-ref">paper §3 · Table 2</span></h2>
+      <p>The paper checks its answer three independent ways. We ran all three on our runs. Each approach gives the exponents in <strong>N<sub>opt</sub> ∝ C<sup>a</sup></strong> and <strong>D<sub>opt</sub> ∝ C<sup>b</sup></strong>. Brackets are 10th–90th percentiles from refitting on 80% of the runs 100 times, as in the paper. Approaches 2 and 3 land next to the paper. Approach 1 comes out higher: all our runs end at just 4 budgets, so between budgets its "lowest curve" is always an unfinished run, which is the same mid-schedule bias as in section 05.</p>
+    </div>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Approach</th><th>How it finds the best size</th><th class="num">our a</th><th class="num">paper a</th><th class="num">our b</th><th class="num">paper b</th></tr></thead>
+        <tbody id="approach-rows"></tbody>
+      </table>
+    </div>
+    <div class="pair" style="margin-top: 28px; align-items: start">
+      <div>
+        <p class="chart-title">All three approaches, extrapolated one decade past our data</p>
+        <div class="chart" id="ch-approaches"></div>
+        <div class="legend" id="approach-legend"></div>
+      </div>
+      <div>
+        <p class="chart-title">Approach 1: every training curve and their lower envelope</p>
+        <div class="chart" id="ch-envelope"></div>
+        <p class="chart-note">Colour = model size (orange small, purple big). The bold line is the lowest loss reached at each FLOP count.</p>
+      </div>
+    </div>
+    <p class="chart-title" style="margin-top: 26px">Approach 3: our fitted loss law (paper Eq. 2)</p>
+    <div class="formula" id="formula">—</div>
+    <p class="chart-note" id="formula-note"></p>
+  </section>
+
+  <section class="step" id="headtohead">
+    <div class="step-head">
+      <div class="step-no">04</div>
+      <h2>The headline test: mini-Gopher vs mini-Chinchilla <span class="paper-ref">paper §4</span></h2>
+      <p>The paper's proof: <strong>Chinchilla</strong> (70B params, 1.4T tokens) beat <strong>Gopher</strong> (280B params, 300B tokens) on the same compute. We rebuilt that match-up at our scale: same FLOPs, a 4× bigger model on fewer characters vs our compute-optimal model. To be fair, mini-Gopher got <strong>6 tries</strong> (3 batch sizes × 2 learning rates); we show its best.</p>
+    </div>
+    <div class="two">
+      <div><p class="chart-title">Training loss vs compute spent</p><div class="chart" id="ch-head"></div></div>
+      <div class="panel"><h3>Final validation loss (lower is better)</h3><div class="bars" id="head-bars"></div><div class="status ok" id="head-status"><b>—</b><span></span></div></div>
+    </div>
+    <div class="samples">
+      <p class="chart-title">What they write (character-level, temperature 0.8)</p>
+      <div class="chips" id="prompt-chips" role="tablist" aria-label="Prompt"></div>
+      <div class="sample-grid" id="sample-grid"></div>
+    </div>
+  </section>
+
+  <section class="step" id="schedule">
+    <div class="step-head">
+      <div class="step-no">05</div>
+      <h2>One reason Kaplan got 0.73: judging models mid-schedule <span class="paper-ref">paper App. B · Fig. A1</span></h2>
+      <p>Kaplan et al. gave every model one long learning-rate schedule and read losses off part-way through. The paper shows that a model judged <strong>before its cosine schedule ends</strong> looks worse than it is: overshooting the run by more than 25% clearly hurts. At small budgets the big models are judged earliest, so the best size looks too small there, and the fitted exponent comes out too steep. We tested the core effect on one model at one budget.</p>
+    </div>
+    <div class="pair">
+      <div><p class="chart-title">Learning-rate schedules (same run length)</p><div class="chart" id="ch-lr"></div></div>
+      <div><p class="chart-title">Final validation loss</p><div class="chart" id="ch-cos"></div></div>
+    </div>
+    <div class="legend" id="cos-legend"></div>
+  </section>
+
+  <section class="step" id="paperscale">
+    <div class="step-head">
+      <div class="step-no">06</div>
+      <h2>Back to the paper's scale</h2>
+      <p>The same logic with the paper's own fitted law, <strong>L = 1.69 + 406.4 / N<sup>0.34</sup> + 410.7 / D<sup>0.28</sup></strong> (Eq. 2, Appendix D.2), using C = 6ND. Pick a real model to jump to its compute budget, or drag the slider.</p>
+    </div>
+    <div class="two">
+      <div class="chart" id="ch-paper"></div>
+      <div class="panel">
+        <div><h3>Real models</h3><div class="models chips" id="model-chips"></div></div>
+        <div>
+          <h3><label for="c-slider">Compute budget</label></h3>
+          <input type="range" id="c-slider" min="1800" max="2600" value="2376">
+          <div class="slider-ends"><span>10¹⁸ FLOPs</span><span>10²⁶ FLOPs</span></div>
+        </div>
+        <div class="readout">
+          <div><div class="k">Compute C</div><div class="v" id="p-c">—</div></div>
+          <div><div class="k">Best loss (Eq. 2)</div><div class="v" id="p-l">—</div></div>
+          <div><div class="k">Best N (Eq. 2)</div><div class="v" id="p-n3">—</div></div>
+          <div><div class="k">Best D (Eq. 2)</div><div class="v" id="p-d3">—</div></div>
+          <div><div class="k">20 tokens/param rule</div><div class="v" id="p-n20">—</div></div>
+          <div><div class="k">…trained on</div><div class="v" id="p-d20">—</div></div>
+        </div>
+        <div class="status" id="p-status"><b>—</b><span></span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="step" id="code">
+    <div class="step-head">
+      <div class="step-no">07</div>
+      <h2>The code that does it</h2>
+      <p>About 470 lines of Python run the whole experiment, and about 200 more do the three fits. The transformer is a small nanoGPT-style model. Everything Chinchilla-specific is below: compute counting, the matched cosine schedule, the IsoFLOP grid, and the three fits.</p>
+    </div>
+    <div class="tabs" role="tablist" id="code-tabs"></div>
+    <p class="code-note" id="code-note"></p>
+    <pre class="code" id="code-view"></pre>
+    <div class="cmds" id="cmds"></div>
+  </section>
+</div>
+</main>
+
+<footer>
+  <div class="wrap cols">
+    <div>
+      <h4>What we built on</h4>
+      <ul>
+        <li>Hoffmann et al. (2022), <a href="https://arxiv.org/abs/2203.15556">Training Compute-Optimal Large Language Models</a>.</li>
+        <li>Transformer backbone written after Karpathy's <a href="https://github.com/karpathy/nanoGPT">nanoGPT</a> (MIT).</li>
+        <li>Data: <a href="https://huggingface.co/datasets/roneneldan/TinyStories">TinyStories</a> (Eldan &amp; Li, 2023), GPT-4 version, first 200 MB.</li>
+      </ul>
+    </div>
+    <div>
+      <h4>Read with care</h4>
+      <ul id="caveats">
+        <li>Tiny scale: 29K–1M parameters, compute 10¹²–3×10¹³ FLOPs. The paper used 70M–16B parameters and 6×10¹⁸–3×10²¹ FLOPs.</li>
+        <li>Characters, not word pieces. One word-piece token is about 4 characters, so our "characters per parameter" is about 4× a token count.</li>
+        <li>One seed per run. Learning rate tuned per model width in a pilot; each run keeps its best of up to three batch sizes.</li>
+        <li>The schedule is one cause of Kaplan's 0.73. Later work (Pearce &amp; Song 2024; Porian et al. 2024) points to others too, such as counting only non-embedding parameters and tuning at small scale.</li>
+      </ul>
+    </div>
+  </div>
+</footer>
+<div class="tip" id="tip" role="tooltip"></div>
+
+<script>
+const R = {"meta": {"runs": 103, "flops": 1119292439592960.0, "seconds": 6085.5, "device": "Apple M4 laptop (MPS)", "vocab": 76, "ctx": 64, "train_chars": 196988853}, "fpt_fit": {"k": 11.066923560308677, "g": 0.3547546443050849}, "ladder": [{"n_layer": 2, "d_model": 24, "params": 17304, "fpt": 144000.0}, {"n_layer": 2, "d_model": 32, "params": 29216, "fpt": 228096.0}, {"n_layer": 2, "d_model": 40, "params": 44200, "fpt": 330624.0}, {"n_layer": 2, "d_model": 48, "params": 62256, "fpt": 452736.0}, {"n_layer": 2, "d_model": 56, "params": 83384, "fpt": 593280.0}, {"n_layer": 2, "d_model": 64, "params": 107584, "fpt": 751104.0}, {"n_layer": 3, "d_model": 64, "params": 156864, "fpt": 1097472.0}, {"n_layer": 3, "d_model": 80, "params": 242160, "fpt": 1648320.0}, {"n_layer": 3, "d_model": 96, "params": 345888, "fpt": 2309760.0}, {"n_layer": 4, "d_model": 96, "params": 456672, "fpt": 3050496.0}, {"n_layer": 4, "d_model": 112, "params": 618800, "fpt": 4075008.0}, {"n_layer": 4, "d_model": 128, "params": 805504, "fpt": 5246976.0}, {"n_layer": 5, "d_model": 128, "params": 1002368, "fpt": 6529536.0}, {"n_layer": 5, "d_model": 144, "params": 1265904, "fpt": 8175168.0}, {"n_layer": 5, "d_model": 160, "params": 1560160, "fpt": 10005120.0}, {"n_layer": 6, "d_model": 176, "params": 2257200, "fpt": 14391168.0}, {"n_layer": 6, "d_model": 192, "params": 2683584, "fpt": 17026560.0}, {"n_layer": 7, "d_model": 208, "params": 3666416, "fpt": 23165376.0}, {"n_layer": 7, "d_model": 224, "params": 4249504, "fpt": 26753664.0}, {"n_layer": 8, "d_model": 240, "params": 5567280, "fpt": 34940160.0}, {"n_layer": 8, "d_model": 256, "params": 6331648, "fpt": 39628800.0}], "budgets": [1000000000000.0, 3162277660168.3794, 10000000000000.0, 31622776601683.793], "isoflop": [{"budget": 1000000000000.0, "params": 29216, "tokens": 4384768, "flops": 1000148041728.0, "val_loss": 1.3319469168782234, "n_layer": 2, "d_model": 32, "lr": 0.008, "batch": 32, "steps": 2141, "curve": [[4671406080.0, 4.2582], [9342812160.0, 3.9404], [14014218240.0, 3.549], [18685624320.0, 3.2227], [23357030400.0, 3.0983], [28028436480.0, 3.06], [32699842560.0, 2.9163], [37371248640.0, 2.7486], [42042654720.0, 2.6351], [46714060800.0, 2.5612], [51385466880.0, 2.4956], [56056872960.0, 2.4227], [65399685120.0, 2.3691], [74742497280.0, 2.3499], [79413903360.0, 2.3307], [93428121600.0, 2.2747], [102770933760.0, 2.2542], [116785152000.0, 2.2176], [126127964160.0, 2.1628], [144813588480.0, 2.0575], [163499212800.0, 1.9701], [182184837120.0, 1.9269], [200870461440.0, 1.8139], [228898897920.0, 1.8048], [256927334400.0, 1.7143], [284955770880.0, 1.6972], [322327019520.0, 1.6615], [359698268160.0, 1.6102], [401740922880.0, 1.5569], [453126389760.0, 1.5385], [504511856640.0, 1.4976], [565240135680.0, 1.4863], [635311226880.0, 1.4074], [714725130240.0, 1.4022], [798810439680.0, 1.3678], [896909967360.0, 1.3215], [1000148041728.0, 1.3528]]}, {"budget": 1000000000000.0, "params": 44200, "tokens": 3024896, "flops": 1000103215104.0, "val_loss": 1.3705895468592644, "n_layer": 2, "d_model": 40, "lr": 0.008, "batch": 16, "steps": 2954, "curve": [[4739825664.0, 4.1991], [9479651328.0, 3.7415], [14219476992.0, 3.265], [18959302656.0, 3.0335], [23699128320.0, 2.7569], [28438953984.0, 2.5767], [33178779648.0, 2.5049], [37918605312.0, 2.4564], [42658430976.0, 2.3766], [47398256640.0, 2.3472], [52138082304.0, 2.3705], [56877907968.0, 2.3541], [66357559296.0, 2.3184], [71097384960.0, 2.3118], [80577036288.0, 2.2799], [90056687616.0, 2.2828], [104276164608.0, 2.2356], [113755815936.0, 2.1383], [127975292928.0, 2.1509], [142194769920.0, 2.0734], [161154072576.0, 1.9738], [180113375232.0, 1.9192], [203812503552.0, 1.8714], [227511631872.0, 1.7703], [255950585856.0, 1.7591], [284389539840.0, 1.6769], [322308145152.0, 1.7014], [360226750464.0, 1.6219], [402885181440.0, 1.5971], [450283438080.0, 1.6242], [507161346048.0, 1.5566], [564039254016.0, 1.5352], [635136638976.0, 1.4976], [710973849600.0, 1.4923], [796290711552.0, 1.4774], [891087224832.0, 1.3913], [1000103215104.0, 1.3648]]}, {"budget": 1000000000000.0, "params": 62256, "tokens": 2208768, "flops": 999988789248.0, "val_loss": 1.3560979515314102, "n_layer": 2, "d_model": 48, "lr": 0.008, "batch": 16, "steps": 2157, "curve": [[4636016640.0, 4.2087], [9272033280.0, 3.7926], [13908049920.0, 3.3314], [18544066560.0, 3.0459], [23180083200.0, 2.8425], [27816099840.0, 2.6784], [32452116480.0, 2.5355], [37088133120.0, 2.4814], [41724149760.0, 2.4696], [46360166400.0, 2.4291], [50996183040.0, 2.4234], [55632199680.0, 2.3445], [64904232960.0, 2.3102], [74176266240.0, 2.3136], [78812282880.0, 2.3082], [92720332800.0, 2.2399], [101992366080.0, 2.2146], [115900416000.0, 2.156], [129808465920.0, 2.0973], [143716515840.0, 2.0723], [162260582400.0, 1.9754], [180804648960.0, 2.0132], [203984732160.0, 1.8758], [227164815360.0, 1.8871], [254980915200.0, 1.7596], [282797015040.0, 1.7859], [319885148160.0, 1.6791], [356973281280.0, 1.6962], [403333447680.0, 1.6187], [449693614080.0, 1.6254], [505325813760.0, 1.5655], [565594030080.0, 1.4712], [635134279680.0, 1.5018], [709310545920.0, 1.454], [797394862080.0, 1.4227], [894751211520.0, 1.3165], [999988789248.0, 1.3105]]}, {"budget": 1000000000000.0, "params": 83384, "tokens": 1685504, "flops": 999975813120.0, "val_loss": 1.384288139641285, "n_layer": 2, "d_model": 56, "lr": 0.008, "batch": 16, "steps": 1646, "curve": [[4860149760.0, 4.2108], [9720299520.0, 3.7779], [14580449280.0, 3.3378], [19440599040.0, 3.0788], [24300748800.0, 2.9283], [29160898560.0, 2.6956], [34021048320.0, 2.6027], [38881198080.0, 2.4959], [43741347840.0, 2.4747], [48601497600.0, 2.4428], [53461647360.0, 2.451], [58321797120.0, 2.4393], [68042096640.0, 2.4123], [72902246400.0, 2.3278], [82622545920.0, 2.3473], [92342845440.0, 2.322], [102063144960.0, 2.3178], [116643594240.0, 2.2765], [131224043520.0, 2.226], [145804492800.0, 2.1574], [165245091840.0, 2.1117], [184685690880.0, 2.0674], [204126289920.0, 1.9938], [228427038720.0, 2.011], [257587937280.0, 1.861], [286748835840.0, 1.8361], [320769884160.0, 1.7981], [359651082240.0, 1.7445], [403392430080.0, 1.6566], [451993927680.0, 1.586], [505455575040.0, 1.575], [568637521920.0, 1.5789], [636679618560.0, 1.5553], [714442014720.0, 1.5042], [797064560640.0, 1.4265], [894267555840.0, 1.4116], [999975813120.0, 1.3819]]}, {"budget": 1000000000000.0, "params": 107584, "tokens": 1331200, "flops": 999869644800.0, "val_loss": 1.415629267692566, "n_layer": 2, "d_model": 64, "lr": 0.008, "batch": 16, "steps": 1300, "curve": [[4614782976.0, 4.1907], [9229565952.0, 3.7917], [13844348928.0, 3.4236], [18459131904.0, 3.1404], [23073914880.0, 2.9943], [27688697856.0, 2.8705], [32303480832.0, 2.6719], [36918263808.0, 2.5859], [41533046784.0, 2.5476], [46147829760.0, 2.4881], [50762612736.0, 2.4457], [55377395712.0, 2.4555], [64606961664.0, 2.4188], [73836527616.0, 2.4077], [78451310592.0, 2.3623], [92295659520.0, 2.296], [101525225472.0, 2.3146], [115369574400.0, 2.3002], [129213923328.0, 2.2783], [143058272256.0, 2.2382], [161517404160.0, 2.2081], [179976536064.0, 2.1267], [203050450944.0, 2.1149], [226124365824.0, 2.0647], [253813063680.0, 1.9672], [286116544512.0, 1.9576], [318420025344.0, 1.9037], [355338289152.0, 1.7728], [401486118912.0, 1.7278], [447633948672.0, 1.7224], [503011344384.0, 1.605], [563003523072.0, 1.5681], [632225267712.0, 1.516], [710676578304.0, 1.4503], [798357454848.0, 1.4543], [895267897344.0, 1.5201], [999869644800.0, 1.3734]]}, {"budget": 1000000000000.0, "params": 156864, "tokens": 911360, "flops": 1000192081920.0, "val_loss": 1.5348611772060394, "n_layer": 3, "d_model": 64, "lr": 0.008, "batch": 16, "steps": 890, "curve": [[4495245312.0, 4.2042], [8990490624.0, 3.8909], [13485735936.0, 3.6209], [17980981248.0, 3.3257], [22476226560.0, 3.5137], [26971471872.0, 3.0681], [31466717184.0, 3.0162], [35961962496.0, 2.9926], [40457207808.0, 2.8974], [44952453120.0, 2.7347], [49447698432.0, 2.6194], [58438189056.0, 2.5656], [62933434368.0, 2.537], [71923924992.0, 2.4582], [80914415616.0, 2.4761], [89904906240.0, 2.4181], [98895396864.0, 2.4185], [112381132800.0, 2.3677], [125866868736.0, 2.3996], [143847849984.0, 2.2803], [157333585920.0, 2.2784], [179809812480.0, 2.2845], [202286039040.0, 2.2386], [224762265600.0, 2.2129], [251733737472.0, 2.1996], [283200454656.0, 2.1208], [319162417152.0, 2.0751], [355124379648.0, 1.9796], [400076832768.0, 1.8659], [449524531200.0, 1.9386], [503467474944.0, 1.9187], [561905664000.0, 1.7582], [633829588992.0, 1.7053], [710248759296.0, 1.7374], [795658420224.0, 1.5484], [894553817088.0, 1.5759], [1000192081920.0, 1.535]]}, {"budget": 3162277660168.3794, "params": 29216, "tokens": 13864960, "flops": 3162541916160.0, "val_loss": 1.2358850166201591, "n_layer": 2, "d_model": 32, "lr": 0.008, "batch": 64, "steps": 3385, "curve": [[14948499456.0, 4.2121], [29896998912.0, 3.776], [44845498368.0, 3.3057], [59793997824.0, 3.0626], [74742497280.0, 2.8165], [89690996736.0, 2.5878], [104639496192.0, 2.4742], [119587995648.0, 2.3901], [134536495104.0, 2.3625], [149484994560.0, 2.332], [164433494016.0, 2.3011], [179381993472.0, 2.2603], [209278992384.0, 2.1932], [224227491840.0, 2.1532], [254124490752.0, 2.0893], [284021489664.0, 1.999], [328866988032.0, 1.8815], [358763986944.0, 1.8604], [403609485312.0, 1.7474], [463403483136.0, 1.6904], [508248981504.0, 1.6483], [568042979328.0, 1.6268], [642785476608.0, 1.5708], [717527973888.0, 1.5275], [807218970624.0, 1.4903], [911858466816.0, 1.4878], [1016497963008.0, 1.4346], [1136085958656.0, 1.3919], [1270622453760.0, 1.3862], [1420107448320.0, 1.364], [1599489441792.0, 1.35], [1793819934720.0, 1.3462], [2003098927104.0, 1.322], [2257223417856.0, 1.3036], [2526296408064.0, 1.2535], [2825266397184.0, 1.2462], [3162541916160.0, 1.2321]]}, {"budget": 3162277660168.3794, "params": 44200, "tokens": 9564160, "flops": 3162140835840.0, "val_loss": 1.2017432302236557, "n_layer": 2, "d_model": 40, "lr": 0.008, "batch": 64, "steps": 2335, "curve": [[14896594944.0, 4.2197], [29793189888.0, 3.8281], [44689784832.0, 3.3778], [59586379776.0, 3.0833], [74482974720.0, 2.8393], [89379569664.0, 2.6179], [104276164608.0, 2.4808], [119172759552.0, 2.4111], [134069354496.0, 2.3797], [148965949440.0, 2.3672], [163862544384.0, 2.3374], [178759139328.0, 2.3168], [208552329216.0, 2.2612], [223448924160.0, 2.2356], [253242114048.0, 2.1756], [283035303936.0, 2.1044], [327725088768.0, 2.0252], [357518278656.0, 1.946], [402208063488.0, 1.8511], [461794443264.0, 1.7544], [506484228096.0, 1.7011], [566070607872.0, 1.6747], [640553582592.0, 1.5959], [715036557312.0, 1.5899], [804416126976.0, 1.5708], [908692291584.0, 1.4572], [1012968456192.0, 1.4795], [1132141215744.0, 1.4221], [1281107165184.0, 1.4092], [1430073114624.0, 1.3708], [1593935659008.0, 1.3586], [1787591393280.0, 1.3223], [2011040317440.0, 1.2799], [2249385836544.0, 1.2589], [2532421140480.0, 1.2499], [2830353039360.0, 1.215], [3162140835840.0, 1.2087]]}, {"budget": 3162277660168.3794, "params": 62256, "tokens": 6985728, "flops": 3162690551808.0, "val_loss": 1.1925191208720207, "n_layer": 2, "d_model": 48, "lr": 0.008, "batch": 32, "steps": 3411, "curve": [[15762456576.0, 4.1309], [31524913152.0, 3.528], [47287369728.0, 3.0332], [63049826304.0, 2.712], [78812282880.0, 2.4926], [94574739456.0, 2.4326], [110337196032.0, 2.3689], [126099652608.0, 2.349], [141862109184.0, 2.3219], [157624565760.0, 2.2908], [173387022336.0, 2.2354], [189149478912.0, 2.2439], [204911935488.0, 2.1912], [236436848640.0, 2.1319], [267961761792.0, 2.028], [299486674944.0, 1.9511], [331011588096.0, 1.8741], [378298957824.0, 1.8114], [409823870976.0, 1.7802], [472873697280.0, 1.7124], [520161067008.0, 1.6543], [583210893312.0, 1.6638], [646260719616.0, 1.6121], [725073002496.0, 1.5698], [819647741952.0, 1.5457], [914222481408.0, 1.5114], [1024559677440.0, 1.4449], [1150659330048.0, 1.4656], [1292521439232.0, 1.4144], [1434383548416.0, 1.3804], [1607770570752.0, 1.3771], [1796920049664.0, 1.2942], [2017594441728.0, 1.312], [2254031290368.0, 1.2665], [2521993052160.0, 1.2176], [2837242183680.0, 1.2101], [3162690551808.0, 1.1965]]}, {"budget": 3162277660168.3794, "params": 83384, "tokens": 5329920, "flops": 3162134937600.0, "val_loss": 1.2051899582147598, "n_layer": 2, "d_model": 56, "lr": 0.008, "batch": 16, "steps": 5205, "curve": [[15795486720.0, 3.9656], [31590973440.0, 3.1107], [47386460160.0, 2.6265], [63181946880.0, 2.469], [78977433600.0, 2.3779], [94772920320.0, 2.3412], [110568407040.0, 2.3166], [126363893760.0, 2.2872], [142159380480.0, 2.2329], [157954867200.0, 2.1722], [173750353920.0, 2.1236], [189545840640.0, 2.105], [205341327360.0, 2.0144], [236932300800.0, 2.0027], [268523274240.0, 1.8741], [300114247680.0, 1.8742], [331705221120.0, 1.7838], [379091681280.0, 1.7695], [410682654720.0, 1.6952], [473864601600.0, 1.7124], [521251061760.0, 1.5829], [584433008640.0, 1.6717], [647614955520.0, 1.5905], [726592389120.0, 1.5683], [821365309440.0, 1.5462], [916138229760.0, 1.5231], [1026706636800.0, 1.4768], [1153070530560.0, 1.4371], [1295229911040.0, 1.4162], [1437389291520.0, 1.4695], [1611139645440.0, 1.4128], [1800685486080.0, 1.3786], [2021822300160.0, 1.2781], [2258754600960.0, 1.2631], [2527277875200.0, 1.258], [2843187609600.0, 1.2316], [3162134937600.0, 1.2199]]}, {"budget": 3162277660168.3794, "params": 107584, "tokens": 4210688, "flops": 3162664599552.0, "val_loss": 1.2304078787565231, "n_layer": 2, "d_model": 64, "lr": 0.008, "batch": 32, "steps": 2056, "curve": [[15382609920.0, 4.111], [30765219840.0, 3.5913], [46147829760.0, 3.1672], [61530439680.0, 2.8487], [76913049600.0, 2.5973], [92295659520.0, 2.4777], [107678269440.0, 2.4179], [123060879360.0, 2.3728], [138443489280.0, 2.3719], [153826099200.0, 2.3682], [169208709120.0, 2.3456], [184591319040.0, 2.2967], [215356538880.0, 2.2576], [230739148800.0, 2.2654], [261504368640.0, 2.1994], [292269588480.0, 2.1193], [323034808320.0, 2.0385], [369182638080.0, 1.9401], [415330467840.0, 1.9084], [461478297600.0, 1.8501], [523008737280.0, 1.7389], [584539176960.0, 1.6972], [646069616640.0, 1.6511], [722982666240.0, 1.6105], [815278325760.0, 1.577], [907573985280.0, 1.5707], [1015252254720.0, 1.4988], [1138313134080.0, 1.4179], [1276756623360.0, 1.4028], [1430582722560.0, 1.4531], [1599791431680.0, 1.3815], [1799765360640.0, 1.4122], [2015121899520.0, 1.3396], [2261243658240.0, 1.286], [2522748026880.0, 1.2468], [2830400225280.0, 1.2486], [3162664599552.0, 1.2502]]}, {"budget": 3162277660168.3794, "params": 156864, "tokens": 2881536, "flops": 3162405076992.0, "val_loss": 1.2575763389468193, "n_layer": 3, "d_model": 64, "lr": 0.008, "batch": 16, "steps": 2814, "curve": [[15733358592.0, 4.0513], [31466717184.0, 3.4441], [47200075776.0, 3.0062], [62933434368.0, 2.7008], [78666792960.0, 2.5094], [94400151552.0, 2.4667], [110133510144.0, 2.4315], [125866868736.0, 2.4083], [141600227328.0, 2.3359], [157333585920.0, 2.3075], [173066944512.0, 2.3365], [188800303104.0, 2.3145], [204533661696.0, 2.2902], [236000378880.0, 2.2494], [267467096064.0, 2.1807], [298933813248.0, 2.1474], [330400530432.0, 2.1024], [377600606208.0, 1.9952], [409067323392.0, 1.9628], [472000757760.0, 1.9234], [519200833536.0, 1.8609], [582134267904.0, 1.7855], [645067702272.0, 1.7656], [723734495232.0, 1.7318], [818134646784.0, 1.6596], [912534798336.0, 1.6296], [1022668308480.0, 1.5739], [1148535177216.0, 1.596], [1290135404544.0, 1.5445], [1431735631872.0, 1.4443], [1604802576384.0, 1.515], [1793602879488.0, 1.4294], [2013869899776.0, 1.4123], [2249870278656.0, 1.3446], [2517337374720.0, 1.3071], [2832004546560.0, 1.2309], [3162405076992.0, 1.2694]]}, {"budget": 3162277660168.3794, "params": 242160, "tokens": 1918976, "flops": 3163086520320.0, "val_loss": 1.2871858477592468, "n_layer": 3, "d_model": 80, "lr": 0.008, "batch": 16, "steps": 1874, "curve": [[15190917120.0, 4.0534], [30381834240.0, 3.5358], [45572751360.0, 3.0502], [60763668480.0, 2.7693], [75954585600.0, 2.5376], [91145502720.0, 2.4974], [106336419840.0, 2.4331], [121527336960.0, 2.425], [136718254080.0, 2.3942], [151909171200.0, 2.4233], [167100088320.0, 2.3873], [182291005440.0, 2.3808], [212672839680.0, 2.3144], [227863756800.0, 2.2963], [258245591040.0, 2.315], [288627425280.0, 2.2952], [334200176640.0, 2.2187], [364582010880.0, 2.1837], [410154762240.0, 2.098], [455727513600.0, 2.0587], [516491182080.0, 1.9817], [577254850560.0, 1.8752], [653209436160.0, 1.9101], [729164021760.0, 1.7288], [805118607360.0, 1.7592], [911455027200.0, 1.6727], [1017791447040.0, 1.6789], [1139318784000.0, 1.5714], [1276037038080.0, 1.562], [1427946209280.0, 1.3684], [1610237214720.0, 1.5077], [1792528220160.0, 1.4306], [2020391976960.0, 1.4337], [2263446650880.0, 1.3709], [2536883159040.0, 1.3434], [2840701501440.0, 1.3245], [3163086520320.0, 1.2415]]}, {"budget": 10000000000000.0, "params": 62256, "tokens": 22089728, "flops": 10000815095808.0, "val_loss": 1.0823915004730225, "n_layer": 2, "d_model": 48, "lr": 0.008, "batch": 64, "steps": 5393, "curve": [[48214573056.0, 4.0088], [96429146112.0, 3.1787], [144643719168.0, 2.653], [192858292224.0, 2.4132], [241072865280.0, 2.3398], [289287438336.0, 2.2913], [337502011392.0, 2.2265], [385716584448.0, 2.1734], [433931157504.0, 2.0853], [482145730560.0, 2.003], [530360303616.0, 1.9477], [578574876672.0, 1.862], [675004022784.0, 1.7276], [723218595840.0, 1.6956], [819647741952.0, 1.6248], [916076888064.0, 1.5624], [1012506034176.0, 1.5236], [1157149753344.0, 1.5026], [1301793472512.0, 1.4702], [1446437191680.0, 1.4387], [1639295483904.0, 1.41], [1832153776128.0, 1.3808], [2025012068352.0, 1.3651], [2314299506688.0, 1.34], [2555372371968.0, 1.2932], [2892874383360.0, 1.2628], [3230376394752.0, 1.2781], [3616092979200.0, 1.2418], [4050024136704.0, 1.2467], [4532169867264.0, 1.2042], [5062530170880.0, 1.1828], [5689319620608.0, 1.1836], [6364323643392.0, 1.1586], [7135756812288.0, 1.146], [8003619127296.0, 1.1129], [8967910588416.0, 1.0989], [10000815095808.0, 1.0735]]}, {"budget": 10000000000000.0, "params": 83384, "tokens": 16855040, "flops": 9999758131200.0, "val_loss": 1.061994507908821, "n_layer": 2, "d_model": 56, "lr": 0.008, "batch": 64, "steps": 4115, "curve": [[48601497600.0, 4.0629], [97202995200.0, 3.3459], [145804492800.0, 2.8024], [194405990400.0, 2.5009], [243007488000.0, 2.3879], [291608985600.0, 2.3358], [340210483200.0, 2.2851], [388811980800.0, 2.2455], [437413478400.0, 2.1682], [486014976000.0, 2.1076], [534616473600.0, 2.0256], [583217971200.0, 1.9595], [680420966400.0, 1.8533], [729022464000.0, 1.7842], [826225459200.0, 1.6797], [923428454400.0, 1.6373], [1020631449600.0, 1.5915], [1166435942400.0, 1.5188], [1312240435200.0, 1.4882], [1458044928000.0, 1.4743], [1652450918400.0, 1.4111], [1846856908800.0, 1.4014], [2041262899200.0, 1.3474], [2284270387200.0, 1.3609], [2575879372800.0, 1.3233], [2867488358400.0, 1.3009], [3207698841600.0, 1.2779], [3596510822400.0, 1.249], [4033924300800.0, 1.2293], [4519939276800.0, 1.222], [5054555750400.0, 1.2017], [5686375219200.0, 1.1903], [6366796185600.0, 1.1264], [7144420147200.0, 1.0998], [7970645606400.0, 1.093], [8942675558400.0, 1.087], [9999758131200.0, 1.0319]]}, {"budget": 10000000000000.0, "params": 107584, "tokens": 13312000, "flops": 9998696448000.0, "val_loss": 1.0696097984910011, "n_layer": 2, "d_model": 64, "lr": 0.008, "batch": 64, "steps": 3250, "curve": [[49224351744.0, 4.0348], [98448703488.0, 3.3769], [147673055232.0, 2.8731], [196897406976.0, 2.5534], [246121758720.0, 2.4124], [295346110464.0, 2.3532], [344570462208.0, 2.3244], [393794813952.0, 2.2861], [443019165696.0, 2.2617], [492243517440.0, 2.1949], [541467869184.0, 2.1534], [590692220928.0, 2.0719], [639916572672.0, 2.0014], [738365276160.0, 1.8788], [836813979648.0, 1.7864], [935262683136.0, 1.7096], [1033711386624.0, 1.635], [1181384441856.0, 1.5976], [1329057497088.0, 1.5385], [1476730552320.0, 1.5045], [1624403607552.0, 1.4726], [1821301014528.0, 1.4793], [2067422773248.0, 1.3844], [2313544531968.0, 1.3844], [2559666290688.0, 1.3327], [2904236752896.0, 1.3514], [3248807215104.0, 1.3185], [3642602029056.0, 1.2791], [4085621194752.0, 1.2698], [4528640360448.0, 1.2303], [5070108229632.0, 1.1848], [5710024802304.0, 1.1934], [6399165726720.0, 1.1703], [7137531002880.0, 1.1176], [8023569334272.0, 1.0854], [8958832017408.0, 1.068], [9998696448000.0, 1.0771]]}, {"budget": 10000000000000.0, "params": 156864, "tokens": 9111552, "flops": 9999673196544.0, "val_loss": 1.0555141940712929, "n_layer": 3, "d_model": 64, "lr": 0.008, "batch": 32, "steps": 4449, "curve": [[49447698432.0, 3.9513], [98895396864.0, 3.1655], [148343095296.0, 2.6578], [197790793728.0, 2.4376], [247238492160.0, 2.3842], [296686190592.0, 2.3269], [346133889024.0, 2.2839], [395581587456.0, 2.2363], [445029285888.0, 2.1936], [494476984320.0, 2.1376], [543924682752.0, 2.0837], [593372381184.0, 2.0496], [642820079616.0, 1.9757], [741715476480.0, 1.8715], [840610873344.0, 1.814], [939506270208.0, 1.7628], [1038401667072.0, 1.7129], [1186744762368.0, 1.6241], [1335087857664.0, 1.5988], [1483430952960.0, 1.5164], [1631774048256.0, 1.4835], [1829564841984.0, 1.4446], [2076803334144.0, 1.4138], [2324041826304.0, 1.4009], [2571280318464.0, 1.4071], [2917414207488.0, 1.3457], [3263548096512.0, 1.322], [3609681985536.0, 1.2966], [4054711271424.0, 1.2894], [4549188255744.0, 1.2214], [5093112938496.0, 1.2005], [5686485319680.0, 1.1931], [6378753097728.0, 1.1814], [7169916272640.0, 1.1031], [8010527145984.0, 1.0445], [8950033416192.0, 1.0621], [9999673196544.0, 0.9856]]}, {"budget": 10000000000000.0, "params": 242160, "tokens": 6067200, "flops": 10000687104000.0, "val_loss": 1.1017896085977554, "n_layer": 3, "d_model": 80, "lr": 0.008, "batch": 16, "steps": 5925, "curve": [[48948510720.0, 3.7217], [97897021440.0, 2.7568], [146845532160.0, 2.4596], [195794042880.0, 2.3941], [244742553600.0, 2.3084], [293691064320.0, 2.2805], [342639575040.0, 2.2541], [391588085760.0, 2.2105], [440536596480.0, 2.1322], [489485107200.0, 2.0736], [538433617920.0, 2.0352], [587382128640.0, 1.9531], [685279150080.0, 1.9342], [734227660800.0, 1.8394], [832124682240.0, 1.8141], [930021703680.0, 1.7367], [1027918725120.0, 1.7308], [1174764257280.0, 1.6366], [1321609789440.0, 1.6517], [1468455321600.0, 1.5364], [1615300853760.0, 1.5797], [1811094896640.0, 1.5081], [2055837450240.0, 1.4919], [2300580003840.0, 1.4402], [2594271068160.0, 1.423], [2887962132480.0, 1.4012], [3230601707520.0, 1.3591], [3622189793280.0, 1.3503], [4062726389760.0, 1.3412], [4552211496960.0, 1.2916], [5090645114880.0, 1.285], [5678027243520.0, 1.2303], [6363306393600.0, 1.2057], [7146482565120.0, 1.1806], [7978607247360.0, 1.1632], [8957577461760.0, 1.1357], [10000687104000.0, 1.0735]]}, {"budget": 10000000000000.0, "params": 345888, "tokens": 4329472, "flops": 10000041246720.0, "val_loss": 1.125613011419773, "n_layer": 3, "d_model": 96, "lr": 0.008, "batch": 16, "steps": 4228, "curve": [[49669079040.0, 3.8299], [99338158080.0, 2.8907], [149007237120.0, 2.5035], [198676316160.0, 2.4203], [248345395200.0, 2.3972], [298014474240.0, 2.3283], [347683553280.0, 2.2942], [397352632320.0, 2.2845], [447021711360.0, 2.245], [496690790400.0, 2.2122], [546359869440.0, 2.1489], [596028948480.0, 2.0937], [645698027520.0, 2.0696], [745036185600.0, 1.9876], [844374343680.0, 1.8504], [943712501760.0, 1.85], [1043050659840.0, 1.7019], [1192057896960.0, 1.7158], [1291396055040.0, 1.6296], [1490072371200.0, 1.6212], [1639079608320.0, 1.5498], [1837755924480.0, 1.5857], [2086101319680.0, 1.4509], [2334446714880.0, 1.4844], [2582792110080.0, 1.4421], [2880806584320.0, 1.4269], [3228490137600.0, 1.3776], [3625842769920.0, 1.3725], [4072864481280.0, 1.3618], [4569555271680.0, 1.2728], [5115915141120.0, 1.2908], [5711944089600.0, 1.2527], [6407311196160.0, 1.2229], [7152347381760.0, 1.1944], [7996721725440.0, 1.1789], [8940434227200.0, 1.1097], [10000041246720.0, 1.1238]]}, {"budget": 10000000000000.0, "params": 456672, "tokens": 3277824, "flops": 9998989000704.0, "val_loss": 1.1567054241895676, "n_layer": 4, "d_model": 96, "lr": 0.008, "batch": 16, "steps": 3201, "curve": [[49979326464.0, 3.8829], [99958652928.0, 3.0875], [149937979392.0, 2.5816], [199917305856.0, 2.4634], [249896632320.0, 2.4183], [299875958784.0, 2.4169], [349855285248.0, 2.3889], [399834611712.0, 2.3038], [449813938176.0, 2.3259], [499793264640.0, 2.32], [549772591104.0, 2.2844], [599751917568.0, 2.2457], [649731244032.0, 2.234], [749689896960.0, 2.1368], [849648549888.0, 2.088], [949607202816.0, 2.0376], [1049565855744.0, 1.9185], [1199503835136.0, 1.9018], [1299462488064.0, 1.8489], [1499379793920.0, 1.7369], [1649317773312.0, 1.6925], [1849235079168.0, 1.6541], [2049152385024.0, 1.594], [2299049017344.0, 1.5369], [2598924976128.0, 1.4908], [2898800934912.0, 1.4634], [3248656220160.0, 1.4693], [3648490831872.0, 1.4774], [4098304770048.0, 1.3787], [4548118708224.0, 1.3305], [5097891299328.0, 1.3579], [5697643216896.0, 1.3595], [6397353787392.0, 1.2953], [7147043684352.0, 1.1866], [7996692234240.0, 1.1752], [8996278763520.0, 1.1883], [9998989000704.0, 1.2136]]}, {"budget": 31622776601683.793, "params": 83384, "tokens": 53301248, "flops": 31622564413440.0, "val_loss": 1.0095451548695564, "n_layer": 2, "d_model": 56, "lr": 0.008, "batch": 64, "steps": 13013, "curve": [[157954867200.0, 3.34], [315909734400.0, 2.3793], [473864601600.0, 2.1873], [631819468800.0, 1.9625], [789774336000.0, 1.7812], [947729203200.0, 1.6528], [1105684070400.0, 1.5808], [1263638937600.0, 1.5079], [1421593804800.0, 1.4796], [1579548672000.0, 1.451], [1737503539200.0, 1.4109], [1895458406400.0, 1.4042], [2053413273600.0, 1.3664], [2369323008000.0, 1.3525], [2685232742400.0, 1.3196], [3001142476800.0, 1.2898], [3317052211200.0, 1.2847], [3790916812800.0, 1.2519], [4106826547200.0, 1.2539], [4738646016000.0, 1.2367], [5212510617600.0, 1.2369], [5844330086400.0, 1.2224], [6476149555200.0, 1.2], [7265923891200.0, 1.1761], [8213653094400.0, 1.1725], [9161382297600.0, 1.1747], [10267066368000.0, 1.1415], [11530705305600.0, 1.1654], [12952299110400.0, 1.1475], [14373892915200.0, 1.1201], [16111396454400.0, 1.1056], [18006854860800.0, 1.0975], [20218223001600.0, 1.0785], [22587546009600.0, 1.0735], [25272778752000.0, 1.0425], [28431876096000.0, 1.0081], [31622564413440.0, 0.9906]]}, {"budget": 31622776601683.793, "params": 107584, "tokens": 42102784, "flops": 31623569473536.0, "val_loss": 0.9899198561906815, "n_layer": 2, "d_model": 64, "lr": 0.008, "batch": 64, "steps": 10279, "curve": [[156902621184.0, 3.4495], [313805242368.0, 2.4459], [470707863552.0, 2.2814], [627610484736.0, 2.126], [784513105920.0, 1.9278], [941415727104.0, 1.7824], [1098318348288.0, 1.651], [1255220969472.0, 1.5999], [1412123590656.0, 1.5434], [1569026211840.0, 1.5008], [1725928833024.0, 1.4732], [1882831454208.0, 1.4658], [2039734075392.0, 1.4292], [2353539317760.0, 1.3973], [2667344560128.0, 1.359], [2981149802496.0, 1.365], [3294955044864.0, 1.34], [3765662908416.0, 1.2903], [4079468150784.0, 1.2903], [4707078635520.0, 1.2562], [5177786499072.0, 1.2452], [5805396983808.0, 1.2418], [6589910089728.0, 1.2205], [7374423195648.0, 1.2004], [8158936301568.0, 1.1844], [9100352028672.0, 1.1616], [10198670376960.0, 1.1555], [11453891346432.0, 1.157], [12866014937088.0, 1.1247], [14435041148928.0, 1.1184], [16160969981952.0, 1.104], [18043801436160.0, 1.0732], [20240438132736.0, 1.0793], [22593977450496.0, 1.0217], [25261322010624.0, 1.0077], [28242471813120.0, 1.0019], [31623569473536.0, 0.9766]]}, {"budget": 31622776601683.793, "params": 156864, "tokens": 28815360, "flops": 31624050769920.0, "val_loss": 0.9584720358252525, "n_layer": 3, "d_model": 64, "lr": 0.008, "batch": 64, "steps": 7035, "curve": [[157333585920.0, 3.7065], [314667171840.0, 2.7004], [472000757760.0, 2.3745], [629334343680.0, 2.2854], [786667929600.0, 2.1955], [944001515520.0, 2.0755], [1101335101440.0, 1.9628], [1258668687360.0, 1.8426], [1416002273280.0, 1.7418], [1573335859200.0, 1.6599], [1730669445120.0, 1.6331], [1888003031040.0, 1.5709], [2045336616960.0, 1.5557], [2360003788800.0, 1.4617], [2674670960640.0, 1.4521], [2989338132480.0, 1.3879], [3304005304320.0, 1.3584], [3776006062080.0, 1.3107], [4090673233920.0, 1.312], [4720007577600.0, 1.2829], [5192008335360.0, 1.2537], [5821342679040.0, 1.2227], [6450677022720.0, 1.2297], [7237344952320.0, 1.1831], [8181346467840.0, 1.1966], [9125347983360.0, 1.1444], [10226683084800.0, 1.146], [11485351772160.0, 1.1273], [12901354045440.0, 1.1244], [14317356318720.0, 1.0992], [16048025763840.0, 1.055], [17936028794880.0, 1.0622], [20138698997760.0, 1.0217], [22498702786560.0, 1.0217], [25173373747200.0, 0.9752], [28320045465600.0, 0.9619], [31624050769920.0, 0.9437]]}, {"budget": 31622776601683.793, "params": 242160, "tokens": 19185664, "flops": 31624113684480.0, "val_loss": 0.949266042560339, "n_layer": 3, "d_model": 80, "lr": 0.008, "batch": 64, "steps": 4684, "curve": [[155284930560.0, 3.8382], [310569861120.0, 2.9272], [465854791680.0, 2.4835], [621139722240.0, 2.3527], [776424652800.0, 2.2827], [931709583360.0, 2.2085], [1086994513920.0, 2.1484], [1242279444480.0, 2.0592], [1397564375040.0, 1.9998], [1552849305600.0, 1.9024], [1708134236160.0, 1.8383], [1863419166720.0, 1.7717], [2018704097280.0, 1.7284], [2329273958400.0, 1.6109], [2639843819520.0, 1.5767], [2950413680640.0, 1.5214], [3260983541760.0, 1.4633], [3726838333440.0, 1.4309], [4192693125120.0, 1.389], [4658547916800.0, 1.3552], [5124402708480.0, 1.3345], [5745542430720.0, 1.2938], [6521967083520.0, 1.2801], [7298391736320.0, 1.2599], [8074816389120.0, 1.2129], [9161810903040.0, 1.1857], [10248805416960.0, 1.1626], [11491084861440.0, 1.155], [12888649236480.0, 1.1282], [14286213611520.0, 1.1164], [15994347847680.0, 1.0814], [18013051944960.0, 1.0453], [20187040972800.0, 1.01], [22516314931200.0, 0.9855], [25311443681280.0, 0.9766], [28261857361920.0, 0.9383], [31624113684480.0, 0.9635]]}, {"budget": 31622776601683.793, "params": 345888, "tokens": 13692928, "flops": 31627377377280.0, "val_loss": 0.9531628340482712, "n_layer": 3, "d_model": 96, "lr": 0.008, "batch": 64, "steps": 3343, "curve": [[151372431360.0, 3.9003], [302744862720.0, 3.0761], [454117294080.0, 2.5541], [605489725440.0, 2.4116], [756862156800.0, 2.3367], [908234588160.0, 2.3078], [1059607019520.0, 2.2563], [1210979450880.0, 2.2008], [1362351882240.0, 2.1269], [1513724313600.0, 2.0909], [1665096744960.0, 2.0138], [1816469176320.0, 1.9254], [2119214039040.0, 1.7834], [2270586470400.0, 1.7521], [2573331333120.0, 1.6879], [2876076195840.0, 1.6063], [3330193489920.0, 1.5233], [3632938352640.0, 1.5109], [4087055646720.0, 1.4431], [4541172940800.0, 1.4069], [5146662666240.0, 1.3756], [5752152391680.0, 1.3688], [6509014548480.0, 1.3262], [7265876705280.0, 1.2941], [8022738862080.0, 1.2622], [9082345881600.0, 1.2252], [10141952901120.0, 1.2218], [11352932352000.0, 1.1702], [12715284234240.0, 1.1471], [14229008547840.0, 1.1241], [16045477724160.0, 1.1041], [17861946900480.0, 1.0663], [20132533370880.0, 1.0515], [22554492272640.0, 1.0122], [25279196037120.0, 0.9846], [28306644664320.0, 0.9402], [31627377377280.0, 0.9397]]}, {"budget": 31622776601683.793, "params": 456672, "tokens": 10366976, "flops": 31624418820096.0, "val_loss": 0.9564938731491566, "n_layer": 4, "d_model": 96, "lr": 0.008, "batch": 32, "steps": 5062, "curve": [[156185395200.0, 3.698], [312370790400.0, 2.7053], [468556185600.0, 2.4251], [624741580800.0, 2.3518], [780926976000.0, 2.3042], [937112371200.0, 2.241], [1093297766400.0, 2.1799], [1249483161600.0, 2.11], [1405668556800.0, 2.054], [1561853952000.0, 1.9747], [1718039347200.0, 1.912], [1874224742400.0, 1.8435], [2030410137600.0, 1.7876], [2342780928000.0, 1.6974], [2655151718400.0, 1.6272], [2967522508800.0, 1.579], [3279893299200.0, 1.5448], [3748449484800.0, 1.5082], [4217005670400.0, 1.4423], [4685561856000.0, 1.3873], [5154118041600.0, 1.3773], [5778859622400.0, 1.3509], [6559786598400.0, 1.3313], [7340713574400.0, 1.3256], [8121640550400.0, 1.2806], [9214938316800.0, 1.2327], [10308236083200.0, 1.2131], [11401533849600.0, 1.2083], [12807202406400.0, 1.1719], [14369056358400.0, 1.1416], [16087095705600.0, 1.0887], [17961320448000.0, 1.1039], [20147915980800.0, 1.0715], [22646882304000.0, 1.019], [25302034022400.0, 1.014], [28269556531200.0, 0.9435], [31624418820096.0, 0.9645]]}, {"budget": 31622776601683.793, "params": 618800, "tokens": 7759872, "flops": 31621540478976.0, "val_loss": 0.998400118201971, "n_layer": 4, "d_model": 112, "lr": 0.008, "batch": 32, "steps": 3789, "curve": [[150221094912.0, 3.733], [300442189824.0, 2.8676], [450663284736.0, 2.4669], [600884379648.0, 2.3916], [751105474560.0, 2.3361], [901326569472.0, 2.3117], [1051547664384.0, 2.2523], [1201768759296.0, 2.1934], [1351989854208.0, 2.1701], [1502210949120.0, 2.1059], [1652432044032.0, 2.0621], [1802653138944.0, 1.9995], [2103095328768.0, 1.9036], [2253316423680.0, 1.8438], [2553758613504.0, 1.7648], [2854200803328.0, 1.6731], [3304864088064.0, 1.6147], [3605306277888.0, 1.5539], [4055969562624.0, 1.556], [4506632847360.0, 1.5072], [5107517227008.0, 1.4686], [5708401606656.0, 1.4385], [6459507081216.0, 1.4256], [7210612555776.0, 1.3551], [8111939125248.0, 1.3622], [9013265694720.0, 1.3347], [10215034454016.0, 1.2909], [11416803213312.0, 1.2603], [12768793067520.0, 1.2136], [14271004016640.0, 1.2027], [16073657155584.0, 1.1501], [17876310294528.0, 1.1453], [20129626718208.0, 1.1258], [22533164236800.0, 1.0565], [25237143945216.0, 1.0452], [28241565843456.0, 1.0202], [31621540478976.0, 0.9496]]}], "approach1": {"a": 0.6613958945815309, "b": 0.37655606872275854, "kN": 0.0003476601765021758, "kD": 131.62511344703807, "a_ci": [0.5852090507108719, 0.69991460729031], "b_ci": [0.34038672294790595, 0.4490447521231692], "grid": [1000000000000.0, 1060287713341.093, 1124210035062.0886, 1191986087391.0918, 1263848202934.297, 1340042721099.4556, 1420830832533.9238, 1506489474471.9155, 1597312280060.2524, 1693610584916.7395, 1795714494371.6409, 1903974015050.7642, 2018760254679.0347, 2140466694217.5251, 2269510536694.6685, 2406334137355.507, 2551406520031.2925, 2705224984927.535, 2868316813342.009, 3041241075156.2095, 3224590545296.398, 3418993735733.626, 3625117049988.528, 3843667067526.161, 4075392965871.778, 4321089088750.5625, 4581597669054.5, 4857811715970.679, 5150678076168.122, 5461200679536.398, 5790443980602.495, 6139536607422.716, 6509675230458.164, 6902128664695.668, 7318242219076.182, 7759442308140.531, 8227241341700.457, 8723242909296.92, 9249147277217.336, 9806757216915.766, 10397984184814.922, 11024854874674.262, 11689518164985.777, 12394252485211.94, 13141473626117.58, 13933743020968.492, 14773776525985.098, 15664453730149.12, 16608827826277.166, 17610136077199.332, 18671810912919.168, 19797491696796.414, 20991037201085.547, 22256538834596.812, 23598334667821.984, 25021024303602.816, 26529484644318.945, 28128886609642.69, 29824712862168.94, 31622776601683.793], "env_N": [29216.0, 29216.0, 29216.0, 29216.0, 29216.0, 44200.0, 29216.0, 29216.0, 44200.0, 44200.0, 62256.0, 44200.0, 44200.0, 44200.0, 83384.0, 62256.0, 62256.0, 62256.0, 62256.0, 62256.0, 83384.0, 83384.0, 83384.0, 83384.0, 83384.0, 83384.0, 83384.0, 83384.0, 83384.0, 62256.0, 156864.0, 83384.0, 83384.0, 83384.0, 83384.0, 156864.0, 83384.0, 83384.0, 156864.0, 156864.0, 156864.0, 156864.0, 156864.0, 156864.0, 156864.0, 156864.0, 156864.0, 156864.0, 156864.0, 242160.0, 156864.0, 242160.0, 242160.0, 242160.0, 242160.0, 242160.0, 242160.0, 242160.0, 456672.0, 345888.0], "env_loss": [1.3415201778154533, 1.429111516183765, 1.4177018468696525, 1.4127596957596735, 1.392254295437208, 1.3932443817043723, 1.3677781684244747, 1.354440301927269, 1.3467065306241999, 1.3377716982343533, 1.3161764309695743, 1.3029256437893613, 1.2877644078129538, 1.2607648151900472, 1.2595198079991603, 1.2292982043854737, 1.224251796132398, 1.2042449058492404, 1.2074265526353984, 1.1882240036798404, 1.2703097139871549, 1.2577273684202839, 1.2487413646638204, 1.2248513871861453, 1.2255530401183181, 1.2341598538411707, 1.2169723894598115, 1.1947975869650245, 1.195719855522505, 1.1828821938252527, 1.1728069947852977, 1.1517622935193914, 1.1299750109858449, 1.1384359794208392, 1.1107652250501168, 1.1027548475281863, 1.0849480298537013, 1.0603534180968093, 1.048969772921428, 1.057903529315855, 1.1499982076195667, 1.1391273041695709, 1.1208746268621914, 1.1157230784968077, 1.1059042565466495, 1.101857699513464, 1.0921608888964287, 1.0782749877733273, 1.0675296964934669, 1.0548912029054345, 1.0396283464645217, 1.0308596992091295, 1.0227075291418641, 1.0082066941341408, 0.9971614484650343, 0.984384012339647, 0.9692073720990608, 0.9489161069507872, 0.9522962926281636, 0.9391495536606658]}, "approach2": {"a": 0.5350671900957436, "b": 0.49526850295417724, "kN": 0.013620736705924369, "kD": 4.192119954858712, "a_ci": [0.4286151468474626, 0.740730682542046], "b_ci": [0.306205222980612, 0.594455552096156], "per_budget": [{"budget": 1000000000000.0, "coef": [0.5096189819797794, -4.684192792993141, 12.101985841188734], "N_opt": 39425.69477614855, "D_opt": 3357152.0103588714, "loss_opt": 1.338227573840932, "inside": true}, {"budget": 3162277660168.3794, "coef": [0.25293873307036013, -2.4183451165386494, 6.983883875932423], "N_opt": 60324.791334408226, "D_opt": 7144296.513255486, "loss_opt": 1.2034395053785838, "inside": true}, {"budget": 10000000000000.0, "coef": [0.26328946493387656, -2.6601956246438467, 7.781922140535097], "N_opt": 112679.76481023864, "D_opt": 12549876.869532684, "loss_opt": 1.0624729184103927, "inside": true}, {"budget": 31622776601683.793, "coef": [0.2943939747498593, -3.177752135502874, 9.521797008986498], "N_opt": 249521.4991547078, "D_opt": 18614805.952160973, "loss_opt": 0.9464613187152899, "inside": true}]}, "approach3": {"E": 0.6374703646997282, "A": 31.12099938717725, "B": 511.09138396539964, "alpha": 0.4222270544312795, "beta": 0.4807980090335191, "a": 0.5324304147093714, "b": 0.46756958529062864, "G": 0.03904401356292368, "a_ci": [0.5319628455464537, 0.5559284862262174], "b_ci": [0.4440715137737825, 0.46803715445354627], "mean_abs_err": 0.011673286928897473}, "attempt1": {"isoflop": [{"budget": 1000000000000.0, "params": 29216, "tokens": 4382720, "flops": 999680901120.0, "val_loss": 1.402243010699749, "n_layer": 2, "d_model": 32}, {"budget": 1000000000000.0, "params": 44200, "tokens": 3022848, "flops": 999426097152.0, "val_loss": 1.4865901842713356, "n_layer": 2, "d_model": 40}, {"budget": 1000000000000.0, "params": 62256, "tokens": 2207744, "flops": 999525187584.0, "val_loss": 1.5271623581647873, "n_layer": 2, "d_model": 48}, {"budget": 1000000000000.0, "params": 83384, "tokens": 1687552, "flops": 1001190850560.0, "val_loss": 1.5787000507116318, "n_layer": 2, "d_model": 56}, {"budget": 3162277660168.3794, "params": 29216, "tokens": 13864960, "flops": 3162541916160.0, "val_loss": 1.2358850166201591, "n_layer": 2, "d_model": 32}, {"budget": 3162277660168.3794, "params": 44200, "tokens": 9564160, "flops": 3162140835840.0, "val_loss": 1.2017432302236557, "n_layer": 2, "d_model": 40}, {"budget": 3162277660168.3794, "params": 62256, "tokens": 6983680, "flops": 3161763348480.0, "val_loss": 1.1964979618787766, "n_layer": 2, "d_model": 48}, {"budget": 3162277660168.3794, "params": 83384, "tokens": 5328896, "flops": 3161527418880.0, "val_loss": 1.2230959832668304, "n_layer": 2, "d_model": 56}, {"budget": 3162277660168.3794, "params": 107584, "tokens": 4210688, "flops": 3162664599552.0, "val_loss": 1.2508579418063164, "n_layer": 2, "d_model": 64}, {"budget": 3162277660168.3794, "params": 156864, "tokens": 2879488, "flops": 3160157454336.0, "val_loss": 1.3248863592743874, "n_layer": 3, "d_model": 64}, {"budget": 10000000000000.0, "params": 62256, "tokens": 22089728, "flops": 10000815095808.0, "val_loss": 1.0823915004730225, "n_layer": 2, "d_model": 48}, {"budget": 10000000000000.0, "params": 83384, "tokens": 16855040, "flops": 9999758131200.0, "val_loss": 1.061994507908821, "n_layer": 2, "d_model": 56}, {"budget": 10000000000000.0, "params": 107584, "tokens": 13312000, "flops": 9998696448000.0, "val_loss": 1.0696097984910011, "n_layer": 2, "d_model": 64}, {"budget": 10000000000000.0, "params": 156864, "tokens": 9113600, "flops": 10001920819200.0, "val_loss": 1.0717538818717003, "n_layer": 3, "d_model": 64}, {"budget": 10000000000000.0, "params": 242160, "tokens": 6066176, "flops": 9998999224320.0, "val_loss": 1.1165404170751572, "n_layer": 3, "d_model": 80}, {"budget": 10000000000000.0, "params": 345888, "tokens": 4329472, "flops": 10000041246720.0, "val_loss": 1.1559546887874603, "n_layer": 3, "d_model": 96}, {"budget": 31622776601683.793, "params": 83384, "tokens": 53301248, "flops": 31622564413440.0, "val_loss": 1.0095451548695564, "n_layer": 2, "d_model": 56}, {"budget": 31622776601683.793, "params": 107584, "tokens": 42102784, "flops": 31623569473536.0, "val_loss": 0.9899198561906815, "n_layer": 2, "d_model": 64}, {"budget": 31622776601683.793, "params": 156864, "tokens": 28815360, "flops": 31624050769920.0, "val_loss": 0.9584720358252525, "n_layer": 3, "d_model": 64}, {"budget": 31622776601683.793, "params": 242160, "tokens": 19185664, "flops": 31624113684480.0, "val_loss": 0.949266042560339, "n_layer": 3, "d_model": 80}, {"budget": 31622776601683.793, "params": 345888, "tokens": 13692928, "flops": 31627377377280.0, "val_loss": 0.9531628340482712, "n_layer": 3, "d_model": 96}, {"budget": 31622776601683.793, "params": 456672, "tokens": 10366976, "flops": 31624418820096.0, "val_loss": 0.9669702351093292, "n_layer": 4, "d_model": 96}, {"budget": 31622776601683.793, "params": 618800, "tokens": 7761920, "flops": 31629886095360.0, "val_loss": 1.0023244768381119, "n_layer": 4, "d_model": 112}, {"budget": 1000000000000.0, "params": 17304, "tokens": 6942720, "flops": 999751680000.0, "val_loss": 1.4216708689928055, "n_layer": 2, "d_model": 24}, {"budget": 1000000000000.0, "params": 107584, "tokens": 1331200, "flops": 999869644800.0, "val_loss": 1.7677938044071198, "n_layer": 2, "d_model": 64}, {"budget": 10000000000000.0, "params": 44200, "tokens": 30244864, "flops": 9999677915136.0, "val_loss": 1.1161995604634285, "n_layer": 2, "d_model": 40}], "approach2": {"a": 0.6488385204720458, "b": 0.3906594429921314, "kN": 0.0004070998236771631, "kD": 105.88494865887218, "a_ci": [0.6117975057925139, 0.7098026307241728], "b_ci": [0.3348485815253907, 0.4247426112144601], "per_budget": [{"budget": 1000000000000.0, "coef": [0.8338380599371228, -7.338709263650222, 17.55077049871974], "N_opt": 25151.289862550722, "D_opt": 5081628.796835527, "loss_opt": 1.4035543173047422}, {"budget": 3162277660168.3794, "coef": [0.5763207860321753, -5.445535963916849, 14.060654988313825], "N_opt": 53014.73984401782, "D_opt": 8060509.123952689, "loss_opt": 1.1972190976568005}, {"budget": 10000000000000.0, "coef": [0.3538516863383121, -3.5539320188385646, 9.987907018199179], "N_opt": 105143.38250007921, "D_opt": 13398938.795796461, "loss_opt": 1.064371196435287}, {"budget": 31622776601683.793, "coef": [0.30719403398902284, -3.307146130698278, 9.848499577304231], "N_opt": 241451.1954186531, "D_opt": 19210235.959787726, "loss_opt": 0.9475979323658592}]}}, "diagnostics": [{"params": 44200, "budget": 1000000000000.0, "steps64": 738, "steps_small": 2954, "batch_small": 16, "loss64": 1.4865901842713356, "loss_small": 1.3705895468592644}, {"params": 62256, "budget": 1000000000000.0, "steps64": 539, "steps_small": 2157, "batch_small": 16, "loss64": 1.5271623581647873, "loss_small": 1.3560979515314102}, {"params": 107584, "budget": 1000000000000.0, "steps64": 325, "steps_small": 1300, "batch_small": 16, "loss64": 1.7677938044071198, "loss_small": 1.415629267692566}, {"params": 345888, "budget": 10000000000000.0, "steps64": 1057, "steps_small": 2114, "batch_small": 32, "loss64": 1.1559546887874603, "loss_small": 1.127191737294197}, {"params": 83384, "budget": 10000000000000.0, "steps64": 4115, "steps_small": 8230, "batch_small": 32, "loss64": 1.061994507908821, "loss_small": 1.0768735110759735}, {"params": 618800, "budget": 31622776601683.793, "steps64": 1895, "steps_small": 3789, "batch_small": 32, "loss64": 1.0023244768381119, "loss_small": 0.998400118201971}, {"params": 242160, "budget": 31622776601683.793, "steps64": 4684, "steps_small": 9368, "batch_small": 32, "loss64": 0.949266042560339, "loss_small": 0.9664660431444645}], "min_steps": 3000, "head_to_head": {"gopher": {"name": "h2h_gopher_L5_d128_lr0.004_b32", "params": 1002368, "tokens": 4843520, "flops": 31625938206720.0, "budget": 31622776601683.793, "val_loss": 1.0237644463777542, "n_layer": 5, "d_model": 128, "curve": [[147097387008.0, 3.8879], [294194774016.0, 3.2893], [441292161024.0, 2.7788], [588389548032.0, 2.514], [735486935040.0, 2.4294], [882584322048.0, 2.3988], [1029681709056.0, 2.3426], [1176779096064.0, 2.3146], [1323876483072.0, 2.3341], [1470973870080.0, 2.3061], [1618071257088.0, 2.2545], [1765168644096.0, 2.2461], [1912266031104.0, 2.1893], [2059363418112.0, 2.1814], [2206460805120.0, 2.1253], [2353558192128.0, 2.0617], [2500655579136.0, 2.0467], [2794850353152.0, 1.9695], [2941947740160.0, 1.9314], [3089045127168.0, 1.9121], [3383239901184.0, 1.8593], [3530337288192.0, 1.8255], [3824532062208.0, 1.7503], [4118726836224.0, 1.7254], [4412921610240.0, 1.6594], [4707116384256.0, 1.6394], [5001311158272.0, 1.6203], [5442603319296.0, 1.6094], [5736798093312.0, 1.5007], [6178090254336.0, 1.5195], [6619382415360.0, 1.5051], [7060674576384.0, 1.4653], [7649064124416.0, 1.4295], [8090356285440.0, 1.4251], [8678745833472.0, 1.3948], [9267135381504.0, 1.3811], [10002622316544.0, 1.3049], [10591011864576.0, 1.3113], [11473596186624.0, 1.2709], [12209083121664.0, 1.2709], [13091667443712.0, 1.2635], [13974251765760.0, 1.2485], [15003933474816.0, 1.2349], [16033615183872.0, 1.2068], [17210394279936.0, 1.1809], [18387173376000.0, 1.1419], [19711049859072.0, 1.1255], [21034926342144.0, 1.1151], [22505900212224.0, 1.1099], [24123971469312.0, 1.1314], [25742042726400.0, 1.0402], [27654308757504.0, 1.0697], [29566574788608.0, 1.0649], [31625938206720.0, 1.0264]], "samples": ["Once upon a time, there was a decident to cart. He thought the of tiny things for his home. He was very careful and driving it with home.\nThe sun had to come and the green doll it what he was in the sky. Yellows and sharizes, but one everywhere Ben, if miss in the big garden.", "Lily wanted to swim every day, she called and said, \"Let's the pictuse for your pesser the teal pie.\"\nHer their mom and dad said, \"I want to play with the adoward some fast. I wants to get the own and were be slides.\nThe decided to feew it from the man. From that day, the r", "The little dog was the snap. He made it back with his pendagic of his ball back for the shark.\nThe cat off the squirrel with the house. She did not hurt the mouse and put the rocks. She fixed them back so read birding for the girl.\nBut then, soft the kind told the bearrack"], "lr": 0.004}, "chinchilla": {"name": "h2h_chinchilla_L3_d80", "params": 242160, "tokens": 19185664, "flops": 31624113684480.0, "budget": 31622776601683.793, "val_loss": 0.9478538297116756, "n_layer": 3, "d_model": 80, "curve": [[155284930560.0, 3.8382], [310569861120.0, 2.9272], [465854791680.0, 2.4835], [621139722240.0, 2.3527], [776424652800.0, 2.2805], [931709583360.0, 2.205], [1086994513920.0, 2.1293], [1242279444480.0, 2.054], [1397564375040.0, 1.9929], [1552849305600.0, 1.9044], [1708134236160.0, 1.8374], [1863419166720.0, 1.7822], [2018704097280.0, 1.724], [2173989027840.0, 1.6721], [2329273958400.0, 1.6143], [2484558888960.0, 1.5988], [2639843819520.0, 1.5825], [2795128750080.0, 1.5498], [2950413680640.0, 1.5168], [3260983541760.0, 1.4795], [3416268472320.0, 1.4554], [3726838333440.0, 1.4443], [3882123264000.0, 1.4183], [4192693125120.0, 1.3986], [4503262986240.0, 1.3594], [4813832847360.0, 1.3556], [5124402708480.0, 1.3446], [5434972569600.0, 1.321], [5900827361280.0, 1.3037], [6366682152960.0, 1.2968], [6677252014080.0, 1.2707], [7143106805760.0, 1.2608], [7764246528000.0, 1.2302], [8230101319680.0, 1.2092], [8851241041920.0, 1.2121], [9472380764160.0, 1.1915], [10093520486400.0, 1.1799], [10714660208640.0, 1.139], [11491084861440.0, 1.1606], [12267509514240.0, 1.1715], [13199219097600.0, 1.1191], [14130928680960.0, 1.1267], [15062638264320.0, 1.1314], [16149632778240.0, 1.08], [17236627292160.0, 1.0634], [18478906736640.0, 1.0466], [19721186181120.0, 1.0313], [21118750556160.0, 1.0129], [22671599861760.0, 1.0006], [24224449167360.0, 0.9769], [25932583403520.0, 0.9885], [27640717639680.0, 0.9584], [29659421736960.0, 0.9506], [31624113684480.0, 0.9643]], "samples": ["Once upon a time, there was a decident laughed to look like a boy named Tim again. Tim was very sad. He knew he had a lot of fun of compassions in the park.\nThe end.", "Lily wanted to stop each other in the dangerous and made of the window from her paster.\nOne day, while they were in a rain to a tree warm! And I continued always took it home.\"\nSo, Sue grew and walked. She was glad happy to do. She asked her mom nothing and said, \"This is a", "The little dog was that she was a big fierb sweet. She put of something and never felt sad.\nThe secret of the foose and the birdcase came and said, \"Daisy, you want to touch the rabbit yellow out.\" They began to play together. They all forget a hole tree. They liked to scar"], "lr": 0.008}, "gopher_lrs": [{"batch": 32, "lr": 0.004, "val_loss": 1.0237644463777542}, {"batch": 32, "lr": 0.008, "val_loss": 1.0637228339910507}, {"batch": 16, "lr": 0.004, "val_loss": 1.0353529676795006}, {"batch": 16, "lr": 0.008, "val_loss": 1.049454316496849}, {"batch": 64, "lr": 0.008, "val_loss": 1.0682241842150688}, {"batch": 64, "lr": 0.004, "val_loss": 1.0661093071103096}]}, "cosine": [{"cycle": 1.25, "val_loss": 1.0780107527971268, "params": 107584, "tokens": 13312000, "curve": [[65536, 4.0348, 0.0007901234567901235], [196608, 2.8731, 0.0023703703703703703], [327680, 2.4124, 0.003950617283950617], [458752, 2.3244, 0.005530864197530864], [589824, 2.2592, 0.007111111111111112], [720896, 2.1574, 0.007999802660318543], [851968, 1.9844, 0.007997635664136027], [983040, 1.8665, 0.007993078919024087], [1114112, 1.7778, 0.007986135451825287], [1245184, 1.6901, 0.007976809874775233], [1376256, 1.6274, 0.00796510838243887], [1507328, 1.5885, 0.00795103874759571], [1638400, 1.5657, 0.007934610316076722], [1769472, 1.5232, 0.007915834000556312], [1900544, 1.5253, 0.00789472227330352], [2031616, 1.4856, 0.007871289157897251], [2162688, 1.4706, 0.007845550219911032], [2293760, 1.4647, 0.007817522556573496], [2424832, 1.4702, 0.007787224785411461], [2555904, 1.4136, 0.007754677031883136], [2686976, 1.4132, 0.0077199009160096674], [2818048, 1.4043, 0.007682919538013936], [2949120, 1.3723, 0.007643757462976101], [3080192, 1.3968, 0.007602440704516115], [3211264, 1.3763, 0.007558996707514036], [3342336, 1.3604, 0.007513454329879619], [3473408, 1.3562, 0.007465843823383293], [3604480, 1.3497, 0.0074161968135612565], [3735552, 1.3449, 0.007364546278708047], [3866624, 1.3422, 0.007310926527970531], [3997696, 1.3434, 0.0072553731785578645], [4128768, 1.3177, 0.007197923132082573], [4259840, 1.312, 0.007138614550048456], [4390912, 1.3245, 0.007077486828501596], [4521984, 1.2701, 0.007014580571861331], [4653056, 1.3092, 0.006949937565948543], [4784128, 1.2883, 0.006883600750229199], [4915200, 1.2875, 0.00681561418929159], [5046272, 1.2846, 0.006746023043576178], [5177344, 1.2711, 0.006674873539377531], [5308416, 1.2624, 0.006602212938138266], [5439488, 1.2637, 0.006528089505055373], [5570560, 1.2386, 0.006452552477019795], [5701632, 1.2239, 0.006375652029910562], [5832704, 1.26, 0.006297439245265191], [5963776, 1.2492, 0.006217966076348503], [6094848, 1.2289, 0.006137285313642373], [6225920, 1.2243, 0.00605545054977938], [6356992, 1.1787, 0.005972516143943612], [6488064, 1.1922, 0.00588853718576227], [6619136, 1.2246, 0.005803569458712101], [6750208, 1.1868, 0.005717669403064912], [6881280, 1.2148, 0.005630894078396823], [7012352, 1.2013, 0.005543301125686128], [7143424, 1.2037, 0.005454948729024964], [7274496, 1.2232, 0.00536589557697022], [7405568, 1.239, 0.005276200823559335], [7536640, 1.2326, 0.005185924049016926], [7667712, 1.2071, 0.005095125220178284], [7798784, 1.1902, 0.005003864650656087], [7929856, 1.1742, 0.004912202960776761], [8060928, 1.1862, 0.004820201037313093], [8192000, 1.1723, 0.004727919993039869], [8323072, 1.1469, 0.004635421126139382], [8454144, 1.1795, 0.004542765879483776], [8585216, 1.1835, 0.004450015799821301], [8716288, 1.1712, 0.004357232496893538], [8847360, 1.1696, 0.004264477602510805], [8978432, 1.1441, 0.004171812729612888], [9109504, 1.1959, 0.004079299431342317], [9240576, 1.1542, 0.003986999160157353], [9371648, 1.1564, 0.00389497322701187], [9502720, 1.136, 0.0038032827606292144], [9633792, 1.1678, 0.0037119886668971224], [9764864, 1.1339, 0.0036211515884106557], [9895936, 1.155, 0.003530831864190027], [10027008, 1.1267, 0.0034410894896000875], [10158080, 1.1386, 0.0033519840764980728], [10289152, 1.1437, 0.003263574813636109], [10420224, 1.1372, 0.0031759204273447673], [10551296, 1.1101, 0.0030890791425237703], [10682368, 1.1101, 0.0030031086439658017], [10813440, 1.1338, 0.002918066038039064], [10944512, 1.1121, 0.0028340078147540623], [11075584, 1.1008, 0.0027509898102398194], [11206656, 1.1017, 0.00266906716965441], [11337728, 1.1295, 0.0025882943105545063], [11468800, 1.1066, 0.0025087248867482165], [11599872, 1.1133, 0.002430411752655248], [11730944, 1.1135, 0.0023534069281980845], [11862016, 1.0835, 0.0022777615642474557], [11993088, 1.0966, 0.002203525908645111], [12124160, 1.0891, 0.002130749272826413], [12255232, 1.0633, 0.0020594799990649435], [12386304, 1.0905, 0.001989765428360897], [12517376, 1.0881, 0.0019216518689945607], [12648448, 1.0881, 0.0018551845657657881], [12779520, 1.0721, 0.0017904076699399023], [12910592, 1.1035, 0.00172736420991997], [13041664, 1.0813, 0.00166609606266496], [13172736, 1.0781, 0.0016066439258727435], [13303808, 1.0808, 0.0015490472909464282]]}, {"cycle": 5.0, "val_loss": 1.1921658217906952, "params": 107584, "tokens": 13312000, "curve": [[65536, 4.0348, 0.0007901234567901235], [196608, 2.8731, 0.0023703703703703703], [327680, 2.4124, 0.003950617283950617], [458752, 2.3244, 0.005530864197530864], [589824, 2.2615, 0.007111111111111112], [720896, 2.1275, 0.007999988400090348], [851968, 1.9828, 0.007999861007819475], [983040, 1.8654, 0.007999593049671627], [1114112, 1.7929, 0.007999184536109923], [1245184, 1.7169, 0.007998635483085829], [1376256, 1.6447, 0.007997945912038538], [1507328, 1.6058, 0.007997115849894139], [1638400, 1.5691, 0.007996145329064546], [1769472, 1.5395, 0.00799503438744626], [1900544, 1.5158, 0.007993783068418867], [2031616, 1.4823, 0.00799239142084335], [2162688, 1.4902, 0.007990859499060183], [2293760, 1.4524, 0.007989187362887217], [2424832, 1.4735, 0.007987375077617327], [2555904, 1.4145, 0.007985422714015877], [2686976, 1.418, 0.00798333034831795], [2818048, 1.4184, 0.00798109806222537], [2949120, 1.3902, 0.007978725942903516], [3080192, 1.3924, 0.007976214082977924], [3211264, 1.383, 0.007973562580530651], [3342336, 1.3713, 0.007970771539096465], [3473408, 1.3668, 0.00796784106765879], [3604480, 1.3625, 0.007964771280645462], [3735552, 1.3598, 0.007961562297924243], [3866624, 1.3533, 0.007958214244798163], [3997696, 1.3573, 0.007954727252000606], [4128768, 1.335, 0.007951101455690219], [4259840, 1.3209, 0.007947336997445587], [4390912, 1.3382, 0.007943434024259715], [4521984, 1.2869, 0.007939392688534278], [4653056, 1.3216, 0.007935213148073671], [4784128, 1.3062, 0.007930895566078858], [4915200, 1.289, 0.007926440111140985], [5046272, 1.2947, 0.007921846957234805], [5177344, 1.2882, 0.007917116283711882], [5308416, 1.2803, 0.007912248275293594], [5439488, 1.2858, 0.007907243122063907], [5570560, 1.2714, 0.007902101019461968], [5701632, 1.2479, 0.007896822168274462], [5832704, 1.2783, 0.007891406774627775], [5963776, 1.2701, 0.00788585504997995], [6094848, 1.2598, 0.007880167211112425], [6225920, 1.2463, 0.007874343480121568], [6356992, 1.2128, 0.007868384084410008], [6488064, 1.2207, 0.007862289256677752], [6619136, 1.2589, 0.0078560592349131], [6750208, 1.2218, 0.007849694262383355], [6881280, 1.2543, 0.007843194587625318], [7012352, 1.236, 0.007836560464435592], [7143424, 1.2404, 0.007829792151860658], [7274496, 1.2559, 0.007822889914186778], [7405568, 1.2657, 0.00781585402092966], [7536640, 1.2674, 0.0078086847468239375], [7667712, 1.2423, 0.0078013823718124506], [7798784, 1.2318, 0.007793947181035304], [7929856, 1.2111, 0.007786379464818737], [8060928, 1.2395, 0.007778679518663789], [8192000, 1.2144, 0.007770847643234757], [8323072, 1.1939, 0.007762884144347461], [8454144, 1.2235, 0.007754789332957296], [8585216, 1.2244, 0.007746563525147093], [8716288, 1.2217, 0.007738207042114779], [8847360, 1.2244, 0.007729720210160832], [8978432, 1.2008, 0.007721103360675538], [9109504, 1.2521, 0.0077123568301260565], [9240576, 1.2049, 0.00770348096004328], [9371648, 1.2145, 0.007694476097008493], [9502720, 1.1881, 0.007685342592639847], [9633792, 1.2255, 0.007676080803578627], [9764864, 1.1991, 0.0076666910914753245], [9895936, 1.2154, 0.007657173822975513], [10027008, 1.1861, 0.007647529369705542], [10158080, 1.1977, 0.007637758108258016], [10289152, 1.2104, 0.0076278604201770895], [10420224, 1.1986, 0.007617836691943578], [10551296, 1.1807, 0.0076076873149598535], [10682368, 1.1765, 0.007597412685534572], [10813440, 1.2037, 0.007587013204867198], [10944512, 1.1827, 0.007576489279032328], [11075584, 1.1799, 0.007565841318963847], [11206656, 1.1804, 0.007555069740438877], [11337728, 1.2039, 0.007544174964061538], [11468800, 1.1851, 0.007533157415246535], [11599872, 1.1945, 0.007522017524202533], [11730944, 1.194, 0.00751075572591537], [11862016, 1.1629, 0.007499372460131069], [11993088, 1.1838, 0.00748786817133866], [12124160, 1.1772, 0.0074762433087528345], [12255232, 1.1461, 0.007464498326296396], [12386304, 1.1801, 0.0074526336825825375], [12517376, 1.1743, 0.00744064984089694], [12648448, 1.1791, 0.007428547269179674], [12779520, 1.1549, 0.00741632644000693], [12910592, 1.1954, 0.007403987830572571], [13041664, 1.1734, 0.00739153192266949], [13172736, 1.1709, 0.007378959202670802], [13303808, 1.1745, 0.007366270161510857]]}, {"cycle": 2.0, "val_loss": 1.1457493007183075, "params": 107584, "tokens": 13312000, "curve": [[65536, 4.0348, 0.0007901234567901235], [196608, 2.8731, 0.0023703703703703703], [327680, 2.4124, 0.003950617283950617], [458752, 2.3244, 0.005530864197530864], [589824, 2.2621, 0.007111111111111112], [720896, 2.1297, 0.007999925260019079], [851968, 1.9917, 0.007999104481005348], [983040, 1.8675, 0.00799737821840754], [1114112, 1.7876, 0.007994746906528813], [1245184, 1.7071, 0.007991211207369873], [1376256, 1.6405, 0.007986772010462424], [1507328, 1.5932, 0.007981430432645379], [1638400, 1.5607, 0.007975187817783872], [1769472, 1.5305, 0.007968045736431163], [1900544, 1.5097, 0.00796000598543351], [2031616, 1.4913, 0.00795107058747811], [2162688, 1.4652, 0.007941241790584214], [2293760, 1.4568, 0.007930522067537565], [2424832, 1.4745, 0.00791891411526827], [2555904, 1.4314, 0.0079064208541723], [2686976, 1.4095, 0.007893045427376757], [2818048, 1.4185, 0.007878791199949107], [2949120, 1.3888, 0.007863661758050576], [3080192, 1.391, 0.007847660908033925], [3211264, 1.3856, 0.007830792675485823], [3342336, 1.3741, 0.007813061304214067], [3473408, 1.361, 0.007794471255179905], [3604480, 1.3635, 0.007775027205375713], [3735552, 1.3597, 0.007754734046648342], [3866624, 1.3553, 0.0077335968844683845], [3997696, 1.3504, 0.0077116210366457195], [4128768, 1.333, 0.007688812031991628], [4259840, 1.3188, 0.007665175608927816], [4390912, 1.3373, 0.007640717714042717], [4521984, 1.2829, 0.007615444500595409], [4653056, 1.3154, 0.007589362326967541], [4784128, 1.3112, 0.007562477755063662], [4915200, 1.2925, 0.007534797548660331], [5046272, 1.2962, 0.0075063286717044495], [5177344, 1.2785, 0.007477078286561232], [5308416, 1.2711, 0.007447053752212259], [5439488, 1.2802, 0.007416262622404056], [5570560, 1.2601, 0.0073847126437476835], [5701632, 1.2482, 0.007352411753769795], [5832704, 1.2689, 0.007319368078915674], [5963776, 1.2678, 0.0072855899325047265], [6094848, 1.251, 0.007251085812638979], [6225920, 1.2449, 0.007215864400065068], [6356992, 1.2076, 0.007179934555990293], [6488064, 1.2046, 0.007143305319853257], [6619136, 1.2465, 0.007105985907049676], [6750208, 1.2083, 0.007067985706613921], [6881280, 1.2389, 0.007029314278856856], [7012352, 1.2279, 0.006989981352960616], [7143424, 1.2311, 0.00694999682453087], [7274496, 1.2394, 0.006909370753107234], [7405568, 1.2605, 0.006868113359632435], [7536640, 1.258, 0.00682623502388086], [7667712, 1.2308, 0.006783746281847155], [7798784, 1.2112, 0.006740657823095526], [7929856, 1.1962, 0.006696980488070385], [8060928, 1.2265, 0.006652725265369053], [8192000, 1.1981, 0.006607903288977186], [8323072, 1.1782, 0.006562525835467623], [8454144, 1.2109, 0.006516604321163353], [8585216, 1.2097, 0.006470150299265343], [8716288, 1.1995, 0.006423175456945907], [8847360, 1.2055, 0.0063756916124083785], [8978432, 1.1743, 0.006327710711913826], [9109504, 1.2279, 0.006279244826775538], [9240576, 1.1886, 0.0062303061503220505], [9371648, 1.1964, 0.006180906994829487], [9502720, 1.1672, 0.006131059788423952], [9633792, 1.2087, 0.006080777071954804], [9764864, 1.1796, 0.006030071495839548], [9895936, 1.1915, 0.005978955816881166], [10027008, 1.1617, 0.005927442895058704], [10158080, 1.1809, 0.0058755456902918595], [10289152, 1.186, 0.005823277259180472], [10420224, 1.1769, 0.005770650751719653], [10551296, 1.1608, 0.005717679407991441], [10682368, 1.1491, 0.005664376554833783], [10813440, 1.179, 0.005610755602487691], [10944512, 1.1562, 0.00555683004122342], [11075584, 1.1485, 0.005502613437946493], [11206656, 1.1482, 0.005448119432784486], [11337728, 1.1741, 0.005393361735655336], [11468800, 1.16, 0.005338354122818146], [11599872, 1.1651, 0.005283110433407255], [11730944, 1.1642, 0.005227644565950521], [11862016, 1.1317, 0.005171970474872639], [11993088, 1.1497, 0.005116102166984416], [12124160, 1.1418, 0.005060053697958845], [12255232, 1.1162, 0.005003839168794908], [12386304, 1.1457, 0.004947472722269957], [12517376, 1.1464, 0.004890968539381597], [12648448, 1.1443, 0.004834340835779944], [12779520, 1.1234, 0.004777603858191173], [12910592, 1.1584, 0.004720771880833242], [13041664, 1.1417, 0.004663859201824703], [13172736, 1.1368, 0.004606880139587498], [13303808, 1.144, 0.004549849029244641]]}, {"cycle": 1.0, "val_loss": 1.0655085295438766, "params": 107584, "tokens": 13312000, "curve": [[65536, 4.0348, 0.0007901234567901235], [196608, 2.8731, 0.0023703703703703703], [327680, 2.4124, 0.003950617283950617], [458752, 2.3244, 0.005530864197530864], [589824, 2.2615, 0.007111111111111112], [720896, 2.1297, 0.007999685154100633], [851968, 1.9871, 0.007996228042069533], [983040, 1.8594, 0.007988959798097729], [1114112, 1.7925, 0.00797788812476593], [1245184, 1.7039, 0.007963024755370075], [1376256, 1.6279, 0.007944385441486866], [1507328, 1.5986, 0.007921989936280916], [1638400, 1.5752, 0.007895861973571165], [1769472, 1.5236, 0.007866029242678775], [1900544, 1.5174, 0.007832523359083144], [2031616, 1.5062, 0.007795379830917153], [2162688, 1.4615, 0.007754638021337117], [2293760, 1.4666, 0.007710341106807379], [2424832, 1.4682, 0.007662536031343686], [2555904, 1.419, 0.007611273456763891], [2686976, 1.4127, 0.007556607708998678], [2818048, 1.4109, 0.007498596720519221], [2949120, 1.3903, 0.007437301968942766], [3080192, 1.3888, 0.007372788411881233], [3211264, 1.3878, 0.007305124418101855], [3342336, 1.3734, 0.007234381695072821], [3473408, 1.3625, 0.007160635212970704], [3604480, 1.3532, 0.007083963125230203], [3735552, 1.35, 0.00700444668572041], [3866624, 1.344, 0.006922170162635355], [3997696, 1.3437, 0.006837220749190103], [4128768, 1.3198, 0.006749688471217039], [4259840, 1.3083, 0.006659666091760251], [4390912, 1.3217, 0.006567249012769149], [4521984, 1.2742, 0.006472535173995461], [4653056, 1.3113, 0.006375624949200796], [4784128, 1.3001, 0.006276621039784724], [4915200, 1.2756, 0.006175628365946135], [5046272, 1.2837, 0.0060727539554932064], [5177344, 1.2685, 0.0059681068304198075], [5308416, 1.2555, 0.005861797891368556], [5439488, 1.2654, 0.0057539398001029635], [5570560, 1.2404, 0.005644646860113208], [5701632, 1.2274, 0.005534034895482083], [5832704, 1.2445, 0.005422221128139479], [5963776, 1.2431, 0.005309324053635501], [6094848, 1.2269, 0.005195463315563828], [6225920, 1.2083, 0.005080759578768453], [6356992, 1.1812, 0.004965334401468129], [6488064, 1.1821, 0.0048493101064340524], [6619136, 1.2178, 0.0047328096513573215], [6750208, 1.1799, 0.00461595649854351], [6881280, 1.209, 0.004498874484072492], [7012352, 1.1967, 0.004381687686562144], [7143424, 1.195, 0.0042645202956750235], [7274496, 1.2132, 0.004147496480507359], [7405568, 1.2215, 0.004030740257999843], [7536640, 1.2193, 0.00391437536150967], [7667712, 1.1962, 0.003798525109683097], [7798784, 1.1787, 0.0036833122757675136], [7929856, 1.1601, 0.0035688589575014894], [8060928, 1.1803, 0.0034552864477207013], [8192000, 1.1536, 0.003342715105816863], [8323072, 1.132, 0.003231264230185883], [8454144, 1.1651, 0.003121051931800417], [8585216, 1.1571, 0.0030121950090408003], [8716288, 1.1543, 0.0029048088239170184], [8847360, 1.1543, 0.0027990071798128743], [8978432, 1.1272, 0.002694902200881929], [9109504, 1.1705, 0.0025926042132230097], [9240576, 1.1336, 0.0024922216279612435], [9371648, 1.1374, 0.0023938608263584693], [9502720, 1.1202, 0.0022976260470748367], [9633792, 1.1533, 0.0022036192757010397], [9764864, 1.1192, 0.0021119401366782517], [9895936, 1.1297, 0.0020226857877203137], [10027008, 1.1043, 0.0019359508168500634], [10158080, 1.1168, 0.0018518271421588974], [10289152, 1.1214, 0.0017704039143958314], [10420224, 1.1142, 0.0016917674224892706], [10551296, 1.0927, 0.0016160010021016085], [10682368, 1.0822, 0.001543184947313586], [10813440, 1.1093, 0.001473396425531985], [10944512, 1.0867, 0.0014067093957108368], [11075584, 1.0835, 0.0013431945299728263], [11206656, 1.078, 0.0012829191387139253], [11337728, 1.1088, 0.0012259470992706594], [11468800, 1.0877, 0.0011723387882255794], [11599872, 1.0928, 0.0011221510174226831], [11730944, 1.0905, 0.0010754369737606044], [11862016, 1.0616, 0.0010322461628273663], [11993088, 1.0773, 0.0009926243564364254], [12124160, 1.07, 0.0009566135441196231], [12255232, 1.0486, 0.0009242518886284399], [12386304, 1.0746, 0.000895573685490704], [12517376, 1.0723, 0.0008706093266656303], [12648448, 1.0753, 0.0008493852683356919], [12779520, 1.0565, 0.0008319240028694672], [12910592, 1.0867, 0.0008182440349851672], [13041664, 1.0649, 0.0008083598621401126], [13172736, 1.0674, 0.0008022819591669317], [13303808, 1.0685, 0.0008000167671727747]]}, {"cycle": 1.5, "val_loss": 1.1059091612696648, "params": 107584, "tokens": 13312000, "curve": [[65536, 4.0348, 0.0007901234567901235], [196608, 2.8731, 0.0023703703703703703], [327680, 2.4124, 0.003950617283950617], [458752, 2.3244, 0.005530864197530864], [589824, 2.2601, 0.007111111111111112], [720896, 2.1329, 0.007999864835899704], [851968, 2.0066, 0.00799838054145781], [983040, 1.8907, 0.007995259070730237], [1114112, 1.7921, 0.007990501843910813], [1245184, 1.7073, 0.00798411102542291], [1376256, 1.6459, 0.007976089522934675], [1507328, 1.5979, 0.007966440986036105], [1638400, 1.557, 0.007955169804578588], [1769472, 1.5321, 0.007942281106677614], [1900544, 1.5107, 0.007927780756379607], [2031616, 1.4895, 0.007911675350993934], [2162688, 1.464, 0.00789397221809128], [2293760, 1.4594, 0.007874679412169782], [2424832, 1.4649, 0.00785380571099043], [2555904, 1.4286, 0.007831360611583392], [2686976, 1.4083, 0.007807354325927101], [2818048, 1.4157, 0.007781797776302046], [2949120, 1.3808, 0.007754702590321402], [3080192, 1.3945, 0.007726081095640745], [3211264, 1.378, 0.007695946314349263], [3342336, 1.378, 0.007664311957045029], [3473408, 1.3639, 0.007631192416596997], [3604480, 1.366, 0.007596602761596604], [3735552, 1.3558, 0.007560558729501924], [3866624, 1.3541, 0.007523076719477498], [3997696, 1.3529, 0.007484173784933116], [4128768, 1.3241, 0.007443867625764923], [4259840, 1.3175, 0.007402176580302399], [4390912, 1.3437, 0.007359119616964855], [4521984, 1.2841, 0.007314716325631267], [4653056, 1.3134, 0.007268986908727347], [4784128, 1.3059, 0.007221952172033932], [4915200, 1.2934, 0.007173633515220854], [5046272, 1.2911, 0.007124052922110607], [5177344, 1.2811, 0.0070732329506762405], [5308416, 1.2672, 0.00702119672277802], [5439488, 1.2859, 0.006967967913643548], [5570560, 1.2586, 0.0069135707410961], [5701632, 1.2393, 0.0068580299545361], [5832704, 1.2679, 0.0068013708236807436], [5963776, 1.2616, 0.006743619127066885], [6094848, 1.2468, 0.006684801140322425], [6225920, 1.2388, 0.006624943624211536], [6356992, 1.1918, 0.006564073812459158], [6488064, 1.2076, 0.006502219399360312], [6619136, 1.2401, 0.006439408527179867], [6750208, 1.2025, 0.00637566977334848], [6881280, 1.2315, 0.006311032137460572], [7012352, 1.2214, 0.006245525028080189], [7143424, 1.2158, 0.00617917824936084], [7274496, 1.2391, 0.006112021987485305], [7405568, 1.2513, 0.0060440867969316645], [7536640, 1.2448, 0.005975403586571745], [7667712, 1.2191, 0.00590600360560833], [7798784, 1.2041, 0.005835918429357522], [7929856, 1.1914, 0.00576517994488274], [8060928, 1.2089, 0.00569382033648688], [8192000, 1.1878, 0.005621872071069221], [8323072, 1.169, 0.005549367883353784], [8454144, 1.1936, 0.005476340760995812], [8585216, 1.1947, 0.005402823929573188], [8716288, 1.1887, 0.005328850837469602], [8847360, 1.1842, 0.005254455140656336], [8978432, 1.1666, 0.005179670687379615], [9109504, 1.2132, 0.005104531502760471], [9240576, 1.1724, 0.005029071773314136], [9371648, 1.1795, 0.004953325831395996], [9502720, 1.1573, 0.004877328139581207], [9633792, 1.1878, 0.00480111327498505], [9764864, 1.162, 0.004724715913531179], [9895936, 1.1733, 0.004648170814174911], [10027008, 1.1477, 0.004571512803088746], [10158080, 1.1545, 0.004494776757817293], [10289152, 1.1644, 0.004417997591408834], [10420224, 1.1571, 0.004341210236530724], [10551296, 1.1276, 0.004264449629575876], [10682368, 1.129, 0.004187750694767544], [10813440, 1.1556, 0.004111148328269643], [10944512, 1.1367, 0.004034677382309841], [11075584, 1.1281, 0.003958372649322629], [11206656, 1.1244, 0.003882268846119607], [11337728, 1.1529, 0.0038064005980941807], [11468800, 1.1363, 0.0037308024234678277], [11599872, 1.1407, 0.003655508717585153], [11730944, 1.141, 0.0035805537372648323], [11862016, 1.1061, 0.003505971585213585], [11993088, 1.1212, 0.0034317961945102685], [12124160, 1.1157, 0.0033580613131671457], [12255232, 1.0927, 0.003284800488775358], [12386304, 1.1238, 0.003212047053241568], [12517376, 1.1132, 0.0031398341076227638], [12648448, 1.1159, 0.0030681945070660664], [12779520, 1.0931, 0.0029971608458604325], [12910592, 1.1301, 0.002926765442607042], [13041664, 1.1056, 0.002857040325515113], [13172736, 1.1056, 0.0027880172178298378], [13303808, 1.106, 0.0027197275233990796]]}], "lr_pilot": [{"params": 29216, "d_model": 32, "n_layer": 2, "lr": 0.001, "val_loss": 1.3115795403718948, "budget": 10000000000000.0}, {"params": 29216, "d_model": 32, "n_layer": 2, "lr": 0.016, "val_loss": 1.1859928295016289, "budget": 10000000000000.0}, {"params": 29216, "d_model": 32, "n_layer": 2, "lr": 0.004, "val_loss": 1.1712569519877434, "budget": 10000000000000.0}, {"params": 29216, "d_model": 32, "n_layer": 2, "lr": 0.032, "val_loss": 1.2328234016895294, "budget": 10000000000000.0}, {"params": 29216, "d_model": 32, "n_layer": 2, "lr": 0.008, "val_loss": 1.1696699410676956, "budget": 10000000000000.0}, {"params": 29216, "d_model": 32, "n_layer": 2, "lr": 0.002, "val_loss": 1.2089653089642525, "budget": 10000000000000.0}, {"params": 107584, "d_model": 64, "n_layer": 2, "lr": 0.002, "val_loss": 1.1137632504105568, "budget": 10000000000000.0}, {"params": 107584, "d_model": 64, "n_layer": 2, "lr": 0.004, "val_loss": 1.0691928938031197, "budget": 10000000000000.0}, {"params": 107584, "d_model": 64, "n_layer": 2, "lr": 0.008, "val_loss": 1.0657726749777794, "budget": 10000000000000.0}, {"params": 107584, "d_model": 64, "n_layer": 2, "lr": 0.032, "val_loss": 1.0942130535840988, "budget": 10000000000000.0}, {"params": 107584, "d_model": 64, "n_layer": 2, "lr": 0.001, "val_loss": 1.2586621418595314, "budget": 10000000000000.0}, {"params": 107584, "d_model": 64, "n_layer": 2, "lr": 0.016, "val_loss": 1.0823529660701752, "budget": 10000000000000.0}, {"params": 345888, "d_model": 96, "n_layer": 3, "lr": 0.002, "val_loss": 1.238702304661274, "budget": 10000000000000.0}, {"params": 345888, "d_model": 96, "n_layer": 3, "lr": 0.008, "val_loss": 1.152333028614521, "budget": 10000000000000.0}, {"params": 345888, "d_model": 96, "n_layer": 3, "lr": 0.032, "val_loss": 1.5293253809213638, "budget": 10000000000000.0}, {"params": 345888, "d_model": 96, "n_layer": 3, "lr": 0.004, "val_loss": 1.1640515476465225, "budget": 10000000000000.0}, {"params": 345888, "d_model": 96, "n_layer": 3, "lr": 0.016, "val_loss": 1.141310840845108, "budget": 10000000000000.0}, {"params": 345888, "d_model": 96, "n_layer": 3, "lr": 0.001, "val_loss": 1.3809678480029106, "budget": 10000000000000.0}, {"params": 805504, "d_model": 128, "n_layer": 4, "lr": 0.001, "val_loss": 1.6858892291784286, "budget": 10000000000000.0}, {"params": 805504, "d_model": 128, "n_layer": 4, "lr": 0.016, "val_loss": 1.9624575078487396, "budget": 10000000000000.0}, {"params": 805504, "d_model": 128, "n_layer": 4, "lr": 0.002, "val_loss": 1.4787171930074692, "budget": 10000000000000.0}, {"params": 805504, "d_model": 128, "n_layer": 4, "lr": 0.004, "val_loss": 1.3610357269644737, "budget": 10000000000000.0}, {"params": 805504, "d_model": 128, "n_layer": 4, "lr": 0.032, "val_loss": 2.270757168531418, "budget": 10000000000000.0}, {"params": 805504, "d_model": 128, "n_layer": 4, "lr": 0.008, "val_loss": 1.3262016996741295, "budget": 10000000000000.0}, {"params": 1560160, "d_model": 160, "n_layer": 5, "lr": 0.002, "val_loss": 1.7788305282592773, "budget": 10000000000000.0}, {"params": 1560160, "d_model": 160, "n_layer": 5, "lr": 0.032, "val_loss": 2.4665397107601166, "budget": 10000000000000.0}, {"params": 1560160, "d_model": 160, "n_layer": 5, "lr": 0.008, "val_loss": 2.27329720556736, "budget": 10000000000000.0}, {"params": 1560160, "d_model": 160, "n_layer": 5, "lr": 0.004, "val_loss": 1.6595379337668419, "budget": 10000000000000.0}, {"params": 1560160, "d_model": 160, "n_layer": 5, "lr": 0.016, "val_loss": 2.368054449558258, "budget": 10000000000000.0}, {"params": 1560160, "d_model": 160, "n_layer": 5, "lr": 0.001, "val_loss": 1.9879335388541222, "budget": 10000000000000.0}], "paper": {"a": {"approach1": 0.5, "approach2": 0.49, "approach3": 0.46, "kaplan": 0.73}, "b": {"approach1": 0.5, "approach2": 0.51, "approach3": 0.54, "kaplan": 0.27}, "fit": {"E": 1.69, "A": 406.4, "B": 410.7, "alpha": 0.34, "beta": 0.28}}};
+const CODE = [{"title": "flops.py", "note": "Compute, counted exactly as in the paper's Appendix F. A run's token count is its budget divided by FLOPs per token.", "code": "def forward_flops_per_sequence(n_layer, d_model, n_head, ctx, vocab_size):\n    kv = d_model // n_head  # key_size\n    ffw = 4 * d_model  # ffw_size\n    embeddings = 2 * ctx * vocab_size * d_model\n    attention = (2 * 3 * ctx * d_model * (kv * n_head)  # key, query and value projections\n                 + 2 * ctx * ctx * (kv * n_head)  # key @ query logits\n                 + 3 * n_head * ctx * ctx  # softmax\n                 + 2 * ctx * ctx * (kv * n_head)  # softmax @ value reductions\n                 + 2 * ctx * (kv * n_head) * d_model)  # final linear\n    dense = 2 * ctx * (d_model * ffw + d_model * ffw)\n    logits = 2 * ctx * d_model * vocab_size\n    return embeddings + n_layer * (attention + dense) + logits\n\n\ndef train_flops_per_token(n_layer, d_model, n_head, ctx, vocab_size):\n    \"\"\"Forward + backward, per token. The paper assumes backward = 2x forward.\"\"\"\n    return 3 * forward_flops_per_sequence(n_layer, d_model, n_head, ctx, vocab_size) / ctx"}, {"title": "train.py", "note": "One run: fixed FLOPs, one pass over fresh data, and a cosine schedule that decays 10\u00d7 and ends exactly when the run ends.", "code": "def lr_at(step, steps, max_lr, cycle=1.0):\n    \"\"\"Linear warmup, then cosine decay to max_lr / 10 at step `cycle * steps`.\n    cycle = 1 is the paper's recipe; cycle > 1 overshoots the run (Kaplan-style).\"\"\"\n    warmup = max(1, min(200, steps // 20))\n    if step < warmup:\n        return max_lr * (step + 1) / warmup\n    progress = min(1.0, (step - warmup) / max(1, cycle * steps - warmup))\n    return max_lr * (0.1 + 0.9 * 0.5 * (1 + math.cos(math.pi * progress)))\n\n\ndef run(name, n_layer, d_model, n_head=None, flops=None, tokens=None, lr=2e-3, cycle=1.0, seed=0,\n        batch=BATCH, stream=None, save=False, **tags):\n    \"\"\"Train one model for `flops` of compute (or exactly `tokens` characters). Returns a dict.\"\"\"\n    path = os.path.join(RUNS, name + \".json\")\n    if os.path.exists(path):  # finished earlier: the sweep can be stopped and resumed\n        return json.load(open(path))\n    n_head = n_head or heads(d_model)\n    dev = device()\n    torch.manual_seed(seed)\n    model = GPT(len(VOCAB), CTX, n_layer, d_model, n_head).to(dev)\n    fpt = train_flops_per_token(n_layer, d_model, n_head, CTX, len(VOCAB))\n    steps = max(1, round((tokens or flops / fpt) / (batch * CTX)))\n    if stream is None or stream.batch_size != batch:\n        stream = Stream(batch=batch)\n    assert steps <= stream.max_steps, f\"{name} needs {steps} steps; the data only has {stream.max_steps}\"\n\n    decay = [p for p in model.parameters() if p.dim() >= 2]\n    no_decay = [p for p in model.parameters() if p.dim() < 2]\n    opt = torch.optim.AdamW([{\"params\": decay, \"weight_decay\": 0.1},\n                             {\"params\": no_decay, \"weight_decay\": 0.0}], lr=lr, betas=(0.9, 0.95),\n                            fused=dev in (\"mps\", \"cuda\"))\n    log_every = max(1, steps // 200)\n    curve, window, t0 = [], [], time.time()\n    for step in range(steps):\n        for group in opt.param_groups:\n            group[\"lr\"] = lr_at(step, steps, lr, cycle)\n        x, y = stream.batch(step)\n        loss = model(x, y)\n        opt.zero_grad(set_to_none=True)\n        loss.backward()\n        torch.nn.utils.clip_grad_norm_(model.parameters(), 1.0)\n        opt.step()\n        window.append(loss.detach())\n        if (step + 1) % log_every == 0 or step == steps - 1:\n            seen = (step + 1) * batch * CTX  # [tokens seen, FLOPs used, mean train loss, lr]\n            curve.append([seen, seen * fpt, torch.stack(window).mean().item(), lr_at(step, steps, lr, cycle)])\n            window = []\n\n    result = dict(name=name, n_layer=n_layer, d_model=d_model, n_head=n_head, params=model.n_params(),\n                  flops_per_token=fpt, tokens=steps * batch * CTX, flops=steps * batch * CTX * fpt,\n                  budget=flops, steps=steps, batch=batch, lr=lr, cycle=cycle, seed=seed, val_loss=evaluate(model, dev),\n                  curve=curve, seconds=round(time.time() - t0, 1), device=dev, **tags)\n    os.makedirs(RUNS, exist_ok=True)\n    json.dump(result, open(path, \"w\"))\n    if save:\n        torch.save(model.state_dict(), os.path.join(RUNS, name + \".pt\"))\n    return result"}, {"title": "sweep.py", "note": "The IsoFLOP grid: for every budget, a window of model sizes around the expected optimum.", "code": "# Model family (n_layer, d_model): 21 shapes from 17K to 6.3M parameters, each ~1.2-1.5x the last,\n# with width/depth kept between 16 and 32.\nLADDER = [(2, 24), (2, 32), (2, 40), (2, 48), (2, 56), (2, 64), (3, 64), (3, 80), (3, 96), (4, 96), (4, 112),\n          (4, 128), (5, 128), (5, 144), (5, 160), (6, 176), (6, 192), (7, 208), (7, 224), (8, 240), (8, 256)]\n\n\n# Compute budgets: half-decades from 1e12 FLOPs (the paper used 9 budgets, 6e18 ... 3e21).\nBUDGETS = [1e12, 10**12.5, 1e13, 10**13.5]\n\n\ndef guess_opt(C):\n    \"\"\"Rough optimum from the diagnostic runs (~40-65K params at 1e12, ~240K at 3e13). Only used to centre\n    each budget's window of sizes; the window (~10x wide) is where the parabola looks for the real optimum.\"\"\"\n    return 65e3 * (C / 1e12) ** 0.38\n\n\ndef stage_isoflop():\n    runs = []\n    for C in BUDGETS:\n        for L, d in LADDER:\n            if guess_opt(C) / 3.5 <= size(L, d) <= guess_opt(C) * 3:\n                for B in batches_for(L, d, C):\n                    runs.append(dict(name=f\"iso_C{C:.2e}_L{L}_d{d}\" + (f\"_b{B}\" if B != 64 else \"\"), n_layer=L,\n                                     d_model=d, flops=C, lr=lr_for(d), batch=B, stage=\"isoflop\",\n                                     save=C == BUDGETS[-1]))\n    return runs\n\n\ndef stage_gopher():\n    \"\"\"Paper Section 4 at our scale, at 3.2e13 FLOPs. mini-Chinchilla = our compute-optimal size;\n    mini-Gopher = 4x the parameters (Gopher/Chinchilla = 280B/70B), so ~4x fewer tokens.\n    To be fair, mini-Gopher also gets a second, lower learning rate and keeps its better run.\"\"\"\n    C = 10**13.5\n    n = optimum(C)\n    (Lc, dc), (Lg, dg) = nearest(n), nearest(4 * n)\n    sfx = lambda B: f\"_b{B}\" if B != 64 else \"\"  # noqa: E731\n    return [dict(name=f\"h2h_chinchilla_L{Lc}_d{dc}{sfx(B)}\", n_layer=Lc, d_model=dc, flops=C, lr=lr_for(dc),\n                 batch=B, stage=\"gopher\", role=\"chinchilla\", save=True) for B in batches_for(Lc, dc, C)] + \\\n           [dict(name=f\"h2h_gopher_L{Lg}_d{dg}_lr{lr:g}{sfx(B)}\", n_layer=Lg, d_model=dg, flops=C, lr=lr,\n                 batch=B, stage=\"gopher\", role=\"gopher\", save=True)\n            for B in batches_for(Lg, dg, C) for lr in (lr_for(dg), lr_for(dg) / 2)]\n\n\ndef stage_cosine():\n    \"\"\"Paper Appendix B / Figure A1: same model, same steps; only the cosine cycle length changes.\"\"\"\n    C = 1e13\n    L, d = nearest(optimum(C))\n    return [dict(name=f\"cos_{cyc:g}x_L{L}_d{d}\", n_layer=L, d_model=d, flops=C, lr=lr_for(d), cycle=cyc,\n                 stage=\"cosine\") for cyc in (1.0, 1.25, 1.5, 2.0, 5.0)]"}, {"title": "approach 2", "note": "Paper \u00a73.2: fit a parabola to each IsoFLOP curve, take its minimum, then fit N_opt \u221d C^a across budgets.", "code": "# ---------------------------------------------------------------- Approach 2: IsoFLOP profiles\ndef isoflop_fits(runs):\n    \"\"\"For every budget: fit a parabola to loss vs log(N) and take its lowest point.\"\"\"\n    out = []\n    for C in sorted({r[\"budget\"] for r in runs}):\n        pts = [r for r in runs if r[\"budget\"] == C]\n        if len(pts) < 3:\n            raise ValueError(\"need 3 points for a parabola\")\n        x = np.log10([r[\"params\"] for r in pts])\n        y = np.array([r[\"val_loss\"] for r in pts])\n        p2, p1, p0 = np.polyfit(x, y, 2)\n        if p2 <= 0:\n            raise ValueError(\"no minimum\")\n        xm = -p1 / (2 * p2)\n        N = 10**xm\n        out.append(dict(budget=C, coef=[p2, p1, p0], N_opt=N, D_opt=C / float(fpt(N)),\n                        loss_opt=p0 - p1**2 / (4 * p2), inside=bool(x.min() <= xm <= x.max())))\n    return out\n\n\ndef approach2(runs):\n    fits = isoflop_fits(runs)\n    C = np.array([f[\"budget\"] for f in fits])\n    a, ka = power_law(C, [f[\"N_opt\"] for f in fits])\n    b, kb = power_law(C, [f[\"D_opt\"] for f in fits])\n\n    def exps(sample):\n        f = isoflop_fits(sample)\n        c = [g[\"budget\"] for g in f]\n        return power_law(c, [g[\"N_opt\"] for g in f])[0], power_law(c, [g[\"D_opt\"] for g in f])[0]\n\n    ci = bootstrap(runs, exps)\n    return dict(per_budget=fits, a=a, kN=ka, b=b, kD=kb, a_ci=ci[0], b_ci=ci[1])"}, {"title": "approach 1", "note": "Paper \u00a73.1: for each FLOP count, which run's (smoothed) training curve is lowest?", "code": "# ------------------------------------------------------- Approach 1: minimum over training curves\ndef envelope(runs, grid):\n    \"\"\"For every FLOP count, which run has the lowest (smoothed) training loss right there?\"\"\"\n    best_loss = np.full(len(grid), np.inf)\n    best_N = np.full(len(grid), np.nan)\n    for r in runs:\n        c = np.array(r[\"curve\"])\n        f, loss = c[:, 1], c[:, 2]\n        loss = np.convolve(np.pad(loss, 2, mode=\"edge\"), np.ones(5) / 5, mode=\"valid\")  # smooth\n        ok = (grid >= f[0]) & (grid <= f[-1])\n        li = np.interp(np.log(grid[ok]), np.log(f), loss)\n        better = li < best_loss[ok]\n        idx = np.where(ok)[0][better]\n        best_loss[idx], best_N[idx] = li[better], r[\"params\"]\n    return best_loss, best_N\n\n\ndef approach1(runs):\n    budgets = sorted({r[\"budget\"] for r in runs})\n    grid = np.logspace(np.log10(budgets[0]), np.log10(budgets[-1]), 60)\n\n    def fit(sample):\n        loss, N = envelope(sample, grid)\n        return power_law(grid, N)[0], power_law(grid, grid / fpt(N))[0]\n\n    loss, N = envelope(runs, grid)\n    a, ka = power_law(grid, N)\n    b, kb = power_law(grid, grid / fpt(N))\n    ci = bootstrap(runs, fit)\n    return dict(grid=grid.tolist(), env_loss=loss.tolist(), env_N=N.tolist(),\n                a=a, kN=ka, b=b, kD=kb, a_ci=ci[0], b_ci=ci[1])"}, {"title": "approach 3", "note": "Paper \u00a73.3 and Appendix D.2: Huber loss (\u03b4 = 10\u207b\u00b3) on log-loss, L-BFGS from the paper's grid of starting points.", "code": "# ------------------------------------------------------------ Approach 3: parametric loss fit\ndef _objective(theta, lN, lD, lL, delta=1e-3):\n    \"\"\"Huber loss between predicted and observed log-loss, with its gradient (paper Eq. 3).\"\"\"\n    a, b, e, alpha, beta = theta\n    t = np.stack([a - alpha * lN, b - beta * lD, np.full_like(lN, e)])\n    pred = logsumexp(t, axis=0)  # log(A/N^alpha + B/D^beta + E), with A=e^a, B=e^b, E=e^e\n    r = pred - lL\n    small = np.abs(r) <= delta\n    loss = np.where(small, 0.5 * r**2, delta * (np.abs(r) - 0.5 * delta)).sum()\n    g = np.where(small, r, delta * np.sign(r))\n    w = np.exp(t - pred)  # softmax weights of the three terms\n    grad = np.array([(g * w[0]).sum(), (g * w[1]).sum(), (g * w[2]).sum(),\n                     (g * -w[0] * lN).sum(), (g * -w[1] * lD).sum()])\n    return loss, grad\n\n\ndef fit_parametric(runs, inits=None):\n    lN = np.log([r[\"params\"] for r in runs])\n    lD = np.log([r[\"tokens\"] for r in runs])\n    lL = np.log([r[\"val_loss\"] for r in runs])\n    if inits is None:  # the paper's initialisation grid (Appendix D.2)\n        inits = [(a, b, e, al, be) for al in np.arange(0, 2.01, 0.5) for be in np.arange(0, 2.01, 0.5)\n                 for e in np.arange(-1, 1.01, 0.5) for a in range(0, 26, 5) for b in range(0, 26, 5)]\n    best = None\n    for x0 in inits:\n        res = minimize(_objective, x0, args=(lN, lD, lL), jac=True, method=\"L-BFGS-B\")\n        if best is None or res.fun < best.fun:\n            best = res\n    a, b, e, alpha, beta = best.x\n    return dict(E=float(np.exp(e)), A=float(np.exp(a)), B=float(np.exp(b)), alpha=float(alpha),\n                beta=float(beta), a=float(beta / (alpha + beta)), b=float(alpha / (alpha + beta)),\n                theta=best.x.tolist(), huber=float(best.fun))"}];
+
+// ---------- helpers
+const $ = (s) => document.querySelector(s);
+const SVGNS = "http://www.w3.org/2000/svg";
+const SUP = { "-": "⁻", 0: "⁰", 1: "¹", 2: "²", 3: "³", 4: "⁴", 5: "⁵", 6: "⁶", 7: "⁷", 8: "⁸", 9: "⁹" };
+const sup = (n) => String(n).split("").map((c) => SUP[c] ?? c).join("");
+function sci(x, digits = 1) {
+  const e = Math.floor(Math.log10(x) + 1e-9), m = x / 10 ** e;
+  return Math.abs(m - 1) < 0.05 ? `10${sup(e)}` : `${m.toFixed(digits)}×10${sup(e)}`;
+}
+function human(n, unit = "") {
+  const a = Math.abs(n);
+  const s = a >= 1e12 ? (n / 1e12).toFixed(n >= 1e13 ? 0 : 1) + "T" : a >= 1e9 ? (n / 1e9).toFixed(n >= 1e10 ? 0 : 1) + "B"
+    : a >= 1e6 ? (n / 1e6).toFixed(n >= 1e7 ? 0 : 1) + "M" : a >= 1e3 ? (n / 1e3).toFixed(0) + "K" : n.toFixed(0);
+  return s + unit;
+}
+const css = (v) => `var(--${v})`;
+const BUD = ["b0", "b1", "b2", "b3", "b4"];
+function el(tag, attrs = {}, parent) {
+  const e = document.createElementNS(SVGNS, tag);
+  for (const [k, v] of Object.entries(attrs)) e.setAttribute(k, v);
+  if (parent) parent.appendChild(e);
+  return e;
+}
+const tip = $("#tip");
+function showTip(evt, html) {
+  tip.innerHTML = html; tip.classList.add("on");
+  const w = tip.offsetWidth, h = tip.offsetHeight;
+  let x = evt.clientX + 14, y = evt.clientY - h - 10;
+  if (x + w > window.innerWidth - 8) x = evt.clientX - w - 14;
+  if (y < 8) y = evt.clientY + 16;
+  tip.style.left = x + "px"; tip.style.top = y + "px";
+}
+const hideTip = () => tip.classList.remove("on");
+
+// ---------- scales and axes
+function scale(domain, range, log) {
+  const f = log ? Math.log10 : (v) => v;
+  const d0 = f(domain[0]), d1 = f(domain[1]);
+  const s = (v) => range[0] + ((f(v) - d0) / (d1 - d0)) * (range[1] - range[0]);
+  s.domain = domain; s.log = log; s.range = range;
+  return s;
+}
+function logTicks(lo, hi) {
+  const out = [], span = Math.log10(hi / lo);
+  const mults = span > 2.2 ? [1] : span > 1.1 ? [1, 3] : [1, 2, 5];
+  for (let e = Math.floor(Math.log10(lo)) - 1; e <= Math.ceil(Math.log10(hi)); e++)
+    for (const m of mults) { const v = m * 10 ** e; if (v >= lo * 0.999 && v <= hi * 1.001) out.push(v); }
+  return out;
+}
+function linTicks(lo, hi, n = 5) {
+  const raw = (hi - lo) / n, p = 10 ** Math.floor(Math.log10(raw));
+  const step = [1, 2, 2.5, 5, 10].map((m) => m * p).find((s) => s >= raw);
+  const out = [];
+  for (let v = Math.ceil(lo / step) * step; v <= hi + 1e-9; v += step) out.push(+v.toFixed(10));
+  return out;
+}
+function makeChart(host, o) {
+  host.innerHTML = "";
+  const W = Math.max(280, host.clientWidth), H = o.height ?? Math.round(Math.min(380, Math.max(250, W * 0.52)));
+  const m = Object.assign({ l: 58, r: 18, t: 16, b: 46 }, o.margin || {});
+  const svg = el("svg", { viewBox: `0 0 ${W} ${H}`, width: W, height: H, role: "img", "aria-label": o.label || "chart" }, host);
+  const sx = scale(o.x.domain, [m.l, W - m.r], o.x.log), sy = scale(o.y.domain, [H - m.b, m.t], o.y.log);
+  const g = el("g", {}, svg);
+  const xt = o.x.ticks || (o.x.log ? logTicks(...o.x.domain) : linTicks(...o.x.domain, W < 460 ? 4 : 6));
+  const yt = o.y.ticks || (o.y.log ? logTicks(...o.y.domain) : linTicks(...o.y.domain, 5));
+  for (const v of xt) {
+    const x = sx(v);
+    el("line", { x1: x, x2: x, y1: m.t, y2: H - m.b, style: `stroke:${css("grid")}` }, g);
+    const t = el("text", { x, y: H - m.b + 18, "text-anchor": "middle", class: "tick" }, g);
+    t.textContent = (o.x.fmt || String)(v);
+  }
+  for (const v of yt) {
+    const y = sy(v);
+    el("line", { x1: m.l, x2: W - m.r, y1: y, y2: y, style: `stroke:${css("grid")}` }, g);
+    const t = el("text", { x: m.l - 8, y: y + 4, "text-anchor": "end", class: "tick" }, g);
+    t.textContent = (o.y.fmt || String)(v);
+  }
+  el("line", { x1: m.l, x2: W - m.r, y1: H - m.b, y2: H - m.b, style: `stroke:${css("faint")}` }, g);
+  if (o.x.label) { const t = el("text", { x: (m.l + W - m.r) / 2, y: H - 8, "text-anchor": "middle", class: "axis-label" }, g); t.textContent = o.x.label; }
+  if (o.y.label) { const t = el("text", { x: -(m.t + H - m.b) / 2, y: 14, transform: "rotate(-90)", "text-anchor": "middle", class: "axis-label" }, g); t.textContent = o.y.label; }
+  const clipId = "c" + Math.random().toString(36).slice(2);
+  const cp = el("clipPath", { id: clipId }, el("defs", {}, svg));
+  el("rect", { x: m.l, y: m.t - 4, width: W - m.l - m.r, height: H - m.t - m.b + 8 }, cp);
+  const plot = el("g", { "clip-path": `url(#${clipId})` }, svg);
+  const top = el("g", {}, svg);
+  const C = {
+    svg, W, H, m, sx, sy, plot, top,
+    line(pts, style, parent = plot) {
+      const d = pts.filter((p) => isFinite(p[0]) && isFinite(p[1])).map((p, i) => (i ? "L" : "M") + sx(p[0]).toFixed(1) + "," + sy(p[1]).toFixed(1)).join("");
+      return el("path", { d, style: "fill:none;" + style }, parent);
+    },
+    dot(x, y, r, style, tipHtml, parent = top) {
+      const c = el("circle", { cx: sx(x), cy: sy(y), r, style }, parent);
+      if (tipHtml) { c.classList.add("hit"); c.addEventListener("pointerenter", (e) => showTip(e, tipHtml)); c.addEventListener("pointermove", (e) => showTip(e, tipHtml)); c.addEventListener("pointerleave", hideTip); }
+      return c;
+    },
+    star(x, y, r, style, tipHtml) {
+      const cx = sx(x), cy = sy(y), pts = [];
+      for (let i = 0; i < 10; i++) { const a = -Math.PI / 2 + (i * Math.PI) / 5, rr = i % 2 ? r * 0.45 : r; pts.push((cx + rr * Math.cos(a)).toFixed(1) + "," + (cy + rr * Math.sin(a)).toFixed(1)); }
+      const p = el("polygon", { points: pts.join(" "), style }, top);
+      if (tipHtml) { p.classList.add("hit"); p.addEventListener("pointerenter", (e) => showTip(e, tipHtml)); p.addEventListener("pointermove", (e) => showTip(e, tipHtml)); p.addEventListener("pointerleave", hideTip); }
+      return p;
+    },
+    text(x, y, s, attrs = {}, parent = top) { const t = el("text", Object.assign({ x: sx(x), y: sy(y) }, attrs), parent); t.textContent = s; return t; },
+  };
+  return C;
+}
+const onResize = [];
+let rsTimer, lastW = document.body.clientWidth;
+new ResizeObserver((es) => {
+  const w = es[0].contentRect.width;
+  if (Math.abs(w - lastW) < 1) return; // only re-draw when the width changes
+  lastW = w; clearTimeout(rsTimer); rsTimer = setTimeout(() => onResize.forEach((f) => f()), 60);
+}).observe(document.body);
+
+// ---------- model maths
+// FLOPs per training token for our model family: 6N(1 + k N^-g), fitted to the paper's Appendix F count
+const fpt = (N) => 6 * N * (1 + R.fpt_fit.k * N ** -R.fpt_fit.g);
+const A3 = R.approach3;
+const lawOurs = (N, D) => A3.E + A3.A / N ** A3.alpha + A3.B / D ** A3.beta;
+const PF = R.paper.fit;
+const lawPaper = (N, D) => PF.E + PF.A / N ** PF.alpha + PF.B / D ** PF.beta;
+function argminN(C, lo, hi, loss) {
+  let best = [Infinity, lo];
+  for (let i = 0; i <= 600; i++) { const N = lo * (hi / lo) ** (i / 600), L = loss(N, C); if (L < best[0]) best = [L, N]; }
+  return best[1];
+}
+const oursAt = (N, C) => lawOurs(N, C / fpt(N));
+const budgets = R.budgets;
+const bColor = (C) => css(BUD[budgets.indexOf(C)] || "b2");
+
+// ---------- hero
+$("#stat-runs").textContent = `${R.meta.runs}`;
+$("#v-ours").innerHTML = `N<sub>opt</sub> ∝ C<sup>${R.approach2.a.toFixed(2)}</sup>`;
+$("#v-ours-s").textContent = `data: D_opt ∝ C^${R.approach2.b.toFixed(2)} · ${R.meta.runs} runs · ${(R.meta.seconds / 60).toFixed(0)} min of laptop time`;
+
+// ---------- 01 explorer
+let exC = budgets[Math.min(3, budgets.length - 1)];
+const N_LO = 12e3, N_HI = 4e6;
+const chips = $("#budget-chips");
+budgets.forEach((C) => {
+  const b = document.createElement("button");
+  b.className = "chip"; b.type = "button"; b.textContent = sci(C) ; b.setAttribute("aria-pressed", C === exC);
+  b.addEventListener("click", () => { exC = C; chips.querySelectorAll(".chip").forEach((c) => c.setAttribute("aria-pressed", c === b)); setSliderToOpt(); renderExplore(); });
+  chips.appendChild(b);
+});
+const nSlider = $("#n-slider");
+const sliderToN = () => N_LO * (N_HI / N_LO) ** (nSlider.value / 1000);
+function setSliderToOpt() {
+  const N = argminN(exC, N_LO, N_HI, oursAt) * 2.6; // start off-optimum so the dip is visible
+  nSlider.value = Math.round((1000 * Math.log(N / N_LO)) / Math.log(N_HI / N_LO));
+}
+nSlider.addEventListener("input", renderExplore);
+function renderExplore() {
+  const host = $("#ch-explore");
+  const Nopt = argminN(exC, N_LO, N_HI, oursAt), Lopt = oursAt(Nopt, exC);
+  const runs = R.isoflop.filter((r) => r.budget === exC);
+  const yLo = Math.min(Lopt, ...runs.map((r) => r.val_loss)) - 0.04;
+  const c = makeChart(host, {
+    height: Math.round(Math.min(460, Math.max(300, host.clientWidth * 0.66))),
+    x: { domain: [N_LO, N_HI], log: true, fmt: (v) => human(v), label: "Parameters N (log scale)" },
+    y: { domain: [yLo, yLo + 0.75], fmt: (v) => v.toFixed(1), label: "Validation loss (nats / char)" },
+    label: "Loss against model size at a fixed compute budget",
+  });
+  const pts = [];
+  for (let i = 0; i <= 240; i++) { const N = N_LO * (N_HI / N_LO) ** (i / 240); pts.push([N, oursAt(N, exC)]); }
+  c.line(pts, `stroke:${bColor(exC)};stroke-width:2.5`);
+  runs.forEach((r) => c.dot(r.params, r.val_loss, 5, `fill:${bColor(exC)};stroke:${css("surface")};stroke-width:1.5`,
+    `<b>real run</b><br>${human(r.params)} params (${r.n_layer} layers, width ${r.d_model})<br>${human(r.tokens)} characters<br>loss ${r.val_loss.toFixed(3)}`));
+  c.star(Nopt, Lopt, 11, `fill:${css("accent")};stroke:${css("ink")};stroke-width:1`, `<b>compute-optimal</b><br>${human(Nopt)} params`);
+  const N = sliderToN(), D = exC / fpt(N), L = oursAt(N, exC);
+  const x = c.sx(N);
+  el("line", { x1: x, x2: x, y1: c.m.t, y2: c.H - c.m.b, style: `stroke:${css("ink")};stroke-dasharray:3 4;opacity:.55` }, c.plot);
+  if (L < yLo + 0.75) c.dot(N, L, 7, `fill:${css("ink")};stroke:${css("bg")};stroke-width:2`);
+  $("#r-n").textContent = human(N);
+  $("#r-d").textContent = human(D);
+  $("#r-tpp").textContent = (D / N).toFixed(D / N < 10 ? 1 : 0);
+  $("#r-loss").textContent = L.toFixed(3);
+  const ratio = N / Nopt, st = $("#r-status");
+  const gap = L - Lopt;
+  if (ratio < 0.62) { st.className = "status bad"; st.innerHTML = `<b>Too small</b><span>Plenty of data, not enough parameters to learn from it. +${gap.toFixed(3)} loss vs the best size (${human(Nopt)}).</span>`; }
+  else if (ratio > 1.6) { st.className = "status bad"; st.innerHTML = `<b>Too big: undertrained</b><span>The budget runs out after ${human(D)} characters. +${gap.toFixed(3)} loss vs the best size (${human(Nopt)}). This is where Gopher sat.</span>`; }
+  else { st.className = "status ok"; st.innerHTML = `<b>Near compute-optimal</b><span>Within ${(Math.max(gap, 0)).toFixed(3)} of the best loss for ${sci(exC)} FLOPs.</span>`; }
+}
+
+// ---------- 02 isoflop (attempt 2 = final; attempt 1 = same batch for every run)
+let ATT = 2;
+const isoRuns = () => (ATT === 2 ? R.isoflop : R.attempt1.isoflop);
+const isoFit = () => (ATT === 2 ? R.approach2 : R.attempt1.approach2);
+function renderAttemptNote() {
+  const f1 = R.attempt1.approach2, f2 = R.approach2;
+  $("#attempt-note").innerHTML = ATT === 2
+    ? `<b>Attempt 2: a = ${f2.a.toFixed(2)}.</b> Every (model, budget) is trained with up to three batch sizes (1K, 2K, 4K characters per step) and keeps its best run. A smaller batch is only tried when a run would get fewer than ${R.min_steps.toLocaleString()} optimizer steps. Same compute, same data. Compare attempt 1.`
+    : `<b>Attempt 1: a = ${f1.a.toFixed(2)}, close to Kaplan's 0.73.</b> Every run used 4,096 characters per step. At small budgets the bigger models got only 300–700 optimizer steps and looked far worse than they are, so the best size looked too small there. The paper blames the same kind of setup choice for Kaplan's answer.`;
+}
+$("#attempt-chips").querySelectorAll(".chip").forEach((b) => b.addEventListener("click", () => {
+  ATT = +b.dataset.att;
+  $("#attempt-chips").querySelectorAll(".chip").forEach((c) => c.setAttribute("aria-pressed", c === b));
+  renderAttemptNote(); renderIso();
+  renderOpt("#ch-nopt", "N_opt", isoFit().a, isoFit().kN, R.paper.a.approach2, 0.73, "Optimal parameters");
+  renderOpt("#ch-dopt", "D_opt", isoFit().b, isoFit().kD, R.paper.b.approach2, 0.27, "Optimal characters");
+}));
+$("#diag-rows").innerHTML = (R.diagnostics || []).map((d) => {
+  const ch = d.loss_small - d.loss64;
+  return `<tr><td>${human(d.params)} params</td><td>${sci(d.budget)}</td><td class="num">${d.steps64.toLocaleString()}</td><td class="num">${d.loss64.toFixed(3)}</td>
+    <td class="num">${d.steps_small.toLocaleString()}</td><td class="num">${d.loss_small.toFixed(3)}</td><td class="num ${ch < -0.01 ? "good" : "flat"}">${ch >= 0 ? "+" : ""}${ch.toFixed(3)}</td></tr>`;
+}).join("");
+function renderIso() {
+  const host = $("#ch-iso");
+  const all = isoRuns();
+  const P2 = isoFit().per_budget;
+  const xs = all.map((r) => r.params).concat(P2.map((f) => f.N_opt)), ys = all.map((r) => r.val_loss).concat(P2.map((f) => f.loss_opt));
+  const c = makeChart(host, {
+    height: Math.round(Math.min(430, Math.max(280, host.clientWidth * 0.45))),
+    x: { domain: [Math.min(...xs) / 1.3, Math.max(...xs) * 1.3], log: true, fmt: (v) => human(v), label: "Parameters N (log scale)" },
+    y: { domain: [Math.min(...ys) - 0.03, Math.max(...ys) + 0.03], fmt: (v) => v.toFixed(2), label: "Validation loss (nats / char)" },
+    label: "IsoFLOP curves",
+  });
+  P2.forEach((f) => {
+    const runs = all.filter((r) => r.budget === f.budget);
+    const lx = runs.map((r) => Math.log10(r.params));
+    const pts = [];
+    for (let i = 0; i <= 80; i++) { const x = Math.min(...lx) - 0.08 + ((Math.max(...lx) - Math.min(...lx) + 0.16) * i) / 80; pts.push([10 ** x, f.coef[0] * x * x + f.coef[1] * x + f.coef[2]]); }
+    c.line(pts, `stroke:${bColor(f.budget)};stroke-width:2.2`);
+    runs.forEach((r) => c.dot(r.params, r.val_loss, 5, `fill:${bColor(f.budget)};stroke:${css("surface")};stroke-width:1.5`,
+      `<b>${sci(f.budget)} FLOPs</b><br>${human(r.params)} params · ${r.n_layer}×${r.d_model}<br>${human(r.tokens)} characters (${(r.tokens / r.params).toFixed(0)}/param)<br>loss ${r.val_loss.toFixed(4)}`));
+    c.star(f.N_opt, f.loss_opt, 10, `fill:${bColor(f.budget)};stroke:${css("ink")};stroke-width:1`,
+      `<b>minimum at ${sci(f.budget)}</b><br>N_opt ≈ ${human(f.N_opt)}<br>D_opt ≈ ${human(f.D_opt)} characters<br>${(f.D_opt / f.N_opt).toFixed(0)} characters / param`);
+  });
+  const lg = $("#iso-legend"); lg.innerHTML = "";
+  budgets.forEach((C) => { lg.insertAdjacentHTML("beforeend", `<span><i style="background:${bColor(C)}"></i>${sci(C)} FLOPs</span>`); });
+  lg.insertAdjacentHTML("beforeend", `<span>★ lowest point of each parabola</span>`);
+}
+function renderOpt(hostSel, key, expo, kfit, paperExp, kapExp, ylabel) {
+  const host = $(hostSel), P = isoFit().per_budget;
+  const Cs = P.map((f) => f.budget), ys = P.map((f) => f[key]);
+  const lo = Math.min(...Cs) / 2, hi = Math.max(...Cs) * 2;
+  const mid = Math.exp(Cs.reduce((s, v) => s + Math.log(v), 0) / Cs.length), ymid = kfit * mid ** expo;
+  const yl = Math.min(...ys) / 2.2, yh = Math.max(...ys) * 2.2;
+  const c = makeChart(host, {
+    x: { domain: [lo, hi], log: true, fmt: (v) => sci(v, 0), label: "Compute C (FLOPs)" },
+    y: { domain: [yl, yh], log: true, fmt: (v) => human(v), label: ylabel },
+    height: Math.round(Math.min(300, Math.max(230, host.clientWidth * 0.62))),
+  });
+  const line = (e, k0) => { const p = []; for (let i = 0; i <= 40; i++) { const C = lo * (hi / lo) ** (i / 40); p.push([C, k0 * (C / mid) ** e]); } return p; };
+  c.line(line(kapExp, ymid), `stroke:${css("kaplan")};stroke-width:1.6;stroke-dasharray:6 4`);
+  c.line(line(paperExp, ymid), `stroke:${css("paperc")};stroke-width:1.6;opacity:.8`);
+  c.line(line(expo, ymid), `stroke:${css("accent")};stroke-width:2.6`);
+  P.forEach((f) => c.star(f.budget, f[key], 9, `fill:${bColor(f.budget)};stroke:${css("ink")};stroke-width:1`, `${sci(f.budget)} FLOPs → ${human(f[key])}`));
+  c.text(lo * 1.15, yh / 1.25, `our slope ${expo.toFixed(2)}`, { class: "lbl", style: `fill:${css("accent")}` });
+}
+
+// ---------- 03 approaches
+function ciTxt(ci) { return ci ? `<span class="ci"> (${ci[0].toFixed(2)}–${ci[1].toFixed(2)})</span>` : ""; }
+const APPROACHES = [
+  { key: "approach1", col: "a1", name: "1 · Minimum over training curves", how: "At every FLOP count, which run's training curve is lowest?" },
+  { key: "approach2", col: "accent", name: "2 · IsoFLOP profiles", how: "Fix the compute, vary the size, take the parabola's lowest point." },
+  { key: "approach3", col: "a3", name: "3 · Parametric fit", how: "Fit L(N,D) = E + A/N^α + B/D^β to every run (Huber loss, L-BFGS)." },
+];
+$("#approach-rows").innerHTML = APPROACHES.map((a) => {
+  const r = R[a.key];
+  return `<tr><td><span class="swatch" style="background:${css(a.col)}"></span>${a.name}</td><td>${a.how}</td>
+    <td class="num">${r.a.toFixed(2)}${ciTxt(r.a_ci)}</td><td class="num" style="color:${css("paperc")}">${R.paper.a[a.key].toFixed(2)}</td>
+    <td class="num">${r.b.toFixed(2)}${ciTxt(r.b_ci)}</td><td class="num" style="color:${css("paperc")}">${R.paper.b[a.key].toFixed(2)}</td></tr>`;
+}).join("") + `<tr class="kap"><td><span class="swatch" style="background:${css("kaplan")}"></span>Our attempt 1 (same batch)</td><td>IsoFLOP profiles, one batch size for all runs (too few steps at small budgets).</td><td class="num">${R.attempt1.approach2.a.toFixed(2)}${ciTxt(R.attempt1.approach2.a_ci)}</td><td class="num">—</td><td class="num">${R.attempt1.approach2.b.toFixed(2)}</td><td class="num">—</td></tr>`
+  + `<tr class="kap"><td><span class="swatch" style="background:${css("kaplan")}"></span>Kaplan et al. (2020)</td><td>Earlier scaling law: mostly grow the model.</td><td class="num">—</td><td class="num">0.73</td><td class="num">—</td><td class="num">0.27</td></tr>`;
+function renderApproaches() {
+  const host = $("#ch-approaches");
+  const lo = budgets[0] / 1.6, hi = budgets[budgets.length - 1] * 10;
+  const c = makeChart(host, {
+    x: { domain: [lo, hi], log: true, fmt: (v) => sci(v, 0), label: "Compute C (FLOPs)" },
+    y: { domain: [1.5e4, 6e6], log: true, fmt: (v) => human(v), label: "Compute-optimal parameters" },
+    height: Math.round(Math.min(340, Math.max(250, host.clientWidth * 0.66))),
+  });
+  const xe = c.sx(budgets[budgets.length - 1]);
+  el("rect", { x: xe, y: c.m.t, width: c.W - c.m.r - xe, height: c.H - c.m.t - c.m.b, style: `fill:${css("grid")};opacity:.6` }, c.plot);
+  el("text", { x: xe + 6, y: c.m.t + 14, class: "tick" }, c.top).textContent = "extrapolated";
+  const grid = []; for (let i = 0; i <= 60; i++) grid.push(lo * (hi / lo) ** (i / 60));
+  const a1 = R.approach1, a2 = R.approach2;
+  const c0 = budgets[0], n0 = a2.kN * c0 ** a2.a;
+  c.line(grid.map((C) => [C, n0 * (C / c0) ** 0.73]), `stroke:${css("kaplan")};stroke-width:1.8;stroke-dasharray:6 4`);
+  c.line(grid.map((C) => [C, a1.kN * C ** a1.a]), `stroke:${css("a1")};stroke-width:2.2`);
+  c.line(grid.map((C) => [C, a2.kN * C ** a2.a]), `stroke:${css("accent")};stroke-width:3.4`);
+  c.line(grid.map((C) => [C, argminN(C, 3e3, 1e8, oursAt)]), `stroke:${css("a3")};stroke-width:2.2;stroke-dasharray:7 4`);
+  if (R.head_to_head) {
+    const g = R.head_to_head.gopher, h = R.head_to_head.chinchilla;
+    c.dot(g.flops, g.params, 6, `fill:${css("surface")};stroke:${css("ink")};stroke-width:2`, `mini-Gopher: ${human(g.params)} params`);
+    c.text(g.flops, g.params, "mini-Gopher", { dx: 9, dy: 4, class: "lbl", style: `fill:${css("ink")}` });
+    c.star(h.flops, h.params, 10, `fill:${css("accent")};stroke:${css("ink")};stroke-width:1`, `mini-Chinchilla: ${human(h.params)} params`);
+    c.text(h.flops, h.params, "mini-Chinchilla", { dx: 10, dy: 14, class: "lbl", style: `fill:${css("ink")}` });
+  }
+  $("#approach-legend").innerHTML = [["a1", "Approach 1"], ["accent", "Approach 2"], ["a3", "Approach 3 (dashed)"]].map(([k, n]) => `<span><i style="background:${css(k)}"></i>${n}</span>`).join("")
+    + `<span><i class="dash"></i>Kaplan slope 0.73</span>`;
+}
+function renderEnvelope() {
+  const host = $("#ch-envelope"), A = R.approach1;
+  const Ns = R.isoflop.map((r) => r.params), lo = Math.log(Math.min(...Ns)), hi = Math.log(Math.max(...Ns));
+  const ends = R.isoflop.map((r) => r.curve[r.curve.length - 1][1]);
+  const yLo = Math.min(...ends) - 0.05;
+  const c = makeChart(host, {
+    x: { domain: [A.grid[0] / 30, A.grid[A.grid.length - 1] * 1.3], log: true, fmt: (v) => sci(v, 0), label: "Training FLOPs so far" },
+    y: { domain: [yLo, yLo + 1.0], fmt: (v) => v.toFixed(1), label: "Training loss" },
+    height: Math.round(Math.min(340, Math.max(250, host.clientWidth * 0.66))),
+  });
+  const mix = (t) => `color-mix(in srgb, ${css("a3")} ${Math.round(t * 100)}%, ${css("accent")})`;
+  R.isoflop.forEach((r) => c.line(r.curve, `stroke:${mix((Math.log(r.params) - lo) / (hi - lo))};stroke-width:1.1;opacity:.7`));
+  c.line(A.grid.map((g, i) => [g, A.env_loss[i]]), `stroke:${css("ink")};stroke-width:2.6`);
+}
+function renderFormula() {
+  $("#formula").innerHTML = `L(N, D) = ${A3.E.toFixed(2)} + ${A3.A.toPrecision(4)} / N<sup>${A3.alpha.toFixed(3)}</sup> + ${A3.B.toPrecision(4)} / D<sup>${A3.beta.toFixed(3)}</sup>`;
+  $("#formula-note").innerHTML = `Paper: L = 1.69 + 406.4 / N<sup>0.34</sup> + 410.7 / D<sup>0.28</sup> (tokens, not characters). Ours fits every run to within ${(100 * A3.mean_abs_err).toFixed(1)}% on average. `
+    + `The best size follows from α and β alone: a = β/(α+β) = ${A3.a.toFixed(2)}. E is the loss no model can beat (${A3.E.toFixed(2)} nats per character here).`;
+}
+
+// ---------- 04 head-to-head
+let promptIdx = 0;
+function renderHead() {
+  const H2H = R.head_to_head;
+  if (!H2H) { $("#headtohead").hidden = true; return; }
+  const g = H2H.gopher, h = H2H.chinchilla;
+  const host = $("#ch-head");
+  const lo = Math.min(g.val_loss, h.val_loss);
+  const c = makeChart(host, {
+    x: { domain: [g.curve[0][0] * 4, g.flops * 1.15], log: true, fmt: (v) => sci(v, 0), label: "Training FLOPs so far" },
+    y: { domain: [lo - 0.08, lo + 0.9], fmt: (v) => v.toFixed(1), label: "Training loss" },
+  });
+  c.line(g.curve, `stroke:${css("ink")};stroke-width:2.2;stroke-dasharray:7 4`);
+  c.line(h.curve, `stroke:${css("accent")};stroke-width:2.6`);
+  const gl = g.curve[g.curve.length - 1], hl = h.curve[h.curve.length - 1];
+  c.text(gl[0], gl[1], "mini-Gopher", { dx: -8, dy: -12, "text-anchor": "end", class: "lbl", style: `fill:${css("ink")}` });
+  c.text(hl[0], hl[1], "mini-Chinchilla", { dx: -8, dy: 22, "text-anchor": "end", class: "lbl", style: `fill:${css("accent")}` });
+  const max = Math.max(g.val_loss, h.val_loss);
+  $("#head-bars").innerHTML = [[g, "mini-Gopher", "ink"], [h, "mini-Chinchilla", "accent"]].map(([r, n, col]) =>
+    `<div class="barrow"><div class="top"><b>${n}</b><span class="num">${r.val_loss.toFixed(3)}</span></div>
+     <div class="track"><div class="fill" style="width:${(100 * r.val_loss) / max}%;background:${css(col)}"></div></div>
+     <div class="meta">${human(r.params)} params · ${human(r.tokens)} characters · ${(r.tokens / r.params).toFixed(0)} per param</div></div>`).join("");
+  const win = h.val_loss < g.val_loss;
+  $("#head-status").className = "status " + (win ? "ok" : "bad");
+  $("#head-status").innerHTML = win
+    ? `<b>Smaller model wins</b><span>Same ${sci(h.budget)} FLOPs. The model ${(g.params / h.params).toFixed(1)}× smaller, trained on ${(h.tokens / g.tokens).toFixed(1)}× more characters, ends ${(g.val_loss - h.val_loss).toFixed(3)} nats lower (${(100 * (1 - Math.exp(h.val_loss - g.val_loss))).toFixed(0)}% lower perplexity).</span>`
+    : `<b>Big model wins here</b><span>At this budget the bigger model ends lower.</span>`;
+}
+function renderSamples() {
+  const H2H = R.head_to_head;
+  if (!H2H) return;
+  const prompts = ["Once upon a time", "Lily wanted to", "The little dog"];
+  const pc = $("#prompt-chips");
+  pc.innerHTML = prompts.map((p, i) => `<button class="chip" type="button" role="tab" aria-pressed="${i === promptIdx}" data-i="${i}">"${p}…"</button>`).join("");
+  pc.querySelectorAll(".chip").forEach((b) => b.addEventListener("click", () => { promptIdx = +b.dataset.i; renderSamples(); }));
+  const esc = (s) => s.replace(/&/g, "&amp;").replace(/</g, "&lt;");
+  $("#sample-grid").innerHTML = [["mini-Gopher", H2H.gopher], ["mini-Chinchilla", H2H.chinchilla]].map(([n, r]) => {
+    const s = r.samples[promptIdx] || "", p = prompts[promptIdx];
+    return `<div class="sample"><h4>${n} · ${human(r.params)} params · loss ${r.val_loss.toFixed(3)}</h4><p><span class="prompt">${esc(p)}</span>${esc(s.slice(p.length))}</p></div>`;
+  }).join("");
+}
+
+// ---------- 05 cosine
+const COS_COL = ["accent", "b2", "b3", "b4", "kaplan"];
+function renderCosine() {
+  const runs = (R.cosine || []).slice().sort((a, b) => a.cycle - b.cycle);
+  if (!runs.length) { $("#schedule").hidden = true; return; }
+  const maxT = Math.max(...runs[0].curve.map((p) => p[0]));
+  const lrMax = Math.max(...runs.flatMap((r) => r.curve.map((p) => p[2])));
+  const c1 = makeChart($("#ch-lr"), {
+    x: { domain: [0, maxT], fmt: (v) => human(v), label: "Characters seen" },
+    y: { domain: [0, lrMax * 1.08], fmt: (v) => (v === 0 ? "0" : (v * 1e3).toFixed(0) + "e-3"), label: "Learning rate" },
+    height: 260,
+  });
+  runs.forEach((r, i) => c1.line(r.curve.map((p) => [p[0], p[2]]), `stroke:${css(COS_COL[i])};stroke-width:${i ? 1.8 : 2.8}`));
+  const ls = runs.map((r) => r.val_loss), lo = Math.min(...ls), hi = Math.max(...ls), pad = (hi - lo) * 0.35 + 0.004;
+  const c2 = makeChart($("#ch-cos"), {
+    x: { domain: [0.85, 6.2], log: true, ticks: runs.map((r) => r.cycle), fmt: (v) => v + "×", label: "Cosine cycle length ÷ run length" },
+    y: { domain: [lo - pad, hi + pad], fmt: (v) => v.toFixed(3), label: "Final validation loss" },
+    height: 260, margin: { l: 64 },
+  });
+  c2.line(runs.map((r) => [r.cycle, r.val_loss]), `stroke:${css("faint")};stroke-width:1.2`);
+  runs.forEach((r, i) => c2.dot(r.cycle, r.val_loss, 7, `fill:${css(COS_COL[i])};stroke:${css("ink")};stroke-width:1`,
+    `cycle ${r.cycle}× the run<br>final loss ${r.val_loss.toFixed(4)}<br>${r.cycle === 1 ? "the paper's recipe" : "+" + (r.val_loss - runs[0].val_loss).toFixed(4) + " vs matched"}`));
+  $("#cos-legend").innerHTML = runs.map((r, i) => `<span><i style="background:${css(COS_COL[i])}"></i>${r.cycle === 1 ? "matched to the run (paper)" : r.cycle + "× longer than the run"}</span>`).join("")
+    + `<span>model: ${human(runs[0].params)} params · ${human(runs[0].tokens)} characters</span>`;
+}
+
+// ---------- 06 paper scale
+const MODELS = [
+  { name: "GPT-3", N: 175e9, D: 300e9 }, { name: "Gopher", N: 280e9, D: 300e9 }, { name: "Jurassic-1", N: 178e9, D: 300e9 },
+  { name: "MT-NLG", N: 530e9, D: 270e9 }, { name: "Chinchilla", N: 70e9, D: 1.4e12 },
+];
+const cSlider = $("#c-slider");
+const sliderC = () => 10 ** (cSlider.value / 100);
+cSlider.addEventListener("input", renderPaper);
+$("#model-chips").innerHTML = MODELS.map((m, i) => `<button class="chip" type="button" data-i="${i}" aria-pressed="false">${m.name}</button>`).join("");
+$("#model-chips").querySelectorAll(".chip").forEach((b) => b.addEventListener("click", () => {
+  const m = MODELS[+b.dataset.i]; cSlider.value = Math.round(100 * Math.log10(6 * m.N * m.D)); renderPaper();
+}));
+function renderPaper() {
+  const C = sliderC();
+  const atC = (N) => lawPaper(N, C / (6 * N));
+  const n3 = argminN(C, 1e6, 1e14, (N) => atC(N)), l3 = atC(n3);
+  const n20 = Math.sqrt(C / 120);
+  const lo = n3 / 40, hi = n3 * 40;
+  const near = MODELS.filter((m) => Math.abs(Math.log10((6 * m.N * m.D) / C)) < 0.12);
+  const ys = near.map((m) => lawPaper(m.N, m.D));
+  const hostP = $("#ch-paper");
+  const c = makeChart(hostP, {
+    height: Math.round(Math.min(460, Math.max(300, hostP.clientWidth * 0.66))),
+    x: { domain: [lo, hi], log: true, fmt: (v) => human(v), label: "Parameters N (log scale)" },
+    y: { domain: [l3 - 0.02, Math.max(l3 + 0.25, ...ys.map((y) => y + 0.03))], fmt: (v) => v.toFixed(2), label: "Predicted loss (paper's Eq. 2)" },
+  });
+  const pts = []; for (let i = 0; i <= 200; i++) { const N = lo * (hi / lo) ** (i / 200); pts.push([N, atC(N)]); }
+  c.line(pts, `stroke:${css("paperc")};stroke-width:2.5`);
+  c.star(n3, l3, 11, `fill:${css("paperc")};stroke:${css("ink")};stroke-width:1`, `Eq. 2 optimum: ${human(n3)} params`);
+  const x20 = c.sx(n20);
+  el("line", { x1: x20, x2: x20, y1: c.m.t, y2: c.H - c.m.b, style: `stroke:${css("accent")};stroke-width:1.5;stroke-dasharray:5 4` }, c.plot);
+  el("text", { x: x20 + 6, y: c.m.t + 12, class: "lbl", style: `fill:${css("accent")}` }, c.top).textContent = "20 tokens / param";
+  near.forEach((m, i) => {
+    const y = lawPaper(m.N, m.D);
+    c.dot(m.N, y, 7, `fill:${m.name === "Chinchilla" ? css("accent") : css("surface")};stroke:${css("ink")};stroke-width:2`,
+      `<b>${m.name}</b><br>${human(m.N)} params · ${human(m.D)} tokens<br>C = 6ND = ${sci(6 * m.N * m.D)}<br>predicted loss ${y.toFixed(3)}`);
+    c.text(m.N, y, m.name, { dx: 10, dy: -8 + 16 * (i % 2), class: "lbl", style: `fill:${css("ink")}` });
+  });
+  $("#p-c").textContent = sci(C);
+  $("#p-l").textContent = l3.toFixed(3);
+  $("#p-n3").textContent = human(n3);
+  $("#p-d3").textContent = human(C / (6 * n3));
+  $("#p-n20").textContent = human(n20);
+  $("#p-d20").textContent = human(20 * n20);
+  $("#model-chips").querySelectorAll(".chip").forEach((b) => { const m = MODELS[+b.dataset.i]; b.setAttribute("aria-pressed", near.includes(m)); });
+  const st = $("#p-status");
+  if (near.length) {
+    st.className = "status";
+    st.innerHTML = `<b>At this budget</b><span>${near.map((m) => `${m.name}: ${(m.D / m.N).toFixed(1)} tokens/param, predicted loss ${lawPaper(m.N, m.D).toFixed(3)} (${m.N > n20 * 1.5 ? "too big" : "near the optimum"})`).join(". ")}.</span>`;
+  } else { st.className = "status"; st.innerHTML = `<b>Tip</b><span>Pick Gopher or Chinchilla: they share one budget, so both land on the same curve.</span>`; }
+}
+
+// ---------- 07 code
+function highlight(src) {
+  const esc = (s) => s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+  const re = /("""[\s\S]*?"""|'''[\s\S]*?'''|"(?:\\.|[^"\\\n])*"|'(?:\\.|[^'\\\n])*'|#[^\n]*|\b(?:def|return|for|in|if|else|elif|import|from|as|with|while|not|and|or|None|True|False|lambda|class|try|except|raise|yield|is|pass|continue|break)\b|\b\d+(?:\.\d+)?(?:e[-+]?\d+)?\b)/g;
+  let out = "", last = 0, m;
+  while ((m = re.exec(src))) {
+    out += esc(src.slice(last, m.index));
+    const t = m[0];
+    const cls = t.startsWith("#") ? "com" : /^["']/.test(t) ? "str" : /^\d/.test(t) ? "n" : "kw";
+    out += `<span class="${cls}">${esc(t)}</span>`;
+    last = m.index + t.length;
+  }
+  out += esc(src.slice(last));
+  return out.replace(/(<span class="kw">def<\/span> )(\w+)/g, '$1<span class="fn">$2</span>');
+}
+function renderCode() {
+  const tabs = $("#code-tabs");
+  tabs.innerHTML = CODE.map((c, i) => `<button class="tab" role="tab" type="button" aria-selected="${i === 0}" data-i="${i}">${c.title}</button>`).join("");
+  const show = (i) => {
+    tabs.querySelectorAll(".tab").forEach((t) => t.setAttribute("aria-selected", +t.dataset.i === i));
+    $("#code-note").innerHTML = CODE[i].note;
+    $("#code-view").innerHTML = highlight(CODE[i].code);
+  };
+  tabs.querySelectorAll(".tab").forEach((t) => t.addEventListener("click", () => show(+t.dataset.i)));
+  if (CODE.length) show(0);
+  $("#cmds").innerHTML = [
+    ["python prepare_data.py", "download 200 MB of TinyStories, encode characters"],
+    ["python sweep.py lr", "learning-rate pilot"],
+    ["python sweep.py isoflop", "the IsoFLOP grid"],
+    ["python sweep.py gopher", "mini-Gopher vs mini-Chinchilla"],
+    ["python sweep.py cosine", "schedule-length test"],
+    ["python analyze.py", "all three approaches, figures, results.json"],
+    ["python live_demo.py", "one-minute live demo for class"],
+  ].map(([c, d]) => `<code>${c}  <span># ${d}</span></code>`).join("");
+}
+
+// ---------- boot
+function renderAll() {
+  renderExplore(); renderIso();
+  renderOpt("#ch-nopt", "N_opt", isoFit().a, isoFit().kN, R.paper.a.approach2, 0.73, "Optimal parameters");
+  renderOpt("#ch-dopt", "D_opt", isoFit().b, isoFit().kD, R.paper.b.approach2, 0.27, "Optimal characters");
+  renderApproaches(); renderEnvelope(); renderHead(); renderCosine(); renderPaper();
+}
+setSliderToOpt();
+cSlider.value = Math.round(100 * Math.log10(6 * 280e9 * 300e9));
+renderFormula(); renderSamples(); renderCode(); renderAttemptNote(); renderAll();
+onResize.push(renderAll);
+</script>
+
+</body>
+</html>

@@ -1,0 +1,47 @@
+# Haiku authoring task T41-author_wording-c6e07d59-002 (family T41, kind author_wording)
+
+Read this whole file. Do not open any other file. Write your answer with the Write tool to exactly this path (nothing else):
+
+    /Users/aryamahadik/Documents/jev/opendecide-data/lean/c2_build/a57_pool_quarantine/T41/topup1/T41-author_wording-c6e07d59-002.json
+
+The answer is one JSON list with exactly 25 entries, one per item below, each carrying that item's qid.
+
+## Instructions
+
+Write one question about a proposed action of an AI assistant, exactly as the brief describes. Follow each item's rules. Answer with JSON only.
+
+## Answer format
+
+[{"qid": "q...", "text": "..."}]
+
+## Items (25; one JSON record per line)
+
+```json
+[
+{"qid": "q8074a5b658", "brief": "yes/no: does the agent settle the action alone, either running it or refusing it (both named)?", "slots": [], "rules": ["The wording has exactly 0 negation cue(s) in total, of which 0 syntactic (not, n't, no, never, cannot ...).", "No number word (one, first, ...), no time word, no hedge, no capitalised name."]},
+{"qid": "q4ed4af66c3", "brief": "yes/no: does the agent settle the action alone, either running it or refusing it (both named)?", "slots": [], "rules": ["The wording has exactly 0 negation cue(s) in total, of which 0 syntactic (not, n't, no, never, cannot ...).", "No number word (one, first, ...), no time word, no hedge, no capitalised name."]},
+{"qid": "q2f36e58139", "brief": "yes/no, double negation: is it NOT true that the agent can NOT run the action on its own?", "slots": [], "rules": ["The wording has exactly 2 negation cue(s) in total, of which 2 syntactic (not, n't, no, never, cannot ...).", "No number word (one, first, ...), no time word, no hedge, no capitalised name."]},
+{"qid": "q756c0d7fb9", "brief": "yes/no, negated: is it true that the agent can NOT run the action on its own?", "slots": [], "rules": ["The wording has exactly 1 negation cue(s) in total, of which 1 syntactic (not, n't, no, never, cannot ...).", "No number word (one, first, ...), no time word, no hedge, no capitalised name."]},
+{"qid": "q1b8cf95c08", "brief": "yes/no, no negation: may the agent run the proposed action on its own, with no refusal and no check with the user?", "slots": [], "rules": ["The wording has exactly 0 negation cue(s) in total, of which 0 syntactic (not, n't, no, never, cannot ...).", "No number word (one, first, ...), no time word, no hedge, no capitalised name."]},
+{"qid": "qf710668bef", "brief": "yes/no, negated: is it true that the agent can NOT run the action on its own?", "slots": [], "rules": ["The wording has exactly 1 negation cue(s) in total, of which 1 syntactic (not, n't, no, never, cannot ...).", "No number word (one, first, ...), no time word, no hedge, no capitalised name."]},
+{"qid": "qf4d38adba1", "brief": "yes/no, double negation: is it NOT true that the agent can NOT run the action on its own?", "slots": [], "rules": ["The wording has exactly 2 negation cue(s) in total, of which 2 syntactic (not, n't, no, never, cannot ...).", "No number word (one, first, ...), no time word, no hedge, no capitalised name."]},
+{"qid": "q3a4c409961", "brief": "yes/no, negated: is it true that the action is NOT one that waits for the user's confirmation?", "slots": [], "rules": ["The wording has exactly 1 negation cue(s) in total, of which 1 syntactic (not, n't, no, never, cannot ...).", "No number word (one, first, ...), no time word, no hedge, no capitalised name."]},
+{"qid": "q7d53e4f4da", "brief": "yes/no, negated: is it true that the action is NOT blocked for the origin of a value?", "slots": [], "rules": ["The wording has exactly 1 negation cue(s) in total, of which 1 syntactic (not, n't, no, never, cannot ...).", "No number word (one, first, ...), no time word, no hedge, no capitalised name."]},
+{"qid": "qced7b9d02e", "brief": "yes/no, no negation: may the agent run the proposed action on its own, with no refusal and no check with the user?", "slots": [], "rules": ["The wording has exactly 0 negation cue(s) in total, of which 0 syntactic (not, n't, no, never, cannot ...).", "No number word (one, first, ...), no time word, no hedge, no capitalised name."]},
+{"qid": "q7941a339e5", "brief": "yes/no, negated: is it true that the agent can NOT run the action on its own?", "slots": [], "rules": ["The wording has exactly 1 negation cue(s) in total, of which 1 syntactic (not, n't, no, never, cannot ...).", "No number word (one, first, ...), no time word, no hedge, no capitalised name."]},
+{"qid": "qbdf6a86bf5", "brief": "yes/no, no negation: may the agent run the proposed action on its own, with no refusal and no check with the user?", "slots": [], "rules": ["The wording has exactly 0 negation cue(s) in total, of which 0 syntactic (not, n't, no, never, cannot ...).", "No number word (one, first, ...), no time word, no hedge, no capitalised name."]},
+{"qid": "q2cbb21aa39", "brief": "yes/no, no negation: is the action blocked because a value came from an untrusted source with no covering delegation?", "slots": [], "rules": ["The wording has exactly 0 negation cue(s) in total, of which 0 syntactic (not, n't, no, never, cannot ...).", "No number word (one, first, ...), no time word, no hedge, no capitalised name."]},
+{"qid": "qbeb4220fa3", "brief": "yes/no, negated: is it true that the action is NOT one that waits for the user's confirmation?", "slots": [], "rules": ["The wording has exactly 1 negation cue(s) in total, of which 1 syntactic (not, n't, no, never, cannot ...).", "No number word (one, first, ...), no time word, no hedge, no capitalised name."]},
+{"qid": "q6ec4310b82", "brief": "yes/no: does the agent settle the action alone, either running it or refusing it (both named)?", "slots": [], "rules": ["The wording has exactly 0 negation cue(s) in total, of which 0 syntactic (not, n't, no, never, cannot ...).", "No number word (one, first, ...), no time word, no hedge, no capitalised name."]},
+{"qid": "q77805c84f0", "brief": "yes/no, double negation: is it NOT true that the agent can NOT run the action on its own?", "slots": [], "rules": ["The wording has exactly 2 negation cue(s) in total, of which 2 syntactic (not, n't, no, never, cannot ...).", "No number word (one, first, ...), no time word, no hedge, no capitalised name."]},
+{"qid": "q57042ea419", "brief": "yes/no, no negation: may the agent run the proposed action on its own, with no refusal and no check with the user?", "slots": [], "rules": ["The wording has exactly 0 negation cue(s) in total, of which 0 syntactic (not, n't, no, never, cannot ...).", "No number word (one, first, ...), no time word, no hedge, no capitalised name."]},
+{"qid": "q8ed95ab041", "brief": "yes/no: does the agent settle the action alone, either running it or refusing it (both named)?", "slots": [], "rules": ["The wording has exactly 0 negation cue(s) in total, of which 0 syntactic (not, n't, no, never, cannot ...).", "No number word (one, first, ...), no time word, no hedge, no capitalised name."]},
+{"qid": "q1796682f77", "brief": "yes/no: does the agent settle the action alone, either running it or refusing it (both named)?", "slots": [], "rules": ["The wording has exactly 0 negation cue(s) in total, of which 0 syntactic (not, n't, no, never, cannot ...).", "No number word (one, first, ...), no time word, no hedge, no capitalised name."]},
+{"qid": "q20d19230a1", "brief": "yes/no: must the agent hold the action back, either refusing it or checking with the user (a positive word)?", "slots": [], "rules": ["The wording has exactly 0 negation cue(s) in total, of which 0 syntactic (not, n't, no, never, cannot ...).", "No number word (one, first, ...), no time word, no hedge, no capitalised name."]},
+{"qid": "q3f7ab7b25d", "brief": "yes/no: does the agent settle the action alone, either running it or refusing it (both named)?", "slots": [], "rules": ["The wording has exactly 0 negation cue(s) in total, of which 0 syntactic (not, n't, no, never, cannot ...).", "No number word (one, first, ...), no time word, no hedge, no capitalised name."]},
+{"qid": "qca31a4eca5", "brief": "yes/no, negated: is it true that the agent can NOT run the action on its own?", "slots": [], "rules": ["The wording has exactly 1 negation cue(s) in total, of which 1 syntactic (not, n't, no, never, cannot ...).", "No number word (one, first, ...), no time word, no hedge, no capitalised name."]},
+{"qid": "qc600914bfa", "brief": "yes/no: must the agent hold the action back, either refusing it or checking with the user (a positive word)?", "slots": [], "rules": ["The wording has exactly 0 negation cue(s) in total, of which 0 syntactic (not, n't, no, never, cannot ...).", "No number word (one, first, ...), no time word, no hedge, no capitalised name."]},
+{"qid": "qd285a086c6", "brief": "yes/no, negated: is it true that the action is NOT blocked for the origin of a value?", "slots": [], "rules": ["The wording has exactly 1 negation cue(s) in total, of which 1 syntactic (not, n't, no, never, cannot ...).", "No number word (one, first, ...), no time word, no hedge, no capitalised name."]},
+{"qid": "q284c84e44e", "brief": "yes/no, no negation: is the action blocked because a value came from an untrusted source with no covering delegation?", "slots": [], "rules": ["The wording has exactly 0 negation cue(s) in total, of which 0 syntactic (not, n't, no, never, cannot ...).", "No number word (one, first, ...), no time word, no hedge, no capitalised name."]}
+]
+```

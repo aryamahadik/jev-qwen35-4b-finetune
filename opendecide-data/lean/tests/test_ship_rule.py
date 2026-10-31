@@ -573,3 +573,150 @@ def test_attack_rate_with_no_eligible_items_is_unmeasured():
     cons, nums = [], {}
     s = gate_dev.asr_compare({"a": (0, 0)}, {"a": (0, 0)}, "4b")
     assert not (s["cand"] == s["cand"])  # nan: no eligible items
+
+
+# ---- PREREG A95 / A96: the owner's acceptance of ONE failed refparity look (gate_dev side) ----------------------------
+A95_QUOTE = ("Option A: I accept the refparity miss (max dp 0.10 on 1 of 8,143 rows, all other checks pass) as serving-path "
+             "noise, since all 19 models were read on the same H100 path. Continue C2 with the H100 reads and bring me any "
+             "further blocker.")
+
+
+@pytest.fixture
+def a95_root(tmp_path, monkeypatch):
+    """A tmp lean root whose stored REF name is the look's stored name (so refparity_status reaches the failed-look stop), with
+    one failed look (max |dp| only), the owner's words and the A95 record for it."""
+    monkeypatch.setattr(gate_dev, "ROOT", tmp_path)
+    monkeypatch.setattr(gate_dev, "STORED_REF", {"4b": "STORED_C1", "2b": "STORED_C1"})
+    for name in ("FRESH", "STORED_C1"):
+        _wj(tmp_path / f"preds_dev_nc/{name}.jsonl", [{"id": "a", "probs": {"yes": 0.6, "no": 0.4}}])
+    (tmp_path / "c2_build/train").mkdir(parents=True)
+    (tmp_path / gate_dev.OWNER_GO_C2).write_text(f'- Record A95 (answer to A94 refparity): "{A95_QUOTE}"\n')
+    import textwrap
+    (tmp_path / gate_dev.PREREG_FINAL_MD).write_text("".join(
+        f"> {ln}\n" for ln in textwrap.fill(f'**Record A95 (OWNER words, verbatim): "{A95_QUOTE}"** answering A94.', 118).splitlines()))
+    look = {"time": "2026-10-18T17:49:37+00:00", "mode": "refparity", "fresh": "FRESH", "stored": "STORED_C1", "size": "4b",
+            "pass": False, "counts": False, "why_not": [], "n": 8143, "agree": 99.75, "mean_dp": 0.00198, "max_dp": 0.1013,
+            "acc_diff": 0.0368, "fresh_sha": gate_dev.fresh_sha("FRESH")}
+    monkeypatch.setattr(gate_dev, "ACCEPT_A95_LOOK_SHA256", gate_dev.look_sha256(look))       # the code pin follows this look
+    rec = {"record": "A95", "a95_quote": A95_QUOTE, "look_time": look["time"], "look_sha256": gate_dev.look_sha256(look),
+           "fresh": "FRESH", "stored": "STORED_C1", "size": "4b", "n": 8143, "max_dp": 0.1013, "fresh_sha": look["fresh_sha"],
+           "stored_sha": gate_dev.fresh_sha("STORED_C1")}
+
+    def put(looks, record=rec):
+        (tmp_path / "logs").mkdir(exist_ok=True)
+        (tmp_path / "logs/ship_looks.jsonl").write_text("".join(json.dumps(x) + "\n" for x in looks))
+        if record is None:
+            (tmp_path / gate_dev.ACCEPT_A95).unlink(missing_ok=True)
+        else:
+            (tmp_path / gate_dev.ACCEPT_A95).write_text(json.dumps(record))
+    put([look])
+    return tmp_path, look, rec, put
+
+
+def test_a95_refparity_status_stops_on_a_failed_look_unless_the_owner_named_it(a95_root, capsys):
+    root, look, rec, put = a95_root
+    assert gate_dev.refparity_status("FRESH", "4b") is None                       # accepted: the named look, files unchanged
+    out = capsys.readouterr().out
+    assert "accepted by owner, PREREG A95" in out and "stays logged pass false" in out
+    put([look], record=None)                                                      # no record: the original stop, same text
+    with pytest.raises(SystemExit) as e:
+        gate_dev.refparity_status("FRESH", "4b")
+    assert str(e.value).endswith("FAILED: PREREG 4 says stop and consult the owner before any ship look")
+    put([look | {"time": "2026-10-18T19:00:00+00:00"}])                           # a later failed look is another look
+    with pytest.raises(SystemExit, match="does not apply"):
+        gate_dev.refparity_status("FRESH", "4b")
+    put([look | {"max_dp": 0.2}])
+    with pytest.raises(SystemExit, match="does not apply"):
+        gate_dev.refparity_status("FRESH", "4b")
+
+
+def test_a95_refparity_status_changed_file_and_other_bar_still_stop(a95_root, monkeypatch):
+    root, look, rec, put = a95_root
+    _wj(root / "preds_dev_nc/STORED_C1.jsonl", [{"id": "a", "probs": {"yes": 0.7, "no": 0.3}}])
+    with pytest.raises(SystemExit, match="stored read files .*changed"):
+        gate_dev.refparity_status("FRESH", "4b")
+    _wj(root / "preds_dev_nc/STORED_C1.jsonl", [{"id": "a", "probs": {"yes": 0.6, "no": 0.4}}])
+    assert gate_dev.refparity_status("FRESH", "4b") is None
+    _wj(root / "preds_dev_nc/FRESH.jsonl", [{"id": "a", "probs": {"yes": 0.7, "no": 0.3}}])
+    with pytest.raises(SystemExit, match="fresh read files .*changed"):
+        gate_dev.refparity_status("FRESH", "4b")
+    _wj(root / "preds_dev_nc/FRESH.jsonl", [{"id": "a", "probs": {"yes": 0.6, "no": 0.4}}])
+    bad = look | {"agree": 98.0}
+    monkeypatch.setattr(gate_dev, "ACCEPT_A95_LOOK_SHA256", gate_dev.look_sha256(bad))
+    put([bad], record=rec | {"look_sha256": gate_dev.look_sha256(bad)})
+    with pytest.raises(SystemExit, match="argmax agreement"):
+        gate_dev.refparity_status("FRESH", "4b")
+
+
+def test_a95_refparity_status_accepted_look_with_other_reasons_does_not_count(a95_root, monkeypatch):
+    root, look, rec, put = a95_root
+    odd = look | {"why_not": ["stored STORED_C1 is not the pre-registered X"]}    # only the stored-name note is tolerated
+    monkeypatch.setattr(gate_dev, "ACCEPT_A95_LOOK_SHA256", gate_dev.look_sha256(odd))
+    put([odd], record=rec | {"look_sha256": gate_dev.look_sha256(odd)})
+    msg = gate_dev.refparity_status("FRESH", "4b")
+    assert msg and "accepted by owner, PREREG A95 but does not count" in msg
+
+
+def test_a95_a_c2_look_never_reaches_the_stop_in_gate_dev(a95_root, monkeypatch):
+    """The C2 look is against q35_4b_main500k, not STORED_REF[4b]: gate_dev answers it with the 'was against' note (which
+    gate_c2.refparity_note_ok tolerates) and gate_c2.check_refparity is the enforcement point. Nothing changes there."""
+    root, look, rec, put = a95_root
+    monkeypatch.setattr(gate_dev, "STORED_REF", {"4b": "q35_4b_pxE_parity", "2b": "q35_2b_v11r"})
+    msg = gate_dev.refparity_status("FRESH", "4b")
+    assert msg.startswith("the last refparity look of FRESH was against STORED_C1 (4b), not the 4B stored REF q35_4b_pxE_parity")
+    put([look], record=None)
+    assert gate_dev.refparity_status("FRESH", "4b") == msg
+
+
+def test_a95_helper_returns_no_reason_without_a_record_and_never_edits_the_log(a95_root):
+    root, look, rec, put = a95_root
+    before = (root / "logs/ship_looks.jsonl").read_bytes()
+    assert gate_dev.refparity_owner_accepted(look, say=lambda *a: None) == (True, "")
+    assert (root / "logs/ship_looks.jsonl").read_bytes() == before
+    put([look], record=None)
+    assert gate_dev.refparity_owner_accepted(look, say=lambda *a: None) == (False, "")
+    put([look])
+    ok, why = gate_dev.refparity_owner_accepted(look | {"pass": True}, say=lambda *a: None)
+    assert not ok and "did not fail" in why                                       # a passing look is not what a record covers
+    assert gate_dev.look_sha256(look) == gate_dev.look_sha256(json.loads(json.dumps(look)))
+
+
+@pytest.mark.parametrize("quote", ["Option A", A95_QUOTE[:-20], A95_QUOTE[20:], A95_QUOTE + " Yes.", A95_QUOTE.replace("accept", "reject")])
+def test_a95_the_quote_must_be_the_full_pinned_sentence(a95_root, quote):
+    root, look, rec, put = a95_root
+    (root / gate_dev.OWNER_GO_C2).write_text((root / gate_dev.OWNER_GO_C2).read_text() + quote + "\n")   # the file has it as a substring
+    put([look], record=rec | {"a95_quote": quote})
+    ok, why = gate_dev.refparity_owner_accepted(look, say=lambda *a: None)
+    assert not ok and "not the full verbatim A95 sentence" in why
+
+
+def test_a95_the_full_sentence_must_be_in_both_the_owner_file_and_prereg(a95_root):
+    root, look, rec, put = a95_root
+    (root / gate_dev.OWNER_GO_C2).write_text(f'- Record A95: "{A95_QUOTE[:-20]}"\n')          # a prefix only
+    ok, why = gate_dev.refparity_owner_accepted(look, say=lambda *a: None)
+    assert not ok and "not in OWNER_GO_C2.txt" in why
+    (root / gate_dev.OWNER_GO_C2).write_text(f'- Record A95: "{A95_QUOTE}"\n')
+    (root / gate_dev.PREREG_FINAL_MD).write_text(f'> **Record A93 (orchestrator): "{A95_QUOTE}"**\n')   # not under Record A95
+    ok, why = gate_dev.refparity_owner_accepted(look, say=lambda *a: None)
+    assert not ok and "not in PREREG_FINAL.md Record A95" in why
+    (root / gate_dev.PREREG_FINAL_MD).unlink()
+    ok, why = gate_dev.refparity_owner_accepted(look, say=lambda *a: None)
+    assert not ok and "PREREG_FINAL.md" in why
+
+
+def test_a95_the_look_sha_n_and_max_dp_are_pinned_in_code(a95_root, monkeypatch):
+    root, look, rec, put = a95_root
+    edited = look | {"agree": 99.76}                                                  # log and record both agree on another look
+    put([edited], record=rec | {"look_sha256": gate_dev.look_sha256(edited)})
+    ok, why = gate_dev.refparity_owner_accepted(edited, say=lambda *a: None)
+    assert not ok and "its sha256 is pinned in gate_dev.py" in why
+    put([look], record=rec | {"look_sha256": gate_dev.look_sha256(edited)})           # record names another sha than the pin
+    ok, why = gate_dev.refparity_owner_accepted(look, say=lambda *a: None)
+    assert not ok and "pinned in gate_dev.py" in why
+    for over, txt in (({"n": 8142}, "n is not"), ({"max_dp": 0.1015}, "max |dp| is above")):
+        bad = look | over
+        monkeypatch.setattr(gate_dev, "ACCEPT_A95_LOOK_SHA256", gate_dev.look_sha256(bad))
+        put([bad], record=rec | {"look_sha256": gate_dev.look_sha256(bad)} | over)
+        ok, why = gate_dev.refparity_owner_accepted(bad, say=lambda *a: None)
+        assert not ok and txt in why
+    assert gate_dev.ACCEPT_A95_N == 8143 and gate_dev.ACCEPT_A95_MAX_DP == 0.1014

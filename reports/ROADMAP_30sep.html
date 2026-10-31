@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>OpenDecide Roadmap</title>
+<style>
+  :root { --bg:#fbfbf9; --fg:#1d1d1b; --muted:#6b6b66; --card:#ffffff; --line:#e4e3de; --ok:#1f7a4d; --okbg:#e7f4ec;
+          --now:#8a5a00; --nowbg:#fff3d6; --next:#3a4a8a; --nextbg:#eaeefa; --accent:#1d1d1b; }
+  @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --bg:#141413; --fg:#ecebe6; --muted:#a3a29c;
+          --card:#1d1d1b; --line:#33322f; --ok:#6fd39e; --okbg:#173024; --now:#f2c46b; --nowbg:#3a2c0f; --next:#a9b6f0;
+          --nextbg:#1d2340; --accent:#ecebe6; } }
+  :root[data-theme="dark"] { --bg:#141413; --fg:#ecebe6; --muted:#a3a29c; --card:#1d1d1b; --line:#33322f; --ok:#6fd39e;
+          --okbg:#173024; --now:#f2c46b; --nowbg:#3a2c0f; --next:#a9b6f0; --nextbg:#1d2340; --accent:#ecebe6; }
+  * { box-sizing: border-box; }
+  body { margin:0; background:var(--bg); color:var(--fg); font:16px/1.55 -apple-system, "Segoe UI", Roboto, sans-serif; }
+  main { max-width: 900px; margin: 0 auto; padding: 28px 16px 60px; }
+  h1 { font-size: 26px; margin: 0 0 4px; }
+  h2 { font-size: 19px; margin: 34px 0 10px; }
+  .sub { color: var(--muted); margin: 0 0 20px; }
+  .banner { background: var(--nowbg); color: var(--fg); border: 1px solid var(--line); border-radius: 10px; padding: 14px 16px; }
+  .banner b { color: var(--now); }
+  .wrap { overflow-x: auto; }
+  table { width: 100%; border-collapse: collapse; background: var(--card); border: 1px solid var(--line); border-radius: 10px;
+          overflow: hidden; font-size: 15px; }
+  th, td { text-align: left; padding: 9px 10px; border-bottom: 1px solid var(--line); vertical-align: top; }
+  th { color: var(--muted); font-weight: 600; font-size: 13px; text-transform: uppercase; letter-spacing: .03em; }
+  tr:last-child td { border-bottom: 0; }
+  .pill { display: inline-block; font-size: 12px; font-weight: 700; padding: 2px 8px; border-radius: 99px; white-space: nowrap; }
+  .done { background: var(--okbg); color: var(--ok); }
+  .now { background: var(--nowbg); color: var(--now); }
+  .next { background: var(--nextbg); color: var(--next); }
+  .card { background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 14px 16px; margin: 10px 0; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 12px; }
+  ul { margin: 6px 0; padding-left: 20px; }
+  .muted { color: var(--muted); }
+</style>
+</head>
+<body>
+<main>
+  <h1>OpenDecide: the roadmap in one page</h1>
+  <p class="sub">Updated 30 Sep 2026, 1 pm EDT. Goal: beat Jev (jev-1.13) with our own open 4B and 2B models.</p>
+
+  <div class="banner"><b>Where we are:</b> all preparation is done and the pilot passed every test. The next step is to
+    <b>start the real 4B training</b>. It is waiting only for your "go".</div>
+
+  <h2>1. Is this the same roadmap as before?</h2>
+  <p><b>Yes, the same plan. Two small updates:</b></p>
+  <div class="grid">
+    <div class="card"><b>Update 1: the pilot is finished.</b><br>
+      Old steps 1, 2 and 3 (speed test, account-switching test, report) are <b>done and passed</b>. The measured speed
+      makes the 4B cost about <b>$113</b>, not the $130-172 we estimated.</div>
+    <div class="card"><b>Update 2: "teacher labels" move earlier.</b><br>
+      Teacher labels = our best current 4B answers all 422K training questions, so the 2B can learn from its answers.
+      The old plan did this later on the Google L4. We now suggest doing it <b>today on Modal, at the same time as the
+      4B</b>, because:
+      <ul><li>about $80 of Modal credit <b>expires at about 8 pm EDT tonight</b>;</li>
+          <li>the Google L4 is <b>out of stock</b> right now.</li></ul></div>
+  </div>
+  <p class="muted">The labels from our current best 4B (4B-E) are the planned backup teacher. If the new 4B passes its
+    check later, it can relabel (the agreed rule: the new 4B teaches only if it beats the old one).</p>
+
+  <h2>2. The full roadmap</h2>
+  <div class="wrap"><table>
+    <tr><th>#</th><th>Step</th><th>Status</th><th>Where</th><th>Time</th><th>Money</th></tr>
+    <tr><td>1</td><td>Final design: 4B = Layout E, 2B = PRISM-X I</td><td><span class="pill done">DONE</span></td><td>–</td><td>–</td><td>–</td></tr>
+    <tr><td>2</td><td>Training code + safety checks (226 tests); fine-tuning research applied</td><td><span class="pill done">DONE</span></td><td>Mac</td><td>–</td><td>free</td></tr>
+    <tr><td>3</td><td>Data audit: 12 suspicious groups checked, 0 bugs</td><td><span class="pill done">DONE</span></td><td>L4</td><td>–</td><td>free</td></tr>
+    <tr><td>4</td><td>Pilot: memory, speed (2.77 s/step), account switching (proven)</td><td><span class="pill done">DONE</span></td><td>Modal</td><td>–</td><td>~$8-11</td></tr>
+    <tr><td>5a</td><td><b>Start 4B training</b> on 500K (1 pass, switching accounts)</td><td><span class="pill now">NEEDS YOUR GO</span></td><td>Modal, jaypatil-duke first</td><td>~1.5 days</td><td>~$113</td></tr>
+    <tr><td>5b</td><td><b>Teacher labels</b> from our current best 4B (at the same time)</td><td><span class="pill now">NEEDS YOUR GO</span></td><td>Modal, arya-mahadik-ai + aryamhd</td><td>~3 h</td><td>~$20-40 (expiring credit)</td></tr>
+    <tr><td>6</td><td>4B check: must beat our current best (81.49), or we keep the old one</td><td><span class="pill next">NEXT</span></td><td>L4 or Modal</td><td>~half a day</td><td>~free-$5</td></tr>
+    <tr><td>7</td><td>2B training with PRISM-X I (learns from the teacher labels)</td><td><span class="pill next">NEXT</span></td><td>Modal</td><td>~1 day</td><td>~$57-65</td></tr>
+    <tr><td>8</td><td>Confidence tuning (practice data only)</td><td><span class="pill next">NEXT</span></td><td>L4 / Modal</td><td>a few hours</td><td>~free</td></tr>
+    <tr><td>9</td><td>Final exam vs Jev (OHS-3), once</td><td><span class="pill next">NEXT</span></td><td>L4 / Modal</td><td>~half a day</td><td>~free</td></tr>
+    <tr><td>10</td><td>Report</td><td><span class="pill next">NEXT</span></td><td>Mac</td><td>–</td><td>free</td></tr>
+  </table></div>
+  <p class="muted">Total: about 4-5 days after your "go".</p>
+
+  <h2>3. The final design (frozen)</h2>
+  <div class="wrap"><table>
+    <tr><th></th><th>4B: the accuracy model</th><th>2B: the fast, secure model</th></tr>
+    <tr><td>Prompt layout</td><td>Layout E (trusted question, marked text, question repeated)</td><td>Layout E</td></tr>
+    <tr><td>Extra PRISM parts</td><td>none (they added nothing on the 4B)</td><td>PRISM-X I: trust signal + protected memory + options that look for evidence</td></tr>
+    <tr><td>Why</td><td>Best 4B so far: 81.5 on the practice exam</td><td>Same accuracy as plain; hijacks 1% vs 10%</td></tr>
+    <tr><td>Training</td><td>LoRA r16, 1 pass over 500K, human vote shares</td><td>LoRA r32, 1 pass, learns from the 4B's answers</td></tr>
+  </table></div>
+
+  <h2>4. Budget (Modal)</h2>
+  <div class="wrap"><table>
+    <tr><th>Item</th><th>Cost</th></tr>
+    <tr><td>Pilot (done)</td><td>~$8-11</td></tr>
+    <tr><td>4B training</td><td>~$113</td></tr>
+    <tr><td>Teacher labels</td><td>~$20-40 (from credit that expires tonight)</td></tr>
+    <tr><td>2B training</td><td>~$57-65</td></tr>
+    <tr><td>Checks / final exam</td><td>~$5-10</td></tr>
+    <tr><td><b>Reserve left</b></td><td><b>~$60-100</b>, depending on how much of tonight's credit gets used</td></tr>
+  </table></div>
+  <p class="muted">Credit now: about $81 on the 3 new accounts (expires about 8 pm EDT tonight), then $210 on 1 Oct. Modal
+    refills again on 1 Nov.</p>
+
+  <h2>5. What I need from you</h2>
+  <div class="card"><b>Say "go 4B + labels"</b> to start steps 5a and 5b now.<br>
+    <span class="muted">Later (not urgent): a new OpenRouter key in opendecide-data/.env, so we can collect Jev's answers
+      for the final exam.</span></div>
+</main>
+</body>
+</html>

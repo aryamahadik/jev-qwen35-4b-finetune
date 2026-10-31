@@ -1,0 +1,895 @@
+<title>Chinchilla on a Laptop</title>
+<meta name="description" content="A laptop-scale replication of Hoffmann et al. (2022), Training Compute-Optimal Large Language Models">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>
+:root {
+  --bg: #f4f6fa; --surface: #ffffff; --ink: #1b2230; --muted: #5d6678; --faint: #8b93a3;
+  --rule: #dde2ec; --grid: #e7eaf1; --code-bg: #eef1f7;
+  --accent: #e8590c; --accent-soft: #fde7da; --paperc: #3b5bdb; --kaplan: #8a919e;
+  --a1: #0f9f75; --a3: #7048e8;
+  --b0: #4fb8a7; --b1: #2f8fb0; --b2: #3264b8; --b3: #3f3f9e; --b4: #5a2a86;
+  --good: #0f9f75; --warn: #c2410c;
+  --kw: #7048e8; --str: #0f7d5f; --com: #8b93a3; --num: #c2410c; --fn: #3b5bdb;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0e131d; --surface: #151b28; --ink: #e7eaf2; --muted: #9aa3b5; --faint: #6f788a;
+    --rule: #263045; --grid: #1d2536; --code-bg: #121826;
+    --accent: #ff7b36; --accent-soft: #3a2216; --paperc: #7d95ff; --kaplan: #7c8496;
+    --a1: #3ccf9d; --a3: #a68bff;
+    --b0: #7fe0cf; --b1: #52b6de; --b2: #6f93f2; --b3: #8f86f0; --b4: #c08cf0;
+    --good: #3ccf9d; --warn: #ff9a5c;
+    --kw: #b49cff; --str: #5fd3a5; --com: #6f788a; --num: #ffab70; --fn: #8ea6ff;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0e131d; --surface: #151b28; --ink: #e7eaf2; --muted: #9aa3b5; --faint: #6f788a;
+  --rule: #263045; --grid: #1d2536; --code-bg: #121826;
+  --accent: #ff7b36; --accent-soft: #3a2216; --paperc: #7d95ff; --kaplan: #7c8496;
+  --a1: #3ccf9d; --a3: #a68bff;
+  --b0: #7fe0cf; --b1: #52b6de; --b2: #6f93f2; --b3: #8f86f0; --b4: #c08cf0;
+  --good: #3ccf9d; --warn: #ff9a5c;
+  --kw: #b49cff; --str: #5fd3a5; --com: #6f788a; --num: #ffab70; --fn: #8ea6ff;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; background: var(--bg); color: var(--ink);
+  font: 16px/1.6 "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+.mono, code, pre, .num { font-family: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, monospace; }
+.num { font-variant-numeric: tabular-nums; }
+a { color: var(--paperc); }
+.wrap { max-width: 1120px; margin: 0 auto; padding-inline: clamp(16px, 4vw, 40px); }
+
+/* top bar */
+.bar {
+  position: sticky; top: env(safe-area-inset-top, 0px); z-index: 10;
+  background: color-mix(in srgb, var(--bg) 88%, transparent); backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--rule);
+}
+.bar .wrap { display: flex; align-items: center; gap: 20px; height: 48px; overflow-x: auto; scrollbar-width: none; }
+.bar .brand { font-family: "Bricolage Grotesque", "IBM Plex Sans", sans-serif; font-weight: 700; white-space: nowrap; }
+.bar nav { display: flex; gap: 16px; font-size: 13.5px; white-space: nowrap; }
+.bar nav a { color: var(--muted); text-decoration: none; }
+.bar nav a:hover, .bar nav a:focus-visible { color: var(--ink); }
+
+/* hero */
+.hero { padding-block: clamp(36px, 6vw, 72px) 28px; }
+.eyebrow { font-family: "IBM Plex Mono", monospace; font-size: 12.5px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); }
+h1 {
+  font-family: "Bricolage Grotesque", "IBM Plex Sans", sans-serif; font-weight: 700;
+  font-size: clamp(44px, 8vw, 88px); line-height: 0.98; letter-spacing: -0.025em; margin: 14px 0 18px;
+  text-wrap: balance;
+}
+h1 .at { color: var(--accent); }
+.lede { font-size: clamp(17px, 2vw, 20px); max-width: 62ch; color: var(--ink); margin: 0; }
+.lede em { font-style: normal; background: var(--accent-soft); padding: 0 4px; border-radius: 3px; }
+.verdict { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0; margin-top: 30px; border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); }
+.verdict > div { padding: 16px 18px 16px 0; }
+.verdict > div + div { padding-left: 18px; border-left: 1px solid var(--rule); }
+.verdict .k { font-size: 13px; color: var(--muted); }
+.verdict .v { font-family: "IBM Plex Mono", monospace; font-size: clamp(22px, 3.2vw, 34px); font-weight: 500; line-height: 1.2; margin-top: 4px; }
+.verdict .v sup { font-size: 0.55em; }
+.verdict .ours .v { color: var(--accent); }
+.verdict .paper .v { color: var(--paperc); }
+.verdict .kap .v { color: var(--kaplan); }
+.verdict .s { font-size: 13px; color: var(--muted); margin-top: 2px; }
+
+/* sections */
+section.step { padding-block: 44px; border-top: 1px solid var(--rule); scroll-margin-top: 56px; }
+.step-head { display: grid; grid-template-columns: 64px 1fr; gap: 0 16px; margin-bottom: 20px; }
+.step-no { font-family: "IBM Plex Mono", monospace; font-size: 13px; color: var(--accent); padding-top: 9px; }
+h2 { font-family: "Bricolage Grotesque", "IBM Plex Sans", sans-serif; font-weight: 700; font-size: clamp(26px, 3.4vw, 36px); line-height: 1.1; letter-spacing: -0.015em; margin: 0; text-wrap: balance; }
+.step-head p { grid-column: 2; margin: 10px 0 0; max-width: 68ch; color: var(--muted); }
+.step-head p strong { color: var(--ink); font-weight: 600; }
+.paper-ref { font-family: "IBM Plex Mono", monospace; font-size: 12px; color: var(--paperc); white-space: nowrap; }
+
+.two { display: grid; grid-template-columns: minmax(0, 1fr) 330px; gap: 24px; align-items: start; }
+.pair { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; }
+.chart { position: relative; width: 100%; min-width: 0; }
+.chart svg { display: block; width: 100%; overflow: visible; }
+.chart-title { font-size: 14px; font-weight: 600; margin: 0 0 6px; }
+.chart-note { font-size: 13px; color: var(--muted); margin: 8px 0 0; }
+.legend { display: flex; flex-wrap: wrap; gap: 6px 16px; font-size: 13px; color: var(--muted); margin-top: 8px; }
+.legend span { display: inline-flex; align-items: center; gap: 6px; }
+.legend i { display: inline-block; width: 16px; height: 3px; border-radius: 2px; }
+.legend i.dash { background: repeating-linear-gradient(90deg, var(--kaplan) 0 5px, transparent 5px 8px) !important; }
+
+.attempt { display: grid; gap: 8px; margin-bottom: 14px; }
+.attempt-note { margin: 0; font-size: 14.5px; color: var(--muted); max-width: 90ch; }
+.attempt-note b { color: var(--ink); }
+details.diag { margin-top: 18px; border: 1px solid var(--rule); border-radius: 10px; padding: 10px 14px; background: var(--surface); }
+details.diag summary { cursor: pointer; font-weight: 600; font-size: 14.5px; }
+details.diag td.good { color: var(--good); } details.diag td.flat { color: var(--muted); }
+
+/* control panel */
+.panel { background: var(--surface); border: 1px solid var(--rule); border-radius: 10px; padding: 18px; display: grid; gap: 16px; }
+.panel h3 { font-size: 12.5px; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; color: var(--muted); margin: 0 0 8px; }
+.chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.chip {
+  font: 500 13px "IBM Plex Mono", monospace; padding: 6px 10px; border-radius: 6px; cursor: pointer;
+  border: 1px solid var(--rule); background: transparent; color: var(--ink);
+}
+.chip[aria-pressed="true"] { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+.chip:focus-visible, button:focus-visible, input:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+input[type="range"] { width: 100%; accent-color: var(--accent); margin: 4px 0 0; }
+.slider-ends { display: flex; justify-content: space-between; font-size: 12px; color: var(--faint); }
+.readout { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px 14px; }
+.readout .k { font-size: 12.5px; color: var(--muted); }
+.readout .v { font-family: "IBM Plex Mono", monospace; font-size: 20px; font-variant-numeric: tabular-nums; }
+.status { font-size: 14px; padding: 10px 12px; border-radius: 8px; border: 1px solid var(--rule); }
+.status b { display: block; font-size: 13px; letter-spacing: 0.03em; text-transform: uppercase; }
+.status.ok b { color: var(--good); }
+.status.bad b { color: var(--warn); }
+
+/* approach table */
+.table-wrap { overflow-x: auto; }
+table { border-collapse: collapse; width: 100%; font-size: 14.5px; }
+th, td { text-align: left; padding: 10px 12px; border-bottom: 1px solid var(--rule); vertical-align: top; }
+th { font-size: 12.5px; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; color: var(--muted); }
+td.num, th.num { text-align: right; white-space: nowrap; }
+td .ci { color: var(--faint); font-size: 12.5px; }
+tr.kap td { color: var(--kaplan); }
+.swatch { display: inline-block; width: 10px; height: 10px; border-radius: 50%; margin-right: 8px; vertical-align: 0; }
+.formula { font-family: "IBM Plex Mono", monospace; font-size: clamp(14px, 1.9vw, 18px); padding: 14px 16px; background: var(--code-bg); border-radius: 8px; overflow-x: auto; white-space: nowrap; }
+
+/* head to head */
+.bars { display: grid; gap: 14px; }
+.barrow .top { display: flex; justify-content: space-between; gap: 12px; font-size: 14px; }
+.barrow .top b { font-weight: 600; }
+.barrow .track { height: 14px; background: var(--grid); border-radius: 7px; margin-top: 6px; overflow: hidden; }
+.barrow .fill { height: 100%; border-radius: 7px; }
+.barrow .meta { font-size: 13px; color: var(--muted); margin-top: 4px; }
+.samples { margin-top: 26px; }
+.sample-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; margin-top: 12px; }
+.sample { background: var(--surface); border: 1px solid var(--rule); border-radius: 10px; padding: 16px; }
+.sample h4 { margin: 0 0 8px; font-size: 13px; letter-spacing: 0.04em; text-transform: uppercase; color: var(--muted); }
+.sample p { margin: 0; font-family: "IBM Plex Mono", monospace; font-size: 13.5px; line-height: 1.65; white-space: pre-wrap; overflow-wrap: anywhere; }
+.sample p .prompt { background: var(--accent-soft); color: var(--ink); }
+
+/* paper scale */
+.models { display: flex; flex-wrap: wrap; gap: 6px; }
+
+/* code */
+.tabs { display: flex; gap: 4px; flex-wrap: wrap; border-bottom: 1px solid var(--rule); }
+.tab { font: 500 13px "IBM Plex Mono", monospace; padding: 8px 12px; background: none; border: 0; border-bottom: 2px solid transparent; color: var(--muted); cursor: pointer; margin-bottom: -1px; }
+.tab[aria-selected="true"] { color: var(--ink); border-bottom-color: var(--accent); }
+.code-note { font-size: 14px; color: var(--muted); margin: 12px 0 8px; }
+pre.code { background: var(--code-bg); border-radius: 8px; padding: 16px; overflow-x: auto; font-size: 13px; line-height: 1.55; margin: 0; max-height: 560px; }
+pre.code .kw { color: var(--kw); } pre.code .str { color: var(--str); } pre.code .com { color: var(--com); font-style: italic; }
+pre.code .n { color: var(--num); } pre.code .fn { color: var(--fn); font-weight: 500; }
+.cmds { display: grid; grid-template-columns: minmax(0, 1fr); gap: 6px; margin-top: 18px; }
+.two > *, .pair > *, .panel > *, .readout > *, .cmds > * { min-width: 0; }
+.cmds code { display: block; font-size: 13.5px; background: var(--code-bg); padding: 8px 12px; border-radius: 6px; overflow-x: auto; white-space: nowrap; }
+.cmds code span { color: var(--faint); }
+
+footer { border-top: 1px solid var(--rule); padding-block: 28px 48px; font-size: 13.5px; color: var(--muted); }
+footer .cols { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; }
+footer h4 { margin: 0 0 6px; font-size: 12.5px; letter-spacing: 0.05em; text-transform: uppercase; color: var(--ink); }
+footer ul { margin: 0; padding-left: 18px; }
+
+/* tooltip */
+.tip {
+  position: fixed; z-index: 50; pointer-events: none; background: var(--ink); color: var(--bg);
+  font: 12.5px/1.45 "IBM Plex Mono", monospace; padding: 8px 10px; border-radius: 6px; max-width: 260px;
+  opacity: 0; transition: opacity 0.1s;
+}
+.tip.on { opacity: 1; }
+svg text { font-family: "IBM Plex Sans", system-ui, sans-serif; }
+svg .tick { font-size: 11.5px; fill: var(--muted); font-variant-numeric: tabular-nums; }
+svg .axis-label { font-size: 12.5px; fill: var(--muted); }
+svg .lbl { font-size: 12px; font-weight: 600; }
+.hit { cursor: pointer; }
+
+@media (max-width: 900px) {
+  .two, .pair, .sample-grid, footer .cols { grid-template-columns: minmax(0, 1fr); }
+  .step-head { grid-template-columns: 1fr; }
+  .step-head p { grid-column: 1; }
+  .step-no { padding-top: 0; }
+}
+@media (max-width: 560px) {
+  .verdict { grid-template-columns: minmax(0, 1fr); }
+  .verdict > div + div { padding-left: 0; border-left: 0; border-top: 1px solid var(--rule); }
+}
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+</style>
+
+<header class="bar">
+  <div class="wrap">
+    <span class="brand">Chinchilla on a Laptop</span>
+    <nav aria-label="Sections">
+      <a href="#tradeoff">Trade-off</a><a href="#isoflop">IsoFLOPs</a><a href="#approaches">3 approaches</a>
+      <a href="#headtohead">Gopher vs Chinchilla</a><a href="#schedule">Schedules</a><a href="#paperscale">Paper scale</a><a href="#code">Code</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<div class="wrap">
+  <div class="hero">
+    <div class="eyebrow">Hacker role · Hoffmann et al. 2022 · arXiv 2203.15556</div>
+    <h1>Chinchilla on a <span class="at">Laptop</span></h1>
+    <p class="lede">The paper asks one question. You have a fixed amount of compute: how big should the model be, and how much data should it read? We answered it the paper's way, with <em id="stat-runs">—</em> tiny transformers trained from scratch on a MacBook.</p>
+    <div class="verdict" id="verdict">
+      <div class="ours"><div class="k">Our answer (IsoFLOP fit)</div><div class="v" id="v-ours">—</div><div class="s" id="v-ours-s">—</div></div>
+      <div class="paper"><div class="k">Chinchilla paper</div><div class="v">N<sub>opt</sub> ∝ C<sup>0.49</sup></div><div class="s">model and data grow equally</div></div>
+      <div class="kap"><div class="k">Kaplan et al. 2020</div><div class="v">N<sub>opt</sub> ∝ C<sup>0.73</sup></div><div class="s">mostly grow the model</div></div>
+    </div>
+  </div>
+
+  <section class="step" id="tradeoff">
+    <div class="step-head">
+      <div class="step-no">01</div>
+      <h2>The trade-off: one budget, many ways to spend it</h2>
+      <p>Training compute is about <strong>C ≈ 6 · N · D</strong> (N parameters, D training tokens). With C fixed, every extra parameter means fewer tokens. Pick a budget, slide the model size, and read the loss off our fitted law. The dots are real training runs.</p>
+    </div>
+    <div class="two">
+      <div class="chart" id="ch-explore"></div>
+      <div class="panel">
+        <div>
+          <h3>Compute budget</h3>
+          <div class="chips" id="budget-chips"></div>
+        </div>
+        <div>
+          <h3><label for="n-slider">Model size</label></h3>
+          <input type="range" id="n-slider" min="0" max="1000" value="500">
+          <div class="slider-ends"><span>small model, lots of data</span><span>big model, little data</span></div>
+        </div>
+        <div class="readout">
+          <div><div class="k">Parameters N</div><div class="v" id="r-n">—</div></div>
+          <div><div class="k">Training characters D</div><div class="v" id="r-d">—</div></div>
+          <div><div class="k">Characters per parameter</div><div class="v" id="r-tpp">—</div></div>
+          <div><div class="k">Predicted loss</div><div class="v" id="r-loss">—</div></div>
+        </div>
+        <div class="status" id="r-status"><b>—</b><span></span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="step" id="isoflop">
+    <div class="step-head">
+      <div class="step-no">02</div>
+      <h2>The experiment: IsoFLOP curves <span class="paper-ref">paper §3.2 · Fig. 3</span></h2>
+      <p id="iso-text">For each compute budget we trained several model sizes. Every run in a group used <strong>exactly the same FLOPs</strong>, counted with the paper's Appendix F formula. Each curve dips: too small wastes the data, too big never finishes learning. We fit a parabola to each curve and take its lowest point.</p>
+    </div>
+    <div class="attempt">
+      <div class="chips" id="attempt-chips" role="group" aria-label="Which sweep to show">
+        <button class="chip" type="button" data-att="2" aria-pressed="true">Attempt 2 · best batch size per run</button>
+        <button class="chip" type="button" data-att="1" aria-pressed="false">Attempt 1 · same batch for every run</button>
+      </div>
+      <p class="attempt-note" id="attempt-note"></p>
+    </div>
+    <div class="chart" id="ch-iso"></div>
+    <div class="legend" id="iso-legend"></div>
+    <div class="pair" style="margin-top: 28px">
+      <div><p class="chart-title">Best model size grows with compute</p><div class="chart" id="ch-nopt"></div></div>
+      <div><p class="chart-title">Best amount of data grows with compute</p><div class="chart" id="ch-dopt"></div></div>
+    </div>
+    <div class="legend">
+      <span><i style="background: var(--accent)"></i>our fit</span>
+      <span><i class="dash"></i>Kaplan et al. slope (0.73 / 0.27)</span>
+      <span><i style="background: var(--paperc)"></i>Chinchilla slope (0.49 / 0.51)</span>
+    </div>
+    <details class="diag">
+      <summary>Why attempt 1 was wrong: the diagnostic runs</summary>
+      <p class="chart-note">Same model, same compute, same data. Only the batch changes, so the number of optimizer steps changes.</p>
+      <div class="table-wrap"><table><thead><tr><th>Model</th><th>Budget</th><th class="num">Steps (batch 4,096)</th><th class="num">Loss</th><th class="num">Steps (smaller batch)</th><th class="num">Loss</th><th class="num">Change</th></tr></thead><tbody id="diag-rows"></tbody></table></div>
+    </details>
+  </section>
+
+  <section class="step" id="approaches">
+    <div class="step-head">
+      <div class="step-no">03</div>
+      <h2>Three approaches: two match the paper <span class="paper-ref">paper §3 · Table 2</span></h2>
+      <p>The paper checks its answer three independent ways. We ran all three on our runs. Each approach gives the exponents in <strong>N<sub>opt</sub> ∝ C<sup>a</sup></strong> and <strong>D<sub>opt</sub> ∝ C<sup>b</sup></strong>. Brackets are 10th–90th percentiles from refitting on 80% of the runs 100 times, as in the paper. Approaches 2 and 3 land next to the paper. Approach 1 comes out higher: all our runs end at just 4 budgets, so between budgets its "lowest curve" is always an unfinished run, which is the same mid-schedule bias as in section 05.</p>
+    </div>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Approach</th><th>How it finds the best size</th><th class="num">our a</th><th class="num">paper a</th><th class="num">our b</th><th class="num">paper b</th></tr></thead>
+        <tbody id="approach-rows"></tbody>
+      </table>
+    </div>
+    <div class="pair" style="margin-top: 28px; align-items: start">
+      <div>
+        <p class="chart-title">All three approaches, extrapolated one decade past our data</p>
+        <div class="chart" id="ch-approaches"></div>
+        <div class="legend" id="approach-legend"></div>
+      </div>
+      <div>
+        <p class="chart-title">Approach 1: every training curve and their lower envelope</p>
+        <div class="chart" id="ch-envelope"></div>
+        <p class="chart-note">Colour = model size (orange small, purple big). The bold line is the lowest loss reached at each FLOP count.</p>
+      </div>
+    </div>
+    <p class="chart-title" style="margin-top: 26px">Approach 3: our fitted loss law (paper Eq. 2)</p>
+    <div class="formula" id="formula">—</div>
+    <p class="chart-note" id="formula-note"></p>
+  </section>
+
+  <section class="step" id="headtohead">
+    <div class="step-head">
+      <div class="step-no">04</div>
+      <h2>The headline test: mini-Gopher vs mini-Chinchilla <span class="paper-ref">paper §4</span></h2>
+      <p>The paper's proof: <strong>Chinchilla</strong> (70B params, 1.4T tokens) beat <strong>Gopher</strong> (280B params, 300B tokens) on the same compute. We rebuilt that match-up at our scale: same FLOPs, a 4× bigger model on fewer characters vs our compute-optimal model. To be fair, mini-Gopher got <strong>6 tries</strong> (3 batch sizes × 2 learning rates); we show its best.</p>
+    </div>
+    <div class="two">
+      <div><p class="chart-title">Training loss vs compute spent</p><div class="chart" id="ch-head"></div></div>
+      <div class="panel"><h3>Final validation loss (lower is better)</h3><div class="bars" id="head-bars"></div><div class="status ok" id="head-status"><b>—</b><span></span></div></div>
+    </div>
+    <div class="samples">
+      <p class="chart-title">What they write (character-level, temperature 0.8)</p>
+      <div class="chips" id="prompt-chips" role="tablist" aria-label="Prompt"></div>
+      <div class="sample-grid" id="sample-grid"></div>
+    </div>
+  </section>
+
+  <section class="step" id="schedule">
+    <div class="step-head">
+      <div class="step-no">05</div>
+      <h2>One reason Kaplan got 0.73: judging models mid-schedule <span class="paper-ref">paper App. B · Fig. A1</span></h2>
+      <p>Kaplan et al. gave every model one long learning-rate schedule and read losses off part-way through. The paper shows that a model judged <strong>before its cosine schedule ends</strong> looks worse than it is: overshooting the run by more than 25% clearly hurts. At small budgets the big models are judged earliest, so the best size looks too small there, and the fitted exponent comes out too steep. We tested the core effect on one model at one budget.</p>
+    </div>
+    <div class="pair">
+      <div><p class="chart-title">Learning-rate schedules (same run length)</p><div class="chart" id="ch-lr"></div></div>
+      <div><p class="chart-title">Final validation loss</p><div class="chart" id="ch-cos"></div></div>
+    </div>
+    <div class="legend" id="cos-legend"></div>
+  </section>
+
+  <section class="step" id="paperscale">
+    <div class="step-head">
+      <div class="step-no">06</div>
+      <h2>Back to the paper's scale</h2>
+      <p>The same logic with the paper's own fitted law, <strong>L = 1.69 + 406.4 / N<sup>0.34</sup> + 410.7 / D<sup>0.28</sup></strong> (Eq. 2, Appendix D.2), using C = 6ND. Pick a real model to jump to its compute budget, or drag the slider.</p>
+    </div>
+    <div class="two">
+      <div class="chart" id="ch-paper"></div>
+      <div class="panel">
+        <div><h3>Real models</h3><div class="models chips" id="model-chips"></div></div>
+        <div>
+          <h3><label for="c-slider">Compute budget</label></h3>
+          <input type="range" id="c-slider" min="1800" max="2600" value="2376">
+          <div class="slider-ends"><span>10¹⁸ FLOPs</span><span>10²⁶ FLOPs</span></div>
+        </div>
+        <div class="readout">
+          <div><div class="k">Compute C</div><div class="v" id="p-c">—</div></div>
+          <div><div class="k">Best loss (Eq. 2)</div><div class="v" id="p-l">—</div></div>
+          <div><div class="k">Best N (Eq. 2)</div><div class="v" id="p-n3">—</div></div>
+          <div><div class="k">Best D (Eq. 2)</div><div class="v" id="p-d3">—</div></div>
+          <div><div class="k">20 tokens/param rule</div><div class="v" id="p-n20">—</div></div>
+          <div><div class="k">…trained on</div><div class="v" id="p-d20">—</div></div>
+        </div>
+        <div class="status" id="p-status"><b>—</b><span></span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="step" id="code">
+    <div class="step-head">
+      <div class="step-no">07</div>
+      <h2>The code that does it</h2>
+      <p>About 470 lines of Python run the whole experiment, and about 200 more do the three fits. The transformer is a small nanoGPT-style model. Everything Chinchilla-specific is below: compute counting, the matched cosine schedule, the IsoFLOP grid, and the three fits.</p>
+    </div>
+    <div class="tabs" role="tablist" id="code-tabs"></div>
+    <p class="code-note" id="code-note"></p>
+    <pre class="code" id="code-view"></pre>
+    <div class="cmds" id="cmds"></div>
+  </section>
+</div>
+</main>
+
+<footer>
+  <div class="wrap cols">
+    <div>
+      <h4>What we built on</h4>
+      <ul>
+        <li>Hoffmann et al. (2022), <a href="https://arxiv.org/abs/2203.15556">Training Compute-Optimal Large Language Models</a>.</li>
+        <li>Transformer backbone written after Karpathy's <a href="https://github.com/karpathy/nanoGPT">nanoGPT</a> (MIT).</li>
+        <li>Data: <a href="https://huggingface.co/datasets/roneneldan/TinyStories">TinyStories</a> (Eldan &amp; Li, 2023), GPT-4 version, first 200 MB.</li>
+      </ul>
+    </div>
+    <div>
+      <h4>Read with care</h4>
+      <ul id="caveats">
+        <li>Tiny scale: 29K–1M parameters, compute 10¹²–3×10¹³ FLOPs. The paper used 70M–16B parameters and 6×10¹⁸–3×10²¹ FLOPs.</li>
+        <li>Characters, not word pieces. One word-piece token is about 4 characters, so our "characters per parameter" is about 4× a token count.</li>
+        <li>One seed per run. Learning rate tuned per model width in a pilot; each run keeps its best of up to three batch sizes.</li>
+        <li>The schedule is one cause of Kaplan's 0.73. Later work (Pearce &amp; Song 2024; Porian et al. 2024) points to others too, such as counting only non-embedding parameters and tuning at small scale.</li>
+      </ul>
+    </div>
+  </div>
+</footer>
+<div class="tip" id="tip" role="tooltip"></div>
+
+<script>
+const R = /*__DATA__*/null;
+const CODE = /*__CODE__*/[];
+
+// ---------- helpers
+const $ = (s) => document.querySelector(s);
+const SVGNS = "http://www.w3.org/2000/svg";
+const SUP = { "-": "⁻", 0: "⁰", 1: "¹", 2: "²", 3: "³", 4: "⁴", 5: "⁵", 6: "⁶", 7: "⁷", 8: "⁸", 9: "⁹" };
+const sup = (n) => String(n).split("").map((c) => SUP[c] ?? c).join("");
+function sci(x, digits = 1) {
+  const e = Math.floor(Math.log10(x) + 1e-9), m = x / 10 ** e;
+  return Math.abs(m - 1) < 0.05 ? `10${sup(e)}` : `${m.toFixed(digits)}×10${sup(e)}`;
+}
+function human(n, unit = "") {
+  const a = Math.abs(n);
+  const s = a >= 1e12 ? (n / 1e12).toFixed(n >= 1e13 ? 0 : 1) + "T" : a >= 1e9 ? (n / 1e9).toFixed(n >= 1e10 ? 0 : 1) + "B"
+    : a >= 1e6 ? (n / 1e6).toFixed(n >= 1e7 ? 0 : 1) + "M" : a >= 1e3 ? (n / 1e3).toFixed(0) + "K" : n.toFixed(0);
+  return s + unit;
+}
+const css = (v) => `var(--${v})`;
+const BUD = ["b0", "b1", "b2", "b3", "b4"];
+function el(tag, attrs = {}, parent) {
+  const e = document.createElementNS(SVGNS, tag);
+  for (const [k, v] of Object.entries(attrs)) e.setAttribute(k, v);
+  if (parent) parent.appendChild(e);
+  return e;
+}
+const tip = $("#tip");
+function showTip(evt, html) {
+  tip.innerHTML = html; tip.classList.add("on");
+  const w = tip.offsetWidth, h = tip.offsetHeight;
+  let x = evt.clientX + 14, y = evt.clientY - h - 10;
+  if (x + w > window.innerWidth - 8) x = evt.clientX - w - 14;
+  if (y < 8) y = evt.clientY + 16;
+  tip.style.left = x + "px"; tip.style.top = y + "px";
+}
+const hideTip = () => tip.classList.remove("on");
+
+// ---------- scales and axes
+function scale(domain, range, log) {
+  const f = log ? Math.log10 : (v) => v;
+  const d0 = f(domain[0]), d1 = f(domain[1]);
+  const s = (v) => range[0] + ((f(v) - d0) / (d1 - d0)) * (range[1] - range[0]);
+  s.domain = domain; s.log = log; s.range = range;
+  return s;
+}
+function logTicks(lo, hi) {
+  const out = [], span = Math.log10(hi / lo);
+  const mults = span > 2.2 ? [1] : span > 1.1 ? [1, 3] : [1, 2, 5];
+  for (let e = Math.floor(Math.log10(lo)) - 1; e <= Math.ceil(Math.log10(hi)); e++)
+    for (const m of mults) { const v = m * 10 ** e; if (v >= lo * 0.999 && v <= hi * 1.001) out.push(v); }
+  return out;
+}
+function linTicks(lo, hi, n = 5) {
+  const raw = (hi - lo) / n, p = 10 ** Math.floor(Math.log10(raw));
+  const step = [1, 2, 2.5, 5, 10].map((m) => m * p).find((s) => s >= raw);
+  const out = [];
+  for (let v = Math.ceil(lo / step) * step; v <= hi + 1e-9; v += step) out.push(+v.toFixed(10));
+  return out;
+}
+function makeChart(host, o) {
+  host.innerHTML = "";
+  const W = Math.max(280, host.clientWidth), H = o.height ?? Math.round(Math.min(380, Math.max(250, W * 0.52)));
+  const m = Object.assign({ l: 58, r: 18, t: 16, b: 46 }, o.margin || {});
+  const svg = el("svg", { viewBox: `0 0 ${W} ${H}`, width: W, height: H, role: "img", "aria-label": o.label || "chart" }, host);
+  const sx = scale(o.x.domain, [m.l, W - m.r], o.x.log), sy = scale(o.y.domain, [H - m.b, m.t], o.y.log);
+  const g = el("g", {}, svg);
+  const xt = o.x.ticks || (o.x.log ? logTicks(...o.x.domain) : linTicks(...o.x.domain, W < 460 ? 4 : 6));
+  const yt = o.y.ticks || (o.y.log ? logTicks(...o.y.domain) : linTicks(...o.y.domain, 5));
+  for (const v of xt) {
+    const x = sx(v);
+    el("line", { x1: x, x2: x, y1: m.t, y2: H - m.b, style: `stroke:${css("grid")}` }, g);
+    const t = el("text", { x, y: H - m.b + 18, "text-anchor": "middle", class: "tick" }, g);
+    t.textContent = (o.x.fmt || String)(v);
+  }
+  for (const v of yt) {
+    const y = sy(v);
+    el("line", { x1: m.l, x2: W - m.r, y1: y, y2: y, style: `stroke:${css("grid")}` }, g);
+    const t = el("text", { x: m.l - 8, y: y + 4, "text-anchor": "end", class: "tick" }, g);
+    t.textContent = (o.y.fmt || String)(v);
+  }
+  el("line", { x1: m.l, x2: W - m.r, y1: H - m.b, y2: H - m.b, style: `stroke:${css("faint")}` }, g);
+  if (o.x.label) { const t = el("text", { x: (m.l + W - m.r) / 2, y: H - 8, "text-anchor": "middle", class: "axis-label" }, g); t.textContent = o.x.label; }
+  if (o.y.label) { const t = el("text", { x: -(m.t + H - m.b) / 2, y: 14, transform: "rotate(-90)", "text-anchor": "middle", class: "axis-label" }, g); t.textContent = o.y.label; }
+  const clipId = "c" + Math.random().toString(36).slice(2);
+  const cp = el("clipPath", { id: clipId }, el("defs", {}, svg));
+  el("rect", { x: m.l, y: m.t - 4, width: W - m.l - m.r, height: H - m.t - m.b + 8 }, cp);
+  const plot = el("g", { "clip-path": `url(#${clipId})` }, svg);
+  const top = el("g", {}, svg);
+  const C = {
+    svg, W, H, m, sx, sy, plot, top,
+    line(pts, style, parent = plot) {
+      const d = pts.filter((p) => isFinite(p[0]) && isFinite(p[1])).map((p, i) => (i ? "L" : "M") + sx(p[0]).toFixed(1) + "," + sy(p[1]).toFixed(1)).join("");
+      return el("path", { d, style: "fill:none;" + style }, parent);
+    },
+    dot(x, y, r, style, tipHtml, parent = top) {
+      const c = el("circle", { cx: sx(x), cy: sy(y), r, style }, parent);
+      if (tipHtml) { c.classList.add("hit"); c.addEventListener("pointerenter", (e) => showTip(e, tipHtml)); c.addEventListener("pointermove", (e) => showTip(e, tipHtml)); c.addEventListener("pointerleave", hideTip); }
+      return c;
+    },
+    star(x, y, r, style, tipHtml) {
+      const cx = sx(x), cy = sy(y), pts = [];
+      for (let i = 0; i < 10; i++) { const a = -Math.PI / 2 + (i * Math.PI) / 5, rr = i % 2 ? r * 0.45 : r; pts.push((cx + rr * Math.cos(a)).toFixed(1) + "," + (cy + rr * Math.sin(a)).toFixed(1)); }
+      const p = el("polygon", { points: pts.join(" "), style }, top);
+      if (tipHtml) { p.classList.add("hit"); p.addEventListener("pointerenter", (e) => showTip(e, tipHtml)); p.addEventListener("pointermove", (e) => showTip(e, tipHtml)); p.addEventListener("pointerleave", hideTip); }
+      return p;
+    },
+    text(x, y, s, attrs = {}, parent = top) { const t = el("text", Object.assign({ x: sx(x), y: sy(y) }, attrs), parent); t.textContent = s; return t; },
+  };
+  return C;
+}
+const onResize = [];
+let rsTimer, lastW = document.body.clientWidth;
+new ResizeObserver((es) => {
+  const w = es[0].contentRect.width;
+  if (Math.abs(w - lastW) < 1) return; // only re-draw when the width changes
+  lastW = w; clearTimeout(rsTimer); rsTimer = setTimeout(() => onResize.forEach((f) => f()), 60);
+}).observe(document.body);
+
+// ---------- model maths
+// FLOPs per training token for our model family: 6N(1 + k N^-g), fitted to the paper's Appendix F count
+const fpt = (N) => 6 * N * (1 + R.fpt_fit.k * N ** -R.fpt_fit.g);
+const A3 = R.approach3;
+const lawOurs = (N, D) => A3.E + A3.A / N ** A3.alpha + A3.B / D ** A3.beta;
+const PF = R.paper.fit;
+const lawPaper = (N, D) => PF.E + PF.A / N ** PF.alpha + PF.B / D ** PF.beta;
+function argminN(C, lo, hi, loss) {
+  let best = [Infinity, lo];
+  for (let i = 0; i <= 600; i++) { const N = lo * (hi / lo) ** (i / 600), L = loss(N, C); if (L < best[0]) best = [L, N]; }
+  return best[1];
+}
+const oursAt = (N, C) => lawOurs(N, C / fpt(N));
+const budgets = R.budgets;
+const bColor = (C) => css(BUD[budgets.indexOf(C)] || "b2");
+
+// ---------- hero
+$("#stat-runs").textContent = `${R.meta.runs}`;
+$("#v-ours").innerHTML = `N<sub>opt</sub> ∝ C<sup>${R.approach2.a.toFixed(2)}</sup>`;
+$("#v-ours-s").textContent = `data: D_opt ∝ C^${R.approach2.b.toFixed(2)} · ${R.meta.runs} runs · ${(R.meta.seconds / 60).toFixed(0)} min of laptop time`;
+
+// ---------- 01 explorer
+let exC = budgets[Math.min(3, budgets.length - 1)];
+const N_LO = 12e3, N_HI = 4e6;
+const chips = $("#budget-chips");
+budgets.forEach((C) => {
+  const b = document.createElement("button");
+  b.className = "chip"; b.type = "button"; b.textContent = sci(C) ; b.setAttribute("aria-pressed", C === exC);
+  b.addEventListener("click", () => { exC = C; chips.querySelectorAll(".chip").forEach((c) => c.setAttribute("aria-pressed", c === b)); setSliderToOpt(); renderExplore(); });
+  chips.appendChild(b);
+});
+const nSlider = $("#n-slider");
+const sliderToN = () => N_LO * (N_HI / N_LO) ** (nSlider.value / 1000);
+function setSliderToOpt() {
+  const N = argminN(exC, N_LO, N_HI, oursAt) * 2.6; // start off-optimum so the dip is visible
+  nSlider.value = Math.round((1000 * Math.log(N / N_LO)) / Math.log(N_HI / N_LO));
+}
+nSlider.addEventListener("input", renderExplore);
+function renderExplore() {
+  const host = $("#ch-explore");
+  const Nopt = argminN(exC, N_LO, N_HI, oursAt), Lopt = oursAt(Nopt, exC);
+  const runs = R.isoflop.filter((r) => r.budget === exC);
+  const yLo = Math.min(Lopt, ...runs.map((r) => r.val_loss)) - 0.04;
+  const c = makeChart(host, {
+    height: Math.round(Math.min(460, Math.max(300, host.clientWidth * 0.66))),
+    x: { domain: [N_LO, N_HI], log: true, fmt: (v) => human(v), label: "Parameters N (log scale)" },
+    y: { domain: [yLo, yLo + 0.75], fmt: (v) => v.toFixed(1), label: "Validation loss (nats / char)" },
+    label: "Loss against model size at a fixed compute budget",
+  });
+  const pts = [];
+  for (let i = 0; i <= 240; i++) { const N = N_LO * (N_HI / N_LO) ** (i / 240); pts.push([N, oursAt(N, exC)]); }
+  c.line(pts, `stroke:${bColor(exC)};stroke-width:2.5`);
+  runs.forEach((r) => c.dot(r.params, r.val_loss, 5, `fill:${bColor(exC)};stroke:${css("surface")};stroke-width:1.5`,
+    `<b>real run</b><br>${human(r.params)} params (${r.n_layer} layers, width ${r.d_model})<br>${human(r.tokens)} characters<br>loss ${r.val_loss.toFixed(3)}`));
+  c.star(Nopt, Lopt, 11, `fill:${css("accent")};stroke:${css("ink")};stroke-width:1`, `<b>compute-optimal</b><br>${human(Nopt)} params`);
+  const N = sliderToN(), D = exC / fpt(N), L = oursAt(N, exC);
+  const x = c.sx(N);
+  el("line", { x1: x, x2: x, y1: c.m.t, y2: c.H - c.m.b, style: `stroke:${css("ink")};stroke-dasharray:3 4;opacity:.55` }, c.plot);
+  if (L < yLo + 0.75) c.dot(N, L, 7, `fill:${css("ink")};stroke:${css("bg")};stroke-width:2`);
+  $("#r-n").textContent = human(N);
+  $("#r-d").textContent = human(D);
+  $("#r-tpp").textContent = (D / N).toFixed(D / N < 10 ? 1 : 0);
+  $("#r-loss").textContent = L.toFixed(3);
+  const ratio = N / Nopt, st = $("#r-status");
+  const gap = L - Lopt;
+  if (ratio < 0.62) { st.className = "status bad"; st.innerHTML = `<b>Too small</b><span>Plenty of data, not enough parameters to learn from it. +${gap.toFixed(3)} loss vs the best size (${human(Nopt)}).</span>`; }
+  else if (ratio > 1.6) { st.className = "status bad"; st.innerHTML = `<b>Too big: undertrained</b><span>The budget runs out after ${human(D)} characters. +${gap.toFixed(3)} loss vs the best size (${human(Nopt)}). This is where Gopher sat.</span>`; }
+  else { st.className = "status ok"; st.innerHTML = `<b>Near compute-optimal</b><span>Within ${(Math.max(gap, 0)).toFixed(3)} of the best loss for ${sci(exC)} FLOPs.</span>`; }
+}
+
+// ---------- 02 isoflop (attempt 2 = final; attempt 1 = same batch for every run)
+let ATT = 2;
+const isoRuns = () => (ATT === 2 ? R.isoflop : R.attempt1.isoflop);
+const isoFit = () => (ATT === 2 ? R.approach2 : R.attempt1.approach2);
+function renderAttemptNote() {
+  const f1 = R.attempt1.approach2, f2 = R.approach2;
+  $("#attempt-note").innerHTML = ATT === 2
+    ? `<b>Attempt 2: a = ${f2.a.toFixed(2)}.</b> Every (model, budget) is trained with up to three batch sizes (1K, 2K, 4K characters per step) and keeps its best run. A smaller batch is only tried when a run would get fewer than ${R.min_steps.toLocaleString()} optimizer steps. Same compute, same data. Compare attempt 1.`
+    : `<b>Attempt 1: a = ${f1.a.toFixed(2)}, close to Kaplan's 0.73.</b> Every run used 4,096 characters per step. At small budgets the bigger models got only 300–700 optimizer steps and looked far worse than they are, so the best size looked too small there. The paper blames the same kind of setup choice for Kaplan's answer.`;
+}
+$("#attempt-chips").querySelectorAll(".chip").forEach((b) => b.addEventListener("click", () => {
+  ATT = +b.dataset.att;
+  $("#attempt-chips").querySelectorAll(".chip").forEach((c) => c.setAttribute("aria-pressed", c === b));
+  renderAttemptNote(); renderIso();
+  renderOpt("#ch-nopt", "N_opt", isoFit().a, isoFit().kN, R.paper.a.approach2, 0.73, "Optimal parameters");
+  renderOpt("#ch-dopt", "D_opt", isoFit().b, isoFit().kD, R.paper.b.approach2, 0.27, "Optimal characters");
+}));
+$("#diag-rows").innerHTML = (R.diagnostics || []).map((d) => {
+  const ch = d.loss_small - d.loss64;
+  return `<tr><td>${human(d.params)} params</td><td>${sci(d.budget)}</td><td class="num">${d.steps64.toLocaleString()}</td><td class="num">${d.loss64.toFixed(3)}</td>
+    <td class="num">${d.steps_small.toLocaleString()}</td><td class="num">${d.loss_small.toFixed(3)}</td><td class="num ${ch < -0.01 ? "good" : "flat"}">${ch >= 0 ? "+" : ""}${ch.toFixed(3)}</td></tr>`;
+}).join("");
+function renderIso() {
+  const host = $("#ch-iso");
+  const all = isoRuns();
+  const P2 = isoFit().per_budget;
+  const xs = all.map((r) => r.params).concat(P2.map((f) => f.N_opt)), ys = all.map((r) => r.val_loss).concat(P2.map((f) => f.loss_opt));
+  const c = makeChart(host, {
+    height: Math.round(Math.min(430, Math.max(280, host.clientWidth * 0.45))),
+    x: { domain: [Math.min(...xs) / 1.3, Math.max(...xs) * 1.3], log: true, fmt: (v) => human(v), label: "Parameters N (log scale)" },
+    y: { domain: [Math.min(...ys) - 0.03, Math.max(...ys) + 0.03], fmt: (v) => v.toFixed(2), label: "Validation loss (nats / char)" },
+    label: "IsoFLOP curves",
+  });
+  P2.forEach((f) => {
+    const runs = all.filter((r) => r.budget === f.budget);
+    const lx = runs.map((r) => Math.log10(r.params));
+    const pts = [];
+    for (let i = 0; i <= 80; i++) { const x = Math.min(...lx) - 0.08 + ((Math.max(...lx) - Math.min(...lx) + 0.16) * i) / 80; pts.push([10 ** x, f.coef[0] * x * x + f.coef[1] * x + f.coef[2]]); }
+    c.line(pts, `stroke:${bColor(f.budget)};stroke-width:2.2`);
+    runs.forEach((r) => c.dot(r.params, r.val_loss, 5, `fill:${bColor(f.budget)};stroke:${css("surface")};stroke-width:1.5`,
+      `<b>${sci(f.budget)} FLOPs</b><br>${human(r.params)} params · ${r.n_layer}×${r.d_model}<br>${human(r.tokens)} characters (${(r.tokens / r.params).toFixed(0)}/param)<br>loss ${r.val_loss.toFixed(4)}`));
+    c.star(f.N_opt, f.loss_opt, 10, `fill:${bColor(f.budget)};stroke:${css("ink")};stroke-width:1`,
+      `<b>minimum at ${sci(f.budget)}</b><br>N_opt ≈ ${human(f.N_opt)}<br>D_opt ≈ ${human(f.D_opt)} characters<br>${(f.D_opt / f.N_opt).toFixed(0)} characters / param`);
+  });
+  const lg = $("#iso-legend"); lg.innerHTML = "";
+  budgets.forEach((C) => { lg.insertAdjacentHTML("beforeend", `<span><i style="background:${bColor(C)}"></i>${sci(C)} FLOPs</span>`); });
+  lg.insertAdjacentHTML("beforeend", `<span>★ lowest point of each parabola</span>`);
+}
+function renderOpt(hostSel, key, expo, kfit, paperExp, kapExp, ylabel) {
+  const host = $(hostSel), P = isoFit().per_budget;
+  const Cs = P.map((f) => f.budget), ys = P.map((f) => f[key]);
+  const lo = Math.min(...Cs) / 2, hi = Math.max(...Cs) * 2;
+  const mid = Math.exp(Cs.reduce((s, v) => s + Math.log(v), 0) / Cs.length), ymid = kfit * mid ** expo;
+  const yl = Math.min(...ys) / 2.2, yh = Math.max(...ys) * 2.2;
+  const c = makeChart(host, {
+    x: { domain: [lo, hi], log: true, fmt: (v) => sci(v, 0), label: "Compute C (FLOPs)" },
+    y: { domain: [yl, yh], log: true, fmt: (v) => human(v), label: ylabel },
+    height: Math.round(Math.min(300, Math.max(230, host.clientWidth * 0.62))),
+  });
+  const line = (e, k0) => { const p = []; for (let i = 0; i <= 40; i++) { const C = lo * (hi / lo) ** (i / 40); p.push([C, k0 * (C / mid) ** e]); } return p; };
+  c.line(line(kapExp, ymid), `stroke:${css("kaplan")};stroke-width:1.6;stroke-dasharray:6 4`);
+  c.line(line(paperExp, ymid), `stroke:${css("paperc")};stroke-width:1.6;opacity:.8`);
+  c.line(line(expo, ymid), `stroke:${css("accent")};stroke-width:2.6`);
+  P.forEach((f) => c.star(f.budget, f[key], 9, `fill:${bColor(f.budget)};stroke:${css("ink")};stroke-width:1`, `${sci(f.budget)} FLOPs → ${human(f[key])}`));
+  c.text(lo * 1.15, yh / 1.25, `our slope ${expo.toFixed(2)}`, { class: "lbl", style: `fill:${css("accent")}` });
+}
+
+// ---------- 03 approaches
+function ciTxt(ci) { return ci ? `<span class="ci"> (${ci[0].toFixed(2)}–${ci[1].toFixed(2)})</span>` : ""; }
+const APPROACHES = [
+  { key: "approach1", col: "a1", name: "1 · Minimum over training curves", how: "At every FLOP count, which run's training curve is lowest?" },
+  { key: "approach2", col: "accent", name: "2 · IsoFLOP profiles", how: "Fix the compute, vary the size, take the parabola's lowest point." },
+  { key: "approach3", col: "a3", name: "3 · Parametric fit", how: "Fit L(N,D) = E + A/N^α + B/D^β to every run (Huber loss, L-BFGS)." },
+];
+$("#approach-rows").innerHTML = APPROACHES.map((a) => {
+  const r = R[a.key];
+  return `<tr><td><span class="swatch" style="background:${css(a.col)}"></span>${a.name}</td><td>${a.how}</td>
+    <td class="num">${r.a.toFixed(2)}${ciTxt(r.a_ci)}</td><td class="num" style="color:${css("paperc")}">${R.paper.a[a.key].toFixed(2)}</td>
+    <td class="num">${r.b.toFixed(2)}${ciTxt(r.b_ci)}</td><td class="num" style="color:${css("paperc")}">${R.paper.b[a.key].toFixed(2)}</td></tr>`;
+}).join("") + `<tr class="kap"><td><span class="swatch" style="background:${css("kaplan")}"></span>Our attempt 1 (same batch)</td><td>IsoFLOP profiles, one batch size for all runs (too few steps at small budgets).</td><td class="num">${R.attempt1.approach2.a.toFixed(2)}${ciTxt(R.attempt1.approach2.a_ci)}</td><td class="num">—</td><td class="num">${R.attempt1.approach2.b.toFixed(2)}</td><td class="num">—</td></tr>`
+  + `<tr class="kap"><td><span class="swatch" style="background:${css("kaplan")}"></span>Kaplan et al. (2020)</td><td>Earlier scaling law: mostly grow the model.</td><td class="num">—</td><td class="num">0.73</td><td class="num">—</td><td class="num">0.27</td></tr>`;
+function renderApproaches() {
+  const host = $("#ch-approaches");
+  const lo = budgets[0] / 1.6, hi = budgets[budgets.length - 1] * 10;
+  const c = makeChart(host, {
+    x: { domain: [lo, hi], log: true, fmt: (v) => sci(v, 0), label: "Compute C (FLOPs)" },
+    y: { domain: [1.5e4, 6e6], log: true, fmt: (v) => human(v), label: "Compute-optimal parameters" },
+    height: Math.round(Math.min(340, Math.max(250, host.clientWidth * 0.66))),
+  });
+  const xe = c.sx(budgets[budgets.length - 1]);
+  el("rect", { x: xe, y: c.m.t, width: c.W - c.m.r - xe, height: c.H - c.m.t - c.m.b, style: `fill:${css("grid")};opacity:.6` }, c.plot);
+  el("text", { x: xe + 6, y: c.m.t + 14, class: "tick" }, c.top).textContent = "extrapolated";
+  const grid = []; for (let i = 0; i <= 60; i++) grid.push(lo * (hi / lo) ** (i / 60));
+  const a1 = R.approach1, a2 = R.approach2;
+  const c0 = budgets[0], n0 = a2.kN * c0 ** a2.a;
+  c.line(grid.map((C) => [C, n0 * (C / c0) ** 0.73]), `stroke:${css("kaplan")};stroke-width:1.8;stroke-dasharray:6 4`);
+  c.line(grid.map((C) => [C, a1.kN * C ** a1.a]), `stroke:${css("a1")};stroke-width:2.2`);
+  c.line(grid.map((C) => [C, a2.kN * C ** a2.a]), `stroke:${css("accent")};stroke-width:3.4`);
+  c.line(grid.map((C) => [C, argminN(C, 3e3, 1e8, oursAt)]), `stroke:${css("a3")};stroke-width:2.2;stroke-dasharray:7 4`);
+  if (R.head_to_head) {
+    const g = R.head_to_head.gopher, h = R.head_to_head.chinchilla;
+    c.dot(g.flops, g.params, 6, `fill:${css("surface")};stroke:${css("ink")};stroke-width:2`, `mini-Gopher: ${human(g.params)} params`);
+    c.text(g.flops, g.params, "mini-Gopher", { dx: 9, dy: 4, class: "lbl", style: `fill:${css("ink")}` });
+    c.star(h.flops, h.params, 10, `fill:${css("accent")};stroke:${css("ink")};stroke-width:1`, `mini-Chinchilla: ${human(h.params)} params`);
+    c.text(h.flops, h.params, "mini-Chinchilla", { dx: 10, dy: 14, class: "lbl", style: `fill:${css("ink")}` });
+  }
+  $("#approach-legend").innerHTML = [["a1", "Approach 1"], ["accent", "Approach 2"], ["a3", "Approach 3 (dashed)"]].map(([k, n]) => `<span><i style="background:${css(k)}"></i>${n}</span>`).join("")
+    + `<span><i class="dash"></i>Kaplan slope 0.73</span>`;
+}
+function renderEnvelope() {
+  const host = $("#ch-envelope"), A = R.approach1;
+  const Ns = R.isoflop.map((r) => r.params), lo = Math.log(Math.min(...Ns)), hi = Math.log(Math.max(...Ns));
+  const ends = R.isoflop.map((r) => r.curve[r.curve.length - 1][1]);
+  const yLo = Math.min(...ends) - 0.05;
+  const c = makeChart(host, {
+    x: { domain: [A.grid[0] / 30, A.grid[A.grid.length - 1] * 1.3], log: true, fmt: (v) => sci(v, 0), label: "Training FLOPs so far" },
+    y: { domain: [yLo, yLo + 1.0], fmt: (v) => v.toFixed(1), label: "Training loss" },
+    height: Math.round(Math.min(340, Math.max(250, host.clientWidth * 0.66))),
+  });
+  const mix = (t) => `color-mix(in srgb, ${css("a3")} ${Math.round(t * 100)}%, ${css("accent")})`;
+  R.isoflop.forEach((r) => c.line(r.curve, `stroke:${mix((Math.log(r.params) - lo) / (hi - lo))};stroke-width:1.1;opacity:.7`));
+  c.line(A.grid.map((g, i) => [g, A.env_loss[i]]), `stroke:${css("ink")};stroke-width:2.6`);
+}
+function renderFormula() {
+  $("#formula").innerHTML = `L(N, D) = ${A3.E.toFixed(2)} + ${A3.A.toPrecision(4)} / N<sup>${A3.alpha.toFixed(3)}</sup> + ${A3.B.toPrecision(4)} / D<sup>${A3.beta.toFixed(3)}</sup>`;
+  $("#formula-note").innerHTML = `Paper: L = 1.69 + 406.4 / N<sup>0.34</sup> + 410.7 / D<sup>0.28</sup> (tokens, not characters). Ours fits every run to within ${(100 * A3.mean_abs_err).toFixed(1)}% on average. `
+    + `The best size follows from α and β alone: a = β/(α+β) = ${A3.a.toFixed(2)}. E is the loss no model can beat (${A3.E.toFixed(2)} nats per character here).`;
+}
+
+// ---------- 04 head-to-head
+let promptIdx = 0;
+function renderHead() {
+  const H2H = R.head_to_head;
+  if (!H2H) { $("#headtohead").hidden = true; return; }
+  const g = H2H.gopher, h = H2H.chinchilla;
+  const host = $("#ch-head");
+  const lo = Math.min(g.val_loss, h.val_loss);
+  const c = makeChart(host, {
+    x: { domain: [g.curve[0][0] * 4, g.flops * 1.15], log: true, fmt: (v) => sci(v, 0), label: "Training FLOPs so far" },
+    y: { domain: [lo - 0.08, lo + 0.9], fmt: (v) => v.toFixed(1), label: "Training loss" },
+  });
+  c.line(g.curve, `stroke:${css("ink")};stroke-width:2.2;stroke-dasharray:7 4`);
+  c.line(h.curve, `stroke:${css("accent")};stroke-width:2.6`);
+  const gl = g.curve[g.curve.length - 1], hl = h.curve[h.curve.length - 1];
+  c.text(gl[0], gl[1], "mini-Gopher", { dx: -8, dy: -12, "text-anchor": "end", class: "lbl", style: `fill:${css("ink")}` });
+  c.text(hl[0], hl[1], "mini-Chinchilla", { dx: -8, dy: 22, "text-anchor": "end", class: "lbl", style: `fill:${css("accent")}` });
+  const max = Math.max(g.val_loss, h.val_loss);
+  $("#head-bars").innerHTML = [[g, "mini-Gopher", "ink"], [h, "mini-Chinchilla", "accent"]].map(([r, n, col]) =>
+    `<div class="barrow"><div class="top"><b>${n}</b><span class="num">${r.val_loss.toFixed(3)}</span></div>
+     <div class="track"><div class="fill" style="width:${(100 * r.val_loss) / max}%;background:${css(col)}"></div></div>
+     <div class="meta">${human(r.params)} params · ${human(r.tokens)} characters · ${(r.tokens / r.params).toFixed(0)} per param</div></div>`).join("");
+  const win = h.val_loss < g.val_loss;
+  $("#head-status").className = "status " + (win ? "ok" : "bad");
+  $("#head-status").innerHTML = win
+    ? `<b>Smaller model wins</b><span>Same ${sci(h.budget)} FLOPs. The model ${(g.params / h.params).toFixed(1)}× smaller, trained on ${(h.tokens / g.tokens).toFixed(1)}× more characters, ends ${(g.val_loss - h.val_loss).toFixed(3)} nats lower (${(100 * (1 - Math.exp(h.val_loss - g.val_loss))).toFixed(0)}% lower perplexity).</span>`
+    : `<b>Big model wins here</b><span>At this budget the bigger model ends lower.</span>`;
+}
+function renderSamples() {
+  const H2H = R.head_to_head;
+  if (!H2H) return;
+  const prompts = ["Once upon a time", "Lily wanted to", "The little dog"];
+  const pc = $("#prompt-chips");
+  pc.innerHTML = prompts.map((p, i) => `<button class="chip" type="button" role="tab" aria-pressed="${i === promptIdx}" data-i="${i}">"${p}…"</button>`).join("");
+  pc.querySelectorAll(".chip").forEach((b) => b.addEventListener("click", () => { promptIdx = +b.dataset.i; renderSamples(); }));
+  const esc = (s) => s.replace(/&/g, "&amp;").replace(/</g, "&lt;");
+  $("#sample-grid").innerHTML = [["mini-Gopher", H2H.gopher], ["mini-Chinchilla", H2H.chinchilla]].map(([n, r]) => {
+    const s = r.samples[promptIdx] || "", p = prompts[promptIdx];
+    return `<div class="sample"><h4>${n} · ${human(r.params)} params · loss ${r.val_loss.toFixed(3)}</h4><p><span class="prompt">${esc(p)}</span>${esc(s.slice(p.length))}</p></div>`;
+  }).join("");
+}
+
+// ---------- 05 cosine
+const COS_COL = ["accent", "b2", "b3", "b4", "kaplan"];
+function renderCosine() {
+  const runs = (R.cosine || []).slice().sort((a, b) => a.cycle - b.cycle);
+  if (!runs.length) { $("#schedule").hidden = true; return; }
+  const maxT = Math.max(...runs[0].curve.map((p) => p[0]));
+  const lrMax = Math.max(...runs.flatMap((r) => r.curve.map((p) => p[2])));
+  const c1 = makeChart($("#ch-lr"), {
+    x: { domain: [0, maxT], fmt: (v) => human(v), label: "Characters seen" },
+    y: { domain: [0, lrMax * 1.08], fmt: (v) => (v === 0 ? "0" : (v * 1e3).toFixed(0) + "e-3"), label: "Learning rate" },
+    height: 260,
+  });
+  runs.forEach((r, i) => c1.line(r.curve.map((p) => [p[0], p[2]]), `stroke:${css(COS_COL[i])};stroke-width:${i ? 1.8 : 2.8}`));
+  const ls = runs.map((r) => r.val_loss), lo = Math.min(...ls), hi = Math.max(...ls), pad = (hi - lo) * 0.35 + 0.004;
+  const c2 = makeChart($("#ch-cos"), {
+    x: { domain: [0.85, 6.2], log: true, ticks: runs.map((r) => r.cycle), fmt: (v) => v + "×", label: "Cosine cycle length ÷ run length" },
+    y: { domain: [lo - pad, hi + pad], fmt: (v) => v.toFixed(3), label: "Final validation loss" },
+    height: 260, margin: { l: 64 },
+  });
+  c2.line(runs.map((r) => [r.cycle, r.val_loss]), `stroke:${css("faint")};stroke-width:1.2`);
+  runs.forEach((r, i) => c2.dot(r.cycle, r.val_loss, 7, `fill:${css(COS_COL[i])};stroke:${css("ink")};stroke-width:1`,
+    `cycle ${r.cycle}× the run<br>final loss ${r.val_loss.toFixed(4)}<br>${r.cycle === 1 ? "the paper's recipe" : "+" + (r.val_loss - runs[0].val_loss).toFixed(4) + " vs matched"}`));
+  $("#cos-legend").innerHTML = runs.map((r, i) => `<span><i style="background:${css(COS_COL[i])}"></i>${r.cycle === 1 ? "matched to the run (paper)" : r.cycle + "× longer than the run"}</span>`).join("")
+    + `<span>model: ${human(runs[0].params)} params · ${human(runs[0].tokens)} characters</span>`;
+}
+
+// ---------- 06 paper scale
+const MODELS = [
+  { name: "GPT-3", N: 175e9, D: 300e9 }, { name: "Gopher", N: 280e9, D: 300e9 }, { name: "Jurassic-1", N: 178e9, D: 300e9 },
+  { name: "MT-NLG", N: 530e9, D: 270e9 }, { name: "Chinchilla", N: 70e9, D: 1.4e12 },
+];
+const cSlider = $("#c-slider");
+const sliderC = () => 10 ** (cSlider.value / 100);
+cSlider.addEventListener("input", renderPaper);
+$("#model-chips").innerHTML = MODELS.map((m, i) => `<button class="chip" type="button" data-i="${i}" aria-pressed="false">${m.name}</button>`).join("");
+$("#model-chips").querySelectorAll(".chip").forEach((b) => b.addEventListener("click", () => {
+  const m = MODELS[+b.dataset.i]; cSlider.value = Math.round(100 * Math.log10(6 * m.N * m.D)); renderPaper();
+}));
+function renderPaper() {
+  const C = sliderC();
+  const atC = (N) => lawPaper(N, C / (6 * N));
+  const n3 = argminN(C, 1e6, 1e14, (N) => atC(N)), l3 = atC(n3);
+  const n20 = Math.sqrt(C / 120);
+  const lo = n3 / 40, hi = n3 * 40;
+  const near = MODELS.filter((m) => Math.abs(Math.log10((6 * m.N * m.D) / C)) < 0.12);
+  const ys = near.map((m) => lawPaper(m.N, m.D));
+  const hostP = $("#ch-paper");
+  const c = makeChart(hostP, {
+    height: Math.round(Math.min(460, Math.max(300, hostP.clientWidth * 0.66))),
+    x: { domain: [lo, hi], log: true, fmt: (v) => human(v), label: "Parameters N (log scale)" },
+    y: { domain: [l3 - 0.02, Math.max(l3 + 0.25, ...ys.map((y) => y + 0.03))], fmt: (v) => v.toFixed(2), label: "Predicted loss (paper's Eq. 2)" },
+  });
+  const pts = []; for (let i = 0; i <= 200; i++) { const N = lo * (hi / lo) ** (i / 200); pts.push([N, atC(N)]); }
+  c.line(pts, `stroke:${css("paperc")};stroke-width:2.5`);
+  c.star(n3, l3, 11, `fill:${css("paperc")};stroke:${css("ink")};stroke-width:1`, `Eq. 2 optimum: ${human(n3)} params`);
+  const x20 = c.sx(n20);
+  el("line", { x1: x20, x2: x20, y1: c.m.t, y2: c.H - c.m.b, style: `stroke:${css("accent")};stroke-width:1.5;stroke-dasharray:5 4` }, c.plot);
+  el("text", { x: x20 + 6, y: c.m.t + 12, class: "lbl", style: `fill:${css("accent")}` }, c.top).textContent = "20 tokens / param";
+  near.forEach((m, i) => {
+    const y = lawPaper(m.N, m.D);
+    c.dot(m.N, y, 7, `fill:${m.name === "Chinchilla" ? css("accent") : css("surface")};stroke:${css("ink")};stroke-width:2`,
+      `<b>${m.name}</b><br>${human(m.N)} params · ${human(m.D)} tokens<br>C = 6ND = ${sci(6 * m.N * m.D)}<br>predicted loss ${y.toFixed(3)}`);
+    c.text(m.N, y, m.name, { dx: 10, dy: -8 + 16 * (i % 2), class: "lbl", style: `fill:${css("ink")}` });
+  });
+  $("#p-c").textContent = sci(C);
+  $("#p-l").textContent = l3.toFixed(3);
+  $("#p-n3").textContent = human(n3);
+  $("#p-d3").textContent = human(C / (6 * n3));
+  $("#p-n20").textContent = human(n20);
+  $("#p-d20").textContent = human(20 * n20);
+  $("#model-chips").querySelectorAll(".chip").forEach((b) => { const m = MODELS[+b.dataset.i]; b.setAttribute("aria-pressed", near.includes(m)); });
+  const st = $("#p-status");
+  if (near.length) {
+    st.className = "status";
+    st.innerHTML = `<b>At this budget</b><span>${near.map((m) => `${m.name}: ${(m.D / m.N).toFixed(1)} tokens/param, predicted loss ${lawPaper(m.N, m.D).toFixed(3)} (${m.N > n20 * 1.5 ? "too big" : "near the optimum"})`).join(". ")}.</span>`;
+  } else { st.className = "status"; st.innerHTML = `<b>Tip</b><span>Pick Gopher or Chinchilla: they share one budget, so both land on the same curve.</span>`; }
+}
+
+// ---------- 07 code
+function highlight(src) {
+  const esc = (s) => s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+  const re = /("""[\s\S]*?"""|'''[\s\S]*?'''|"(?:\\.|[^"\\\n])*"|'(?:\\.|[^'\\\n])*'|#[^\n]*|\b(?:def|return|for|in|if|else|elif|import|from|as|with|while|not|and|or|None|True|False|lambda|class|try|except|raise|yield|is|pass|continue|break)\b|\b\d+(?:\.\d+)?(?:e[-+]?\d+)?\b)/g;
+  let out = "", last = 0, m;
+  while ((m = re.exec(src))) {
+    out += esc(src.slice(last, m.index));
+    const t = m[0];
+    const cls = t.startsWith("#") ? "com" : /^["']/.test(t) ? "str" : /^\d/.test(t) ? "n" : "kw";
+    out += `<span class="${cls}">${esc(t)}</span>`;
+    last = m.index + t.length;
+  }
+  out += esc(src.slice(last));
+  return out.replace(/(<span class="kw">def<\/span> )(\w+)/g, '$1<span class="fn">$2</span>');
+}
+function renderCode() {
+  const tabs = $("#code-tabs");
+  tabs.innerHTML = CODE.map((c, i) => `<button class="tab" role="tab" type="button" aria-selected="${i === 0}" data-i="${i}">${c.title}</button>`).join("");
+  const show = (i) => {
+    tabs.querySelectorAll(".tab").forEach((t) => t.setAttribute("aria-selected", +t.dataset.i === i));
+    $("#code-note").innerHTML = CODE[i].note;
+    $("#code-view").innerHTML = highlight(CODE[i].code);
+  };
+  tabs.querySelectorAll(".tab").forEach((t) => t.addEventListener("click", () => show(+t.dataset.i)));
+  if (CODE.length) show(0);
+  $("#cmds").innerHTML = [
+    ["python prepare_data.py", "download 200 MB of TinyStories, encode characters"],
+    ["python sweep.py lr", "learning-rate pilot"],
+    ["python sweep.py isoflop", "the IsoFLOP grid"],
+    ["python sweep.py gopher", "mini-Gopher vs mini-Chinchilla"],
+    ["python sweep.py cosine", "schedule-length test"],
+    ["python analyze.py", "all three approaches, figures, results.json"],
+    ["python live_demo.py", "one-minute live demo for class"],
+  ].map(([c, d]) => `<code>${c}  <span># ${d}</span></code>`).join("");
+}
+
+// ---------- boot
+function renderAll() {
+  renderExplore(); renderIso();
+  renderOpt("#ch-nopt", "N_opt", isoFit().a, isoFit().kN, R.paper.a.approach2, 0.73, "Optimal parameters");
+  renderOpt("#ch-dopt", "D_opt", isoFit().b, isoFit().kD, R.paper.b.approach2, 0.27, "Optimal characters");
+  renderApproaches(); renderEnvelope(); renderHead(); renderCosine(); renderPaper();
+}
+setSliderToOpt();
+cSlider.value = Math.round(100 * Math.log10(6 * 280e9 * 300e9));
+renderFormula(); renderSamples(); renderCode(); renderAttemptNote(); renderAll();
+onResize.push(renderAll);
+</script>

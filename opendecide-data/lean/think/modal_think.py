@@ -33,6 +33,7 @@ from __future__ import annotations
 import ast
 import json
 import math
+import statistics
 import sys
 import time
 from pathlib import Path
@@ -60,7 +61,18 @@ CONFIGS = {  # run order: the ship candidate first (it also fills the HF cache o
     "fp8_dflash": {"quant": "fp8", "draft": True},
     "bf16_nospec": {"quant": None, "draft": False},
     "fp8_nospec": {"quant": "fp8", "draft": False},
+    # A30 (B1b). B1a's DFlash start failure was this config, not an engine bug: with the radix cache off, SGLang 0.5.20
+    # reserves the GDN layers' speculative intermediate states for (max_running_requests + 1) x draft tokens
+    # (kv_cache_configurator._handle_max_mamba_cache): 49.1 MB x 129 x 16 = 99 GB > one H100. "mrr" caps it.
+    "bf16_dflash_m16": {"quant": None, "draft": "dflash", "mrr": 16},
+    "fp8_dflash_m16": {"quant": "fp8", "draft": "dflash", "mrr": 16},
+    "bf16_mtp": {"quant": None, "draft": "mtp", "mrr": 32},  # native MTP (the checkpoint's 1 mtp.* layer), NEXTN
+    "fp8_mtp": {"quant": "fp8", "draft": "mtp", "mrr": 32},
 }
+B1A_CONFIGS = ["bf16_dflash", "fp8_dflash", "bf16_nospec", "fp8_nospec"]  # B1a (A17-B1) defaults, as run
+MTP = {"steps": 3, "topk": 1, "draft_tokens": 4}  # the Qwen3.5-4B card's SGLang MTP command (NEXTN 3 / 1 / 4)
+GDN_STATE_MB = 49.125  # per request: 24 GDN layers x (32x128x128 fp32 state + 3 x (2x16x128 + 32x128) bf16 conv)
+H100_GB = 80.0
 DEFAULT_PLAN = {"speed_budgets": [300, 1024, 5000], "n_speed": 10, "concurrency": [8, 32], "conc_tokens": 1024,
                 "parity_budgets": [768, 1024], "deer_budget": 1024, "e2e_caps": [300, 1024], "block": 16,
                 "fast": True, "fast_n": 200, "max_minutes": 25, "mem_fraction": 0.55}
@@ -69,7 +81,20 @@ DEFAULT_PLAN = {"speed_budgets": [300, 1024, 5000], "n_speed": 10, "concurrency"
 SGLANG_FIELDS = {"model_path", "revision", "dtype", "quantization", "trust_remote_code", "context_length",
                  "mem_fraction_static", "disable_radix_cache", "random_seed", "max_running_requests", "log_level",
                  "cuda_graph_max_bs_decode", "speculative_algorithm", "speculative_draft_model_path",
-                 "speculative_draft_model_revision", "speculative_dflash_block_size"}
+                 "speculative_draft_model_revision", "speculative_dflash_block_size",
+                 # A30: checked against sglang v0.5.20 srt/arg_groups/fields/spec.py on 6 Oct 2026
+                 "speculative_num_steps", "speculative_eagle_topk", "speculative_num_draft_tokens"}
+
+
+def draft_tokens(config: str, block: int = 16) -> int:
+    d = CONFIGS[config]["draft"]
+    return int(block) if d in (True, "dflash") else (MTP["draft_tokens"] if d == "mtp" else 0)
+
+
+def spec_state_gb(config: str, block: int = 16) -> float:
+    """GB that SGLang 0.5.20 reserves for the speculative GDN intermediate states (radix cache off)."""
+    mrr = CONFIGS[config].get("mrr", 128)
+    return round(GDN_STATE_MB * (mrr + 1) * draft_tokens(config, block) / 1024, 2)
 
 
 def engine_kwargs(config: str, block: int = 16, mem_fraction: float = 0.55) -> dict:
@@ -78,12 +103,17 @@ def engine_kwargs(config: str, block: int = 16, mem_fraction: float = 0.55) -> d
     c = CONFIGS[config]
     kw = {"model_path": BASE, "revision": BASE_REV, "dtype": "bfloat16", "trust_remote_code": True,
           "context_length": 16384, "mem_fraction_static": mem_fraction, "disable_radix_cache": True, "random_seed": 0,
-          "max_running_requests": 128, "cuda_graph_max_bs_decode": 64, "log_level": "warning"}
+          "max_running_requests": int(c.get("mrr", 128)), "cuda_graph_max_bs_decode": 64, "log_level": "warning"}
     if c["quant"]:
         kw["quantization"] = c["quant"]
-    if c["draft"]:
+    if c["draft"] in (True, "dflash"):
         kw.update(speculative_algorithm="DFLASH", speculative_draft_model_path=DRAFT,
                   speculative_draft_model_revision=DRAFT_REV, speculative_dflash_block_size=int(block))
+    elif c["draft"] == "mtp":
+        kw.update(speculative_algorithm="NEXTN", speculative_num_steps=MTP["steps"],
+                  speculative_eagle_topk=MTP["topk"], speculative_num_draft_tokens=MTP["draft_tokens"])
+    elif c["draft"]:
+        raise ValueError(f"unknown draft kind {c['draft']!r}")
     bad = set(kw) - SGLANG_FIELDS
     if bad:
         raise ValueError(f"unchecked SGLang fields {sorted(bad)}")
@@ -116,7 +146,12 @@ think_image = (
     .add_local_file(THINK / "fast_timing.py", "/root/think/fast_timing.py")
     .add_local_file(DATA / "squad2_parity100.jsonl", "/root/think/data/squad2_parity100.jsonl")
     .add_local_file(DATA / "fast_rows_dev200.jsonl", "/root/think/data/fast_rows_dev200.jsonl")
+    # A30 (B1b): the policies (short_cot / capped_think / full_think) and the gold-free GSM8K TRAIN 500 input
+    .add_local_file(THINK / "policies.py", "/root/think/policies.py")
+    .add_local_file(THINK / "common.py", "/root/think/common.py")
+    .add_local_file(DATA / "b1b_math500.jsonl", "/root/think/data/b1b_math500.jsonl")
 )
+driver_image = modal.Image.debian_slim(python_version="3.12")  # A30: the CPU driver only calls the GPU functions
 
 
 # ----------------------------------------------------------------------------------------------- container side
@@ -412,18 +447,387 @@ def _b1_checks(out: dict, acc_ok: dict) -> dict:
     return out
 
 
+# ----------------------------------------------------------------------------------------------- A30: session B1b
+# PREREG A30. One launch = one CPU driver that runs these H100 containers ONE AFTER ANOTHER under one absolute
+# server-side deadline (so GPU time <= the cap). "fp8" takes the FP8 twin of the bf16 arm that pick_spec() names.
+B1B_ROLES = [
+    ("ref", "bf16_nospec", ["sanity", "speed", "math_short_bat", "math_full"]),
+    ("spec_dflash", "bf16_dflash_m16", ["sanity", "speed", "math_short_bs1"]),
+    ("spec_mtp", "bf16_mtp", ["sanity", "speed", "math_short_bs1"]),
+    ("fp8", None, ["sanity", "speed", "math_short_bs1"]),
+    ("deer", "bf16_nospec", ["math_cap1024_bat", "math_deer1024_bat"]),
+]
+ROLE_NAMES = [r for r, _, _ in B1B_ROLES]
+B1B_PLAN = {"speed_budgets": [300, 1024], "n_speed": 10, "block": 16, "mem_fraction": 0.80, "max_minutes": 28,
+            "chunk_bs1": 25, "chunk_bat": 125, "rows": "/root/think/data/b1b_math500.jsonl"}
+SHORT_CAP = 300  # policies.SHORT["budget"] (A17-B1: short_cot = 300 tokens x 4 tries + vote)
+SPEC_MIN_SPEEDUP = {"dflash": 2.5, "mtp": 1.6}  # FAST_THINK_PLAN 4a S1
+FP8_FOR = {"bf16_dflash_m16": "fp8_dflash_m16", "bf16_mtp": "fp8_mtp", None: "fp8_nospec"}
+B1B_CAP_MIN = 90  # server-side deadline of one launch
+B1B_USD_CAP = 8.0  # per launch (A30); the launcher refuses when the worst case is above it
+BOOT_MIN = 3  # per container: image pull + boot, billed before the function timeout starts [E]
+DRIVER_USD = 0.05  # the CPU driver for the whole window [E]
+CLEAN_B1B = DATA / "clean_b1b"
+B1A_RUN = RUNS / "b1_20261005_025702"
+
+
+def _decode_rate(r: dict):
+    try:
+        return r["steps"]["speed"]["1024"]["decode_tok_s_p50"]
+    except (KeyError, TypeError):
+        return None
+
+
+def spec_speed_report(res: dict) -> dict:
+    """Gold-free part of the A30 S1 rule for each bf16 speculation arm: engine started, all rows answered at batch 1,
+    thinking cap obeyed, decode speed-up at 1,024 tokens vs the no-spec arm of the same session."""
+    base = _decode_rate(res.get("ref") or {})
+    arms = {}
+    for role in ("spec_dflash", "spec_mtp"):
+        r = res.get(role) or {}
+        cfg = r.get("config") or dict((x, c) for x, c, _ in B1B_ROLES)[role]
+        kind = CONFIGS[cfg]["draft"]
+        st = (r.get("steps") or {}).get("math_short_bs1") or {}
+        recs = st.get("records") or []
+        x = _decode_rate(r)
+        sp = round(x / base, 3) if x and base else None
+        a = {"config": cfg, "kind": kind, "decode_tok_s_1024": x, "speedup_1024": sp,
+             "min_speedup": SPEC_MIN_SPEEDUP[kind], "engine_error": (r.get("errors") or {}).get("engine_start"),
+             "complete": bool(recs) and not st.get("partial") and len(recs) == st.get("n_rows"),
+             "cap_obeyed": bool(recs) and all(int(q.get("think_tokens") or 0) <= SHORT_CAP for q in recs),
+             "median_wall_s": round(statistics.median(float(q["wall_s"]) for q in recs), 4) if recs else None}
+        a["speed_ok"] = sp is not None and sp >= a["min_speedup"]
+        a["eligible"] = bool(a["speed_ok"] and a["complete"] and a["cap_obeyed"] and not a["engine_error"])
+        arms[role] = a
+    return {"nospec_decode_tok_s_1024": base, "arms": arms}
+
+
+def pick_spec(res: dict, acc_ok: dict | None = None):
+    """The fastest eligible arm (lowest median batch-1 short_cot wall); acc_ok (local scoring only) adds the S1
+    accuracy condition. Returns (bf16 config or None, report)."""
+    rep = spec_speed_report(res)
+    el = [(v["median_wall_s"], v["config"]) for k, v in rep["arms"].items()
+          if v["eligible"] and (acc_ok is None or acc_ok.get(k))]
+    return (min(el)[1] if el else None), rep
+
+
+def run_steps(tp, engine, items, steps, plan, deadline, res, save=lambda: None):
+    """The B1b steps of one role (container, or the CPU dry run with fake engines). Records carry no gold."""
+    import policies as pol
+    import think_engine as te
+    prompts = [p["prompt"] for p in tp.prepare(items)]  # prompt identity vs the input file (raises on drift)
+
+    def policy_step(policy, batch, chunk, need_s, **kw):
+        recs, cut = [], False
+        for i in range(0, len(items), chunk):
+            if time.time() + need_s > deadline:
+                cut = True
+                break
+            recs += pol.run_policy(tp, items[i:i + chunk], policy, c1_keys={}, batch=batch, **kw)
+        return {"policy": policy, "batch": batch, "kw": kw, "n_rows": len(items), "n": len(recs),
+                "partial": cut or len(recs) < len(items), "records": recs}
+
+    run = {"sanity": lambda: te.SGLBackend(engine).generate([prompts[0]], [{**te.SAMPLING, "max_new_tokens": 16}]),
+           "speed": lambda: {str(b): _speed(engine, prompts[:plan["n_speed"]], b, te.SAMPLING, deadline - 60)
+                             for b in plan["speed_budgets"]},
+           "math_short_bs1": lambda: policy_step("short_cot", 1, plan["chunk_bs1"], 60),
+           "math_short_bat": lambda: policy_step("short_cot", 0, plan["chunk_bat"], 120),
+           "math_full": lambda: policy_step("full_think", 0, plan["chunk_bat"], 300),
+           "math_cap1024_bat": lambda: policy_step("capped_think", 0, plan["chunk_bat"], 150, deer={}),  # DEER off
+           "math_deer1024_bat": lambda: policy_step("capped_think", 0, plan["chunk_bat"], 150)}  # DEER (te.DEER)
+    for name in steps:
+        if time.time() + 60 > deadline:
+            res["skipped"].append(name)
+            continue
+        t = time.time()
+        try:
+            res["steps"][name] = run[name]()
+        except Exception as e:  # noqa: BLE001  (one failed step must not lose the others)
+            res["errors"][name] = f"{type(e).__name__}: {e}"[:2000]
+        res.setdefault("step_s", {})[name] = round(time.time() - t, 1)
+        save()
+    return res
+
+
+@app.function(image=think_image, gpu=GPU, volumes={"/vol": vol}, secrets=SECRETS, timeout=HARD_MAX_MIN * 60)
+def run_role(role: str, config: str, steps: list, plan: dict, run: str) -> dict:
+    t_start = time.time()
+    deadline = min(t_start + min(plan["max_minutes"], HARD_MAX_MIN - 2) * 60, float(plan.get("deadline_unix") or 4e9))
+    sys.path[:0] = ["/root/think", "/root/lean"]
+    import sglang
+    if sglang.__version__ != SGLANG_VERSION:
+        raise SystemExit(f"sglang {sglang.__version__} != pinned {SGLANG_VERSION}")
+    from transformers import AutoTokenizer
+    import decoder_io as dio
+    import think_engine as te
+    items = [json.loads(x) for x in open(plan["rows"]) if x.strip()]
+    out = Path(f"/vol/think_runs/{run}/{role}.json")
+    out.parent.mkdir(parents=True, exist_ok=True)
+    res = {"role": role, "config": config, "run": run, "plan": plan, "steps_planned": steps,
+           "engine_kwargs": engine_kwargs(config, plan["block"], plan["mem_fraction"]),
+           "spec_state_gb": spec_state_gb(config, plan["block"]), "steps": {}, "skipped": [], "errors": {}}
+
+    def save():
+        res["wall_s"] = round(time.time() - t_start, 1)
+        out.write_text(json.dumps(res))
+        try:
+            vol.commit()
+        except Exception as e:  # noqa: BLE001
+            res["errors"]["vol_commit"] = repr(e)[:500]
+
+    if time.time() + 180 > deadline:
+        res["skipped"], res["errors"]["deadline"] = list(steps), "less than 3 min left at start"
+        save()
+        return res
+    t0 = time.time()
+    try:
+        engine = sglang.Engine(**res["engine_kwargs"])
+    except Exception as e:  # noqa: BLE001  (a config this SGLang build refuses): report it, run nothing
+        res["errors"]["engine_start"] = f"{type(e).__name__}: {e}"[:3000]
+        save()
+        return res
+    res["engine_start_s"] = round(time.time() - t0, 1)
+    res["provenance"] = _provenance()
+    res["provenance"]["server_args"] = str(getattr(engine, "server_args", ""))[:8000]
+    save()  # also commits the HF cache (base + drafter) for the next containers
+    tok = AutoTokenizer.from_pretrained(BASE, revision=BASE_REV)
+    tp = te.ThinkPath(te.SGLBackend(engine), tok, dio)
+    run_steps(tp, engine, items, steps, plan, deadline, res, save)
+    engine.shutdown()
+    save()
+    return res
+
+
+def _vol_json(path: str):
+    try:
+        vol.reload()
+        return json.loads(Path(path).read_text())
+    except Exception:  # noqa: BLE001
+        return None
+
+
+@app.function(image=driver_image, volumes={"/vol": vol}, timeout=24 * 3600)
+def b1b_driver(run: str, plan: dict, deadline_unix: float) -> dict:
+    """CPU only. Runs B1B_ROLES one after another; each H100 container gets timeout = min(30 min, time left) and the
+    absolute deadline, so no GPU runs past launch + cap. The driver's own timeout is set by the launcher."""
+    res, log = {}, {"run": run, "deadline_unix": deadline_unix, "roles": []}
+    d = Path(f"/vol/think_runs/{run}")
+    d.mkdir(parents=True, exist_ok=True)
+    for role, config, steps in B1B_ROLES:
+        if role == "fp8":
+            pick, rep = pick_spec(res)
+            config = FP8_FOR[pick]
+            log["pick_gold_free"] = {"bf16_spec": pick, "fp8_config": config, "report": rep}
+        left = deadline_unix - time.time()
+        if left < 300:
+            log["roles"].append({"role": role, "config": config, "status": "skipped: < 5 min to the deadline"})
+            continue
+        try:
+            r = run_role.with_options(timeout=int(min(HARD_MAX_MIN * 60, left))).remote(
+                role, config, steps, {**plan, "deadline_unix": deadline_unix}, run)
+        except Exception as e:  # noqa: BLE001  (killed / crashed container: keep what it committed)
+            r = _vol_json(str(d / f"{role}.json")) or {"role": role, "config": config, "steps": {}, "errors": {}}
+            r.setdefault("errors", {})["container"] = repr(e)[:3000]
+        res[role] = r
+        log["roles"].append({"role": role, "config": config, "wall_s": r.get("wall_s"), "skipped": r.get("skipped"),
+                             "errors": r.get("errors")})
+        (d / "driver.json").write_text(json.dumps(log))
+        vol.commit()
+    log["done_unix"] = time.time()
+    (d / "driver.json").write_text(json.dumps(log))
+    vol.commit()
+    return log
+
+
+def estimate_b1b(cap_min: float = B1B_CAP_MIN) -> dict:
+    """Pessimistic like estimate(): every request runs to its budget, x1.3; full thinking assumed 2,500 tokens on
+    average with an 8,192-token tail per chunk. Worst case = one H100 for the whole window + boot of every container."""
+    r_ns, r_bat = RATES["bf16_nospec"]
+    sp = 10 * (sum(B1B_PLAN["speed_budgets"]) / r_ns + 0.2)
+    s = {"ref": START_S + sp + 500 * 4 * SHORT_CAP / r_bat + 500 * 2500 / r_bat + 4 * 8192 / 200,
+         "deer": START_S + 2.5 * 500 * 1024 / r_bat}
+    for role, r1 in (("spec_dflash", 600), ("spec_mtp", 450), ("fp8", 450)):  # [E] bs1 tok/s, below FAST_THINK_PLAN
+        s[role] = START_S + 10 * (sum(B1B_PLAN["speed_budgets"]) / r1 + 0.2) + 500 * (SHORT_CAP / (0.8 * r1) + 0.2)
+    per = {k: round(v * SAFETY, 1) for k, v in s.items()}
+    usd_s = PRICE_GPU_H * OVERHEAD / 3600
+    pess = min(sum(per.values()), cap_min * 60)
+    worst = (cap_min + BOOT_MIN * len(B1B_ROLES)) * 60
+    return {"gpu": GPU, "usd_per_gpu_hour": PRICE_GPU_H, "overhead": OVERHEAD, "safety": SAFETY,
+            "gpu_seconds_by_role": per, "gpu_minutes_pessimistic": round(pess / 60, 1),
+            "gpu_minutes_expected": round(pess / SAFETY / 60, 1),
+            "usd_expected": round(pess / SAFETY * usd_s + DRIVER_USD, 2),
+            "usd_pessimistic": round(pess * usd_s + DRIVER_USD, 2), "usd_worst_case": round(worst * usd_s + DRIVER_USD, 2),
+            "worst_case_rule": f"one H100 at a time until the server-side deadline ({cap_min} min) + {BOOT_MIN} min "
+                               f"boot x {len(B1B_ROLES)} containers + the CPU driver"}
+
+
+def _check_b1b_inputs() -> dict:
+    import hashlib
+    man = json.loads((DATA / "b1b_math500_manifest.json").read_text())
+    for name, want in man["outputs"].items():
+        got = hashlib.sha256((DATA / name).read_bytes()).hexdigest()
+        if got != want:
+            raise SystemExit(f"{name}: sha256 {got[:12]} != manifest {want[:12]} (re-run b1b_sets.py finalize)")
+    if hashlib.sha256((CLEAN_B1B / "manifest.json").read_bytes()).hexdigest() != man["clean_manifest_sha256"]:
+        raise SystemExit("clean_b1b/manifest.json differs from the one the Modal input was built from")
+    if any("gold" in json.loads(x)["row"] for x in open(DATA / "b1b_math500.jsonl") if x.strip()):
+        raise SystemExit("b1b_math500.jsonl carries gold: it must not go to Modal")
+    return man
+
+
+def _b1a_fast_p50():
+    """B1a's measured fast-path p50 (ms, batch 1), read from its saved configs (A17-B1 B1a: 14.1 ms)."""
+    for f in sorted(B1A_RUN.glob("*.json")):
+        fp = (json.loads(f.read_text()).get("steps") or {}).get("fast_path") or {}
+        if (fp.get("batch1") or {}).get("p50_ms") is not None:
+            return fp["batch1"]["p50_ms"], f"{f.relative_to(LEAN)} steps.fast_path.batch1.p50_ms"
+    return None, "B1a fast path not found"
+
+
+def score_b1b(run_dir, clean=CLEAN_B1B) -> dict:
+    """Local scoring (gold never leaves the laptop): A30 S1 speculation pick, the B1 rules (A17), FP8, DEER.
+    Writes records/<role>__<step>.jsonl (model outputs, no gold) and returns aggregates only."""
+    sys.path[:0] = [str(THINK)]
+    import eval_think as ev
+    from common import write_jsonl
+    run_dir = Path(run_dir)
+    res = {f.stem: json.loads(f.read_text()) for f in run_dir.glob("*.json") if f.stem in ROLE_NAMES}
+    rows = ev.load_rows(clean, "all", "math")
+    (run_dir / "records").mkdir(exist_ok=True)
+
+    def recs(role, step):
+        st = ((res.get(role) or {}).get("steps") or {}).get(step) or {}
+        d = {r["id"]: r for r in st.get("records") or []}
+        if d:
+            write_jsonl(run_dir / "records" / f"{role}__{step}.jsonl", list(d.values()))
+        return d
+    ref_short, full = recs("ref", "math_short_bat"), recs("ref", "math_full")
+    spec = {k: recs(k, "math_short_bs1") for k in ("spec_dflash", "spec_mtp")}
+    s1_acc = {k: ev.rule_spec_acc(rows, v, ref_short) for k, v in spec.items()}
+    ship, rep = pick_spec(res, {k: v["pass"] for k, v in s1_acc.items()})
+    ship_role = next((k for k, v in rep["arms"].items() if v["config"] == ship), None)
+    think = spec.get(ship_role, {}) if ship_role else {}
+    p50, src = _b1a_fast_p50()
+    out = {"run": run_dir.name, "roles_found": sorted(res), "errors": {k: v.get("errors") for k, v in res.items()},
+           "skipped": {k: v.get("skipped") for k, v in res.items()},
+           "s1": {"speed": rep, "accuracy_vs_nospec": s1_acc, "shipped_spec": ship},
+           "b1": {"fast": {**ev.rule_fast(p50), "source": src}, "math": ev.rule_math(rows, think, full)}}
+    if not ship:
+        out["b1"]["math"]["note"] = ("no speculation arm passed S1: no batch-1 think-path records -> the maths rule is "
+                                     "not passed (B1a no-spec cap300 bs1: p50 1.29 s, e2e mean 1.33 s > 1 s)")
+    out["b1"]["pass"] = bool(out["b1"]["fast"]["pass"] and out["b1"]["math"]["pass"])
+    fp8_cfg = (res.get("fp8") or {}).get("config")
+    fp8 = recs("fp8", "math_short_bs1")
+    f = ev.rule_fp8(rows, fp8 if fp8 else None, think)
+    med = lambda d: statistics.median(float(r["wall_s"]) for r in d.values()) if d else None  # noqa: E731
+    sp8 = round(med(think) / med(fp8), 3) if think and fp8 and med(fp8) else None
+    f.update({"fp8_config": fp8_cfg, "same_spec_as_shipped": fp8_cfg == FP8_FOR.get(ship), "speedup_vs_bf16": sp8,
+              "min_speedup": 1.15})
+    out["fp8"] = f
+    out["ship_fp8"] = bool(out["b1"]["pass"] and f.get("pass") is True and f["same_spec_as_shipped"]
+                           and sp8 is not None and sp8 >= 1.15)
+    out["deer"] = ev.rule_deer(rows, recs("deer", "math_deer1024_bat"), recs("deer", "math_cap1024_bat"))
+    out["decisions"] = {"speculation": ship or "none", "b1_pass": out["b1"]["pass"], "ship_fp8": out["ship_fp8"],
+                        "deer_on_in_capped_think": out["deer"].get("pass") is True}
+    return out
+
+
+def b1b_dry_run(cap_min: float = B1B_CAP_MIN, max_usd: float = B1B_USD_CAP) -> dict:
+    """CPU only, no Modal call: inputs + sha256, engine kwargs and the speculative state budget of every B1b config,
+    every role's steps on all 500 rows with the fake engine, local scoring, the cost estimate and caps."""
+    sys.path[:0] = [str(THINK), str(LEAN)]
+    import decoder_io as dio
+    import think_engine as te
+    from transformers import AutoTokenizer
+    man = _check_b1b_inputs()
+    cfgs = sorted({c for _, c, _ in B1B_ROLES if c} | set(FP8_FOR.values()))
+    rep = {"inputs": man["n"], "engine_kwargs": {c: engine_kwargs(c, 16, B1B_PLAN["mem_fraction"]) for c in cfgs},
+           "spec_state_gb": {c: spec_state_gb(c) for c in cfgs + ["bf16_dflash"]}}
+    budget = 0.5 * B1B_PLAN["mem_fraction"] * H100_GB
+    rep["spec_state_fits"] = {c: spec_state_gb(c) <= budget for c in cfgs}
+    assert all(rep["spec_state_fits"].values()), rep["spec_state_gb"]
+    assert spec_state_gb("bf16_dflash") > H100_GB, "the B1a failure must be explained by the state reservation"
+    tok = AutoTokenizer.from_pretrained(BASE, revision=BASE_REV, local_files_only=True)
+    items = [json.loads(x) for x in open(DATA / "b1b_math500.jsonl") if x.strip()]
+    rd = RUNS / ("dryrun_b1b_" + time.strftime("%Y%m%d_%H%M%S"))
+    rd.mkdir(parents=True, exist_ok=True)
+    plan = {**B1B_PLAN, "rows": str(DATA / "b1b_math500.jsonl"), "n_speed": 2}
+    res_all = {}
+    for role, config, steps in B1B_ROLES:
+        if role == "fp8":
+            config = FP8_FOR[pick_spec(res_all)[0]]
+        tp = te.ThinkPath(te.FakeBackend(think_len=200), tok, dio)
+        res = {"role": role, "config": config, "steps": {}, "skipped": [], "errors": {}}
+        run_steps(tp, FakeEngine(rate=SPEC_FAKE_RATE.get(config, 250)), items, steps, plan, time.time() + 3600, res)
+        (rd / f"{role}.json").write_text(json.dumps(res))
+        res_all[role] = res
+    s = score_b1b(rd)
+    (rd / "summary.json").write_text(json.dumps(s, indent=1))
+    rep["fake_run_dir"] = str(rd)
+    rep["fake_errors"] = {k: v for k, v in s["errors"].items() if v}
+    rep["fake_decisions"] = s["decisions"]
+    rep["estimate"] = estimate_b1b(cap_min)
+    rep["refuse_reasons"] = check_caps(rep["estimate"], max_usd)
+    rep["ok"] = not rep["refuse_reasons"] and not rep["fake_errors"]
+    return rep
+
+
+SPEC_FAKE_RATE = {"bf16_nospec": 250, "bf16_dflash_m16": 800, "bf16_mtp": 480, "fp8_dflash_m16": 950}
+
+
+class FakeEngine:
+    """CPU stand-in for sglang.Engine in the speed step: every request returns its full budget and sleeps
+    tokens / rate x `scale` seconds (time compressed 100x), so measured speed ratios between fake arms hold."""
+
+    def __init__(self, rate=250.0, scale=0.01):
+        self.rate, self.scale = float(rate), float(scale)
+
+    def generate(self, prompt, sampling_params):
+        one = isinstance(prompt, str)
+        sps = [sampling_params] if one else list(sampling_params)
+        n = max(int(sp["max_new_tokens"]) for sp in sps)
+        time.sleep(n / self.rate * self.scale)
+        outs = [{"text": "", "meta_info": {"completion_tokens": int(sp["max_new_tokens"]), "spec_accept_length": None}}
+                for sp in sps]
+        return outs[0] if one else outs
+
+
 # ----------------------------------------------------------------------------------------------- entry points
 @app.local_entrypoint()
-def bench(configs: str = ",".join(CONFIGS), max_minutes: int = 25, max_usd: float = 15.0, n_speed: int = 10,
+def b1b(cap_min: float = B1B_CAP_MIN, run: str = "", max_usd: float = B1B_USD_CAP):
+    """A30 session B1b (PAID; launched by think/b1b_launch.sh after spend_guard). Detached-safe: the CPU driver runs
+    every container inside Modal under one absolute deadline (launch + cap_min)."""
+    if not 10 <= cap_min <= 120:
+        raise SystemExit(f"--cap-min {cap_min} outside 10..120")
+    _check_b1b_inputs()
+    est = estimate_b1b(cap_min)
+    why = check_caps(est, min(max_usd, B1B_USD_CAP))
+    if why:
+        raise SystemExit("REFUSED to start: " + "; ".join(why))
+    run = run or time.strftime("b1b_%Y%m%d_%H%M%S")
+    rd = RUNS / run
+    rd.mkdir(parents=True, exist_ok=True)
+    deadline = time.time() + 60 * cap_min
+    (rd / "plan.json").write_text(json.dumps({"plan": B1B_PLAN, "roles": B1B_ROLES, "cap_min": cap_min,
+                                              "deadline_unix": deadline, "estimate": est}, indent=1))
+    print(json.dumps({"launch": run, "cap_min": cap_min, "deadline_unix": round(deadline),
+                      "usd_expected": est["usd_expected"], "usd_worst_case": est["usd_worst_case"]}), flush=True)
+    log = b1b_driver.with_options(timeout=int(60 * cap_min) + 600).remote(run, B1B_PLAN, deadline)
+    (rd / "driver.json").write_text(json.dumps(log, indent=1))
+    print(json.dumps({"driver": [{k: x.get(k) for k in ("role", "config", "wall_s", "skipped")} for x in log["roles"]]}))
+
+
+@app.local_entrypoint()
+def bench(configs: str = ",".join(B1A_CONFIGS), max_minutes: int = 25, max_usd: float = 15.0, n_speed: int = 10,
           block: int = 16, fast: bool = True, run: str = "", force: bool = False, mem_fraction: float = 0.55,
           fast_config: str = "bf16_dflash"):
     """The B1 benchmark: one H100 container per config, run one after another (the first fills the HF cache)."""
     plan = make_plan(max_minutes=max_minutes, n_speed=n_speed, block=block, fast=fast)
     plan["mem_fraction"] = mem_fraction; plan["fast_config"] = fast_config  # A17-B1: DFlash needs more KV headroom
     cfgs = [c for c in configs.split(",") if c]
-    bad = [c for c in cfgs if c not in CONFIGS]
+    bad = [c for c in cfgs if c not in B1A_CONFIGS]  # the B1b configs run only via ::b1b
     if bad:
-        raise SystemExit(f"unknown configs {bad}; choose from {list(CONFIGS)}")
+        raise SystemExit(f"unknown configs {bad}; choose from {B1A_CONFIGS}")
     _check_inputs()
     est = estimate(plan, cfgs)
     print(json.dumps({"plan": plan, "configs": cfgs, "estimate": est}, indent=1))
@@ -468,7 +872,7 @@ def dry_run(configs=None, max_usd: float = 15.0) -> dict:
     sys.path[:0] = [str(THINK), str(LEAN)]
     import decoder_io as dio
     import think_engine as te
-    cfgs = configs or list(CONFIGS)
+    cfgs = configs or list(B1A_CONFIGS)
     rep = {"inputs": _check_inputs()["n"], "engine_kwargs": {c: engine_kwargs(c) for c in cfgs},
            "image": {"sglang_image": SGLANG_IMAGE, "sglang": SGLANG_VERSION, "fastpath_pins": len(pinned35()),
                      "fastpath_key_pins": [p for p in pinned35() if p.split("==")[0] in ("torch", "transformers", "peft")]}}
@@ -517,12 +921,27 @@ if __name__ == "__main__":
     ap.add_argument("--dry-run", action="store_true")
     ap.add_argument("--estimate", action="store_true")
     ap.add_argument("--score", default="")
-    ap.add_argument("--configs", default=",".join(CONFIGS))
+    ap.add_argument("--configs", default=",".join(B1A_CONFIGS))
     ap.add_argument("--max-usd", type=float, default=15.0)
     ap.add_argument("--max-minutes", type=int, default=25)
+    ap.add_argument("--b1b-dry-run", action="store_true", help="A30: CPU only, fake engines, all B1b roles + scoring")
+    ap.add_argument("--b1b-estimate", action="store_true", help="A30: cost estimate + caps; exit 1 = refuse")
+    ap.add_argument("--b1b-score", default="", help="A30: score a fetched B1b run dir locally")
+    ap.add_argument("--cap-min", type=float, default=B1B_CAP_MIN)
     a = ap.parse_args()
     cs = [c for c in a.configs.split(",") if c]
-    if a.score:
+    if a.b1b_dry_run or a.b1b_estimate:
+        mu = a.max_usd if a.max_usd != 15.0 else B1B_USD_CAP
+        r = b1b_dry_run(a.cap_min, mu) if a.b1b_dry_run else {"estimate": estimate_b1b(a.cap_min)}
+        r.setdefault("refuse_reasons", check_caps(r["estimate"], min(mu, B1B_USD_CAP)))
+        r["ok"] = r.get("ok", not r["refuse_reasons"]) and not r["refuse_reasons"]
+        print(json.dumps(r, indent=1))
+        sys.exit(0 if r["ok"] else 1)
+    if a.b1b_score:
+        s = score_b1b(a.b1b_score)
+        (Path(a.b1b_score) / "summary_b1b.json").write_text(json.dumps(s, indent=1))
+        print(json.dumps({k: s[k] for k in ("decisions", "errors", "skipped")}, indent=1))
+    elif a.score:
         print(json.dumps(score_run(a.score), indent=1))
     elif a.estimate:
         e = estimate(make_plan(max_minutes=a.max_minutes), cs)

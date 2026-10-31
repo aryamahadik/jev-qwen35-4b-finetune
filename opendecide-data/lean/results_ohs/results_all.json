@@ -8,263 +8,133 @@
  ],
  "half": "all",
  "models": {
-  "q35_4b_v10_cal": {
-   "micro": 76.12,
-   "macro": 76.5,
-   "brier_yesno": 0.1613,
+  "q35_4b_main500k_b100_a5": {
+   "micro": 80.4,
+   "macro": 80.12,
+   "brier_yesno": 0.1403,
    "tracks": {
-    "C": 76.24,
-    "F": 73.75,
-    "U": 76.59
+    "C": 85.74,
+    "F": 74.17,
+    "U": 79.31
    },
-   "over_26_options": 71.9,
+   "over_26_options": 77.62,
    "per_task": {
     "arxiv2026_condmat": 68.3,
-    "arxiv2026_econqfin": 66.7,
+    "arxiv2026_econqfin": 68.3,
     "arxiv2026_physics": 95.0,
     "arxiv2026_qbio": 65.0,
-    "go_emotions": 61.3,
-    "hatecheck": 81.4,
-    "legalbench_abercrombie": 51.7,
-    "legalbench_cuad": 82.5,
+    "go_emotions": 68.7,
+    "hatecheck": 97.2,
+    "legalbench_abercrombie": 80.0,
+    "legalbench_cuad": 80.0,
+    "legalbench_hearsay": 56.1,
+    "legalbench_overruling": 92.5,
+    "legalbench_unfair_tos": 92.5,
+    "lexglue_ledgar": 100.0,
+    "pubmedqa": 60.7,
+    "scone": 87.2,
+    "sgd": 99.0,
+    "this_is_not_a_dataset": 75.0,
+    "vitaminc": 76.5
+   },
+   "consistency": {
+    "complement_violation": 0.088,
+    "double_negation_drift": 0.154,
+    "paraphrase_drift": 0.0477,
+    "paraphrase_flip_rate": 0.0498
+   },
+   "vs_jev": {
+    "micro": {
+     "diff": -1.245,
+     "ci95": [
+      -2.873,
+      0.434
+     ],
+     "p": 0.141,
+     "p_holm": 0.26
+    },
+    "macro": {
+     "diff": -1.421,
+     "ci95": [
+      -3.326,
+      0.422
+     ],
+     "p": 0.13,
+     "p_holm": 0.26
+    },
+    "brier_yesno": {
+     "diff": 0.026,
+     "ci95": [
+      0.005,
+      0.047
+     ],
+     "p": 0.015,
+     "p_holm": 0.045
+    }
+   }
+  },
+  "q35_4b_c1think_b0c": {
+   "micro": 80.89,
+   "macro": 79.69,
+   "brier_yesno": 0.1489,
+   "tracks": {
+    "C": 89.11,
+    "F": 68.75,
+    "U": 79.76
+   },
+   "over_26_options": 75.71,
+   "per_task": {
+    "arxiv2026_condmat": 65.0,
+    "arxiv2026_econqfin": 56.7,
+    "arxiv2026_physics": 93.3,
+    "arxiv2026_qbio": 60.0,
+    "go_emotions": 66.7,
+    "hatecheck": 97.2,
+    "legalbench_abercrombie": 78.3,
+    "legalbench_cuad": 78.8,
     "legalbench_hearsay": 67.1,
     "legalbench_overruling": 95.0,
     "legalbench_unfair_tos": 88.8,
     "lexglue_ledgar": 98.3,
-    "pubmedqa": 60.7,
-    "scone": 74.4,
-    "sgd": 96.5,
-    "this_is_not_a_dataset": 73.9,
-    "vitaminc": 74.0
-   },
-   "consistency": {
-    "complement_violation": 0.1198,
-    "double_negation_drift": 0.1519,
-    "paraphrase_drift": 0.0604,
-    "paraphrase_flip_rate": 0.0727
-   },
-   "vs_jev": {
-    "micro": {
-     "diff": -5.522,
-     "ci95": [
-      -7.29,
-      -3.767
-     ],
-     "p": 0.0,
-     "p_holm": 0.0
-    },
-    "macro": {
-     "diff": -5.041,
-     "ci95": [
-      -6.955,
-      -3.116
-     ],
-     "p": 0.0,
-     "p_holm": 0.0
-    },
-    "brier_yesno": {
-     "diff": 0.047,
-     "ci95": [
-      0.026,
-      0.068
-     ],
-     "p": 0.0,
-     "p_holm": 0.0
-    }
-   }
-  },
-  "qwen3.5-4b_frozen_cal": {
-   "micro": 75.85,
-   "macro": 76.17,
-   "brier_yesno": 0.1705,
-   "tracks": {
-    "C": 76.24,
-    "F": 69.17,
-    "U": 77.13
-   },
-   "over_26_options": 73.81,
-   "per_task": {
-    "arxiv2026_condmat": 63.3,
-    "arxiv2026_econqfin": 63.3,
-    "arxiv2026_physics": 91.7,
-    "arxiv2026_qbio": 58.3,
-    "go_emotions": 64.7,
-    "hatecheck": 83.4,
-    "legalbench_abercrombie": 61.7,
-    "legalbench_cuad": 81.2,
-    "legalbench_hearsay": 68.3,
-    "legalbench_overruling": 97.5,
-    "legalbench_unfair_tos": 90.0,
-    "lexglue_ledgar": 96.7,
     "pubmedqa": 60.0,
-    "scone": 74.4,
-    "sgd": 94.0,
-    "this_is_not_a_dataset": 72.2,
-    "vitaminc": 74.0
+    "scone": 95.6,
+    "sgd": 99.5,
+    "this_is_not_a_dataset": 76.1,
+    "vitaminc": 78.5
    },
    "consistency": {
-    "complement_violation": 0.3061,
-    "double_negation_drift": 0.321,
-    "paraphrase_drift": 0.0876,
-    "paraphrase_flip_rate": 0.1225
+    "complement_violation": 0.131,
+    "double_negation_drift": 0.2055,
+    "paraphrase_drift": 0.0964,
+    "paraphrase_flip_rate": 0.0754
    },
    "vs_jev": {
     "micro": {
-     "diff": -5.793,
+     "diff": -0.758,
      "ci95": [
-      -7.515,
-      -4.101
+      -2.488,
+      0.784
      ],
-     "p": 0.0,
-     "p_holm": 0.0
+     "p": 0.349,
+     "p_holm": 0.349
     },
     "macro": {
-     "diff": -5.377,
+     "diff": -1.848,
      "ci95": [
-      -7.238,
-      -3.505
+      -3.797,
+      -0.019
      ],
-     "p": 0.0,
-     "p_holm": 0.0
+     "p": 0.045,
+     "p_holm": 0.09
     },
     "brier_yesno": {
-     "diff": 0.056,
+     "diff": 0.035,
      "ci95": [
-      0.035,
-      0.078
+      0.012,
+      0.057
      ],
-     "p": 0.0,
-     "p_holm": 0.0
-    }
-   }
-  },
-  "q35_2b_kd_cal": {
-   "micro": 66.38,
-   "macro": 64.14,
-   "brier_yesno": 0.1839,
-   "tracks": {
-    "C": 71.68,
-    "F": 64.17,
-    "U": 64.43
-   },
-   "over_26_options": 43.33,
-   "per_task": {
-    "arxiv2026_condmat": 58.3,
-    "arxiv2026_econqfin": 51.7,
-    "arxiv2026_physics": 80.0,
-    "arxiv2026_qbio": 66.7,
-    "go_emotions": 51.3,
-    "hatecheck": 74.5,
-    "legalbench_abercrombie": 23.3,
-    "legalbench_cuad": 76.2,
-    "legalbench_hearsay": 63.4,
-    "legalbench_overruling": 90.0,
-    "legalbench_unfair_tos": 80.0,
-    "lexglue_ledgar": 23.3,
-    "pubmedqa": 58.0,
-    "scone": 71.7,
-    "sgd": 84.0,
-    "this_is_not_a_dataset": 69.4,
-    "vitaminc": 68.5
-   },
-   "consistency": {
-    "complement_violation": 0.1243,
-    "double_negation_drift": 0.2183,
-    "paraphrase_drift": 0.0584,
-    "paraphrase_flip_rate": 0.1117
-   },
-   "vs_jev": {
-    "micro": {
-     "diff": -15.268,
-     "ci95": [
-      -17.371,
-      -13.209
-     ],
-     "p": 0.0,
-     "p_holm": 0.0
-    },
-    "macro": {
-     "diff": -17.4,
-     "ci95": [
-      -19.743,
-      -15.064
-     ],
-     "p": 0.0,
-     "p_holm": 0.0
-    },
-    "brier_yesno": {
-     "diff": 0.07,
-     "ci95": [
-      0.05,
-      0.089
-     ],
-     "p": 0.0,
-     "p_holm": 0.0
-    }
-   }
-  },
-  "q35_08b_kd_cal": {
-   "micro": 56.2,
-   "macro": 54.1,
-   "brier_yesno": 0.2094,
-   "tracks": {
-    "C": 59.21,
-    "F": 45.42,
-    "U": 57.17
-   },
-   "over_26_options": 31.43,
-   "per_task": {
-    "arxiv2026_condmat": 41.7,
-    "arxiv2026_econqfin": 33.3,
-    "arxiv2026_physics": 48.3,
-    "arxiv2026_qbio": 58.3,
-    "go_emotions": 36.7,
-    "hatecheck": 74.5,
-    "legalbench_abercrombie": 20.0,
-    "legalbench_cuad": 76.2,
-    "legalbench_hearsay": 62.2,
-    "legalbench_overruling": 77.5,
-    "legalbench_unfair_tos": 80.0,
-    "lexglue_ledgar": 18.3,
-    "pubmedqa": 56.0,
-    "scone": 50.0,
-    "sgd": 73.5,
-    "this_is_not_a_dataset": 56.1,
-    "vitaminc": 57.0
-   },
-   "consistency": {
-    "complement_violation": 0.1661,
-    "double_negation_drift": 0.1824,
-    "paraphrase_drift": 0.0886,
-    "paraphrase_flip_rate": 0.1992
-   },
-   "vs_jev": {
-    "micro": {
-     "diff": -25.447,
-     "ci95": [
-      -27.621,
-      -23.204
-     ],
-     "p": 0.0,
-     "p_holm": 0.0
-    },
-    "macro": {
-     "diff": -27.442,
-     "ci95": [
-      -29.832,
-      -24.97
-     ],
-     "p": 0.0,
-     "p_holm": 0.0
-    },
-    "brier_yesno": {
-     "diff": 0.095,
-     "ci95": [
-      0.077,
-      0.113
-     ],
-     "p": 0.0,
-     "p_holm": 0.0
+     "p": 0.001,
+     "p_holm": 0.003
     }
    }
   },

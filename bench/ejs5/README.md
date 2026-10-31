@@ -13,7 +13,8 @@ This kit runs third-party held-out tests, so these rules apply:
 | `score_ejs5.py` | Scores the way the author scored Jev, using the author's own `summarize()` taken by AST. It runs a paired bootstrap over commits vs Jev's published answers, the late subset (from 2026-06-01, 268 rows) and the descriptive GPT and Opus context. |
 | `ejs5lib.py` | Shared code: AST readers, `decide` (our probabilities into the author's answer space), the cascade rule (a copy of `ohs3_lib`) and the bootstrap. |
 | `tests/` | `make_synthetic.py` builds a fake benchmark folder. `test_ejs5.py` holds 15 CPU tests on synthetic items with a tiny random model. |
-| `PREREG_ejs5.md` | The draft pre-registration. |
+| `derive_1v.py` | Secondary number only: copies a finished 2-view run to `<name>_1v_secondary` with the single read (`probs_1v`) as `probs`, so `score_ejs5.py` can score it. |
+| `PREREG_ejs5.md` | The pre-registration, adopted in commit 9a04df1. Its readout is **`--readout 2view`** for every system. The `run_ejs5.py` default is still `single`, so always pass the flag. |
 
 ## Done on the Mac (CPU, no GPU, no API)
 
@@ -41,6 +42,14 @@ gcloud compute scp $G bench/external_quarantine/ejs5/ejs5_rows.jsonl bench/exter
 
 Copy only the code files, never `bench/ejs5/runs/`. Copying `runs/` would overwrite the VM's run ledger.
 
+The one-run guards only know the runs listed in the ledger on that VM. C1 and 4B-E ran on `od-l4b`. Before any
+further run on a different VM (for example S2 on `od-l4`), append the fetched ledger to that VM's ledger:
+
+```bash
+gcloud compute scp $G bench/ejs5/runs/ledger_l4b.jsonl od-l4:~/bench/ejs5/runs/ledger_l4b.jsonl
+gcloud compute ssh od-l4 $G --command 'cat ~/bench/ejs5/runs/ledger_l4b.jsonl >> ~/bench/ejs5/runs/ledger.jsonl'
+```
+
 ### VM: `gcloud compute ssh od-l4 --zone us-central1-a --project system-one-509903`
 
 ```bash
@@ -52,15 +61,15 @@ export HF_HOME=$HOME/hf HF_HUB_OFFLINE=1; cd ~/lean
 R=7128b2b8545913fa263f6f4bbdcd0049b2368e0402d74a6516e51f24197b3a4f
 C1="--model $HOME/lean/models/q35_4b_main500k --base Qwen/Qwen3.5-4B --revision 851bf6e806efd8d0a36b00ddf55e13ccb7b8cd0a"
 # 1) pre-flight with the VM's code (CPU, seconds)
-~/od/bin/python ~/bench/ejs5/run_ejs5.py --name c1_main500k $C1 --rows-sha256 $R --dry-run
-# 2) S1 = C1, once (about 4-6 min)
-nohup ~/od/bin/python ~/bench/ejs5/run_ejs5.py --name c1_main500k $C1 \
+~/od/bin/python ~/bench/ejs5/run_ejs5.py --name c1_main500k $C1 --rows-sha256 $R --readout 2view --dry-run
+# 2) S1 = C1, once (DONE on od-l4b, 3 Oct 2026, readout 2view; the ledger refuses a repeat)
+nohup ~/od/bin/python ~/bench/ejs5/run_ejs5.py --name c1_main500k $C1 --readout 2view \
   --adapter-sha256 507d1c29690579f928a265713cd14b9c54a34baa8b74abd1e641560d987db078 --rows-sha256 $R \
   > ~/bench/ejs5/runs/c1_main500k.log 2>&1 &
 tail -f ~/bench/ejs5/runs/c1_main500k.log      # until "c1_main500k: 868 rows read, 0 errors ..."
-# 3) S2 = the 2B, once, after the PREREG amendment names it (values from the amendment)
+# 3) S2 = the 2B, once, after the PREREG amendment names it (values from the amendment). PREREG 3: --readout 2view
 nohup ~/od/bin/python ~/bench/ejs5/run_ejs5.py --name <2B_RUN> --model $HOME/lean/models/<2B_NAME> --base Qwen/Qwen3.5-2B \
-  --revision <2B_REV> --adapter-sha256 <2B_SHA> --prism-x-sha256 <PX_SHA> --rows-sha256 $R \
+  --revision <2B_REV> --adapter-sha256 <2B_SHA> --prism-x-sha256 <PX_SHA> --rows-sha256 $R --readout 2view \
   > ~/bench/ejs5/runs/<2B_RUN>.log 2>&1 &
 ```
 
@@ -72,7 +81,9 @@ gcloud compute scp --recurse $G od-l4:~/bench/ejs5/runs/c1_main500k bench/ejs5/r
 gcloud compute scp $G od-l4:~/bench/ejs5/runs/ledger.jsonl bench/ejs5/runs/ledger_l4.jsonl
 gcloud compute instances stop od-l4 $G
 $P bench/ejs5/score_ejs5.py c1_main500k --json-out bench/ejs5/runs/scores_c1.json
-# S3 = the cascade, after both runs are fetched, with the dev-only fit of THIS pair (refuses another pair's fit)
+# S3 = the cascade, after both runs are fetched, with the dev-only fit of THIS pair (refuses another pair's fit).
+# The kit does NOT check the fit's readout: the amendment must confirm that small.choice_readout and
+# big.choice_readout in the fit json are "2view" (the runs' readout), or tau is applied to other probabilities.
 $P bench/ejs5/run_ejs5.py --cascade --name cascade_2b_c1 --small <2B_RUN> --big c1_main500k --fit-log <pair fit json>
 $P bench/ejs5/score_ejs5.py c1_main500k <2B_RUN> cascade_2b_c1 --json-out bench/ejs5/runs/scores_all.json
 ```
@@ -88,6 +99,8 @@ $P bench/ejs5/score_ejs5.py c1_main500k <2B_RUN> cascade_2b_c1 --json-out bench/
   - 4B: about 1.5 min load and warm-up, plus about 1.5–3 min for 868 rows. About 5 min.
   - 2B: about 3–4 min.
   - Cascade: no GPU.
-  - `--readout 2view` (if pre-registered) adds about 80 % to the read time.
+  - `--readout 2view` (pre-registered) adds about 80 % to the read time.
+- **Measured on od-l4b, 2view:** C1 loaded in 54 s, warm-up 4 s, 868 rows in 181 s (p50 230 ms). 4B-E: 868 rows in
+  182 s.
 - **In total:** about 20–25 min of L4 time including VM start, copies and stop. That is about **$0.30–0.40** of the
   Google credit (g2-standard-8 at about $0.85/h). There are no API, Modal or Jev calls.

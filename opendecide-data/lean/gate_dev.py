@@ -739,9 +739,114 @@ def fresh_sha(name):
     return out
 
 
+# ---- PREREG A95 / A96: the owner's acceptance of ONE failed C2 refparity look --------------------------------------------
+ACCEPT_A95 = "c2_build/train/REFPARITY_ACCEPT_A95.json"   # under ROOT (lean/)
+OWNER_GO_C2 = "c2_build/train/OWNER_GO_C2.txt"            # holds the owner's A95 words verbatim
+PREREG_FINAL_MD = "PREREG_FINAL.md"                       # holds Record A95 (line-wrapped, "> " quoted)
+ACCEPT_BANNER = "accepted by owner, PREREG A95"
+# The pin lives here, in sha-pinned code, not only in the editable record: the owner's full A95 sentence, the one look
+# (canonical-JSON sha256 of the logged line of 2026-10-18T17:49:37+00:00), its n and the largest max |dp| it may carry.
+A95_QUOTE = ("Option A: I accept the refparity miss (max dp 0.10 on 1 of 8,143 rows, all other checks pass) as serving-path "
+             "noise, since all 19 models were read on the same H100 path. Continue C2 with the H100 reads and bring me any "
+             "further blocker.")
+ACCEPT_A95_LOOK_SHA256 = "e0277b9993e186840f4335a651be4c9415e925bcfecf7a4e79588ee9631492d0"
+ACCEPT_A95_N, ACCEPT_A95_MAX_DP = 8143, 0.1014
+_ACCEPT_KEYS = ("record", "look_time", "look_sha256", "fresh", "stored", "size", "n", "max_dp", "fresh_sha", "stored_sha",
+                "a95_quote")
+
+
+def look_sha256(r):
+    """sha256 of one logged look as read back from logs/ship_looks.jsonl (canonical JSON): the look's identity."""
+    return hashlib.sha256(json.dumps(r, sort_keys=True, separators=(",", ":")).encode()).hexdigest()
+
+
+def _prereg_has_a95_quote():
+    """True when PREREG_FINAL.md's Record A95 contains the full A95 sentence (the file wraps lines and quotes them with '> ')."""
+    p = ROOT / PREREG_FINAL_MD
+    if not p.exists():
+        return False
+    txt = " ".join(" ".join(re.sub(r"^>\s?", "", ln).strip() for ln in p.read_text().splitlines()).split())
+    return any(A95_QUOTE in txt[m.start():m.start() + 1500] for m in re.finditer(r"Record A95\b", txt))
+
+
+def refparity_owner_accepted(r, say=print):
+    """(True, "") only when the owner's A95 record (ROOT/ACCEPT_A95) names exactly this FAILED look: its logged time and
+    sha256, the fresh and stored read names, n, max |dp| and the sha256 of the fresh-read and stored-read files; the look
+    failed ONLY the max |dp| bar (argmax agreement, mean |dp| and the accuracy difference pass; no other reason in
+    why_not except the stored-name note); both sets of read files are unchanged; and the record's A95 quote is in
+    OWNER_GO_C2.txt. Anything else is (False, why) with why == "" when there is no record at all. Prints ACCEPT_BANNER
+    when it accepts. It never edits the look log: the look stays pass false. PREREG A96.
+    Pinned in this code (not only in the record): the look's sha256 (ACCEPT_A95_LOOK_SHA256), n == 8143, max |dp| <= 0.1014,
+    and the FULL A95 sentence (A95_QUOTE), which must equal the record's quote and be found in OWNER_GO_C2.txt and in
+    PREREG_FINAL.md's Record A95."""
+    p = ROOT / ACCEPT_A95
+    if not p.exists():
+        return False, ""
+    try:
+        rec = json.loads(p.read_text())
+    except ValueError as e:
+        return False, f"{p.name} is not valid JSON ({e})"
+    if not isinstance(rec, dict) or rec.get("record") != "A95":
+        return False, f"{p.name} is not an A95 record"
+    miss = [k for k in _ACCEPT_KEYS if rec.get(k) in (None, "", {}, [])]
+    if miss:
+        return False, f"{p.name} lacks {miss}"
+    bad = []
+    if r.get("mode") != "refparity" or r.get("pass") is not False:
+        bad.append("the look did not fail")
+    if r.get("time") != rec["look_time"]:
+        bad.append(f"look time {r.get('time')} is not the accepted {rec['look_time']}")
+    if look_sha256(r) != rec["look_sha256"]:
+        bad.append("the logged look differs from the accepted one (look sha256)")
+    for k in ("fresh", "stored", "size", "n", "max_dp", "fresh_sha"):
+        if r.get(k) != rec[k]:
+            bad.append(f"look {k} differs from the accepted one")
+    nums = [r.get(k) for k in ("agree", "mean_dp", "max_dp", "acc_diff")]
+    if not all(isinstance(x, (int, float)) and not isinstance(x, bool) and math.isfinite(x) for x in nums):
+        bad.append("the look has no finite agree / mean_dp / max_dp / acc_diff")
+    else:
+        if not r["agree"] >= PARITY_MIN_AGREE - 1e-9:
+            bad.append(f"argmax agreement {r['agree']:.2f}% is below {PARITY_MIN_AGREE:.0f}% (only max |dp| may fail)")
+        if not r["mean_dp"] <= PARITY_MAX_MEAN_DP + 1e-12:
+            bad.append(f"mean |dp| {r['mean_dp']:.5f} is above {PARITY_MAX_MEAN_DP} (only max |dp| may fail)")
+        if not abs(r["acc_diff"]) <= PARITY_MAX_ACC + 1e-9:
+            bad.append(f"accuracy difference {r['acc_diff']:+.2f} pp is beyond {PARITY_MAX_ACC} pp (only max |dp| may fail)")
+        if not r["max_dp"] > PARITY_MAX_DP + 1e-12:
+            bad.append("max |dp| did not fail the bar (a failed look must fail on max |dp|)")
+    note = f"stored {r.get('stored')} is not the pre-registered"
+    extra = [w for w in r.get("why_not") or [] if not str(w).startswith(note)]
+    if extra:
+        bad.append(f"the look has other reasons not to count: {extra}")
+    for key, name in (("fresh_sha", r.get("fresh")), ("stored_sha", r.get("stored"))):
+        if not isinstance(name, str) or fresh_sha(name) != rec[key]:
+            bad.append(f"the {key.split('_')[0]} read files ({name}) changed since the accepted look")
+    if rec["look_sha256"] != ACCEPT_A95_LOOK_SHA256 or look_sha256(r) != ACCEPT_A95_LOOK_SHA256:
+        bad.append("not the one look the owner accepted in A95 (its sha256 is pinned in gate_dev.py)")
+    if r.get("n") != ACCEPT_A95_N or rec["n"] != ACCEPT_A95_N:
+        bad.append(f"n is not the accepted {ACCEPT_A95_N}")
+    for who, mx in (("look", r.get("max_dp")), ("record", rec["max_dp"])):
+        if not (isinstance(mx, (int, float)) and not isinstance(mx, bool) and mx <= ACCEPT_A95_MAX_DP + 1e-12):
+            bad.append(f"the {who}'s max |dp| is above the accepted {ACCEPT_A95_MAX_DP}")
+    go = ROOT / OWNER_GO_C2
+    if rec["a95_quote"] != A95_QUOTE:
+        bad.append("the record's a95_quote is not the full verbatim A95 sentence")
+    if not (go.exists() and A95_QUOTE in go.read_text()):
+        bad.append(f"the full A95 sentence is not in {go.name}")
+    if not _prereg_has_a95_quote():
+        bad.append(f"the full A95 sentence is not in {PREREG_FINAL_MD} Record A95")
+    if bad:
+        return False, "; ".join(bad)
+    say(f"refparity: {ACCEPT_BANNER} (look {rec['look_time']}, {rec['fresh']} vs {rec['stored']}: n {r['n']}, "
+        f"agree {r['agree']:.2f}%, mean |dp| {r['mean_dp']:.5f}, max |dp| {r['max_dp']:.4f} > {PARITY_MAX_DP}; "
+        f"the look stays logged pass false)")
+    return True, ""
+
+
 def refparity_status(ref, size):
     """None when the last refparity look logged for this fresh REF read passed and counts; else why not. Stops when it
-    failed: PREREG 4 says stop and consult the owner before any ship look."""
+    failed: PREREG 4 says stop and consult the owner before any ship look. The one exception is the owner's A95
+    acceptance of one named failed look (refparity_owner_accepted, PREREG A96); a C2 look is against q35_4b_main500k, not
+    STORED_REF, so it is answered by the 'was against' note below before it can reach the stop."""
     if ref == STORED_REF[size]:
         return (f"REF {ref} is the STORED REF read itself, not a fresh one (PREREG 4: REF is re-scored in the scoring job "
                 "and checked with --mode refparity)")
@@ -755,8 +860,14 @@ def refparity_status(ref, size):
     if r.get("pass") and r.get("fresh_sha") != fresh_sha(ref):  # B: the parity look vouches for these exact files
         return f"the preds of {ref} changed after its refparity look ({r.get('time')}): run --mode refparity again"
     if not r.get("pass"):
-        stop(f"the last refparity look of {ref} vs stored {r.get('stored')} ({r.get('time')}) FAILED: PREREG 4 says stop "
-             "and consult the owner before any ship look")
+        ok, why = refparity_owner_accepted(r)
+        if not ok:
+            stop(f"the last refparity look of {ref} vs stored {r.get('stored')} ({r.get('time')}) FAILED: PREREG 4 says stop "
+                 "and consult the owner before any ship look" + (f" [owner acceptance record does not apply: {why}]" if why else ""))
+        if r.get("why_not"):
+            return (f"the refparity look of {ref} was {ACCEPT_BANNER} but does not count "
+                    f"({'; '.join(r.get('why_not', []))})")
+        return None
     if not r.get("counts"):
         return (f"the refparity look of {ref} passed but does not count ({'; '.join(r.get('why_not', [])) or 'see the log'})")
     return None

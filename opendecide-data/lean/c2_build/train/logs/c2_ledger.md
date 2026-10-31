@@ -1,0 +1,10 @@
+| C2 training: seg1 0-100: BEFORE (cap 30 min) | 18 Oct 06:45 UTC, mahadikarya2 | training $0.0 of T_max $22.96, other $0.00, C2 total $0.00 of $40, credit left $19.1 | free credit |
+| C2 training: STOPPED: seg1 client exit 1 (see c2_build/train/logs/c2_seg1.log) | 18 Oct 07:03 UTC, mahadikarya2 | training $1.23 of T_max $22.96, other $0.00, C2 total $1.23 of $40, credit left $19.1 | free credit |
+| C2 training: seg1 0-100: BEFORE (cap 30 min) | 18 Oct 07:03 UTC, mahadikarya2 | training $0.0 of T_max $22.96, other $0.00, C2 total $0.00 of $40, credit left $19.1 | free credit |
+| C2 training: seg1: AFTER | 18 Oct 07:13 UTC, mahadikarya2 | training $0.85 of T_max $22.96, other $0.00, C2 total $0.85 of $40, credit left $18.26 | free credit |
+| C2 training: STOPPED: first100 ABORT (A37 k: non-finite loss, or the chain guards); owner review | 18 Oct 07:13 UTC, mahadikarya2 | training $0.85 of T_max $22.96, other $0.00, C2 total $0.85 of $40, credit left $18.26 | free credit |
+| C2 training: seg2 100-300: AFTER | 18 Oct 07:33 UTC, mahadikarya2 | training $1.53 of T_max $22.96, other $0.00, C2 total $1.53 of $40, credit left $17.58 | free credit |
+| C2 training: seg3_mahadikarya2 to the end/cap: BEFORE (cap 221 min, limited by credit) | 18 Oct 07:34 UTC, mahadikarya2 | training $1.6 of T_max $22.96, other $0.00, C2 total $1.60 of $40, credit left $17.39 | free credit |
+| C2 training: seg3_mahadikarya2: AFTER (client exit 0) | 18 Oct 10:24 UTC, mahadikarya2 | training $13.14 of T_max $22.96, other $0.00, C2 total $13.14 of $40, credit left $5.97 | free credit |
+| C2 training: C2 FINAL | 18 Oct 10:24 UTC, mahadikarya2 | training $13.14 of T_max $22.96, other $0.00, C2 total $13.14 of $40, credit left $5.97 | free credit |
+| C2 post-training lines closed: grid $7.49 + parity $0.52 + L1 $0.85 = H100 ledger $8.85 of the $15 cap; J (Jev 1.13, OpenRouter, not Modal) $0.17; the training/other split below double counts the H100 lines (billing delta + logged spend), real C2 Modal total about $22.0 ledger basis | 18 Oct 21:24 UTC, mahadikarya3 | training $22.57 of T_max $22.96, other $8.86, C2 total $31.43 of $40, credit left $5.03 | free credit |
